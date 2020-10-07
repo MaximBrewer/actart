@@ -1,0 +1,115 @@
+@use "sass:map";
+#announces {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+    background-color: $fonlight;
+    .background-text {
+        color: $fonlight;
+        top: 5.25rem;
+        opacity: 1;
+    }
+    .announce {
+        > div {
+            .h2,
+            .h3 {
+                font-size: 8vw;
+                line-height: 9.625vw;
+                text-align: center;
+            }
+            dl {
+                font-family: "TT Severs";
+                font-size: 18px;
+                line-height: 21px;
+                letter-spacing: initial;
+                dt {
+                    font-weight: bold;
+                    text-decoration: underline;
+                }
+                dd {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        background-color: $white;
+        .announce {
+            > div {
+                .h2,
+                .h3 {
+                    font-size: 2.125rem;
+                    line-height: 3rem;
+                    text-align: left;
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        padding: 6rem 0 3rem;
+        .background-text {
+            color: $fonlight;
+            top: 5.25rem;
+            opacity: 1;
+        }
+        .announce {
+            > div {
+                .h2,
+                .h3 {
+                    line-height: 3rem;
+                    padding-bottom: 1.5rem;
+                    margin-bottom: 2.5rem;
+                    border-bottom: 8px solid $primary;
+                }
+            }
+        }
+    }
+}
+
+.announce-slider {
+    overflow: hidden;
+    margin-top: 1rem;
+    position: relative;
+    .slick-list {
+        margin: 0 -1.25rem;
+        > * {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+/Edge */
+            user-select: none; /* Standard */
+        }
+    }
+
+    .slick-slide {
+        &:focus,
+        a {
+            outline: none;
+        }
+    }
+    .carousel-controls {
+        display: flex;
+        justify-content: space-between;
+        .carousel-button {
+            z-index: 1;
+        }
+        .carousel-counter {
+            display: none;
+        }
+    }
+    .btn {
+        padding-left: 3.25rem;
+        padding-right: 3.25rem;
+    }
+    .btn-control {
+        margin: 0;
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        margin-top: 2rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        margin-top: 2rem;
+    }
+}

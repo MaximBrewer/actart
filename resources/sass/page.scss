@@ -1,0 +1,108 @@
+@use "sass:map";
+#page {
+    padding: 3rem 0 4rem;
+    &.dotted:before {
+        display: block;
+        width: 50%;
+        position: absolute;
+        top: 1.5rem;
+        right: 0;
+        background-image: url("/images/dot.png");
+    }
+    .image-wrapper {
+        width: 100%;
+        padding-top: 67.5%;
+        background-size: cover;
+        background-position: center;
+    }
+    .h2 {
+        font-size: 7.25vw;
+        line-height: 7.25vw;
+        text-align: center;
+    }
+    hr {
+        margin: 1.175rem 0 1.725rem;
+        background-color: transparent;
+        border-bottom: 0.25rem solid $primary;
+        border-top: none;
+    }
+    ul {
+        li {
+            line-height: 1.75rem;
+            a {
+                color: $white;
+            }
+            &:nth-child(2n + 1) {
+                a {
+                    color: $red;
+                }
+            }
+        }
+    }
+    .sharing p{
+        @include small_text_bold_16;
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        .h2 {
+            font-size: 2.5rem;
+            line-height: 3rem;
+            text-align: left;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        &:before {
+            content: "";
+            width: 50%;
+            height: 26rem;
+            top: 1.5rem;
+        }
+        padding: 3rem 0 5rem;
+        .h2 {
+            margin-top: 0;
+            font-size: 2.5rem;
+            line-height: 3rem;
+            text-align: left;
+        }
+        .dotted-bg {
+            opacity: 0.2;
+            width: 20%;
+            height: 80%;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            background-image: url(/images/dot.png);
+        }
+        .background-text {
+            top: 3rem;
+            svg {
+                fill: $primary-light;
+                opacity: 0.2;
+                stroke: $primary-light;
+                width: 95%;
+            }
+        }
+        .background-logo {
+            position: absolute;
+            top: 22rem;
+            width: 28.75rem;
+            max-width: none;
+            right: auto;
+            left: 33.33%;
+            margin-left: -28.75rem;
+            svg {
+                left: 0;
+                top: 0;
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        padding: 3rem 0 5rem;
+        &:before {
+            width: 53%;
+            height: 28rem;
+            top: 1.5rem;
+        }
+    }
+}

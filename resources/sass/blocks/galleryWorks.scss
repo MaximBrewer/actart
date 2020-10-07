@@ -1,0 +1,19 @@
+@use "sass:map";
+.gallery-works {
+    .h2 {
+        text-align: center;
+        font-size: 1.8rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        .h2 {
+            text-align: left;
+            font-size: 1.8rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    }
+}

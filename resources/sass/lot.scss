@@ -1,0 +1,14 @@
+@use "sass:map";
+.lot-section {
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        padding-top: 6rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    }
+}

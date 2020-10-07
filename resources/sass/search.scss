@@ -1,0 +1,50 @@
+.search-form {
+    .close-search-form {
+        display: none;
+    }
+    &.form-search-full {
+        position: fixed;
+        display: block;
+        left: 0;
+        top: 0;
+        background-color: $dark;
+        width: 100%;
+        z-index: 100;
+        .close-search-form {
+            display: initial;
+        }
+        button {
+            svg {
+                fill: $greylight;
+                stroke: $greylight;
+            }
+        }
+        input {
+            color: $greylight !important;
+        }
+    }
+    .search-container {
+        position: relative;
+        .btn-container {
+            position: absolute;
+            display: flex;
+            right: 0;
+            top: 0;
+            button {
+                border: none;
+                @include box-shadow(none);
+                background: transparent !important;
+            }
+        }
+        input {
+            min-width: 27rem;
+            line-height: 2.31rem;
+            background: transparent;
+        }
+    }
+    form {
+        max-width: 40rem;
+        width: 100%;
+        float: right;
+    }
+}

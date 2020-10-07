@@ -1,0 +1,67 @@
+@use "sass:map";
+.gallery-item {
+    .image-holder {
+        background-color: $white;
+    }
+    .image {
+        position: relative;
+        background-size: cover;
+        display: block;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .title {
+        display: block;
+        margin-top: 1rem;
+        @include sssmal_text_16_medium;
+    }
+    .author {
+        @include Text_Name_18;
+        line-height: 32px;
+    }
+    .price {
+        @include Text_Name_18;
+        line-height: 2rem;
+        white-space: nowrap;
+        svg {
+            margin-right: 0.5rem;
+            position: relative;
+            top: -2px;
+            width: 15px;
+            height: 14px;
+        }
+    }
+    .matherial {
+        @include text_supersmall_13;
+        line-height: 24px;
+        color: $grey;
+        span {
+            text-transform: lowercase;
+            &:after {
+                content: ", ";
+            }
+            &:last-child:after {
+                content: "";
+            }
+        }
+    }
+    .size {
+        @include text_supersmall_13;
+        line-height: 24px;
+        font-weight: bold;
+        color: $grey;
+    }
+
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    }
+}
+a.lot-item:hover {
+    padding: 19px;
+    margin: -20px;
+    border: 1px solid $primary;
+    background-color: $white;
+}

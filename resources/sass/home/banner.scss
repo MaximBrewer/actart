@@ -1,0 +1,155 @@
+// Banner
+@use "sass:map";
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
+.home-banner {
+    background-color: $fonlight;
+    padding: 1rem 0;
+    > .container > .h5 {
+        text-transform: uppercase;
+        text-align: center;
+    }
+    .background-text {
+        color: #eceded;
+    }
+    &:before {
+        display: block;
+        width: calc(50% + 25rem);
+        height: 80%;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        background-image: url("/images/dot.png");
+    }
+    div {
+        z-index: 2;
+        outline: none !important;
+        &.container {
+            z-index: 3;
+        }
+    }
+    .carousel-controls > div {
+        display: flex;
+        justify-content: space-between;
+    }
+    .carousel-controls > div:first-child {
+        order: 2;
+        justify-content: flex-end;
+    }
+    .carousel-controls > div:last-child {
+        order: 1;
+    }
+    .carousel-button.d-md-none {
+        text-align: center;
+        margin: 1rem auto;
+    }
+    .carousel {
+        > div:first-child {
+        }
+        hr {
+            margin-top: 0rem;
+            margin-bottom: 0.675rem;
+            border: 0;
+            border-bottom: 0.25rem solid $dark;
+        }
+        .carousel-button {
+            .btn {
+                margin: 0;
+                font-weight: bold;
+                padding-left: 2.25rem;
+                padding-right: 2.25rem;
+            }
+        }
+        .btn {
+            margin-bottom: 1.25rem;
+        }
+        .btn-control {
+            margin: 0;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        padding: 3.75rem 0 2.725rem;
+        > .container > .h5 {
+            font-size: 2.25rem;
+            line-height: 3rem;
+            text-align: left;
+        }
+        .carousel-controls > div:first-child {
+            justify-content: flex-end;
+        }
+        .carousel {
+            background-color: none;
+            > div:first-child {
+                background-color: transparent;
+                padding: 0;
+            }
+            .carousel-button {
+                .btn {
+                    padding-left: 3.25rem;
+                    padding-right: 3.25rem;
+                }
+            }
+            hr {
+                border-bottom-width: 0.5rem;
+            }
+            .h5_underline {
+                font-size: 1.125rem;
+                line-height: 1.25rem;
+            }
+            .btn {
+                margin-bottom: 2rem;
+                padding-right: 2rem;
+                padding-left: 2rem;
+            }
+            .btn-control {
+                margin: 0;
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        background-color: transparent;
+        padding: 3rem 0 1.725rem;
+        margin-bottom: 4.8125rem;
+        .carousel-controls > div:first-child {
+            order: 1;
+            justify-content: space-between;
+        }
+        .carousel-controls > div:last-child {
+            order: 2;
+        }
+        &:before {
+            content: "";
+            height: 100%;
+        }
+        .carousel {
+            padding-bottom: 3.8125rem;
+            .carousel-counter {
+            }
+            .h5_underline {
+                font-size: 18px;
+                line-height: 21px;
+            }
+            .btn-control {
+                margin: 0;
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        padding: 3rem 0 2.725rem;
+        .carousel {
+            .h5_underline {
+                font-size: 18px;
+                line-height: 21px;
+            }
+            .btn {
+            }
+            .btn-control {
+            }
+        }
+        .carousel-controls {
+            padding-top: 3rem;
+        }
+    }
+}

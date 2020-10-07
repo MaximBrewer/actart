@@ -1,0 +1,71 @@
+@use "sass:map";
+.popular-categories-section {
+    background-image: url("/images/dot.png");
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        margin-bottom: 9rem;
+    }
+}
+.popular-categories {
+    .h4 {
+        text-align: center;
+    }
+    .categories {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+        a {
+            display: block;
+            padding: 8vw 0;
+            width: 30%;
+            position: relative;
+            background-color: $white;
+            margin-bottom: 2.5rem;
+            background-size: cover;
+            p {
+                font-family: "Roboto Condensed", sans-serif;
+                font-weight: bold;
+                color: $white;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                margin: 0;
+                padding: 0;
+                font-size: 1.25rem;
+                line-height: 1.25rem;
+            }
+            &:before {
+                width: 110%;
+                height: 110%;
+                left: -5%;
+                top: -5%;
+                border: 1px solid $gray;
+                position: absolute;
+            }
+            &:hover, &.active {
+                &:before {
+                    content: "";
+                }
+            }
+        }
+    }
+    .btn {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        .btn {
+            padding: 0.475rem 4.25rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        .categories {
+            a {
+                padding: 4rem 0;
+                width: 15%;
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    }
+}

@@ -1,0 +1,57 @@
+// Fonts
+@import '/fonts/TTServers/stylesheet.css';
+@import "~react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+// Variables
+@import 'variables';
+@import 'mixins';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
+
+@import 'common';
+@import 'header';
+@import 'search';
+@import 'footer';
+@import 'alert';
+
+@import 'home';
+@import 'page';
+@import 'author';
+@import 'profile';
+@import 'auction';
+@import 'gallery';
+@import 'lot';
+
+@import './blocks/sorting';
+@import './blocks/counter';
+@import './blocks/news';
+@import './blocks/author';
+@import './blocks/auction.announce';
+@import './blocks/auction.preview';
+@import './blocks/carousel';
+@import './blocks/waterfall';
+@import './blocks/subscribe';
+@import './blocks/announces';
+@import './blocks/popularCategories';
+@import './blocks/galleryWorks';
+@import './blocks/lotCarousel';
+
+
+
+@import './auction/index';
+
+
+@import './tizers/favoriteLink';
+@import './tizers/auction';
+@import './tizers/gallery';
+@import './tizers/author';
+@import './tizers/news';
+@import './tizers/blog';
+@import './tizers/event';
+@import './tizers/slides/event';
+@import './tizers/slides/expert';
+@import './tizers/slides/post';
+

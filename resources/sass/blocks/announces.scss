@@ -1,0 +1,158 @@
+@use "sass:map";
+section.announces {
+    padding: 3rem 0 2rem;
+    background-color: $fonlight;
+    .background-text {
+        color: $fonlight;
+        top: 5.25rem;
+        opacity: 1;
+    }
+    .announce {
+        > div {
+            .h2,
+            .h3 {
+                font-size: 8vw;
+                line-height: 9.625vw;
+                text-align: center;
+            }
+        }
+    }
+    .announce-slider-wrapper {
+        margin-top: 1rem;
+        padding-bottom: 0.75rem;
+    }
+    .waterfall-inner {
+        margin-bottom: 3.75rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        background-color: $white;
+        padding: 4rem 0 2rem;
+        .announce {
+            > div {
+                .h2,
+                .h3 {
+                    font-size: 2.125rem;
+                    line-height: 3rem;
+                    text-align: left;
+                }
+            }
+        }
+        .announce-slider-wrapper {
+            margin-top: 2rem;
+            padding-bottom: 1.75rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+        .announce-slider-wrapper {
+            padding-bottom: 6.75rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        padding: 12rem 0 6rem;
+        .background-text {
+            color: $fonlight;
+            top: 5.25rem;
+            opacity: 1;
+        }
+        .announce {
+            > div {
+                .h2,
+                .h3 {
+                    line-height: 3rem;
+                    padding-bottom: 1.5rem;
+                    margin-bottom: 2.5rem;
+                    border-bottom: 8px solid $primary;
+                }
+                dl {
+                    font-family: "TT Severs";
+                    font-size: 18px;
+                    line-height: 21px;
+                    letter-spacing: initial;
+                    dt {
+                        font-weight: bold;
+                        text-decoration: underline;
+                    }
+                    dd {
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+        .announce-slider-wrapper {
+            margin-top: 4rem;
+            padding-bottom: 9.75rem;
+        }
+    }
+    &.bggray{
+        background-color: $fonlight;
+        .background-text {
+            color: $white;
+        }
+    }
+}
+.event-wrapper {
+    text-decoration: none !important;
+    display: block;
+    &:hover {
+        padding: 19px;
+        margin: -20px;
+        border: 1px solid $primary;
+        background-color: $white;
+    }
+    .event-inner {
+        padding: 2rem 0;
+        border-top: 0.25rem solid $body-color;
+        border-bottom: 0.25rem solid $body-color;
+        display: block;
+        .fio {
+            font-family: "TT Severs";
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            height: 1.5rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .title {
+            margin-bottom: 0;
+            font-family: "TT Severs";
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            height: 4.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .subtitle {
+            padding: 0.5rem 0 1.5rem;
+            font-size: 1rem;
+        }
+        .date {
+            font-size: 1.125rem;
+            padding-bottom: 1.25rem;
+            font-weight: bold;
+        }
+        .image {
+            padding-top: 82%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .address,
+        .exhibit {
+            font-size: 1rem;
+        }
+        .exhibit {
+            font-weight: bold;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+    }
+}

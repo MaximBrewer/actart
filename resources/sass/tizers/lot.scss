@@ -1,0 +1,80 @@
+@use "sass:map";
+.lot-item {
+    padding-top: 1.25rem;
+    border-top: 0.25rem solid $primary;
+    .image {
+        display: block;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: rgba(255,255,255,.5);
+    }
+    .number {
+        display: block;
+        overflow: hidden;
+        font-family: TT Severs;
+        font-size: 1.25rem;
+        margin-top: 1rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .title {
+        display: block;
+        overflow: hidden;
+        font-size: 1rem;
+        margin-top: 0.75rem;
+        font-weight: 500;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .author {
+        display: block;
+        overflow: hidden;
+        margin-top: 0.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .matherial-size {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-top: 0.7rem;
+        font-weight: 300;
+        font-size: 0.875rem;
+        color: $grey;
+        text-transform: lowercase;
+        .m-span:after{
+            content: ",\00a0";
+        }
+        .m-span:last-child:after{
+            content: "\00a0/\00a0";
+        }
+    }
+    .price {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-top: 0.5rem;
+        font-weight: 300;
+        font-size: 0.875rem;
+        color: $grey;
+        span {
+            font-weight: bold;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    }
+}

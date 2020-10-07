@@ -1,0 +1,24 @@
+.alert {
+    color: white;
+    position: fixed;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    z-index: 100000;
+}
+.alert p {
+    margin: 0;
+}
+.alert-error {
+    background: $danger;
+}
+.alert-success {
+    background: $success;
+}
+.close {
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}

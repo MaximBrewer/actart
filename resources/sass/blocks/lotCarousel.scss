@@ -1,0 +1,196 @@
+@use "sass:map";
+.lot-carousel {
+    position: relative;
+    .carousel-arrows-wrapper {
+        position: absolute;
+        top: -3rem;
+        right: 0;
+    }
+    .lot-carousel-left {
+        border-top: 0.25rem solid $primary;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+    .lot-carousel-right {
+        border-bottom: 0.25rem solid $primary;
+        margin-bottom: 3rem;
+        .lot-number {
+            font-family: TT Severs;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 24px;
+        }
+        .lot-author {
+            font-family: TT Severs;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 24px;
+        }
+        .lot-author {
+            font-family: TT Severs;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 24px;
+            margin-bottom: 1rem;
+            .author {
+            }
+        }
+        .lot-title {
+            font-family: TT Severs;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 24px;
+            margin-bottom: 1rem;
+        }
+        .matherial,
+        .styles,
+        .frames,
+        .techniques,
+        .categories {
+            margin-bottom: 0.6rem;
+            span {
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 16px;
+                letter-spacing: 0.05em;
+                color: $grey;
+            }
+        }
+        .size {
+            font-weight: 500;
+            color: $grey;
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+        }
+        .start-price {
+            font-family: Roboto;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: 0.03em;
+            padding-bottom: 0.6rem;
+            margin-bottom: 0.6rem;
+            border-bottom: 1px solid $primary;
+            span {
+            }
+        }
+        .user-activity {
+            .user-id {
+                font-family: "Roboto Condensed", sans-serif;
+                font-size: 18px;
+                text-align: right;
+                letter-spacing: 0.05em;
+                margin-bottom: 1.8rem;
+                span {
+                    font-weight: bold;
+                }
+            }
+            .last-price {
+                .title {
+                    font-weight: 500;
+                    font-size: 16px;
+                    text-align: center;
+                    letter-spacing: 0.03em;
+                    margin-bottom: 0.6rem;
+                }
+                .info {
+                    padding: 1rem;
+                    max-width: 80%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 1.2rem;
+                    background-color: $fonlight;
+                    border: 1px solid $grey;
+                    box-sizing: border-box;
+                    div {
+                        &:nth-child(1) {
+                            font-weight: bold;
+                            font-size: 24px;
+                            line-height: 18px;
+                            text-align: center;
+                            letter-spacing: 0.03em;
+                        }
+                        &:nth-child(2) {
+                            font-family: "Roboto Condensed", sans-serif;
+                            font-weight: 300;
+                            font-size: 18px;
+                            text-align: center;
+                            letter-spacing: 0.03em;
+                            span {
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+            .btn.btn-danger {
+                display: block;
+                padding: 1rem;
+                max-width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 1.2rem;
+                div {
+                    &:nth-child(1) {
+                        font-weight: bold;
+                        text-align: center;
+                        font-family: "Roboto Condensed", sans-serif;
+                        letter-spacing: 0.03em;
+                    }
+                    &:nth-child(2) {
+                        font-weight: bold;
+                        font-size: 24px;
+                        font-size: 18px;
+                        text-align: center;
+                        letter-spacing: 0.03em;
+                        font-weight: bold;
+                    }
+                }
+            }
+            .blitz-price {
+                margin-bottom: 1.2rem;
+                font-weight: bold;
+                font-size: 18px;
+                text-align: center;
+                letter-spacing: 0.03em;
+                a {
+                    text-decoration-line: underline;
+                    div {
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        .lot-carousel-left {
+            border-width: 0;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+        }
+        .lot-carousel-right {
+            border-width: 0;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+        }
+        > .row > [class^="col-"] {
+            > div {
+                min-height: 100%;
+                border-top: 0.5rem solid $primary;
+                border-bottom: 0.5rem solid $primary;
+            }
+        }
+        .carousel-arrows-wrapper {
+            top: -4rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    }
+}

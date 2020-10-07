@@ -1,0 +1,83 @@
+@use "sass:map";
+.auction-page-wrapper {
+    .auction-info {
+        position: relative;
+        margin-top: 6rem;
+        margin-bottom: 4rem;
+        &:before {
+            display: block;
+            width: 24%;
+            height: 100%;
+            position: absolute;
+            background-position: right top;
+            top: 0;
+            z-index: 1;
+            background-image: url(/images/dot.png);
+            @media (min-width: map.get($grid-breakpoints, "sm")) {
+            }
+            @media (min-width: map.get($grid-breakpoints, "md")) {
+            }
+            @media (min-width: map.get($grid-breakpoints, "lg")) {
+                content: "";
+            }
+            @media (min-width: map.get($grid-breakpoints, "xl")) {
+            }
+            @media (min-width: map.get($grid-breakpoints, "xxl")) {
+            }
+        }
+        .title-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 0.5rem solid $primary;
+            .title {
+                font-size: 2rem;
+                padding-right: 2rem;
+                line-height: 1.4;
+                text-transform: uppercase;
+            }
+            .date {
+                white-space: nowrap;
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+        }
+        .sublime-wrapper {
+            margin: 2rem 0;
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+        .link-holder {
+            a {
+                font-weight: bold;
+                color: $primary;
+                text-decoration: underline;
+            }
+        }
+    }
+    .auction-carousel{
+        margin-top: 6rem;
+        margin-bottom: 4rem;
+    }
+    .auction-page-inner {
+        background-color: $greylight;
+        padding: 3rem 0;
+        .auction-works-list {
+            .h3 {
+                border-bottom: 0.5rem solid $primary;
+            }
+        }
+    }
+    .auction-announce {
+        .banner-counter-wrapper {
+            p {
+                text-align: left;
+            }
+            .banner-counter {
+                justify-content: flex-start;
+                text-align: left;
+            }
+        }
+    }
+}

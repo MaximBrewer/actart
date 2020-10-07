@@ -1,0 +1,71 @@
+@use "sass:map";
+#experts {
+    display: none;
+    padding: 3rem 0 6rem;
+    .background-text {
+        color: $fonlight;
+        top: 5.25rem;
+        opacity: 1;
+    }
+    .experts-slider {
+        position: relative;
+        .slick-list {
+            margin: 0 -1.25rem;
+            > * {
+                -webkit-user-select: none; /* Safari */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* IE10+/Edge */
+                user-select: none; /* Standard */
+            }
+        }
+        .slick-slider {
+            border-bottom: 0.25rem solid $primary;
+            margin-bottom: 3rem;
+        }
+        .carousel-description {
+            display: none;
+            padding: 2rem 0;
+            border-top: 0.25rem solid $body-color;
+        }
+        .carousel-buttons {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: space-between;
+            .btn {
+                display: block;
+                width: 48%;
+            }
+        }
+        .carousel-counter {
+            display: none;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        display: block;
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        padding: 9rem 0 7rem;
+        .experts-slider {
+            .slick-slider {
+                border-width: 0;
+                margin-bottom: 0;
+            }
+            .carousel-description {
+                display: block;
+            }
+            .carousel-buttons {
+                justify-content: flex-end;
+                .btn {
+                    width: auto;
+                    margin-left: 2.5rem;
+                    padding-left: 3.25rem;
+                    padding-right: 3.25rem;
+                    text-transform: uppercase;
+                    min-width: 20rem;
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    }
+}

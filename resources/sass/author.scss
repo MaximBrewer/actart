@@ -1,0 +1,86 @@
+@use "sass:map";
+.authors{
+    padding: 3rem 0 4rem;
+}
+.author-page {
+    padding: 3rem 0 4rem;
+    .h5 {
+        font-size: 1.125rem;
+        font-weight: normal;
+    }
+    .description {
+        margin-bottom: 2rem;
+        @include small_text_14;
+    }
+    .btn-sign {
+        margin-bottom: 2rem;
+        @include small_text_14;
+        max-width: 34rem;
+    }
+    .btn-wrap {
+        max-width: 34rem;
+        button {
+            min-width: 15rem;
+            margin-left: 4rem;
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+    .photo-block {
+        > div {
+            margin-bottom: 1rem;
+        }
+        .image-wrapper {
+            background-size: contain;
+        }
+        .heading {
+            @include small_text_14;
+            font-weight: 500;
+            color: $cyanmedium;
+            padding-bottom: 0.5rem;
+        }
+        ul {
+            li {
+                @include small_text_14;
+                margin-bottom: 0.375rem;
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        padding: 3rem 0 5rem;
+    }
+}
+.author-works {
+    padding: 3rem 0 5rem;
+    background-color: $fonlight;
+    .h2 {
+        border-bottom: 8px solid $dark;
+    }
+    .author-works-list {
+        padding: 3rem 0 5rem;
+    }
+    .author-works-footer {
+        > div {
+            margin-bottom: 2.75rem;
+        }
+        .btn {
+            min-width: 15rem;
+            margin-left: 4rem;
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        padding: 3rem 0 5rem;
+    }
+}

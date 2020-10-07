@@ -1,0 +1,216 @@
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-BlackItalic.eot');
+    src: local('TT Severs Black Italic'), local('TTSevers-BlackItalic'),
+        url('TTSevers-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-BlackItalic.woff2') format('woff2'),
+        url('TTSevers-BlackItalic.woff') format('woff'),
+        url('TTSevers-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-ExtaLightItalic.eot');
+    src: local('TT Severs ExtaLight Italic'), local('TTSevers-ExtaLightItalic'),
+        url('TTSevers-ExtaLightItalic.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-ExtaLightItalic.woff2') format('woff2'),
+        url('TTSevers-ExtaLightItalic.woff') format('woff'),
+        url('TTSevers-ExtaLightItalic.ttf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-LightItalic.eot');
+    src: local('TT Severs Light Italic'), local('TTSevers-LightItalic'),
+        url('TTSevers-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-LightItalic.woff2') format('woff2'),
+        url('TTSevers-LightItalic.woff') format('woff'),
+        url('TTSevers-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-ExtraBoldItalic.eot');
+    src: local('TT Severs ExtraBold Italic'), local('TTSevers-ExtraBoldItalic'),
+        url('TTSevers-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-ExtraBoldItalic.woff2') format('woff2'),
+        url('TTSevers-ExtraBoldItalic.woff') format('woff'),
+        url('TTSevers-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-ExtraBold.eot');
+    src: local('TT Severs ExtraBold'), local('TTSevers-ExtraBold'),
+        url('TTSevers-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-ExtraBold.woff2') format('woff2'),
+        url('TTSevers-ExtraBold.woff') format('woff'),
+        url('TTSevers-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-ExtaLight.eot');
+    src: local('TT Severs ExtaLight'), local('TTSevers-ExtaLight'),
+        url('TTSevers-ExtaLight.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-ExtaLight.woff2') format('woff2'),
+        url('TTSevers-ExtaLight.woff') format('woff'),
+        url('TTSevers-ExtaLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-Light.eot');
+    src: local('TT Severs Light'), local('TTSevers-Light'),
+        url('TTSevers-Light.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-Light.woff2') format('woff2'),
+        url('TTSevers-Light.woff') format('woff'),
+        url('TTSevers-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-DemiBoldItalic.eot');
+    src: local('TT Severs DemiBold Italic'), local('TTSevers-DemiBoldItalic'),
+        url('TTSevers-DemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-DemiBoldItalic.woff2') format('woff2'),
+        url('TTSevers-DemiBoldItalic.woff') format('woff'),
+        url('TTSevers-DemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-Italic.eot');
+    src: local('TT Severs Italic'), local('TTSevers-Italic'),
+        url('TTSevers-Italic.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-Italic.woff2') format('woff2'),
+        url('TTSevers-Italic.woff') format('woff'),
+        url('TTSevers-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-ThinItalic.eot');
+    src: local('TT Severs Thin Italic'), local('TTSevers-ThinItalic'),
+        url('TTSevers-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-ThinItalic.woff2') format('woff2'),
+        url('TTSevers-ThinItalic.woff') format('woff'),
+        url('TTSevers-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-Thin.eot');
+    src: local('TT Severs Thin'), local('TTSevers-Thin'),
+        url('TTSevers-Thin.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-Thin.woff2') format('woff2'),
+        url('TTSevers-Thin.woff') format('woff'),
+        url('TTSevers-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-BoldItalic.eot');
+    src: local('TT Severs Bold Italic'), local('TTSevers-BoldItalic'),
+        url('TTSevers-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-BoldItalic.woff2') format('woff2'),
+        url('TTSevers-BoldItalic.woff') format('woff'),
+        url('TTSevers-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-Medium.eot');
+    src: local('TT Severs Medium'), local('TTSevers-Medium'),
+        url('TTSevers-Medium.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-Medium.woff2') format('woff2'),
+        url('TTSevers-Medium.woff') format('woff'),
+        url('TTSevers-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-Bold.eot');
+    src: local('TT Severs Bold'), local('TTSevers-Bold'),
+        url('TTSevers-Bold.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-Bold.woff2') format('woff2'),
+        url('TTSevers-Bold.woff') format('woff'),
+        url('TTSevers-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-DemiBold.eot');
+    src: local('TT Severs DemiBold'), local('TTSevers-DemiBold'),
+        url('TTSevers-DemiBold.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-DemiBold.woff2') format('woff2'),
+        url('TTSevers-DemiBold.woff') format('woff'),
+        url('TTSevers-DemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-MediumItalic.eot');
+    src: local('TT Severs Medium Italic'), local('TTSevers-MediumItalic'),
+        url('TTSevers-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-MediumItalic.woff2') format('woff2'),
+        url('TTSevers-MediumItalic.woff') format('woff'),
+        url('TTSevers-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-Black.eot');
+    src: local('TT Severs Black'), local('TTSevers-Black'),
+        url('TTSevers-Black.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-Black.woff2') format('woff2'),
+        url('TTSevers-Black.woff') format('woff'),
+        url('TTSevers-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Severs';
+    src: url('TTSevers-Regular.eot');
+    src: local('TT Severs Regular'), local('TTSevers-Regular'),
+        url('TTSevers-Regular.eot?#iefix') format('embedded-opentype'),
+        url('TTSevers-Regular.woff2') format('woff2'),
+        url('TTSevers-Regular.woff') format('woff'),
+        url('TTSevers-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

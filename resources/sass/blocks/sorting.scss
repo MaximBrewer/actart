@@ -1,0 +1,54 @@
+@use "sass:map";
+.sorting {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+    > span {
+        display: flex;
+        margin-bottom: .5rem;;
+    }
+    > a {
+        display: flex;
+        margin-bottom: .5rem;
+        span {
+            margin-right: 0.5rem;
+        }
+        svg {
+            fill: $primary;
+            width: 0.875rem;
+            height: 0.875rem;
+        }
+        &.active,
+        &:hover {
+            text-decoration: none;
+            color: $red;
+            svg {
+                fill: $red;
+            }
+        }
+        &.desc {
+            svg {
+                transform: scale(1, -1);
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        flex-direction: row;
+        align-items: flex-start;
+        span {
+            margin-left: 1rem;
+        }
+        a {
+            margin-left: 1rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    }
+}

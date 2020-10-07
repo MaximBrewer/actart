@@ -1,0 +1,90 @@
+@mixin txt_menu_1 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 0.05em;
+}
+@mixin txt_menu_2 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+}
+@mixin txt_menu_3 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0.03em;
+}
+@mixin txt_menu_4 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0.05em;
+}
+@mixin txt_menu_5 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.05em;
+}
+
+@mixin small_text_14 {
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+}
+@mixin sssmal_text_12 {
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.05em;
+}
+@mixin sssmal_text_bold_12{
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+@mixin text_bold_18 {
+    font-weight: 500;
+}
+
+@mixin txt_but_big {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+ @mixin sssmal_text_16_medium{
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+ }
+ @mixin Text_Name_18{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+ }
+ @mixin  text_supersmall_13{
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+ }
+ @mixin  small_text_bold_16{
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.05em;
+ }

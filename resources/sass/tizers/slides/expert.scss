@@ -1,0 +1,36 @@
+@use "sass:map";
+.expert-slide {
+    padding: 1.25rem 1.5rem;
+    .slide-inner {
+        padding: 2rem 0;
+        border-top: 0.25rem solid $body-color;
+        .image {
+            padding-top: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .fio {
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: 0.03em;
+            margin-bottom: 1rem;
+        }
+        .description {
+            font-size: 16px;
+            line-height: 21px;
+            letter-spacing: 0.03em;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+        width: auto;
+        padding: 1.25rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        .slide-inner {
+        }
+    }
+}

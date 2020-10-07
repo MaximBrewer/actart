@@ -1,0 +1,59 @@
+@use "sass:map";
+.posts-wrapper {
+    background-color: $white;
+    padding: 3rem 0 2rem;
+    .slide-wrapper {
+        display: block;
+        text-decoration: none !important;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid transparent;
+        margin-bottom: 0;
+        &:hover {
+            background-color: $white;
+            border: 1px solid $primary;
+        }
+        .slide-inner {
+            padding: 1rem 0;
+            border-top: 0.25rem solid $body-color;
+            .category {
+            }
+            .date {
+                @include small_text_bold_16;
+            }
+            .image {
+                padding-top: 62%;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .title {
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 21px;
+                height: 63px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                letter-spacing: 0.03em;
+                margin-bottom: 1rem;
+            }
+            .announce {
+                height: 105px;
+                display: -webkit-box;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                font-size: 18px;
+                line-height: 21px;
+                letter-spacing: 0.03em;
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+    }
+}

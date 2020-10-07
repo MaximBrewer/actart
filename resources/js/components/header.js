@@ -1,0 +1,269 @@
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../context/auth';
+import __ from '../utils/trans';
+import { Lens, Close, TopLogo, Burger, SmallTopLogo, Profile, Logo } from '../icons/header'
+import { Unstyled, Top, Topmost } from './menu'
+import Subscribe from './subscribe'
+import Parser from "html-react-parser";
+import { Link, useLocation } from "react-router-dom";
+
+export default function Header() {
+    const { pathname } = useLocation();
+    const [state, setState] = useState({
+        menu: false
+    })
+    useEffect(() => {
+        document.body.className = pathname == "/" ? 'home' : '';
+        window.scrollTo(0, 0);
+        changeWindow()
+    }, [pathname]);
+
+
+    useEffect(() => { changeWindow() }, []);
+
+    document.addEventListener("scroll", () => changeWindow());
+    window.addEventListener("resize", () => changeWindow());
+
+    const changeWindow = () => {
+        let mf = document.getElementById("header-full-menu-fixed");
+        if (mf) {
+            mf.remove();
+        }
+        if (document.body.classList.contains("home")) {
+            if (window.innerWidth > 1279) {
+                document.getElementById("header-full-menu").style.display = "block";
+                let scrollTop =
+                    document.documentElement.scrollTop ||
+                    (document.body && document.body.scrollTop) ||
+                    0,
+                    header = document.getElementById("header"),
+                    headerTop = document.getElementById("header-top");
+
+                document.getElementById("header-full-menu").style.paddingTop =
+                    headerTop.offsetHeight + "px";
+
+                let buttons = document.querySelectorAll("#header-top .btn");
+                if (scrollTop + headerTop.offsetHeight > header.offsetHeight) {
+                    headerTop.classList.remove("bg-dark");
+                    headerTop.classList.add("short-header-top");
+                    [].forEach.call(buttons, function (button) {
+                        button.classList.remove("btn-default-inverse");
+                        button.classList.add("btn-primary-inverse");
+                    });
+                    document
+                        .getElementById("header-content")
+                        .classList.remove("bg-dark");
+                } else {
+                    headerTop.classList.add("bg-dark");
+                    headerTop.classList.remove("short-header-top");
+                    [].forEach.call(buttons, function (button) {
+                        button.classList.remove("btn-primary-inverse");
+                        button.classList.add("btn-default-inverse");
+                    });
+                    document
+                        .getElementById("header-content")
+                        .classList.add("bg-dark");
+                }
+            } else {
+                let headerTop = document.getElementById("header-top"),
+                    buttons = document.querySelectorAll("#header-top .btn");
+                headerTop.classList.remove("bg-dark");
+                headerTop.classList.add("short-header-top");
+                [].forEach.call(buttons, function (button) {
+                    button.classList.remove("btn-default-inverse");
+                    button.classList.add("btn-primary-inverse");
+                });
+                document.getElementById("header-full-menu").style.display = "none";
+                document
+                    .getElementById("header-content")
+                    .classList.remove("bg-dark");
+            }
+        } else {
+            let headerTop = document.getElementById("header-top");
+            document.getElementById("header-full-menu").style.display = "none";
+            headerTop.classList.remove("bg-dark");
+            let buttons = document.querySelectorAll("#header-top .btn");
+            [].forEach.call(buttons, function (button) {
+                button.classList.remove("btn-default-inverse");
+                button.classList.add("btn-primary-inverse");
+            });
+            document
+                .getElementById("header-content")
+                .classList.remove("bg-dark");
+        }
+    }
+
+    const toggleMenu = () => {
+        if (window.innerWidth > 1279) {
+            let mf = document.getElementById("header-full-menu-fixed");
+            if (mf) {
+                mf.remove();
+            } else {
+                let menu = document
+                    .getElementById("header-full-menu")
+                    .cloneNode(true),
+                    headerTop = document.getElementById("header-top");
+                menu.id = "header-full-menu-fixed";
+                menu.style.marginTop = headerTop.offsetHeight + "px";
+                menu.style.paddingTop = "0";
+                menu.style.position = "fixed";
+                menu.style.display = "block";
+                menu.style.left = "0";
+                menu.style.top = "0";
+                menu.style.background = "white";
+                menu.style.width = "100%";
+                menu.style.zIndex = "100";
+                menu.style.paddingBottom = "2.5rem";
+                document.getElementById("header").appendChild(menu);
+            }
+        } else {
+            document.getElementById("mobileMenu").style.display = "block";
+            document.body.style.overflowY = "hidden";
+        }
+    }
+
+    let { currentUser } = useAuth();
+    return (
+        <header className="header" id="header">
+            <nav>
+                <section className="py-2 header-top" id="header-top">
+                    <div className="header-content" id="header-content">
+                        <div className="header-top-container-wrapper py-2">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col col-xl-12"></div>
+                                    <div className="col col-xl-24">
+                                        <div className="header-top-menu">
+                                            <Topmost items={window.App.menus.topmost} />
+                                        </div>
+                                    </div>
+                                    <div className="col col-xl-24">
+                                        <div className="header-top-search d-none d-xxl-block">
+                                            <div id="searchForm" className="search-form">
+                                                <form action="#">
+                                                    <div className="search-container">
+                                                        <input type="text" placeholder={__('Search..')}
+                                                            name="search" className="form-control" />
+                                                        <div className="btn-container">
+                                                            <button type="submit" className="btn p-1 btn-link">
+                                                                <Lens />
+                                                            </button>
+                                                            <button type="button"
+                                                                className="btn p-1 btn-link close-search-form">
+                                                                <Close />
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="container-fluid">
+                            <div className="row header-wide">
+                                <div className="col-md-20 col-30 hide-dark">
+                                    <Link to="/" className="logo text-decoration-none">
+                                        <div className="align-items-center d-none d-md-flex"><TopLogo /></div>
+                                        <div className="align-items-center d-flex d-md-none"><SmallTopLogo /></div>
+                                        <div className="text-nowrap ml-4 align-items-center lh-1125rem d-none d-xl-flex">{Parser(__('online-auction<br>of contemporary art'))}</div>
+                                    </Link>
+                                </div>
+                                <div className="burger-wrapper col-md-20 col-30 hide-dark">
+                                    <a href="#" onClick={(e) => { e.preventDefault(); toggleMenu() }}
+                                        className="burger text-decoration-none align-items-center justify-content-between"
+                                        id="burgerMenuToggle">
+                                        <div><Burger /></div>
+                                        <div>{__('Menu')}</div>
+                                    </a>
+                                </div>
+                                <div className="col-md-20 flex-row-reverse right-position d-none d-md-flex">
+                                    <div>
+                                        {currentUser ?
+                                            <a className="icon profile" type="submit" href="/profile"><Profile /></a> :
+                                            <a className="btn btn-default-inverse" type="submit" href="/login">{Parser(__('Log&nbsp;In'))}</a>
+                                        }
+                                    </div>
+                                    <div className="header-lang">
+                                        <div className="lang-menu mx-3 text-nowrap">
+                                            <a href="/lang/ru" className={App.locale == 'ru' ? `active` : ``}>Rus</a> | <a href="/lang/en" className={App.locale == 'en' ? `active` : ``}>Eng</a>
+                                        </div>
+                                    </div>
+                                    <div className="hide-dark-lens">
+                                        <a href="#"
+                                            id="searchTopToggle"><Lens /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="header-full-menu" id="header-full-menu">
+                    <div className="container mt-4">
+                        <div className="header-bottom-logo">
+                            <Link to="/" className="header-logo">
+                                <Logo />
+                                <p className="h5 py-4">{Parser(__('online-auction<br>of contemporary art'))}</p>
+                            </Link>
+                        </div>
+                        <div className="row header-bottom-menu flex-row-reverse">
+                            <div className="col col-xl-12">
+                                <Top items={window.App.menus.topmost} />
+                            </div>
+                            <div className="col col-xl-12">
+                                <Top items={window.App.menus.top4} />
+                            </div>
+                            <div className="col col-xl-12">
+                                <Top items={window.App.menus.top3} />
+                            </div>
+                            <div className="col col-xl-12">
+                                <Top items={window.App.menus.top2} />
+                            </div>
+                            <div className="col col-xl-12">
+                                <Top items={window.App.menus.top1} />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div className="mobile-menu-wrapper" id="mobileMenu">
+                    <div className="bg close-mobile-menu"></div>
+                    <section className="mobile-menu">
+                        <div className="d-block">
+                            <div className="p-4 d-flex justify-content-between mobile-menu-header">
+                                <a href="/" className="logo-mobile d-md-none">@include('svg.header.logo-menu-mobile')</a>
+                                <a href="#"
+                                    className="close-tablet d-none d-md-block close-mobile-menu">@include('svg.header.close-tablet')</a>
+                                <div className="lang-menu text-nowrap d-none d-md-block">
+                                    <a href="/lang/ru" className={App.locale == 'ru' ? `active` : ``}>Rus</a> | <a href="/lang/en" className={App.locale == 'en' ? `active` : ``}>Eng</a>
+                                </div>
+                                <a href="#"
+                                    className="close-mobile d-md-none close-mobile-menu">@include('svg.header.close-mobile')</a>
+                            </div>
+                            <div className="p-4">
+                                <div className="menu-1">
+                                    <Unstyled items={window.App.menus.mobile} />
+                                </div>
+                                <div className="menu-2">
+                                    <Unstyled items={window.App.menus.mobile2} />
+                                </div>
+                                <div className="menu-3">
+                                    <Unstyled items={window.App.menus.mobile3} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="p-4 d-flex justify-content-between d-md-none">
+                            {currentUser ?
+                                <a href="/profile">{__('кабинет')}</a> :
+                                <a href="/login">{Parser(__('Log&nbsp;In'))}</a>
+                            }
+                            <div className="lang-menu text-nowrap">
+                                <a href="/lang/ru" className={App.locale == 'ru' ? `active` : ``}>Rus</a> | <a href="/lang/en" className={App.locale == 'en' ? `active` : ``}>Eng</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </nav >
+        </header >
+    );
+}

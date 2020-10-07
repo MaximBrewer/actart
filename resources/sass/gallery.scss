@@ -1,0 +1,375 @@
+@use "sass:map";
+.gallery-section {
+    .gallery-works {
+        .h2 {
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 0.25rem solid $dark;
+        }
+        .stack-grid {
+            padding-top: 1.75rem;
+        }
+        ul {
+            list-style: outside none;
+            padding: 0;
+            margin: 0;
+            li {
+                padding: 0;
+                margin: 0;
+                span {
+                    font-weight: bold;
+                    display: block;
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 1rem;
+                    border-bottom: 0.25rem solid $dark;
+                }
+                ul {
+                    padding: 0 0 2rem 2rem;
+                    li {
+                        a {
+                            font-size: 0.875rem;
+                            line-height: 1rem;
+                            font-weight: 300;
+                            text-decoration: none !important;
+                            &:hover,
+                            &.active {
+                                color: $red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.other-works-section{
+        background-color: $greylight;
+    }
+    .announce {
+        > div {
+            .h1 {
+                font-size: 8vw;
+                line-height: 9.625vw;
+                white-space: nowrap;
+                text-align: center;
+                border-bottom: 0.25rem solid $dark;
+            }
+            ol {
+                padding-top: 3rem;
+                counter-reset: my-counter;
+                list-style: none;
+                li {
+                    font-family: "TT Severs";
+                    font-size: 1.5rem;
+                    line-height: 1.75rem;
+                    margin: 0 0 0.5rem 0;
+                    counter-increment: my-counter;
+                    position: relative;
+                    &::before {
+                        content: counter(my-counter);
+                        font-weight: bold;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        position: absolute;
+                        --size: 32px;
+                        left: calc(-1 * var(--size) - 10px);
+                        line-height: var(--size);
+                        width: var(--size);
+                        height: var(--size);
+                        top: 0;
+                    }
+                }
+            }
+        }
+        .to-gallery {
+            font-weight: normal;
+        }
+    }
+    .art-waterfall-wrapper {
+        margin-top: 3.3125rem;
+        .art-waterfall {
+            .hummer {
+                width: 2rem;
+                height: 2rem;
+            }
+            .art-waterfall-inner {
+                margin-bottom: 4rem;
+                .waterfall-item {
+                    .image {
+                        position: relative;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                    }
+                    .title {
+                        margin-top: 1rem;
+                        @include sssmal_text_16_medium;
+                    }
+                    .author {
+                        @include Text_Name_18;
+                        line-height: 2rem;
+                    }
+                    .price {
+                        @include Text_Name_18;
+                        line-height: 2rem;
+                        white-space: nowrap;
+                        svg {
+                            margin-right: 0.5rem;
+                            position: relative;
+                            top: -1px;
+                            width: 15px;
+                            height: 14px;
+                        }
+                    }
+                    .matherial {
+                        @include text_supersmall_13;
+                        line-height: 24px;
+                        color: $grey;
+                        span {
+                            text-transform: lowercase;
+                            &:after {
+                                content: ", ";
+                            }
+                            &:last-child:after {
+                                content: "";
+                            }
+                        }
+                    }
+                    .size {
+                        @include text_supersmall_13;
+                        line-height: 24px;
+                        font-weight: bold;
+                        color: $grey;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        padding: 3.75rem 0 2.725rem;
+        .announce {
+            > div {
+                .h1 {
+                    font-size: 2.25rem;
+                    line-height: 1.4em;
+                    text-align: left;
+                    border-bottom-width: 0.5rem;
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        padding: 7rem 0 4rem;
+        .gallery-works {
+            .h2 {
+                border-bottom-width: 0.5rem;
+            }
+        }
+        .dotted-gallery {
+            z-index: -1;
+            position: absolute;
+            top: 2.75rem;
+            right: 0;
+            width: 40%;
+            min-height: 32.625rem;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            .dotted-bg {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-image: url("/images/dot.png");
+            }
+            svg {
+                fill: white;
+                max-width: 40rem;
+                stroke: white;
+                position: absolute;
+                bottom: 3rem;
+                left: 3rem;
+            }
+        }
+        .background-text {
+            color: $fonlight;
+            top: 5.25rem;
+            opacity: 1;
+        }
+        .announce {
+            > div {
+                .h2,
+                .h3 {
+                    line-height: 3rem;
+                    padding-bottom: 0.5rem;
+                }
+                .sub_h1 {
+                    padding-top: 2rem;
+                    font-weight: 300;
+                }
+                ol {
+                    padding-top: 3rem;
+                    counter-reset: my-counter;
+                    list-style: none;
+                    li {
+                        font-family: "TT Severs";
+                        font-size: 1.5rem;
+                        line-height: 1.75rem;
+                        margin: 0 0 0.5rem 0;
+                        counter-increment: my-counter;
+                        position: relative;
+                        &::before {
+                            content: counter(my-counter);
+                            font-weight: bold;
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                            position: absolute;
+                            --size: 32px;
+                            left: calc(-1 * var(--size) - 10px);
+                            line-height: var(--size);
+                            width: var(--size);
+                            height: var(--size);
+                            top: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .art-waterfall-wrapper {
+            margin-top: 3.3125rem;
+            .art-waterfall {
+                .hummer {
+                    width: 2rem;
+                    height: 2rem;
+                }
+                .art-waterfall-inner {
+                    .waterfall-item {
+                        .image {
+                            position: relative;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+                        .title {
+                            margin-top: 1rem;
+                            @include sssmal_text_16_medium;
+                        }
+                        .author {
+                            @include Text_Name_18;
+                            line-height: 32px;
+                        }
+                        .price {
+                            @include Text_Name_18;
+                            line-height: 32px;
+                        }
+                        .matherial {
+                            @include text_supersmall_13;
+                            line-height: 24px;
+                            color: $grey;
+                        }
+                        .size {
+                            @include text_supersmall_13;
+                            line-height: 24px;
+                            font-weight: bold;
+                            color: $grey;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        .dotted-gallery {
+            .dotted-bg {
+            }
+            svg {
+            }
+        }
+        .background-text {
+            color: $fonlight;
+            top: 5.25rem;
+            opacity: 1;
+        }
+        .announce {
+            > div {
+                .h2,
+                .h3 {
+                    line-height: 3rem;
+                    padding-bottom: 0.5rem;
+                }
+                .sub_h1 {
+                    padding-top: 2rem;
+                    font-weight: 300;
+                }
+                ol {
+                    padding-top: 3rem;
+                    counter-reset: my-counter;
+                    list-style: none;
+                    li {
+                        font-family: "TT Severs";
+                        font-size: 1.5rem;
+                        line-height: 1.75rem;
+                        margin: 0 0 0.5rem 0;
+                        counter-increment: my-counter;
+                        position: relative;
+                        &::before {
+                            content: counter(my-counter);
+                            font-weight: bold;
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                            position: absolute;
+                            --size: 32px;
+                            left: calc(-1 * var(--size) - 10px);
+                            line-height: var(--size);
+                            width: var(--size);
+                            height: var(--size);
+                            top: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .art-waterfall-wrapper {
+            margin-top: 3.3125rem;
+            .art-waterfall {
+                .hummer {
+                    width: 2rem;
+                    height: 2rem;
+                }
+                .art-waterfall-inner {
+                    .waterfall-item {
+                        .image {
+                            position: relative;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+                        .title {
+                            margin-top: 1rem;
+                            @include sssmal_text_16_medium;
+                        }
+                        .author {
+                            @include Text_Name_18;
+                            line-height: 32px;
+                        }
+                        .price {
+                            @include Text_Name_18;
+                            line-height: 32px;
+                        }
+                        .matherial {
+                            @include text_supersmall_13;
+                            line-height: 24px;
+                            color: $grey;
+                        }
+                        .size {
+                            @include text_supersmall_13;
+                            line-height: 24px;
+                            font-weight: bold;
+                            color: $grey;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

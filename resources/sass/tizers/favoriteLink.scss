@@ -1,0 +1,56 @@
+.favorite-link {
+    font-size: 1rem;
+    color: $gray;
+    svg {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+    circle {
+        fill: $white;
+        stroke: $gray;
+    }
+    path {
+        fill: $gray;
+        stroke: $gray;
+    }
+    &:hover {
+        color: $red;
+        circle {
+            fill: $white;
+            stroke: $red;
+        }
+        path {
+            fill: $red;
+            stroke: $red;
+        }
+    }
+    &.active {
+        color: $red;
+        circle {
+            fill: $white;
+            stroke: $red;
+        }
+        path {
+            fill: $red;
+            stroke: $red;
+        }
+    }
+}
+.image {
+    .favorite-link {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+}
+.lot-favorite {
+    .favorite-link {
+        display: flex;
+        align-items: center;
+        svg {
+            position: relative;
+            align-items: center;
+            margin-left: 0.5rem;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+.profile-section {
+    padding: 3rem 0 4rem;
+    dl {
+        display: flex;
+        dt {
+            width: 50%;
+        }
+        dd {
+            width: 50%;
+        }
+    }
+    .auction-preview {
+        margin-bottom: 2rem;
+    }
+}

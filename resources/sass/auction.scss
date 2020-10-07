@@ -1,0 +1,96 @@
+@use "sass:map";
+.auction-header {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: $white;
+    .darkener {
+        padding: 2rem 0;
+        width: 100%;
+        height: 100%;
+        background-color: $darkgrey40;
+    }
+    .h1 {
+        max-width: 60rem;
+    }
+}
+.auctions-section {
+    padding: 3rem 0 5rem;
+    .h1 {
+        font-size: 1.6rem;
+    }
+    .banner-counter-wrapper {
+        margin-bottom: 2.5rem;
+        p {
+            text-align: left;
+        }
+        .banner-counter {
+            justify-content: flex-start;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        .h1 {
+            font-size: 3rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        .h1 {
+            font-size: 3rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    }
+}
+.see-other {
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    display: flex;
+    text-decoration: none !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-right: -3rem;
+    top: 0;
+    float: right;
+    .h5 {
+        text-align: center;
+        max-width: 80%;
+        text-transform: uppercase;
+    }
+    svg {
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .text-14 {
+        color: $white;
+        text-align: center;
+        max-width: 80%;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+    }
+}
+.regular-list {
+    background-color: $fonlight;
+    .see-other {
+        background-color: $red;
+        .h5 {
+            color: $primary;
+        }
+    }
+}
+.special-list {
+    .see-other {
+        background-color: $primary;
+        .h5 {
+            color: $red;
+        }
+    }
+}

@@ -1,0 +1,105 @@
+@use "sass:map";
+.banner-counter-wrapper {
+    text-align: center;
+    p {
+        font-size: 0.875rem;
+        line-height: 1rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+        text-align: center;
+    }
+    .banner-counter {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        > div {
+            small {
+                font-size: 0.75rem;
+                line-height: 0.875rem;
+                letter-spacing: 0.05em;
+                font-weight: 500;
+            }
+            .number {
+                width: 2.5rem;
+                line-height: 2.7rem;
+                height: 2.5rem;
+                color: $white;
+                background: $primary;
+                margin: 0;
+            }
+            &.separator {
+                width: 0.625rem;
+                line-height: 2.5rem;
+            }
+        }
+    }
+}
+@media (min-width: map.get($grid-breakpoints, "md")) {
+    .banner-counter-wrapper {
+        p {
+            font-size: 0.725rem;
+            line-height: 0.875rem;
+        }
+        .banner-counter {
+            text-align: center;
+            > div {
+                .number {
+                    width: 2.5rem;
+                    font-size: 1.25rem;
+                    line-height: 2.55rem;
+                    text-align: center;
+                    height: 2.25rem;
+                }
+                &.separator {
+                    width: 0.625rem;
+                    line-height: 2.5rem;
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($grid-breakpoints, "xl")) {
+    .banner-counter-wrapper {
+        p {
+            font-size: 13.0861px;
+            line-height: 15px;
+        }
+        .banner-counter {
+            > div {
+                .number {
+                    width: 2.5rem;
+                    line-height: 2.7rem;
+                    height: 2.5rem;
+                }
+                &.separator {
+                    width: 0.625rem;
+                    line-height: 2.5rem;
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($grid-breakpoints, "xxl")) {
+    .banner-counter-wrapper {
+        p {
+            font-size: 13.0861px;
+            line-height: 15px;
+        }
+        .banner-counter {
+            text-align: center;
+            > div {
+                .number {
+                    width: 2.5rem;
+                    line-height: 2.7rem;
+                    height: 2.5rem;
+                }
+                &.separator {
+                    width: 0.625rem;
+                    line-height: 2.5rem;
+                }
+            }
+        }
+    }
+}

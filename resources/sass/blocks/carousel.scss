@@ -1,0 +1,15 @@
+.carousel-wrapper {
+    position: relative;
+    padding: 2rem 0 8rem;
+    .cg {
+        margin: 0 calc(50% - 50vw);
+        .image {
+            padding-top: 67.5%;
+            background-size: cover;
+        }
+    }
+    .carousel-arrows {
+        bottom: 2rem;
+        right: 0;
+    }
+}
