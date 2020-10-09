@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../context/auth';
-import {register} from '../../api/auth';
-import useInputValue from '../../components/input-value';
+import { useAuth } from '../context/auth';
+import {register} from '../api/auth';
+import useInputValue from '../components/input-value';
+import __ from '../utils/trans';
 
-function Register () {
+function RegisterModal () {
   let history = useHistory();
   let { setCurrentUser, setToken } = useAuth();
   let email = useInputValue('email');
@@ -23,7 +24,7 @@ function Register () {
     }).then(({user, token}) => {
       setCurrentUser(user);
       setToken(token);
-      history.push('/home');
+    //   history.push('/home');
     }).catch(error => {
       error.json().then(({errors}) => {
         ;[email, name, password].forEach(({parseServerError}) => parseServerError(errors));
@@ -119,4 +120,4 @@ function Register () {
   );
 }
 
-export default Register;
+export default RegisterModal;

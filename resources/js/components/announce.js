@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuth } from '../context/auth';
 import __ from '../utils/trans';
 import Parser from "html-react-parser";
+import { Link } from "react-router-dom";
 
 export default function Marquee() {
     let { currentUser } = useAuth();
@@ -12,7 +13,7 @@ export default function Marquee() {
             <div className="darkener">
                 <div className="container">
                     <div className="h1">{Parser(window.App.announce.announce_text)}</div>
-                    <div className="h3">{window.App.announce.dateout} &nbsp;&nbsp;&nbsp; <a href={`/auctions/` + window.App.announce.id} className="btn btn-default-inverse">{__('подробнее')}</a></div>
+                    <div className="h3">{window.App.announce.dateout} &nbsp;&nbsp;&nbsp; <Link to={`/auctions/` + window.App.announce.id} className="btn btn-default-inverse">{__('подробнее')}</Link></div>
                 </div>
             </div>
         </section>

@@ -1,27 +1,30 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
-import { useAuth } from '../context/auth';
 import __ from '../utils/trans';
 import Marquee from '../components/marquee'
 import Announce from '../components/announce'
-import YandexShare from 'react-yandex-share';
 import useDocumentTitle from '../components/document-title';
-import Parser from "html-react-parser";
-import Auctions from "../components/auction/Auctions";
 import MovingGallery from "../components/moving/Gallery";
-import Carousel from "../components/carousel/Carousel";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
-import client from '../api/client';
-import App from "../router";
+import scrollToElement from "../helpers/scroll-to-ref";
 
 export default function Events() {
     const { pathname } = useLocation();
     useDocumentTitle(__('EVENTS_TITLE'));
+
+    useEffect(() => {
+        pathname == '/events/workshops' && scrollToElement(workshopsEl)
+        pathname == '/events/exhibitions' && scrollToElement(exhibitionsEl)
+    }, [pathname]);
+
+    const workshopsEl = useRef(null);
+    const exhibitionsEl = useRef(null);
+
     return (
         <React.Fragment>
             <Announce />
             <div className="sticky-wrapper">
-                <section className="announces" id="exhibitions">
+                <section className="announces" ref={exhibitionsEl}>
                     <div className="background-text">{__('Exhibitions')}</div>
                     <div className="container">
                         <div className="row announce">
@@ -64,7 +67,7 @@ export default function Events() {
                         </div>
                     </div>
                 </section>
-                <section className="announces bggray" id="workshops">
+                <section className="announces bggray" ref={workshopsEl}>
                     <div className="background-text">{__('Workshops')}</div>
                     <div className="container">
                         <div className="row announce">
@@ -81,7 +84,6 @@ export default function Events() {
                                 <h3 className="h3">{__('Addresses:')}</h3>
                                 <dl>
                                     {window.App.spaces.map((space, index) => {
-                                        console.log(space.type)
                                         if (space.type == 'exhibition')
                                             return (
                                                 <React.Fragment key={index}>

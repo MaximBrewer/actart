@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from '../../../utils/trans';
+import { Link } from "react-router-dom";
 
 export default function Footer(props) {
     const { data, state, refPicture } = props;
@@ -8,9 +9,9 @@ export default function Footer(props) {
         return (
             <div className="show-more">
                 <div className="dots">•••</div>
-                <a href="/gallery" className="text">
+                <Link to="/gallery" className="text">
                     Показать больше
-                </a>
+                </Link>
             </div>
         );
     } else {
@@ -18,9 +19,9 @@ export default function Footer(props) {
             <React.Fragment>
                 <div className="carousel-controls">
                     <div className="carousel-button">
-                        <a href="/news" className="btn btn-default">
+                        <Link to="/news" className="btn btn-default">
                             {__("ЧИТАТЬ")}
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="carousel-counter">

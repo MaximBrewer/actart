@@ -5,19 +5,18 @@ import { Lens, Close, TopLogo, Burger, SmallTopLogo, Profile, Logo } from '../ic
 import { Unstyled, Top, Topmost } from './menu'
 import Subscribe from './subscribe'
 import Parser from "html-react-parser";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from 'react-router-dom';
 
-export default function Header() {
+export default function Header(props) {
+
+    const { openModal, closeModal } = props;
     const { pathname } = useLocation();
-    const [state, setState] = useState({
-        menu: false
-    })
+
     useEffect(() => {
         document.body.className = pathname == "/" ? 'home' : '';
         window.scrollTo(0, 0);
         changeWindow()
     }, [pathname]);
-
 
     useEffect(() => { changeWindow() }, []);
 
@@ -26,8 +25,8 @@ export default function Header() {
 
     const changeWindow = () => {
         let mf = document.getElementById("header-full-menu-fixed");
-        if (mf) {
-            mf.remove();
+        if (mf.style.display == 'block') {
+            mf.style.display = 'none';
         }
         if (document.body.classList.contains("home")) {
             if (window.innerWidth > 1279) {
@@ -95,15 +94,11 @@ export default function Header() {
 
     const toggleMenu = () => {
         if (window.innerWidth > 1279) {
-            let mf = document.getElementById("header-full-menu-fixed");
-            if (mf) {
-                mf.remove();
+            let menu = document.getElementById("header-full-menu-fixed");
+            if (menu.style.display == 'block') {
+                menu.style.display = 'none';
             } else {
-                let menu = document
-                    .getElementById("header-full-menu")
-                    .cloneNode(true),
-                    headerTop = document.getElementById("header-top");
-                menu.id = "header-full-menu-fixed";
+                let headerTop = document.getElementById("header-top");
                 menu.style.marginTop = headerTop.offsetHeight + "px";
                 menu.style.paddingTop = "0";
                 menu.style.position = "fixed";
@@ -114,7 +109,6 @@ export default function Header() {
                 menu.style.width = "100%";
                 menu.style.zIndex = "100";
                 menu.style.paddingBottom = "2.5rem";
-                document.getElementById("header").appendChild(menu);
             }
         } else {
             document.getElementById("mobileMenu").style.display = "block";
@@ -181,8 +175,8 @@ export default function Header() {
                                 <div className="col-md-20 flex-row-reverse right-position d-none d-md-flex">
                                     <div>
                                         {currentUser ?
-                                            <a className="icon profile" type="submit" href="/profile"><Profile /></a> :
-                                            <a className="btn btn-default-inverse" type="submit" href="/login">{Parser(__('Log&nbsp;In'))}</a>
+                                            <Link className="icon profile" type="submit" to="/profile"><Profile /></Link> :
+                                            <a className="btn btn-default-inverse" type="submit" href="#" onClick={(e) => { e.preventDefault(); openModal('login') }}>{Parser(__('Log&nbsp;In'))}</a>
                                         }
                                     </div>
                                     <div className="header-lang">
@@ -231,7 +225,7 @@ export default function Header() {
                     <section className="mobile-menu">
                         <div className="d-block">
                             <div className="p-4 d-flex justify-content-between mobile-menu-header">
-                                <a href="/" className="logo-mobile d-md-none">@include('svg.header.logo-menu-mobile')</a>
+                                <Link to="/" className="logo-mobile d-md-none">@include('svg.header.logo-menu-mobile')</Link>
                                 <a href="#"
                                     className="close-tablet d-none d-md-block close-mobile-menu">@include('svg.header.close-tablet')</a>
                                 <div className="lang-menu text-nowrap d-none d-md-block">
@@ -254,8 +248,8 @@ export default function Header() {
                         </div>
                         <div className="p-4 d-flex justify-content-between d-md-none">
                             {currentUser ?
-                                <a href="/profile">{__('кабинет')}</a> :
-                                <a href="/login">{Parser(__('Log&nbsp;In'))}</a>
+                                <Link to="/profile">{__('кабинет')}</Link> :
+                                <Link to="/login">{Parser(__('Log&nbsp;In'))}</Link>
                             }
                             <div className="lang-menu text-nowrap">
                                 <a href="/lang/ru" className={App.locale == 'ru' ? `active` : ``}>Rus</a> | <a href="/lang/en" className={App.locale == 'en' ? `active` : ``}>Eng</a>
@@ -264,6 +258,33 @@ export default function Header() {
                     </section>
                 </div>
             </nav >
+            <section className="header-full-menu" id="header-full-menu-fixed" style={{ display: 'none' }}>
+                <div className="container mt-4">
+                    <div className="header-bottom-logo">
+                        <Link to="/" className="header-logo">
+                            <Logo />
+                            <p className="h5 py-4">{Parser(__('online-auction<br>of contemporary art'))}</p>
+                        </Link>
+                    </div>
+                    <div className="row header-bottom-menu flex-row-reverse">
+                        <div className="col col-xl-12">
+                            <Top items={window.App.menus.topmost} />
+                        </div>
+                        <div className="col col-xl-12">
+                            <Top items={window.App.menus.top4} />
+                        </div>
+                        <div className="col col-xl-12">
+                            <Top items={window.App.menus.top3} />
+                        </div>
+                        <div className="col col-xl-12">
+                            <Top items={window.App.menus.top2} />
+                        </div>
+                        <div className="col col-xl-12">
+                            <Top items={window.App.menus.top1} />
+                        </div>
+                    </div>
+                </div>
+            </section>
         </header >
     );
 }

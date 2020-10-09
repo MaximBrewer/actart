@@ -99,19 +99,19 @@ return [
         /*
          * Set whether or not the multilingual is supported by the BREAD input.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         /*
          * Select default language
          */
-        'default' => 'en',
+        'default' => 'ru',
 
         /*
          * Select languages that are supported.
          */
         'locales' => [
             'en',
-            //'pt',
+            'ru',
         ],
     ],
 
@@ -201,6 +201,15 @@ return [
             'lng' => env('GOOGLE_MAPS_DEFAULT_CENTER_LNG', '-117.161084'),
         ],
         'zoom' => env('GOOGLE_MAPS_DEFAULT_ZOOM', 11),
+    ],
+
+    'yandexmaps' => [
+        'key'    => env('YANDEX_MAPS_KEY', '29ea008a-2cfc-41e4-9ca4-494c060ad1c9'),
+        'center' => [
+            'lat' => env('YANDEX_MAPS_DEFAULT_CENTER_LAT', '55.76'),
+            'lng' => env('YANDEX_MAPS_DEFAULT_CENTER_LNG', '37.64'),
+        ],
+        'zoom' => env('YANDEX_MAPS_DEFAULT_ZOOM', 14),
     ],
 
     /*

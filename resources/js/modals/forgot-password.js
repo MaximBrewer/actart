@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { forgotPassword } from '../../api/auth';
-import useInputValue from '../../components/input-value';
+import { forgotPassword } from '../api/auth';
+import useInputValue from '../components/input-value';
+import __ from '../utils/trans';
 
-function ForgotPassword () {
+function ForgotPasswordModal () {
   let [resetFeedback, setResetFeedback] = useState('');
   let email = useInputValue('email');
 
@@ -92,4 +93,4 @@ function ForgotPassword () {
   );
 }
 
-export default ForgotPassword;
+export default ForgotPasswordModal;

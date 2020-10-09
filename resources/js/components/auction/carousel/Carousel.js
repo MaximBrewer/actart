@@ -7,7 +7,6 @@ import __ from '../../../utils/trans';
 
 export default function Carousel(props) {
     const { id, items} = props;
-    console.log(props)
     // const [state, setState] = useState({
     //     slideIndex: 0,
     //     slidesTotal: items.length

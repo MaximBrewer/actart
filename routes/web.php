@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
+use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +13,9 @@ use TCG\Voyager\Facades\Voyager;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('lang/{locale}', '\App\Http\Controllers\LangController@index');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

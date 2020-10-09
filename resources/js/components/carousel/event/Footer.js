@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from '../../../utils/trans';
+import { Link } from "react-router-dom";
 
 export default function Footer(props) {
     const { data, state, refPicture } = props;
@@ -15,9 +16,9 @@ export default function Footer(props) {
                     произведений максимально удобным и демократичным.
                 </p>
                 <div className="text-center button-wrapper pt-4">
-                    <a href="#" className="btn btn-default">
+                    <Link to="/events" className="btn btn-default">
                         ВСЕ АННОНСЫ
-                    </a>
+                    </Link>
                 </div>
             </React.Fragment>
         );
@@ -26,9 +27,9 @@ export default function Footer(props) {
             <React.Fragment>
                 <div className="carousel-controls">
                     <div className="carousel-button">
-                        <a href="#" className="btn btn-default">
+                        <Link to="/events" className="btn btn-default">
                             ВСЕ АННОНСЫ
-                        </a>
+                        </Link>
                     </div>
                     <div className="carousel-counter">
                         <span className="current">

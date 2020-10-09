@@ -3,30 +3,31 @@ import { Link, useParams, useLocation } from "react-router-dom";
 import { useAuth } from '../context/auth';
 import __ from '../utils/trans';
 import Marquee from '../components/marquee'
-import Announce from '../components/announce'
 import Subscribe from '../components/subscribe'
-import YandexShare from 'react-yandex-share';
 import useDocumentTitle from '../components/document-title';
-import Parser from "html-react-parser";
-import Auctions from "../components/auction/Auctions";
-import MovingGallery from "../components/moving/Gallery";
-import Carousel from "../components/carousel/Carousel";
-import WaterfallAjax from "../components/waterfall/WaterfallAjax";
-import client from '../api/client';
-import App from "../router";
 import AuctionsList from "../components/auction/AuctionsList";
+import scrollToElement from "../helpers/scroll-to-ref";
 
 export default function AuctionsPage() {
     const [state, setState] = useState({ page: null });
 
     const participate = () => { }
+
     const { pathname } = useLocation();
+
+    useEffect(() => {
+        pathname == '/auctions/special' && scrollToElement(specialEl)
+        pathname == '/auctions/regular' && scrollToElement(regularEl)
+    }, [pathname]);
+
+    const regularEl = useRef(null);
+    const specialEl = useRef(null);
     useDocumentTitle(__('BLOG_TITLE'));
 
     return (
         <React.Fragment>
             <div className="sticky-wrapper">
-                <section className="auctions-section regular-list" id="regularAuctionsList">
+                <section className="auctions-section regular-list" ref={regularEl}>
                     <div className="container">
                         <div className="row announce mb-xl-5">
                             <div className="col col-xl-40 col-xxl-38">
@@ -36,8 +37,7 @@ export default function AuctionsPage() {
                                 </div>
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
-                                <a className="see-other" href="#" onclick="scrollToElement(this);return false;"
-                                    data-id="specialAuctionsList">
+                                <a className="see-other" href="#" onClick={(e) => { e.preventDefault(); scrollToElement(specialEl) }}>
                                     <div className="text-14">{__("see also:")}</div>
                                     <div className="h5">{__('Themed auctions')}</div>
                                     <svg viewBox="0 0 36 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +55,7 @@ export default function AuctionsPage() {
                         </div>
                     </div>
                 </section>
-                <section className="auctions-section special-list" id="specialAuctionsList">
+                <section className="auctions-section special-list" ref={specialEl}>
                     <div className="container">
                         <div className="row announce mb-xl-5">
                             <div className="col col-xl-40 col-xxl-38">
@@ -65,8 +65,7 @@ export default function AuctionsPage() {
                                 </div>
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
-                                <a className="see-other" href="#" onclick="scrollToElement(this);return false;"
-                                    data-id="regularAuctionsList">
+                                <a className="see-other" href="#" onClick={(e) => { e.preventDefault(); scrollToElement(regularEl) }}>
                                     <div className="text-14">{__("see also:")}</div>
                                     <div className="h5">{__('Regular auctions')}</div>
                                     <svg viewBox="0 0 36 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +91,7 @@ export default function AuctionsPage() {
                         <div className="col col-xl-40 col-xxl-38">
                         </div>
                         <div className="col col-xl-20 col-xxl-22 text-center">
-                            <a href="/auctions/archive" className="btn btn-default">{__('ARCHIVE OF AUCTIONS')}</a>
+                            <Link to="/auctions/archive" className="btn btn-default">{__('ARCHIVE OF AUCTIONS')}</Link>
                         </div>
                     </div>
                 </div>
@@ -128,7 +127,7 @@ export default function AuctionsPage() {
                                 {/* @widget('popular_categories') */}
                             </div>
                             <div className="d-flex justify-content-center align-items-end">
-                                <a href="/gallery" className="btn btn-default">{__('VIEW ALL WORKS')}</a>
+                                <Link to="/gallery" className="btn btn-default">{__('VIEW ALL WORKS')}</Link>
                             </div>
                         </div>
                     </div>

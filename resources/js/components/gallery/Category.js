@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Waterfall from "../waterfall/Waterfall";
 import { Link, useParams } from "react-router-dom";
 import __ from '../../utils/trans';
+import scrollToElement from "../../helpers/scroll-to-ref";
 
 export default function Category(props) {
     const { id } = useParams();
     const { showLink } = props;
+
+    useEffect(() => {
+        id && scrollToElement(galEl)
+    }, [id]);
+
+    const galEl = useRef(null);
+
     return (
         <div className="sticky-wrapper">
             <section className="gallery-section">
@@ -30,7 +38,7 @@ export default function Category(props) {
                     <div className="popular-categories">
                         <h4 className="h4">{__("Popular Categories")}</h4>
                         <div className="d-flex justify-content-between categories">
-                            {props.categories.map((item, index) => (
+                            {window.App.popular.map((item, index) => (
                                 <Link
                                     key={index}
                                     className={
@@ -50,7 +58,7 @@ export default function Category(props) {
                             ))}
                         </div>
                     </div>
-                    <div className="gallery-works" id="galleryWorksList">
+                    <div className="gallery-works" ref={galEl}>
                         <div className="h2">{__("Works for sale")}</div>
                         <div className="gallery-works-list">
                             <Waterfall

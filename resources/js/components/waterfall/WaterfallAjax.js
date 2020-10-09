@@ -7,8 +7,13 @@ import __ from '../../utils/trans';
 export default function WaterfallAjax(props) {
     const { data } = props;
     data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
+
+    const getPreviews = () => {
+        return [];
+    }
+    
     const [state, setState] = useState({
-        photos: [],
+        photos: getPreviews(),
         favorites: window.user != undefined ? window.user.favorites : null,
         more: true,
         options: [],

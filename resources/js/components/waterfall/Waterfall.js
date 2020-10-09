@@ -94,10 +94,8 @@ export default function Waterfall(props) {
     };
 
     useEffect(() => {
-        console.log(items);
         window.addEventListener("lot", updateLot);
         if (!data.filterable) {
-            console.log(items)
             setState(prevState => {
                 return { ...prevState, items: items };
             });

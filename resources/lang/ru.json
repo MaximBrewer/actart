@@ -34,6 +34,13 @@
     "LOT_TEXT_LOT_ID": "Лот",
     "LOT_TEXT_LOT_ID": "Лот",
     "MARQUEE_FIRST": "современное&nbsp;•&nbsp;актуальное&nbsp;•&nbsp;избранное&nbsp;• российское&nbsp;•&nbsp;",
+
+    "MODAL_LOGIN_H2": "Вход",
+    "MODAL_LOGIN_EMAIL": "E-mail",
+    "MODAL_LOGIN_PASSWORD": "Пароль",
+    "MODAL_LOGIN_FORGET_PASSWORD": "Забыли пароль?",
+    "MODAL_LOGIN_SIGN_IN": "Регистрация",
+    "MODAL_LOGIN_BTN": "Войти",
     "E-Mail": "E-Mail",
     "Password": "Пароль",
     "Remember Me": "Запомнить меня",

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import __ from '../../utils/trans';
-import useIsMounted from '../../hooks/is-mounted'
 
 const getRandomColor = () => {
     var letters = "0123456789ABCDEF";
@@ -65,7 +64,6 @@ function Block(props) {
 export default function Gallery() {
     const [blocks, setBlocks] = useState([]);
     const [state, setState] = useState({ auction: {} });
-    const isMounted = useIsMounted();
 
     const ref = useRef();
     const requestRef = useRef();
@@ -94,7 +92,6 @@ export default function Gallery() {
     };
 
     useEffect(() => {
-        // if (isMounted) {
 
         let array = [];
         let grid = [];

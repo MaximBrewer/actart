@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from '../context/auth';
 import __ from '../utils/trans';
 import Marquee from '../components/marquee'
@@ -8,8 +8,8 @@ import Auctions from "../components/auction/Auctions";
 import MovingGallery from "../components/moving/Gallery";
 import Carousel from "../components/carousel/Carousel";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
-
-
+import { Link, useParams, useLocation } from "react-router-dom";
+import { Hummer, AboutLogo, AboutBgLogo } from "../icons/home";
 
 function Home() {
   useDocumentTitle(__('HOME_TITLE'));
@@ -37,19 +37,13 @@ function Home() {
                 <div className="sub_h2 d-none d-xl-block">
                   {__('GALLERY_BLOCK_INTROTEXT')}
                 </div>
-                <a href="/how-to-buy" className="link-how-to-buy">{__('GALLERY_BLOCK_HOW_TO_BUY_LINK')}?</a>
+                <Link to="/how-to-buy" className="link-how-to-buy">{__('GALLERY_BLOCK_HOW_TO_BUY_LINK')}?</Link>
               </div>
             </div>
             <div className="art-waterfall-wrapper">
               <h3 className="d-none d-md-block pb-4">
                 {__("GALLERY_BLOCK_LATEST_BIDS")}:
-                        <svg className="hummer" width="42" height="42" viewBox="0 0 42 42" fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <rect x="25.1066" width="23.6707" height="11.8354" rx="1" transform="rotate(45 25.1066 0)"
-                    fill="#FF665E" />
-                  <rect x="21.7591" y="16.7378" width="4.73415" height="18.9366"
-                    transform="rotate(45 21.7591 16.7378)" fill="#FF665E" />
-                </svg>
+                        <Hummer />
               </h3>
               <div className="act-waterfall">
                 <WaterfallAjax data={{
@@ -64,7 +58,7 @@ function Home() {
               </div>
               <div className="show-more">
                 <div className="dots">•••</div>
-                <a href="/gallery" className="text">{__('GALLERY_BLOCK_SHOW_MORE_LINK')}</a>
+                <Link to="/gallery" className="text">{__('GALLERY_BLOCK_SHOW_MORE_LINK')}</Link>
               </div>
             </div>
           </div>
@@ -76,10 +70,24 @@ function Home() {
           <div className="popular-categories">
             <h4 className="h4">{__('Popular Categories')}</h4>
             <div className="d-flex justify-content-between categories">
-              @widget('popular_categories')
-                </div>
+              {window.App.popular.map((item, index) => (
+                <Link
+                  key={index}
+                  className={`text-decoration-none d-flex justify-content-center align-items-center`}
+                  to={`/gallery/category/` + item.id}
+                  style={{
+                    backgroundImage:
+                      `url(` + item.preview + `)`
+                  }}
+                >
+                  <p className="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">
+                    {item.title}
+                  </p>
+                </Link>
+              ))}
+            </div>
             <div className="d-flex justify-content-center align-items-end">
-              <a href="/gallery" className="btn btn-default">{__('VIEW ALL WORKS')}</a>
+              <Link to="/gallery" className="btn btn-default">{__('VIEW ALL WORKS')}</Link>
             </div>
           </div>
         </div>
@@ -87,13 +95,13 @@ function Home() {
 
       <section id="homeAbout">
         <div className="background-text">
-          @include('svg.home.about-logo')
+          <AboutLogo />
         </div>
         <div className="sticky-wrapper">
           <div className="dotted-bg"></div>
           <div className="background-logo">
-            @include('svg.home.about-bg-logo')
-            </div>
+            <AboutBgLogo />
+          </div>
           <div className="container">
             <div className="row">
               <div className="col-xl-20">
@@ -113,9 +121,9 @@ function Home() {
                 средств идёт на обеспечение и развитие мастерских, выставок, поддержку творческих проектов,
                             образовательные инициативы для горожан.</p>
                 <ul className="list-unstyled d-md-flex justify-content-between">
-                  <li className="h5 h5_underline"><a href="/about">Подробнее о&nbsp;платформе</a></li>
-                  <li className="h5 h5_underline"><a href="/spaces#exhibitions">Выставочные пространства</a></li>
-                  <li className="h5 h5_underline"><a href="/spaces#workshops">Мастерские «ВсекоХудожник»</a></li>
+                  <li className="h5 h5_underline"><Link to="/about">Подробнее о&nbsp;платформе</Link></li>
+                  <li className="h5 h5_underline"><Link to="/spaces#exhibitions">Выставочные пространства</Link></li>
+                  <li className="h5 h5_underline"><Link to="/spaces#workshops">Мастерские «ВсекоХудожник»</Link></li>
                 </ul>
               </div>
             </div>
@@ -173,7 +181,7 @@ function Home() {
             </div>
             <div className="announce-slider-wrapper">
               <div className="announce-slider act-carousel" id="announceSlider">
-                <Carousel  items={App.events} data={{
+                <Carousel items={App.events} data={{
                   entity: "events",
                   limit: { "xs": 4, "sm": 4, "md": 4, "lg": 12, "xl": 24, "xxl": 24 },
                   view: { "xs": 1, "sm": 1, "md": 2, "lg": 3, "xl": 4, "xxl": 4 },
@@ -195,7 +203,7 @@ function Home() {
             <div className="h5 d-xl-none">БЛОГ И НОВОСТИ</div>
             <div className="news-slider-wrapper">
               <div className="news-slider act-carousel" id="newsSlider" >
-                <Carousel  items={App.posts} data={{
+                <Carousel items={App.posts} data={{
                   entity: "posts",
                   limit: { xs: 6, sm: 6, md: 12, lg: 12, xl: 24, xxl: 24 },
                   view: { xs: 1, sm: 1, md: 3, lg: 3, xl: 4, xxl: 4 },
@@ -234,12 +242,12 @@ function Home() {
       <section className="mb-5">
         <div className="container mb-5">
           <div className="footer-buttons">
-            <a href="/auctions" className="btn btn-default">
+            <Link to="/auctions" className="btn btn-default">
               {__("Смотреть аукционы")}
-            </a>
-            <a href="/gallery" className="btn btn-primary">
+            </Link>
+            <Link to="/gallery" className="btn btn-primary">
               {__("To Gallery")}
-            </a>
+            </Link>
           </div>
         </div>
       </section>

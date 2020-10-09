@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import AuctionPreviewLeft from "./blocks/AuctionPreviewLeft";
 import AuctionPreviewRight from "./blocks/AuctionPreviewRight";
 import __ from '../../utils/trans';
+import { Link } from "react-router-dom";
 
 export default function Auctions(props) {
     const [state, setState] = useState({
@@ -90,9 +91,9 @@ export default function Auctions(props) {
             <div className="row carousel-controls py-3">
                 <div className="col-30 col-md-15 col-xl-40 col-xxl-38">
                     <div className="carousel-button d-none d-xl-block">
-                        <a href="/auctions" className="btn btn-default">
+                        <Link to="/auctions" className="btn btn-default">
                             {__("All auctions")}
-                        </a>
+                        </Link>
                     </div>
                     <div className="carousel-arrows">
                         <a
@@ -149,9 +150,9 @@ export default function Auctions(props) {
                 </div>
                 <div className="col-30 col-md-45 col-xl-20 col-xxl-22">
                     <div className="carousel-button d-none d-md-block d-xl-none">
-                        <a href="/auctions" className="btn btn-default">
+                        <Link to="/auctions" className="btn btn-default">
                             {__("All auctions")}
-                        </a>
+                        </Link>
                     </div>
                     <div className="carousel-counter">
                         <span className="current">{state.slideIndex + 1}</span>/
@@ -160,9 +161,9 @@ export default function Auctions(props) {
                 </div>
             </div>
             <div className="carousel-button d-md-none">
-                <a href="/auctions" className="btn btn-default">
+                <Link to="/auctions" className="btn btn-default">
                     {__("All auctions")}
-                </a>
+                </Link>
             </div>
         </React.Fragment>
     );

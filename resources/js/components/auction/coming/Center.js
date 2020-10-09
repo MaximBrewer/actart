@@ -1,6 +1,8 @@
 import React from "react";
 import __ from '../../../utils/trans';
 import Parser from 'html-react-parser';
+import { Link } from "react-router-dom";
+
 export default function Center(props) {
     const { auction } = props;
     return (
@@ -14,7 +16,7 @@ export default function Center(props) {
                         </div>
                         <div className="sub_2 sublime-wrapper">{Parser(auction.text)}</div>
                         <div className="link-holder">
-                            <a href="/rules">{__("Participation rules")}</a>
+                            <Link to="/rules">{__("Participation rules")}</Link>
                         </div>
                     </div>
                 </div>

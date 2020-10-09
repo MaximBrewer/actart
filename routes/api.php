@@ -56,14 +56,14 @@ Route::name('api.')->namespace('Api')->group(function () {
             //     $posts = Post::{$type}()->published()->orderBy('created_at')->get();
             //     return json_encode(['posts' => PostResource::collection($posts)]);
             // });
-            Route::get('get_carousel_items/{entity}/{id}', function ($lang, $entity, $id) {
+            // Route::get('get_carousel_items/{entity}/{id}', function ($lang, $entity, $id) {
                 // return[$entity, $id];
                 // $images = Cache::get('carousel.shortcode.' . $entity . '.' . $id, function ($entity, $id) {
                 // return 
-                $res = DB::table($entity . 's')->select('images')->find($id);
+                // $res = DB::table($entity . 's')->select('images')->find($id);
                 // });
-                return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
-            });
+                // return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
+            // });
         });
     });
 

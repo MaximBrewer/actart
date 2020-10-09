@@ -1,6 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useParams, useLocation, NavLink, useHistory } from 'react-router-dom';
+import { useAuth } from '../context/auth';
+import __ from '../utils/trans';
+import Marquee from '../components/marquee'
+import Announce from '../components/announce'
+import YandexShare from 'react-yandex-share';
+import useDocumentTitle from '../components/document-title';
+import Parser from "html-react-parser";
+import Auctions from "../components/auction/Auctions";
+import MovingGallery from "../components/moving/Gallery";
+import Carousel from "../components/carousel/Carousel";
+import WaterfallAjax from "../components/waterfall/WaterfallAjax";
+import client from '../api/client';
+import App from "../router";
+import { setIntendedUrl } from '../utils/auth';
+
 
 function Profile() {
+  let { setCurrentUser, setToken, currentUser } = useAuth();
+  console.log(currentUser)
+
+  let history = useHistory();
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setToken(null);
+    history.push('/');
+    setIntendedUrl(null);
+  };
+
   return (
     <section className="profile-section">
       <div className="container">
@@ -14,21 +42,28 @@ function Profile() {
             <hr />
             <dl>
               <dt>{__('Your ID:')}</dt>
-              <dd>#{user.id}</dd>
+              <dd>#{currentUser.id}</dd>
             </dl>
             <dl>
               <dt>{__('Status:')}</dt>
-              <dd>{__(user.role.display_name)}</dd>
+              <dd>{__(currentUser.role.display_name)}</dd>
             </dl>
             <dl>
               <dt>{__('Full name:')}</dt>
-              <dd>{user.name + ` ` + user.surname}</dd>
+              <dd>{currentUser.name + ` ` + currentUser.surname}</dd>
             </dl>
             <dl>
               <dt>{__('Логин:')}</dt>
-              <dd>{user.email}</dd>
+              <dd>{currentUser.email}</dd>
             </dl>
             <hr />
+            <div
+              onClick={handleLogout}>
+              <Link
+                to="/">
+                Logout
+                </Link>
+            </div>
           </div>
         </div>
         <div className="art-waterfall-wrapper py-5">

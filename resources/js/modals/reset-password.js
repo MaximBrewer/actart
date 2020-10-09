@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import {resetPassword} from '../../api/auth';
-import useInputValue from '../../components/input-value';
+import {resetPassword} from '../api/auth';
+import useInputValue from '../components/input-value';
 
 function ResetPassword () {
   const token = useRouteMatch().params.token;

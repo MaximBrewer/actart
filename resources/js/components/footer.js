@@ -4,6 +4,7 @@ import __ from '../utils/trans';
 import { Logo, Facebook, Instagram, Cp, Mail } from '../icons/footer'
 import { Unstyled } from '../components/menu'
 import Subscribe from '../components/subscribe'
+import { Link } from "react-router-dom";
 
 export default function Footer() {
     let { currentUser } = useAuth();
@@ -14,9 +15,9 @@ export default function Footer() {
                 <div className="container">
                     <div className="d-flex flex-column flex-md-row">
                         <div className="order-1 d-none d-md-block">
-                            <a href="/" className="footer-logo">
+                            <Link to="/" className="footer-logo">
                                 <Logo />
-                            </a>
+                            </Link>
                             <div className="mail-to d-flex flex-column">
                                 <div className="mb-1">{__('For partnership:')}</div>
                                 <div className="h5"><a href="mailto:info@act-art.ru">info@act-art.ru</a></div>
@@ -28,9 +29,9 @@ export default function Footer() {
                                     <div className="mb-1">{__('For partnership:')}</div>
                                     <div className="h5"><a href="mailto:info@act-art.ru">info@act-art.ru</a></div>
                                 </div>
-                                <a href="/" className="footer-logo">
+                                <Link to="/" className="footer-logo">
                                     <Logo />
-                                </a>
+                                </Link>
                             </div>
                             <div className="d-flex flex-column flex-md-row order-3 order-md-2 order-xl-1 col-xl-30">
                                 <div className="order-2 order-md-1 footer-left-menu">

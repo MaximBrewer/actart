@@ -8,7 +8,6 @@ import __ from '../../utils/trans';
 export default function Gallery() {
     const [state, setState] = useState({
         items: [],
-        categories: [],
         favorites: window.user != undefined ? window.user.favorites : null
     });
 
@@ -58,22 +57,14 @@ export default function Gallery() {
     };
     useEffect(() => {
         axios
-            .get("/api/" + window.lang + "/categories/popular")
+            .get("/api/" + window.lang + "/lots?&status=gallery")
             .then(res => {
-                axios
-                    .get("/api/" + window.lang + "/lots?&status=gallery")
-                    .then(res2 => {
-                        setState(prevState => {
-                            return {
-                                ...prevState,
-                                items: res2.data.items,
-                                categories: res.data.items
-                            };
-                        });
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
+                setState(prevState => {
+                    return {
+                        ...prevState,
+                        items: res.data.items
+                    };
+                });
             })
             .catch(err => {
                 console.log(err);
@@ -86,7 +77,6 @@ export default function Gallery() {
                     <GalleryCategory
                         items={state.items}
                         showLink={false}
-                        categories={state.categories}
                         setState={setState}
                     />
                 </Route>
@@ -102,7 +92,6 @@ export default function Gallery() {
                 <Route path={`/gallery/category/:id`}>
                     <GalleryCategory
                         items={state.items}
-                        categories={state.categories}
                         setState={setState}
                         showLink={true}
                         toFavorite={toFavorite}

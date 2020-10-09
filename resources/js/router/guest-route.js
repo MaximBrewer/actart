@@ -3,17 +3,14 @@ import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useAuth } from '../context/auth';
 
-function GuestRoute ({ component: Component, title, ...rest }) {
+function GuestRoute({ component: Component, title, ...rest }) {
 
   let { authenticated } = useAuth();
 
   return (
     <Route
       {...rest}
-      render={props => authenticated
-        ? <Redirect to={{ pathname: '/home', state: { from: props.location } }} />
-        : <Component {...props} />
-      }
+      render={props => <Component {...props} />}
     />
   );
 };
