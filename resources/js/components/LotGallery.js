@@ -29,7 +29,7 @@ export default function LotGallery(props) {
 
     useEffect(() => {
         axios
-            .get("/api/" + window.lang + "/lot/" + props.data.id)
+            .get("/api/" + window.App.locale + "/lot/" + props.data.id)
             .then(res => {
                 setState({
                     lot: res.data.lot

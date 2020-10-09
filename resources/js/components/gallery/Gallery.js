@@ -57,7 +57,7 @@ export default function Gallery() {
     };
     useEffect(() => {
         axios
-            .get("/api/" + window.lang + "/lots?&status=gallery")
+            .get("/api/" + window.App.locale + "/lots?&status=gallery")
             .then(res => {
                 setState(prevState => {
                     return {

@@ -119,7 +119,7 @@ export default function WaterfallAjax(props) {
         data.entity == "favorites" ||
             (url += "&limit=" + getLimit() + "&offset=" + getOffset());
         axios
-            .get("/api/" + window.lang + url)
+            .get("/api/" + window.App.locale + url)
             .then(res => {
                 setState(prevState => {
                     return {
@@ -161,7 +161,7 @@ export default function WaterfallAjax(props) {
                 (user.favorites.length ? user.favorites.join(",") : "0"))) ||
             (url += "&offset=0" + "&limit=" + getLimit());
         axios
-            .get("/api/" + window.lang + url)
+            .get("/api/" + window.App.locale + url)
             .then(res => {
                 setState(prevState => {
                     return {
@@ -212,7 +212,7 @@ export default function WaterfallAjax(props) {
         window.addEventListener("lot", updateLot);
         data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
         axios
-            .get("/api/" + window.lang + "/lots/options")
+            .get("/api/" + window.App.locale + "/lots/options")
             .then(res => {
                 setState(prevState => {
                     return { ...prevState, options: res.data };

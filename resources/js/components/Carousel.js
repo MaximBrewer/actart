@@ -60,7 +60,7 @@ export default function Carousel(props) {
         axios
             .get(
                 "/api/" +
-                    window.lang +
+                    window.App.locale +
                     "/get_carousel_items/" +
                     props.data.entity +
                     "/" +

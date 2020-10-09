@@ -10,7 +10,7 @@ export default function AuctionProfile(props) {
         axios
             .get(
                 "/api/" +
-                    window.lang +
+                    window.App.locale +
                     "/auctions/coming?ids=" +
                     (user.auctions.length ? user.auctions.join(",") : "0")
             )

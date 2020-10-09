@@ -69,7 +69,7 @@ export default function Auction(props) {
 
     useEffect(() => {
         axios
-            .get("/api/" + window.lang + "/auctions/" + id)
+            .get("/api/" + window.App.locale + "/auctions/" + id)
             .then(res => {
                 setState({
                     auction: res.data.auction

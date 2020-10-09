@@ -101,7 +101,7 @@ export default function Waterfall(props) {
             });
         } else {
             axios
-                .get("/api/" + window.lang + "/lots/options")
+                .get("/api/" + window.App.locale + "/lots/options")
                 .then(res => {
                     setState(prevState => {
                         return { ...prevState, options: res.data };
