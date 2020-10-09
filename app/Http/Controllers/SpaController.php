@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use TCG\Voyager\Models\Menu;
+use App\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Resources\Auction as AuctionResource;

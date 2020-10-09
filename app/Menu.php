@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use TCG\Voyager\Events\MenuDisplay;
+use TCG\Voyager\Facades\Voyager;
+
 
 class Menu extends \TCG\Voyager\Models\Menu
 {
-    //
-
     /**
      * Display menu.
      *
@@ -28,42 +31,30 @@ class Menu extends \TCG\Voyager\Models\Menu
             ->first();
         });
 
-        // Check for Menu Existence
-        if (!isset($menu)) {
-            return false;
-        }
-
-        event(new MenuDisplay($menu));
-
-        // Convert options array into object
-        $options = (object) $options;
-
         $items = $menu->parent_items->sortBy('order');
 
-        if ($menuName == 'admin' && $type == '_json') {
+        if ($type === 'spa') {
             $items = static::processItems($items);
-        }
-
-        if ($type == 'admin') {
-            $type = 'voyager::menu.'.$type;
-        } else {
-            if (is_null($type)) {
-                $type = 'voyager::menu.default';
-            } elseif ($type == 'bootstrap' && !view()->exists($type)) {
-                $type = 'voyager::menu.bootstrap';
-            }
-        }
-
-        if (!isset($options->locale)) {
-            $options->locale = app()->getLocale();
-        }
-
-        if ($type === '_json') {
             return $items;
         }
+    }
 
-        return new \Illuminate\Support\HtmlString(
-            \Illuminate\Support\Facades\View::make($type, ['items' => $items, 'options' => $options])->render()
-        );
+    private static function processItems($items)
+    {
+        // Eagerload Translations
+        if (config('voyager.multilingual.enabled')) {
+            $items->load('translations');
+        }
+
+        $items = $items->transform(function ($item) {
+            // Translate title
+            $item->title = $item->getTranslatedAttribute('title');
+            // Resolve URL/Route
+            $item->href = $item->link(true);
+
+            return $item;
+        });
+
+        return $items->values();
     }
 }
