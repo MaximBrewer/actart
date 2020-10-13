@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\User as UserResource;
 
 class LoginController extends Controller
 {
@@ -18,7 +18,7 @@ class LoginController extends Controller
         if (!$token = auth()->attempt($request->only(['email', 'password']))) {
             return response()->json([
                 'errors' => [
-                    'email' => ['Sorry we couldn\'t sign you in with those details.']
+                    'email' => [__('Sorry we couldn\'t sign you in with those details.')]
                 ]
             ], 422);
         }
