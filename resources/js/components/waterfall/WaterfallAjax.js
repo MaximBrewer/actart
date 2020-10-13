@@ -210,7 +210,6 @@ export default function WaterfallAjax(props) {
 
     useEffect(() => {
         window.addEventListener("lot", updateLot);
-        data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
         axios
             .get("/api/" + window.App.locale + "/lots/options")
             .then(res => {

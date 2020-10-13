@@ -76,7 +76,7 @@ export default function Base() {
                                 <div className={`col-xl-60`}>
                                     <h2 className="h2 title-loading">
                                         <div className="block-loading">
-                                            <div class="block-loading-animation">
+                                            <div className="block-loading-animation">
                                                 <span></span>
                                             </div>
                                         </div>
@@ -84,7 +84,7 @@ export default function Base() {
                                     <hr />
                                     <div className="sub_h2 subtitle-loading">
                                         <div className="block-loading">
-                                            <div class="block-loading-animation">
+                                            <div className="block-loading-animation">
                                                 <span></span>
                                                 <span></span>
                                                 <span></span>
@@ -97,7 +97,7 @@ export default function Base() {
                             <div className="row">
                                 <div className="col-60">
                                     <div className="block-loading">
-                                        <div class="block-loading-animation">
+                                        <div className="block-loading-animation">
                                             <span></span>
                                             <span></span>
                                             <span></span>

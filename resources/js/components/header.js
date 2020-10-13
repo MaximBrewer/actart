@@ -1,7 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/auth';
 import __ from '../utils/trans';
-import { Lens, Close, TopLogo, Burger, SmallTopLogo, Profile, Logo } from '../icons/header'
+import {
+    Lens,
+    Close,
+    CloseTablet as CloseTabletIcon,
+    CloseMobile as CloseMobileIcon,
+    TopLogo,
+    Burger,
+    SmallTopLogo,
+    Profile,
+    Logo,
+    LogoMenuMobile
+} from '../icons/header'
 import { Unstyled, Top, Topmost } from './menu'
 import Subscribe from './subscribe'
 import Parser from "html-react-parser";
@@ -11,8 +22,11 @@ export default function Header(props) {
 
     const { openModal, closeModal } = props;
     const { pathname } = useLocation();
+    const mobileMenuEl = useRef(null);
 
+    let { currentUser } = useAuth();
     useEffect(() => {
+        closeMobile()
         document.body.className = pathname == "/" ? 'home' : '';
         window.scrollTo(0, 0);
         changeWindow()
@@ -92,6 +106,11 @@ export default function Header(props) {
         }
     }
 
+    const closeMobile = () => {
+        mobileMenuEl.current.style.display = "none";
+        document.body.style.overflowY = "auto";
+    }
+
     const toggleMenu = () => {
         if (window.innerWidth > 1279) {
             let menu = document.getElementById("header-full-menu-fixed");
@@ -111,12 +130,11 @@ export default function Header(props) {
                 menu.style.paddingBottom = "2.5rem";
             }
         } else {
-            document.getElementById("mobileMenu").style.display = "block";
+            mobileMenuEl.current.style.display = "block";
             document.body.style.overflowY = "hidden";
         }
     }
 
-    let { currentUser } = useAuth();
     return (
         <header className="header" id="header">
             <nav>
@@ -220,19 +238,17 @@ export default function Header(props) {
                         </div>
                     </div>
                 </section>
-                <div className="mobile-menu-wrapper" id="mobileMenu">
-                    <div className="bg close-mobile-menu"></div>
+                <div className="mobile-menu-wrapper" ref={mobileMenuEl}>
+                    <div className="bg" onClick={closeMobile}></div>
                     <section className="mobile-menu">
                         <div className="d-block">
                             <div className="p-4 d-flex justify-content-between mobile-menu-header">
-                                <Link to="/" className="logo-mobile d-md-none">@include('svg.header.logo-menu-mobile')</Link>
-                                <a href="#"
-                                    className="close-tablet d-none d-md-block close-mobile-menu">@include('svg.header.close-tablet')</a>
+                                <Link to="/" className="logo-mobile d-md-none"><LogoMenuMobile /></Link>
+                                <a href="#" className="close-tablet d-none d-md-block" onClick={closeMobile}><CloseTabletIcon /></a>
                                 <div className="lang-menu text-nowrap d-none d-md-block">
                                     <a href="/lang/ru" className={App.locale == 'ru' ? `active` : ``}>Rus</a> | <a href="/lang/en" className={App.locale == 'en' ? `active` : ``}>Eng</a>
                                 </div>
-                                <a href="#"
-                                    className="close-mobile d-md-none close-mobile-menu">@include('svg.header.close-mobile')</a>
+                                <a href="#" className="close-mobile d-md-none" onClick={closeMobile}><CloseMobileIcon /></a>
                             </div>
                             <div className="p-4">
                                 <div className="menu-1">
