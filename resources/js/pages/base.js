@@ -19,6 +19,12 @@ export default function Base() {
     const { pathname } = useLocation();
 
     useEffect(() => {
+        setState((prevState) => {
+            return {
+                ...prevState,
+                page: null
+            }
+        })
         client('/api/' + window.App.locale + '/page' + pathname)
             .then(({ page }) => setState((prevState) => {
                 document.title = page.title;
