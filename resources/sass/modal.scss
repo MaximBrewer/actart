@@ -1,0 +1,13 @@
+@use "sass:map";
+.modal-content {
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+        min-width: 20rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        min-width: 25rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    }
+}
