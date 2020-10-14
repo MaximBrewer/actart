@@ -87,32 +87,8 @@ function App() {
 
   const [modal, setModal] = React.useState(initState);
 
-  function participate(e, id) {
-    if (!currentUser) {
-      e.preventDefault();
-      openModal('login');
-      return false;
-    }
-    else {
-      for (const a of currentUser.auctions) {
-        if (id == a.id) {
-          return true;
-        }
-      }
-      return client('/api/auction/' + id + '/participate')
-        .then(({ res }) => {
-          setCurrentUser(res.user)
-          return true;
-        })
-        .catch(() => {
-          e.preventDefault();
-          return false;
-        });
-    }
-  }
 
   const rest = {
-    participate: participate
   }
 
   return (

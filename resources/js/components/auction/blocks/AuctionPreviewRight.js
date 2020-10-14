@@ -2,11 +2,37 @@ import React from "react";
 import Countdown from "../Countdown";
 import Parser from "html-react-parser";
 import __ from '../../../utils/trans';
+import { useAuth } from '../../../context/auth';
 import { Link, useHistory } from 'react-router-dom';
+import client from '../../../api/client';
 
 
 export default function AuctionPreviewRight(props) {
-    const { participate } = props;
+    const { initializing, currentUser, setCurrentUser } = useAuth();
+    let history = useHistory();
+
+    function participate(e) {
+        if (!currentUser) {
+            e.preventDefault();
+            openModal('login');
+            return false;
+        }
+        else {
+            for (const a of currentUser.auctions) {
+                if (props.auction.id == a.id) {
+                    return true;
+                }
+            }
+            return client('/api/auction/' + props.auction.id + '/participate')
+                .then(({ user }) => {
+                    setCurrentUser(user)
+                })
+                .catch(() => {
+                    e.preventDefault();
+                });
+        }
+    }
+
     return (
         <div className="banner-announce">
             <div className="row">
@@ -21,8 +47,8 @@ export default function AuctionPreviewRight(props) {
                 <Link
                     to={"/auctions/" + props.auction.id}
                     className="btn btn-danger"
-                    onClick={e => {
-                        participate(e, props.auction.id);
+                    onClick={(e) => {
+                        participate(e);
                     }}
                 >
                     {__("PARTICIPATE")}
@@ -34,6 +60,6 @@ export default function AuctionPreviewRight(props) {
             >
                 {__("View lots")} →
             </Link>
-        </div>
+        </div >
     );
 }
