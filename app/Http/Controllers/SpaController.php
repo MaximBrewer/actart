@@ -9,9 +9,16 @@ use App\Http\Resources\Auction as AuctionResource;
 use App\Auction;
 use App\Expert;
 use App\Space;
+use App\Lot;
+use App\Http\Resources\Lot as LotResource;
 use App\Http\Resources\Expert as ExpertResource;
 use App\Category;
+use App\Style;
+use App\Material;
+use App\Technique;
+use App\Frame;
 use App\Http\Resources\Category as CategoryResource;
+
 
 class SpaController extends Controller
 {
@@ -44,6 +51,14 @@ class SpaController extends Controller
             'footerLeft' => Menu::display("footer-left", "spa"),
         ];
 
+        $options =  [
+            ['id' => 'categories', 'title' => __('Category'), 'items' => Category::all()],
+            ['id' => 'styles', 'title' => __('Style'), 'items' => Style::all()],
+            // ['id' => 'materials', 'title' => __('Material'), 'items' => \App\Material::all()],
+            // ['id' => 'techniques', 'title' => __('Technique'), 'items' => \App\Technique::all()],
+            // ['id' => 'frames', 'title' => __('Frame'), 'items' => \App\Frame::all()],
+        ];
+
         $announce = new AuctionResource(Auction::announce());
         $spaces = Space::all();
 
@@ -52,11 +67,27 @@ class SpaController extends Controller
         $name = config('app.name');
         $coming = AuctionResource::collection($auctions->coming()->get());
         $toGallery = new AuctionResource(Auction::gallery());
+
+        $lots = Lot::where('status', 'gallery');
+
+        $gallery = LotResource::collection(
+            $lots
+                ->with('bets')
+                ->with('techniques')
+                ->with('materials')
+                ->with('categories')
+                ->with('frames')
+                ->with('styles')
+                ->with('user')
+                ->get()
+        );
+
         $translations = cache('translations.' . $locale);
         return view('spa', [
             'app' => compact(
                 'menus',
                 'translations',
+                'options',
                 'name',
                 'locale',
                 'toGallery',
@@ -64,6 +95,7 @@ class SpaController extends Controller
                 'experts',
                 'announce',
                 'spaces',
+                'gallery',
                 'popular'
             )
         ]);

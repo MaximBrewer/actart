@@ -5,11 +5,11 @@ import __ from '../../utils/trans';
 
 export default function Waterfall(props) {
     const { pathname } = useLocation();
-    const { data, items, toFavorite, favorites, category } = props;
+    const { data, items, category } = props;
     const [state, setState] = useState({
         items: [],
         more: true,
-        options: [],
+        options: window.App.options,
         page: 0,
         sortBy: "id",
         order: "asc",
@@ -99,17 +99,6 @@ export default function Waterfall(props) {
             setState(prevState => {
                 return { ...prevState, items: items };
             });
-        } else {
-            axios
-                .get("/api/" + window.App.locale + "/lots/options")
-                .then(res => {
-                    setState(prevState => {
-                        return { ...prevState, options: res.data };
-                    });
-                })
-                .catch(err => {
-                    console.log(err);
-                });
         }
     }, []);
 
@@ -299,9 +288,7 @@ export default function Waterfall(props) {
                 <EntityGrid
                     columns={columns}
                     items={state.items}
-                    toFavorite={toFavorite}
                     data={data}
-                    favorites={favorites}
                 />
             </div>
         </div>

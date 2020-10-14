@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Echo from "laravel-echo";
 import axios from "axios";
+import Flash from "./helpers/Flash";
 window.axios = axios;
 window.grid = {
   xs: 576,
@@ -52,6 +53,7 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
+ReactDOM.render(<Flash />, document.getElementById("flashHolder"));
 
 function changeWindow() {
 

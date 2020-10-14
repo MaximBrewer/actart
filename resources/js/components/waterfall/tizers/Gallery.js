@@ -1,11 +1,13 @@
 import React from "react";
 import { Favorite, Hammer } from "../../../icons/icons";
 import __ from '../../../utils/trans';
+import { useAuth } from '../../../context/auth';
 import {
     Link
 } from "react-router-dom";
 
 export default function Tizer(props) {
+    let { setCurrentUser, setToken, currentUser } = useAuth();
     const { data, item } = props;
     const url =
         item.status == "gallery"
@@ -24,7 +26,7 @@ export default function Tizer(props) {
                     }}
                     to={url}
                 >
-                    <Favorite {...props} />
+                    <Favorite item={item} />
                 </Link>
             </div>
             <Link className={`title`} to={url}>

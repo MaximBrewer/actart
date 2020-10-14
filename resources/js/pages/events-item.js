@@ -81,6 +81,69 @@ export default function Eventtem() {
                     </div>
                 </section>
             </React.Fragment>
-            : ``
+            :
+            <div className="sticky-wrapper">
+                <section id="page">
+                    <div className="container">
+                        <div className="loading-page">
+                            <div className="row">
+                                <div className={`col-xl-60`}>
+                                    <h2 className="h2 title-loading">
+                                        <div className="block-loading">
+                                            <div className="block-loading-animation">
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </h2>
+                                    <hr />
+                                    <div className="sub_h2 subtitle-loading">
+                                        <div className="block-loading">
+                                            <div className="block-loading-animation">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-60">
+                                    <div className="block-loading">
+                                        <div className="block-loading-animation">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div className="sharing sticky-loading">
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div className="sticky-section"><span className="sticky-loading"></span></div>
+            </div>
     );
 }

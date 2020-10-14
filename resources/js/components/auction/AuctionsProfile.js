@@ -1,32 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useAuth } from '../../context/auth';
 import Countdown from "./Countdown";
 
 export default function AuctionProfile(props) {
-    const [state, setState] = useState({
-        auctions: []
-    });
-
-    useEffect(() => {
-        axios
-            .get(
-                "/api/" +
-                    window.App.locale +
-                    "/auctions/coming?ids=" +
-                    (user.auctions.length ? user.auctions.join(",") : "0")
-            )
-            .then(res => {
-                setState({
-                    auctions: res.data.auctions
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }, []);
+    let { currentUser } = useAuth();
 
     return (
         <React.Fragment>
-            {state.auctions.map((item, index) => (
+            {currentUser.auctions.map((item, index) => (
                 <div className="auction-preview" key={index}>
                     <div
                         className="banner-image"

@@ -23,14 +23,13 @@ function LoginModal(props) {
             setToken(token);
             setCurrentUser(user);
             closeModal();
-            // history.push(getIntendedUrl());
+            history.push('/profile');
         }).catch(error => {
             error.json().then(({ errors }) => email.parseServerError(errors));
         });
     };
 
     return (
-
         <div className={`modal-content`}>
             <div className="modal-header">
                 <h5 className="modal-title">{__('MODAL_LOGIN_H2')}</h5>

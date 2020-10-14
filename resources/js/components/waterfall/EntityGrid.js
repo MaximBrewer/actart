@@ -48,13 +48,15 @@ export default function EntityGrid(props) {
         }
     };
     const getPlaceholders = () => {
+
         let size = "xs";
+        data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
+        !!data.firstLimit || (data.firstLimit = 0);
         for (size in window.grid) if (window.innerWidth < window.grid[size]) break;
         let placeholders = [];
         for (let i = 0; i < data.firstLimit[size]; i++) {
             placeholders.push(<PlaceholderTizer key={i} />)
         }
-        console.log(data.firstLimit[size]);
         return placeholders;
     }
     return (

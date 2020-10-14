@@ -11,12 +11,11 @@ export default function WaterfallAjax(props) {
     const getPreviews = () => {
         return [];
     }
-    
+
     const [state, setState] = useState({
         photos: getPreviews(),
-        favorites: window.user != undefined ? window.user.favorites : null,
         more: true,
-        options: [],
+        options: window.App.options,
         page: 0,
         sortBy: "id",
         order: "asc",
@@ -24,58 +23,6 @@ export default function WaterfallAjax(props) {
             status: !!data.archive ? "sold" : "available"
         }
     });
-
-    const toFavorite = (id, e) => {
-        e.preventDefault();
-        if (!state.favorites) {
-            window.dispatchEvent(
-                new CustomEvent("flash", {
-                    detail: {
-                        message: __(
-                            "To add to favorites, authorization is required"
-                        ),
-                        type: "error"
-                    }
-                })
-            );
-            return false;
-        }
-
-        let favorites = user.favorites;
-        let action = user.favorites.indexOf(id) < 0 ? "add" : "remove";
-        let url = "/user/favorites/" + action + "/" + id;
-
-        axios
-            .patch(url)
-            .then(res => {
-                user = res.data.user;
-                favorites = user.favorites;
-                window.dispatchEvent(
-                    new CustomEvent("flash", {
-                        detail: {
-                            message:
-                                action == "add"
-                                    ? __("Added to favorites")
-                                    : __("Removed from favorites"),
-                            type: action == "add" ? "success" : "error"
-                        }
-                    })
-                );
-                data.entity == "favorites" &&
-                    getGallery(
-                        state.filter,
-                        state.sortBy,
-                        state.order,
-                        state.options
-                    );
-                setState(prevState => {
-                    return { ...prevState, favorites };
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
 
     const columns = () => {
         let size = "xs";
@@ -116,8 +63,6 @@ export default function WaterfallAjax(props) {
         if (!!data.exclude) {
             url += "&exclude=" + data.exclude;
         }
-        data.entity == "favorites" ||
-            (url += "&limit=" + getLimit() + "&offset=" + getOffset());
         axios
             .get("/api/" + window.App.locale + url)
             .then(res => {
@@ -155,11 +100,6 @@ export default function WaterfallAjax(props) {
         if (!!data.exclude) {
             url += "&exclude=" + data.exclude;
         }
-        (data.entity == "favorites" &&
-            (url +=
-                "&ids=" +
-                (user.favorites.length ? user.favorites.join(",") : "0"))) ||
-            (url += "&offset=0" + "&limit=" + getLimit());
         axios
             .get("/api/" + window.App.locale + url)
             .then(res => {
@@ -210,22 +150,12 @@ export default function WaterfallAjax(props) {
 
     useEffect(() => {
         window.addEventListener("lot", updateLot);
-        axios
-            .get("/api/" + window.App.locale + "/lots/options")
-            .then(res => {
-                setState(prevState => {
-                    return { ...prevState, options: res.data };
-                });
-                getGallery(
-                    state.filter,
-                    state.sortBy,
-                    state.order,
-                    state.options
-                );
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        getGallery(
+            state.filter,
+            state.sortBy,
+            state.order,
+            state.options
+        );
     }, []);
 
     return (
@@ -329,7 +259,6 @@ export default function WaterfallAjax(props) {
                 <EntityGrid
                     columns={columns}
                     items={state.photos}
-                    toFavorite={toFavorite}
                     data={data}
                     favorites={state.favorites}
                 />
@@ -349,8 +278,8 @@ export default function WaterfallAjax(props) {
                         </a>
                     </div>
                 ) : (
-                    ""
-                )}
+                        ""
+                    )}
             </div>
         </div>
     );

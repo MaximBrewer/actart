@@ -6,6 +6,7 @@ import __ from '../../utils/trans';
 import { Link } from "react-router-dom";
 
 export default function Auctions(props) {
+    console.log(props)
     const [state, setState] = useState({
         slideIndex: 0,
         slidesTotal: App.coming.length,

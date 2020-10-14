@@ -1,9 +1,10 @@
 import React from "react";
 import __ from '../../../utils/trans';
 import Countdown from "../Countdown";
+import { Link } from "react-router-dom";
 
 export default function Top(props) {
-    const { auction } = props;
+    const { auction, participate } = props;
     return (
         <section
             className="auction-announce auction-coming"
@@ -16,16 +17,13 @@ export default function Top(props) {
                 <div className="container">
                     <Countdown date={auction.dateatom} />
                     <div className="h1">{auction.title}</div>
-                    <a
-                        href={"/auctions/" + auction.id}
+                    <Link
+                        to={"/auctions/" + auction.id}
                         className="btn btn-danger mb-3"
-                        onClick={e => {
-                            e.preventDefault();
-                            props.participate(auction.id);
-                        }}
+                        onClick={e => participate(e)}
                     >
                         {__("PARTICIPATE")}
-                    </a>
+                    </Link>
                     <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;</div>
                 </div>
             </div>

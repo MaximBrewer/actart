@@ -13,12 +13,13 @@ export default function Lot(props) {
         <section className="lot-section">
             <div className="sticky-wrapper">
                 <div className="container">
-                    <Carousel {...props} id={id} />
+                    <Carousel {...props} id={id} items={window.App.gallery}/>
                     <div className="gallery-works" id="galleryWorksList">
                         <div className="h2">{__("Works for sale")}</div>
                         <div className="gallery-works-list">
                             <Waterfall
                                 {...props}
+                                items={window.App.gallery}
                                 data={{
                                     sortable: true,
                                     gallery: true,

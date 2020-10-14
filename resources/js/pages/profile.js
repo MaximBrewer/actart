@@ -1,24 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useParams, useLocation, NavLink, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../context/auth';
 import __ from '../utils/trans';
-import Marquee from '../components/marquee'
-import Announce from '../components/announce'
-import YandexShare from 'react-yandex-share';
-import useDocumentTitle from '../components/document-title';
-import Parser from "html-react-parser";
-import Auctions from "../components/auction/Auctions";
-import MovingGallery from "../components/moving/Gallery";
-import Carousel from "../components/carousel/Carousel";
-import WaterfallAjax from "../components/waterfall/WaterfallAjax";
-import client from '../api/client';
-import App from "../router";
 import { setIntendedUrl } from '../utils/auth';
+import AuctionsProfile from "../components/auction/AuctionsProfile";
+import Waterfall from "../components/waterfall/Waterfall";
 
 
-function Profile() {
+function Profile(props) {
   let { setCurrentUser, setToken, currentUser } = useAuth();
-  console.log(currentUser)
 
   let history = useHistory();
 
@@ -35,7 +25,7 @@ function Profile() {
         <div className="row announce">
           <div className="col col-xl-40 col-xxl-38">
             <h5 className="h5">{__('You wanted to take part in the auctions:')}</h5>
-            <div id="actAuctionsProfile"></div>
+            <AuctionsProfile />
           </div>
           <div className="col col-xl-20 col-xxl-22">
             <h5 className="h5">{__('Profile data')}</h5>
@@ -68,9 +58,24 @@ function Profile() {
         </div>
         <div className="art-waterfall-wrapper py-5">
           <h5 className="h5">{__('Favorites:')}</h5>
-          <div className="act-waterfall" data-entity="favorites" data-action="add" data-tizer-view="gallery"
-            data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
-            data-limit='{"xs":48,"sm":48,"md":48,"lg":48,"xl":48,"xxl":48}'>
+          <div className="act-waterfall">
+            <Waterfall
+              {...props}
+              items={currentUser.favorites}
+              data={{
+                sortable: true,
+                gallery: true,
+                tizerView: "gallery",
+                view: {
+                  xs: 1,
+                  sm: 2,
+                  md: 2,
+                  lg: 3,
+                  xl: 4,
+                  xxl: 4
+                }
+              }}
+            />
           </div>
         </div>
       </div>

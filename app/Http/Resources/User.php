@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Lot as LotResource;
+use App\Http\Resources\Auction as AuctionResource;
 
 class User extends JsonResource
 {
@@ -22,8 +23,8 @@ class User extends JsonResource
             'name' => $this->getTranslatedAttribute('name'),
             'middlename' => $this->getTranslatedAttribute('middlename'),
             'surname' => $this->getTranslatedAttribute('surname'),
-            'favorites' => $this->fids,
-            'auctions' => $this->aids,
+            'favorites' => LotResource::collection($this->favorites),
+            'auctions' => AuctionResource::collection($this->auctions),
             'role' => $this->role
         ];
     }

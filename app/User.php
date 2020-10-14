@@ -89,7 +89,7 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
 
     public function auctions()
     {
-        return $this->belongsToMany('App\Auction');
+        return $this->belongsToMany('App\Auction', 'user_auction');
     }
 
     public function professions()

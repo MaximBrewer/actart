@@ -1,6 +1,8 @@
 import React from "react";
 import __ from '../../../utils/trans';
 import Countdown from "../Countdown";
+import { Link } from "react-router-dom";
+
 export default function Bottom(props) {
     const { auction, participate } = props;
     return (
@@ -13,27 +15,25 @@ export default function Bottom(props) {
                 </div>
                 <div className="row justify-content-center my-5">
                     <div className="col-lg-30">
-                        <button
-                            onClick={e => {
-                                e.preventDefault();
-                                participate(auction.id);
-                            }}
+                        <Link
+                            to={"/auctions/" + auction.id}
                             className="btn btn-danger w-100"
+                            onClick={e => participate(e, auction.id)}
                         >
                             {__("Participate")}
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 <div className="row justify-content-center my-5">
                     <div className="col-lg-15">
-                        <a href="/auctions" className="btn btn-default w-100">
+                        <Link to="/auctions" className="btn btn-default w-100">
                             {__("All auctions")}
-                        </a>
+                        </Link>
                     </div>
                     <div className="col-lg-15">
-                        <a href="/gallery" className="btn btn-default w-100">
+                        <Link to="/gallery" className="btn btn-default w-100">
                             {__("Online-gallery")}
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

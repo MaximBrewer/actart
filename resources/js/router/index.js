@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 
 import AuthRoute from './auth-route';
 import GuestRoute from './guest-route';
@@ -21,8 +21,12 @@ import EventsItem from '../pages/events-item';
 import Authors from '../pages/authors';
 import AuthorsItem from '../pages/authors-item';
 
-import Gallery from '../components/gallery/Gallery';
-import Auction from '../components/auction/Auction';
+import GalleryLot from "../components/gallery/Lot";
+import GalleryArchive from "../components/gallery/Archive";
+import GalleryCategory from "../components/gallery/Category";
+
+import AuctionBase from "../components/auction/AuctionBase";
+import AuctionLot from "../components/auction/AuctionLot";
 import Auctions from '../pages/auctions';
 
 import Profile from '../pages/profile';
@@ -32,6 +36,8 @@ import LoginModal from '../modals/login';
 import RegisterModal from '../modals/register';
 import ForgotPasswordModal from '../modals/forgot-password';
 import ResetPasswordModal from '../modals/reset-password';
+
+import client from '../api/client';
 
 Modal.setAppElement('#app')
 
@@ -52,14 +58,9 @@ const customStyles = {
 };
 
 function App() {
-  let { initializing } = useAuth();
+  const { initializing, currentUser, setCurrentUser } = useAuth();
+  const history = useHistory();
 
-  function openModal(name) {
-    setModal(prevState => {
-      initState[name] = true
-      return initState
-    })
-  }
   const initState = {
     login: false,
     register: false,
@@ -74,54 +75,96 @@ function App() {
     { key: 'reset', component: <ResetPasswordModal openModal={openModal} closeModal={closeModal} /> },
   ]
 
+  function openModal(name) {
+    setModal(prevState => {
+      initState[name] = true
+      return initState
+    })
+  }
   function closeModal() {
     setModal(initState)
   }
 
   const [modal, setModal] = React.useState(initState);
 
+  function participate(e, id) {
+    if (!currentUser) {
+      e.preventDefault();
+      openModal('login');
+      return false;
+    }
+    else {
+      for (const a of currentUser.auctions) {
+        if (id == a.id) {
+          return true;
+        }
+      }
+      return client('/api/auction/' + id + '/participate')
+        .then(({ res }) => {
+          setCurrentUser(res.user)
+          return true;
+        })
+        .catch(() => {
+          e.preventDefault();
+          return false;
+        });
+    }
+  }
+
+  const rest = {
+    participate: participate
+  }
+
   return (
     initializing
       ? <FullPageSpinner />
       : <Router>
-        <div className="wrapper">
+        <div className='wrapper'>
           <Header
             openModal={openModal}
             closeModal={closeModal}
           />
-          <main id="main">
+          <main id='main'>
             <Switch>
-              <GuestRoute exact path="/" component={Home} />
+              <Route exact path='/about'><Base  {...rest} /></Route>
+              <Route exact path='/rules'><Base  {...rest} /></Route>
+              <Route exact path='/delivery'><Base  {...rest} /></Route>
+              <Route exact path='/partnership'><Base  {...rest} /></Route>
+              <Route exact path='/how-to-buy'><Base  {...rest} /></Route>
+              <Route exact path='/how-to-sell'><Base  {...rest} /></Route>
 
-              <GuestRoute exact path="/blog" component={Blog} />
-              <GuestRoute exact path="/blog/:slug" component={BlogItem} />
+              <Route exact path='/'><Home {...rest} /></Route>
 
-              <GuestRoute exact path="/news" component={News} />
-              <GuestRoute exact path="/news/:slug" component={NewsItem} />
+              <Route exact path='/blog'><Blog {...rest} /></Route>
+              <Route exact path='/blog/:slug'><BlogItem {...rest} /></Route>
 
-              <GuestRoute exact path="/events" component={Events} />
-              <GuestRoute exact path="/events/exhibitions" component={Events} />
-              <GuestRoute exact path="/events/workshops" component={Events} />
-              <GuestRoute exact path="/events/:id" component={EventsItem} />
+              <Route exact path='/news'><News {...rest} /></Route>
+              <Route exact path='/news/:slug'><NewsItem {...rest} /></Route>
 
-              <GuestRoute exact path="/authors" component={Authors} />
-              <GuestRoute exact path="/authors/:id" component={AuthorsItem} />
 
-              <GuestRoute path="/gallery" component={Gallery} />
-              <GuestRoute exact path="/auctions" component={Auctions} />
-              <GuestRoute exact path="/auctions/special" component={Auctions} />
-              <GuestRoute exact path="/auctions/regular" component={Auctions} />
-              <GuestRoute exact path="/auctions/archive" component={Auctions} />
-              <GuestRoute path="/auctions/:id" component={Auction} />
+              <Route exact path='/events'><Events {...rest} /></Route>
+              <Route exact path='/events/exhibitions'><Events {...rest} /></Route>
+              <Route exact path='/events/workshops'><Events {...rest} /></Route>
+              <Route exact path='/events/:id'><EventsItem {...rest} /></Route>
 
-              <GuestRoute exact path="/about" component={Base} />
-              <GuestRoute exact path="/rules" component={Base} />
-              <GuestRoute exact path="/delivery" component={Base} />
-              <GuestRoute exact path="/partnership" component={Base} />
-              <GuestRoute exact path="/how-to-buy" component={Base} />
-              <GuestRoute exact path="/how-to-sell" component={Base} />
 
-              <AuthRoute path="/profile" component={Profile} />
+              <Route exact path='/authors' component={Authors} {...rest} />
+              <Route exact path='/authors/:id' component={AuthorsItem} {...rest} />
+
+              <Route exact path={`/gallery`}><GalleryCategory {...rest} showLink={false} /></Route>
+              <Route exact path={`/gallery/lot/:id`}><GalleryLot {...rest} showLink={true} /></Route>
+              <Route exact path={`/gallery/category/:id`}><GalleryCategory {...rest} showLink={true} /></Route>
+              <Route exact path={`/gallery/archive`}><GalleryArchive {...rest} showLink={true} /></Route>
+
+              <Route exact path='/auctions' component={Auctions} {...rest} />
+              <Route exact path='/auctions/special' component={Auctions} {...rest} />
+              <Route exact path='/auctions/regular' component={Auctions} {...rest} />
+              <Route exact path='/auctions/archive' component={Auctions} {...rest} />
+
+              <Route exact path={`/auctions/:id`}><AuctionBase {...rest} /></Route>
+              <Route exact path={`/auctions/:id/lot/:lotId`}><AuctionLot {...rest} /></Route>
+
+              <AuthRoute path='/profile' component={Profile} {...rest} />
               <Route component={NotFound} />
             </Switch>
           </main>

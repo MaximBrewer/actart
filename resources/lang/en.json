@@ -39,6 +39,19 @@
     "MODAL_LOGIN_SIGN_IN": "Register",
     "MODAL_LOGIN_BTN": "Log in",
 
+    "MODAL_FP_H2": "Reset password",
+    "MODAL_FP_EMAIL": "E-mail",
+    "MODAL_FORGET_PASSWORD_LOGIN": "Log in",
+    "MODAL_FP_BTN": "Reset",
+
+    "MODAL_SIGNIN_H2": "Sign in",
+    "MODAL_SIGNIN_NAME": "Name",
+    "MODAL_SIGNIN_EMAIL": "E-mail",
+    "MODAL_SIGNIN_PASSWORD": "Password",
+    "MODAL_SIGNIN_PASSWORD_CONFIRMATON": "Confirm password",
+    "MODAL_SIGNIN_LOGIN": "Log in",
+    "MODAL_SIGNIN_BTN": "Register",
+
     "#status-gallery#": "Available in the gallery",
     "#status-auction#": "Participates in the auction",
     "#status-discontinued#": "Discontinued",

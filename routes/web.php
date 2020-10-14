@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Session;
 Route::get('lang/{locale}', '\App\Http\Controllers\LangController@index');
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::patch('/resort', '\App\Http\Controllers\Voyager\VoyagerBaseController@resort')->name('voyager.base.resort');
     Voyager::routes();
 });
 

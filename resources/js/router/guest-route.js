@@ -4,18 +4,14 @@ import PropTypes from 'prop-types';
 import { useAuth } from '../context/auth';
 
 function GuestRoute({ component: Component, title, ...rest }) {
-
   let { authenticated } = useAuth();
-
   return (
     <Route
       {...rest}
-      render={props => <Component {...props} />}
+      render={props => <Component {...props} participate={rest.participate}/>}
     />
   );
 };
-
-GuestRoute.displayName = 'Guest Route';
 
 GuestRoute.propTypes = {
   component: PropTypes.func.isRequired,

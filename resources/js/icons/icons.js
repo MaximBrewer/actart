@@ -1,12 +1,129 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAuth } from '../context/auth';
+import client from '../api/client';
+import __ from '../utils/trans';
+
+
+export function FavoriteBig(props) {
+    const { item } = props;
+    const [active, setActive] = useState(false);
+    let { setCurrentUser, currentUser } = useAuth();
+
+
+    useEffect(() => {
+        !!currentUser &&
+            setActive(currentUser.favorites.filter(obj => obj.id == item.id).length)
+    }, [currentUser]);
+
+    const toFavorite = (e) => {
+        e.preventDefault();
+        if (!currentUser) {
+            window.dispatchEvent(
+                new CustomEvent("flash", {
+                    detail: {
+                        message: __(
+                            "To add to favorites, authorization is required"
+                        ),
+                        type: "error"
+                    }
+                })
+            );
+            return false;
+        }
+
+        let action = active ? "remove" : "add";
+
+        client("/api/profile/favorites/" + action + "/" + item.id, { method: "PATCH" })
+            .then(({ user }) => {
+                window.dispatchEvent(
+                    new CustomEvent("flash", {
+                        detail: {
+                            message:
+                                action == "add"
+                                    ? __("Added to favorites")
+                                    : __("Removed from favorites"),
+                            type: action == "add" ? "success" : "error"
+                        }
+                    })
+                );
+                setCurrentUser(user);
+            })
+            .catch(() => null);
+    };
+    return (
+
+        <div className="lot-favorite">
+            <div
+                onClick={e => toFavorite(e)}
+                className={
+                    active
+                        ? `favorite-link active`
+                        : `favorite-link`
+                }
+            >
+                <div>
+                    {
+                        active
+                            ? __("LOT_FAVORITE_IN")
+                            : __("LOT_FAVORITE_OUT")}
+                </div>
+                <FavoriteIcon />
+            </div>
+        </div>
+    );
+}
 
 export function Favorite(props) {
-    const { data, item, toFavorite, favorites } = props;
+    const { item } = props;
+    const [active, setActive] = useState(false);
+    let { setCurrentUser, currentUser } = useAuth();
+
+    useEffect(() => {
+        !!currentUser &&
+            setActive(currentUser.favorites.filter(obj => obj.id == item.id).length)
+    }, [currentUser]);
+
+    const toFavorite = (e) => {
+        e.preventDefault();
+        if (!currentUser) {
+            window.dispatchEvent(
+                new CustomEvent("flash", {
+                    detail: {
+                        message: __(
+                            "To add to favorites, authorization is required"
+                        ),
+                        type: "error"
+                    }
+                })
+            );
+            return false;
+        }
+
+        let action = active ? "remove" : "add";
+
+        client("/api/profile/favorites/" + action + "/" + item.id, { method: "PATCH" })
+            .then(({ user }) => {
+                window.dispatchEvent(
+                    new CustomEvent("flash", {
+                        detail: {
+                            message:
+                                action == "add"
+                                    ? __("Added to favorites")
+                                    : __("Removed from favorites"),
+                            type: action == "add" ? "success" : "error"
+                        }
+                    })
+                );
+                setCurrentUser(user);
+            })
+            .catch(() => null);
+    };
+
     return (
         <div
-            onClick={e => toFavorite(item.id, e)}
+            onClick={e => toFavorite(e)}
             className={
-                favorites && favorites.indexOf(item.id) > -1
+                active
                     ? `favorite-link active`
                     : `favorite-link`
             }
@@ -15,6 +132,7 @@ export function Favorite(props) {
         </div>
     );
 }
+
 export function FavoriteIcon() {
     return (
         <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">

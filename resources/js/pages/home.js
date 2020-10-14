@@ -11,10 +11,8 @@ import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { Hummer, AboutLogo, AboutBgLogo } from "../icons/home";
 
-function Home() {
+function Home(props) {
   useDocumentTitle(__('HOME_TITLE'));
-  let { currentUser } = useAuth();
-  const participate = () => { }
 
   return (
     <React.Fragment>
@@ -22,7 +20,7 @@ function Home() {
         <div className="sticky-wrapper">
           <div className="container">
             <div className="h5 d-xl-none">{Parser(__('AUCTIONS_BLOCK_TITLE'))}</div>
-            <Auctions participate={participate} />
+            <Auctions {...props} />
           </div>
           <div className="sticky-section"><span>{__('AUCTIONS_BLOCK_STICKY')}</span></div>
         </div>

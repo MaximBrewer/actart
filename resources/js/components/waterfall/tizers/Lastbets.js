@@ -4,7 +4,7 @@ import { Favorite, Hammer } from "../../../icons/icons";
 import __ from '../../../utils/trans';
 
 export default function Tizer(props) {
-    const { data, item, toFavorite, favorites } = props;
+    const { data, item} = props;
     const url =
         item.status == "gallery"
             ? "/gallery/lot/" + item.id
@@ -21,7 +21,7 @@ export default function Tizer(props) {
                         paddingTop: (item.pxheight / item.pxwidth) * 100 + "%"
                     }}
                 >
-                    <Favorite {...props} />
+                    <Favorite item={item} />
                 </Link>
             </div>
             <Link className="title" to={url}>

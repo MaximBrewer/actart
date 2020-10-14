@@ -19,16 +19,14 @@ function AuthRoute({ component: Component, title, ...rest }) {
 
         return authenticated
           ? (
-            <Component {...props} />
+            <Component {...props} participate={rest.participate} />
           )
-          : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />;
+          : <Redirect to={{ pathname: '/', state: { from: props.location } }} />;
       }
       }
     />
   );
 };
-
-AuthRoute.displayName = 'Auth Route';
 
 AuthRoute.propTypes = {
   component: PropTypes.func.isRequired,

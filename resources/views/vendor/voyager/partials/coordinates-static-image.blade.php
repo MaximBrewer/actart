@@ -1,0 +1,1 @@
+<img src="//static-maps.yandex.ru/1.x/?ll=@foreach($data->getCoordinates() as $point){{ $point['lng'] }},{{ $point['lat'] }}&pt={{ $point['lng'] }},{{ $point['lat'] }},pm2rdm,@endforeach&l=map&size=200,100&z=13"/>

@@ -90,18 +90,6 @@ class LotController extends Controller
         ];
     }
 
-
-    public function options(Request $request)
-    {
-        return [
-            ['id' => 'categories', 'title' => __('Category'), 'items' => \App\Category::all()],
-            ['id' => 'styles', 'title' => __('Style'), 'items' => \App\Style::all()],
-            // ['id' => 'materials', 'title' => __('Material'), 'items' => \App\Material::all()],
-            // ['id' => 'techniques', 'title' => __('Technique'), 'items' => \App\Technique::all()],
-            // ['id' => 'frames', 'title' => __('Frame'), 'items' => \App\Frame::all()],
-        ];
-    }
-
     public function favorites(Request $request)
     {
         $ids = explode(",", $request->get('ids'));

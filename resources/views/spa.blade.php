@@ -14,6 +14,7 @@
 
 <body>
     <div id="app"></div>
+    <div id="flashHolder"></div>
     <script>
         window.App = {!! json_encode($app); !!};
     </script>

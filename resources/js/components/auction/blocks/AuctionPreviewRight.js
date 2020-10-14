@@ -2,10 +2,11 @@ import React from "react";
 import Countdown from "../Countdown";
 import Parser from "html-react-parser";
 import __ from '../../../utils/trans';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 
 export default function AuctionPreviewRight(props) {
+    const { participate } = props;
     return (
         <div className="banner-announce">
             <div className="row">
@@ -21,8 +22,7 @@ export default function AuctionPreviewRight(props) {
                     to={"/auctions/" + props.auction.id}
                     className="btn btn-danger"
                     onClick={e => {
-                        e.preventDefault();
-                        props.participate(props.auction.id);
+                        participate(e, props.auction.id);
                     }}
                 >
                     {__("PARTICIPATE")}

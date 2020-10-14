@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../context/auth';
-import {register} from '../api/auth';
+import { register } from '../api/auth';
 import useInputValue from '../components/input-value';
 import __ from '../utils/trans';
 
-function RegisterModal () {
+function RegisterModal(props) {
+  const { openModal, closeModal } = props;
   let history = useHistory();
   let { setCurrentUser, setToken } = useAuth();
   let email = useInputValue('email');
@@ -21,101 +22,86 @@ function RegisterModal () {
       email: email.value,
       password: password.value,
       password_confirmation: passwordConfirmation.value
-    }).then(({user, token}) => {
+    }).then(({ user, token }) => {
       setCurrentUser(user);
       setToken(token);
-    //   history.push('/home');
+      //   history.push('/home');
     }).catch(error => {
-      error.json().then(({errors}) => {
-        ;[email, name, password].forEach(({parseServerError}) => parseServerError(errors));
+      error.json().then(({ errors }) => {
+        ;[email, name, password].forEach(({ parseServerError }) => parseServerError(errors));
       });
     });
   };
 
   return (
-    <div className="flex justify-center items-center w-full flex-col py-4 min-h-screen bg-gray-200">
-
-      <div className="p-8 flex flex-col items-center">
-        <div>
-          <Link to="/" >
-            <img width="48" className="align-middle mx-2" alt="laravel" title="laravel" src="/images/icons/laravel.svg" />
-          </Link>
-        </div>
-        <div className="text-2xl leading-loose">
-              Start your free trial
-        </div>
-        <div className="text-gray-800">
-          <span className="text-gray-700">Or</span> <Link to="/login" className="underline">login to your account</Link>
-        </div>
+    <div className={`modal-content`}>
+      <div className="modal-header">
+        <h5 className="modal-title">{__('MODAL_SIGNIN_H2')}</h5>
+        <button type="button" className="close" onClick={closeModal}>
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
-
-      <div className="bg-white border rounded border-grey-light w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/4 px-8 py-4 shadow">
-        <form onSubmit={handleSubmit}
-          method="POST"
-        >
-          <div className="mb-4 mt-2">
-            <label className="block text-gray-700 text-sm mb-1 font-bold" htmlFor="username">
-                  Username
-            </label>
+      <form onSubmit={handleSubmit} method="POST">
+        <div className={`modal-body`}>
+          <div className="form-group">
+            <label htmlFor="username">{__('MODAL_SIGNIN_NAME')}</label>
             <input
-              type="text"
               id="username"
+              type="text"
               name="name"
-              className={`appearance-none border rounded w-full py-1 px-3 bg-gray-100 ${name.error ? 'border-red-500' : ''}`}
+              className={`form-control ${name.error ? 'is-invalid' : ''}`}
               required
               autoFocus
-              {...name.bind} />
-
-            { name.error && <p className="text-red-500 text-xs pt-2">{name.error}</p> }
+              {...name.bind}
+            />
+            {name.error && <div className="invalid-feedback">{name.error}</div>}
           </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-1" htmlFor="email">
-              Email address
-            </label>
+          <div className="form-group">
+            <label htmlFor="email">{__('MODAL_SIGNIN_EMAIL')}</label>
             <input
               id="email"
-              name="email"
               type="email"
-              className={`appearance-none border rounded w-full py-1 px-3 bg-gray-100 ${email.error ? 'border-red-500' : ''}`}
+              name="email"
+              className={`form-control ${email.error ? 'is-invalid' : ''}`}
               required
-              {...email.bind} />
-
-            { email.error && <p className="text-500 text-xs pt-2">{ email.error }</p> }
+              {...email.bind}
+            />
+            {email.error && <div className="invalid-feedback">{email.error}</div>}
           </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-1" htmlFor="password"> Password </label>
+          <div className="form-group">
+            <label htmlFor="password">{__('MODAL_SIGNIN_PASSWORD')}</label>
             <input
               type="password"
               id="password"
               name="password"
-              className={`appearance-none border rounded w-full py-1 px-3 bg-gray-100  ${password.error ? 'border-red-500' : ''}`}
+              className={`form-control ${password.error ? 'is-invalid' : ''}`}
               minLength={6}
               required
-              {...password.bind}/>
-
-            { password.error && <p className="text-red-500 text-xs pt-2">{ password.error }</p> }
+              {...password.bind}
+            />
+            {password.error && <div className="invalid-feedback">{password.error}</div>}
           </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password-confirmation"> Password confirmation </label>
+          <div className="form-group">
+            <label htmlFor="password-confirmation">{__('MODAL_SIGNIN_PASSWORD_CONFIRMATON')}</label>
             <input
               type="password"
               id="password-confirmation"
               name="password_confirmation"
-              className={`appearance-none border rounded w-full py-1 px-3 bg-gray-100 ${password.error ? 'border-red-500' : ''}`}
+              className={`form-control ${passwordConfirmation.error ? 'is-invalid' : ''}`}
               required
-              {...passwordConfirmation.bind}/>
+              {...passwordConfirmation.bind}
+            />
           </div>
-
-          <div className="mb-4">
-            <button className="border rounded p-2 text-white bg-indigo-500 w-full font-bold hover:bg-indigo-500-dark">
-              Register
-            </button>
+          <div className="form-group">
+            <a href="#" onClick={() => openModal('login')}>{__('MODAL_SIGNIN_LOGIN')}</a>
           </div>
-        </form>
-      </div>
+        </div>
+        <div className={`modal-footer`}>
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary">{__('MODAL_SIGNIN_BTN')}</button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }

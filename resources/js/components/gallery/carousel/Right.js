@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { FavoriteIcon } from "../../../icons/icons";
+import { FavoriteBig } from "../../../icons/icons";
 import __ from '../../../utils/trans';
 
 export default function Right(props) {
-    const { toFavorite, favorites, item } = props;
+    const { item } = props;
 
     const offer = () => { };
     const blitz = () => { };
@@ -14,23 +14,7 @@ export default function Right(props) {
                 <div className="lot-number">
                     {__("LOT_TEXT_LOT_ID")} {item.id}
                 </div>
-                <div className="lot-favorite">
-                    <div
-                        onClick={e => toFavorite(item.id, e)}
-                        className={
-                            favorites && favorites.indexOf(item.id) > -1
-                                ? `favorite-link active`
-                                : `favorite-link`
-                        }
-                    >
-                        <div>
-                            {favorites && favorites.indexOf(item.id) > -1
-                                ? __("LOT_FAVORITE_IN")
-                                : __("LOT_FAVORITE_OUT")}
-                        </div>
-                        <FavoriteIcon />
-                    </div>
-                </div>
+                <FavoriteBig item={item} />
             </div>
             <div className="lot-author">
                 <a className="author" href={item.author_url}>

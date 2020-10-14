@@ -41,6 +41,20 @@
     "MODAL_LOGIN_FORGET_PASSWORD": "Забыли пароль?",
     "MODAL_LOGIN_SIGN_IN": "Регистрация",
     "MODAL_LOGIN_BTN": "Войти",
+
+    "MODAL_FP_H2": "Сброс пароля",
+    "MODAL_FP_EMAIL": "E-mail",
+    "MODAL_FORGET_PASSWORD_LOGIN": "Войти",
+    "MODAL_FP_BTN": "Сбросить",
+
+    "MODAL_SIGNIN_H2": "Регистрация",
+    "MODAL_SIGNIN_NAME": "Имя",
+    "MODAL_SIGNIN_EMAIL": "E-mail",
+    "MODAL_SIGNIN_PASSWORD": "Пароль",
+    "MODAL_SIGNIN_PASSWORD_CONFIRMATON": "Повторите пароль",
+    "MODAL_SIGNIN_LOGIN": "Войти",
+    "MODAL_SIGNIN_BTN": "Регистрация",
+
     "E-Mail": "E-Mail",
     "Password": "Пароль",
     "Remember Me": "Запомнить меня",

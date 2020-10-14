@@ -1,17 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
-import { useAuth } from '../context/auth';
 import __ from '../utils/trans';
-import Marquee from '../components/marquee'
 import YandexShare from 'react-yandex-share';
-import useDocumentTitle from '../components/document-title';
 import Parser from "html-react-parser";
-import Auctions from "../components/auction/Auctions";
-import MovingGallery from "../components/moving/Gallery";
-import Carousel from "../components/carousel/Carousel";
-import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 import client from '../api/client';
-import App from "../router";
 
 export default function Base() {
     const [state, setState] = useState({ page: null });

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import AuctionComingTop from "./coming/LotTop.js";
 import AuctionComingCenter from "./coming/LotCenter.js";
 import AuctionComingBottom from "./coming/LotBottom.js";
@@ -14,11 +14,38 @@ import AuctionArchiveBottom from "./archive/LotBottom.js";
 import AuctionArchiveLotsList from "./coming/LotsList.js";
 
 export default function Lot(props) {
-    const { id } = useParams();
-    const { auction } = props;
+    const { id, lotId } = useParams();
+
+    const [state, setState] = useState({
+        auction: null
+    });
+
+    const updateAuction = event => {
+        setState(prevState => {
+            return {
+                ...prevState,
+                auction: event.detail.auction
+            };
+        });
+    };
+
+    useEffect(() => {
+        axios
+            .get("/api/" + window.App.locale + "/auctions/" + id)
+            .then(res => {
+                setState({
+                    auction: res.data.auction
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        window.addEventListener("auction", updateAuction);
+    }, []);
+
     const Bottom = props => {
-        if (props.auction.title)
-            switch (props.auction.status) {
+        if (state.auction.title)
+            switch (state.auction.status) {
                 case "started":
                     return <AuctionOnlineBottom {...props} />;
                 case "finished":
@@ -29,8 +56,8 @@ export default function Lot(props) {
         return false;
     };
     const Top = props => {
-        if (props.auction.title)
-            switch (props.auction.status) {
+        if (state.auction.title)
+            switch (state.auction.status) {
                 case "started":
                     return <AuctionOnlineTop {...props} />;
                 case "finished":
@@ -41,8 +68,8 @@ export default function Lot(props) {
         return false;
     };
     const LotsList = props => {
-        if (props.auction.title)
-            switch (props.auction.status) {
+        if (state.auction.title)
+            switch (state.auction.status) {
                 case "started":
                     return <AuctionOnlineLotsList {...props} />;
                 case "finished":
@@ -53,8 +80,8 @@ export default function Lot(props) {
         return false;
     };
     const Center = props => {
-        if (props.auction.title)
-            switch (props.auction.status) {
+        if (state.auction.title)
+            switch (state.auction.status) {
                 case "started":
                     return <AuctionOnlineCenter {...props} />;
                 case "finished":
@@ -66,32 +93,32 @@ export default function Lot(props) {
     };
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [id]);
+    }, [lotId]);
     return (
         <section className="auction-page-wrapper">
-            {auction ? (
-                <div className={`status-` + auction.status}>
-                    <Top {...props} />
+            {state.auction ? (
+                <div className={`status-` + state.auction.status}>
+                    <Top {...props}  auction={state.auction}/>
                     <div className="sticky-wrapper">
                         <div className="auction-page-inner">
-                            <Center {...props} />
+                            <Center {...props} auction={state.auction} />
                         </div>
                         <div className="auction-page-inner">
                             <div className="auction-works-list my-5">
-                                <LotsList {...props} />
+                                <LotsList {...props} auction={state.auction} />
                             </div>
                             <div className="my-5">
-                                <Bottom {...props} />
+                                <Bottom {...props} auction={state.auction} />
                             </div>
                         </div>
                         <div className="sticky-section">
-                            <span>{auction.title}</span>
+                            <span>{state.auction.title}</span>
                         </div>
                     </div>
                 </div>
             ) : (
-                ""
-            )}
+                    ""
+                )}
         </section>
     );
 }
