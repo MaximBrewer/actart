@@ -8,6 +8,7 @@ import client from '../../../api/client';
 
 
 export default function AuctionPreviewRight(props) {
+    const { openModal } = props;
     const { initializing, currentUser, setCurrentUser } = useAuth();
     let history = useHistory();
 

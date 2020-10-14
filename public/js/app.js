@@ -49786,6 +49786,8 @@ function _arrayLikeToArray(arr, len) {
 
 
 function AuctionPreviewRight(props) {
+  var openModal = props.openModal;
+
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_4__["useAuth"])(),
       initializing = _useAuth.initializing,
       currentUser = _useAuth.currentUser,
