@@ -56,7 +56,7 @@
             }
         }
     }
-    .auction-carousel{
+    .auction-carousel {
         margin-top: 6rem;
         margin-bottom: 4rem;
     }
@@ -64,8 +64,9 @@
         background-color: $greylight;
         padding: 3rem 0;
         .auction-works-list {
-            .h3 {
-                border-bottom: 0.5rem solid $primary;
+            .sorting {
+                padding-top: 0.5rem;
+                border-top: 0.5rem solid $primary;
             }
         }
     }

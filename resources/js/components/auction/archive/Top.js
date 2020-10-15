@@ -1,9 +1,12 @@
 import React from "react";
-export default function Top(props) {
-    const auction = { props };
+import __ from '../../../utils/trans';
+import Countdown from "../Countdown";
+
+export default function ArchiveTop(props) {
+    const { auction } = props;
     return (
         <section
-            className="auction-announce auction-coming"
+            className="auction-announce auction-archive"
             style={{
                 backgroundImage: "url(" + auction.thumbnail + ")",
                 backgroundPosition: "top center"
@@ -12,17 +15,7 @@ export default function Top(props) {
             <div className="darkener">
                 <div className="container">
                     <div className="h1">{auction.title}</div>
-                    <a
-                        href={"/auctions/" + auction.id}
-                        className="btn btn-danger mb-3"
-                        onClick={e => {
-                            e.preventDefault();
-                            props.participate(auction.id);
-                        }}
-                    >
-                        {__("PARTICIPATE")}
-                    </a>
-                    <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;</div>
+                    <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;{__('BIDDING_FINISHED_TEXT')}</div>
                 </div>
             </div>
         </section>

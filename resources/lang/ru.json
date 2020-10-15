@@ -55,6 +55,21 @@
     "MODAL_SIGNIN_LOGIN": "Войти",
     "MODAL_SIGNIN_BTN": "Регистрация",
 
+    "ARCHIVE_OF_AUCTIONS_TITLE": "Архив",
+    "ARCHIVE_OF_AUCTIONS_PAGE_TITLE": "Архив аукционов",
+    "ARCHIVE_LINK_TO_AUCTIONS": "Аукционы",
+
+    "ARCHIVE_OF_AUCTIONS": "Архив",
+    "BIDDING_FINISHED_TEXT": "Торги закончены",
+    "IN_THE_SAME_AUCTION": "В этом же аукционе",
+    "TITLE_PAST_AUCTION": "Прошедший аукцион",
+
+    "ONLINE_BROADCAST_IN_PROPGRESS_TEXT": "Идет онлайн-трансляция",
+    "ONLINE_BROADCAST_TEXT": "Онлайн-трансляция",
+    "FUTHER_IN_THE_AUCTION": "Далее в аукционе",
+
+    "ARCHIVE_MORE_LINK": "Подробнее",
+
     "E-Mail": "E-Mail",
     "Password": "Пароль",
     "Remember Me": "Запомнить меня",

@@ -7,13 +7,17 @@ import AuctionComingLotsList from "./coming/LotsList.js";
 import AuctionOnlineTop from "./online/Top.js";
 import AuctionOnlineCenter from "./online/Center.js";
 import AuctionOnlineBottom from "./online/Bottom.js";
-import AuctionOnlineLotsList from "./coming/LotsList.js";
+import AuctionOnlineLotsList from "./online/LotsList.js";
 import AuctionArchiveTop from "./archive/Top.js";
 import AuctionArchiveCenter from "./archive/Center.js";
 import AuctionArchiveBottom from "./archive/Bottom.js";
-import AuctionArchiveLotsList from "./coming/LotsList.js";
+import AuctionArchiveLotsList from "./archive/LotsList.js";
+import useDocumentTitle from '../../components/document-title';
+import __ from '../../utils/trans';
+import client from '../../api/client';
 
 export default function AuctionBase(props) {
+    useDocumentTitle(__('AUCTIONS_PAGE_TITLE'));
     const { id } = useParams();
 
     const [state, setState] = useState({
@@ -31,16 +35,13 @@ export default function AuctionBase(props) {
     };
 
     useEffect(() => {
-        axios
-            .get("/api/" + window.App.locale + "/auctions/" + id)
-            .then(res => {
+        client('/api/' + window.App.locale + "/auctions/" + id)
+            .then(({ auction }) =>
                 setState({
-                    auction: res.data.auction
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                    auction: auction
+                })
+            )
+            .catch(() => null);
         window.addEventListener("auction", updateAuction);
     }, []);
 

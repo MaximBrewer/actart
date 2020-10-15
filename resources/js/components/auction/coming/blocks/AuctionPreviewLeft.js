@@ -1,8 +1,8 @@
 import React from "react";
-import __ from '../../../utils/trans';
+import __ from '../../../../utils/trans';
 export default function AuctionPreviewLeft(props) {
     return (
-        <div>
+        <div> 
             <div
                 className="banner-image"
                 style={{
@@ -16,4 +16,4 @@ export default function AuctionPreviewLeft(props) {
             </div>
         </div>
     );
-}
+} 

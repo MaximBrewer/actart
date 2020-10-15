@@ -7,13 +7,16 @@ import AuctionComingLotsList from "./coming/LotsList.js";
 import AuctionOnlineTop from "./online/LotTop.js";
 import AuctionOnlineCenter from "./online/LotCenter.js";
 import AuctionOnlineBottom from "./online/LotBottom.js";
-import AuctionOnlineLotsList from "./coming/LotsList.js";
+import AuctionOnlineLotsList from "./online/LotsList.js";
 import AuctionArchiveTop from "./archive/LotTop.js";
 import AuctionArchiveCenter from "./archive/LotCenter.js";
 import AuctionArchiveBottom from "./archive/LotBottom.js";
-import AuctionArchiveLotsList from "./coming/LotsList.js";
+import AuctionArchiveLotsList from "./archive/LotsList.js";
+import useDocumentTitle from '../../components/document-title';
+import __ from '../../utils/trans';
 
 export default function Lot(props) {
+    useDocumentTitle(__('AUCTIONS_PAGE_TITLE'));
     const { id, lotId } = useParams();
 
     const [state, setState] = useState({

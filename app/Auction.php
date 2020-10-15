@@ -122,4 +122,9 @@ class Auction extends Model
     {
         return $this->hasMany('App\Lot')->orderBy('sort', "ASC");
     }
+
+    public function current()
+    {
+        return $this->hasOne('App\Lot')->where('status', 'auction')->orderBy('sort', "ASC")->limit(1);
+    }
 }

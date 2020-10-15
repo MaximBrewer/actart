@@ -5,7 +5,7 @@ import __ from '../../utils/trans';
 
 export default function Waterfall(props) {
     const { pathname } = useLocation();
-    const { data, items, category } = props;
+    const { data, items, category, status } = props;
     const [state, setState] = useState({
         items: [],
         more: true,
@@ -44,7 +44,7 @@ export default function Waterfall(props) {
         setState(prevState => {
             return {
                 ...prevState,
-                items: prevState.items.sort(function(a, b) {
+                items: prevState.items.sort(function (a, b) {
                     if (order == "asc") return a[field] > b[field] ? 1 : -1;
                     else return b[field] > a[field] ? 1 : -1;
                 }),
@@ -60,6 +60,7 @@ export default function Waterfall(props) {
             push = true;
             loop: for (const field in filter) {
                 for (const option of item[field]) {
+                    console.log(filter[field], option.id)
                     if (filter[field] == option.id) {
                         continue loop;
                     }
@@ -85,9 +86,7 @@ export default function Waterfall(props) {
 
     const setFilter = (field, value) => {
         setState(prevState => {
-            let filter = prevState.filter,
-                itemsNew = [],
-                push;
+            let filter = prevState.filter;
             filter[field] = value;
             return filterItems(filter, prevState);
         });
@@ -96,20 +95,49 @@ export default function Waterfall(props) {
     useEffect(() => {
         window.addEventListener("lot", updateLot);
         if (!data.filterable) {
-            setState(prevState => {
-                return { ...prevState, items: items };
-            });
+            if (!!status) {
+                setState(prevState => {
+                    let newItems = [];
+                    for (const item of items) {
+                        console.log(item.status == status)
+                        item.status == status && newItems.push(item);
+                    }
+                    return {
+                        ...prevState,
+                        items: newItems
+                    };
+                });
+            } else {
+                setState(prevState => {
+                    return { ...prevState, items: items };
+                });
+            }
         }
     }, []);
 
     useEffect(() => {
-        if (!!data.filterable)
+        if (!!data.filterable) {
             if (!!category) setFilter("categories", category);
             else delFilter("categories");
-        else
-            setState(prevState => {
-                return { ...prevState, items: items };
-            });
+        } else {
+            if (!!status) {
+                setState(prevState => {
+                    let newItems = [];
+                    for (const item of items) {
+                        console.log(item.status == status)
+                        item.status == status && newItems.push(item);
+                    }
+                    return {
+                        ...prevState,
+                        items: newItems
+                    };
+                });
+            } else {
+                setState(prevState => {
+                    return { ...prevState, items: items };
+                });
+            }
+        }
     }, [pathname, items]);
 
     return (
@@ -229,35 +257,35 @@ export default function Waterfall(props) {
                                                     {item.title}
                                                 </Link>
                                             ) : (
-                                                <a
-                                                    className={
-                                                        state.filter[
-                                                            option.id
-                                                        ] == item.id
-                                                            ? `active`
-                                                            : ``
-                                                    }
-                                                    href="#"
-                                                    onClick={e => {
-                                                        e.preventDefault();
-                                                        state.filter[
-                                                            option.id
-                                                        ] == undefined ||
-                                                        state.filter[
-                                                            option.id
-                                                        ] != item.id
-                                                            ? setFilter(
-                                                                  option.id,
-                                                                  item.id
-                                                              )
-                                                            : delFilter(
-                                                                  option.id
-                                                              );
-                                                    }}
-                                                >
-                                                    {item.title}
-                                                </a>
-                                            )}
+                                                    <a
+                                                        className={
+                                                            state.filter[
+                                                                option.id
+                                                            ] == item.id
+                                                                ? `active`
+                                                                : ``
+                                                        }
+                                                        href="#"
+                                                        onClick={e => {
+                                                            e.preventDefault();
+                                                            state.filter[
+                                                                option.id
+                                                            ] == undefined ||
+                                                                state.filter[
+                                                                option.id
+                                                                ] != item.id
+                                                                ? setFilter(
+                                                                    option.id,
+                                                                    item.id
+                                                                )
+                                                                : delFilter(
+                                                                    option.id
+                                                                );
+                                                        }}
+                                                    >
+                                                        {item.title}
+                                                    </a>
+                                                )}
                                         </li>
                                     ))}
                                     {option.id == "categories" ? (
@@ -272,8 +300,8 @@ export default function Waterfall(props) {
                                             </Link>
                                         </li>
                                     ) : (
-                                        ``
-                                    )}
+                                            ``
+                                        )}
                                 </ul>
                             </li>
                         ))}

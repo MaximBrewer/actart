@@ -15,19 +15,39 @@ use App\Mail\AuctionParticipate;
 class AuctionController extends Controller
 {
     //
-    public function coming(Request $request)
+    public function index(Request $request)
     {
         $auctions = Auction::where(function ($query) {
             $query;
         });
-        if ($request->get('attr')) $auctions->where('attr', $request->get('attr'));
-        if (strlen($request->get('ids'))) $auctions->whereIn('id', explode(",", $request->get('ids')));
+        $limit = $request->get('limit') ? $request->get('limit') : 6;
+        $offset = $request->get('offset') ? $request->get('offset') : 0;
+
+        if ($request->get('status')) {
+            switch ($request->get('status')) {
+                case "available":
+                    $auctions->whereIn('status', ["coming", "started"]);
+                    break;
+                default:
+                    $auctions->where('status', $request->get('status'));
+                    break;
+            }
+        };
+
+        $sortBy = $request->get('sortBy') ? 'auctions.' . $request->get('sortBy') : false;
+        $auctions->orderBy($sortBy ? $sortBy : 'auctions.id', $request->get('order') ? $request->get('order') : 'asc');
 
         return [
-            'auctions' => AuctionResource::collection($auctions->coming()->get())
+            'next' => $auctions->count() - $offset - $limit,
+            'auctions' => AuctionResource::collection(
+                $auctions
+                    ->limit($limit)
+                    ->offset($offset)
+                    ->get()
+            ),
         ];
     }
-    //
+
     public function show(Request $request, $lang, $id)
     {
         $auction = Auction::findOrfail($id);

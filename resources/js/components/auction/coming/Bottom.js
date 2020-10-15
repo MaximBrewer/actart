@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Bottom(props) {
     const { auction, participate } = props;
+
     return (
         <div className="auction-footer">
             <div className="container">
@@ -18,7 +19,7 @@ export default function Bottom(props) {
                         <Link
                             to={"/auctions/" + auction.id}
                             className="btn btn-danger w-100"
-                            onClick={e => participate(e, auction.id)}
+                            onClick={e => participate(e, auction)}
                         >
                             {__("Participate")}
                         </Link>

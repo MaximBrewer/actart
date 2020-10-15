@@ -6,11 +6,12 @@ import Announce from '../components/announce'
 import useDocumentTitle from '../components/document-title';
 import MovingGallery from "../components/moving/Gallery";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
-import scrollToElement from "../helpers/scroll-to-ref";
 
-export default function Events() {
-    const { pathname } = useLocation();
+export default function Events(props) {
     useDocumentTitle(__('EVENTS_TITLE'));
+
+    const { pathname } = useLocation();
+    const { scrollToElement } = props;
 
     useEffect(() => {
         pathname == '/events/workshops' && scrollToElement(workshopsEl)

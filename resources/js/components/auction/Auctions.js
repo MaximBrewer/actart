@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
-import AuctionPreviewLeft from "./blocks/AuctionPreviewLeft";
-import AuctionPreviewRight from "./blocks/AuctionPreviewRight";
+import AuctionPreviewLeft from "./coming/blocks/AuctionPreviewLeft";
+import AuctionPreviewRight from "./coming/blocks/AuctionPreviewRight";
 import __ from '../../utils/trans';
 import { Link } from "react-router-dom";
 

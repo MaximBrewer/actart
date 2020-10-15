@@ -2,12 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import Waterfall from '../waterfall/Waterfall';
 import { useParams, Link } from 'react-router-dom';
 import __ from '../../utils/trans';
-import scrollToElement from '../../helpers/scroll-to-ref';
 
 export default function Category(props) {
 
     const { id } = useParams();
-    const { showLink } = props;
+    const { showLink, scrollToElement } = props;
 
     useEffect(() => {
         id && scrollToElement(galEl)

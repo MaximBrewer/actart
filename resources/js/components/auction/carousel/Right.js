@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FavoriteBig } from "../../../icons/icons";
 import __ from '../../../utils/trans';
 
-export default function Right(props) {
+export default function Right(props) { 
     const { item } = props;
 
     const offer = () => { };

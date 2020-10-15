@@ -5,14 +5,14 @@ export default function LotsList(props) {
     const { auction } = props;
     return (
         <div className="container">
-            <div className="h3">{__("Auction lots")}</div>
+            <div className="h3">{__("FUTHER_IN_THE_AUCTION")}</div>
             <Waterfall
                 {...props}
                 items={auction.lots}
+                status={'auction'}
                 data={{
                     auction: auction,
                     entity: "lots",
-                    sortable: true,
                     tizerView: "auction",
                     view: {
                         xs: 1,

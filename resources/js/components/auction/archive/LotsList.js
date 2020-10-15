@@ -1,10 +1,12 @@
 import React from "react";
 import Waterfall from "../../waterfall/Waterfall";
-export default function LotsList(props) {
+import __ from '../../../utils/trans';
+
+export default function ArchiveLotsList(props) {
     const { auction } = props;
     return (
         <div className="container">
-            <div className="h3">{__("Auction lots")}</div>
+            <div className="h3">{__("IN_THE_SAME_AUCTION")}</div>
             <Waterfall
                 {...props}
                 items={auction.lots}

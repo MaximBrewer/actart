@@ -13,6 +13,10 @@
     .h1 {
         max-width: 60rem;
         font-size: 1.6rem;
+        span.online {
+            font-size: 1.25rem;
+            color: $red;
+        }
     }
     .h3 {
         font-size: 1.5rem;

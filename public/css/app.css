@@ -20739,6 +20739,11 @@ iframe {
   font-size: 1.6rem;
 }
 
+.auction-announce .h1 span.online {
+  font-size: 1.25rem;
+  color: #ff665e;
+}
+
 .auction-announce .h3 {
   font-size: 1.5rem;
 }
@@ -21945,8 +21950,9 @@ section.announces.bggray .background-text {
   padding: 3rem 0;
 }
 
-.auction-page-wrapper .auction-page-inner .auction-works-list .h3 {
-  border-bottom: 0.5rem solid #1e2b32;
+.auction-page-wrapper .auction-page-inner .auction-works-list .sorting {
+  padding-top: 0.5rem;
+  border-top: 0.5rem solid #1e2b32;
 }
 
 .auction-page-wrapper .auction-announce .banner-counter-wrapper p {

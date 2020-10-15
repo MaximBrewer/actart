@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 
 import AuthRoute from './auth-route';
-import GuestRoute from './guest-route';
 import { useAuth } from '../context/auth';
 import FullPageSpinner from '../components/full-page-spinner';
 
@@ -28,6 +27,7 @@ import GalleryCategory from "../components/gallery/Category";
 import AuctionBase from "../components/auction/AuctionBase";
 import AuctionLot from "../components/auction/AuctionLot";
 import Auctions from '../pages/auctions';
+import AuctionsArchive from '../pages/auctions-archive';
 
 import Profile from '../pages/profile';
 import NotFound from '../pages/404';
@@ -37,7 +37,7 @@ import RegisterModal from '../modals/register';
 import ForgotPasswordModal from '../modals/forgot-password';
 import ResetPasswordModal from '../modals/reset-password';
 
-import client from '../api/client';
+
 
 Modal.setAppElement('#app')
 
@@ -58,8 +58,7 @@ const customStyles = {
 };
 
 function App() {
-  const { initializing, currentUser, setCurrentUser } = useAuth();
-  const history = useHistory();
+  const { initializing, currentUser } = useAuth();
 
   const initState = {
     login: false,
@@ -87,8 +86,68 @@ function App() {
 
   const [modal, setModal] = React.useState(initState);
 
+  const scrollToElement = (ref) => {
+    let elem = ref.current;
+    if (!elem) return false;
+    let toY =
+      (elem.getBoundingClientRect().top +
+        document.scrollingElement.scrollTop) *
+      1 -
+      68,
+      fromY = document.scrollingElement.scrollTop * 1,
+      scrollY = fromY * 1,
+      oldTimestamp = null;
+    function step(newTimestamp) {
+      if (oldTimestamp !== null) {
+        if (fromY < toY) {
+          scrollY += 100;
+          if (scrollY >= toY) {
+            document.scrollingElement.scrollTop = toY;
+            return false;
+          }
+          document.scrollingElement.scrollTop = scrollY;
+        } else {
+          scrollY -= 100;
+          document.scrollingElement.scrollTop = scrollY;
+          if (scrollY <= toY) {
+            document.scrollingElement.scrollTop = toY;
+            return false;
+          }
+        }
+      }
+      oldTimestamp = newTimestamp;
+      window.requestAnimationFrame(step);
+    }
+    window.requestAnimationFrame(step);
+    return false;
+  };
+
+
+  const participate = (e, auction) => {
+    if (!currentUser) {
+      e.preventDefault();
+      openModal('login');
+      return false;
+    }
+    else {
+      for (const a of currentUser.auctions) {
+        if (auction.id == a.id) {
+          return true;
+        }
+      }
+      return client('/api/auction/' + auction.id + '/participate')
+        .then(({ user }) => {
+          setCurrentUser(user)
+        })
+        .catch(() => {
+          e.preventDefault();
+        });
+    }
+  }
 
   const rest = {
+    participate: participate,
+    scrollToElement: scrollToElement
   }
 
   return (
@@ -117,31 +176,29 @@ function App() {
               <Route exact path='/news'><News {...rest} /></Route>
               <Route exact path='/news/:slug'><NewsItem {...rest} /></Route>
 
-
               <Route exact path='/events'><Events {...rest} /></Route>
               <Route exact path='/events/exhibitions'><Events {...rest} /></Route>
               <Route exact path='/events/workshops'><Events {...rest} /></Route>
               <Route exact path='/events/:id'><EventsItem {...rest} /></Route>
 
-
-              <Route exact path='/authors' component={Authors} {...rest} />
-              <Route exact path='/authors/:id' component={AuthorsItem} {...rest} />
+              <Route exact path='/authors'><Authors {...rest} /></Route>
+              <Route exact path='/authors/:id'><AuthorsItem {...rest} /></Route>
 
               <Route exact path={`/gallery`}><GalleryCategory {...rest} showLink={false} /></Route>
               <Route exact path={`/gallery/lot/:id`}><GalleryLot {...rest} showLink={true} /></Route>
               <Route exact path={`/gallery/category/:id`}><GalleryCategory {...rest} showLink={true} /></Route>
               <Route exact path={`/gallery/archive`}><GalleryArchive {...rest} showLink={true} /></Route>
 
-              <Route exact path='/auctions' component={Auctions} {...rest} />
-              <Route exact path='/auctions/special' component={Auctions} {...rest} />
-              <Route exact path='/auctions/regular' component={Auctions} {...rest} />
-              <Route exact path='/auctions/archive' component={Auctions} {...rest} />
+              <Route exact path='/auctions'><Auctions {...rest} /></Route>
+              <Route exact path='/auctions/special'><Auctions {...rest} /></Route>
+              <Route exact path='/auctions/regular'><Auctions {...rest} /></Route>
+              <Route exact path='/auctions/archive'><AuctionsArchive {...rest} /></Route>
 
               <Route exact path={`/auctions/:id`}><AuctionBase {...rest} /></Route>
               <Route exact path={`/auctions/:id/lot/:lotId`}><AuctionLot {...rest} /></Route>
 
               <AuthRoute path='/profile' component={Profile} {...rest} />
-              <Route component={NotFound} />
+              <Route><NotFound /></Route>
             </Switch>
           </main>
         </div>

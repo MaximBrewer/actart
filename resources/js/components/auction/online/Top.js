@@ -1,10 +1,13 @@
 import React from "react";
 import __ from '../../../utils/trans';
-export default function Top(props) {
-    const auction = { props };
+import Countdown from "../Countdown";
+import { Link } from "react-router-dom";
+
+export default function OnlineTop(props) {
+    const { auction, participate } = props;
     return (
         <section
-            className="auction-announce auction-coming"
+            className="auction-announce auction-online"
             style={{
                 backgroundImage: "url(" + auction.thumbnail + ")",
                 backgroundPosition: "top center"
@@ -12,18 +15,8 @@ export default function Top(props) {
         >
             <div className="darkener">
                 <div className="container">
-                    <div className="h1">{auction.title}</div>
-                    <a
-                        href={"/auctions/" + auction.id}
-                        className="btn btn-danger mb-3"
-                        onClick={e => {
-                            e.preventDefault();
-                            props.participate(auction.id);
-                        }}
-                    >
-                        {__("PARTICIPATE")}
-                    </a>
-                    <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;</div>
+                    <Countdown date={auction.dateatom} />
+                    <div className="h1">{auction.title}<br/><span className="online">{__('ONLINE_BROADCAST_IN_PROPGRESS_TEXT')}</span></div>
                 </div>
             </div>
         </section>

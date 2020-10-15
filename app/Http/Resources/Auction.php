@@ -24,6 +24,7 @@ class Auction extends JsonResource
                 'date' => $this->dateout,
                 'dateatom' => $this->date,
                 'status' => $this->status,
+                'current' => new LotResource($this->current),
                 'title' => $this->getTranslatedAttribute('title'),
                 'announce_text' => $this->getTranslatedAttribute('announce_text'),
                 'sublime' => $this->getTranslatedAttribute('sublime'),

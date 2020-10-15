@@ -1,19 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
-import { useAuth } from '../context/auth';
+import React, { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import __ from '../utils/trans';
 import Marquee from '../components/marquee'
 import Subscribe from '../components/subscribe'
 import useDocumentTitle from '../components/document-title';
 import AuctionsList from "../components/auction/AuctionsList";
-import scrollToElement from "../helpers/scroll-to-ref";
 
-export default function AuctionsPage() {
-    const [state, setState] = useState({ page: null });
-
-    const participate = () => { }
-
+export default function AuctionsPage(props) {
+    useDocumentTitle(__('AUCTIONS_PAGE_TITLE'));
     const { pathname } = useLocation();
+
+    const { scrollToElement } = props;
 
     useEffect(() => {
         pathname == '/auctions/special' && scrollToElement(specialEl)
@@ -22,7 +19,6 @@ export default function AuctionsPage() {
 
     const regularEl = useRef(null);
     const specialEl = useRef(null);
-    useDocumentTitle(__('BLOG_TITLE'));
 
     return (
         <React.Fragment>
@@ -37,7 +33,7 @@ export default function AuctionsPage() {
                                 </div>
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
-                                <a className="see-other" href="#" onClick={(e) => { e.preventDefault(); scrollToElement(specialEl) }}>
+                                <a className="see-other" href="#" onClick={(e) => scrollToElement(specialEl, e)}>
                                     <div className="text-14">{__("see also:")}</div>
                                     <div className="h5">{__('Themed auctions')}</div>
                                     <svg viewBox="0 0 36 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,10 +44,7 @@ export default function AuctionsPage() {
                             </div>
                         </div>
                         <div className="act-auctions-list">
-                            <AuctionsList
-                                attr={'regular'}
-                                participate={participate}
-                            />
+                            <AuctionsList attr={'regular'} {...props} />
                         </div>
                     </div>
                 </section>
@@ -65,7 +58,7 @@ export default function AuctionsPage() {
                                 </div>
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
-                                <a className="see-other" href="#" onClick={(e) => { e.preventDefault(); scrollToElement(regularEl) }}>
+                                <a className="see-other" href="#" onClick={(e) => scrollToElement(regularEl, e)}>
                                     <div className="text-14">{__("see also:")}</div>
                                     <div className="h5">{__('Regular auctions')}</div>
                                     <svg viewBox="0 0 36 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,10 +69,7 @@ export default function AuctionsPage() {
                             </div>
                         </div>
                         <div className="act-auctions-list" data-attr="special">
-                            <AuctionsList
-                                attr={'special'}
-                                participate={participate}
-                            />
+                            <AuctionsList attr={'special'} {...props} />
                         </div>
                     </div>
                 </section>

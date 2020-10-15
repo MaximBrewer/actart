@@ -20,7 +20,7 @@ export default function Top(props) {
                     <Link
                         to={"/auctions/" + auction.id}
                         className="btn btn-danger mb-3"
-                        onClick={e => participate(e)}
+                        onClick={e => participate(e, auction)}
                     >
                         {__("PARTICIPATE")}
                     </Link>

@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import __ from '../../../utils/trans';
+import Countdown from "../Countdown";
 
-export default function Bottom(props) {
-    const { auction, participate } = props;
+export default function ArchiveBottom(props) {
     return (
         <div className="auction-footer">
             <div className="container">
@@ -20,7 +21,7 @@ export default function Bottom(props) {
                 </div>
                 <div className="row justify-content-center my-5">
                     <div className="col-lg-15">
-                        <Link to="/auctions" className="btn btn-link">
+                        <Link to="/auctions/archive" className="btn btn-link">
                             {__("Archive of auctions")}
                         </Link>
                     </div>
