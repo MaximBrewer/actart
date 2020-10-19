@@ -135,6 +135,7 @@ class LotController extends Controller
             try {
                 event(new LotEvent(new LotResource($lot)));
             } catch (Exception $e) {
+                var_dump($e->message);
             }
         }
         return null;
