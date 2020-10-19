@@ -5,7 +5,7 @@ import __ from '../utils/trans';
 
 
 export function FavoriteBig(props) {
-    const { item } = props;
+    const { item, req } = props;
     const [active, setActive] = useState(false);
     let { setCurrentUser, currentUser } = useAuth();
 
@@ -33,7 +33,7 @@ export function FavoriteBig(props) {
 
         let action = active ? "remove" : "add";
 
-        client("/api/profile/favorites/" + action + "/" + item.id, { method: "PATCH" })
+        req("/api/profile/favorites/" + action + "/" + item.id, { method: "PATCH" })
             .then(({ user }) => {
                 window.dispatchEvent(
                     new CustomEvent("flash", {
@@ -74,7 +74,7 @@ export function FavoriteBig(props) {
 }
 
 export function Favorite(props) {
-    const { item } = props;
+    const { item, req } = props;
     const [active, setActive] = useState(false);
     let { setCurrentUser, currentUser } = useAuth();
 
@@ -101,7 +101,7 @@ export function Favorite(props) {
 
         let action = active ? "remove" : "add";
 
-        client("/api/profile/favorites/" + action + "/" + item.id, { method: "PATCH" })
+        req("/api/profile/favorites/" + action + "/" + item.id, { method: "PATCH" })
             .then(({ user }) => {
                 window.dispatchEvent(
                     new CustomEvent("flash", {

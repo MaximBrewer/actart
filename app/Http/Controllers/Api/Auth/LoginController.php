@@ -23,6 +23,14 @@ class LoginController extends Controller
             ], 422);
         }
 
+        if ($request->user()->ban) {
+            return response()->json([
+                'errors' => [
+                    'email' => [__('Sorry your account has been banned.')]
+                ]
+            ], 422);
+        }
+
         return (new UserResource($request->user()))
             ->additional([
                 'meta' => [

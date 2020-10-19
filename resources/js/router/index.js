@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 
 import AuthRoute from './auth-route';
@@ -20,12 +20,11 @@ import EventsItem from '../pages/events-item';
 import Authors from '../pages/authors';
 import AuthorsItem from '../pages/authors-item';
 
-import GalleryLot from "../components/gallery/Lot";
-import GalleryArchive from "../components/gallery/Archive";
-import GalleryCategory from "../components/gallery/Category";
+import Gallery from "../pages/gallery";
 
 import AuctionBase from "../components/auction/AuctionBase";
 import AuctionLot from "../components/auction/AuctionLot";
+import SearchPage from '../pages/search';
 import Auctions from '../pages/auctions';
 import AuctionsArchive from '../pages/auctions-archive';
 
@@ -36,8 +35,46 @@ import LoginModal from '../modals/login';
 import RegisterModal from '../modals/register';
 import ForgotPasswordModal from '../modals/forgot-password';
 import ResetPasswordModal from '../modals/reset-password';
+import { getUser } from '../api/auth';
+import { setIntendedUrl } from '../utils/auth';
 
+import client from '../api/client';
 
+const scrollToElement = (ref) => {
+  let elem = ref.current;
+  if (!elem) return false;
+  let toY =
+    (elem.getBoundingClientRect().top +
+      document.scrollingElement.scrollTop) *
+    1 -
+    68,
+    fromY = document.scrollingElement.scrollTop * 1,
+    scrollY = fromY * 1,
+    oldTimestamp = null;
+  function step(newTimestamp) {
+    if (oldTimestamp !== null) {
+      if (fromY < toY) {
+        scrollY += 100;
+        if (scrollY >= toY) {
+          document.scrollingElement.scrollTop = toY;
+          return false;
+        }
+        document.scrollingElement.scrollTop = scrollY;
+      } else {
+        scrollY -= 100;
+        document.scrollingElement.scrollTop = scrollY;
+        if (scrollY <= toY) {
+          document.scrollingElement.scrollTop = toY;
+          return false;
+        }
+      }
+    }
+    oldTimestamp = newTimestamp;
+    window.requestAnimationFrame(step);
+  }
+  window.requestAnimationFrame(step);
+  return false;
+};
 
 Modal.setAppElement('#app')
 
@@ -58,7 +95,24 @@ const customStyles = {
 };
 
 function App() {
-  const { initializing, currentUser } = useAuth();
+  const { initializing, currentUser, setCurrentUser, setToken } = useAuth();
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setToken(null);
+    setIntendedUrl(null);
+  };
+
+  const req = (url, method = 'GET', body = null) => {
+    return new Promise(function (resolve, reject) {
+      client(url, {
+        method: method,
+        body: body
+      })
+        .then((resp) => resolve(resp))
+        .catch((err) => reject(err));
+    });
+  }
 
   const initState = {
     login: false,
@@ -84,44 +138,16 @@ function App() {
     setModal(initState)
   }
 
+
+  useEffect(() => {
+    setInterval(() => {
+      req('/api/profile')
+        .then(({ data }) => setCurrentUser(data))
+        .catch(() => handleLogout());
+    }, 30000);
+  }, []);
+
   const [modal, setModal] = React.useState(initState);
-
-  const scrollToElement = (ref) => {
-    let elem = ref.current;
-    if (!elem) return false;
-    let toY =
-      (elem.getBoundingClientRect().top +
-        document.scrollingElement.scrollTop) *
-      1 -
-      68,
-      fromY = document.scrollingElement.scrollTop * 1,
-      scrollY = fromY * 1,
-      oldTimestamp = null;
-    function step(newTimestamp) {
-      if (oldTimestamp !== null) {
-        if (fromY < toY) {
-          scrollY += 100;
-          if (scrollY >= toY) {
-            document.scrollingElement.scrollTop = toY;
-            return false;
-          }
-          document.scrollingElement.scrollTop = scrollY;
-        } else {
-          scrollY -= 100;
-          document.scrollingElement.scrollTop = scrollY;
-          if (scrollY <= toY) {
-            document.scrollingElement.scrollTop = toY;
-            return false;
-          }
-        }
-      }
-      oldTimestamp = newTimestamp;
-      window.requestAnimationFrame(step);
-    }
-    window.requestAnimationFrame(step);
-    return false;
-  };
-
 
   const participate = (e, auction) => {
     if (!currentUser) {
@@ -135,7 +161,7 @@ function App() {
           return true;
         }
       }
-      return client('/api/auction/' + auction.id + '/participate')
+      req('/api/auction/' + auction.id + '/participate')
         .then(({ user }) => {
           setCurrentUser(user)
         })
@@ -147,7 +173,9 @@ function App() {
 
   const rest = {
     participate: participate,
-    scrollToElement: scrollToElement
+    scrollToElement: scrollToElement,
+    handleLogout: handleLogout,
+    req: req
   }
 
   return (
@@ -184,10 +212,7 @@ function App() {
               <Route exact path='/authors'><Authors {...rest} /></Route>
               <Route exact path='/authors/:id'><AuthorsItem {...rest} /></Route>
 
-              <Route exact path={`/gallery`}><GalleryCategory {...rest} showLink={false} /></Route>
-              <Route exact path={`/gallery/lot/:id`}><GalleryLot {...rest} showLink={true} /></Route>
-              <Route exact path={`/gallery/category/:id`}><GalleryCategory {...rest} showLink={true} /></Route>
-              <Route exact path={`/gallery/archive`}><GalleryArchive {...rest} showLink={true} /></Route>
+              <Route path={`/gallery`}><Gallery {...rest} /></Route>
 
               <Route exact path='/auctions'><Auctions {...rest} /></Route>
               <Route exact path='/auctions/special'><Auctions {...rest} /></Route>
@@ -197,6 +222,9 @@ function App() {
               <Route exact path={`/auctions/:id`}><AuctionBase {...rest} /></Route>
               <Route exact path={`/auctions/:id/lot/:lotId`}><AuctionLot {...rest} /></Route>
 
+
+              <Route path={`/search/:query`}><SearchPage {...rest} /></Route>
+              
               <AuthRoute path='/profile' component={Profile} {...rest} />
               <Route><NotFound /></Route>
             </Switch>

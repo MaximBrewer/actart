@@ -15,7 +15,7 @@ export default function AuctionsArchive(props) {
     });
 
     const getAuctions = (url) => {
-        return client(url)
+        get(url)
             .then(({ auctions }) =>
                 setState((prevState) => {
                     return {

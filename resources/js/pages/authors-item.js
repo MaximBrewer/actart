@@ -13,7 +13,7 @@ export default function AuthorItem() {
     useDocumentTitle(__('AUTHORS_TITLE'));
 
     useEffect(() => {
-        client('/api/' + window.App.locale + '/author/' + id)
+        req('/api/' + window.App.locale + '/author/' + id)
             .then(({ author }) => setState((prevState) => {
                 document.title = author.title;
                 return {

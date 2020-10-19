@@ -17,15 +17,25 @@ class EventController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : 24;
         $offset = $request->get('offset') ? $request->get('offset') : 0;
         $events = $request->get('category') ? Event::{$request->get('category')}() : new Event();
-        return json_encode([
-            'items' => EventResource::collection(
-                $events
-                    ->published()
-                    ->orderBy('events.created_at', 'desc')
+        if ($q = $request->get('query')) {
+            $items = EventResource::collection(
+                $events->where('title', 'LIKE', '%' . $q . '%')
                     ->limit($limit)
                     ->offset($offset)
+                    ->orderBy('events.created_at', 'desc')
                     ->get()
-            ),
+            );
+        } else {
+            $items = EventResource::collection(
+                $events->published()
+                    ->limit($limit)
+                    ->offset($offset)
+                    ->orderBy('events.created_at', 'desc')
+                    ->get()
+            );
+        }
+        return json_encode([
+            'items' => $items,
             'next' => $events->count() - $offset - $limit
         ]);
     }

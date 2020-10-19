@@ -60,7 +60,6 @@ export default function Waterfall(props) {
             push = true;
             loop: for (const field in filter) {
                 for (const option of item[field]) {
-                    console.log(filter[field], option.id)
                     if (filter[field] == option.id) {
                         continue loop;
                     }
@@ -99,7 +98,6 @@ export default function Waterfall(props) {
                 setState(prevState => {
                     let newItems = [];
                     for (const item of items) {
-                        console.log(item.status == status)
                         item.status == status && newItems.push(item);
                     }
                     return {
@@ -124,7 +122,6 @@ export default function Waterfall(props) {
                 setState(prevState => {
                     let newItems = [];
                     for (const item of items) {
-                        console.log(item.status == status)
                         item.status == status && newItems.push(item);
                     }
                     return {

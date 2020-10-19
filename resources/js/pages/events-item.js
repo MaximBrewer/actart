@@ -21,7 +21,7 @@ export default function Eventtem() {
     useDocumentTitle(__('EVENTS_TITLE'));
 
     useEffect(() => {
-        client('/api/' + window.App.locale + '/event/' + id)
+        req('/api/' + window.App.locale + '/event/' + id)
             .then(({ event }) => setState((prevState) => {
                 document.title = event.title;
                 return {

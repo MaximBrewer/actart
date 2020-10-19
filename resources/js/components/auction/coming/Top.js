@@ -17,13 +17,6 @@ export default function Top(props) {
                 <div className="container">
                     <Countdown date={auction.dateatom} />
                     <div className="h1">{auction.title}</div>
-                    <Link
-                        to={"/auctions/" + auction.id}
-                        className="btn btn-danger mb-3"
-                        onClick={e => participate(e, auction)}
-                    >
-                        {__("PARTICIPATE")}
-                    </Link>
                     <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;</div>
                 </div>
             </div>

@@ -20,6 +20,15 @@ class AuthorController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : 24;
         $offset = $request->get('offset') ? $request->get('offset') : 0;
         $authors = User::where('role_id', 3);
+        if ($request->get('query')) {
+            $q = $request->get('query');
+            $authors->where(function ($query) use ($q){
+                $query->where('name', 'LIKE', '%' . $q . '%')
+                    ->orWhere('email', 'LIKE', '%' . $q . '%')
+                    ->orWhere('middlename', 'LIKE', '%' . $q . '%')
+                    ->orWhere('surname', 'LIKE', '%' . $q . '%');
+            });
+        }
         return json_encode([
             'next' => $authors->count() - $offset - $limit,
             'items' => AuthorResource::collection(

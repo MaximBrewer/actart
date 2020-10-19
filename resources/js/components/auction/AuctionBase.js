@@ -35,7 +35,7 @@ export default function AuctionBase(props) {
     };
 
     useEffect(() => {
-        client('/api/' + window.App.locale + "/auctions/" + id)
+        req('/api/' + window.App.locale + "/auctions/" + id)
             .then(({ auction }) =>
                 setState({
                     auction: auction

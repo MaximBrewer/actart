@@ -14,6 +14,7 @@ import {
     LogoMenuMobile
 } from '../icons/header'
 import { Unstyled, Top, Topmost } from './menu'
+import Search from './search'
 import Subscribe from './subscribe'
 import Parser from "html-react-parser";
 import { Link, useLocation, useHistory } from 'react-router-dom';
@@ -23,12 +24,31 @@ export default function Header(props) {
     const { openModal, closeModal } = props;
     const { pathname } = useLocation();
     const mobileMenuEl = useRef(null);
+    const [state, setState] = useState({
+        openedSearch: false
+    })
+
+    const openSearch = () => {
+        setState(prevState => ({
+            ...prevState,
+            openedSearch: true
+        }))
+    }
+
+    const closeSearch = () => {
+        setState(prevState => ({
+            ...prevState,
+            openedSearch: false
+        }))
+    }
 
     let { currentUser } = useAuth();
     useEffect(() => {
         closeMobile()
         document.body.className = pathname == "/" ? 'home' : '';
-        window.scrollTo(0, 0);
+        if (pathname.indexOf('gallery/category') == -1) {
+            window.scrollTo(0, 0);
+        }
         changeWindow()
     }, [pathname]);
 
@@ -151,23 +171,7 @@ export default function Header(props) {
                                     </div>
                                     <div className="col col-xl-24">
                                         <div className="header-top-search d-none d-xxl-block">
-                                            <div id="searchForm" className="search-form">
-                                                <form action="#">
-                                                    <div className="search-container">
-                                                        <input type="text" placeholder={__('Search..')}
-                                                            name="search" className="form-control" />
-                                                        <div className="btn-container">
-                                                            <button type="submit" className="btn p-1 btn-link">
-                                                                <Lens />
-                                                            </button>
-                                                            <button type="button"
-                                                                className="btn p-1 btn-link close-search-form">
-                                                                <Close />
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                            <Search closeSearch={closeSearch} />
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +198,7 @@ export default function Header(props) {
                                     <div>
                                         {currentUser ?
                                             <Link className="icon profile" type="submit" to="/profile"><Profile /></Link> :
-                                            <a className="btn btn-default-inverse" type="submit" href="#" onClick={(e) => { e.preventDefault(); openModal('login') }}>{Parser(__('Log&nbsp;In'))}</a>
+                                            <a className="btn btn-default-inverse btn-sm" type="submit" href="#" onClick={(e) => { e.preventDefault(); openModal('login') }}>{Parser(__('Log&nbsp;In'))}</a>
                                         }
                                     </div>
                                     <div className="header-lang">
@@ -203,8 +207,9 @@ export default function Header(props) {
                                         </div>
                                     </div>
                                     <div className="hide-dark-lens">
-                                        <a href="#"
-                                            id="searchTopToggle"><Lens /></a>
+
+                                        {state.openedSearch ?
+                                            <Search hidden={true} closeSearch={closeSearch} /> : <a href="#" onClick={(e) => { e.preventDefault(); openSearch() }}><Lens /></a>}
                                     </div>
                                 </div>
                             </div>

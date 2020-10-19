@@ -1,0 +1,8 @@
+IP сервера: 89.223.124.134
+Имя пользователя: root
+Пароль: eGk6j5zJ
+
+
+ssh root@89.223.124.134
+eGk6j5zJ
+cd /var/www/act-art.ru/htdocs

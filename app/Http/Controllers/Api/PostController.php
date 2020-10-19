@@ -18,6 +18,12 @@ class PostController extends Controller
         $offset = $request->get('offset') ? $request->get('offset') : 0;
         $cat = $request->get('category') ?  $request->get('category') : 'both';
         $posts = Post::{$cat}();
+        if ($request->get('query')) {
+            $q = $request->get('query');
+            $posts->where(function ($query) use ($q){
+                $query->where('title', 'LIKE', '%' . $q . '%');
+            });
+        }
         return json_encode([
             'items' => PostResource::collection(
                 $posts

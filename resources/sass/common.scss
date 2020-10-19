@@ -148,6 +148,18 @@ h6,
         padding-top: 0.4375rem;
         padding-bottom: 0.4375rem;
     }
+    &.btn-sm {
+        @media (min-width: map.get($grid-breakpoints, "md")) {
+            line-height: 1.125rem;
+            font-size: 1.125rem;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+    }
+    &.btn-lg {
+        @media (min-width: map.get($grid-breakpoints, "md")) {
+        }
+    }
 }
 .link-how-to-buy {
     display: block;
@@ -321,7 +333,7 @@ h6,
 .container {
     position: relative;
 }
-.sticky-wrapper{
+.sticky-wrapper {
     position: relative;
 }
 .sticky-section {
@@ -338,7 +350,7 @@ h6,
     @media (min-width: map.get($grid-breakpoints, "xl")) {
         display: flex;
     }
-    @media (min-width:1360px) {
+    @media (min-width: 1360px) {
         display: flex;
         left: 4rem;
     }
@@ -509,19 +521,20 @@ iframe {
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    display:flex;
+    display: flex;
     justify-content: center;
-    div{
-        margin-left:1rem;
+    div {
+        margin-left: 1rem;
         cursor: pointer;
-        border-radius: .3rem;
-        box-shadow: 0 0 .2rem rgba(255,255,255,0.1), inset 0 0 3rem rgba(255,255,255,.4);
-        &:first-child{
-            margin-left:0;
+        border-radius: 0.3rem;
+        box-shadow: 0 0 0.2rem rgba(255, 255, 255, 0.1),
+            inset 0 0 3rem rgba(255, 255, 255, 0.4);
+        &:first-child {
+            margin-left: 0;
         }
-        svg{
-            height:3rem;
-            fill:$white
+        svg {
+            height: 3rem;
+            fill: $white;
         }
     }
 }

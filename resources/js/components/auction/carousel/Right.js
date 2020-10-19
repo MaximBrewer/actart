@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { FavoriteBig } from "../../../icons/icons";
 import __ from '../../../utils/trans';
+import { useAuth } from '../../../context/auth';
 
 export default function Right(props) { 
     const { item } = props;
+    const { initializing, currentUser, setCurrentUser } = useAuth();
 
     const offer = () => { };
     const blitz = () => { };
@@ -56,10 +58,10 @@ export default function Right(props) {
                     {__("LOT_START_PRICE")}: ${item.startPrice}
                 </span>
             </div>
-            {window.user != undefined ? (
+            {currentUser != undefined ? (
                 <div className="user-activity">
                     <div className="user-id">
-                        {__("LOT_YOUR_ID")}: <span>#{window.user.id}</span>
+                        {__("LOT_YOUR_ID")}: <span>#{currentUser.id}</span>
                     </div>
                     {item.bets.length ? (
                         <div className="last-price">

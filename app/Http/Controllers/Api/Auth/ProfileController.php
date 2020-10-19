@@ -12,6 +12,14 @@ class ProfileController extends Controller
 {
     public function index(Request $request)
     {
+        if ($request->user()->ban) {
+            auth()->logout();
+            return response()->json([
+                'errors' => [
+                    'email' => [__('Sorry your account has been banned.')]
+                ]
+            ], 422);
+        }
         return new UserResource($request->user());
     }
 

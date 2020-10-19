@@ -5,7 +5,8 @@ import YandexShare from 'react-yandex-share';
 import Parser from "html-react-parser";
 import client from '../api/client';
 
-export default function Base() {
+export default function Base(props) {
+    const { req } = props;
     const [state, setState] = useState({ page: null });
 
     const { pathname } = useLocation();
@@ -17,7 +18,7 @@ export default function Base() {
                 page: null
             }
         })
-        client('/api/' + window.App.locale + '/page' + pathname)
+        req('/api/' + window.App.locale + '/page' + pathname)
             .then(({ page }) => setState((prevState) => {
                 document.title = page.title;
                 return {

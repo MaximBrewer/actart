@@ -5,7 +5,7 @@ import __ from '../../utils/trans';
 
 
 export default function WaterfallAjax(props) {
-    const { data } = props;
+    const { data, query } = props;
     data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
 
     const getPreviews = () => {
@@ -53,6 +53,7 @@ export default function WaterfallAjax(props) {
                 ? "/posts?entity=" + data.entity + "&"
                 : "/" + data.entity + "?";
         data.category && (url += "category=" + data.category);
+        query && (url += "query=" + query);
         data.author && (url += "author=" + data.author);
         data.lastbets && (url += "lastbets=1");
         if (data.entity == "lots") {
@@ -63,6 +64,8 @@ export default function WaterfallAjax(props) {
         if (!!data.exclude) {
             url += "&exclude=" + data.exclude;
         }
+        url += "&limit=" + getLimit();
+        url += "&offset=" + getOffset();
         axios
             .get("/api/" + window.App.locale + url)
             .then(res => {
@@ -85,6 +88,7 @@ export default function WaterfallAjax(props) {
             data.entity == "blog" || data.entity == "post"
                 ? "/posts?entity=" + data.entity + "&"
                 : "/" + data.entity + "?";
+        query && (url += "query=" + query);
         data.category && (url += "category=" + data.category);
         data.author && (url += "author=" + data.author);
         data.lastbets && (url += "lastbets=1");
@@ -100,6 +104,8 @@ export default function WaterfallAjax(props) {
         if (!!data.exclude) {
             url += "&exclude=" + data.exclude;
         }
+        url += "&limit=" + getLimit();
+        url += "&offset=" + 0;
         axios
             .get("/api/" + window.App.locale + url)
             .then(res => {
@@ -157,6 +163,16 @@ export default function WaterfallAjax(props) {
             state.options
         );
     }, []);
+
+    useEffect(() => {
+        window.addEventListener("lot", updateLot);
+        getGallery(
+            state.filter,
+            state.sortBy,
+            state.order,
+            state.options
+        );
+    }, [query]);
 
     return (
         <div className="waterfall-outer row">

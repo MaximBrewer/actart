@@ -33,6 +33,12 @@ class LotController extends Controller
                     break;
             }
         };
+        if ($request->get('query')) {
+            $q = $request->get('query');
+            $lots->where(function ($query) use ($q){
+                $query->where('title', 'LIKE', '%' . $q . '%');
+            });
+        }
         if ($category = $request->get('category')) {
             $lots->whereHas('categories', function (Builder $query) use ($category) {
                 $query->where('id', $category);

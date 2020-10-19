@@ -21,7 +21,7 @@ export default function BlogItem() {
     useDocumentTitle(__('BLOG_TITLE'));
 
     useEffect(() => {
-        client('/api/' + window.App.locale + '/post/' + slug)
+        req('/api/' + window.App.locale + '/post/' + slug)
             .then(({ post }) => setState((prevState) => {
                 document.title = post.title;
                 return {
