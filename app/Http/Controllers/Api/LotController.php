@@ -124,15 +124,16 @@ class LotController extends Controller
 
     public function offer(Request $request, $lot_id, $price)
     {
-        return $price;
         $lot = Lot::where('id', $lot_id)->whereIn('status', ['auction', 'gallery'])->firstOrFail();
         $bet = Bet::where('lot_id', $lot_id)->where('bet', ">=", $price)->first();
+        return $bet->id;
         if (!$bet) {
             $bet = Bet::create([
                 'user_id' => Auth::id(),
                 'bet' => $price,
                 'lot_id' => $lot->id,
             ]);
+            return $bet->id;
             try {
                 event(new LotEvent(new LotResource($lot)));
             } catch (Exception $e) {
