@@ -223,7 +223,8 @@ function App() {
               <Route exact path={`/auctions/:id/lot/:lotId`}><AuctionLot {...rest} /></Route>
 
 
-              <Route path={`/search/:query`}><SearchPage {...rest} /></Route>
+              <Route exact path={`/search`}><SearchPage {...rest} /></Route>
+              <Route exact path={`/search/:query`}><SearchPage {...rest} /></Route>
               
               <AuthRoute path='/profile' component={Profile} {...rest} />
               <Route><NotFound /></Route>
