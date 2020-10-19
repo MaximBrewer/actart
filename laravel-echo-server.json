@@ -1,5 +1,5 @@
 {
-	"authHost": "http://act-art.loc",
+	"authHost": "http://act-art.ru",
 	"authEndpoint": "/broadcasting/auth",
 	"clients": [
 		{
@@ -30,7 +30,7 @@
 	},
 	"apiOriginAllow": {
 		"allowCors": true,
-		"allowOrigin": "http://act-art.loc",
+		"allowOrigin": "http://act-art.ru",
 		"allowMethods": "POST",
 		"allowHeaders": "Origin"
 	}
