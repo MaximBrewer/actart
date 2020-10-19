@@ -124,6 +124,7 @@ class LotController extends Controller
 
     public function offer(Request $request, $lot_id, $price)
     {
+        return $price;
         $lot = Lot::where('id', $lot_id)->whereIn('status', ['auction', 'gallery'])->firstOrFail();
         $bet = Bet::where('lot_id', $lot_id)->where('bet', ">=", $price)->first();
         if (!$bet) {
