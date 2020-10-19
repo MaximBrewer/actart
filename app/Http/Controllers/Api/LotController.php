@@ -133,7 +133,7 @@ class LotController extends Controller
                 'lot_id' => $lot->id,
             ]);
             try {
-                // event(new LotEvent(new LotResource($lot)));
+                event(new LotEvent(new LotResource($lot)));
             } catch (Exception $e) {
             }
         }
