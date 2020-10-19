@@ -101,11 +101,9 @@ export default function Lot(props) {
         <section className="auction-page-wrapper">
             {state.auction ? (
                 <div className={`status-` + state.auction.status}>
-                    <Top {...props}  auction={state.auction}/>
+                    <Top {...props} auction={state.auction} />
                     <div className="sticky-wrapper">
-                        <div className="auction-page-inner">
-                            <Center {...props} auction={state.auction} />
-                        </div>
+                        <Center {...props} auction={state.auction} />
                         <div className="auction-page-inner">
                             <div className="auction-works-list my-5">
                                 <LotsList {...props} auction={state.auction} />

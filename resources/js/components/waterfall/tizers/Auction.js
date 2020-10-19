@@ -4,7 +4,7 @@ import __ from '../../../utils/trans';
 import { Favorite, Hammer } from "../../../icons/icons";
 
 export default function Tizer(props) {
-    const { data, item } = props;
+    const { data, item, req } = props;
     return (
         <div className={`auction-item`}>
             <Link
@@ -14,7 +14,7 @@ export default function Tizer(props) {
                 }}
                 to={`/auctions/` + data.auction.id + `/lot/` + item.id}
             >
-                <Favorite item={item} />
+                <Favorite item={item}  req={req}/>
             </Link>
             <Link
                 className="number"

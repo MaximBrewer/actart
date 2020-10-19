@@ -26,7 +26,7 @@ export default function Tizer(props) {
                     }}
                     to={url}
                 >
-                    <Favorite item={item} />
+                    <Favorite item={item} {...props} />
                 </Link>
             </div>
             <Link className={`title`} to={url}>

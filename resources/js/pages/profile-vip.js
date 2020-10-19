@@ -23,12 +23,8 @@ function Profile(props) {
     <section className="profile-section">
       <div className="container">
         <div className="row announce">
-          <div className="col col-xl-40 col-xxl-38">
-            <h5 className="h5">{__('You wanted to take part in the auctions:')}</h5>
-            <AuctionsProfile />
-          </div>
-          <div className="col col-xl-20 col-xxl-22">
-            <h5 className="h5">{__('Profile data')}</h5>
+          <div className="col-60">
+            <h5 className="h5">{__('Profile VIP')}</h5>
             <hr />
             <dl>
               <dt>{__('Your ID:')}</dt>
@@ -47,13 +43,6 @@ function Profile(props) {
               <dd>{currentUser.email}</dd>
             </dl>
             <hr />
-            <div>
-              <Link
-                to="/profile/vip">
-                {__('WANTED_VIP')}
-              </Link>
-            </div>
-            <hr />
             <div
               onClick={handleLogout}>
               <Link
@@ -61,28 +50,6 @@ function Profile(props) {
                 Logout
                 </Link>
             </div>
-          </div>
-        </div>
-        <div className="art-waterfall-wrapper py-5">
-          <h5 className="h5">{__('Favorites:')}</h5>
-          <div className="act-waterfall">
-            <Waterfall
-              {...props}
-              items={currentUser.favorites}
-              data={{
-                sortable: true,
-                gallery: true,
-                tizerView: "gallery",
-                view: {
-                  xs: 1,
-                  sm: 2,
-                  md: 2,
-                  lg: 3,
-                  xl: 4,
-                  xxl: 4
-                }
-              }}
-            />
           </div>
         </div>
       </div>

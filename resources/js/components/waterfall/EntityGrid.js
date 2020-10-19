@@ -67,7 +67,7 @@ export default function EntityGrid(props) {
         >
             {
                 items != undefined && items.length ? items.map((item, index) => (
-                    <Tizer item={item} key={index} {...props} />
+                    <Tizer {...props} item={item} key={index} />
                 )) : getPlaceholders()
             }
         </Masonry>

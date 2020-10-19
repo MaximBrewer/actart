@@ -311,6 +311,7 @@ export default function Waterfall(props) {
                 }
             >
                 <EntityGrid
+                    {...props}
                     columns={columns}
                     items={state.items}
                     data={data}

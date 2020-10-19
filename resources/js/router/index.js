@@ -29,6 +29,8 @@ import Auctions from '../pages/auctions';
 import AuctionsArchive from '../pages/auctions-archive';
 
 import Profile from '../pages/profile';
+import ProfileVIP from '../pages/profile-vip';
+
 import NotFound from '../pages/404';
 
 import LoginModal from '../modals/login';
@@ -226,6 +228,7 @@ function App() {
               <Route exact path={`/search`}><SearchPage {...rest} /></Route>
               <Route exact path={`/search/:query`}><SearchPage {...rest} /></Route>
               
+              <AuthRoute exact path='/profile/vip' component={ProfileVIP} {...rest} />
               <AuthRoute path='/profile' component={Profile} {...rest} />
               <Route><NotFound /></Route>
             </Switch>

@@ -6,8 +6,10 @@ export default function Center(props) {
     const { id } = useParams();
     const { auction } = props;
     return (
-        <div className="container">
-            <Carousel {...props} id={id} items={auction.lots} />
+        <div className="auction-info">
+            <div className="container">
+                <Carousel {...props} id={id} items={auction.lots} />
+            </div>
         </div>
     );
 }

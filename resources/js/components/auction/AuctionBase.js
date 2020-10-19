@@ -18,6 +18,7 @@ import client from '../../api/client';
 
 export default function AuctionBase(props) {
     useDocumentTitle(__('AUCTIONS_PAGE_TITLE'));
+    const { req } = props;
     const { id } = useParams();
 
     const [state, setState] = useState({

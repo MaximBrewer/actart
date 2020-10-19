@@ -3,12 +3,20 @@ import { FavoriteBig } from "../../../icons/icons";
 import __ from '../../../utils/trans';
 import { useAuth } from '../../../context/auth';
 
-export default function Right(props) { 
-    const { item } = props;
+export default function Right(props) {
+    const { item, req } = props;
     const { initializing, currentUser, setCurrentUser } = useAuth();
 
-    const offer = () => { };
-    const blitz = () => { };
+    const offer = (id, price) => {
+        req("/api/offer/" + id + "/" + price, "PATCH")
+            .then(() => null)
+            .catch((err) => console.log(err));
+    };
+    const blitz = () => {
+        req("/api/offer/" + id + "/" + price, "PATCH")
+            .then(() => null)
+            .catch((err) => console.log(err));
+    };
 
     return (
         <div className="lot-carousel-right">
@@ -16,7 +24,7 @@ export default function Right(props) {
                 <div className="lot-number">
                     {__("LOT_TEXT_LOT_ID")} {item.id}
                 </div>
-                <FavoriteBig item={item} />
+                <FavoriteBig item={item} req={req} />
             </div>
             <div className="lot-author">
                 <a className="author" href={item.author_url}>

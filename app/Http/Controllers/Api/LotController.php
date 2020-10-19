@@ -11,6 +11,11 @@ use App\Lot;
 use App\Http\Resources\Lot as LotResource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
+use App\Bet;
+use Exception;
+use App\Events\Auction as AuctionEvent;
+use App\Events\Lot as LotEvent;
+use Illuminate\Support\Facades\Auth;
 
 class LotController extends Controller
 {
@@ -35,7 +40,7 @@ class LotController extends Controller
         };
         if ($request->get('query')) {
             $q = $request->get('query');
-            $lots->where(function ($query) use ($q){
+            $lots->where(function ($query) use ($q) {
                 $query->where('title', 'LIKE', '%' . $q . '%');
             });
         }
@@ -56,7 +61,7 @@ class LotController extends Controller
             $lots->select(DB::raw("lots.*, users.name"));
             $sortBy = 'users.name';
         }
-        
+
         if ($request->get('exclude'))
             $lots->where('id', '<>', $request->get('exclude'));
 
@@ -115,5 +120,29 @@ class LotController extends Controller
                     ->get()
             ),
         ]);
+    }
+
+    public function offer(Request $request, $lot_id, $price)
+    {
+        $lot = Lot::where('id', $lot_id)->whereIn('status', ['auction', 'gallery'])->firstOrFail();
+        $bet = Bet::where('lot_id', $lot_id)->where('bet', ">=", $price)->first();
+        if (!$bet) {
+            $bet = Bet::create([
+                'user_id' => Auth::id(),
+                'bet' => $price,
+                'lot_id' => $lot->id,
+            ]);
+            try {
+                // event(new LotEvent(new LotResource($lot)));
+            } catch (Exception $e) {
+            }
+        }
+        return null;
+    }
+
+    public function blitz(Request $request, $lot_id)
+    {
+        $lot = Lot::findOrFail($lot_id);
+        return null;
     }
 }
