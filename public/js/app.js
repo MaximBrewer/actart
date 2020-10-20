@@ -56389,6 +56389,7 @@ function _arrayWithHoles(arr) {
 
 
 function AuctionsArchive(props) {
+  var req = props.req;
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_3__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ARCHIVE_OF_AUCTIONS_PAGE_TITLE'));
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
@@ -56399,7 +56400,7 @@ function AuctionsArchive(props) {
       setState = _useState2[1];
 
   var getAuctions = function getAuctions(url) {
-    get(url).then(function (_ref) {
+    req(url).then(function (_ref) {
       var auctions = _ref.auctions;
       return setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {

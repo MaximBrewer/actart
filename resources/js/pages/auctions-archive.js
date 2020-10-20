@@ -8,6 +8,7 @@ import AuctionPreviewRight from "../components/auction/archive/blocks/AuctionPre
 
 export default function AuctionsArchive(props) {
     
+    const {req} = props;
     useDocumentTitle(__('ARCHIVE_OF_AUCTIONS_PAGE_TITLE'));
 
     const [state, setState] = useState({
@@ -15,7 +16,7 @@ export default function AuctionsArchive(props) {
     });
 
     const getAuctions = (url) => {
-        get(url)
+        req(url)
             .then(({ auctions }) =>
                 setState((prevState) => {
                     return {
