@@ -14,7 +14,8 @@ import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 import client from '../api/client';
 import App from "../router";
 
-export default function Eventtem() {
+export default function Eventtem(props) {
+    const { req } = props;
     const [state, setState] = useState({ event: null });
     const { id } = useParams();
 

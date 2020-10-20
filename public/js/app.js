@@ -58031,7 +58031,9 @@ function _arrayWithHoles(arr) {
 
 
 
-function Eventtem() {
+function Eventtem(props) {
+  var req = props.req;
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     event: null
   }),
