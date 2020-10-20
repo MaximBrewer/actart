@@ -6,7 +6,7 @@ import useDocumentTitle from '../components/document-title';
 import MovingGallery from "../components/moving/Gallery";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 
-export default function Authors() {
+export default function Authors(props) {
     useDocumentTitle(__('AUTHORS_TITLE'));
     return (
         <React.Fragment>
@@ -22,7 +22,7 @@ export default function Authors() {
                         </div>
                         <div className="announce-slider-wrapper">
                             <div className="act-waterfall">
-                                <WaterfallAjax data={{
+                                <WaterfallAjax {...props} data={{
                                     entity: "authors",
                                     action: "add",
                                     limit: { "xs": 24, "sm": 24, "md": 24, "lg": 24, "xl": 24, "xxl": 24 },
@@ -35,7 +35,7 @@ export default function Authors() {
                 </section>
                 <div className="sticky-section"><span>{__('authors')}</span></div>
             </div>
-            <section id="gallery"><MovingGallery /></section>
+            <section id="gallery"><MovingGallery {...props} /></section>
             <Marquee />
         </React.Fragment>
     );

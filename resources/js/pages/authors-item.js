@@ -6,16 +6,17 @@ import useDocumentTitle from '../components/document-title';
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 import client from '../api/client';
 
-export default function AuthorItem() {
+export default function AuthorItem(props) {
     const [state, setState] = useState({ author: null });
     const { id } = useParams();
+    const { req } = props;
 
     useDocumentTitle(__('AUTHORS_TITLE'));
 
     useEffect(() => {
         req('/api/' + window.App.locale + '/author/' + id)
             .then(({ author }) => setState((prevState) => {
-                document.title = author.title;
+                // document.title = author.title;
                 return {
                     ...prevState,
                     author
@@ -48,7 +49,7 @@ export default function AuthorItem() {
                             </div>
                             <div className="col-xl-20 d-none d-xl-block photo-block">
                                 <div className="image-wrapper"
-                                    style={{ backgroundImage: `url(` + state.author.avatar + `)`, paddingTop: 100 *  state.author.pxheight / state.author.pxwidth + `%`}}>
+                                    style={{ backgroundImage: `url(` + state.author.avatar + `)`, paddingTop: 100 * state.author.pxheight / state.author.pxwidth + `%` }}>
                                 </div>
                                 {state.author.studies && state.author.studies.length ?
                                     <div className="exhibitions">
@@ -69,7 +70,7 @@ export default function AuthorItem() {
                         <div className="h2">{__('Author\'s works')}</div>
                         <div className="author-works-list">
                             <div className="act-waterfall">
-                                <WaterfallAjax data={{
+                                <WaterfallAjax  {...props} data={{
                                     entity: "lots",
                                     action: "add",
                                     author: state.author.id,

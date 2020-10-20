@@ -19,7 +19,7 @@ function AuthRoute({ component: Component, title, ...rest }) {
 
         return authenticated
           ? (
-            <Component {...props} participate={rest.participate} />
+            <Component {...rest} {...props} participate={rest.participate} />
           )
           : <Redirect to={{ pathname: '/', state: { from: props.location } }} />;
       }

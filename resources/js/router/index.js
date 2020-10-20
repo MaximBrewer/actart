@@ -230,10 +230,10 @@ function App() {
 
               <Route exact path={`/search`}><SearchPage {...rest} /></Route>
               <Route exact path={`/search/:query`}><SearchPage {...rest} /></Route>
-              
+
               <AuthRoute exact path='/profile/vip' component={ProfileVIP} {...rest} />
               <AuthRoute path='/profile' component={Profile} {...rest} />
-              <Route><NotFound /></Route>
+              <Route><NotFound {...rest} /></Route>
             </Switch>
           </main>
         </div>

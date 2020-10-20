@@ -275,6 +275,7 @@ export default function WaterfallAjax(props) {
                     items={state.photos}
                     data={data}
                     favorites={state.favorites}
+                    {...props}
                 />
                 {state.more && data.action == "add" ? (
                     <div className="show-more">

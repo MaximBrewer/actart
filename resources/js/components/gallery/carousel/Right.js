@@ -31,7 +31,7 @@ export default function Right(props) {
             .catch((err) => console.log(err));
     };
     const blitz = (id) => {
-        req("/api/blitz/" + id)
+        req("/api/blitz/" + id, "PATCH")
             .then(() => null)
             .catch((err) => console.log(err));
     };
