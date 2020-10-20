@@ -194,6 +194,9 @@ function App() {
               <Route exact path='/about'><Base  {...rest} /></Route>
               <Route exact path='/rules'><Base  {...rest} /></Route>
               <Route exact path='/delivery'><Base  {...rest} /></Route>
+              <Route exact path='/contacts'><Base  {...rest} /></Route>
+              <Route exact path='/offer'><Base  {...rest} /></Route>
+              <Route exact path='/personal'><Base  {...rest} /></Route>
               <Route exact path='/partnership'><Base  {...rest} /></Route>
               <Route exact path='/how-to-buy'><Base  {...rest} /></Route>
               <Route exact path='/how-to-sell'><Base  {...rest} /></Route>
