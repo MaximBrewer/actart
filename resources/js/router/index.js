@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 
 import AuthRoute from './auth-route';
+import AdminRoute from './admin-route';
 import { useAuth } from '../context/auth';
 import FullPageSpinner from '../components/full-page-spinner';
 
@@ -22,6 +23,7 @@ import AuthorsItem from '../pages/authors-item';
 
 import Gallery from "../pages/gallery";
 
+import AuctionAdmin from "../components/auction/AuctionAdmin";
 import AuctionBase from "../components/auction/AuctionBase";
 import AuctionLot from "../components/auction/AuctionLot";
 import SearchPage from '../pages/search';
@@ -230,9 +232,12 @@ function App() {
 
               <Route exact path={`/search`}><SearchPage {...rest} /></Route>
               <Route exact path={`/search/:query`}><SearchPage {...rest} /></Route>
+              
+              <AuthRoute exact path={'/profile/vip'} component={ProfileVIP} {...rest} />
+              <AuthRoute exact path={'/profile'} component={Profile} {...rest} />
 
-              <AuthRoute exact path='/profile/vip' component={ProfileVIP} {...rest} />
-              <AuthRoute path='/profile' component={Profile} {...rest} />
+              <AdminRoute exact path={`/auctions/admin/:id`} {...rest} component={AuctionAdmin} />
+
               <Route><NotFound {...rest} /></Route>
             </Switch>
           </main>

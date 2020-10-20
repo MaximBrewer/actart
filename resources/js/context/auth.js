@@ -13,6 +13,7 @@ function AuthProvider ({ children }) {
   const [initializing, setInitializing] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
   const authenticated = useMemo(() => !!currentUser, [currentUser]);
+  const administration = useMemo(() => !!currentUser && !!currentUser.role.id == 1, [currentUser]);
 
   const initAuth = () => {
     return getToken()
@@ -32,6 +33,7 @@ function AuthProvider ({ children }) {
       initializing,
       authenticated,
       currentUser,
+      administration,
       setToken,
       setCurrentUser }
     }> { children }

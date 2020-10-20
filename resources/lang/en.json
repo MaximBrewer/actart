@@ -76,5 +76,11 @@
     "#status-empty#": "HZ",
     "#BYPRICE#": "price",
     "#BYAUTHOR#": "author name",
-    "SORT_BY_LOT_NUMBER": "lot number"
+    "SORT_BY_LOT_NUMBER": "lot number",
+
+    "ADMIN_START_AUCTION": "Start auction",
+    "ADMIN_SHOW_FIRST_LOT": "show first lot",
+    "ADMIN_LAST_CHANCE": "Last chance",
+    "ADMIN_SOLD": "Sold",
+    "ADMIN_NEXT_LOT": "Next lot"
 }

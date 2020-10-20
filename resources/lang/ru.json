@@ -197,5 +197,11 @@
     "BLOG": "БЛОГ",
     "BLOG": "БЛОГ",
     "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ"
+    "BLOG": "БЛОГ",
+
+    "ADMIN_START_AUCTION": "Начать аукцион",
+    "ADMIN_SHOW_FIRST_LOT": "показать первый лот",
+    "ADMIN_LAST_CHANCE": "Последний шанс",
+    "ADMIN_SOLD": "Продано",
+    "ADMIN_NEXT_LOT": "Следующий лот"
 }
