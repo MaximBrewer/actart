@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Echo from "laravel-echo";
+// import Echo from "laravel-echo";
+// window.Pusher = require('pusher-js');
 import axios from "axios";
 import Flash from "./helpers/Flash";
 window.axios = axios;
@@ -12,39 +13,79 @@ window.grid = {
   xl: 1440,
   xxl: 100000
 };
-window.io = require("socket.io-client");
-if (typeof io !== "undefined") {
-    window.Echo = new Echo({
-        broadcaster: "socket.io",
-        host: window.location.hostname + ":6001",
-        headers: {
-            "X-CSRF-TOKEN": document.getElementsByName("csrf-token").content
-        }
-    });
-}
 
-window.Echo.channel("Auction").listen("Auction", function(e) {
-    window.dispatchEvent(
-        new CustomEvent("auction", {
-            detail: {
-                auction: e.auction
-            }
-        })
-    );
+// window.Echo = new Echo({
+//   broadcaster: 'pusher',
+//   key: 'c3601b3f39bca77b9879'
+// });
+
+// window.io = require("socket.io-client");
+// if (typeof io !== "undefined") {
+//   window.Echo = new Echo({
+//     broadcaster: "socket.io",
+//     host: window.location.hostname + ":6001",
+//     headers: {
+//       "X-CSRF-TOKEN": document.getElementsByName("csrf-token").content
+//     }
+//   });
+// window.Echo.channel("Auction").listen("Auction", function (e) {
+//   window.dispatchEvent(
+//     new CustomEvent("auction", {
+//       detail: {
+//         auction: e.auction
+//       }
+//     })
+//   );
+// });
+// window.Echo.channel("Lot").listen("Lot", function (e) {
+//   window.dispatchEvent(
+//     new CustomEvent("lot", {
+//       detail: {
+//         lot: e.lot
+//       }
+//     })
+//   );
+// });
+// }
+
+
+// Enable pusher logging - don't include this in production
+// Pusher.logToConsole = true;
+
+var pusher = new Pusher('c3601b3f39bca77b9879', {
+  cluster: 'eu'
 });
 
-window.Echo.channel("Lot").listen("Lot", function(e) {
-    window.dispatchEvent(
-        new CustomEvent("lot", {
-            detail: {
-                lot: e.lot
-            }
-        })
-    );
+var channel = pusher.subscribe('act-art');
+channel.bind('update-lot', function (data) {
+  let g = [];
+  for (let i in window.App.gallery)
+    if (window.App.gallery[i].id == data.lot.id) g.push(data.lot);
+    else g.push(window.App.gallery[i]);
+  window.App.gallery = g;
+  window.dispatchEvent(
+    new CustomEvent("lot", {
+      detail: {
+        lot: data.lot
+      }
+    })
+  );
 });
+channel.bind('update-auction', function (data) {
+  console.log(data.auction)
+  window.dispatchEvent(
+    new CustomEvent("auction", {
+      detail: {
+        auction: data.auction
+      }
+    })
+  );
+});
+
 
 import App from './router';
 import { AuthProvider } from './context/auth';
+
 
 ReactDOM.render(
   <AuthProvider>

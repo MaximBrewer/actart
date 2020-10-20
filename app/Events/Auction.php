@@ -26,6 +26,11 @@ class Auction
         //
     }
 
+  
+    public function broadcastAs()
+    {
+        return 'update-auction';
+    }
     /**
      * Get the channels the event should broadcast on.
      *
@@ -33,6 +38,6 @@ class Auction
      */
     public function broadcastOn()
     {
-        return new Channel('Auction');
+        return new Channel('act-art');
     }
 }

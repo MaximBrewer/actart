@@ -52,6 +52,7 @@ class Lot extends JsonResource
                 'techniques' => $this->techniques,
                 'photos' => $photos,
                 'styles' => $this->styles,
+                'year' => $this->year,
                 'author' => trim($this->user->name . " " . $this->user->surname),
                 'author_url' => "/authors/" . $this->user->id,
                 'url' => $this->id,

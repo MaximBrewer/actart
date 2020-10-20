@@ -4,10 +4,23 @@ import { ZoomIn, ZoomOut, ZoomReset } from "../../../icons/icons";
 import __ from '../../../utils/trans';
 
 export default function Left(props) {
-    const { item } = props;
     const [state, setState] = useState({
-        photo: item.photos.length ? item.photos[0] : ``
+        item: props.item,
+        photo: props.item.photos.length ? props.item.photos[0] : ``
     });
+    useEffect(() => {
+        window.addEventListener("lot", updateLot);
+        return () => window.removeEventListener("lot", updateLot)
+    }, []);
+    const updateLot = event => {
+        if (event.detail.lot.id == state.item.id) {
+            setState(prevState => ({
+                ...prevState,
+                item: event.detail.lot
+            }))
+        }
+    };
+
     return (
         <div className="lot-carousel-left">
             <div
@@ -51,9 +64,9 @@ export default function Left(props) {
                     )}
                 </TransformWrapper>
             </div>
-            {item.photos.length > 1 ? (
+            {state.item.photos.length > 1 ? (
                 <div className="thumbnails d-flex justify-content-center">
-                    {item.photos.map((photo, index) => (
+                    {state.item.photos.map((photo, index) => (
                         <div key={index} style={{ width: "7.5rem" }}>
                             <div style={{ padding: ".5rem .7rem" }}>
                                 <div

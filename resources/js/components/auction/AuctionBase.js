@@ -44,6 +44,7 @@ export default function AuctionBase(props) {
             )
             .catch(() => null);
         window.addEventListener("auction", updateAuction);
+        return () => window.removeEventListener("auction", updateAuction)
     }, []);
 
     const Bottom = props => {

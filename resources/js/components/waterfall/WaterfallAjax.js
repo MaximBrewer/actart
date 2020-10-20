@@ -155,7 +155,6 @@ export default function WaterfallAjax(props) {
     };
 
     useEffect(() => {
-        window.addEventListener("lot", updateLot);
         getGallery(
             state.filter,
             state.sortBy,
@@ -165,7 +164,6 @@ export default function WaterfallAjax(props) {
     }, []);
 
     useEffect(() => {
-        window.addEventListener("lot", updateLot);
         getGallery(
             state.filter,
             state.sortBy,

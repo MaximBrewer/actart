@@ -125,8 +125,9 @@ class LotController extends Controller
     public function offer(Request $request, $lot_id, $price)
     {
         $lot = Lot::where('id', $lot_id)->whereIn('status', ['auction', 'gallery'])->firstOrFail();
-        $bet = Bet::where('lot_id', $lot_id)->where('bet', ">=", $price)->first();
-        if (!$bet) {
+        $bet = Bet::where('lot_id', $lot_id)->orderBy('bet', 'DESC')->first();
+
+        if (!$bet || $bet->bet < $price) {
             $bet = Bet::create([
                 'user_id' => Auth::id(),
                 'bet' => $price,
@@ -134,11 +135,12 @@ class LotController extends Controller
             ]);
             try {
                 event(new LotEvent(new LotResource($lot)));
+                return 1;
             } catch (Exception $e) {
-                var_dump($e->message);
+                return $e->message;
             }
         }
-        return null;
+        return [];
     }
 
     public function blitz(Request $request, $lot_id)

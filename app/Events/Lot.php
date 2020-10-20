@@ -25,6 +25,11 @@ class Lot implements ShouldBroadcast
         $this->lot = $lot;
         //
     }
+  
+    public function broadcastAs()
+    {
+        return 'update-lot';
+    }
 
     /**
      * Get the channels the event should broadcast on.
@@ -33,6 +38,6 @@ class Lot implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('Lot');
+        return new Channel('act-art');
     }
 }

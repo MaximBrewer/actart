@@ -23,23 +23,6 @@ export default function Waterfall(props) {
         return data.view[size];
     };
 
-    const updateLot = event => {
-        setState(prevState => {
-            let items = [];
-            for (let i in prevState.items) {
-                if (event.detail.lot.id == prevState.items[i].id) {
-                    items.push(event.detail.lot);
-                } else {
-                    items.push(prevState.items[i]);
-                }
-            }
-            return {
-                ...prevState,
-                items
-            };
-        });
-    };
-
     const setSortBy = (field, order) => {
         setState(prevState => {
             return {
@@ -92,7 +75,6 @@ export default function Waterfall(props) {
     };
 
     useEffect(() => {
-        window.addEventListener("lot", updateLot);
         if (!data.filterable) {
             if (!!status) {
                 setState(prevState => {
