@@ -53,6 +53,19 @@
 @import "./tizers/slides/expert";
 @import "./tizers/slides/post";
 
+.color-red{
+    color: $red !important;
+}
+.translation-wrapper iframe{
+    width: 99.9%;
+    height: 99.9%;
+    min-height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0.05% auto;
+    display: block
+}
 .block-loading {
     position: relative;
     background-color: #f1f1f1;

@@ -119,6 +119,26 @@ export default function Waterfall(props) {
         }
     }, [pathname, items]);
 
+    useEffect(() => {
+        window.addEventListener("remove-lot", removeLot);
+        return () => window.removeEventListener("remove-lot", removeLot)
+    }, []);
+
+    const removeLot = event => {
+
+        setState(prevState => {
+            let lots = [];
+            for (let item of prevState.items) {
+                if (event.detail.id != item.id)
+                    lots.push(item)
+            }
+            return {
+                ...prevState,
+                items: lots
+            }
+        })
+    }
+
     return (
         <div className="waterfall-outer row">
             <div className="col-60">

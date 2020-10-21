@@ -4,28 +4,39 @@ import Left from "./Left";
 import Right from "./Right";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from '../../../utils/trans';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 
 
 export default function Carousel(props) {
-    const { id, items } = props;
 
-    // const [state, setState] = useState({
-    //     slideIndex: 0,
-    //     slidesTotal: items.length 
+    let history = useHistory();
 
-    // });
+    const [state, setState] = useState({
+        items: props.items,
+        id: props.id
+    });
 
     useEffect(() => {
-        refPicture.current.slickGoTo(getIndex(id, true));
-        refAnnounce.current.slickGoTo(getIndex(id, true));
-    }, [id]);
+        window.addEventListener("remove-lot", removeLot);
+        return () => window.removeEventListener("remove-lot", removeLot)
+    }, []);
+
+    const removeLot = event => {
+        history.push('/gallery')
+    }
+
+    useEffect(() => {
+        refPicture.current.slickGoTo(getIndex(state.id, true));
+        refAnnounce.current.slickGoTo(getIndex(state.id, true));
+        history.replace('/gallery/lot/' + state.id)
+    }, [state.id]);
 
     const refPicture = useRef();
     const refAnnounce = useRef();
 
     const getIndex = id => {
-        for (let i in items) {
-            if (items[i].id == id) return i;
+        for (let i in state.items) {
+            if (state.items[i].id == id) return i;
         }
     };
 
@@ -42,6 +53,7 @@ export default function Carousel(props) {
 
     const settingsPicture = {
         ...setting,
+        afterChange: (current) => history.replace('/gallery/lot/' + state.items[current].id),
         beforeChange: (current, next) => {
             let cnt = refPicture.current.props.children.length;
             // setState({
@@ -99,7 +111,7 @@ export default function Carousel(props) {
                 <div className="col-xl-40 col-xxl-38">
                     <div className="left-side">
                         <Slider {...settingsPicture} ref={refPicture}>
-                            {items.map((item, index) => (
+                            {state.items.map((item, index) => (
                                 <div key={index}>
                                     <Left item={item} {...props} />
                                 </div>
@@ -110,7 +122,7 @@ export default function Carousel(props) {
                 <div className="col-xl-20 col-xxl-22">
                     <div className="right-side">
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
-                            {items.map((item, index) => (
+                            {state.items.map((item, index) => (
                                 <div key={index}>
                                     <Right item={item} {...props} />
                                 </div>

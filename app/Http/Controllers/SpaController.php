@@ -29,11 +29,6 @@ class SpaController extends Controller
      */
     public function index(Request $request)
     {
-        $auctions = Auction::where(function ($query) {
-            $query;
-        });
-        if ($request->get('attr')) $auctions->where('attr', $request->get('attr'));
-        if (strlen($request->get('ids'))) $auctions->whereIn('id', explode(",", $request->get('ids')));
 
         $locale = App::getLocale();
 
@@ -65,6 +60,11 @@ class SpaController extends Controller
         $popular = CategoryResource::collection(Category::orderBy('sort', 'asc')->limit(6)->get());
         $experts = ExpertResource::collection(Expert::all());
         $name = config('app.name');
+
+
+        $auctions = Auction::where(function ($query) {
+            $query;
+        });
         $coming = AuctionResource::collection($auctions->coming()->get());
         $toGallery = new AuctionResource(Auction::gallery());
 
@@ -82,11 +82,14 @@ class SpaController extends Controller
                 ->get()
         );
 
+        $translation = setting('site.translation');
+
         $translations = cache('translations.' . $locale);
         return view('spa', [
             'app' => compact(
                 'menus',
                 'translations',
+                'translation',
                 'options',
                 'name',
                 'locale',

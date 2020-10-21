@@ -11,8 +11,8 @@ export default function Tizer(props) {
         item: props.item,
     });
     useEffect(() => {
-        window.addEventListener("lot", updateLot);
-        return () => window.removeEventListener("lot", updateLot)
+        window.addEventListener("update-lot", updateLot);
+        return () => window.removeEventListener("update-lot", updateLot)
     }, []);
     const updateLot = event => {
         if (event.detail.lot.id == state.item.id) {

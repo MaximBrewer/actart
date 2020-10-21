@@ -64,17 +64,44 @@ channel.bind('update-lot', function (data) {
     else g.push(window.App.gallery[i]);
   window.App.gallery = g;
   window.dispatchEvent(
-    new CustomEvent("lot", {
+    new CustomEvent("update-lot", {
       detail: {
         lot: data.lot
       }
     })
   );
 });
+
+channel.bind('remove-lot', function (data) {
+  let g = [];
+  for (let i in window.App.gallery)
+    if (window.App.gallery[i].id == data.id) { }
+    else g.push(window.App.gallery[i]);
+  window.App.gallery = g;
+  window.dispatchEvent(
+    new CustomEvent("remove-lot", {
+      detail: {
+        id: data.id
+      }
+    })
+  );
+});
+
+channel.bind('update-translation', function (data) {
+  window.App.translation = data.translation;
+  window.dispatchEvent(
+    new CustomEvent("update-translation", {
+      detail: {
+        translation: data.translation
+      }
+    })
+  );
+});
+
 channel.bind('update-auction', function (data) {
   console.log(data.auction)
   window.dispatchEvent(
-    new CustomEvent("auction", {
+    new CustomEvent("update-auction", {
       detail: {
         auction: data.auction
       }

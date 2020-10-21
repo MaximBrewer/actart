@@ -9,8 +9,8 @@ export default function Left(props) {
         photo: props.item.photos.length ? props.item.photos[0] : ``
     });
     useEffect(() => {
-        window.addEventListener("lot", updateLot);
-        return () => window.removeEventListener("lot", updateLot)
+        window.addEventListener("update-lot", updateLot);
+        return () => window.removeEventListener("update-lot", updateLot)
     }, []);
     const updateLot = event => {
         if (event.detail.lot.id == state.item.id) {

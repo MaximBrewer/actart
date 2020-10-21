@@ -1,5 +1,6 @@
 import React from "react";
 import __ from '../../../../utils/trans';
+import Parser from "html-react-parser";
 export default function AuctionPreviewLeft(props) {
     return (
         <div>

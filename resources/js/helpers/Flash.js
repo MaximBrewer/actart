@@ -1,36 +1,62 @@
 import React, { useEffect, useState } from "react";
+import { Close } from "../icons/icons";
+import __ from "../utils/trans";
+import Parser from "html-react-parser";
 
 export default function Flash() {
-    let [visibility, setVisibility] = useState(false);
-    let [message, setMessage] = useState("");
-    let [type, setType] = useState("");
+    const [state, setState] = useState({
+        visibility: false,
+        message: null,
+        header: null,
+        buttons: null,
+        type: "success",
+        delay: 0,
+    });
+
 
     useEffect(() => {
-        window.addEventListener("flash", function(event) {
-            setVisibility(true);
-            setMessage(event.detail.message);
-            setType(event.detail.type);
-            setTimeout(() => {
-                setVisibility(false);
-            }, 4000);
+        window.addEventListener("flash", function (event) {
+            setState({
+                visibility: true,
+                message: event.detail.message,
+                header: event.detail.header,
+                buttons: event.detail.buttons,
+                type: event.detail.type,
+                delay: event.detail.delay,
+            })
+            if (event.detail.delay)
+                setTimeout(() => {
+                    setState((prevState) => ({
+                        ...prevState,
+                        visibility: false
+                    }));
+                }, event.detail.delay);
         });
     }, []);
 
-    useEffect(() => {
-        if (document.querySelector(".close") !== null) {
-            document
-                .querySelector(".close")
-                .addEventListener("click", () => setVisibility(false));
-        }
-    });
+    const hide = () => setState((prevState) => ({
+        ...prevState,
+        visibility: false
+    }));
 
     return (
-        visibility && (
-            <div className={`alert alert-${type}`}>
-                <p>{message}</p>
-                <span className="close">
-                    <strong>&times;</strong>
+        state.visibility && (
+            <div className={`flash-message ${state.type}`}>
+                <span className="close" onClick={hide}>
+                    <Close />
                 </span>
+                {state.header ? 
+                <div className={`header text-center mb-3`}>
+                    <h3>{state.header}</h3>
+                </div> : ``}
+                {state.message ? 
+                <div className={`content mb-3`}>
+                    {Parser(state.message)}
+                </div> : ``}
+                {state.buttons ? 
+                <div className={`buttons text-right`} onClick={hide}>
+                    <button className={`btn btn-sm btn-${state.type}`}>{__("OK")}</button>
+                </div> : ``}
             </div>
         )
     );

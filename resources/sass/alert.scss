@@ -1,24 +1,34 @@
-.alert {
-    color: white;
+.flash-message {
     position: fixed;
     top: 4rem;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    align-items: center;
+    padding: 1.5rem 1.5rem;
     z-index: 100000;
-}
-.alert p {
-    margin: 0;
-}
-.alert-error {
-    background: $danger;
-}
-.alert-success {
-    background: $success;
-}
-.alert .close {
-    color: white;
-    cursor: pointer;
-    margin-left: 10px;
+    border-width: 0.25rem;
+    border-style: solid;
+    max-width: 30rem;
+    &.danger {
+        border-color: $danger;
+        background-color: #ffe0df;
+        border-color: #ffd4d2;
+    }
+    &.success {
+        border-color: $success;
+        background-color: #ccf8e9;
+        border-color: #b8f5e1;
+    }
+    .close {
+        position: absolute;
+        top: 0.1rem;
+        right: 0.1rem;
+        display: flex;
+        color: white;
+        cursor: pointer;
+        margin-left: 10px;
+        svg {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
 }

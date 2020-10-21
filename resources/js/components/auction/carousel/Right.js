@@ -12,8 +12,8 @@ export default function Right(props) {
         item: props.item
     });
     useEffect(() => {
-        window.addEventListener("lot", updateLot);
-        return () => window.removeEventListener("lot", updateLot)
+        window.addEventListener("update-lot", updateLot);
+        return () => window.removeEventListener("update-lot", updateLot)
     }, []);
 
     const updateLot = event => {
@@ -32,7 +32,7 @@ export default function Right(props) {
     };
     const blitz = (id) => {
         req("/api/blitz/" + id, "PATCH")
-            .then(() => null)
+            .then(() => {})
             .catch((err) => console.log(err));
     };
 

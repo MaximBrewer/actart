@@ -3,10 +3,18 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Observers\Bet as BetObserver;
 use App\Observers\Lot as LotObserver;
 use App\Observers\Auction as AuctionObserver;
+use App\Observers\Setting as SettingObserver;
+use App\Observers\User as UserObserver;
+use TCG\Voyager\Facades\Voyager;
+use Illuminate\Events\Dispatcher;
+use App\Bet;
+use App\Setting;
 use App\Lot;
 use App\Auction;
+use App\User;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        Voyager::useModel('Setting', \App\Setting::class);
 
         //
     }
@@ -30,5 +39,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Lot::observe(LotObserver::class);
         Auction::observe(AuctionObserver::class);
+        Bet::observe(BetObserver::class);
+        Setting::observe(SettingObserver::class);
+        // User::observe(UserObserver::class);
     }
 }

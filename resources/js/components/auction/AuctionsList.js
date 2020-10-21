@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import AuctionPreviewLeft from "./coming/blocks/AuctionPreviewLeft";
-import AuctionPreviewRight from "./coming/blocks/AuctionPreviewRight";
+import AuctionPreviewLeftComing from "./coming/blocks/AuctionPreviewLeft";
+import AuctionPreviewRightComing from "./coming/blocks/AuctionPreviewRight";
+import AuctionPreviewLeftOnline from "./online/blocks/AuctionPreviewLeft";
+import AuctionPreviewRightOnline from "./online/blocks/AuctionPreviewRight";
 
 export default function AuctionList(props) {
     const [state, setState] = useState({
@@ -25,18 +27,14 @@ export default function AuctionList(props) {
                     <div className="col-xl-40 col-xxl-38">
                         <div className="left-auction-side">
                             <hr className="d-xl-none" />
-                            <AuctionPreviewLeft
-                                auction={item}
-                                {...props}
-                            />
+                            {item.status == 'coming' ? <AuctionPreviewLeftComing auction={item} {...props} /> : ``}
+                            {item.status == 'started' ? <AuctionPreviewLeftOnline auction={item} {...props} /> : ``}
                         </div>
                     </div>
                     <div className="col-xl-20 col-xxl-22">
                         <div className="right-auction-side">
-                            <AuctionPreviewRight
-                                auction={item}
-                                {...props}
-                            />
+                            {item.status == 'coming' ? <AuctionPreviewRightComing auction={item} {...props} /> : ``}
+                            {item.status == 'started' ? <AuctionPreviewRightOnline auction={item} {...props} /> : ``}
                             <hr className="d-xl-none" />
                         </div>
                     </div>

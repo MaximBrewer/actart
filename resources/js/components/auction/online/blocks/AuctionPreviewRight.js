@@ -22,15 +22,9 @@ export default function AuctionPreviewRight(props) {
                     className="btn btn-danger"
                     onClick={(e) => participate(e, auction)}
                 >
-                    {__("PARTICIPATE")}
+                    {__("GOTO_AUCTION")}
                 </Link>
             </div>
-            <Link
-                to={"/auctions/" + auction.id}
-                className="h5_underline d-none d-xl-block"
-            >
-                {__("View lots")} →
-            </Link>
         </div >
-    );
+    ); 
 }

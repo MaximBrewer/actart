@@ -69,6 +69,12 @@
 
     "ARCHIVE_MORE_LINK": "More",
 
+    "GET_GALLERY_BLITZ_HEADER": "Поздравляем",
+    "GET_GALLERY_BLITZ_TEXT": "Вы купили лот  \":lot_name\" за сумму $:lot_price.<br>В ближайшее время с вами свяжется менеджер для обсуждения дальнейших действий.",
+
+    "COUNTDOWN_AUCTION_STARTED": "Аукцион начался",
+    "GOTO_AUCTION": "Принять участие",
+
     "#status-gallery#": "Available in the gallery",
     "#status-auction#": "Participates in the auction",
     "#status-discontinued#": "Discontinued",
@@ -82,5 +88,9 @@
     "ADMIN_SHOW_FIRST_LOT": "show first lot",
     "ADMIN_LAST_CHANCE": "Last chance",
     "ADMIN_SOLD": "Sold",
-    "ADMIN_NEXT_LOT": "Next lot"
+    "ADMIN_NEXT_LOT": "Next lot",
+    "ADMIN_FINISH": "Finish auction",
+
+    "AUCTION_WILL_START_SOON": "Wait please",
+    "AUCTION_HAS_FINISHED": "Аукцион завершен"
 }

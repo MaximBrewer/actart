@@ -3,10 +3,11 @@
 namespace App\Observers;
 
 use App\Auction as AuctionModel;
-use App\Events\Auction as AuctionEvent;
-use App\Http\Resources\Auction as AuctionResource;
+use App\Events\UpdateAuction as UpdateAuctionEvent;
+use App\Events\CreateAuction as CreateAuctionEvent;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use Throwable;
 
 class Auction
 {
@@ -29,13 +30,19 @@ class Auction
     public function created(AuctionModel $model)
     {
         // ... code here
+        try {
+            event(new CreateAuctionEvent($model));
+        } catch (Throwable $e) {
+            report($e);
+        }
     }
 
     public function updated(AuctionModel $model)
     {
         try {
-            event(new AuctionEvent(new AuctionResource($model)));
-        } catch (Exception $e) {
+            event(new UpdateAuctionEvent($model));
+        } catch (Throwable $e) {
+            report($e);
         }
     }
 }

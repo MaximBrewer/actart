@@ -18,10 +18,9 @@ export default function __(key, replace) {
             ? window.App.translations.json[key]
             : key;
     }
-    if (typeof replace == "array")
-        [].forEach.call(replace, (value, key) => {
-            translation = translation.replace(":" + key, value);
-        });
-
+    if (typeof replace == "object")
+        for (let key in replace) {
+            translation = translation.replace(":" + key, replace[key]);
+        }
     return translation;
 };

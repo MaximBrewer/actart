@@ -21,6 +21,7 @@ class Auction extends Model
     protected $dates = [
         'date',
     ];
+    protected $fillable = ['status'];
     
     /**
      * Scope a query to only published scopes.
@@ -31,7 +32,7 @@ class Auction extends Model
      */
     public function scopeComing(Builder $query)
     {
-        return $query->where('status', 'coming')->orderBy('sort', 'ASC');
+        return $query->whereIn('status', ['coming', 'started'])->orderBy('sort', 'ASC');
     }
 
 
@@ -125,6 +126,6 @@ class Auction extends Model
 
     public function current()
     {
-        return $this->hasOne('App\Lot')->where('status', 'auction')->orderBy('sort', "ASC")->limit(1);
+        return $this->hasOne('App\Lot')->where('status', 'in_auction')->limit(1);
     }
 }

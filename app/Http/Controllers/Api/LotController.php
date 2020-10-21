@@ -124,7 +124,7 @@ class LotController extends Controller
 
     public function offer(Request $request, $lot_id, $price)
     {
-        $lot = Lot::where('id', $lot_id)->whereIn('status', ['auction', 'gallery'])->firstOrFail();
+        $lot = Lot::where('id', $lot_id)->whereIn('status', ['in_auction', 'gallery'])->firstOrFail();
         $bet = Bet::where('lot_id', $lot_id)->orderBy('bet', 'DESC')->first();
 
         if (!$bet || $bet->bet < $price) {
@@ -132,20 +132,30 @@ class LotController extends Controller
                 'user_id' => Auth::id(),
                 'bet' => $price,
                 'lot_id' => $lot->id,
+                'blitz' => false
             ]);
-            try {
-                event(new LotEvent(new LotResource($lot)));
-                return 1;
-            } catch (Exception $e) {
-                return $e->message;
-            }
+            return $bet;
         }
         return [];
     }
 
     public function blitz(Request $request, $lot_id)
     {
-        $lot = Lot::findOrFail($lot_id);
+        $lot = Lot::where('id', $lot_id)->where('status', 'gallery')->firstOrFail();
+        $bet = Bet::where('lot_id', $lot_id)->orderBy('bet', 'DESC')->first();
+
+        if (!$bet || $bet->bet < $lot->blitz) {
+            $bet = Bet::create([
+                'user_id' => Auth::id(),
+                'bet' => $lot->blitz,
+                'lot_id' => $lot->id,
+                'blitz' => true
+            ]);
+            $lot->update([
+                'status' => 'gsold'
+            ]);
+            return ['lot' => new LotResource($lot)];
+        }
         return null;
     }
 }

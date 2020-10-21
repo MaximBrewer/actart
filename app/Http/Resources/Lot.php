@@ -50,6 +50,7 @@ class Lot extends JsonResource
                 'categories' => $this->categories,
                 'frames' => $this->frames,
                 'techniques' => $this->techniques,
+                'lastchance' => $this->lastchance,
                 'photos' => $photos,
                 'styles' => $this->styles,
                 'year' => $this->year,

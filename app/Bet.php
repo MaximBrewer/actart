@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bet extends Model
 {
     //
-    protected $fillable = ['lot_id', 'user_id', 'bet'];
+    protected $fillable = ['lot_id', 'user_id', 'bet', 'blitz'];
 
 
     public function setBetAttribute($value)

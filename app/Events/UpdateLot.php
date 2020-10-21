@@ -9,8 +9,9 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use App\Http\Resources\Lot as LotResource;
 
-class Lot implements ShouldBroadcast
+class UpdateLot implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -22,7 +23,7 @@ class Lot implements ShouldBroadcast
      */
     public function __construct($lot)
     {
-        $this->lot = $lot;
+        $this->lot = new LotResource($lot);
         //
     }
   

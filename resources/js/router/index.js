@@ -142,15 +142,6 @@ function App() {
     setModal(initState)
   }
 
-
-  useEffect(() => {
-    setInterval(() => {
-      req('/api/profile')
-        .then(({ data }) => setCurrentUser(data))
-        .catch(() => handleLogout());
-    }, 30000);
-  }, []);
-
   const [modal, setModal] = React.useState(initState);
 
   const participate = (e, auction) => {

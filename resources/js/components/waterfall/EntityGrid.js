@@ -11,6 +11,7 @@ import LotPlaceholderTizer from "./tizers/placeholders/Lot.js";
 import DefaultPlaceholderTizer from "./tizers/placeholders/Default.js";
 
 export default function EntityGrid(props) {
+    
     const { items, columns, data } = props;
 
     const Tizer = props => {

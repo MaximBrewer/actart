@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\AuctionShort as AuctionResource;
 use App\Http\Resources\User as UserResource;
 use App\Mail\AuctionParticipate;
+use App\Events\UpdateAuction as UpdateAuctionEvent;
+use App\Lot;
 
 class AuctionController extends Controller
 {
@@ -65,5 +67,99 @@ class AuctionController extends Controller
             $user->auctions()->attach($id);
         }
         return ['user' => new UserResource($user)];
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function start($id)
+    {
+        $auction = Auction::find($id);
+        $this->next($auction);
+        return ['auction' => $auction];
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function laschance($id)
+    {
+        $auction = Auction::find($id);
+        $lot = Lot::where('auction_id', $auction->id)->where('status', 'in_auction')->orderBy('sort', 'ASC')->first();
+        $lot->update([
+            'lastchance' => 1
+        ]);
+        return ['auction' => $auction, 'lot' => $lot];
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function sold($id)
+    {
+        $auction = Auction::find($id);
+        $lot = Lot::where('auction_id', $auction->id)->where('status', 'in_auction')->orderBy('sort', 'ASC')->first();
+        if ($lot) $lot->update([
+            'status' => 'sold'
+        ]);
+        $this->next($auction);
+        return ['auction' => $auction, 'lot' => $lot];
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function nextlot($id)
+    {
+        $auction = Auction::find($id);
+        $this->next($auction);
+        return ['auction' => $auction];
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    protected function next($auction)
+    {
+        Lot::where('auction_id', $auction->id)->where('status', 'in_auction')->update([
+            'status' => 'discontinued'
+        ]);
+        $lot = Lot::where('auction_id', $auction->id)->where('status', 'auction')->orderBy('sort', 'ASC')->first();
+        if ($lot) {
+            $lot->update([
+                'status' => 'in_auction'
+            ]);
+        } else {
+            try {
+                event(new UpdateAuctionEvent(Auction::find($lot->auction_id)));
+            } catch (\Throwable $e) {
+                report($e);
+            }
+        }
+        return ['auction' => $auction];
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function finish($id)
+    {
+        $auction = Auction::find($id);
+        $auction->update([
+            'status' => 'finished'
+        ]);
+        return ['auction' => $auction];
     }
 }

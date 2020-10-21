@@ -15,9 +15,9 @@ export default function Countdown(props) {
     };
 
     const Completionist = () => (
-        <div className="banner-counter d-flex"></div>
+        <div className="banner-counter d-flex h3 h3 color-red">{__('COUNTDOWN_AUCTION_STARTED')}</div>
     );
-    
+
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (window.innerWidth < window.grid.sm) return "";
 

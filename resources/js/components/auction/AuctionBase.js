@@ -25,13 +25,10 @@ export default function AuctionBase(props) {
         auction: null
     });
 
-
     const updateAuction = event => {
-        setState(prevState => {
-            return {
-                ...prevState,
-                auction: event.detail.auction
-            };
+        setState(prevState => prevState.auction.status == event.detail.auction.status ? prevState : {
+            ...prevState,
+            auction: event.detail.auction
         });
     };
 

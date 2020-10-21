@@ -12,8 +12,8 @@ export default function Right(props) {
         item: props.item
     });
     useEffect(() => {
-        window.addEventListener("lot", updateLot);
-        return () => window.removeEventListener("lot", updateLot)
+        window.addEventListener("update-lot", updateLot);
+        return () => window.removeEventListener("update-lot", updateLot)
     }, []);
 
     const updateLot = event => {
@@ -32,7 +32,21 @@ export default function Right(props) {
     };
     const blitz = (id) => {
         req("/api/blitz/" + id, "PATCH")
-            .then(() => null)
+            .then(({ lot }) => {
+                window.dispatchEvent(
+                    new CustomEvent("flash", {
+                        detail: {
+                            header: __("GET_GALLERY_BLITZ_HEADER"),
+                            message: __(
+                                "GET_GALLERY_BLITZ_TEXT", { lot_name: lot.title, lot_price: lot.price }
+                            ),
+                            type: "success",
+                            delay: 0,
+                            buttons: ['OK']
+                        }
+                    })
+                );
+            })
             .catch((err) => console.log(err));
     };
 
@@ -77,7 +91,7 @@ export default function Right(props) {
             </div>
             <div className="size">
                 {state.item.width} х {state.item.height} {__("MEASURE_CM")}{state.item.year ? ` / ` + state.item.year + ` ` + __("SHORT_YEAR") : ``}
-                
+
             </div>
             <div className="start-price">
                 <span>

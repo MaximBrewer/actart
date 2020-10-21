@@ -98,8 +98,8 @@ export default function Carousel(props) {
         }
     };
 
-    const init = () => {
-        if (!!props.items && props.items.length) { 
+    useEffect(() => {
+        if (!!props.items && props.items.length) {
             setState(prevState => {
                 return {
                     ...prevState,
@@ -133,11 +133,8 @@ export default function Carousel(props) {
                     console.log(err);
                 });
         }
-    };
-
-    useEffect(() => {
-        init();
     }, []);
+    
 
     if (window.innerWidth < grid[data.minView]) {
         return (

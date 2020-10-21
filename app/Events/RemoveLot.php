@@ -9,28 +9,29 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use App\Http\Resources\Lot as LotResource;
 
-class Auction
+class RemoveLot implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $auction;
+    public $id;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($auction)
+    public function __construct($lot)
     {
-        $this->auction = $auction;
+        $this->id = $lot->id;
         //
     }
-
   
     public function broadcastAs()
     {
-        return 'update-auction';
+        return 'remove-lot';
     }
+
     /**
      * Get the channels the event should broadcast on.
      *

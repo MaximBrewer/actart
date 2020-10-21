@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
-import AuctionPreviewLeft from "./coming/blocks/AuctionPreviewLeft";
-import AuctionPreviewRight from "./coming/blocks/AuctionPreviewRight";
+import AuctionPreviewLeftComing from "./coming/blocks/AuctionPreviewLeft";
+import AuctionPreviewRightComing from "./coming/blocks/AuctionPreviewRight";
+import AuctionPreviewLeftOnline from "./online/blocks/AuctionPreviewLeft";
+import AuctionPreviewRightOnline from "./online/blocks/AuctionPreviewRight";
 import __ from '../../utils/trans';
 import { Link } from "react-router-dom";
 
@@ -60,6 +62,48 @@ export default function Auctions(props) {
         }
     };
 
+    {
+        state.auctions.map((item, index) => {
+            const AuctionPreviewLeft = props => {
+                switch (item.status) {
+                    case "coming":
+                        return <AuctionPreviewLeftComing {...props} />;
+                    case "online":
+                        return <AuctionPreviewLeftOnline {...props} />;
+                }
+            };
+            const AuctionPreviewRight = props => {
+                switch (item.status) {
+                    case "coming":
+                        return <AuctionPreviewRightComing {...props} />;
+                    case "online":
+                        return <AuctionPreviewRightOnline {...props} />;
+                }
+            };
+            return (
+                <div className="row auction-preview py-4" key={index}>
+                    <div className="col-xl-40 col-xxl-38">
+                        <div className="left-auction-side">
+                            <hr className="d-xl-none" />
+                            <AuctionPreviewLeft
+                                auction={item}
+                                {...props}
+                            />
+                        </div>
+                    </div>
+                    <div className="col-xl-20 col-xxl-22">
+                        <div className="right-auction-side">
+                            <AuctionPreviewRight
+                                auction={item}
+                                {...props}
+                            />
+                            <hr className="d-xl-none" />
+                        </div>
+                    </div>
+                </div>
+            )
+        })
+    }
     return (
         <React.Fragment>
             <div className="row">
@@ -69,7 +113,8 @@ export default function Auctions(props) {
                         <Slider {...settingsPicture} ref={refPicture}>
                             {state.auctions.map((item, index) => (
                                 <div key={index}>
-                                    <AuctionPreviewLeft auction={item} {...props} />
+                                    {item.status == 'coming' ? <AuctionPreviewLeftComing auction={item} {...props} /> : ``}
+                                    {item.status == 'started' ? <AuctionPreviewLeftOnline auction={item} {...props} /> : ``}
                                 </div>
                             ))}
                         </Slider>
@@ -80,7 +125,8 @@ export default function Auctions(props) {
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
                             {state.auctions.map((item, index) => (
                                 <div key={index}>
-                                    <AuctionPreviewRight auction={item} {...props} />
+                                    {item.status == 'coming' ? <AuctionPreviewRightComing auction={item} {...props} /> : ``}
+                                    {item.status == 'started' ? <AuctionPreviewRightOnline auction={item} {...props} /> : ``}
                                 </div>
                             ))}
                         </Slider>

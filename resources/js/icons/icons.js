@@ -24,7 +24,8 @@ export function FavoriteBig(props) {
                         message: __(
                             "To add to favorites, authorization is required"
                         ),
-                        type: "error"
+                        type: "danger",
+                        delay: 4000
                     }
                 })
             );
@@ -42,7 +43,8 @@ export function FavoriteBig(props) {
                                 action == "add"
                                     ? __("Added to favorites")
                                     : __("Removed from favorites"),
-                            type: action == "add" ? "success" : "error"
+                            type: action == "add" ? "success" : "danger",
+                            delay: 4000
                         }
                     })
                 );
@@ -92,7 +94,8 @@ export function Favorite(props) {
                         message: __(
                             "To add to favorites, authorization is required"
                         ),
-                        type: "error"
+                        type: "danger",
+                        delay: 4000
                     }
                 })
             );
@@ -110,7 +113,8 @@ export function Favorite(props) {
                                 action == "add"
                                     ? __("Added to favorites")
                                     : __("Removed from favorites"),
-                            type: action == "add" ? "success" : "error"
+                            type: action == "add" ? "success" : "danger",
+                            delay: 4000
                         }
                     })
                 );
@@ -241,6 +245,15 @@ export function ZoomReset() {
         >
             <path d="M0 0h24v24H0z" fill="none" />
             <path d="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+        </svg>
+    );
+}
+
+export function Close() {
+    return (
+        <svg width="29" height="29" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z" />
         </svg>
     );
 }

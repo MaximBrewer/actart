@@ -49,6 +49,7 @@ Route::name('api.')->namespace('Api')->group(function () {
         });
     });
 
+
     // Protected routes
     Route::middleware('auth:api')->group(function () {
         Route::namespace('Auth')->group(function () {
@@ -61,5 +62,14 @@ Route::name('api.')->namespace('Api')->group(function () {
         Route::group(['prefix' => 'auction/{id}'], function () {
             Route::get('participate', '\App\Http\Controllers\Api\AuctionController@participate')->name('auction.participate');
         });
+        // Route::middleware('is_admin')->group(function () {
+        Route::group(['prefix' => 'auction/{id}/admin'], function () {
+            Route::patch('start', 'AuctionController@start');
+            Route::patch('laschance', 'AuctionController@laschance');
+            Route::patch('sold', 'AuctionController@sold');
+            Route::patch('nextlot', 'AuctionController@nextlot');
+            Route::patch('finish', 'AuctionController@finish');
+        });
+        // });
     });
 });
