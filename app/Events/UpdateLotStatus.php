@@ -9,27 +9,28 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Http\Resources\Lot as LotResource;
 
-class UpdateLot implements ShouldBroadcast
+class UpdateLotStatus implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $lot;
+    public $id;
+    public $status;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($lot)
+    public function __construct($id, $status)
     {
-        $this->lot = new LotResource($lot);
+        $this->id = $id;
+        $this->status = $status;
         //
     }
   
     public function broadcastAs()
     {
-        return 'update-lot';
+        return 'update-lot-status';
     }
 
     /**

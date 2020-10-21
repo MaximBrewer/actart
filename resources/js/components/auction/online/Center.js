@@ -7,15 +7,66 @@ export default function Center(props) {
 
     const [state, setState] = useState({
         auction: props.auction,
+        current: props.auction.current,
         finished: false,
         translation: window.App.translation
     });
 
-    const updateAuction = event => {
-        setState(prevState => prevState.auction.status == event.detail.auction.status ? prevState : {
-            ...prevState,
-            auction: event.detail.auction
+    const updateLotStatus = event => {
+        setState(prevState => {
+            let auction = prevState.auction,
+                current = prevState.current, lots = [],
+                update = false,
+                finished = prevState.finished;
+            for (let i in auction.lots) {
+                let lot = auction.lots[i];
+                if (lot.id == event.detail.id) {
+                    lot.status = event.detail.status;
+                    if (event.detail.status == 'in_auction') current = lot;
+                    update = true;
+                }
+                lots.push(lot)
+            }
+            auction.lots = lots;
+            if (update)
+                return {
+                    ...prevState,
+                    auction: auction,
+                    current: current,
+                    finished: finished
+                };
+            return prevState
         });
+    };
+
+    const createBet = event => {
+        setState(prevState => {
+            let auction = prevState.auction, lots = [], update = false, current = prevState.current;
+            for (let i in auction.lots) {
+                let lot = auction.lots[i], bets = lot.bets;
+                if (lot.id == event.detail.bet.lot_id) {
+                    bets.unshift(event.detail.bet);
+                    lot.price = event.detail.bet.bet;
+                    if (lot.id == current.id) current = lot;
+                    update = true;
+                }
+                lots.push(lot)
+            }
+            auction.lots = lots;
+            if (update) {
+                console.log({
+                    ...prevState,
+                    auction: auction,
+                    current: current
+                })
+                return {
+                    ...prevState,
+                    auction: auction,
+                    current: current
+                };
+            }
+            return prevState
+        })
     };
 
     const updateTranslation = event => {
@@ -27,25 +78,16 @@ export default function Center(props) {
 
     useEffect(() => {
         window.addEventListener("update-translation", updateTranslation);
-        window.addEventListener("auction", updateAuction);
+        window.addEventListener("update-lot-status", updateLotStatus);
+        window.addEventListener("update-lot-chance", updateLotStatus);
+        window.addEventListener("create-bet", createBet);
         return () => {
-            window.removeEventListener("auction", updateAuction)
             window.removeEventListener("update-translation", updateTranslation)
+            window.removeEventListener("update-lot-status", updateLotStatus);
+            window.removeEventListener("update-lot-chance", updateLotStatus);
+            window.removeEventListener("create-bet", createBet);
         }
     }, []);
-
-    useEffect(() => {
-        if (state.auction && state.auction.lots) {
-            let finished = true;
-            for (const lot of state.auction.lots) {
-                if (lot.status == 'auction' || lot.status == 'in_auction') finished = false;
-            }
-            setState(prevState => ({
-                ...prevState,
-                finished: finished
-            }))
-        }
-    }, [state.auction]);
 
     return <div className="auction-info">
         <div className="container">
@@ -57,9 +99,25 @@ export default function Center(props) {
                                 <div style={{ paddingTop: "56.25%", height: 0, position: "relative" }} className={`translation-wrapper`} >
                                     {Parser(state.translation)}
                                 </div>
-                                <div className={`current`} >
-                                    {state.auction.current ? (
-                                        <div>{state.auction.current.title}</div>
+                                <div className={`current`} style={{ display: "flex", justifyContent: "flex-end" }}>
+                                    {state.current ? (
+                                        <div className="py-2" style={{ maxWidth: "20rem", width: "100%" }}>
+                                            <div
+                                                className="image"
+                                                alt={state.current.thumbnail}
+                                                style={{
+                                                    display: "block",
+                                                    position: "relative",
+                                                    backgroundSize: "contain",
+                                                    backgroundRepeat: "no-repeat",
+                                                    backgroundPosition: "right bottom",
+                                                    paddingTop: "65%",
+                                                    backgroundColor: "#ECEDED",
+                                                    backgroundImage:
+                                                        'url("' + state.current.thumbnail + '")'
+                                                }}
+                                            ></div>
+                                        </div>
                                     ) : ``}
                                 </div>
                             </div>
@@ -67,8 +125,8 @@ export default function Center(props) {
                     </div>
                     <div className="col-xl-20 col-xxl-22">
                         <div className="right-side">
-                            {state.auction.current ?
-                                <Right item={state.auction.current} {...props} />
+                            {state.current ?
+                                <Right item={state.current} {...props} />
                                 :
                                 <h3 className={`py-5 text-center color-red`}>{!state.finished ? __('AUCTION_WILL_START_SOON') : __('AUCTION_HAS_FINISHED')}</h3>
                             }

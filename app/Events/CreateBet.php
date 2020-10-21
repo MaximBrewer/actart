@@ -9,27 +9,27 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Http\Resources\Lot as LotResource;
+use App\Http\Resources\Bet as BetResource;
 
-class RemoveLot implements ShouldBroadcast
+class CreateBet implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $id;
+    public $bet;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct($bet)
     {
-        $this->id = $id;
+        $this->bet = new BetResource($bet);
         //
     }
   
     public function broadcastAs()
     {
-        return 'remove-lot';
+        return 'create-bet';
     }
 
     /**

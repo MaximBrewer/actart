@@ -57,57 +57,80 @@ var pusher = new Pusher('c3601b3f39bca77b9879', {
 });
 
 var channel = pusher.subscribe('act-art');
-channel.bind('update-lot', function (data) {
-  let g = [];
-  for (let i in window.App.gallery)
-    if (window.App.gallery[i].id == data.lot.id) g.push(data.lot);
-    else g.push(window.App.gallery[i]);
-  window.App.gallery = g;
+
+channel.bind('update-translation', function ({ translation }) {
+  window.App.translation = translation;
   window.dispatchEvent(
-    new CustomEvent("update-lot", {
+    new CustomEvent("update-translation", {
       detail: {
-        lot: data.lot
+        translation: translation
       }
     })
   );
 });
 
-channel.bind('remove-lot', function (data) {
+channel.bind('remove-lot', function ({ id }) {
   let g = [];
   for (let i in window.App.gallery)
-    if (window.App.gallery[i].id == data.id) { }
-    else g.push(window.App.gallery[i]);
+    window.App.gallery[i].id == id || g.push(window.App.gallery[i]);
   window.App.gallery = g;
   window.dispatchEvent(
     new CustomEvent("remove-lot", {
       detail: {
-        id: data.id
+        id: id
       }
     })
   );
 });
 
-channel.bind('update-translation', function (data) {
-  window.App.translation = data.translation;
+channel.bind('create-bet', function ({ bet }) {
   window.dispatchEvent(
-    new CustomEvent("update-translation", {
+    new CustomEvent("create-bet", {
       detail: {
-        translation: data.translation
+        bet: bet
       }
     })
   );
 });
 
-channel.bind('update-auction', function (data) {
-  console.log(data.auction)
+channel.bind('update-lot-status', function ({ id, status }) {
+  let g = [];
+  for (let i in window.App.gallery) {
+    let lot = window.App.gallery[i];
+    lot.id == id && (lot.status = status);
+    g.push(lot);
+  }
+  window.App.gallery = g;
   window.dispatchEvent(
-    new CustomEvent("update-auction", {
-      detail: {
-        auction: data.auction
-      }
+    new CustomEvent("update-lot-status", {
+      detail: { id, status }
     })
   );
 });
+
+channel.bind('update-lot-lastchance', function ({ id, lastchance }) {
+  let g = [];
+  for (let i in window.App.gallery) {
+    let lot = window.App.gallery[i];
+    lot.id == id && (lot.lastchance = lastchance);
+    g.push(lot);
+  }
+  window.App.gallery = g;
+  window.dispatchEvent(
+    new CustomEvent("update-lot-lastchance", {
+      detail: { id, lastchance }
+    })
+  );
+});
+
+channel.bind('update-auction-status', function ({ id, status }) {
+  window.dispatchEvent(
+    new CustomEvent("update-auction-status", {
+      detail: { id, status }
+    })
+  );
+});
+
 
 
 import App from './router';

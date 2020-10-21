@@ -46622,47 +46622,83 @@ var pusher = new Pusher('c3601b3f39bca77b9879', {
   cluster: 'eu'
 });
 var channel = pusher.subscribe('act-art');
-channel.bind('update-lot', function (data) {
-  var g = [];
-
-  for (var i in window.App.gallery) {
-    if (window.App.gallery[i].id == data.lot.id) g.push(data.lot);else g.push(window.App.gallery[i]);
-  }
-
-  window.App.gallery = g;
-  window.dispatchEvent(new CustomEvent("update-lot", {
+channel.bind('update-translation', function (_ref) {
+  var translation = _ref.translation;
+  window.App.translation = translation;
+  window.dispatchEvent(new CustomEvent("update-translation", {
     detail: {
-      lot: data.lot
+      translation: translation
     }
   }));
 });
-channel.bind('remove-lot', function (data) {
+channel.bind('remove-lot', function (_ref2) {
+  var id = _ref2.id;
   var g = [];
 
   for (var i in window.App.gallery) {
-    if (window.App.gallery[i].id == data.id) {} else g.push(window.App.gallery[i]);
+    window.App.gallery[i].id == id || g.push(window.App.gallery[i]);
   }
 
   window.App.gallery = g;
   window.dispatchEvent(new CustomEvent("remove-lot", {
     detail: {
-      id: data.id
+      id: id
     }
   }));
 });
-channel.bind('update-translation', function (data) {
-  window.App.translation = data.translation;
-  window.dispatchEvent(new CustomEvent("update-translation", {
+channel.bind('create-bet', function (_ref3) {
+  var bet = _ref3.bet;
+  window.dispatchEvent(new CustomEvent("create-bet", {
     detail: {
-      translation: data.translation
+      bet: bet
     }
   }));
 });
-channel.bind('update-auction', function (data) {
-  console.log(data.auction);
-  window.dispatchEvent(new CustomEvent("update-auction", {
+channel.bind('update-lot-status', function (_ref4) {
+  var id = _ref4.id,
+      status = _ref4.status;
+  var g = [];
+
+  for (var i in window.App.gallery) {
+    var lot = window.App.gallery[i];
+    lot.id == id && (lot.status = status);
+    g.push(lot);
+  }
+
+  window.App.gallery = g;
+  window.dispatchEvent(new CustomEvent("update-lot-status", {
     detail: {
-      auction: data.auction
+      id: id,
+      status: status
+    }
+  }));
+});
+channel.bind('update-lot-lastchance', function (_ref5) {
+  var id = _ref5.id,
+      lastchance = _ref5.lastchance;
+  var g = [];
+
+  for (var i in window.App.gallery) {
+    var lot = window.App.gallery[i];
+    lot.id == id && (lot.lastchance = lastchance);
+    g.push(lot);
+  }
+
+  window.App.gallery = g;
+  window.dispatchEvent(new CustomEvent("update-lot-lastchance", {
+    detail: {
+      id: id,
+      lastchance: lastchance
+    }
+  }));
+});
+channel.bind('update-auction-status', function (_ref6) {
+  var id = _ref6.id,
+      status = _ref6.status;
+  window.dispatchEvent(new CustomEvent("update-auction-status", {
+    detail: {
+      id: id,
+      status: status
     }
   }));
 });
@@ -46866,55 +46902,6 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
   };
 }
 
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
@@ -46973,6 +46960,55 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 
 
 
@@ -46980,25 +47016,6 @@ function _arrayWithHoles(arr) {
 
 
 function AuctionAdmin(props) {
-  var req = props.req;
-
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
-      id = _useParams.id;
-
-  var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_5__["useAuth"])(),
-      initializing = _useAuth.initializing,
-      currentUser = _useAuth.currentUser,
-      setCurrentUser = _useAuth.setCurrentUser;
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    auction: null,
-    translation: window.App.translation,
-    sold: false
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      state = _useState2[0],
-      setState = _useState2[1];
-
   var startAuction = function startAuction(e) {
     e.preventDefault();
     req('/api/auction/' + state.auction.id + '/admin/start', "PATCH").then(function () {
@@ -47052,11 +47069,121 @@ function AuctionAdmin(props) {
     });
   };
 
-  var updateAuction = function updateAuction(event) {
+  var req = props.req;
+
+  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
+      id = _useParams.id;
+
+  var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_5__["useAuth"])(),
+      initializing = _useAuth.initializing,
+      currentUser = _useAuth.currentUser,
+      setCurrentUser = _useAuth.setCurrentUser;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    auction: null,
+    lots: [],
+    current: null,
+    next: null,
+    translation: window.App.translation,
+    finished: false
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      state = _useState2[0],
+      setState = _useState2[1];
+
+  var updateLotStatus = function updateLotStatus(event) {
+    console.log(event);
     setState(function (prevState) {
-      if (event.detail.auction.id == prevState.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
-        auction: event.detail.auction
+      var auction = _objectSpread({}, prevState.auction),
+          lots = [],
+          update = false,
+          finished = prevState.finished;
+
+      for (var i in auction.lots) {
+        var lot = auction.lots[i];
+
+        if (lot.id == event.detail.id) {
+          lot.status = event.detail.status;
+          if (event.detail.status == 'in_auction') auction.current = lot;
+          update = true;
+        }
+
+        lots.push(lot);
+      }
+
+      auction.lots = lots;
+      console.log(auction);
+      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
+        auction: auction,
+        finished: finished
+      });
+      return prevState;
+    });
+  };
+
+  var updateLotLastchance = function updateLotLastchance(event) {
+    setState(function (prevState) {
+      var auction = prevState.auction,
+          lots = [],
+          update = false;
+
+      for (var i in auction.lots) {
+        var lot = auction.lots[i];
+
+        if (lot.id == event.detail.id) {
+          lot.lastchance = event.detail.lastchance;
+          if (event.detail.id == auction.current.id) auction.current.lastchance = event.detail.lastchance;
+          update = true;
+        }
+
+        lots.push(lot);
+      }
+
+      auction.lots = lots;
+      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
+        auction: auction
+      });
+      return prevState;
+    });
+  };
+
+  var updateAuctionStatus = function updateAuctionStatus(event) {
+    setState(function (prevState) {
+      if (event.detail.id == prevState.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
+        auction: _objectSpread(_objectSpread({}, prevState.auction), {}, {
+          status: event.detail.status
+        })
       });else return prevState;
+    });
+  };
+
+  var createBet = function createBet(event) {
+    console.log(event);
+    setState(function (prevState) {
+      var auction = prevState.auction,
+          lots = [],
+          update = false;
+
+      for (var i in auction.lots) {
+        var lot = auction.lots[i],
+            bets = lot.bets;
+
+        if (lot.id == event.detail.bet.lot_id) {
+          bets.unshift(event.detail.bet);
+          lot.price = event.detail.bet.bet;
+          if (lot.id == auction.current.id) auction.current = lot;
+          update = true;
+        }
+
+        lots.push(lot);
+      }
+
+      auction.lots = lots;
+      console.log(update, auction.lots);
+      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
+        auction: auction
+      });
+      return prevState;
     });
   };
 
@@ -47071,14 +47198,22 @@ function AuctionAdmin(props) {
     })["catch"](function () {
       return null;
     });
-    window.addEventListener("update-auction", updateAuction);
     window.addEventListener("update-translation", updateTranslation);
+    window.addEventListener("update-auction-status", updateAuctionStatus);
+    window.addEventListener("update-lot-status", updateLotStatus);
+    window.addEventListener("update-lot-lastchance", updateLotLastchance);
+    window.addEventListener("create-bet", createBet);
     return function () {
-      window.removeEventListener("update-auction", updateAuction);
       window.removeEventListener("update-translation", updateTranslation);
+      window.removeEventListener("update-auction-status", updateAuctionStatus);
+      window.removeEventListener("update-lot-status", updateLotStatus);
+      window.removeEventListener("update-lot-lastchance", updateLotLastchance);
+      window.removeEventListener("create-bet", createBet);
     };
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    console.log(state.auction);
+
     if (state.auction && state.auction.lots) {
       var all = true;
 
@@ -47098,7 +47233,7 @@ function AuctionAdmin(props) {
 
       setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
-          sold: all
+          finished: all
         });
       });
     }
@@ -47141,8 +47276,31 @@ function AuctionAdmin(props) {
     },
     className: "translation-wrapper"
   }, html_react_parser__WEBPACK_IMPORTED_MODULE_3___default()(state.translation)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "current"
-  }, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, state.auction.current.title) : ""))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "current",
+    style: {
+      display: "flex",
+      justifyContent: "flex-end"
+    }
+  }, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "py-2",
+    style: {
+      maxWidth: "20rem",
+      width: "100%"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "image",
+    alt: state.auction.current.thumbnail,
+    style: {
+      display: "block",
+      position: "relative",
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "right bottom",
+      paddingTop: "65%",
+      backgroundColor: "#ECEDED",
+      backgroundImage: 'url("' + state.auction.current.thumbnail + '")'
+    }
+  })) : ""))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-carousel-right"
@@ -47154,7 +47312,7 @@ function AuctionAdmin(props) {
     className: "info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, "$", state.auction.current.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_SEED"), ":", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", state.auction.current.bets[0].user_id)))) : "", !state.sold ? !state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, "$", state.auction.current.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_SEED"), ":", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", state.auction.current.bets[0].user_id)))) : "", !state.finished ? !state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-primary",
     href: "#",
     onClick: startAuction
@@ -47403,14 +47561,6 @@ function AuctionBase(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  var updateAuction = function updateAuction(event) {
-    setState(function (prevState) {
-      return prevState.auction.status == event.detail.auction.status ? prevState : _objectSpread(_objectSpread({}, prevState), {}, {
-        auction: event.detail.auction
-      });
-    });
-  };
-
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     req('/api/' + window.App.locale + "/auctions/" + id).then(function (_ref) {
       var auction = _ref.auction;
@@ -47420,11 +47570,21 @@ function AuctionBase(props) {
     })["catch"](function () {
       return null;
     });
-    window.addEventListener("auction", updateAuction);
+    window.addEventListener("update-auction-status", updateAuctionStatus);
     return function () {
-      return window.removeEventListener("auction", updateAuction);
+      window.removeEventListener("update-auction-status", updateAuctionStatus);
     };
   }, []);
+
+  var updateAuctionStatus = function updateAuctionStatus(event) {
+    setState(function (prevState) {
+      if (event.detail.id == prevState.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
+        auction: _objectSpread(_objectSpread({}, prevState.auction), {}, {
+          status: event.detail.status
+        })
+      });else return prevState;
+    });
+  };
 
   var Bottom = function Bottom(props) {
     if (state.auction.title) switch (state.auction.status) {
@@ -49285,148 +49445,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icons_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../icons/icons */ "./resources/js/icons/icons.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils/trans */ "./resources/js/utils/trans.js");
 /* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../context/auth */ "./resources/js/context/auth.js");
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-
-  return arr2;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
 
 
 
 
 function Right(props) {
-  var req = props.req;
+  var req = props.req,
+      item = props.item;
 
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_3__["useAuth"])(),
       initializing = _useAuth.initializing,
       currentUser = _useAuth.currentUser,
       setCurrentUser = _useAuth.setCurrentUser;
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    item: props.item
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      state = _useState2[0],
-      setState = _useState2[1];
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    window.addEventListener("update-lot", updateLot);
-    return function () {
-      return window.removeEventListener("update-lot", updateLot);
-    };
-  }, []);
-
-  var updateLot = function updateLot(event) {
-    if (event.detail.lot.id == state.item.id) {
-      setState(function (prevState) {
-        return _objectSpread(_objectSpread({}, prevState), {}, {
-          item: event.detail.lot
-        });
-      });
-    }
-  };
 
   var offer = function offer(id, price) {
     req("/api/offer/" + id + "/" + price, "PATCH").then(function () {
@@ -49448,55 +49478,55 @@ function Right(props) {
     className: "pb-3 d-flex justify-content-between"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-number"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID"), " ", state.item.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_1__["FavoriteBig"], {
-    item: state.item,
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID"), " ", item.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_1__["FavoriteBig"], {
+    item: item,
     req: req
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-author"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "author",
-    href: state.item.author_url
-  }, state.item.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    href: item.author_url
+  }, item.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-title"
-  }, state.item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "matherial"
-  }, state.item.materials.map(function (m, mi) {
+  }, item.materials.map(function (m, mi) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: mi
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "styles"
-  }, state.item.styles.map(function (m, mi) {
+  }, item.styles.map(function (m, mi) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: mi
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "frames"
-  }, state.item.frames.map(function (m, mi) {
+  }, item.frames.map(function (m, mi) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: mi
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "techniques"
-  }, state.item.techniques.map(function (m, mi) {
+  }, item.techniques.map(function (m, mi) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: mi
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "categories"
-  }, state.item.categories.map(function (m, mi) {
+  }, item.categories.map(function (m, mi) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: mi
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "size"
-  }, state.item.width, " \u0445 ", state.item.height, " ", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("MEASURE_CM"), state.item.year ? " / " + state.item.year + " " + Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SHORT_YEAR") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, item.width, " \u0445 ", item.height, " ", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("MEASURE_CM"), item.year ? " / " + item.year + " " + Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SHORT_YEAR") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "start-price"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_START_PRICE"), ": $", state.item.startPrice)), currentUser != undefined ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_START_PRICE"), ": $", item.startPrice)), currentUser != undefined ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-id"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_YOUR_ID"), ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", currentUser.id)), state.item.bets.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_YOUR_ID"), ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", currentUser.id)), item.bets.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "last-price"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "title"
@@ -49504,25 +49534,25 @@ function Right(props) {
     className: "info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, "$", state.item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_SEED"), ":", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", state.item.bets[0].user_id)))) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, "$", item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_SEED"), ":", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", item.bets[0].user_id)))) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-danger",
     href: "#",
     onClick: function onClick(e) {
       e.preventDefault();
-      offer(state.item.id, 100 + state.item.price * 1);
+      offer(item.id, 100 + item.price * 1);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", state.item.price * 1 + 100)), state.item.price * 1 < state.item.blitz * 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", item.price * 1 + 100)), item.price * 1 < item.blitz * 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "blitz-price"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "pb-1",
     href: "#",
     onClick: function onClick(e) {
       e.preventDefault();
-      blitz(state.item.id);
+      blitz(item.id);
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_BLITZ"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", state.item.blitz)) : "") : "");
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_BLITZ"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", item.blitz)) : "") : "");
 }
 
 /***/ }),
@@ -50021,63 +50051,6 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it;
-
-  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
-    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
-      if (it) o = it;
-      var i = 0;
-
-      var F = function F() {};
-
-      return {
-        s: F,
-        n: function n() {
-          if (i >= o.length) return {
-            done: true
-          };
-          return {
-            done: false,
-            value: o[i++]
-          };
-        },
-        e: function e(_e2) {
-          throw _e2;
-        },
-        f: F
-      };
-    }
-
-    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-
-  var normalCompletion = true,
-      didErr = false,
-      err;
-  return {
-    s: function s() {
-      it = o[Symbol.iterator]();
-    },
-    n: function n() {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function e(_e3) {
-      didErr = true;
-      err = _e3;
-    },
-    f: function f() {
-      try {
-        if (!normalCompletion && it["return"] != null) it["return"]();
-      } finally {
-        if (didErr) throw err;
-      }
-    }
-  };
-}
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
 
@@ -50192,6 +50165,7 @@ function _arrayWithHoles(arr) {
 function Center(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     auction: props.auction,
+    current: props.auction.current,
     finished: false,
     translation: window.App.translation
   }),
@@ -50199,11 +50173,71 @@ function Center(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  var updateAuction = function updateAuction(event) {
+  var updateLotStatus = function updateLotStatus(event) {
     setState(function (prevState) {
-      return prevState.auction.status == event.detail.auction.status ? prevState : _objectSpread(_objectSpread({}, prevState), {}, {
-        auction: event.detail.auction
+      var auction = prevState.auction,
+          current = prevState.current,
+          lots = [],
+          update = false,
+          finished = prevState.finished;
+
+      for (var i in auction.lots) {
+        var lot = auction.lots[i];
+
+        if (lot.id == event.detail.id) {
+          lot.status = event.detail.status;
+          if (event.detail.status == 'in_auction') current = lot;
+          update = true;
+        }
+
+        lots.push(lot);
+      }
+
+      auction.lots = lots;
+      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
+        auction: auction,
+        current: current,
+        finished: finished
       });
+      return prevState;
+    });
+  };
+
+  var createBet = function createBet(event) {
+    setState(function (prevState) {
+      var auction = prevState.auction,
+          lots = [],
+          update = false,
+          current = prevState.current;
+
+      for (var i in auction.lots) {
+        var lot = auction.lots[i],
+            bets = lot.bets;
+
+        if (lot.id == event.detail.bet.lot_id) {
+          bets.unshift(event.detail.bet);
+          lot.price = event.detail.bet.bet;
+          if (lot.id == current.id) current = lot;
+          update = true;
+        }
+
+        lots.push(lot);
+      }
+
+      auction.lots = lots;
+
+      if (update) {
+        console.log(_objectSpread(_objectSpread({}, prevState), {}, {
+          auction: auction,
+          current: current
+        }));
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          auction: auction,
+          current: current
+        });
+      }
+
+      return prevState;
     });
   };
 
@@ -50217,37 +50251,16 @@ function Center(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     window.addEventListener("update-translation", updateTranslation);
-    window.addEventListener("auction", updateAuction);
+    window.addEventListener("update-lot-status", updateLotStatus);
+    window.addEventListener("update-lot-chance", updateLotStatus);
+    window.addEventListener("create-bet", createBet);
     return function () {
-      window.removeEventListener("auction", updateAuction);
       window.removeEventListener("update-translation", updateTranslation);
+      window.removeEventListener("update-lot-status", updateLotStatus);
+      window.removeEventListener("update-lot-chance", updateLotStatus);
+      window.removeEventListener("create-bet", createBet);
     };
   }, []);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (state.auction && state.auction.lots) {
-      var finished = true;
-
-      var _iterator = _createForOfIteratorHelper(state.auction.lots),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var lot = _step.value;
-          if (lot.status == 'auction' || lot.status == 'in_auction') finished = false;
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      setState(function (prevState) {
-        return _objectSpread(_objectSpread({}, prevState), {}, {
-          finished: finished
-        });
-      });
-    }
-  }, [state.auction]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -50268,13 +50281,36 @@ function Center(props) {
     },
     className: "translation-wrapper"
   }, html_react_parser__WEBPACK_IMPORTED_MODULE_3___default()(state.translation)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "current"
-  }, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, state.auction.current.title) : "")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "current",
+    style: {
+      display: "flex",
+      justifyContent: "flex-end"
+    }
+  }, state.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "py-2",
+    style: {
+      maxWidth: "20rem",
+      width: "100%"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "image",
+    alt: state.current.thumbnail,
+    style: {
+      display: "block",
+      position: "relative",
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "right bottom",
+      paddingTop: "65%",
+      backgroundColor: "#ECEDED",
+      backgroundImage: 'url("' + state.current.thumbnail + '")'
+    }
+  })) : "")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right-side"
-  }, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Right__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
-    item: state.auction.current
+  }, state.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Right__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
+    item: state.current
   }, props)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "py-5 text-center color-red"
   }, !state.finished ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTION_WILL_START_SOON') : Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTION_HAS_FINISHED'))))))));
@@ -54660,10 +54696,62 @@ function Waterfall(props) {
   }, [pathname, items]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     window.addEventListener("remove-lot", removeLot);
+    window.addEventListener("update-lot-status", updateLotStatus);
+    window.addEventListener("create-bet", createBet);
     return function () {
-      return window.removeEventListener("remove-lot", removeLot);
+      window.removeEventListener("remove-lot", removeLot);
+      window.removeEventListener("update-lot-status", updateLotStatus);
+      window.removeEventListener("create-bet", createBet);
     };
   }, []);
+
+  var createBet = function createBet(event) {
+    setState(function (prevState) {
+      var items = [],
+          update = false;
+
+      for (var i in prevState.items) {
+        var lot = prevState.items[i],
+            bets = lot.bets;
+
+        if (lot.id == event.detail.bet.id) {
+          bets.unshift(event.detail.bet);
+          lot.price = event.detail.bet.bet;
+          update = true;
+        }
+
+        items.push(lot);
+      }
+
+      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
+        items: items
+      });
+      return prevState;
+    });
+  };
+
+  var updateLotStatus = function updateLotStatus(event) {
+    setState(function (prevState) {
+      var items = [],
+          update = false;
+
+      for (var i in prevState.items) {
+        var lot = prevState.items[i];
+
+        if (lot.id == event.detail.id) {
+          lot.status = event.detail.status;
+          update = true;
+        }
+
+        items.push(lot);
+      }
+
+      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
+        items: items
+      });
+      return prevState;
+    });
+  };
 
   var removeLot = function removeLot(event) {
     setState(function (prevState) {
@@ -54796,6 +54884,63 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it;
+
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it) o = it;
+      var i = 0;
+
+      var F = function F() {};
+
+      return {
+        s: F,
+        n: function n() {
+          if (i >= o.length) return {
+            done: true
+          };
+          return {
+            done: false,
+            value: o[i++]
+          };
+        },
+        e: function e(_e2) {
+          throw _e2;
+        },
+        f: F
+      };
+    }
+
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  var normalCompletion = true,
+      didErr = false,
+      err;
+  return {
+    s: function s() {
+      it = o[Symbol.iterator]();
+    },
+    n: function n() {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function e(_e3) {
+      didErr = true;
+      err = _e3;
+    },
+    f: function f() {
+      try {
+        if (!normalCompletion && it["return"] != null) it["return"]();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
 }
 
 function ownKeys(object, enumerableOnly) {
@@ -55033,20 +55178,74 @@ function WaterfallAjax(props) {
     });
   };
 
-  var updateLot = function updateLot(event) {
+  var createBet = function createBet(event) {
     setState(function (prevState) {
-      var photos = [];
+      var items = [],
+          update = false;
 
-      for (var i in prevState.photos) {
-        if (event.detail.lot.id == prevState.photos[i].id) {
-          photos.push(event.detail.lot);
-        } else {
-          photos.push(prevState.photos[i]);
+      for (var i in prevState.items) {
+        var lot = prevState.items[i],
+            bets = lot.bets;
+
+        if (lot.id == event.detail.bet.id) {
+          bets.unshift(event.detail.bet);
+          lot.price = event.detail.bet.bet;
+          update = true;
         }
+
+        items.push(lot);
+      }
+
+      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
+        items: items
+      });
+      return prevState;
+    });
+  };
+
+  var updateLotStatus = function updateLotStatus(event) {
+    setState(function (prevState) {
+      var items = [],
+          update = false;
+
+      for (var i in prevState.items) {
+        var lot = prevState.items[i];
+
+        if (lot.id == event.detail.id) {
+          lot.status = event.detail.status;
+          update = true;
+        }
+
+        items.push(lot);
+      }
+
+      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
+        items: items
+      });
+      return prevState;
+    });
+  };
+
+  var removeLot = function removeLot(event) {
+    setState(function (prevState) {
+      var lots = [];
+
+      var _iterator = _createForOfIteratorHelper(prevState.items),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var item = _step.value;
+          if (event.detail.id != item.id) lots.push(item);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
       }
 
       return _objectSpread(_objectSpread({}, prevState), {}, {
-        photos: photos
+        items: lots
       });
     });
   };
@@ -55063,6 +55262,14 @@ function WaterfallAjax(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     getGallery(state.filter, state.sortBy, state.order, state.options);
+    window.addEventListener("remove-lot", removeLot);
+    window.addEventListener("update-lot-status", updateLotStatus);
+    window.addEventListener("create-bet", createBet);
+    return function () {
+      window.removeEventListener("remove-lot", removeLot);
+      window.removeEventListener("update-lot-status", updateLotStatus);
+      window.removeEventListener("create-bet", createBet);
+    };
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     getGallery(state.filter, state.sortBy, state.order, state.options);

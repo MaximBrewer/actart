@@ -126,22 +126,61 @@ export default function WaterfallAjax(props) {
             });
     };
 
-    const updateLot = event => {
+    const createBet = event => {
         setState(prevState => {
-            let photos = [];
-            for (let i in prevState.photos) {
-                if (event.detail.lot.id == prevState.photos[i].id) {
-                    photos.push(event.detail.lot);
-                } else {
-                    photos.push(prevState.photos[i]);
+            let items = [], update = false;
+            for (let i in prevState.items) {
+                let lot = prevState.items[i], bets = lot.bets;
+                if (lot.id == event.detail.bet.id) {
+                    bets.unshift(event.detail.bet);
+                    lot.price = event.detail.bet.bet;
+                    update = true;
                 }
+                items.push(lot)
+            }
+            if (update)
+                return {
+                    ...prevState,
+                    items: items
+                };
+            return prevState
+        })
+    };
+
+    const updateLotStatus = event => {
+        setState(prevState => {
+            let items = [], update = false;
+            for (let i in prevState.items) {
+                let lot = prevState.items[i];
+                if (lot.id == event.detail.id) {
+                    lot.status = event.detail.status;
+                    update = true;
+                }
+                items.push(lot)
+            }
+            if (update)
+                return {
+                    ...prevState,
+                    items: items
+                };
+            return prevState
+        });
+    };
+
+    const removeLot = event => {
+
+        setState(prevState => {
+            let lots = [];
+            for (let item of prevState.items) {
+                if (event.detail.id != item.id)
+                    lots.push(item)
             }
             return {
                 ...prevState,
-                photos
-            };
-        });
-    };
+                items: lots
+            }
+        })
+    }
 
     const setSortBy = (field, order) => {
         setState(prevState => {
@@ -161,6 +200,14 @@ export default function WaterfallAjax(props) {
             state.order,
             state.options
         );
+        window.addEventListener("remove-lot", removeLot);
+        window.addEventListener("update-lot-status", updateLotStatus);
+        window.addEventListener("create-bet", createBet);
+        return () => {
+            window.removeEventListener("remove-lot", removeLot);
+            window.removeEventListener("update-lot-status", updateLotStatus);
+            window.removeEventListener("create-bet", createBet);
+        }
     }, []);
 
     useEffect(() => {

@@ -16,7 +16,7 @@ import useDocumentTitle from '../../components/document-title';
 import __ from '../../utils/trans';
 import client from '../../api/client';
 
-export default function AuctionBase(props) {
+export default function AuctionBase(props) { 
     useDocumentTitle(__('AUCTIONS_PAGE_TITLE'));
     const { req } = props;
     const { id } = useParams();
@@ -24,13 +24,6 @@ export default function AuctionBase(props) {
     const [state, setState] = useState({
         auction: null
     });
-
-    const updateAuction = event => {
-        setState(prevState => prevState.auction.status == event.detail.auction.status ? prevState : {
-            ...prevState,
-            auction: event.detail.auction
-        });
-    };
 
     useEffect(() => {
         req('/api/' + window.App.locale + "/auctions/" + id)
@@ -40,9 +33,23 @@ export default function AuctionBase(props) {
                 })
             )
             .catch(() => null);
-        window.addEventListener("auction", updateAuction);
-        return () => window.removeEventListener("auction", updateAuction)
+        window.addEventListener("update-auction-status", updateAuctionStatus);
+        return () => {
+            window.removeEventListener("update-auction-status", updateAuctionStatus);
+        }
     }, []);
+
+    const updateAuctionStatus = event => {
+        setState(prevState => {
+            if (event.detail.id == prevState.auction.id)
+                return {
+                    ...prevState,
+                    auction: { ...prevState.auction, status: event.detail.status }
+                }
+            else
+                return prevState;
+        });
+    };
 
     const Bottom = props => {
         if (state.auction.title)

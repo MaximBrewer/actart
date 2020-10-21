@@ -7,16 +7,6 @@ import { useAuth } from '../../context/auth';
 
 export default function AuctionAdmin(props) {
 
-    const { req } = props;
-    const { id } = useParams();
-    const { initializing, currentUser, setCurrentUser } = useAuth();
-
-    const [state, setState] = useState({
-        auction: null,
-        translation: window.App.translation,
-        sold: false
-    });
-
     const startAuction = (e) => {
         e.preventDefault();
         req('/api/auction/' + state.auction.id + '/admin/start', "PATCH")
@@ -59,16 +49,102 @@ export default function AuctionAdmin(props) {
         }));
     };
 
-    const updateAuction = event => {
+    const { req } = props;
+    const { id } = useParams();
+    const { initializing, currentUser, setCurrentUser } = useAuth();
+
+    const [state, setState] = useState({
+        auction: null,
+        lots: [],
+        current: null,
+        next: null,
+        translation: window.App.translation,
+        finished: false
+    });
+
+    const updateLotStatus = event => {
+        console.log(event);
         setState(prevState => {
-            if (event.detail.auction.id == prevState.auction.id)
+            let auction = { ...prevState.auction }, lots = [], update = false, finished = prevState.finished;
+            for (let i in auction.lots) {
+                let lot = auction.lots[i];
+                if (lot.id == event.detail.id) {
+                    lot.status = event.detail.status;
+                    if (event.detail.status == 'in_auction') auction.current = lot;
+                    update = true;
+                }
+                lots.push(lot)
+            }
+            
+            auction.lots = lots;
+            console.log(auction);
+            if (update)
                 return {
                     ...prevState,
-                    auction: event.detail.auction
+                    auction,
+                    finished
+                };
+            return prevState
+        });
+    };
+
+    const updateLotLastchance = event => {
+        setState(prevState => {
+            let auction = prevState.auction, lots = [], update = false;
+            for (let i in auction.lots) {
+                let lot = auction.lots[i];
+                if (lot.id == event.detail.id) {
+                    lot.lastchance = event.detail.lastchance;
+                    if (event.detail.id == auction.current.id) auction.current.lastchance = event.detail.lastchance;
+                    update = true;
+                }
+                lots.push(lot)
+            }
+            auction.lots = lots;
+            if (update)
+                return {
+                    ...prevState,
+                    auction: auction
+                };
+            return prevState
+        });
+    };
+
+    const updateAuctionStatus = event => {
+        setState(prevState => {
+            if (event.detail.id == prevState.auction.id)
+                return {
+                    ...prevState,
+                    auction: { ...prevState.auction, status: event.detail.status }
                 }
             else
                 return prevState;
         });
+    };
+
+    const createBet = event => {
+        console.log(event)
+        setState(prevState => {
+            let auction = prevState.auction, lots = [], update = false;
+            for (let i in auction.lots) {
+                let lot = auction.lots[i], bets = lot.bets;
+                if (lot.id == event.detail.bet.lot_id) {
+                    bets.unshift(event.detail.bet);
+                    lot.price = event.detail.bet.bet;
+                    if (lot.id == auction.current.id) auction.current = lot;
+                    update = true;
+                }
+                lots.push(lot)
+            }
+            auction.lots = lots;
+            console.log(update, auction.lots)
+            if (update)
+                return {
+                    ...prevState,
+                    auction: auction
+                };
+            return prevState
+        })
     };
 
     useEffect(() => {
@@ -79,15 +155,22 @@ export default function AuctionAdmin(props) {
                     auction: auction
                 })))
             .catch(() => null);
-        window.addEventListener("update-auction", updateAuction);
         window.addEventListener("update-translation", updateTranslation);
+        window.addEventListener("update-auction-status", updateAuctionStatus);
+        window.addEventListener("update-lot-status", updateLotStatus);
+        window.addEventListener("update-lot-lastchance", updateLotLastchance);
+        window.addEventListener("create-bet", createBet);
         return () => {
-            window.removeEventListener("update-auction", updateAuction);
-            window.removeEventListener("update-translation", updateTranslation)
+            window.removeEventListener("update-translation", updateTranslation);
+            window.removeEventListener("update-auction-status", updateAuctionStatus);
+            window.removeEventListener("update-lot-status", updateLotStatus);
+            window.removeEventListener("update-lot-lastchance", updateLotLastchance);
+            window.removeEventListener("create-bet", createBet);
         }
     }, []);
 
     useEffect(() => {
+        console.log(state.auction)
         if (state.auction && state.auction.lots) {
             let all = true;
             for (const lot of state.auction.lots) {
@@ -95,7 +178,7 @@ export default function AuctionAdmin(props) {
             }
             setState(prevState => ({
                 ...prevState,
-                sold: all
+                finished: all
             }))
         }
     }, [state.auction]);
@@ -127,9 +210,25 @@ export default function AuctionAdmin(props) {
                                                 <div style={{ paddingTop: "56.25%", height: 0, position: "relative" }} className={`translation-wrapper`} >
                                                     {Parser(state.translation)}
                                                 </div>
-                                                <div className={`current`} >
+                                                <div className={`current`} style={{ display: "flex", justifyContent: "flex-end" }}>
                                                     {state.auction.current ? (
-                                                        <div>{state.auction.current.title}</div>
+                                                        <div className="py-2" style={{ maxWidth: "20rem", width: "100%" }}>
+                                                            <div
+                                                                className="image"
+                                                                alt={state.auction.current.thumbnail}
+                                                                style={{
+                                                                    display: "block",
+                                                                    position: "relative",
+                                                                    backgroundSize: "contain",
+                                                                    backgroundRepeat: "no-repeat",
+                                                                    backgroundPosition: "right bottom",
+                                                                    paddingTop: "65%",
+                                                                    backgroundColor: "#ECEDED",
+                                                                    backgroundImage:
+                                                                        'url("' + state.auction.current.thumbnail + '")'
+                                                                }}
+                                                            ></div>
+                                                        </div>
                                                     ) : ``}
                                                 </div>
                                             </div>
@@ -150,7 +249,7 @@ export default function AuctionAdmin(props) {
                                                     ) : (
                                                             ``
                                                         )}
-                                                    {!state.sold ?
+                                                    {!state.finished ?
                                                         (!state.auction.current ?
                                                             <a
                                                                 className="btn btn-primary"

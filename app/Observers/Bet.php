@@ -19,23 +19,11 @@ class Bet
     public function created(BetModel $bet)
     {
         $lot = LotModel::find($bet->lot_id);
+        event(new \App\Events\CreateBet($bet));
         if ($bet->blitz) {
             $lot->update([
                 'status' => 'gsold'
             ]);
-        } else {
-            if ($lot->status == 'in_auction') {
-                try {
-                    event(new UpdateAuctionEvent(AuctionModel::find($lot->auction_id)));
-                } catch (Throwable $e) {
-                    report($e);
-                }
-            }
-            try {
-                event(new UpdateLotEvent(LotModel::find($bet->lot_id)));
-            } catch (Throwable $e) {
-                report($e);
-            }
         }
     }
 }

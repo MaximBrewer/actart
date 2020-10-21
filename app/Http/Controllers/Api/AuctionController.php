@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\AuctionShort as AuctionResource;
 use App\Http\Resources\User as UserResource;
 use App\Mail\AuctionParticipate;
-use App\Events\UpdateAuction as UpdateAuctionEvent;
+use App\Events\UpdateLotStatus as UpdateLotStatusEvent;
 use App\Lot;
 
 class AuctionController extends Controller
@@ -93,7 +93,7 @@ class AuctionController extends Controller
         $lot->update([
             'lastchance' => 1
         ]);
-        return ['auction' => $auction, 'lot' => $lot];
+        return ['auction' => $auction];
     }
 
     /**
@@ -131,20 +131,17 @@ class AuctionController extends Controller
      */
     protected function next($auction)
     {
-        Lot::where('auction_id', $auction->id)->where('status', 'in_auction')->update([
-            'status' => 'discontinued'
-        ]);
+        $lots = Lot::where('auction_id', $auction->id)->where('status', 'in_auction')->get();
+        foreach ($lots as $lot) {
+            $lot->update([
+                'status' => 'discontinued'
+            ]);
+        }
         $lot = Lot::where('auction_id', $auction->id)->where('status', 'auction')->orderBy('sort', 'ASC')->first();
         if ($lot) {
             $lot->update([
                 'status' => 'in_auction'
             ]);
-        } else {
-            try {
-                event(new UpdateAuctionEvent(Auction::find($lot->auction_id)));
-            } catch (\Throwable $e) {
-                report($e);
-            }
         }
         return ['auction' => $auction];
     }

@@ -6,32 +6,33 @@ use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use App\Http\Resources\Auction as AuctionResource;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UpdateAuction implements ShouldBroadcast
+class UpdateLotLastchance implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $auction;
+    public $id;
+    public $lastchance;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($auction)
+    public function __construct($id, $lastchance)
     {
-        $this->auction = new AuctionResource($auction);
+        $this->id = $id;
+        $this->lastchance = $lastchance;
         //
     }
-
   
     public function broadcastAs()
     {
-        return 'update-auction';
+        return 'update-lot-lastchance';
     }
+
     /**
      * Get the channels the event should broadcast on.
      *

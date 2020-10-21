@@ -121,8 +121,56 @@ export default function Waterfall(props) {
 
     useEffect(() => {
         window.addEventListener("remove-lot", removeLot);
-        return () => window.removeEventListener("remove-lot", removeLot)
+        window.addEventListener("update-lot-status", updateLotStatus);
+        window.addEventListener("create-bet", createBet);
+        return () => {
+            window.removeEventListener("remove-lot", removeLot);
+            window.removeEventListener("update-lot-status", updateLotStatus);
+            window.removeEventListener("create-bet", createBet);
+        }
     }, []);
+
+
+    const createBet = event => {
+        setState(prevState => {
+            let items = [], update = false;
+            for (let i in prevState.items) {
+                let lot = prevState.items[i], bets = lot.bets;
+                if (lot.id == event.detail.bet.id) {
+                    bets.unshift(event.detail.bet);
+                    lot.price = event.detail.bet.bet;
+                    update = true;
+                }
+                items.push(lot)
+            }
+            if (update)
+                return {
+                    ...prevState,
+                    items: items
+                };
+            return prevState
+        })
+    };
+
+    const updateLotStatus = event => {
+        setState(prevState => {
+            let items = [], update = false;
+            for (let i in prevState.items) {
+                let lot = prevState.items[i];
+                if (lot.id == event.detail.id) {
+                    lot.status = event.detail.status;
+                    update = true;
+                }
+                items.push(lot)
+            }
+            if (update)
+                return {
+                    ...prevState,
+                    items: items
+                };
+            return prevState
+        });
+    };
 
     const removeLot = event => {
 
