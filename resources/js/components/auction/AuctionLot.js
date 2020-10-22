@@ -46,18 +46,6 @@ export default function Lot(props) {
         window.addEventListener("auction", updateAuction);
     }, []);
 
-    const Bottom = props => {
-        if (state.auction.title)
-            switch (state.auction.status) {
-                case "started":
-                    return <AuctionOnlineBottom {...props} />;
-                case "finished":
-                    return <AuctionArchiveBottom {...props} />;
-                case "coming":
-                    return <AuctionComingBottom {...props} />;
-            }
-        return false;
-    };
     const Top = props => {
         if (state.auction.title)
             switch (state.auction.status) {
@@ -67,6 +55,18 @@ export default function Lot(props) {
                     return <AuctionArchiveTop {...props} />;
                 case "coming":
                     return <AuctionComingTop {...props} />;
+            }
+        return false;
+    };
+    const Center = props => {
+        if (state.auction.title)
+            switch (state.auction.status) {
+                case "started":
+                    return <AuctionOnlineCenter {...props} />;
+                case "finished":
+                    return <AuctionArchiveCenter {...props} />;
+                case "coming":
+                    return <AuctionComingCenter {...props} />;
             }
         return false;
     };
@@ -82,15 +82,15 @@ export default function Lot(props) {
             }
         return false;
     };
-    const Center = props => {
+    const Bottom = props => {
         if (state.auction.title)
             switch (state.auction.status) {
                 case "started":
-                    return <AuctionOnlineCenter {...props} />;
+                    return <AuctionOnlineBottom {...props} />;
                 case "finished":
-                    return <AuctionArchiveCenter {...props} />;
+                    return <AuctionArchiveBottom {...props} />;
                 case "coming":
-                    return <AuctionComingCenter {...props} />;
+                    return <AuctionComingBottom {...props} />;
             }
         return false;
     };

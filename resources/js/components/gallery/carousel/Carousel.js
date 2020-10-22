@@ -47,8 +47,7 @@ export default function Carousel(props) {
         speed: 300,
         auto: true,
         slidesToShow: 1,
-        slidesToScroll: 1,
-        // initialSlide: getIndex(id)
+        slidesToScroll: 1
     };
 
     const settingsPicture = {
@@ -56,10 +55,6 @@ export default function Carousel(props) {
         afterChange: (current) => history.replace('/gallery/lot/' + state.items[current].id),
         beforeChange: (current, next) => {
             let cnt = refPicture.current.props.children.length;
-            // setState({
-            //     slideIndex: next,
-            //     slidesTotal: cnt
-            // });
             if (
                 (next > current && (next == 1 || current != 0)) ||
                 (current == cnt - 1 && next == 0)
@@ -72,10 +67,6 @@ export default function Carousel(props) {
         ...setting,
         beforeChange: (current, next) => {
             let cnt = refPicture.current.props.children.length;
-            // setState({
-            //     slideIndex: next,
-            //     slidesTotal: cnt
-            // });
             if (
                 (next > current && (next == 1 || current != 0)) ||
                 (current == cnt - 1 && next == 0)

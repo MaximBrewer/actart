@@ -75,7 +75,7 @@ export default function AuctionAdmin(props) {
                 }
                 lots.push(lot)
             }
-            
+
             auction.lots = lots;
             console.log(auction);
             if (update)
@@ -207,125 +207,149 @@ export default function AuctionAdmin(props) {
                                     <div className="row">
                                         <div className="col-xl-40 col-xxl-38">
                                             <div>
+                                                {state.auction.status == 'finished' && true}
+                                                {state.auction.status == 'coming' && true}
+                                                {state.auction.status == 'canceled' && true}
                                                 <div style={{ paddingTop: "56.25%", height: 0, position: "relative" }} className={`translation-wrapper`} >
                                                     {Parser(state.translation)}
                                                 </div>
-                                                <div className={`current`} style={{ display: "flex", justifyContent: "flex-end" }}>
-                                                    {state.auction.current ? (
-                                                        <div className="py-2" style={{ maxWidth: "20rem", width: "100%" }}>
-                                                            <div
-                                                                className="image"
-                                                                alt={state.auction.current.thumbnail}
-                                                                style={{
-                                                                    display: "block",
-                                                                    position: "relative",
-                                                                    backgroundSize: "contain",
-                                                                    backgroundRepeat: "no-repeat",
-                                                                    backgroundPosition: "right bottom",
-                                                                    paddingTop: "65%",
-                                                                    backgroundColor: "#ECEDED",
-                                                                    backgroundImage:
-                                                                        'url("' + state.auction.current.thumbnail + '")'
-                                                                }}
-                                                            ></div>
+                                                {state.auction.status == 'started' && (
+                                                    state.auction.current && (
+                                                        <div className={`current`} style={{ display: "flex", justifyContent: "flex-end" }}>
+                                                            <div className="py-2" style={{ maxWidth: "20rem", width: "100%" }}>
+                                                                <div
+                                                                    className="image"
+                                                                    alt={state.auction.current.thumbnail}
+                                                                    style={{
+                                                                        display: "block",
+                                                                        position: "relative",
+                                                                        backgroundSize: "contain",
+                                                                        backgroundRepeat: "no-repeat",
+                                                                        backgroundPosition: "right bottom",
+                                                                        paddingTop: "65%",
+                                                                        backgroundColor: "#ECEDED",
+                                                                        backgroundImage:
+                                                                            'url("' + state.auction.current.thumbnail + '")'
+                                                                    }}
+                                                                ></div>
+                                                            </div>
                                                         </div>
-                                                    ) : ``}
-                                                </div>
+                                                    )
+                                                )}
                                             </div>
                                         </div>
                                         <div className="col-xl-20 col-xxl-22">
                                             <div className="lot-carousel-right">
-                                                <div className="user-activity">
-                                                    {state.auction.current && state.auction.current.bets.length ? (
-                                                        <div className="last-price">
-                                                            <div className="info">
-                                                                <div className="pb-1">${state.auction.current.price}</div>
-                                                                <div>
-                                                                    {__("LOT_SEED")}:{" "}
-                                                                    <span>#{state.auction.current.bets[0].user_id}</span>
+                                                {state.auction.status == 'started' && (
+                                                    <div className="user-activity">
+                                                        {state.auction.current && state.auction.current.bets.length ? (
+                                                            <div className="last-price">
+                                                                <div className="info">
+                                                                    <div className="pb-1">${state.auction.current.price}</div>
+                                                                    <div>
+                                                                        {__("LOT_SEED")}:{" "}
+                                                                        <span>#{state.auction.current.bets[0].user_id}</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    ) : (
-                                                            ``
-                                                        )}
-                                                    {!state.finished ?
-                                                        (!state.auction.current ?
-                                                            <a
-                                                                className="btn btn-primary"
-                                                                href="#"
-                                                                onClick={startAuction}
-                                                            >
-                                                                <div className="pb-1">{__("ADMIN_START_AUCTION")}</div>
-                                                                <div><small>({__("ADMIN_SHOW_FIRST_LOT")})</small></div>
-                                                            </a> :
-                                                            !state.auction.current.bets.length ?
-                                                                (!state.auction.current.lastchance ?
+                                                        ) : (
+                                                                ``
+                                                            )}
+                                                        {state.finished ?
+                                                            (!state.auction.current ?
+                                                                <a
+                                                                    className="btn btn-primary"
+                                                                    href="#"
+                                                                    onClick={startAuction}
+                                                                >
+                                                                    <div className="pb-1">{__("ADMIN_START_AUCTION")}</div>
+                                                                    <div><small>({__("ADMIN_SHOW_FIRST_LOT")})</small></div>
+                                                                </a> :
+                                                                !state.auction.current.bets.length ?
+                                                                    (!state.auction.current.lastchance ?
+                                                                        <a
+                                                                            className="btn btn-danger"
+                                                                            href="#"
+                                                                            onClick={lastChance}
+                                                                        >
+                                                                            <div className="pb-1">{__("ADMIN_LAST_CHANCE")}</div>
+                                                                        </a> : <a
+                                                                            className="btn btn-danger"
+                                                                            href="#"
+                                                                            onClick={nextLot}
+                                                                        >
+                                                                            <div className="pb-1">{__("ADMIN_NEXT_LOT")}</div>
+                                                                        </a>) :
                                                                     <a
                                                                         className="btn btn-danger"
                                                                         href="#"
-                                                                        onClick={lastChance}
+                                                                        onClick={sold}
                                                                     >
-                                                                        <div className="pb-1">{__("ADMIN_LAST_CHANCE")}</div>
-                                                                    </a> : <a
-                                                                        className="btn btn-danger"
-                                                                        href="#"
-                                                                        onClick={nextLot}
-                                                                    >
-                                                                        <div className="pb-1">{__("ADMIN_NEXT_LOT")}</div>
-                                                                    </a>) :
+                                                                        <div className="pb-1">{__("ADMIN_SOLD")}</div>
+                                                                    </a>
+                                                            ) : (
                                                                 <a
                                                                     className="btn btn-danger"
                                                                     href="#"
-                                                                    onClick={sold}
+                                                                    onClick={finish}
                                                                 >
-                                                                    <div className="pb-1">{__("ADMIN_SOLD")}</div>
+                                                                    <div className="pb-1">{__("ADMIN_FINISH")}</div>
                                                                 </a>
-                                                        ) : (
-                                                            <a
-                                                                className="btn btn-danger"
-                                                                href="#"
-                                                                onClick={finish}
-                                                            >
-                                                                <div className="pb-1">{__("ADMIN_FINISH")}</div>
-                                                            </a>
-                                                        )
-                                                    }
-                                                </div>
+                                                            )
+                                                        }
+                                                    </div>
+                                                )}
+                                                {state.auction.status == 'finished' && (
+                                                    <div className="user-activity">
+                                                        <h3 className={`py-5 text-center`}>{__('AUCTION_HAS_FINISHED')}</h3>
+                                                    </div>
+                                                )}
+                                                {state.auction.status == 'coming' && (
+                                                    <div className="user-activity">
+                                                        <h3 className={`py-5 text-center color-red`}>{__('AUCTION_WILL_START_SOON')}</h3>
+                                                    </div>
+                                                )}
+                                                {state.auction.status == 'canceled' && (
+                                                    <div className="user-activity">
+                                                        <h3 className={`py-5 text-center`}>{__('AUCTION_HAS_CANCELED')}</h3>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="auction-page-inner">
-                            <div className="auction-works-list my-5">
-                                <div className="container">
-                                    <div className="h3">{__("FUTHER_IN_THE_AUCTION")}</div>
-                                    <Waterfall
-                                        {...props}
-                                        items={state.auction.lots}
-                                        status={'auction'}
-                                        data={{
-                                            auction: state.auction,
-                                            entity: "lots",
-                                            tizerView: "auction",
-                                            view: {
-                                                xs: 1,
-                                                sm: 2,
-                                                md: 2,
-                                                lg: 4,
-                                                xl: 4,
-                                                xxl: 4
-                                            }
-                                        }}
-                                    />
+                        {!state.finished && (
+                            <div className="auction-page-inner">
+                                <div className="auction-works-list my-5">
+                                    <div className="container">
+                                        <div className="h3">{__("FUTHER_IN_THE_AUCTION")}</div>
+                                        <Waterfall
+                                            {...props}
+                                            items={state.auction.lots}
+                                            status={'auction'}
+                                            data={{
+                                                auction: state.auction,
+                                                entity: "lots",
+                                                tizerView: "auction",
+                                                view: {
+                                                    xs: 1,
+                                                    sm: 2,
+                                                    md: 2,
+                                                    lg: 4,
+                                                    xl: 4,
+                                                    xxl: 4
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="my-5">
+                                    <div className="auction-footer"></div>
                                 </div>
                             </div>
-                            <div className="my-5">
-                                <div className="auction-footer"></div>
-                            </div>
-                        </div>
+                        )}
                         <div className="sticky-section">
                             <span>{state.auction.title}</span>
                         </div>

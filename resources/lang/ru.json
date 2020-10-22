@@ -213,6 +213,7 @@
     "ADMIN_FINISH": "Завершить аукцион",
 
     "AUCTION_WILL_START_SOON": "Аукцион скоро начнется",
-    "AUCTION_HAS_FINISHED": "Аукцион завершен"
+    "AUCTION_HAS_FINISHED": "Аукцион завершен",
+    "AUCTION_HAS_CANCELED": "Аукцион отменен"
 
 }

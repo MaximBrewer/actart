@@ -8,18 +8,6 @@ export default function Left(props) {
         item: props.item,
         photo: props.item.photos.length ? props.item.photos[0] : ``
     });
-    useEffect(() => {
-        window.addEventListener("update-lot", updateLot);
-        return () => window.removeEventListener("update-lot", updateLot)
-    }, []);
-    const updateLot = event => {
-        if (event.detail.lot.id == state.item.id) {
-            setState(prevState => ({
-                ...prevState,
-                item: event.detail.lot
-            }))
-        }
-    };
 
     return (
         <div className="lot-carousel-left">

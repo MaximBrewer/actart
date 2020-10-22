@@ -7,21 +7,46 @@ import {
 } from "react-router-dom";
 
 export default function Tizer(props) {
+
     const [state, setState] = useState({
         item: props.item,
     });
-    useEffect(() => {
-        window.addEventListener("update-lot", updateLot);
-        return () => window.removeEventListener("update-lot", updateLot)
-    }, []);
-    const updateLot = event => {
-        if (event.detail.lot.id == state.item.id) {
-            setState(prevState => ({
-                ...prevState,
-                item: event.detail.lot
-            }))
-        }
+
+    const updateLotStatus = event => {
+        setState(prevState => {
+            let item = { ...prevState.item };
+            item.status = event.detail.status;
+            return prevState
+        });
     };
+
+    const createBet = event => {
+        setState(prevState => {
+            let item = { ...prevState.item }, update = false;
+            if (item.id == event.detail.bet.lot_id) {
+                item.bets.unshift(event.detail.bet);
+                item.price = event.detail.bet.bet;
+                update = true;
+            }
+            if (update)
+                return {
+                    ...prevState,
+                    item: item
+                };
+            return prevState
+        })
+    };
+
+    useEffect(() => {
+        window.addEventListener("update-lot-status", updateLotStatus);
+        window.addEventListener("create-bet", createBet);
+        return () => {
+            window.removeEventListener("update-lot-status", updateLotStatus);
+            window.removeEventListener("create-bet", createBet);
+        }
+    }, []);
+
+
     const url =
         state.item.status == "gallery"
             ? "/gallery/lot/" + state.item.id
