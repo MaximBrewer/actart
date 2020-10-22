@@ -255,7 +255,7 @@ export default function AuctionAdmin(props) {
                                                         ) : (
                                                                 ``
                                                             )}
-                                                        {state.finished ?
+                                                        {!state.finished ?
                                                             (!state.auction.current ?
                                                                 <a
                                                                     className="btn btn-primary"
