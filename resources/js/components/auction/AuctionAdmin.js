@@ -242,6 +242,52 @@ export default function AuctionAdmin(props) {
                                             <div className="lot-carousel-right">
                                                 {state.auction.status == 'started' && (
                                                     <div className="user-activity">
+                                                        {state.auction.current &&
+                                                            <div>
+                                                                <div className="pb-3 d-flex justify-content-between">
+                                                                    <div className="lot-number">
+                                                                        {__("LOT_TEXT_LOT_ID")} {state.auction.current.sort}
+                                                                    </div>
+                                                                </div>
+                                                                <div className="lot-author">
+                                                                    {state.auction.current.author}
+                                                                </div>
+                                                                <div className="lot-title">{state.auction.current.title}</div>
+                                                                <div className="matherial">
+                                                                    {state.auction.current.materials.map((m, mi) => (
+                                                                        <span key={mi}>{m.title}</span>
+                                                                    ))}
+                                                                </div>
+                                                                <div className="styles">
+                                                                    {state.auction.current.styles.map((m, mi) => (
+                                                                        <span key={mi}>{m.title}</span>
+                                                                    ))}
+                                                                </div>
+                                                                <div className="frames">
+                                                                    {state.auction.current.frames.map((m, mi) => (
+                                                                        <span key={mi}>{m.title}</span>
+                                                                    ))}
+                                                                </div>
+                                                                <div className="techniques">
+                                                                    {state.auction.current.techniques.map((m, mi) => (
+                                                                        <span key={mi}>{m.title}</span>
+                                                                    ))}
+                                                                </div>
+                                                                <div className="categories">
+                                                                    {state.auction.current.categories.map((m, mi) => (
+                                                                        <span key={mi}>{m.title}</span>
+                                                                    ))}
+                                                                </div>
+                                                                <div className="size">
+                                                                    {state.auction.current.width} х {state.auction.current.height} {__("MEASURE_CM")}{state.auction.current.year ? ` / ` + state.auction.current.year + ` ` + __("SHORT_YEAR") : ``}
+                                                                </div>
+                                                                <div className="start-price">
+                                                                    <span>
+                                                                        {__("LOT_START_PRICE")}: ${state.auction.current.startPrice}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        }
                                                         {state.auction.current && state.auction.current.bets.length ? (
                                                             <div className="last-price">
                                                                 <div className="info">
