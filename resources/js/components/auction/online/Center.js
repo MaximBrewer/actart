@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Right from "../carousel/Right";
+import Right from "./blocks/Right";
 import __ from '../../../utils/trans';
 import Parser from "html-react-parser";
 

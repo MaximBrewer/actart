@@ -13,17 +13,17 @@ class Auction
     public function creating(AuctionModel $model)
     {
         if ($model->to_announce)
-            DB::table($model->table)->update(['to_announce' => 0]);
+            DB::table($model->getTable())->update(['to_announce' => 0]);
         if ($model->to_gallery)
-            DB::table($model->table)->update(['to_gallery' => 0]);
+            DB::table($model->getTable())->update(['to_gallery' => 0]);
     }
 
     public function updating(AuctionModel $model)
     {
         if ($model->to_announce)
-            DB::table($model->table)->update(['to_announce' => 0]);
+            DB::table($model->getTable())->update(['to_announce' => 0]);
         if ($model->to_gallery)
-            DB::table($model->table)->update(['to_gallery' => 0]);
+            DB::table($model->getTable())->update(['to_gallery' => 0]);
     }
 
     public function created(AuctionModel $model)

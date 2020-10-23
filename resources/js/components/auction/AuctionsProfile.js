@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from '../../context/auth';
 import Countdown from "./Countdown";
+import { Link } from "react-router-dom";
 
 export default function AuctionProfile(props) {
     let { currentUser } = useAuth();
@@ -8,7 +9,7 @@ export default function AuctionProfile(props) {
     return (
         <React.Fragment>
             {currentUser.auctions.map((item, index) => (
-                <div className="auction-preview" key={index}>
+                <Link to={`/auctions/` + item.id} className="auction-preview" key={index} style={{display: 'block'}}>
                     <div
                         className="banner-image"
                         style={{
@@ -23,7 +24,7 @@ export default function AuctionProfile(props) {
                             <div className="h2">{item.date}</div>
                         </div>
                     </div>
-                </div>
+                </Link>
             ))}
         </React.Fragment>
     );

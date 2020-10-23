@@ -91,6 +91,10 @@
     "ADMIN_NEXT_LOT": "Next lot",
     "ADMIN_FINISH": "Finish auction",
 
-    "AUCTION_WILL_START_SOON": "Wait please",
-    "AUCTION_HAS_FINISHED": "Аукцион завершен"
+    "AUCTION_WILL_START_SOON": "Auction will start soon",
+    "AUCTION_HAS_FINISHED": "Auction has finished",
+    "AUCTION_HAS_CANCELED": "Auction has canceled",
+    "TEXT_LAST_CHANCE": "Last chance",
+
+    "LAST_CHANCE_TO_USER": "Last chance"
 }
