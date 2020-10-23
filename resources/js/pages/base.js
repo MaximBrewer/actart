@@ -48,7 +48,7 @@ export default function Base(props) {
                         </div>
                         <div className="row">
                             <div className="col-60">
-                                    <Parser body={state.post.body} {...props} />
+                                    <Parser body={state.page.body} {...props} />
                             </div>
                         </div>
                         <hr />

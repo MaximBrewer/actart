@@ -51,7 +51,7 @@ export default function Eventtem(props) {
                             </div>
                             <div className="row">
                                 <div className="col-60">
-                                    <Parser body={state.post.body} {...props} />
+                                    <Parser body={state.event.body} {...props} />
                                 </div>
                             </div>
                             <hr />
