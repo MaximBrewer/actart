@@ -7,6 +7,7 @@ use App\Auction;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Config;
 
 class Cron extends Command
 {
@@ -42,8 +43,6 @@ class Cron extends Command
     public function handle()
     {
         $carbon = new Carbon();
-        var_dump($carbon->toDateTimeString());
-        var_dump($carbon->subHours(3)->toDateTimeString());
         Log::notice("Cron started: " . date(DATE_ATOM));
         DB::connection()->enableQueryLog();
         $started = DB::select(
@@ -53,16 +52,9 @@ class Cron extends Command
                 'coming'
             ]
         );
-        $queries = DB::getQueryLog();
-        var_dump( $queries );
-
-        foreach ($started as $auction) {
-            var_dump($auction->id);
-            Auction::find($auction->id)->update(array(
-                'started' => 1,
-            ));
-        }
-
+        foreach ($started as $auction)
+            Auction::find($auction->id)->update(['status' => 'started']);
+            
         $finished = DB::select(
             'select id from auctions where timestamp(date) < timestamp(?) and status = ?',
             [
@@ -71,12 +63,7 @@ class Cron extends Command
             ]
         );
         $queries = DB::getQueryLog();
-        var_dump( $queries );
-
-        foreach ($finished as $auction) {
-            Auction::find($auction->id)->update(array(
-                'finished' => 1,
-            ));
-        }
+        foreach ($finished as $auction) 
+            Auction::find($auction->id)->update(['status' => 'finished']);
     }
 }
