@@ -58,7 +58,7 @@ class Cron extends Command
         $finished = DB::select(
             'select id from auctions where timestamp(date) < timestamp(?) and status = ?',
             [
-                $carbon->subHours(3)->toDateTimeString(),
+                $carbon->subHours(6)->toDateTimeString(),
                 'started'
             ]
         );
