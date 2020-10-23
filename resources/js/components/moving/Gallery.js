@@ -92,96 +92,96 @@ export default function Gallery() {
     };
 
     useEffect(() => {
-
-        let array = [];
-        let grid = [];
-        for (let i = 0; i < rows; i++) {
-            grid[i] = [];
-            for (let j = 0; j < cols; j++) {
-                grid[i][j] = 0;
-            }
-        }
-        let i = 0;
-        loop1: for (let lot of App.toGallery.lots) {
-            ++i;
-            let h = 1,
-                w = 1;
-            if (lot.height > lot.width * 1.2) {
-                h = 2;
-            } else if (lot.width > lot.height * 1.2) {
-                w = 2;
-            }
-            let p = {
-                h: h,
-                w: w,
-                title: lot.title,
-                path: lot.thumbnail,
-                l: 0,
-                t: 0,
-                bg: getRandomColor(),
-                href:
-                    "/auctions/" + App.toGallery.id + "/lot/" + lot.id
-            };
-            let set = false;
-            loop2: for (let j in grid) {
-                j = j / 1;
-                for (let k in grid[j]) {
-                    k = k / 1;
-                    if (grid[j][k]) continue;
-
-                    p.s = 1;
-                    p.l = k;
-                    p.t = j;
-
-                    if (j == grid.length - 1) p.h = 1;
-                    if (k == grid[j].length - 1) p.w = 1;
-                    else if (grid[j][k + 1]) p.w = 1;
-
-                    grid[j][k] = i + 1;
-                    if (p.h > 1) {
-                        grid[j + 1][k] = i + 1;
-                    }
-                    if (p.w > 1) {
-                        grid[j][k] = i + 1;
-                        grid[j][k + 1] = i + 1;
-                        if (p.h > 1) {
-                            grid[j + 1][k + 1] = i + 1;
-                        }
-                    }
-                    set = true;
-                    break loop2;
+        if (App.toGallery) {
+            let array = [];
+            let grid = [];
+            for (let i = 0; i < rows; i++) {
+                grid[i] = [];
+                for (let j = 0; j < cols; j++) {
+                    grid[i][j] = 0;
                 }
             }
-            if (!set) break loop1;
-            array.push(p);
+            let i = 0;
+            loop1: for (let lot of App.toGallery.lots) {
+                ++i;
+                let h = 1,
+                    w = 1;
+                if (lot.height > lot.width * 1.2) {
+                    h = 2;
+                } else if (lot.width > lot.height * 1.2) {
+                    w = 2;
+                }
+                let p = {
+                    h: h,
+                    w: w,
+                    title: lot.title,
+                    path: lot.thumbnail,
+                    l: 0,
+                    t: 0,
+                    bg: getRandomColor(),
+                    href:
+                        "/auctions/" + App.toGallery.id + "/lot/" + lot.id
+                };
+                let set = false;
+                loop2: for (let j in grid) {
+                    j = j / 1;
+                    for (let k in grid[j]) {
+                        k = k / 1;
+                        if (grid[j][k]) continue;
+
+                        p.s = 1;
+                        p.l = k;
+                        p.t = j;
+
+                        if (j == grid.length - 1) p.h = 1;
+                        if (k == grid[j].length - 1) p.w = 1;
+                        else if (grid[j][k + 1]) p.w = 1;
+
+                        grid[j][k] = i + 1;
+                        if (p.h > 1) {
+                            grid[j + 1][k] = i + 1;
+                        }
+                        if (p.w > 1) {
+                            grid[j][k] = i + 1;
+                            grid[j][k + 1] = i + 1;
+                            if (p.h > 1) {
+                                grid[j + 1][k + 1] = i + 1;
+                            }
+                        }
+                        set = true;
+                        break loop2;
+                    }
+                }
+                if (!set) break loop1;
+                array.push(p);
+            }
+            let auction = App.toGallery;
+            auction.lots = array;
+            setState({ auction: auction });
+            let w = document.body.clientWidth,
+                c = Math.ceil(w / (size * cols)) + 2;
+            c = c < 20 ? c : 20;
+
+            let arr = [];
+            for (; c > 0; c--) {
+                arr.push(auction);
+            }
+            setBlocks(prevState => {
+                return prevState.concat(arr);
+            });
+
+            requestRef.current = requestAnimationFrame(function i() {
+                moveLeft(auction);
+                requestRef.current = requestAnimationFrame(i);
+            });
+
+            ref.current.addEventListener("mouseenter", () => {
+                step = 1;
+            });
+            ref.current.addEventListener("mouseleave", () => {
+                step = 2;
+            });
         }
-        let auction = App.toGallery;
-        auction.lots = array;
-        setState({ auction: auction });
-        let w = document.body.clientWidth,
-            c = Math.ceil(w / (size * cols)) + 2;
-        c = c < 20 ? c : 20;
-
-        let arr = [];
-        for (; c > 0; c--) {
-            arr.push(auction);
-        }
-        setBlocks(prevState => {
-            return prevState.concat(arr);
-        });
-
-        requestRef.current = requestAnimationFrame(function i() {
-            moveLeft(auction);
-            requestRef.current = requestAnimationFrame(i);
-        });
-
-        ref.current.addEventListener("mouseenter", () => {
-            step = 1;
-        });
-        ref.current.addEventListener("mouseleave", () => {
-            step = 2;
-        });
-
         return () => cancelAnimationFrame(requestRef.current);
     }, []);
 

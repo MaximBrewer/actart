@@ -17,25 +17,29 @@ class Lot extends JsonResource
     {
         if ($this) {
             $dir = storage_path("app/public/");
-            $sizeBase = getimagesize($dir . $this->photo);
+            $sizeBase = @getimagesize($dir . $this->photo);
+            if ($sizeBase) {
+                $photos = [
+                    [
+                        'full' => Voyager::image($this->photo),
+                        'thumbnail' => Voyager::image($this->thumbnail('preview', 'photo')),
+                        'pxwidth' => $sizeBase[0],
+                        'pxheight' => $sizeBase[1],
+                    ]
+                ];
+            }
             $phArr = json_decode($this->photos);
-            $photos = [
-                [
-                    'full' => Voyager::image($this->photo),
-                    'thumbnail' => Voyager::image($this->thumbnail('preview', 'photo')),
-                    'pxwidth' => $sizeBase[0],
-                    'pxheight' => $sizeBase[1],
-                ]
-            ];
             if (is_array($phArr)) {
                 foreach ($phArr as $ph) {
-                    $size = getimagesize($dir . $ph);
-                    $photos[] = [
-                        'full' => Voyager::image($ph),
-                        'thumbnail' => Voyager::image($this->getThumbnail($ph, 'preview')),
-                        'pxwidth' => $size[0],
-                        'pxheight' => $size[1],
-                    ];
+                    $size = @getimagesize($dir . $ph);
+                    if ($size) {
+                        $photos[] = [
+                            'full' => Voyager::image($ph),
+                            'thumbnail' => Voyager::image($this->getThumbnail($ph, 'preview')),
+                            'pxwidth' => $size[0],
+                            'pxheight' => $size[1],
+                        ];
+                    }
                 }
             }
             return [

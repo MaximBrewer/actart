@@ -54405,114 +54405,117 @@ function Gallery() {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    var array = [];
-    var grid = [];
+    if (App.toGallery) {
+      var array = [];
+      var grid = [];
 
-    for (var _i2 = 0; _i2 < rows; _i2++) {
-      grid[_i2] = [];
+      for (var _i2 = 0; _i2 < rows; _i2++) {
+        grid[_i2] = [];
 
-      for (var j = 0; j < cols; j++) {
-        grid[_i2][j] = 0;
-      }
-    }
-
-    var i = 0;
-
-    var _iterator = _createForOfIteratorHelper(App.toGallery.lots),
-        _step;
-
-    try {
-      loop1: for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var lot = _step.value;
-        ++i;
-        var h = 1,
-            _w = 1;
-
-        if (lot.height > lot.width * 1.2) {
-          h = 2;
-        } else if (lot.width > lot.height * 1.2) {
-          _w = 2;
+        for (var j = 0; j < cols; j++) {
+          grid[_i2][j] = 0;
         }
+      }
 
-        var p = {
-          h: h,
-          w: _w,
-          title: lot.title,
-          path: lot.thumbnail,
-          l: 0,
-          t: 0,
-          bg: getRandomColor(),
-          href: "/auctions/" + App.toGallery.id + "/lot/" + lot.id
-        };
-        var set = false;
+      var i = 0;
 
-        loop2: for (var _j in grid) {
-          _j = _j / 1;
+      var _iterator = _createForOfIteratorHelper(App.toGallery.lots),
+          _step;
 
-          for (var k in grid[_j]) {
-            k = k / 1;
-            if (grid[_j][k]) continue;
-            p.s = 1;
-            p.l = k;
-            p.t = _j;
-            if (_j == grid.length - 1) p.h = 1;
-            if (k == grid[_j].length - 1) p.w = 1;else if (grid[_j][k + 1]) p.w = 1;
-            grid[_j][k] = i + 1;
+      try {
+        loop1: for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var lot = _step.value;
+          ++i;
+          var h = 1,
+              _w = 1;
 
-            if (p.h > 1) {
-              grid[_j + 1][k] = i + 1;
-            }
+          if (lot.height > lot.width * 1.2) {
+            h = 2;
+          } else if (lot.width > lot.height * 1.2) {
+            _w = 2;
+          }
 
-            if (p.w > 1) {
+          var p = {
+            h: h,
+            w: _w,
+            title: lot.title,
+            path: lot.thumbnail,
+            l: 0,
+            t: 0,
+            bg: getRandomColor(),
+            href: "/auctions/" + App.toGallery.id + "/lot/" + lot.id
+          };
+          var set = false;
+
+          loop2: for (var _j in grid) {
+            _j = _j / 1;
+
+            for (var k in grid[_j]) {
+              k = k / 1;
+              if (grid[_j][k]) continue;
+              p.s = 1;
+              p.l = k;
+              p.t = _j;
+              if (_j == grid.length - 1) p.h = 1;
+              if (k == grid[_j].length - 1) p.w = 1;else if (grid[_j][k + 1]) p.w = 1;
               grid[_j][k] = i + 1;
-              grid[_j][k + 1] = i + 1;
 
               if (p.h > 1) {
-                grid[_j + 1][k + 1] = i + 1;
+                grid[_j + 1][k] = i + 1;
               }
+
+              if (p.w > 1) {
+                grid[_j][k] = i + 1;
+                grid[_j][k + 1] = i + 1;
+
+                if (p.h > 1) {
+                  grid[_j + 1][k + 1] = i + 1;
+                }
+              }
+
+              set = true;
+              break loop2;
             }
-
-            set = true;
-            break loop2;
           }
+
+          if (!set) break loop1;
+          array.push(p);
         }
-
-        if (!set) break loop1;
-        array.push(p);
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
       }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
+
+      var auction = App.toGallery;
+      auction.lots = array;
+      setState({
+        auction: auction
+      });
+      var w = document.body.clientWidth,
+          c = Math.ceil(w / (size * cols)) + 2;
+      c = c < 20 ? c : 20;
+      var arr = [];
+
+      for (; c > 0; c--) {
+        arr.push(auction);
+      }
+
+      setBlocks(function (prevState) {
+        return prevState.concat(arr);
+      });
+      requestRef.current = requestAnimationFrame(function i() {
+        moveLeft(auction);
+        requestRef.current = requestAnimationFrame(i);
+      });
+      ref.current.addEventListener("mouseenter", function () {
+        step = 1;
+      });
+      ref.current.addEventListener("mouseleave", function () {
+        step = 2;
+      });
     }
 
-    var auction = App.toGallery;
-    auction.lots = array;
-    setState({
-      auction: auction
-    });
-    var w = document.body.clientWidth,
-        c = Math.ceil(w / (size * cols)) + 2;
-    c = c < 20 ? c : 20;
-    var arr = [];
-
-    for (; c > 0; c--) {
-      arr.push(auction);
-    }
-
-    setBlocks(function (prevState) {
-      return prevState.concat(arr);
-    });
-    requestRef.current = requestAnimationFrame(function i() {
-      moveLeft(auction);
-      requestRef.current = requestAnimationFrame(i);
-    });
-    ref.current.addEventListener("mouseenter", function () {
-      step = 1;
-    });
-    ref.current.addEventListener("mouseleave", function () {
-      step = 2;
-    });
     return function () {
       return cancelAnimationFrame(requestRef.current);
     };

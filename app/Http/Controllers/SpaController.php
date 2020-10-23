@@ -54,7 +54,7 @@ class SpaController extends Controller
             // ['id' => 'frames', 'title' => __('Frame'), 'items' => \App\Frame::all()],
         ];
 
-        $announce = new AuctionResource(Auction::announce());
+        $announce = Auction::announce() ? new AuctionResource(Auction::announce()) : null;
         $spaces = Space::all();
 
         $popular = CategoryResource::collection(Category::orderBy('sort', 'asc')->limit(6)->get());
@@ -66,7 +66,7 @@ class SpaController extends Controller
             $query;
         });
         $coming = AuctionResource::collection($auctions->coming()->get());
-        $toGallery = new AuctionResource(Auction::gallery());
+        $toGallery = Auction::gallery() ? new AuctionResource(Auction::gallery()) : null;
 
         $lots = Lot::where('status', 'gallery');
 
