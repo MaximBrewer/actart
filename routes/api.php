@@ -46,6 +46,11 @@ Route::name('api.')->namespace('Api')->group(function () {
 
             Route::get('events', '\App\Http\Controllers\Api\EventController@index')->name('event.index');
             Route::get('authors', '\App\Http\Controllers\Api\AuthorController@index')->name('author.index');
+
+            Route::get('get_carousel_items/{entity}/{id}', function ($lang, $entity, $id) {
+                $res = DB::table($entity . 's')->select('images')->find($id);
+                return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
+            });
         });
     });
 

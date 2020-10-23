@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import __ from '../utils/trans';
 import YandexShare from 'react-yandex-share';
-import Parser from "html-react-parser";
+import Parser from "../utils/parser";
 import client from '../api/client';
 
 export default function Base(props) {
@@ -48,7 +48,7 @@ export default function Base(props) {
                         </div>
                         <div className="row">
                             <div className="col-60">
-                                {Parser(state.page.body)}
+                                    <Parser body={state.post.body} {...props} />
                             </div>
                         </div>
                         <hr />

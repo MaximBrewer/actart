@@ -6,7 +6,7 @@ import Marquee from '../components/marquee'
 import Announce from '../components/announce'
 import YandexShare from 'react-yandex-share';
 import useDocumentTitle from '../components/document-title';
-import Parser from "html-react-parser";
+import Parser from "../utils/parser";
 import Auctions from "../components/auction/Auctions";
 import MovingGallery from "../components/moving/Gallery";
 import Carousel from "../components/carousel/Carousel";
@@ -14,7 +14,9 @@ import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 import client from '../api/client';
 import App from "../router";
 
-export default function BlogItem() {
+export default function BlogItem(props) {
+
+    const { req } = props;
     const [state, setState] = useState({ post: null });
     const { slug } = useParams();
 
@@ -50,7 +52,7 @@ export default function BlogItem() {
                             </div>
                             <div className="row">
                                 <div className="col-60">
-                                    {Parser(state.post.body)}
+                                    <Parser body={state.post.body} {...props} />
                                 </div>
                             </div>
                             <hr />

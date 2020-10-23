@@ -76,7 +76,7 @@ export default function Right(props) {
         <div className="lot-carousel-right">
             <div className="pb-3 d-flex justify-content-between">
                 <div className="lot-number">
-                    {__("LOT_TEXT_LOT_ID")} {state.item.id}
+                    {__("LOT_TEXT_LOT_ID")} {state.item.sort}
                 </div>
                 <FavoriteBig item={state.item} req={req} />
             </div>

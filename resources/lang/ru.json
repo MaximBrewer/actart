@@ -214,6 +214,7 @@
 
     "AUCTION_WILL_START_SOON": "Аукцион скоро начнется",
     "AUCTION_HAS_FINISHED": "Аукцион завершен",
-    "AUCTION_HAS_CANCELED": "Аукцион отменен"
+    "AUCTION_HAS_CANCELED": "Аукцион отменен",
+    "TEXT_LAST_CHANCE": "Последний шанс"
 
 }

@@ -2,11 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 
 export default function Carousel(props) {
+
+    const { req } = props;
+
     const [state, setState] = useState({
-        slideIndex: 0,
-        slidesTotal: 0
+        slides: [],
+        prefix: ''
     });
-    const [slides, setSlides] = useState([]);
+
     const refPicture = useRef();
 
     const grid = window.grid;
@@ -39,57 +42,37 @@ export default function Carousel(props) {
         centerPadding: "25%",
         auto: true,
         slidesToShow: slidesToShow(),
-        slidesToScroll: 1,
-        onInit: () => {
-            setState({
-                slideIndex: 0,
-                slidesTotal: 20
-            });
-        },
-        beforeChange: (current, next) => {
-            setState(prevState => {
-                return {
-                    ...prevState,
-                    slideIndex: next
-                };
-            });
-        }
+        slidesToScroll: 1
     };
 
     const addSlides = () => {
-        axios
-            .get(
-                "/api/" +
-                    window.App.locale +
-                    "/get_carousel_items/" +
-                    props.data.entity +
-                    "/" +
-                    props.data.id
-            )
-            .then(res => {
-                setSlides(
-                    res.data.slides.map((item, index) => (
-                        <div className="px-2">
-                            <div
-                                key={index}
-                                className="image"
-                                style={{
-                                    backgroundImage:
-                                        'url("' + res.data.prefix + item + '")'
-                                }}
-                            ></div>
-                        </div>
-                    ))
-                );
-            });
+
+        req('/api/' + window.App.locale + "/get_carousel_items/" +
+            props.entity +
+            "/" +
+            props.id)
+            .then(({ slides, prefix }) => {
+                setState({ slides, prefix })
+            })
+            .catch(() => null);
     };
 
     // if (window.innerWidth > 767) {
     return (
-        <React.Fragment>
+        <div className="carousel-wrapper">
             <div className="cg">
                 <Slider {...setting} ref={refPicture}>
-                    {slides}
+                    {state.slides.map((item, index) => (
+                        <div className="px-2" key={index}>
+                            <div
+                                className="image"
+                                style={{
+                                    backgroundImage:
+                                        'url("' + state.prefix + item + '")'
+                                }}
+                            ></div>
+                        </div>
+                    ))}
                 </Slider>
             </div>
             <div className="carousel-arrows">
@@ -144,7 +127,7 @@ export default function Carousel(props) {
                     </svg>
                 </a>
             </div>
-        </React.Fragment>
+        </div>
     );
     // } else {
     //     return (

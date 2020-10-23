@@ -6,7 +6,7 @@ import Marquee from '../components/marquee'
 import Announce from '../components/announce'
 import YandexShare from 'react-yandex-share';
 import useDocumentTitle from '../components/document-title';
-import Parser from "html-react-parser";
+import Parser from "../utils/parser";
 import Auctions from "../components/auction/Auctions";
 import MovingGallery from "../components/moving/Gallery";
 import Carousel from "../components/carousel/Carousel";
@@ -51,7 +51,7 @@ export default function Eventtem(props) {
                             </div>
                             <div className="row">
                                 <div className="col-60">
-                                    {Parser(state.event.body)}
+                                    <Parser body={state.post.body} {...props} />
                                 </div>
                             </div>
                             <hr />

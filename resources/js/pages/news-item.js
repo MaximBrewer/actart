@@ -3,12 +3,13 @@ import { Link, useParams, useLocation } from "react-router-dom";
 import __ from '../utils/trans';
 import YandexShare from 'react-yandex-share';
 import useDocumentTitle from '../components/document-title';
-import Parser from "html-react-parser";
+import Parser from "../utils/parser";
 import MovingGallery from "../components/moving/Gallery";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
-import client from '../api/client';
 
-export default function NewsItem() {
+export default function NewsItem(props) {
+
+    const { req } = props;
     const [state, setState] = useState({ post: null });
     const { slug } = useParams();
 
@@ -44,7 +45,7 @@ export default function NewsItem() {
                             </div>
                             <div className="row">
                                 <div className="col-60">
-                                    {Parser(state.post.body)}
+                                    <Parser body={state.post.body} {...props} />
                                 </div>
                             </div>
                             <hr />

@@ -127,7 +127,7 @@ export default function Search(props) {
                     <div className="sticky-section"><span>{__('SEARCH_STICKY_TEXT')}</span></div>
                 </div>
                 : ``}
-            <div class="mt-5"></div>
+            <div className="mt-5"></div>
             <Marquee />
         </React.Fragment>
     );
