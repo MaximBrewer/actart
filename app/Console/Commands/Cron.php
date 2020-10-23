@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Auction;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class Cron extends Command
 {
@@ -14,7 +15,7 @@ class Cron extends Command
      *
      * @var string
      */
-    protected $signature = 'check:auctions';
+    protected $signature = 'cron:minute';
 
     /**
      * The console command description.
@@ -41,6 +42,7 @@ class Cron extends Command
     public function handle()
     {
         $carbon = new Carbon();
+        Log::notice("Cron started: " .date(DATE_ATOM));
 
         $started = DB::select(
             'select id from auctions where timestamp(date) < timestamp(?) and status = ?',
