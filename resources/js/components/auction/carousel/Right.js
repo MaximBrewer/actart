@@ -4,7 +4,7 @@ import __ from '../../../utils/trans';
 import { useAuth } from '../../../context/auth';
 
 export default function Right(props) {
-    const { req, item } = props;
+    const { req, item, auction } = props;
     const { initializing, currentUser, setCurrentUser } = useAuth();
 
 
@@ -67,7 +67,7 @@ export default function Right(props) {
                     {__("LOT_START_PRICE")}: ${item.startPrice}
                 </span>
             </div>
-            {currentUser != undefined ? (
+            {currentUser != undefined && auction.status == 'started' ? (
                 <div className="user-activity">
                     <div className="user-id">
                         {__("LOT_YOUR_ID")}: <span>#{currentUser.id}</span>

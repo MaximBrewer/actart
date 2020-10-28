@@ -49789,12 +49789,7 @@ function _defineProperty(obj, key, value) {
 
 
 function Carousel(props) {
-  var id = props.id,
-      items = props.items; // const [state, setState] = useState({
-  //     slideIndex: 0,
-  //     slidesTotal: items.length
-  // });
-
+  var id = props.id;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     refPicture.current.slickGoTo(getIndex(id), true);
     refAnnounce.current.slickGoTo(getIndex(id), true);
@@ -49803,8 +49798,8 @@ function Carousel(props) {
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 
   var getIndex = function getIndex(id) {
-    for (var i in items) {
-      if (items[i].id == id) return i;
+    for (var i in props.auction.lots) {
+      if (props.auction.lots[i].id == id) return i;
     }
   };
 
@@ -49865,7 +49860,7 @@ function Carousel(props) {
     className: "left-side"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsPicture, {
     ref: refPicture
-  }), items.map(function (item, index) {
+  }), props.auction.lots.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Left__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
@@ -49877,7 +49872,7 @@ function Carousel(props) {
     className: "right-side"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsAnnounce, {
     ref: refAnnounce
-  }), items.map(function (item, index) {
+  }), props.auction.lots.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Right__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
@@ -50152,7 +50147,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function Right(props) {
   var req = props.req,
-      item = props.item;
+      item = props.item,
+      auction = props.auction;
 
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_3__["useAuth"])(),
       initializing = _useAuth.initializing,
@@ -50223,7 +50219,7 @@ function Right(props) {
     className: "size"
   }, item.width, " \u0445 ", item.height, " ", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("MEASURE_CM"), item.year ? " / " + item.year + " " + Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SHORT_YEAR") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "start-price"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_START_PRICE"), ": $", item.startPrice)), currentUser != undefined ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_START_PRICE"), ": $", item.startPrice)), currentUser != undefined && auction.status == 'started' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-id"

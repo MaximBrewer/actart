@@ -6,11 +6,7 @@ import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from '../../../utils/trans';
 
 export default function Carousel(props) {
-    const { id, items} = props;
-    // const [state, setState] = useState({
-    //     slideIndex: 0,
-    //     slidesTotal: items.length
-    // });
+    const { id } = props;
 
     useEffect(() => {
         refPicture.current.slickGoTo(getIndex(id), true);
@@ -21,8 +17,8 @@ export default function Carousel(props) {
     const refAnnounce = useRef();
 
     const getIndex = id => {
-        for (let i in items) {
-            if (items[i].id == id) return i;
+        for (let i in props.auction.lots) {
+            if (props.auction.lots[i].id == id) return i;
         }
     };
 
@@ -96,7 +92,7 @@ export default function Carousel(props) {
                 <div className="col-xl-40 col-xxl-38">
                     <div className="left-side">
                         <Slider {...settingsPicture} ref={refPicture}>
-                            {items.map((item, index) => (
+                            {props.auction.lots.map((item, index) => (
                                 <div key={index}>
                                     <Left item={item} {...props} />
                                 </div>
@@ -107,7 +103,7 @@ export default function Carousel(props) {
                 <div className="col-xl-20 col-xxl-22">
                     <div className="right-side">
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
-                            {items.map((item, index) => (
+                            {props.auction.lots.map((item, index) => (
                                 <div key={index}>
                                     <Right item={item} {...props} />
                                 </div>
