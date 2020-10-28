@@ -16,7 +16,6 @@ class Event extends JsonResource
     public function toArray($request)
     {
         $dir = storage_path("app/public/");
-        $size = getimagesize($dir . $this->image);
         return [
             'id' => $this->id,
             'title' => $this->getTranslatedAttribute('title'),

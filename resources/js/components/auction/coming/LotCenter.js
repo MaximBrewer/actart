@@ -8,7 +8,7 @@ export default function Center(props) {
     return (
         <div className="auction-info">
             <div className="container">
-                <Carousel {...props} id={id} items={auction.lots} />
+                <Carousel {...props} id={id} />
             </div>
         </div>
     );

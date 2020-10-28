@@ -124,6 +124,7 @@ channel.bind('update-lot-lastchance', function ({ id, lastchance }) {
 });
 
 channel.bind('update-auction-status', function ({ id, status }) {
+  console.log({ id, status })
   window.dispatchEvent(
     new CustomEvent("update-auction-status", {
       detail: { id, status }

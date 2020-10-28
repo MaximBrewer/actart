@@ -41,7 +41,7 @@ class Event extends Model
      */
     public function scopeExhibition(Builder $query)
     {
-        return $query->leftJoin('spaces', 'events.space_id', '=', 'spaces.id')->select(DB::raw("events.*, spaces.id, spaces.type"))->where('spaces.type', '=', static::EXHIBITION);
+        return $query->leftJoin('spaces', 'events.space_id', '=', 'spaces.id')->select(DB::raw("events.*, spaces.type"))->where('spaces.type', '=', static::EXHIBITION);
     }
 
 
@@ -54,7 +54,7 @@ class Event extends Model
      */
     public function scopeWorkshop(Builder $query)
     {
-        return $query->leftJoin('spaces', 'events.space_id', '=', 'spaces.id')->select(DB::raw("events.*, spaces.id, spaces.type"))->where('spaces.type', '=', static::WORKSHOP);
+        return $query->leftJoin('spaces', 'events.space_id', '=', 'spaces.id')->select(DB::raw("events.*, spaces.type"))->where('spaces.type', '=', static::WORKSHOP);
     }
 
 

@@ -4,12 +4,49 @@ import Countdown from "./Countdown";
 import { Link } from "react-router-dom";
 
 export default function AuctionProfile(props) {
-    let { currentUser } = useAuth();
+    const { currentUser, setCurrentUser } = useAuth();
+
+    const [state, setState] = useState({
+        auctions: currentUser.auctions
+    });
+
+    useEffect(() => {
+        setState({
+            auctions: currentUser.auctions
+        })
+    }, [currentUser]);
+
+    useEffect(() => {
+        window.addEventListener("update-auction-status", updateAuctionStatus);
+        return () => {
+            window.removeEventListener("update-auction-status", updateAuctionStatus);
+        }
+    }, []);
+
+    const updateAuctionStatus = event => {
+        console.log(event);
+        if (event.detail.status == 'canceled' || event.detail.status == 'finished') {
+            setCurrentUser(prevState => {
+                let update = false, as = [];
+                for (let auction of prevState.auctions) {
+                    if (event.detail.id == auction.id) update = true;
+                    else as.push(auction);
+                }
+                if (update)
+                    return {
+                        ...prevState,
+                        auctions: as
+                    }
+                else
+                    return prevState;
+            });
+        }
+    };
 
     return (
         <React.Fragment>
-            {currentUser.auctions.map((item, index) => (
-                <Link to={`/auctions/` + item.id} className="auction-preview" key={index} style={{display: 'block'}}>
+            {state.auctions.map((item, index) => (
+                <Link to={`/auctions/` + item.id} className="auction-preview" key={index} style={{ display: 'block' }}>
                     <div
                         className="banner-image"
                         style={{

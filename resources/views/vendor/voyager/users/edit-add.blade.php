@@ -23,9 +23,7 @@ $isModelTranslatable = true;
 
 @section('content')
 <div class="page-content container-fluid">
-    <form class="form-edit-add" role="form"
-        action="@if(!is_null($dataTypeContent->getKey())){{ route('voyager.'.$dataType->slug.'.update', $dataTypeContent->getKey()) }}@else{{ route('voyager.'.$dataType->slug.'.store') }}@endif"
-        method="POST" enctype="multipart/form-data" autocomplete="off">
+    <form class="form-edit-add" role="form" action="@if(!is_null($dataTypeContent->getKey())){{ route('voyager.'.$dataType->slug.'.update', $dataTypeContent->getKey()) }}@else{{ route('voyager.'.$dataType->slug.'.store') }}@endif" method="POST" enctype="multipart/form-data" autocomplete="off">
         <!-- PUT Method if we are editing -->
         @if(isset($dataTypeContent->id))
         {{ method_field("PUT") }}
@@ -57,11 +55,13 @@ $isModelTranslatable = true;
 
                         if(in_array($row->field, [
                         'avatar',
-                        'password'
+                        'password',
+                        'vip',
+                        'ban'
                         ])) continue;
 
                         @endphp
-                        
+
                         <!-- GET THE DISPLAY OPTIONS -->
                         @php
                         $display_options = $row->details->display ?? NULL;
@@ -70,16 +70,13 @@ $isModelTranslatable = true;
                         }
                         @endphp
                         @if (isset($row->details->legend) && isset($row->details->legend->text))
-                        <legend class="text-{{ $row->details->legend->align ?? 'center' }}"
-                            style="background-color: {{ $row->details->legend->bgcolor ?? '#f0f0f0' }};padding: 5px;">
+                        <legend class="text-{{ $row->details->legend->align ?? 'center' }}" style="background-color: {{ $row->details->legend->bgcolor ?? '#f0f0f0' }};padding: 5px;">
                             {{ $row->details->legend->text }}</legend>
                         @endif
 
-                        <div class="form-group @if($row->type == 'hidden') hidden @endif {{ $errors->has($row->field) ? 'has-error' : '' }}"
-                            @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                        <div class="form-group @if($row->type == 'hidden') hidden @endif {{ $errors->has($row->field) ? 'has-error' : '' }}" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
                             {{ $row->slugify }}
-                            <label class="control-label"
-                                for="name">{{ $row->getTranslatedAttribute('display_name') }}</label>
+                            <label class="control-label" for="name">{{ $row->getTranslatedAttribute('display_name') }}</label>
                             @include('voyager::multilingual.input-hidden-bread-edit-add')
                             @if (isset($row->details->view))
                             @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' =>
@@ -108,8 +105,7 @@ $isModelTranslatable = true;
                             <br>
                             <small>{{ __('voyager::profile.password_hint') }}</small>
                             @endif
-                            <input type="password" class="form-control" id="password" name="password" value=""
-                                autocomplete="new-password">
+                            <input type="password" class="form-control" id="password" name="password" value="" autocomplete="new-password">
                         </div>
                         @php
                         if (isset($dataTypeContent->locale)) {
@@ -138,11 +134,57 @@ $isModelTranslatable = true;
                     <div class="panel-body">
                         <div class="form-group">
                             @if(isset($dataTypeContent->avatar))
-                            <img src="{{ filter_var($dataTypeContent->avatar, FILTER_VALIDATE_URL) ? $dataTypeContent->avatar : Voyager::image( $dataTypeContent->avatar ) }}"
-                                style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;" />
+                            <img src="{{ filter_var($dataTypeContent->avatar, FILTER_VALIDATE_URL) ? $dataTypeContent->avatar : Voyager::image( $dataTypeContent->avatar ) }}" style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;" />
                             @endif
                             <input type="file" data-name="avatar" name="avatar">
                         </div>
+
+                        @foreach($dataTypeRows as $row)
+                        @php
+
+                        if(!in_array($row->field, [
+                        'vip',
+                        'ban'
+                        ])) continue;
+
+                        @endphp
+
+                        <!-- GET THE DISPLAY OPTIONS -->
+                        @php
+                        $display_options = $row->details->display ?? NULL;
+                        if ($dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')}) {
+                        $dataTypeContent->{$row->field} = $dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')};
+                        }
+                        @endphp
+                        @if (isset($row->details->legend) && isset($row->details->legend->text))
+                        <legend class="text-{{ $row->details->legend->align ?? 'center' }}" style="background-color: {{ $row->details->legend->bgcolor ?? '#f0f0f0' }};padding: 5px;">
+                            {{ $row->details->legend->text }}</legend>
+                        @endif
+
+                        <div class="form-group @if($row->type == 'hidden') hidden @endif {{ $errors->has($row->field) ? 'has-error' : '' }}" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                            {{ $row->slugify }}
+                            <label class="control-label" for="name">{{ $row->getTranslatedAttribute('display_name') }}</label>
+                            @include('voyager::multilingual.input-hidden-bread-edit-add')
+                            @if (isset($row->details->view))
+                            @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' =>
+                            $dataTypeContent, 'content' => $dataTypeContent->{$row->field}, 'action' => ($edit ? 'edit'
+                            : 'add'), 'view' => ($edit ? 'edit' : 'add'), 'options' => $row->details])
+                            @elseif ($row->type == 'relationship')
+                            @include('voyager::formfields.relationship', ['options' => $row->details])
+                            @else
+                            {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
+                            @endif
+
+                            @foreach (app('voyager')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
+                            {!! $after->handle($row, $dataType, $dataTypeContent) !!}
+                            @endforeach
+                            @if ($errors->has($row->field))
+                            @foreach ($errors->get($row->field) as $error)
+                            <span class="help-block">{{ $error }}</span>
+                            @endforeach
+                            @endif
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -154,8 +196,7 @@ $isModelTranslatable = true;
     </form>
 
     <iframe id="form_target" name="form_target" style="display:none"></iframe>
-    <form id="my_form" action="{{ route('voyager.upload') }}" target="form_target" method="post"
-        enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
+    <form id="my_form" action="{{ route('voyager.upload') }}" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
         {{ csrf_field() }}
         <input name="image" id="upload_file" type="file" onchange="$('#my_form').submit();this.value='';">
         <input type="hidden" name="type_slug" id="type_slug" value="{{ $dataType->slug }}">
@@ -168,12 +209,14 @@ $isModelTranslatable = true;
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 <script>
     window.invalidEditors = [];
-        var validationAlerts = $('.validation-error');
-        validationAlerts.hide();
-        $(function () {
-            @if ($isModelTranslatable)
-                $('.side-body').multilingual({"editing": true});
-            @endif
+    var validationAlerts = $('.validation-error');
+    validationAlerts.hide();
+    $(function() {
+        @if($isModelTranslatable)
+        $('.side-body').multilingual({
+            "editing": true
         });
+        @endif
+    });
 </script>
 @stop

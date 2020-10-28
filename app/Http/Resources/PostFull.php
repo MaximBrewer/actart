@@ -27,6 +27,7 @@ class PostFull extends JsonResource
             'category' => $this->category == 'NEWS' ? __('POSTS_BLOCK_CATEGORY_NEWS') :  __('POSTS_BLOCK_CATEGORY_BLOG'),
             'thumbnail' => Voyager::image($this->thumbnail('preview', 'image')),
             'waterfall' => Voyager::image($this->thumbnail('waterfall', 'image')),
+            'image' => Voyager::image($this->image),
             'width' => $size[0],
             'height' => $size[1],
             'url' => "/" . strtolower($this->category) . "/" . $this->slug

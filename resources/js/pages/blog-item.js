@@ -47,7 +47,7 @@ export default function BlogItem(props) {
                                     <p className="sub_h2 d-none d-xl-block">{Parser(state.post.excerpt)}</p>
                                 </div>
                                 <div className="col-xl-30 col-xxl-32 d-none d-xl-block">
-                                    <div className="image-wrapper" style={{ backgroundImage: `url(/storage/` + state.post.image + `)` }}></div>
+                                    <div className="image-wrapper" style={{ backgroundImage: `url(` + state.post.image + `)` }}></div>
                                 </div>
                             </div>
                             <div className="row">

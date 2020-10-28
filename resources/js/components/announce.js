@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Announce() {
     return (
-        <section className="auction-announce"
+        window.App.announce && <section className="auction-announce"
             style={{ backgroundImage: `url(` + window.App.announce.narrow + `)`, backgroundPosition: `top center` }}>
             <div className="darkener">
                 <div className="container">
