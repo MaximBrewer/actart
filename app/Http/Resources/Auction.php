@@ -6,6 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Lot as LotResource;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class Auction extends JsonResource
 {
@@ -30,7 +31,8 @@ class Auction extends JsonResource
             'text' => $this->getTranslatedAttribute('text'),
             'thumbnail' => Voyager::image($this->thumbnail('xxxl', 'announce_image')),
             'narrow' => Voyager::image($this->thumbnail('narrow', 'header_image')),
-            'lots' => LotResource::collection($this->lots)
+            'lots' => LotResource::collection($this->lots),
+            'members' => DB::table('user_auction')->where('auction_id', $this->id)->count()
         ];
     }
 }

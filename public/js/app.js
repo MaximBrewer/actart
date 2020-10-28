@@ -49685,9 +49685,9 @@ function AuctionPreviewRight(props) {
     className: "h3 col-md-38 col-xl-60"
   }, html_react_parser__WEBPACK_IMPORTED_MODULE_1___default()(auction.sublime)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-none d-md-flex d-xl-block col-22 col-xl-60"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    date: auction.dateatom
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "banner-counter d-flex h3 h3 color-red"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('AUCTION_FINISHED')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-xs-center mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     to: "/auctions/" + auction.id,

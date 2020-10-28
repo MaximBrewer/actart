@@ -30,9 +30,6 @@
     "LOT_BUTTON_OFFER": "Предложить",
     "LOT_BUTTON_BLITZ": "Предложить блиц-цену",
     "LOT_START_PRICE": "Стартовая цена",
-    "LOT_TEXT_LOT_ID": "Лот",
-    "LOT_TEXT_LOT_ID": "Лот",
-    "LOT_TEXT_LOT_ID": "Лот",
     "MARQUEE_FIRST": "современное&nbsp;•&nbsp;актуальное&nbsp;•&nbsp;избранное&nbsp;• российское&nbsp;•&nbsp;",
 
     "WANTED_VIP": "Хочу VIP",
@@ -184,26 +181,6 @@
     "Start price": "Стартовая цена",
     "Lot": "Лот",
     "No name": "Без названия",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
 
     "ADMIN_START_AUCTION": "Начать аукцион",
     "ADMIN_SHOW_FIRST_LOT": "показать первый лот",
@@ -217,5 +194,7 @@
     "AUCTION_HAS_CANCELED": "Аукцион отменен",
     "TEXT_LAST_CHANCE": "Последний шанс",
 
-    "LAST_CHANCE_TO_USER": "Последний шанс"
+    "LAST_CHANCE_TO_USER": "Последний шанс",
+
+    "AUCTION_FINISHED": "Аукцион завершён"
 }

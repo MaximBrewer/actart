@@ -13,7 +13,7 @@ export default function AuctionPreviewRight(props) {
                     {Parser(auction.sublime)}
                 </div>
                 <div className="d-none d-md-flex d-xl-block col-22 col-xl-60">
-                    <Countdown date={auction.dateatom} />
+                    <div className="banner-counter d-flex h3 h3 color-red">{__('AUCTION_FINISHED')}</div>
                 </div>
             </div>
             <div className="text-xs-center mb-3">

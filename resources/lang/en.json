@@ -96,5 +96,7 @@
     "AUCTION_HAS_CANCELED": "Auction has canceled",
     "TEXT_LAST_CHANCE": "Last chance",
 
-    "LAST_CHANCE_TO_USER": "Last chance"
+    "LAST_CHANCE_TO_USER": "Last chance",
+
+    "AUCTION_FINISHED": "Auction finished"
 }
