@@ -183,6 +183,12 @@ export default function AuctionAdmin(props) {
         }
     }, [state.auction]);
 
+    const countLots = (lots) => {
+        let cnt = 0;
+        for (let lot of lots) lot.status == 'auction' || lot.status == 'in_auction' && cnt++;
+        return cnt;
+    }
+
     return (
         <section className="auction-page-wrapper">
             {state.auction ? (
@@ -198,6 +204,11 @@ export default function AuctionAdmin(props) {
                             <div className="container">
                                 <div className="h1">{state.auction.title}<br /><span className="online">{__('ONLINE_BROADCAST_IN_PROPGRESS_TEXT')}</span></div>
                             </div>
+                        </div>
+                    </section>
+                    <section className={`top-bar`}>
+                        <div className="container">
+                            торгуется {state.auction.members} человек(а)  / лот(а/ов) {state.auction.lots.length} / осталось {countLots(state.auction.lots)}
                         </div>
                     </section>
                     <div className="sticky-wrapper">

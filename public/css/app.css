@@ -22744,6 +22744,12 @@ a.lot-item:hover {
   color: #ff665e !important;
 }
 
+.top-bar {
+  background-color: #1e2b32;
+  color: #ffffff;
+  padding: 0.5rem 0;
+}
+
 .translation-wrapper iframe {
   width: 99.9%;
   height: 99.9%;

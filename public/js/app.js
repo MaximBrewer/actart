@@ -47462,6 +47462,27 @@ function AuctionAdmin(props) {
       });
     }
   }, [state.auction]);
+
+  var countLots = function countLots(lots) {
+    var cnt = 0;
+
+    var _iterator2 = _createForOfIteratorHelper(lots),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var lot = _step2.value;
+        lot.status == 'auction' || lot.status == 'in_auction' && cnt++;
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+
+    return cnt;
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "auction-page-wrapper"
   }, state.auction ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -47480,7 +47501,11 @@ function AuctionAdmin(props) {
     className: "h1"
   }, state.auction.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "online"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ONLINE_BROADCAST_IN_PROPGRESS_TEXT')))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ONLINE_BROADCAST_IN_PROPGRESS_TEXT')))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    className: "top-bar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, "\u0442\u043E\u0440\u0433\u0443\u0435\u0442\u0441\u044F ", state.auction.members, " \u0447\u0435\u043B\u043E\u0432\u0435\u043A(\u0430)  / \u043B\u043E\u0442(\u0430/\u043E\u0432) ", state.auction.lots.length, " / \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C ", countLots(state.auction.lots))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
