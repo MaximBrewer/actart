@@ -30,6 +30,6 @@ class BeatPrice extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name', ['lot' => $this->lot]);
+        return $this->view('mail.gallery.beat_price', ['lot' => $this->lot]);
     }
 }
