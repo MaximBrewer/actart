@@ -8,7 +8,7 @@ import MovingGallery from "../components/moving/Gallery";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 
 export default function Events(props) {
-    useDocumentTitle(__('EVENTS_TITLE'));
+    useDocumentTitle(__('EXHIBITIONS_PAGE_TITLE'));
 
     const { pathname } = useLocation();
     const { scrollToElement } = props;
@@ -16,6 +16,22 @@ export default function Events(props) {
     useEffect(() => {
         pathname == '/events/workshops' && scrollToElement(workshopsEl)
         pathname == '/events/exhibitions' && scrollToElement(exhibitionsEl)
+    }, [pathname]);
+
+    useEffect(() => {
+        switch (pathname) {
+            case '/events/workshops':
+                document.title = __('WORKSHOPS_PAGE_TITLE')
+                scrollToElement(workshopsEl)
+                break;
+            case '/events/exhibitions':
+                document.title = __('EXHIBITIONS_PAGE_TITLE')
+                scrollToElement(exhibitionsEl)
+                break;
+            default:
+                document.title = __('EXHIBITIONS_PAGE_TITLE')
+                break;
+        }
     }, [pathname]);
 
     const workshopsEl = useRef(null);

@@ -60401,7 +60401,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Events(props) {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('EVENTS_TITLE'));
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('EXHIBITIONS_PAGE_TITLE'));
 
   var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])(),
       pathname = _useLocation.pathname;
@@ -60410,6 +60410,23 @@ function Events(props) {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     pathname == '/events/workshops' && scrollToElement(workshopsEl);
     pathname == '/events/exhibitions' && scrollToElement(exhibitionsEl);
+  }, [pathname]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    switch (pathname) {
+      case '/events/workshops':
+        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('WORKSHOPS_PAGE_TITLE');
+        scrollToElement(workshopsEl);
+        break;
+
+      case '/events/exhibitions':
+        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('EXHIBITIONS_PAGE_TITLE');
+        scrollToElement(exhibitionsEl);
+        break;
+
+      default:
+        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('EXHIBITIONS_PAGE_TITLE');
+        break;
+    }
   }, [pathname]);
   var workshopsEl = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var exhibitionsEl = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
