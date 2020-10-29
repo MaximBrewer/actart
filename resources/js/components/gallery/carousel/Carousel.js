@@ -26,6 +26,7 @@ export default function Carousel(props) {
     }
 
     useEffect(() => {
+        document.title = __('LOT_IN_GALLERY_PAGE_TITLE', {lot_name: state.items[getIndex(state.id)].title, author_name: state.items[getIndex(state.id)].author});
         refPicture.current.slickGoTo(getIndex(state.id, true));
         refAnnounce.current.slickGoTo(getIndex(state.id, true));
         history.replace('/gallery/lot/' + state.id)

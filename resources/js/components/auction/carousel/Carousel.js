@@ -9,6 +9,7 @@ export default function Carousel(props) {
     const { id } = props;
 
     useEffect(() => {
+        document.title = __('LOT_IN_AUCTION_PAGE_TITLE', {lot_name: state.items[getIndex(id)].title, author_name: state.items[getIndex(id)].author});
         refPicture.current.slickGoTo(getIndex(id), true);
         refAnnounce.current.slickGoTo(getIndex(id), true);
     }, [id]);

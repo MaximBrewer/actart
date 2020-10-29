@@ -49816,6 +49816,10 @@ function _defineProperty(obj, key, value) {
 function Carousel(props) {
   var id = props.id;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('LOT_IN_AUCTION_PAGE_TITLE', {
+      lot_name: state.items[getIndex(id)].title,
+      author_name: state.items[getIndex(id)].author
+    });
     refPicture.current.slickGoTo(getIndex(id), true);
     refAnnounce.current.slickGoTo(getIndex(id), true);
   }, [id]);
@@ -52748,7 +52752,6 @@ function Lot(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
       id = _useParams.id;
 
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('LOT_IN_GALLERY_PAGE_TITLE'));
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     window.scrollTo(0, 0);
   }, [id]);
@@ -52969,6 +52972,10 @@ function Carousel(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('LOT_IN_GALLERY_PAGE_TITLE', {
+      lot_name: state.items[getIndex(state.id)].title,
+      author_name: state.items[getIndex(state.id)].author
+    });
     refPicture.current.slickGoTo(getIndex(state.id, true));
     refAnnounce.current.slickGoTo(getIndex(state.id, true));
     history.replace('/gallery/lot/' + state.id);
