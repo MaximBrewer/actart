@@ -128,10 +128,7 @@ class LotController extends Controller
     {
         $lot = Lot::where('id', $lot_id)->whereIn('status', ['in_auction', 'gallery'])->firstOrFail();
         $bet = Bet::where('lot_id', $lot_id)->orderBy('bet', 'DESC')->first();
-
-        return [$bet->lot->user_id, Auth::id(), $bet];
-
-        if (!$bet || ($bet->lot->user_id != Auth::id() && $bet->bet < $price)) {
+        if (!$bet || ($bet->user_id != Auth::id() && $bet->bet < $price)) {
             $newBet = Bet::create([
                 'user_id' => Auth::id(),
                 'bet' => $price,
@@ -139,7 +136,7 @@ class LotController extends Controller
                 'blitz' => false
             ]);
             if ($bet)
-                Mail::to($bet->lot->user->email)->send(new BeatPrice($lot));
+                Mail::to($bet->user->email)->send(new BeatPrice($lot));
 
             return $newBet;
         }
