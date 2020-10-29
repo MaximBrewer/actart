@@ -98,5 +98,20 @@
 
     "LAST_CHANCE_TO_USER": "Last chance",
 
-    "AUCTION_FINISHED": "Auction finished"
+    "AUCTION_FINISHED": "Auction finished",
+    
+    "AUCTIONS_PAGE_TITLE": "Auction of works of art from Act-Art",
+    "SPECIAL_AUCTIONS_PAGE_TITLE": "Act-Art Thematic auctions",
+    "REGULAR_AUCTIONS_PAGE_TITLE": "Act-Art Regular auctions",
+    "ARCHIVE_OF_AUCTIONS_PAGE_TITLE": "Archive of auctions Act-Art",
+    "GALLERY_PAGE_TITLE": "Gallery-Auction Act-Art",
+    "AUTHORS_PAGE_TITLE": "Authors of the Act-Art platform",
+    "GALLERY_ARCHIVE_PAGE_TITLE": "Archive of works sold in the Gallery-Auction",
+    "EXHIBITIONS_PAGE_TITLE": "Exhibitions of the Act-Art gallery in Moscow",
+    "WORKSHOPS_PAGE_TITLE": "Workshop platforms Act-Art",
+    "NEWS_PAGE_TITLE": "News Act-Art",
+    "BLOG_PAGE_TITLE": "Blog Act-Art",
+
+    "LOT_IN_GALLERY_PAGE_TITLE": "Buy \":lot_name\" author \":author_name\" in the online gallery Act-Art",
+    "LOT_IN_AUCTION_PAGE_TITLE": "Buy \":lot_name\" author \":author_name\" at the online auction Act-Art"
 }
