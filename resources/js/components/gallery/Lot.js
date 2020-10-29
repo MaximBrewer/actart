@@ -3,9 +3,11 @@ import Waterfall from "../waterfall/Waterfall";
 import { Link, useParams } from "react-router-dom";
 import Carousel from "./carousel/Carousel";
 import __ from '../../utils/trans';
+import useDocumentTitle from '../../components/document-title';
 
 export default function Lot(props) {
     const { id } = useParams();
+    useDocumentTitle(__('LOT_IN_GALLERY_PAGE_TITLE'));
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [id]);

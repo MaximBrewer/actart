@@ -15,6 +15,7 @@
     "ABOUT_WORK_TITLE": "О работе",
     "GO_TO_AUTHOR_LINK": "На страницу автора",
     "BTN_ALL_AUCTIONS": "Все аукционы",
+
     "BTN_ONLINE_GALLERY": "Онлайн-галерея",
     "MEASURE_CM": "см",
     "SHORT_YEAR": "г",
@@ -55,7 +56,6 @@
     "MODAL_SIGNIN_BTN": "Регистрация",
 
     "ARCHIVE_OF_AUCTIONS_TITLE": "Архив",
-    "ARCHIVE_OF_AUCTIONS_PAGE_TITLE": "Архив аукционов",
     "ARCHIVE_LINK_TO_AUCTIONS": "Аукционы",
 
     "ARCHIVE_OF_AUCTIONS": "Архив",
@@ -196,5 +196,20 @@
 
     "LAST_CHANCE_TO_USER": "Последний шанс",
 
-    "AUCTION_FINISHED": "Аукцион завершён"
+    "AUCTION_FINISHED": "Аукцион завершён",
+
+    "AUCTIONS_PAGE_TITLE": "Аукционы произведений искусства от Акт-Арт",
+    "SPECIAL_AUCTIONS_PAGE_TITLE": "Тематические интернет-аукционы Акт-Арт",
+    "REGULAR_AUCTIONS_PAGE_TITLE": "Регулярные интернет-аукционы Акт-Арт",
+    "ARCHIVE_OF_AUCTIONS_PAGE_TITLE": "Архив интернет-аукционов Акт-Арт",
+    "GALLERY_PAGE_TITLE": "Галерея-аукцион Акт-Арт",
+    "AUTHORS_PAGE_TITLE": "Авторы платформы Акт-Арт",
+    "GALLERY_ARCHIVE_PAGE_TITLE": "Архив проданных работ в Галерее-аукционе",
+    "EXHIBITIONS_PAGE_TITLE": "Выставки галереи Акт-Арт в Москве",
+    "WORKSHOPS_PAGE_TITLE": "Мастерские платформы Акт-Арт",
+    "NEWS_PAGE_TITLE": "Новости Акт-Арт",
+    "BLOG_PAGE_TITLE": "Блог Акт-Арт",
+
+    "LOT_IN_GALLERY_PAGE_TITLE": "Купить \":lot_name\" автор \":author_name\" в онлайн-галерее Акт-Арт",
+    "LOT_IN_AUCTION_PAGE_TITLE": "Купить \":lot_name\" автор \":author_name\" на онлайн-аукционе Акт-Арт"
 }

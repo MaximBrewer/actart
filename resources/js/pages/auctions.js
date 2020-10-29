@@ -13,8 +13,19 @@ export default function AuctionsPage(props) {
     const { scrollToElement } = props;
 
     useEffect(() => {
-        pathname == '/auctions/special' && scrollToElement(specialEl)
-        pathname == '/auctions/regular' && scrollToElement(regularEl)
+        switch (pathname) {
+            case '/auctions/special':
+                document.title = __('SPECIAL_AUCTIONS_PAGE_TITLE')
+                scrollToElement(specialEl)
+                break;
+            case '/auctions/regular':
+                document.title = __('REGULAR_AUCTIONS_PAGE_TITLE')
+                scrollToElement(regularEl)
+                break;
+            default:
+                document.title = __('AUCTIONS_PAGE_TITLE')
+                break;
+        }
     }, [pathname]);
 
     const regularEl = useRef(null);

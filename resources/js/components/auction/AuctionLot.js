@@ -16,7 +16,7 @@ import useDocumentTitle from '../../components/document-title';
 import __ from '../../utils/trans';
 
 export default function Lot(props) {
-    useDocumentTitle(__('AUCTIONS_PAGE_TITLE'));
+    useDocumentTitle(__('LOT_IN_AUCTION_PAGE_TITLE'));
     const { id, lotId } = useParams();
 
     const [state, setState] = useState({

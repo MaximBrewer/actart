@@ -48141,7 +48141,7 @@ function _arrayWithHoles(arr) {
 
 
 function Lot(props) {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_14__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_15__["default"])('AUCTIONS_PAGE_TITLE'));
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_14__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_15__["default"])('LOT_IN_AUCTION_PAGE_TITLE'));
 
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id,
@@ -52500,11 +52500,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/document-title */ "./resources/js/components/document-title.js");
+
 
 
 
 
 function Archive(props) {
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('GALLERY_ARCHIVE_PAGE_TITLE'));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -52582,6 +52585,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/document-title */ "./resources/js/components/document-title.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -52604,7 +52608,10 @@ function _extends() {
 
 
 
+
 function Category(props) {
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('GALLERY_PAGE_TITLE'));
+
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
       id = _useParams.id;
 
@@ -52712,6 +52719,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./carousel/Carousel */ "./resources/js/components/gallery/carousel/Carousel.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/document-title */ "./resources/js/components/document-title.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -52735,10 +52743,12 @@ function _extends() {
 
 
 
+
 function Lot(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
       id = _useParams.id;
 
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('LOT_IN_GALLERY_PAGE_TITLE'));
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     window.scrollTo(0, 0);
   }, [id]);
@@ -58787,8 +58797,21 @@ function AuctionsPage(props) {
 
   var scrollToElement = props.scrollToElement;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    pathname == '/auctions/special' && scrollToElement(specialEl);
-    pathname == '/auctions/regular' && scrollToElement(regularEl);
+    switch (pathname) {
+      case '/auctions/special':
+        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('SPECIAL_AUCTIONS_PAGE_TITLE');
+        scrollToElement(specialEl);
+        break;
+
+      case '/auctions/regular':
+        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('REGULAR_AUCTIONS_PAGE_TITLE');
+        scrollToElement(regularEl);
+        break;
+
+      default:
+        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTIONS_PAGE_TITLE');
+        break;
+    }
   }, [pathname]);
   var regularEl = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var specialEl = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
@@ -61456,6 +61479,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/auth */ "./resources/js/utils/auth.js");
 /* harmony import */ var _components_auction_AuctionsProfile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/auction/AuctionsProfile */ "./resources/js/components/auction/AuctionsProfile.js");
 /* harmony import */ var _components_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
+/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/document-title */ "./resources/js/components/document-title.js");
+
 
 
 
@@ -61470,6 +61495,7 @@ function Profile(props) {
       setToken = _useAuth.setToken,
       currentUser = _useAuth.currentUser;
 
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_7__["default"])(currentUser.surname + ' ' + currentUser.name + ' ' + currentUser.middlename);
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
 
   var handleLogout = function handleLogout() {
@@ -61517,6 +61543,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/auth */ "./resources/js/utils/auth.js");
 /* harmony import */ var _components_auction_AuctionsProfile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/auction/AuctionsProfile */ "./resources/js/components/auction/AuctionsProfile.js");
 /* harmony import */ var _components_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
+/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/document-title */ "./resources/js/components/document-title.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -61543,12 +61570,14 @@ function _extends() {
 
 
 
+
 function Profile(props) {
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_2__["useAuth"])(),
       setCurrentUser = _useAuth.setCurrentUser,
       setToken = _useAuth.setToken,
       currentUser = _useAuth.currentUser;
 
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_7__["default"])(currentUser.surname + ' ' + currentUser.name + ' ' + currentUser.middlename);
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
 
   var handleLogout = function handleLogout() {

@@ -5,10 +5,12 @@ import __ from '../utils/trans';
 import { setIntendedUrl } from '../utils/auth';
 import AuctionsProfile from "../components/auction/AuctionsProfile";
 import Waterfall from "../components/waterfall/Waterfall";
+import useDocumentTitle from '../components/document-title';
 
 
 function Profile(props) {
   let { setCurrentUser, setToken, currentUser } = useAuth();
+  useDocumentTitle(currentUser.surname + ' ' + currentUser.name + ' ' + currentUser.middlename);
 
   let history = useHistory();
 

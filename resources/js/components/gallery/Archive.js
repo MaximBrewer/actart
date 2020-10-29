@@ -2,8 +2,10 @@ import React from "react";
 import Waterfall from "../waterfall/Waterfall";
 import { Link, useParams } from "react-router-dom";
 import __ from '../../utils/trans';
+import useDocumentTitle from '../../components/document-title';
 
 export default function Archive(props) {
+    useDocumentTitle(__('GALLERY_ARCHIVE_PAGE_TITLE'));
     return (
         <div className="sticky-wrapper">
             <section className="gallery-section">
