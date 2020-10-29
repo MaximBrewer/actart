@@ -59504,7 +59504,7 @@ function Base(props) {
     req('/api/' + window.App.locale + '/page' + pathname).then(function (_ref) {
       var page = _ref.page;
       return setState(function (prevState) {
-        document.title = page.title;
+        document.title = page.meta_title;
         return _objectSpread(_objectSpread({}, prevState), {}, {
           page: page
         });

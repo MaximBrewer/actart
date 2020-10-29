@@ -20,7 +20,7 @@ export default function Base(props) {
         })
         req('/api/' + window.App.locale + '/page' + pathname)
             .then(({ page }) => setState((prevState) => {
-                document.title = page.title;
+                document.title = page.meta_title;
                 return {
                     ...prevState,
                     page
