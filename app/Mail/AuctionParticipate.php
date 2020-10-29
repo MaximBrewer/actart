@@ -11,6 +11,8 @@ class AuctionParticipate extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $auction;
+    protected $user;
     /**
      * Create a new message instance.
      *

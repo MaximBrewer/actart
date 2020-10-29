@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\DB;
 use App\Bet;
 use Exception;
 use App\Events\Auction as AuctionEvent;
+use Illuminate\Support\Facades\Mail;
 use App\Events\Lot as LotEvent;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\BeatPrice;
 
 class LotController extends Controller
 {
@@ -127,14 +129,17 @@ class LotController extends Controller
         $lot = Lot::where('id', $lot_id)->whereIn('status', ['in_auction', 'gallery'])->firstOrFail();
         $bet = Bet::where('lot_id', $lot_id)->orderBy('bet', 'DESC')->first();
 
-        if (!$bet || $bet->bet < $price) {
-            $bet = Bet::create([
+        if (!$bet || ($bet->lot->user->id != Auth::id() && $bet->bet < $price)) {
+            $newBet = Bet::create([
                 'user_id' => Auth::id(),
                 'bet' => $price,
                 'lot_id' => $lot->id,
                 'blitz' => false
             ]);
-            return $bet;
+            if ($bet)
+                Mail::to($bet->lot->user->email)->send(new BeatPrice($lot));
+
+            return $newBet;
         }
         return [];
     }

@@ -19,4 +19,10 @@ class Bet extends Model
     {
         return (float) $value / 100;
     }
+
+    public function lot()
+    {
+        return $this->belongsTo('App\Lot');
+    }
+
 }
