@@ -8,12 +8,11 @@ import MovingGallery from "../components/moving/Gallery";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 
 export default function NewsItem(props) {
+    useDocumentTitle(__('NEWS_PAGE_TITLE'));
 
     const { req } = props;
     const [state, setState] = useState({ post: null });
     const { slug } = useParams();
-
-    useDocumentTitle(__('BLOG_TITLE'));
 
     useEffect(() => {
         req('/api/' + window.App.locale + '/post/' + slug)

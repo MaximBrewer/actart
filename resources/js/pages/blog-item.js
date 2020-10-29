@@ -15,12 +15,11 @@ import client from '../api/client';
 import App from "../router";
 
 export default function BlogItem(props) {
+    useDocumentTitle(__('BLOG_PAGE_TITLE'));
 
     const { req } = props;
     const [state, setState] = useState({ post: null });
     const { slug } = useParams();
-
-    useDocumentTitle(__('BLOG_TITLE'));
 
     useEffect(() => {
         req('/api/' + window.App.locale + '/post/' + slug)

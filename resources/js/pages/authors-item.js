@@ -7,11 +7,11 @@ import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 import client from '../api/client';
 
 export default function AuthorItem(props) {
+    useDocumentTitle(__('AUTHORS_PAGE_TITLE'));
     const [state, setState] = useState({ author: null });
     const { id } = useParams();
     const { req } = props;
 
-    useDocumentTitle(__('AUTHORS_TITLE'));
 
     useEffect(() => {
         req('/api/' + window.App.locale + '/author/' + id)

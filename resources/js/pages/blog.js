@@ -15,10 +15,10 @@ import client from '../api/client';
 import App from "../router";
 
 export default function Blog() {
+    useDocumentTitle(__('BLOG_PAGE_TITLE'));
     const [state, setState] = useState({ page: null });
 
     const { pathname } = useLocation();
-    useDocumentTitle(__('BLOG_TITLE'));
 
     return (
         <React.Fragment>

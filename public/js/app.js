@@ -59108,6 +59108,8 @@ function _arrayWithHoles(arr) {
 
 
 function AuthorItem(props) {
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUTHORS_PAGE_TITLE'));
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     author: null
   }),
@@ -59119,7 +59121,6 @@ function AuthorItem(props) {
       id = _useParams.id;
 
   var req = props.req;
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUTHORS_TITLE'));
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     req('/api/' + window.App.locale + '/author/' + id).then(function (_ref) {
       var author = _ref.author;
@@ -59283,7 +59284,7 @@ function _extends() {
 
 
 function Authors(props) {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])('AUTHORS_TITLE'));
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])('AUTHORS_PAGE_TITLE'));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -59756,6 +59757,7 @@ function _arrayWithHoles(arr) {
 
 
 function BlogItem(props) {
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('BLOG_PAGE_TITLE'));
   var req = props.req;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
@@ -59768,7 +59770,6 @@ function BlogItem(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       slug = _useParams.slug;
 
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('BLOG_TITLE'));
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     req('/api/' + window.App.locale + '/post/' + slug).then(function (_ref) {
       var post = _ref.post;
@@ -59999,6 +60000,8 @@ function _arrayWithHoles(arr) {
 
 
 function Blog() {
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('BLOG_PAGE_TITLE'));
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     page: null
   }),
@@ -60009,7 +60012,6 @@ function Blog() {
   var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])(),
       pathname = _useLocation.pathname;
 
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('BLOG_TITLE'));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "blog-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -61195,6 +61197,7 @@ function _arrayWithHoles(arr) {
 
 
 function NewsItem(props) {
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('NEWS_PAGE_TITLE'));
   var req = props.req;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
@@ -61207,7 +61210,6 @@ function NewsItem(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       slug = _useParams.slug;
 
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('BLOG_TITLE'));
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     req('/api/' + window.App.locale + '/post/' + slug).then(function (_ref) {
       var post = _ref.post;
@@ -61364,7 +61366,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function News() {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('BLOG_TITLE'));
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('NEWS_PAGE_TITLE'));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "news-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

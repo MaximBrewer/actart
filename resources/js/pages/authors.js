@@ -7,7 +7,7 @@ import MovingGallery from "../components/moving/Gallery";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 
 export default function Authors(props) {
-    useDocumentTitle(__('AUTHORS_TITLE'));
+    useDocumentTitle(__('AUTHORS_PAGE_TITLE'));
     return (
         <React.Fragment>
             <Announce />

@@ -8,7 +8,7 @@ import MovingGallery from "../components/moving/Gallery";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 
 export default function News() {
-    useDocumentTitle(__('BLOG_TITLE'));
+    useDocumentTitle(__('NEWS_PAGE_TITLE'));
     return (
         <React.Fragment>
             <Announce />
