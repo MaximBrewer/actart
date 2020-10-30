@@ -52,7 +52,7 @@ window.grid = {
 // Enable pusher logging - don't include this in production
 // Pusher.logToConsole = true;
 
-var pusher = new Pusher('c3601b3f39bca77b9879', {
+var pusher = new Pusher('34ed3182a793d15156b0', {
   cluster: 'eu'
 });
 
