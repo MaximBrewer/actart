@@ -40,12 +40,12 @@ function LoginModal(props) {
                     for (const a of user.auctions)
                         if (window.participate == a.id) skip = true;
                     if (!skip)
-                        client("/api/auction/" + auction.id + "/participate")
+                        client("/api/auction/" + window.participate + "/participate")
                             .then(({ user }) => {
                                 setCurrentUser(user);
                             })
                             .catch(err => console.log(err));
-                    history.push("/auctions/" + auction.id);
+                    history.push("/auctions/" + window.participate);
                 }
                 closeModal();
             })
