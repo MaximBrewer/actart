@@ -62699,8 +62699,8 @@ function App() {
   var participate = function participate(e, auction) {
     if (!currentUser) {
       e.preventDefault();
-      openModal('login');
       window.participate = auction.id;
+      openModal('login');
       return false;
     } else {
       var _iterator = _createForOfIteratorHelper(currentUser.auctions),
