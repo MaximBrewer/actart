@@ -5,6 +5,7 @@ import { login } from "../api/auth";
 import { getIntendedUrl } from "../utils/auth";
 import useInputValue from "../components/input-value";
 import __ from "../utils/trans";
+import client from "../api/client";
 
 function LoginModal(props) {
     const { openModal, closeModal } = props;
@@ -12,6 +13,17 @@ function LoginModal(props) {
     let history = useHistory();
     let email = useInputValue("email");
     let password = useInputValue("password");
+
+    const req = (url, method = "GET", body = null) => {
+        return new Promise(function(resolve, reject) {
+            client(url, {
+                method: method,
+                body: body
+            })
+                .then(resp => resolve(resp))
+                .catch(err => reject(err));
+        });
+    };
 
     const handleSubmit = e => {
         e.preventDefault();

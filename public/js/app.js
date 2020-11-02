@@ -57984,6 +57984,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/auth */ "./resources/js/utils/auth.js");
 /* harmony import */ var _components_input_value__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/input-value */ "./resources/js/components/input-value.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var _api_client__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../api/client */ "./resources/js/api/client.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -58086,6 +58087,7 @@ function _arrayLikeToArray(arr, len) {
 
 
 
+
 function LoginModal(props) {
   var openModal = props.openModal,
       closeModal = props.closeModal;
@@ -58097,6 +58099,21 @@ function LoginModal(props) {
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
   var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_5__["default"])("email");
   var password = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_5__["default"])("password");
+
+  var req = function req(url) {
+    var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "GET";
+    var body = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    return new Promise(function (resolve, reject) {
+      Object(_api_client__WEBPACK_IMPORTED_MODULE_7__["default"])(url, {
+        method: method,
+        body: body
+      }).then(function (resp) {
+        return resolve(resp);
+      })["catch"](function (err) {
+        return reject(err);
+      });
+    });
+  };
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
