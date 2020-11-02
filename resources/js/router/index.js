@@ -148,6 +148,7 @@ function App() {
     if (!currentUser) {
       e.preventDefault();
       openModal('login');
+      window.participate = auction.id;
       return false;
     }
     else {

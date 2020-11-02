@@ -58002,6 +58002,82 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it;
+
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it) o = it;
+      var i = 0;
+
+      var F = function F() {};
+
+      return {
+        s: F,
+        n: function n() {
+          if (i >= o.length) return {
+            done: true
+          };
+          return {
+            done: false,
+            value: o[i++]
+          };
+        },
+        e: function e(_e) {
+          throw _e;
+        },
+        f: F
+      };
+    }
+
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  var normalCompletion = true,
+      didErr = false,
+      err;
+  return {
+    s: function s() {
+      it = o[Symbol.iterator]();
+    },
+    n: function n() {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function e(_e2) {
+      didErr = true;
+      err = _e2;
+    },
+    f: function f() {
+      try {
+        if (!normalCompletion && it["return"] != null) it["return"]();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
 
 
 
@@ -58019,8 +58095,8 @@ function LoginModal(props) {
       setToken = _useAuth.setToken;
 
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
-  var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_5__["default"])('email');
-  var password = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_5__["default"])('password');
+  var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_5__["default"])("email");
+  var password = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_5__["default"])("password");
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
@@ -58032,11 +58108,37 @@ function LoginModal(props) {
           token = _ref.token;
       setToken(token);
       setCurrentUser(user);
+
+      if (!!window.participate) {
+        var skip = false;
+
+        var _iterator = _createForOfIteratorHelper(user.auctions),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var a = _step.value;
+            if (auction.id == a.id) skip = true;
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+
+        if (!skip) req("/api/auction/" + auction.id + "/participate").then(function (_ref2) {
+          var user = _ref2.user;
+          setCurrentUser(user);
+        })["catch"](function () {
+          e.preventDefault();
+        });
+        history.push("/auctions/" + auction.id);
+      }
+
       closeModal();
-      history.push('/profile');
     })["catch"](function (error) {
-      error.json().then(function (_ref2) {
-        var errors = _ref2.errors;
+      error.json().then(function (_ref3) {
+        var errors = _ref3.errors;
         return email.parseServerError(errors);
       });
     });
@@ -58048,7 +58150,7 @@ function LoginModal(props) {
     className: "modal-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "modal-title"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])('MODAL_LOGIN_H2')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("MODAL_LOGIN_H2")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
     className: "close",
     onClick: closeModal
@@ -58063,11 +58165,11 @@ function LoginModal(props) {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "email"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])('MODAL_LOGIN_EMAIL')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("MODAL_LOGIN_EMAIL")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     id: "email",
     type: "email",
     name: "email",
-    className: "form-control ".concat(email.error ? 'is-invalid' : ''),
+    className: "form-control ".concat(email.error ? "is-invalid" : ""),
     required: true,
     autoFocus: true
   }, email.bind)), email.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -58076,7 +58178,7 @@ function LoginModal(props) {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "password"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])('MODAL_LOGIN_PASSWORD')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("MODAL_LOGIN_PASSWORD")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     type: "password",
     id: "password",
     name: "password",
@@ -58087,24 +58189,23 @@ function LoginModal(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     onClick: function onClick() {
-      return openModal('forgot');
+      return openModal("forgot");
     }
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])('MODAL_LOGIN_FORGET_PASSWORD')), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("MODAL_LOGIN_FORGET_PASSWORD")), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     onClick: function onClick() {
-      return openModal('register');
+      return openModal("register");
     }
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])('MODAL_LOGIN_SIGN_IN')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("MODAL_LOGIN_SIGN_IN")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     className: "btn btn-primary"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])('MODAL_LOGIN_BTN'))))));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("MODAL_LOGIN_BTN"))))));
 }
 
-;
 /* harmony default export */ __webpack_exports__["default"] = (LoginModal);
 
 /***/ }),
@@ -58256,6 +58357,11 @@ function RegisterModal(props) {
   }, passwordConfirmation.bind))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    onClick: function onClick() {
+      return openModal('forgot');
+    }
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('MODAL_LOGIN_FORGET_PASSWORD')), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     onClick: function onClick() {
       return openModal('login');
@@ -62576,6 +62682,7 @@ function App() {
     if (!currentUser) {
       e.preventDefault();
       openModal('login');
+      window.participate = auction.id;
       return false;
     } else {
       var _iterator = _createForOfIteratorHelper(currentUser.auctions),

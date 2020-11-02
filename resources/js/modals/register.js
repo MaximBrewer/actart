@@ -93,7 +93,7 @@ function RegisterModal(props) {
             />
           </div>
           <div className="form-group">
-            <a href="#" onClick={() => openModal('login')}>{__('MODAL_SIGNIN_LOGIN')}</a>
+          <a href="#" onClick={() => openModal('forgot')}>{__('MODAL_LOGIN_FORGET_PASSWORD')}</a>&nbsp;<a href="#" onClick={() => openModal('login')}>{__('MODAL_SIGNIN_LOGIN')}</a>
           </div>
         </div>
         <div className={`modal-footer`}>
