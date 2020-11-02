@@ -58153,11 +58153,8 @@ function LoginModal(props) {
       }
 
       closeModal();
-    })["catch"](function (error) {
-      error.json().then(function (_ref3) {
-        var errors = _ref3.errors;
-        return email.parseServerError(errors);
-      });
+    })["catch"](function (err) {
+      return console.log(err);
     });
   };
 

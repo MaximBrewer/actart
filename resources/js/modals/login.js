@@ -49,11 +49,7 @@ function LoginModal(props) {
                 }
                 closeModal();
             })
-            .catch(error => {
-                error
-                    .json()
-                    .then(({ errors }) => email.parseServerError(errors));
-            });
+            .catch(err => console.log(err));
     };
 
     return (
