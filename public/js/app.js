@@ -58125,10 +58125,10 @@ function LoginModal(props) {
           token = _ref.token;
       setToken(token);
       setCurrentUser(user);
-      console.log(window.participate);
 
       if (!!window.participate) {
         var skip = false;
+        console.log(user);
 
         var _iterator = _createForOfIteratorHelper(user.auctions),
             _step;
