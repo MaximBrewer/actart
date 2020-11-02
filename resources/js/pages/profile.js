@@ -42,7 +42,7 @@ function Profile(props) {
             </dl>
             <dl>
               <dt>{__('Full name:')}</dt>
-              <dd>{currentUser.name + ` ` + currentUser.surname}</dd>
+              <dd>{currentUser.name + (currentUser.surname ? ` ` + currentUser.surname : ``)}</dd>
             </dl>
             <dl>
               <dt>{__('Логин:')}</dt>
