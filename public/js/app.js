@@ -58143,11 +58143,11 @@ function LoginModal(props) {
           _iterator.f();
         }
 
-        if (!skip) req("/api/auction/" + auction.id + "/participate").then(function (_ref2) {
+        if (!skip) Object(_api_client__WEBPACK_IMPORTED_MODULE_7__["default"])("/api/auction/" + auction.id + "/participate").then(function (_ref2) {
           var user = _ref2.user;
           setCurrentUser(user);
-        })["catch"](function () {
-          e.preventDefault();
+        })["catch"](function (err) {
+          return console.log(err);
         });
         history.push("/auctions/" + auction.id);
       }

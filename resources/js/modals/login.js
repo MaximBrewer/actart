@@ -40,13 +40,11 @@ function LoginModal(props) {
                     for (const a of user.auctions)
                         if (auction.id == a.id) skip = true;
                     if (!skip)
-                        req("/api/auction/" + auction.id + "/participate")
+                        client("/api/auction/" + auction.id + "/participate")
                             .then(({ user }) => {
                                 setCurrentUser(user);
                             })
-                            .catch(() => {
-                                e.preventDefault();
-                            });
+                            .catch(err => console.log(err));
                     history.push("/auctions/" + auction.id);
                 }
                 closeModal();
