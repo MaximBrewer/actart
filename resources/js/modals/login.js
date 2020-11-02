@@ -37,9 +37,8 @@ function LoginModal(props) {
                 setCurrentUser(user);
                 if (!!window.participate) {
                     let skip = false;
-                    console.log(user);
                     for (const a of user.auctions)
-                        if (auction.id == a.id) skip = true;
+                        if (window.participate == a.id) skip = true;
                     if (!skip)
                         client("/api/auction/" + auction.id + "/participate")
                             .then(({ user }) => {

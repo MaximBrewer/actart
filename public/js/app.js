@@ -58128,7 +58128,6 @@ function LoginModal(props) {
 
       if (!!window.participate) {
         var skip = false;
-        console.log(user);
 
         var _iterator = _createForOfIteratorHelper(user.auctions),
             _step;
@@ -58136,7 +58135,7 @@ function LoginModal(props) {
         try {
           for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var a = _step.value;
-            if (auction.id == a.id) skip = true;
+            if (window.participate == a.id) skip = true;
           }
         } catch (err) {
           _iterator.e(err);
