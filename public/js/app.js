@@ -58125,6 +58125,7 @@ function LoginModal(props) {
           token = _ref.token;
       setToken(token);
       setCurrentUser(user);
+      console.log(window.participatedfd);
 
       if (!!window.participate) {
         var skip = false;
