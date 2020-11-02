@@ -62700,7 +62700,8 @@ function App() {
     if (!currentUser) {
       e.preventDefault();
       window.participate = auction.id;
-      openModal('login');
+      console.log(window.participate);
+      openModal('login', auction.id);
       return false;
     } else {
       var _iterator = _createForOfIteratorHelper(currentUser.auctions),
