@@ -46697,10 +46697,6 @@ channel.bind("update-lot-lastchance", function (_ref5) {
 channel.bind("update-auction-status", function (_ref6) {
   var id = _ref6.id,
       status = _ref6.status;
-  console.log({
-    id: id,
-    status: status
-  });
   window.dispatchEvent(new CustomEvent("update-auction-status", {
     detail: {
       id: id,
@@ -47318,7 +47314,6 @@ function AuctionAdmin(props) {
       setState = _useState2[1];
 
   var updateLotStatus = function updateLotStatus(event) {
-    console.log(event);
     setState(function (prevState) {
       var auction = _objectSpread({}, prevState.auction),
           lots = [],
@@ -47338,7 +47333,6 @@ function AuctionAdmin(props) {
       }
 
       auction.lots = lots;
-      console.log(auction);
       if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
         auction: auction,
         finished: finished
@@ -47384,7 +47378,6 @@ function AuctionAdmin(props) {
   };
 
   var createBet = function createBet(event) {
-    console.log(event);
     setState(function (prevState) {
       var auction = prevState.auction,
           lots = [],
@@ -47405,7 +47398,6 @@ function AuctionAdmin(props) {
       }
 
       auction.lots = lots;
-      console.log(update, auction.lots);
       if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
         auction: auction
       });
@@ -47438,8 +47430,6 @@ function AuctionAdmin(props) {
     };
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    console.log(state.auction);
-
     if (state.auction && state.auction.lots) {
       var all = true;
 
@@ -49029,9 +49019,7 @@ function AuctionProfile(props) {
   }, []);
 
   var updateAuctionStatus = function updateAuctionStatus(event) {
-    console.log(event);
-
-    if (event.detail.status == 'canceled' || event.detail.status == 'finished') {
+    if (event.detail.status == "canceled" || event.detail.status == "finished") {
       setCurrentUser(function (prevState) {
         var update = false,
             as = [];
@@ -49063,7 +49051,7 @@ function AuctionProfile(props) {
       className: "auction-preview",
       key: index,
       style: {
-        display: 'block'
+        display: "block"
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "banner-image",
@@ -49575,7 +49563,6 @@ function ArchiveLotsList(props) {
       setState = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    console.log(lotId);
     lotId && setState(function (prevState) {
       var items = [];
 
@@ -50913,7 +50900,7 @@ function Center(props) {
 
         if (lot.id == event.detail.id) {
           lot.status = event.detail.status;
-          if (event.detail.status == 'in_auction') current = lot;
+          if (event.detail.status == "in_auction") current = lot;
           update = true;
         }
 
@@ -50954,10 +50941,6 @@ function Center(props) {
       auction.lots = lots;
 
       if (update) {
-        console.log(_objectSpread(_objectSpread({}, prevState), {}, {
-          auction: auction,
-          current: current
-        }));
         return _objectSpread(_objectSpread({}, prevState), {}, {
           auction: auction,
           current: current
@@ -51040,7 +51023,7 @@ function Center(props) {
     item: state.current
   }, props)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "py-5 text-center color-red"
-  }, !state.finished ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTION_WILL_START_SOON') : Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTION_HAS_FINISHED'))))))));
+  }, !state.finished ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTION_WILL_START_SOON") : Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTION_HAS_FINISHED"))))))));
 }
 
 /***/ }),
@@ -62599,20 +62582,20 @@ var scrollToElement = function scrollToElement(ref) {
   return false;
 };
 
-react_modal__WEBPACK_IMPORTED_MODULE_11___default.a.setAppElement('#app');
+react_modal__WEBPACK_IMPORTED_MODULE_11___default.a.setAppElement("#app");
 var customStyles = {
   overlay: {
     zIndex: 1000
   },
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    padding: '0',
-    border: '0px solid #ccc'
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    padding: "0",
+    border: "0px solid #ccc"
   }
 };
 
@@ -62630,7 +62613,7 @@ function App() {
   };
 
   var req = function req(url) {
-    var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
+    var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "GET";
     var body = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
     return new Promise(function (resolve, reject) {
       Object(_api_client__WEBPACK_IMPORTED_MODULE_35__["default"])(url, {
@@ -62651,25 +62634,25 @@ function App() {
     reset: false
   };
   var modals = [{
-    key: 'login',
+    key: "login",
     component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modals_login__WEBPACK_IMPORTED_MODULE_29__["default"], {
       openModal: openModal,
       closeModal: closeModal
     })
   }, {
-    key: 'register',
+    key: "register",
     component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modals_register__WEBPACK_IMPORTED_MODULE_30__["default"], {
       openModal: openModal,
       closeModal: closeModal
     })
   }, {
-    key: 'forgot',
+    key: "forgot",
     component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modals_forgot_password__WEBPACK_IMPORTED_MODULE_31__["default"], {
       openModal: openModal,
       closeModal: closeModal
     })
   }, {
-    key: 'reset',
+    key: "reset",
     component: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modals_reset_password__WEBPACK_IMPORTED_MODULE_32__["default"], {
       openModal: openModal,
       closeModal: closeModal
@@ -62696,8 +62679,7 @@ function App() {
     if (!currentUser) {
       e.preventDefault();
       window.participate = auction.id;
-      console.log(window.participate);
-      openModal('login', auction.id);
+      openModal("login", auction.id);
       return false;
     } else {
       var _iterator = _createForOfIteratorHelper(currentUser.auctions),
@@ -62717,7 +62699,7 @@ function App() {
         _iterator.f();
       }
 
-      req('/api/auction/' + auction.id + '/participate').then(function (_ref) {
+      req("/api/auction/" + auction.id + "/participate").then(function (_ref) {
         var user = _ref.user;
         setCurrentUser(user);
       })["catch"](function () {
@@ -62827,11 +62809,11 @@ function App() {
     path: "/search/:query"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_search__WEBPACK_IMPORTED_MODULE_23__["default"], rest)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_auth_route__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
     exact: true,
-    path: '/profile/vip',
+    path: "/profile/vip",
     component: _pages_profile_vip__WEBPACK_IMPORTED_MODULE_27__["default"]
   }, rest)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_auth_route__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
     exact: true,
-    path: '/profile',
+    path: "/profile",
     component: _pages_profile__WEBPACK_IMPORTED_MODULE_26__["default"]
   }, rest)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_admin_route__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
     exact: true,
@@ -62849,7 +62831,6 @@ function App() {
   }));
 }
 
-;
 /* harmony default export */ __webpack_exports__["default"] = (App);
 
 /***/ }),

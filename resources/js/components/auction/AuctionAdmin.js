@@ -63,7 +63,6 @@ export default function AuctionAdmin(props) {
     });
 
     const updateLotStatus = event => {
-        console.log(event);
         setState(prevState => {
             let auction = { ...prevState.auction }, lots = [], update = false, finished = prevState.finished;
             for (let i in auction.lots) {
@@ -77,7 +76,6 @@ export default function AuctionAdmin(props) {
             }
 
             auction.lots = lots;
-            console.log(auction);
             if (update)
                 return {
                     ...prevState,
@@ -123,7 +121,6 @@ export default function AuctionAdmin(props) {
     };
 
     const createBet = event => {
-        console.log(event)
         setState(prevState => {
             let auction = prevState.auction, lots = [], update = false;
             for (let i in auction.lots) {
@@ -137,7 +134,6 @@ export default function AuctionAdmin(props) {
                 lots.push(lot)
             }
             auction.lots = lots;
-            console.log(update, auction.lots)
             if (update)
                 return {
                     ...prevState,
@@ -170,7 +166,6 @@ export default function AuctionAdmin(props) {
     }, []);
 
     useEffect(() => {
-        console.log(state.auction)
         if (state.auction && state.auction.lots) {
             let all = true;
             for (const lot of state.auction.lots) {
