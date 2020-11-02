@@ -35,7 +35,7 @@ function LoginModal(props) {
             .then(({ user, token }) => {
                 setToken(token);
                 setCurrentUser(user);
-                console.log(window.participatedfd)
+                console.log(window.participate)
                 if (!!window.participate) {
                     let skip = false;
                     for (const a of user.auctions)
