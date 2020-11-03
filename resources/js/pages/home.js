@@ -20,9 +20,8 @@ import { Hummer, AboutLogo, AboutBgLogo } from "../icons/home";
 function Home(props) {
     const { openModal } = props;
     useDocumentTitle(__("HOME_TITLE"));
+    
     const token = useRouteMatch().params;
-
-    console.log(params, token);
 
     useEffect(() => {
         if (token) openModal("reset");

@@ -60911,7 +60911,6 @@ function Home(props) {
   var openModal = props.openModal;
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("HOME_TITLE"));
   var token = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["useRouteMatch"])().params;
-  console.log(params, token);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (token) openModal("reset");
   }, []);
