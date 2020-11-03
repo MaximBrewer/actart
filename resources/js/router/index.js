@@ -218,6 +218,7 @@ function App() {
                         <Route exact path="/rules">
                             <Base {...rest} />
                         </Route>
+                        
                         <Route exact path="/delivery">
                             <Base {...rest} />
                         </Route>
@@ -240,6 +241,10 @@ function App() {
                             <Base {...rest} />
                         </Route>
 
+                        <Route path="/password/reset/:token">
+                            <Home {...rest} />
+                        </Route>
+                        
                         <Route exact path="/">
                             <Home {...rest} />
                         </Route>
@@ -294,7 +299,6 @@ function App() {
                         <Route exact path="/auctions/archive">
                             <AuctionsArchive {...rest} />
                         </Route>
-
                         <Route exact path={`/auctions/:id`}>
                             <AuctionBase {...rest} />
                         </Route>
