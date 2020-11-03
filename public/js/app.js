@@ -6915,6 +6915,19 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -6931,24 +6944,56 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
 function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
 
 function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-    return arr2;
-  }
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
 }
 
 function _iterableToArray(iter) {
-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
 }
 
 function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
 function zeroPad(value) {
@@ -6969,16 +7014,15 @@ var timeDeltaFormatOptionsDefaults = {
   zeroPadTime: 2
 };
 function calcTimeDelta(date) {
-  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-      _ref$now = _ref.now,
-      now = _ref$now === void 0 ? Date.now : _ref$now,
-      _ref$precision = _ref.precision,
-      precision = _ref$precision === void 0 ? 0 : _ref$precision,
-      _ref$controlled = _ref.controlled,
-      controlled = _ref$controlled === void 0 ? false : _ref$controlled,
-      _ref$offsetTime = _ref.offsetTime,
-      offsetTime = _ref$offsetTime === void 0 ? 0 : _ref$offsetTime;
-
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _options$now = options.now,
+      now = _options$now === void 0 ? Date.now : _options$now,
+      _options$precision = options.precision,
+      precision = _options$precision === void 0 ? 0 : _options$precision,
+      controlled = options.controlled,
+      _options$offsetTime = options.offsetTime,
+      offsetTime = _options$offsetTime === void 0 ? 0 : _options$offsetTime,
+      overtime = options.overtime;
   var startTimestamp;
 
   if (typeof date === 'string') {
@@ -6993,8 +7037,10 @@ function calcTimeDelta(date) {
     startTimestamp += offsetTime;
   }
 
-  var total = Math.round(parseFloat((Math.max(0, controlled ? startTimestamp : startTimestamp - now()) / 1000).toFixed(Math.max(0, Math.min(20, precision)))) * 1000);
-  var seconds = total / 1000;
+  var timeLeft = controlled ? startTimestamp : startTimestamp - now();
+  var clampedPrecision = Math.min(20, Math.max(0, precision));
+  var total = Math.round(parseFloat(((overtime ? timeLeft : Math.max(0, timeLeft)) / 1000).toFixed(clampedPrecision)) * 1000);
+  var seconds = Math.abs(total) / 1000;
   return {
     total: total,
     days: Math.floor(seconds / (3600 * 24)),
@@ -7005,36 +7051,39 @@ function calcTimeDelta(date) {
     completed: total <= 0
   };
 }
-function formatTimeDelta(delta, options) {
-  var days = delta.days,
-      hours = delta.hours,
-      minutes = delta.minutes,
-      seconds = delta.seconds;
+function formatTimeDelta(timeDelta, options) {
+  var days = timeDelta.days,
+      hours = timeDelta.hours,
+      minutes = timeDelta.minutes,
+      seconds = timeDelta.seconds;
 
-  var _Object$assign = Object.assign({}, timeDeltaFormatOptionsDefaults, options),
+  var _Object$assign = Object.assign(Object.assign({}, timeDeltaFormatOptionsDefaults), options),
       daysInHours = _Object$assign.daysInHours,
       zeroPadTime = _Object$assign.zeroPadTime,
       _Object$assign$zeroPa = _Object$assign.zeroPadDays,
       zeroPadDays = _Object$assign$zeroPa === void 0 ? zeroPadTime : _Object$assign$zeroPa;
 
-  var formattedHours = daysInHours ? zeroPad(hours + days * 24, zeroPadTime) : zeroPad(hours, Math.min(2, zeroPadTime));
+  var zeroPadTimeLength = Math.min(2, zeroPadTime);
+  var formattedHours = daysInHours ? zeroPad(hours + days * 24, zeroPadTime) : zeroPad(hours, zeroPadTimeLength);
   return {
     days: daysInHours ? '' : zeroPad(days, zeroPadDays),
     hours: formattedHours,
-    minutes: zeroPad(minutes, Math.min(2, zeroPadTime)),
-    seconds: zeroPad(seconds, Math.min(2, zeroPadTime))
+    minutes: zeroPad(minutes, zeroPadTimeLength),
+    seconds: zeroPad(seconds, zeroPadTimeLength)
   };
 }
 
 var Countdown = function (_React$Component) {
   _inherits(Countdown, _React$Component);
 
+  var _super = _createSuper(Countdown);
+
   function Countdown() {
     var _this;
 
     _classCallCheck(this, Countdown);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Countdown).apply(this, arguments));
+    _this = _super.apply(this, arguments);
     _this.state = {
       count: _this.props.count || 3
     };
@@ -7104,78 +7153,93 @@ Countdown.propTypes = {
 var Countdown$1 = function (_React$Component) {
   _inherits(Countdown$1, _React$Component);
 
+  var _super = _createSuper(Countdown$1);
+
   function Countdown$1(props) {
     var _this;
 
     _classCallCheck(this, Countdown$1);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Countdown$1).call(this, props));
+    _this = _super.call(this, props);
     _this.mounted = false;
+    _this.initialTimestamp = _this.calcOffsetStartTimestamp();
+    _this.offsetStartTimestamp = _this.props.autoStart ? 0 : _this.initialTimestamp;
+    _this.offsetTime = 0;
     _this.legacyMode = false;
     _this.legacyCountdownRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
 
     _this.tick = function () {
-      var onTick = _this.props.onTick;
-
       var timeDelta = _this.calcTimeDelta();
 
-      _this.setTimeDeltaState(timeDelta);
+      var callback = timeDelta.completed && !_this.props.overtime ? undefined : _this.props.onTick;
 
-      if (onTick && timeDelta.total > 0) {
-        onTick(timeDelta);
-      }
+      _this.setTimeDeltaState(timeDelta, undefined, callback);
     };
 
     _this.start = function () {
-      _this.setState(function (_ref) {
-        var offsetStart = _ref.offsetStart,
-            offsetTime = _ref.offsetTime;
-        return {
-          offsetStart: 0,
-          offsetTime: offsetTime + (offsetStart ? Date.now() - offsetStart : 0)
-        };
-      }, function () {
-        var timeDelta = _this.calcTimeDelta();
+      if (_this.isStarted()) return;
+      var prevOffsetStartTimestamp = _this.offsetStartTimestamp;
+      _this.offsetStartTimestamp = 0;
+      _this.offsetTime += prevOffsetStartTimestamp ? _this.calcOffsetStartTimestamp() - prevOffsetStartTimestamp : 0;
 
-        _this.setTimeDeltaState(timeDelta);
+      var timeDelta = _this.calcTimeDelta();
 
-        _this.props.onStart && _this.props.onStart(timeDelta);
+      _this.setTimeDeltaState(timeDelta, "STARTED", _this.props.onStart);
 
-        if (!_this.props.controlled) {
-          _this.clearInterval();
+      if (!_this.props.controlled && (!timeDelta.completed || _this.props.overtime)) {
+        _this.clearTimer();
 
-          _this.interval = window.setInterval(_this.tick, _this.props.intervalDelay);
-        }
-      });
+        _this.interval = window.setInterval(_this.tick, _this.props.intervalDelay);
+      }
     };
 
     _this.pause = function () {
-      _this.clearInterval();
+      if (_this.isPaused()) return;
 
-      _this.setState({
-        offsetStart: _this.calcOffsetStart()
-      }, function () {
-        var timeDelta = _this.calcTimeDelta();
+      _this.clearTimer();
 
-        _this.setTimeDeltaState(timeDelta);
+      _this.offsetStartTimestamp = _this.calcOffsetStartTimestamp();
 
-        _this.props.onPause && _this.props.onPause(timeDelta);
-      });
+      _this.setTimeDeltaState(_this.state.timeDelta, "PAUSED", _this.props.onPause);
+    };
+
+    _this.stop = function () {
+      if (_this.isStopped()) return;
+
+      _this.clearTimer();
+
+      _this.offsetStartTimestamp = _this.calcOffsetStartTimestamp();
+      _this.offsetTime = _this.offsetStartTimestamp - _this.initialTimestamp;
+
+      _this.setTimeDeltaState(_this.calcTimeDelta(), "STOPPED", _this.props.onStop);
+    };
+
+    _this.isStarted = function () {
+      return _this.isStatus("STARTED");
     };
 
     _this.isPaused = function () {
-      return _this.state.offsetStart > 0;
+      return _this.isStatus("PAUSED");
+    };
+
+    _this.isStopped = function () {
+      return _this.isStatus("STOPPED");
     };
 
     _this.isCompleted = function () {
-      return _this.state.timeDelta.completed;
+      return _this.isStatus("COMPLETED");
+    };
+
+    _this.handleOnComplete = function (timeDelta) {
+      if (_this.props.onComplete) _this.props.onComplete(timeDelta);
     };
 
     if (props.date) {
+      var timeDelta = _this.calcTimeDelta();
+
       _this.state = {
-        timeDelta: _this.calcTimeDelta(),
-        offsetStart: props.autoStart ? 0 : _this.calcOffsetStart(),
-        offsetTime: 0
+        timeDelta: timeDelta,
+        status: timeDelta.completed ? "COMPLETED" : "STOPPED"
       };
     } else {
       _this.legacyMode = true;
@@ -7192,8 +7256,8 @@ var Countdown$1 = function (_React$Component) {
       }
 
       this.mounted = true;
-      this.props.autoStart && this.start();
-      this.props.onMount && this.props.onMount(this.calcTimeDelta());
+      if (this.props.onMount) this.props.onMount(this.calcTimeDelta());
+      if (this.props.autoStart) this.start();
     }
   }, {
     key: "componentDidUpdate",
@@ -7202,7 +7266,13 @@ var Countdown$1 = function (_React$Component) {
         return;
       }
 
-      if (!this.shallowCompareProps(this.props, prevProps)) {
+      if (!this.shallowCompare(this.props, prevProps)) {
+        if (this.props.date !== prevProps.date) {
+          this.initialTimestamp = this.calcOffsetStartTimestamp();
+          this.offsetStartTimestamp = this.initialTimestamp;
+          this.offsetTime = 0;
+        }
+
         this.setTimeDeltaState(this.calcTimeDelta());
       }
     }
@@ -7214,7 +7284,7 @@ var Countdown$1 = function (_React$Component) {
       }
 
       this.mounted = false;
-      this.clearInterval();
+      this.clearTimer();
     }
   }, {
     key: "calcTimeDelta",
@@ -7223,17 +7293,19 @@ var Countdown$1 = function (_React$Component) {
           date = _this$props.date,
           now = _this$props.now,
           precision = _this$props.precision,
-          controlled = _this$props.controlled;
+          controlled = _this$props.controlled,
+          overtime = _this$props.overtime;
       return calcTimeDelta(date, {
         now: now,
         precision: precision,
         controlled: controlled,
-        offsetTime: this.state ? this.state.offsetTime : 0
+        offsetTime: this.offsetTime,
+        overtime: overtime
       });
     }
   }, {
-    key: "calcOffsetStart",
-    value: function calcOffsetStart() {
+    key: "calcOffsetStartTimestamp",
+    value: function calcOffsetStartTimestamp() {
       return Date.now();
     }
   }, {
@@ -7242,40 +7314,57 @@ var Countdown$1 = function (_React$Component) {
       this.legacyCountdownRef.current.addTime(seconds);
     }
   }, {
-    key: "clearInterval",
-    value: function clearInterval() {
+    key: "clearTimer",
+    value: function clearTimer() {
       window.clearInterval(this.interval);
     }
   }, {
-    key: "shallowCompareProps",
-    value: function shallowCompareProps(propsA, propsB) {
-      var keysA = Object.keys(propsA);
-      return keysA.length === Object.keys(propsB).length && !keysA.some(function (keyA) {
-        var valueA = propsA[keyA];
-        var valueB = propsB[keyA];
-        return !propsB.hasOwnProperty(keyA) || !(valueA === valueB || valueA !== valueA && valueB !== valueB);
+    key: "isStatus",
+    value: function isStatus(status) {
+      return this.state.status === status;
+    }
+  }, {
+    key: "shallowCompare",
+    value: function shallowCompare(objA, objB) {
+      var keysA = Object.keys(objA);
+      return keysA.length === Object.keys(objB).length && !keysA.some(function (keyA) {
+        var valueA = objA[keyA];
+        var valueB = objB[keyA];
+        return !objB.hasOwnProperty(keyA) || !(valueA === valueB || valueA !== valueA && valueB !== valueB);
       });
     }
   }, {
     key: "setTimeDeltaState",
-    value: function setTimeDeltaState(timeDelta) {
+    value: function setTimeDeltaState(timeDelta, status, callback) {
       var _this2 = this;
 
-      var callback;
+      if (!this.mounted) return;
+      var completedCallback;
 
       if (!this.state.timeDelta.completed && timeDelta.completed) {
-        this.clearInterval();
+        if (!this.props.overtime) this.clearTimer();
+        completedCallback = this.handleOnComplete;
+      }
 
-        callback = function callback() {
-          return _this2.props.onComplete && _this2.props.onComplete(timeDelta);
+      var onDone = function onDone() {
+        if (callback) callback(_this2.state.timeDelta);
+        if (completedCallback) completedCallback(_this2.state.timeDelta);
+      };
+
+      return this.setState(function (prevState) {
+        var newStatus = status || prevState.status;
+
+        if (timeDelta.completed && !_this2.props.overtime) {
+          newStatus = "COMPLETED";
+        } else if (!status && newStatus === "COMPLETED") {
+          newStatus = "STOPPED";
+        }
+
+        return {
+          timeDelta: timeDelta,
+          status: newStatus
         };
-      }
-
-      if (this.mounted) {
-        return this.setState({
-          timeDelta: timeDelta
-        }, callback);
-      }
+      }, onDone);
     }
   }, {
     key: "getApi",
@@ -7283,7 +7372,10 @@ var Countdown$1 = function (_React$Component) {
       return this.api = this.api || {
         start: this.start,
         pause: this.pause,
+        stop: this.stop,
+        isStarted: this.isStarted,
         isPaused: this.isPaused,
+        isStopped: this.isStopped,
         isCompleted: this.isCompleted
       };
     }
@@ -7295,7 +7387,7 @@ var Countdown$1 = function (_React$Component) {
           zeroPadTime = _this$props2.zeroPadTime,
           zeroPadDays = _this$props2.zeroPadDays;
       var timeDelta = this.state.timeDelta;
-      return Object.assign({}, timeDelta, {
+      return Object.assign(Object.assign({}, timeDelta), {
         api: this.getApi(),
         props: this.props,
         formatted: formatTimeDelta(timeDelta, {
@@ -7322,6 +7414,7 @@ var Countdown$1 = function (_React$Component) {
 
       var _this$props4 = this.props,
           className = _this$props4.className,
+          overtime = _this$props4.overtime,
           children = _this$props4.children,
           renderer = _this$props4.renderer;
       var renderProps = this.getRenderProps();
@@ -7330,7 +7423,7 @@ var Countdown$1 = function (_React$Component) {
         return renderer(renderProps);
       }
 
-      if (children && this.state.timeDelta.completed) {
+      if (children && this.state.timeDelta.completed && !overtime) {
         return Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(children, {
           countdown: renderProps
         });
@@ -7343,13 +7436,13 @@ var Countdown$1 = function (_React$Component) {
           seconds = _renderProps$formatte.seconds;
       return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
         className: className
-      }, days, days ? ':' : '', hours, ":", minutes, ":", seconds);
+      }, renderProps.total < 0 ? '-' : '', days, days ? ':' : '', hours, ":", minutes, ":", seconds);
     }
   }]);
 
   return Countdown$1;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-Countdown$1.defaultProps = Object.assign({}, timeDeltaFormatOptionsDefaults, {
+Countdown$1.defaultProps = Object.assign(Object.assign({}, timeDeltaFormatOptionsDefaults), {
   controlled: false,
   intervalDelay: 1000,
   precision: 0,
@@ -7364,6 +7457,7 @@ Countdown$1.propTypes = {
   intervalDelay: prop_types__WEBPACK_IMPORTED_MODULE_1__["number"],
   precision: prop_types__WEBPACK_IMPORTED_MODULE_1__["number"],
   autoStart: prop_types__WEBPACK_IMPORTED_MODULE_1__["bool"],
+  overtime: prop_types__WEBPACK_IMPORTED_MODULE_1__["bool"],
   className: prop_types__WEBPACK_IMPORTED_MODULE_1__["string"],
   children: prop_types__WEBPACK_IMPORTED_MODULE_1__["element"],
   renderer: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
@@ -7371,6 +7465,7 @@ Countdown$1.propTypes = {
   onMount: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
   onStart: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
   onPause: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
+  onStop: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
   onTick: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
   onComplete: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"]
 };
@@ -7389,7 +7484,7 @@ Countdown$1.propTypes = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.13.1
+/** @license React v16.14.0
  * react-dom.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -31959,7 +32054,7 @@ function injectIntoDevTools(devToolsConfig) {
     // Enables DevTools to append owner stacks to error messages in DEV mode.
     getCurrentFiber:  function () {
       return current;
-    } 
+    }
   }));
 }
 var IsSomeRendererActing$1 = ReactSharedInternals.IsSomeRendererActing;
@@ -32311,7 +32406,7 @@ implementation) {
   };
 }
 
-var ReactVersion = '16.13.1';
+var ReactVersion = '16.14.0';
 
 setAttemptUserBlockingHydration(attemptUserBlockingHydration$1);
 setAttemptContinuousHydration(attemptContinuousHydration$1);
@@ -41236,7 +41331,7 @@ TransformComponent.contextType = Context;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.13.1
+/** @license React v16.14.0
  * react.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -41256,7 +41351,7 @@ if (true) {
 var _assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
 var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
 
-var ReactVersion = '16.13.1';
+var ReactVersion = '16.14.0';
 
 // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
 // nor polyfill, then a plain number is used for performance.

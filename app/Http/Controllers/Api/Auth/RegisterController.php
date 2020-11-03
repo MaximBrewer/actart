@@ -27,6 +27,12 @@ class RegisterController extends Controller
             return abort(401);
         }
 
+        try {
+            Mail::to($order->email)->send(new \App\Mail\Frame4($unsubscribe));
+        } catch (Throwable $e) {
+            report($e);
+        }
+
         return (new UserResource($request->user()))->additional(['meta' => ['token' => $token]]);
     }
 }
