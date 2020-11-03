@@ -53873,7 +53873,7 @@ function Header(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  var _useParams = useParams(),
+  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["useParams"])(),
       token = _useParams.token;
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
