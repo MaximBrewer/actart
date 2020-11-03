@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch, useParams } from "react-router-dom";
 import { resetPassword } from "../api/auth";
 import useInputValue from "../components/input-value";
 
