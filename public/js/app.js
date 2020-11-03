@@ -58565,15 +58565,8 @@ function _arrayWithHoles(arr) {
 
 function ResetPassword(props) {
   // const token = useRouteMatch().params.token;
-  var openModal = props.openModal,
-      closeModal = props.closeModal;
-
   var _useParams = useParams(),
       token = _useParams.token;
-
-  useEffect(function () {
-    openModal('reset');
-  }, []);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState2 = _slicedToArray(_useState, 2),
@@ -62723,6 +62716,9 @@ function App() {
     });
   };
 
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    openModal('reset');
+  }, []);
   var initState = {
     login: false,
     register: false,

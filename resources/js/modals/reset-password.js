@@ -5,13 +5,8 @@ import useInputValue from "../components/input-value";
 
 function ResetPassword(props) {
     // const token = useRouteMatch().params.token;
-    const { openModal, closeModal } = props;
 
     const { token } = useParams();
-
-    useEffect(() => {
-        openModal('reset')
-    }, []);
 
     let [passwordResetFeedback, setPasswordResetFeedback] = useState("");
     let email = useInputValue("email");

@@ -123,6 +123,11 @@ function App() {
         });
     };
 
+
+    useEffect(() => {
+        openModal('reset')
+    }, []);
+
     const initState = {
         login: false,
         register: false,
@@ -244,7 +249,7 @@ function App() {
                         <Route path="/password/reset/:token">
                             <Home {...rest} />
                         </Route>
-                        
+
                         <Route exact path="/">
                             <Home {...rest} />
                         </Route>
