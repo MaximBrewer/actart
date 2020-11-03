@@ -30,8 +30,10 @@ function ForgotPasswordModal(props) {
                 </button>
             </div>
             {resetFeedback ? (
-                <div role="alert">
-                    <p> {resetFeedback}</p>
+                <div className={`modal-body`}>
+                    <div role="alert">
+                        <p> {resetFeedback}</p>
+                    </div>
                 </div>
             ) : (
                 <form onSubmit={handleSubmit} method="POST">
