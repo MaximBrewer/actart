@@ -57971,12 +57971,12 @@ function ForgotPasswordModal(props) {
   var openModal = props.openModal,
       closeModal = props.closeModal;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState2 = _slicedToArray(_useState, 2),
       resetFeedback = _useState2[0],
       setResetFeedback = _useState2[1];
 
-  var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_3__["default"])('email');
+  var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_3__["default"])("email");
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
@@ -57998,15 +57998,15 @@ function ForgotPasswordModal(props) {
     className: "modal-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "modal-title"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('MODAL_FP_H2')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])("MODAL_FP_H2")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
     className: "close",
     onClick: closeModal
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     "aria-hidden": "true"
-  }, "\xD7")), resetFeedback && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "\xD7"))), resetFeedback ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     role: "alert"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", resetFeedback))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", resetFeedback)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit,
     method: "POST"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -58015,11 +58015,11 @@ function ForgotPasswordModal(props) {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "email"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('MODAL_FP_EMAIL')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])("MODAL_FP_EMAIL")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     id: "email",
     type: "email",
     name: "email",
-    className: "form-control ".concat(email.error ? 'is-invalid' : ''),
+    className: "form-control ".concat(email.error ? "is-invalid" : ""),
     required: true,
     autoFocus: true
   }, email.bind)), email.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -58029,16 +58029,16 @@ function ForgotPasswordModal(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     onClick: function onClick() {
-      return openModal('login');
+      return openModal("login");
     }
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('MODAL_FORGET_PASSWORD_LOGIN')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])("MODAL_FORGET_PASSWORD_LOGIN")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     className: "btn btn-primary"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('MODAL_FP_BTN'))))));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])("MODAL_FP_BTN"))))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (ForgotPasswordModal);
