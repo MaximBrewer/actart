@@ -58352,10 +58352,10 @@ function RegisterModal(props) {
       setCurrentUser = _useAuth.setCurrentUser,
       setToken = _useAuth.setToken;
 
-  var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_4__["default"])('email');
-  var name = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_4__["default"])('name');
-  var password = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_4__["default"])('password');
-  var passwordConfirmation = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_4__["default"])('password_confirmation');
+  var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_4__["default"])("email");
+  var name = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_4__["default"])("name");
+  var password = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_4__["default"])("password");
+  var passwordConfirmation = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_4__["default"])("password_confirmation");
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
@@ -58368,16 +58368,10 @@ function RegisterModal(props) {
       var user = _ref.user,
           token = _ref.token;
       setCurrentUser(user);
-      setToken(token); //   history.push('/home');
-    })["catch"](function (error) {
-      error.json().then(function (_ref2) {
-        var errors = _ref2.errors;
-        ;
-        [email, name, password].forEach(function (_ref3) {
-          var parseServerError = _ref3.parseServerError;
-          return parseServerError(errors);
-        });
-      });
+      setToken(token);
+      closeModal();
+    })["catch"](function (err) {
+      return console.log(err);
     });
   };
 
@@ -58387,7 +58381,7 @@ function RegisterModal(props) {
     className: "modal-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "modal-title"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('MODAL_SIGNIN_H2')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("MODAL_SIGNIN_H2")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
     className: "close",
     onClick: closeModal
@@ -58402,11 +58396,11 @@ function RegisterModal(props) {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "username"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('MODAL_SIGNIN_NAME')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("MODAL_SIGNIN_NAME")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     id: "username",
     type: "text",
     name: "name",
-    className: "form-control ".concat(name.error ? 'is-invalid' : ''),
+    className: "form-control ".concat(name.error ? "is-invalid" : ""),
     required: true,
     autoFocus: true
   }, name.bind)), name.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -58415,11 +58409,11 @@ function RegisterModal(props) {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "email"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('MODAL_SIGNIN_EMAIL')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("MODAL_SIGNIN_EMAIL")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     id: "email",
     type: "email",
     name: "email",
-    className: "form-control ".concat(email.error ? 'is-invalid' : ''),
+    className: "form-control ".concat(email.error ? "is-invalid" : ""),
     required: true
   }, email.bind)), email.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "invalid-feedback"
@@ -58427,11 +58421,11 @@ function RegisterModal(props) {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "password"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('MODAL_SIGNIN_PASSWORD')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("MODAL_SIGNIN_PASSWORD")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     type: "password",
     id: "password",
     name: "password",
-    className: "form-control ".concat(password.error ? 'is-invalid' : ''),
+    className: "form-control ".concat(password.error ? "is-invalid" : ""),
     minLength: 6,
     required: true
   }, password.bind)), password.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -58440,32 +58434,32 @@ function RegisterModal(props) {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "password-confirmation"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('MODAL_SIGNIN_PASSWORD_CONFIRMATON')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("MODAL_SIGNIN_PASSWORD_CONFIRMATON")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     type: "password",
     id: "password-confirmation",
     name: "password_confirmation",
-    className: "form-control ".concat(passwordConfirmation.error ? 'is-invalid' : ''),
+    className: "form-control ".concat(passwordConfirmation.error ? "is-invalid" : ""),
     required: true
   }, passwordConfirmation.bind))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     onClick: function onClick() {
-      return openModal('forgot');
+      return openModal("forgot");
     }
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('MODAL_LOGIN_FORGET_PASSWORD')), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("MODAL_LOGIN_FORGET_PASSWORD")), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     onClick: function onClick() {
-      return openModal('login');
+      return openModal("login");
     }
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('MODAL_SIGNIN_LOGIN')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("MODAL_SIGNIN_LOGIN")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     className: "btn btn-primary"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('MODAL_SIGNIN_BTN'))))));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("MODAL_SIGNIN_BTN"))))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (RegisterModal);
@@ -58570,20 +58564,20 @@ function _arrayWithHoles(arr) {
 function ResetPassword() {
   var token = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useRouteMatch"])().params.token;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState2 = _slicedToArray(_useState, 2),
       passwordResetFeedback = _useState2[0],
       setPasswordResetFeedback = _useState2[1];
 
-  var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_3__["default"])('email');
-  var password = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_3__["default"])('password');
-  var passwordConfirmation = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_3__["default"])('password_confirmation');
+  var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_3__["default"])("email");
+  var password = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_3__["default"])("password");
+  var passwordConfirmation = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_3__["default"])("password_confirmation");
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     [email, password, passwordConfirmation].forEach(function (_ref) {
       var setError = _ref.setError;
-      return setError('');
+      return setError("");
     });
     Object(_api_auth__WEBPACK_IMPORTED_MODULE_2__["resetPassword"])({
       email: email.value,
@@ -58593,32 +58587,26 @@ function ResetPassword() {
     }).then(function (status) {
       [email, password, passwordConfirmation].forEach(function (_ref2) {
         var setValue = _ref2.setValue;
-        return setValue('');
+        return setValue("");
       });
       setPasswordResetFeedback(status);
-    })["catch"](function (error) {
-      error.json().then(function (_ref3) {
-        var errors = _ref3.errors;
-        setPasswordResetFeedback('');
-        [email, password, passwordConfirmation].forEach(function (_ref4) {
-          var parseServerError = _ref4.parseServerError;
-          return parseServerError(errors);
-        });
-      });
+      closeModal();
+    })["catch"](function (err) {
+      return console.log(err);
     });
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "flex justify-center items-center w-full py-4 flex-col min-h-screen bg-gray-200"
-  }, passwordResetFeedback !== '' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, passwordResetFeedback !== "" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bg-white border-l-4 border-blue text-sm text-grey-darker p-4 mb-4 w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/3",
     role: "alert"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", passwordResetFeedback, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "pl-2"
-  }, " Please", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, " ", "Please", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/login",
     className: "no-underline text-grey-darker font-bold"
-  }, " login "), "with your new password"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  }, " ", "login", " "), "with your new password"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit,
     method: "POST",
     className: "border rounded bg-white border-grey-light w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/3 px-8 py-4"
@@ -58629,11 +58617,11 @@ function ResetPassword() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "block text-grey-darker text-sm font-bold mb-2",
     htmlFor: "email"
-  }, " Enter your email address "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
+  }, " ", "Enter your email address", " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     id: "email",
     type: "email",
     name: "email",
-    className: "appearance-none border rounded w-full py-2 px-3 text-grey-darker ".concat(email.error ? 'border-red-500' : ''),
+    className: "appearance-none border rounded w-full py-2 px-3 text-grey-darker ".concat(email.error ? "border-red-500" : ""),
     placeholder: "e.g.jane@example.com",
     required: true,
     autoFocus: true
@@ -58644,11 +58632,11 @@ function ResetPassword() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "block text-grey-darker text-sm font-bold mb-2",
     htmlFor: "password"
-  }, " Password "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
+  }, " ", "Password", " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     type: "password",
     id: "password",
     name: "password",
-    className: "appearance-none border rounded w-full py-2 px-3 text-grey-darker  ".concat(password.error ? 'border-red-500' : ''),
+    className: "appearance-none border rounded w-full py-2 px-3 text-grey-darker  ".concat(password.error ? "border-red-500" : ""),
     minLength: 8,
     required: true
   }, password.bind)), password.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -58658,11 +58646,11 @@ function ResetPassword() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "block text-grey-darker text-sm font-bold mb-2",
     htmlFor: "password-confirmation"
-  }, " Password confirmation "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
+  }, " ", "Password confirmation", " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     type: "password",
     id: "password-confirmation",
     name: "password_confirmation",
-    className: "appearance-none border rounded w-full py-2 px-3 text-grey-darker  ".concat(password.error ? 'border-red' : ''),
+    className: "appearance-none border rounded w-full py-2 px-3 text-grey-darker  ".concat(password.error ? "border-red" : ""),
     required: true
   }, passwordConfirmation.bind))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mt-6 mb-2"
