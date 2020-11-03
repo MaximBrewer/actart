@@ -14,13 +14,11 @@ import { Hummer, AboutLogo, AboutBgLogo } from "../icons/home";
 function Home(props) {
     useDocumentTitle(__("HOME_TITLE"));
 
-    const { openModal, closeModal } = props;
-
 
     const { token } = useParams();
 
     useEffect(() => {
-        openModal("reset");
+      props.openModal("reset");
     }, []);
 
     return (

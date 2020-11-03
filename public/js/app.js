@@ -60909,14 +60909,12 @@ __webpack_require__.r(__webpack_exports__);
 
 function Home(props) {
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("HOME_TITLE"));
-  var openModal = props.openModal,
-      closeModal = props.closeModal;
 
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["useParams"])(),
       token = _useParams.token;
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    openModal("reset");
+    props.openModal("reset");
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "home-banner"
