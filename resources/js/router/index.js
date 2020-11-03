@@ -241,7 +241,7 @@ function App() {
                             <Base {...rest} />
                         </Route>
                         <Route path="/password/reset/:token">
-                            <Home {...rest} />
+                            <Home {...rest}  openModal={openModal}/>
                         </Route>
                         <Route exact path="/">
                             <Home {...rest} />
