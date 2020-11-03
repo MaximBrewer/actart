@@ -123,11 +123,6 @@ function App() {
         });
     };
 
-
-    useEffect(() => {
-        openModal('reset')
-    }, []);
-
     const initState = {
         login: false,
         register: false,

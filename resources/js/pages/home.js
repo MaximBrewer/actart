@@ -16,6 +16,13 @@ function Home(props) {
 
     const { openModal, closeModal } = props;
 
+
+    const { token } = useParams();
+
+    useEffect(() => {
+        openModal("reset");
+    }, []);
+
     return (
         <React.Fragment>
             <section className="home-banner">
