@@ -30,7 +30,6 @@ class Register extends Mailable
      */
     public function build()
     {
-        var_dump($this->user);die;
         return $this->view('mail.auth.register', ['user' => $this->user]);
     }
 }
