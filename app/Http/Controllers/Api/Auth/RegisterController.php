@@ -6,6 +6,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User as UserResource;
+use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class RegisterController extends Controller
 {
@@ -28,7 +30,7 @@ class RegisterController extends Controller
         }
 
         try {
-            Mail::to($order->email)->send(new \App\Mail\Frame4($unsubscribe));
+            Mail::to($user->email)->send(new \App\Mail\Register($user));
         } catch (Throwable $e) {
             report($e);
         }
