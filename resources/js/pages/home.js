@@ -14,6 +14,16 @@ import { Hummer, AboutLogo, AboutBgLogo } from "../icons/home";
 function Home(props) {
   useDocumentTitle(__('HOME_TITLE'));
 
+  const params = useParams();
+
+  const token = useRouteMatch().params;
+
+  console.log(params, token);
+
+  // useEffect(() => {
+  //   if(token) openModal("reset");
+  // }, []);
+
   return (
     <React.Fragment>
       <section className="home-banner">

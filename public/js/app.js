@@ -53873,13 +53873,6 @@ function Header(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  var params = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["useParams"])();
-  var token = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["useRouteMatch"])().params;
-  console.log(params, token);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (token) openModal("reset");
-  }, []);
-
   var openSearch = function openSearch() {
     setState(function (prevState) {
       return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -60916,6 +60909,12 @@ __webpack_require__.r(__webpack_exports__);
 
 function Home(props) {
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('HOME_TITLE'));
+  var params = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["useParams"])();
+  var token = useRouteMatch().params;
+  console.log(params, token); // useEffect(() => {
+  //   if(token) openModal("reset");
+  // }, []);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "home-banner"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

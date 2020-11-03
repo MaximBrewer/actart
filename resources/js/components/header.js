@@ -28,17 +28,6 @@ export default function Header(props) {
         openedSearch: false
     })
 
-    const params = useParams();
-
-    const token = useRouteMatch().params;
-
-    console.log(params, token);
-
-    useEffect(() => {
-      if(token) openModal("reset");
-    }, []);
-
-
     const openSearch = () => {
         setState(prevState => ({
             ...prevState,
