@@ -8,7 +8,7 @@ import Auctions from "../components/auction/Auctions";
 import MovingGallery from "../components/moving/Gallery";
 import Carousel from "../components/carousel/Carousel";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory, useRouteMatch, useParams } from 'react-router-dom';
 import { Hummer, AboutLogo, AboutBgLogo } from "../icons/home";
 
 function Home(props) {

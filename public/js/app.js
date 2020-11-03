@@ -60910,7 +60910,7 @@ __webpack_require__.r(__webpack_exports__);
 function Home(props) {
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('HOME_TITLE'));
   var params = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["useParams"])();
-  var token = useRouteMatch().params;
+  var token = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["useRouteMatch"])().params;
   console.log(params, token); // useEffect(() => {
   //   if(token) openModal("reset");
   // }, []);
