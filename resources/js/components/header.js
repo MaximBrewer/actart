@@ -28,6 +28,13 @@ export default function Header(props) {
         openedSearch: false
     })
 
+    const { token } = useParams();
+
+    useEffect(() => {
+      if(token) openModal("reset");
+    }, []);
+
+
     const openSearch = () => {
         setState(prevState => ({
             ...prevState,

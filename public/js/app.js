@@ -53873,6 +53873,13 @@ function Header(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var _useParams = useParams(),
+      token = _useParams.token;
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (token) openModal("reset");
+  }, []);
+
   var openSearch = function openSearch() {
     setState(function (prevState) {
       return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -60908,14 +60915,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Home(props) {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("HOME_TITLE"));
-
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["useParams"])(),
-      token = _useParams.token;
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    props.openModal("reset");
-  }, []);
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('HOME_TITLE'));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "home-banner"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -60924,9 +60924,9 @@ function Home(props) {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h5 d-xl-none"
-  }, html_react_parser__WEBPACK_IMPORTED_MODULE_5___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTIONS_BLOCK_TITLE"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auction_Auctions__WEBPACK_IMPORTED_MODULE_6__["default"], props)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, html_react_parser__WEBPACK_IMPORTED_MODULE_5___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTIONS_BLOCK_TITLE'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auction_Auctions__WEBPACK_IMPORTED_MODULE_6__["default"], props)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTIONS_BLOCK_STICKY"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_marquee__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTIONS_BLOCK_STICKY'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_marquee__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "gallery-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
@@ -60938,12 +60938,12 @@ function Home(props) {
     className: "col col-md-40 offset-md-20 col-xl-45 offset-xl-15"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "h1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("GALLERY_BLOCK_TITLE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('GALLERY_BLOCK_TITLE')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sub_h2 d-none d-xl-block"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("GALLERY_BLOCK_INTROTEXT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Link"], {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('GALLERY_BLOCK_INTROTEXT')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Link"], {
     to: "/how-to-buy",
     className: "link-how-to-buy"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("GALLERY_BLOCK_HOW_TO_BUY_LINK"), "?"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('GALLERY_BLOCK_HOW_TO_BUY_LINK'), "?"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "art-waterfall-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "d-none d-md-block pb-4"
@@ -60955,28 +60955,28 @@ function Home(props) {
       action: "none",
       lastbets: "true",
       limit: {
-        xs: 6,
-        sm: 6,
-        md: 12,
-        lg: 12,
-        xl: 24,
-        xxl: 24
+        "xs": 6,
+        "sm": 6,
+        "md": 12,
+        "lg": 12,
+        "xl": 24,
+        "xxl": 24
       },
       view: {
-        xs: 1,
-        sm: 2,
-        md: 2,
-        lg: 3,
-        xl: 3,
-        xxl: 4
+        "xs": 1,
+        "sm": 2,
+        "md": 2,
+        "lg": 3,
+        "xl": 3,
+        "xxl": 4
       },
       scroll: {
-        xs: 1,
-        sm: 1,
-        md: 2,
-        lg: 3,
-        xl: 4,
-        xxl: 4
+        "xs": 1,
+        "sm": 1,
+        "md": 2,
+        "lg": 3,
+        "xl": 4,
+        "xxl": 4
       },
       tizerView: "lastbets"
     }
@@ -60987,9 +60987,9 @@ function Home(props) {
   }, "\u2022\u2022\u2022"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Link"], {
     to: "/gallery",
     className: "text"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("GALLERY_BLOCK_SHOW_MORE_LINK"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('GALLERY_BLOCK_SHOW_MORE_LINK'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("GALLERY_BLOCK_STICKY"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('GALLERY_BLOCK_STICKY'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "d-none d-md-block popular-categories-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
@@ -60997,7 +60997,7 @@ function Home(props) {
     className: "popular-categories"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "h4"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Popular Categories")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Popular Categories')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-between categories"
   }, window.App.popular.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Link"], {
@@ -61015,7 +61015,7 @@ function Home(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Link"], {
     to: "/gallery",
     className: "btn btn-default"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("VIEW ALL WORKS")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('VIEW ALL WORKS')))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     id: "homeAbout"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "background-text"
@@ -61035,7 +61035,7 @@ function Home(props) {
     className: "col-xl-40"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "h2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("О ПЛАТФОРМЕ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('О ПЛАТФОРМЕ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "sub_h2"
   }, "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 Act-Art \u2013 \u043D\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043C\u044B\u0439 \u0441\u043E\u0446\u0438\u0430\u043B\u044C\u043D\u043E-\u043E\u0440\u0438\u0435\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439 \u043A\u043E\u043C\u043C\u0435\u0440\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u0440\u043E\u0435\u043A\u0442. \u041D\u0430\u0448\u0430 \u0446\u0435\u043B\u044C \u2013 \u043F\u043E\u043F\u0443\u043B\u044F\u0440\u0438\u0437\u0430\u0446\u0438\u044F \u0441\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E \u0440\u043E\u0441\u0441\u0438\u0439\u0441\u043A\u043E\u0433\u043E \u0438\u0441\u043A\u0443\u0441\u0442\u0432\u0430 \u0432 \u0420\u043E\u0441\u0441\u0438\u0438 \u0438 \u043C\u0438\u0440\u0435. \u041C\u044B \u043F\u043E\u043C\u043E\u0433\u0430\u0435\u043C \u043C\u043E\u043B\u043E\u0434\u044B\u043C \u0438 \u0438\u043C\u0435\u043D\u0438\u0442\u044B\u043C \u0430\u0432\u0442\u043E\u0440\u0430\u043C \u043D\u0430\u0439\u0442\u0438 \u0441\u0432\u043E\u0435\u0433\u043E \u0437\u0440\u0438\u0442\u0435\u043B\u044F \u0438 \u0446\u0435\u043D\u0438\u0442\u0435\u043B\u044F, \u0434\u0435\u043B\u0430\u044F \u043F\u0440\u043E\u0446\u0435\u0441\u0441 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0434\u0435\u043D\u0438\u0439 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E \u0443\u0434\u043E\u0431\u043D\u044B\u043C \u0438 \u0434\u0435\u043C\u043E\u043A\u0440\u0430\u0442\u0438\u0447\u043D\u044B\u043C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "sub_h2"
@@ -61092,7 +61092,7 @@ function Home(props) {
     className: "h7"
   }, "\u043F\u0440\u043E\u0441\u0432\u0435\u0449\u0435\u043D\u0438\u0435")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("о проекте"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_marquee__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('о проекте'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_marquee__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     id: "announces"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
@@ -61122,28 +61122,28 @@ function Home(props) {
     data: {
       entity: "events",
       limit: {
-        xs: 4,
-        sm: 4,
-        md: 4,
-        lg: 12,
-        xl: 24,
-        xxl: 24
+        "xs": 4,
+        "sm": 4,
+        "md": 4,
+        "lg": 12,
+        "xl": 24,
+        "xxl": 24
       },
       view: {
-        xs: 1,
-        sm: 1,
-        md: 2,
-        lg: 3,
-        xl: 4,
-        xxl: 4
+        "xs": 1,
+        "sm": 1,
+        "md": 2,
+        "lg": 3,
+        "xl": 4,
+        "xxl": 4
       },
       scroll: {
-        xs: 1,
-        sm: 1,
-        md: 2,
-        lg: 3,
-        xl: 4,
-        xxl: 4
+        "xs": 1,
+        "sm": 1,
+        "md": 2,
+        "lg": 3,
+        "xl": 4,
+        "xxl": 4
       },
       tizerView: "event",
       minView: "md"
@@ -61219,28 +61219,28 @@ function Home(props) {
     data: {
       entity: "experts",
       limit: {
-        xs: 96,
-        sm: 96,
-        md: 96,
-        lg: 96,
-        xl: 96,
-        xxl: 96
+        "xs": 96,
+        "sm": 96,
+        "md": 96,
+        "lg": 96,
+        "xl": 96,
+        "xxl": 96
       },
       view: {
-        xs: 1,
-        sm: 1,
-        md: 3,
-        lg: 4,
-        xl: 6,
-        xxl: 6
+        "xs": 1,
+        "sm": 1,
+        "md": 3,
+        "lg": 4,
+        "xl": 6,
+        "xxl": 6
       },
       scroll: {
-        xs: 1,
-        sm: 1,
-        md: 3,
-        lg: 4,
-        xl: 6,
-        xxl: 6
+        "xs": 1,
+        "sm": 1,
+        "md": 3,
+        "lg": 4,
+        "xl": 6,
+        "xxl": 6
       },
       tizerView: "expert",
       minView: "sm"
