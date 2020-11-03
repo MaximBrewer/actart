@@ -240,15 +240,12 @@ function App() {
                         <Route exact path="/how-to-sell">
                             <Base {...rest} />
                         </Route>
-
                         <Route path="/password/reset/:token">
                             <Home {...rest} />
                         </Route>
-
                         <Route exact path="/">
                             <Home {...rest} />
                         </Route>
-
                         <Route exact path="/blog">
                             <Blog {...rest} />
                         </Route>

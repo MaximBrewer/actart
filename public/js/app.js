@@ -53873,9 +53873,9 @@ function Header(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["useParams"])(),
-      token = _useParams.token;
-
+  var params = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["useParams"])();
+  var token = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["useRouteMatch"])().params.token;
+  console.log(params, token);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (token) openModal("reset");
   }, []);

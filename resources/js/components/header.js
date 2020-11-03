@@ -28,7 +28,11 @@ export default function Header(props) {
         openedSearch: false
     })
 
-    const { token } = useParams();
+    const params = useParams();
+
+    const token = useRouteMatch().params.token;
+
+    console.log(params, token);
 
     useEffect(() => {
       if(token) openModal("reset");
