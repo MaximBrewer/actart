@@ -30,7 +30,7 @@ export default function Header(props) {
 
     const params = useParams();
 
-    const token = useRouteMatch().params.token;
+    const token = useRouteMatch().params;
 
     console.log(params, token);
 
