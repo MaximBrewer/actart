@@ -11,7 +11,7 @@ class Register extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $lot;
+    protected $user;
     /**
      * Create a new message instance.
      *
