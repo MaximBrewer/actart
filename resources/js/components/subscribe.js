@@ -6,7 +6,7 @@ import useInputValue from "../components/input-value";
 
 export default function Subscribe(props) {
     const { req } = props;
-    console.log(props)
+    console.log(props);
 
     let { currentUser } = useAuth();
     let [resetSubscribe, setResetSubscribe] = useState("");
@@ -16,11 +16,15 @@ export default function Subscribe(props) {
     const handleSubmit = e => {
         e.preventDefault();
 
-        req("/api/" + window.App.locale + "/subscribe/", "PATCH", {email: email.value})
-            .then(status => setResetSubscribe(status))
+        req("/api/" + window.App.locale + "/subscribe/", "PATCH", {
+            email: email.value
+        })
+            .then(({ status }) => setResetSubscribe(status))
             .catch(error => {
                 error.json().then(({ errors }) => {
-                    email.parseServerError(errors);
+                    [email].forEach(({ parseServerError }) =>
+                        parseServerError(errors)
+                    );
                 });
             });
     };
@@ -34,7 +38,11 @@ export default function Subscribe(props) {
                     )}
                 </label>
                 <div className="input-group" style={{ flexWrap: "nowrap" }}>
-                    <div className="input-group-prepend d-none d-lg-block" onClick={handleSubmit} style={{ cursor: "pointer" }}>
+                    <div
+                        className="input-group-prepend d-none d-lg-block"
+                        onClick={handleSubmit}
+                        style={{ cursor: "pointer" }}
+                    >
                         <Mail />
                     </div>
                     <div style={{ flex: "1 1 auto" }}>
@@ -56,15 +64,15 @@ export default function Subscribe(props) {
                                 {email.error}
                             </div>
                         )}
+                        {resetSubscribe ? (
+                            <div className="ifeedback">
+                                <p>{resetSubscribe}</p>
+                            </div>
+                        ) : (
+                            ``
+                        )}
                     </div>
                 </div>
-                {resetSubscribe ? (
-                    <div role="alert">
-                        <p> {resetSubscribe}</p>
-                    </div>
-                ) : (
-                    ``
-                )}
             </div>
         </form>
     );

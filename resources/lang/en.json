@@ -120,5 +120,7 @@
     "MODAL_RP_PASSWORD": "Password",
     "MODAL_RP_BTN": "Reset",
     "MODAL_RP_PASSWORD_CONFIRMATON": "Confirm password",
-    "MODAL_RP_LOGIN": "Log in"
+    "MODAL_RP_LOGIN": "Log in",
+
+    "SUBCRIBED_MESSAGE": "You have subscribed to the newsletter"
 }

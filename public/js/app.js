@@ -56069,12 +56069,16 @@ function Subscribe(props) {
     e.preventDefault();
     req("/api/" + window.App.locale + "/subscribe/", "PATCH", {
       email: email.value
-    }).then(function (status) {
+    }).then(function (_ref) {
+      var status = _ref.status;
       return setResetSubscribe(status);
     })["catch"](function (error) {
-      error.json().then(function (_ref) {
-        var errors = _ref.errors;
-        email.parseServerError(errors);
+      error.json().then(function (_ref2) {
+        var errors = _ref2.errors;
+        [email].forEach(function (_ref3) {
+          var parseServerError = _ref3.parseServerError;
+          return parseServerError(errors);
+        });
       });
     });
   };
@@ -56115,9 +56119,9 @@ function Subscribe(props) {
     placeholder: Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Your E-mail")
   })), email.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "invalid-feedback"
-  }, email.error))), resetSubscribe ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    role: "alert"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", resetSubscribe)) : ""));
+  }, email.error), resetSubscribe ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ifeedback"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, resetSubscribe)) : ""))));
 }
 
 /***/ }),

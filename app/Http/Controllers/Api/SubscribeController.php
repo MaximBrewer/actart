@@ -49,7 +49,8 @@ class SubscribeController extends Controller
         $subscriber = Subscriber::create([
             'email' => $request->email
         ]);
-        return $subscriber;
+
+        return response()->json(['status' => __("SUBCRIBED_MESSAGE")], 200);
     }
 
     /**
