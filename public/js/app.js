@@ -58564,9 +58564,7 @@ function _arrayWithHoles(arr) {
 
 
 function ResetPassword(props) {
-  // const token = useRouteMatch().params.token;
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
-      token = _useParams.token;
+  var token = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useRouteMatch"])().params.token;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState2 = _slicedToArray(_useState, 2),
