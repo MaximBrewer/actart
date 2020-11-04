@@ -40,7 +40,11 @@ function LoginModal(props) {
                     for (const a of user.auctions)
                         if (window.participate == a.id) skip = true;
                     if (!skip)
-                        client("/api/auction/" + window.participate + "/participate")
+                        client(
+                            "/api/auction/" +
+                                window.participate +
+                                "/participate"
+                        )
                             .then(({ user }) => {
                                 setCurrentUser(user);
                             })
@@ -49,7 +53,11 @@ function LoginModal(props) {
                 }
                 closeModal();
             })
-            .catch(err => console.log(err));
+            .catch(error => {
+                error
+                    .json()
+                    .then(({ errors }) => email.parseServerError(errors));
+            });
     };
 
     return (

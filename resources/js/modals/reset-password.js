@@ -1,12 +1,23 @@
 import React, { useState } from "react";
-import { Link, useRouteMatch, useParams } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { resetPassword } from "../api/auth";
 import useInputValue from "../components/input-value";
+import qs from "qs";
+import __ from "../utils/trans";
 
 function ResetPassword(props) {
-    const token = useRouteMatch().params.token;
+    const { openModal, closeModal } = props;
+    let history = useHistory();
+
+    const token = useLocation().pathname.split("/")[3];
+
     let [passwordResetFeedback, setPasswordResetFeedback] = useState("");
-    let email = useInputValue("email");
+    let email = useInputValue(
+        "email",
+        useLocation().search
+            ? qs.parse(useLocation().search, { ignoreQueryPrefix: true }).email
+            : ""
+    );
     let password = useInputValue("password");
     let passwordConfirmation = useInputValue("password_confirmation");
 
@@ -20,7 +31,7 @@ function ResetPassword(props) {
             email: email.value,
             password: password.value,
             password_confirmation: passwordConfirmation.value,
-            token
+            token: token
         })
             .then(status => {
                 [
@@ -29,129 +40,118 @@ function ResetPassword(props) {
                     passwordConfirmation
                 ].forEach(({ setValue }) => setValue(""));
                 setPasswordResetFeedback(status);
-                closeModal();
+                history.push("/");
             })
-            .catch(err => console.log(err));
+            .catch(error => {
+                error.json().then(({ errors }) => {
+                    setPasswordResetFeedback("");
+                    [
+                        email,
+                        password,
+                        passwordConfirmation
+                    ].forEach(({ parseServerError }) =>
+                        parseServerError(errors)
+                    );
+                });
+            });
     };
 
     return (
-        <div className="flex justify-center items-center w-full py-4 flex-col min-h-screen bg-gray-200">
-            {passwordResetFeedback !== "" && (
-                <div
-                    className="bg-white border-l-4 border-blue text-sm text-grey-darker p-4 mb-4 w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/3"
-                    role="alert"
+        <div className={`modal-content`}>
+            <div className="modal-header">
+                <h5 className="modal-title">{__("MODAL_RP_H2")}</h5>
+                <button type="button" className="close" onClick={closeModal}>
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            {passwordResetFeedback ? (
+                <div className={`modal-body`}>
+                    <div role="alert">
+                        <p> {passwordResetFeedback}</p>
+                    </div>
+                    <div className="form-group">
+                        <a href="#" onClick={() => openModal("login")}>
+                            {__("MODAL_RP_LOGIN")}
+                        </a>
+                    </div>
+                </div>
+            ) : (
+                <form
+                    onSubmit={handleSubmit}
+                    method="POST"
+                    className="border rounded bg-white border-grey-light w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/3 px-8 py-4"
                 >
-                    <p>
-                        {" "}
-                        {passwordResetFeedback}
-                        <span className="pl-2">
-                            {" "}
-                            Please
-                            <Link
-                                to="/login"
-                                className="no-underline text-grey-darker font-bold"
-                            >
-                                {" "}
-                                login{" "}
-                            </Link>
-                            with your new password
-                        </span>
-                    </p>
-                </div>
+                    <div className={`modal-body`}>
+                        <div className="form-group">
+                            <label htmlFor="email">
+                                {__("MODAL_RP_EMAIL")}
+                            </label>
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                className={`form-control ${
+                                    email.error ? "is-invalid" : ""
+                                }`}
+                                required
+                                autoFocus
+                                {...email.bind}
+                            />
+                            {email.error && (
+                                <div className="invalid-feedback">
+                                    {email.error}
+                                </div>
+                            )}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">
+                                {__("MODAL_RP_PASSWORD")}
+                            </label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                className={`form-control ${
+                                    password.error ? "is-invalid" : ""
+                                }`}
+                                minLength={8}
+                                required
+                                {...password.bind}
+                            />
+                            {password.error && (
+                                <div className="invalid-feedback">
+                                    {password.error}
+                                </div>
+                            )}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password-confirmation">
+                                {__("MODAL_RP_PASSWORD_CONFIRMATON")}
+                            </label>
+                            <input
+                                type="password"
+                                id="password-confirmation"
+                                name="password_confirmation"
+                                minLength={8}
+                                className={`form-control ${
+                                    passwordConfirmation.error
+                                        ? "is-invalid"
+                                        : ""
+                                }`}
+                                required
+                                {...passwordConfirmation.bind}
+                            />
+                        </div>
+                    </div>
+                    <div className={`modal-footer`}>
+                        <div className="form-group">
+                            <button type="submit" className="btn btn-primary">
+                                {__("MODAL_RP_BTN")}
+                            </button>
+                        </div>
+                    </div>
+                </form>
             )}
-
-            <form
-                onSubmit={handleSubmit}
-                method="POST"
-                className="border rounded bg-white border-grey-light w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/3 px-8 py-4"
-            >
-                <h2 className="text-center mb-4 text-grey-darker">
-                    Reset Your Password
-                </h2>
-                <div className="mb-4">
-                    <label
-                        className="block text-grey-darker text-sm font-bold mb-2"
-                        htmlFor="email"
-                    >
-                        {" "}
-                        Enter your email address{" "}
-                    </label>
-                    <input
-                        id="email"
-                        type="email"
-                        name="email"
-                        className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker ${
-                            email.error ? "border-red-500" : ""
-                        }`}
-                        placeholder="e.g.jane@example.com"
-                        required
-                        autoFocus
-                        {...email.bind}
-                    />
-
-                    {email.error && (
-                        <p className="text-red-500 text-xs pt-2">
-                            {email.error}
-                        </p>
-                    )}
-                </div>
-
-                <div className="mb-4">
-                    <label
-                        className="block text-grey-darker text-sm font-bold mb-2"
-                        htmlFor="password"
-                    >
-                        {" "}
-                        Password{" "}
-                    </label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${
-                            password.error ? "border-red-500" : ""
-                        }`}
-                        minLength={8}
-                        required
-                        {...password.bind}
-                    />
-
-                    {password.error && (
-                        <p className="text-red-500 text-xs pt-2">
-                            {password.error}
-                        </p>
-                    )}
-                </div>
-
-                <div className="mb-4">
-                    <label
-                        className="block text-grey-darker text-sm font-bold mb-2"
-                        htmlFor="password-confirmation"
-                    >
-                        {" "}
-                        Password confirmation{" "}
-                    </label>
-                    <input
-                        type="password"
-                        id="password-confirmation"
-                        name="password_confirmation"
-                        className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${
-                            password.error ? "border-red" : ""
-                        }`}
-                        required
-                        {...passwordConfirmation.bind}
-                    />
-                </div>
-
-                <div className="mt-6 mb-2">
-                    <button
-                        type="submit"
-                        className="border rounded-full p-3 text-white bg-indigo-500 w-full font-bold hover:bg-indigo-500-dark"
-                    >
-                        Reset
-                    </button>
-                </div>
-            </form>
         </div>
     );
 }

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { forgotPassword } from "../api/auth";
 import useInputValue from "../components/input-value";
 import __ from "../utils/trans";

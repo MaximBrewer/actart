@@ -25,7 +25,9 @@ function Home(props) {
     const { token } = useRouteMatch().params;
 
     useEffect(() => {
-        if (token) openModal("reset");
+        if (token) {
+            openModal("reset");
+        }
     }, []);
 
     return (

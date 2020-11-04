@@ -113,5 +113,12 @@
     "BLOG_PAGE_TITLE": "Blog Act-Art",
 
     "LOT_IN_GALLERY_PAGE_TITLE": "Buy \":lot_name\" author \":author_name\" in the online gallery Act-Art",
-    "LOT_IN_AUCTION_PAGE_TITLE": "Buy \":lot_name\" author \":author_name\" at the online auction Act-Art"
+    "LOT_IN_AUCTION_PAGE_TITLE": "Buy \":lot_name\" author \":author_name\" at the online auction Act-Art",
+
+    "MODAL_RP_H2": "Reset password",
+    "MODAL_RP_EMAIL": "E-mail",
+    "MODAL_RP_PASSWORD": "Password",
+    "MODAL_RP_BTN": "Reset",
+    "MODAL_RP_PASSWORD_CONFIRMATON": "Confirm password",
+    "MODAL_RP_LOGIN": "Log in"
 }

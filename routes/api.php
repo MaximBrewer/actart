@@ -18,16 +18,16 @@ Route::name('api.')->namespace('Api')->group(function () {
     // Unprotected routes
     Route::group(['middleware' => 'guest:api'], function () {
 
-        Route::namespace('Auth')->group(function () {
-            Route::post('login', 'LoginController')->name('login');
-            Route::post('register', 'RegisterController')->name('register');
-
-            // Password Reset Routes...
-            Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
-            Route::post('password/reset', 'ResetPasswordController@reset');
-        });
-
         Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function () {
+
+            Route::namespace('Auth')->group(function () {
+                Route::post('login', 'LoginController')->name('login');
+                Route::post('register', 'RegisterController')->name('register');
+
+                // Password Reset Routes...
+                Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
+                Route::post('password/reset', 'ResetPasswordController@reset');
+            });
 
             Route::get('page/{slug}', '\App\Http\Controllers\Api\PageController@show')->name('page.show');
             Route::get('post/{slug}', '\App\Http\Controllers\Api\PostController@show')->name('post.show');
@@ -58,23 +58,26 @@ Route::name('api.')->namespace('Api')->group(function () {
     // Protected routes
     Route::middleware('auth:api')->group(function () {
         Route::namespace('Auth')->group(function () {
-            Route::get('profile', 'ProfileController@index')->name('profile');
+            Route::patch('offer/{lot_id}/{price}', 'LotController@offer')->name('offer');
+            Route::patch('blitz/{lot_id}', 'LotController@blitz')->name('blitz');
+            Route::group(['prefix' => 'auction/{id}'], function () {
+                Route::get('participate', '\App\Http\Controllers\Api\AuctionController@participate')->name('auction.participate');
+            });
             Route::post('logout', 'LogoutController@logout')->name('logout');
             Route::patch('profile/favorites/{action}/{id}', 'ProfileController@favorites')->name('profile.favorites');
+            
+            Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function () {
+                Route::get('profile', 'ProfileController@index')->name('profile');
+            });
+            // Route::middleware('is_admin')->group(function () {
+            Route::group(['prefix' => 'auction/{id}/admin'], function () {
+                Route::patch('start', 'AuctionController@start');
+                Route::patch('laschance', 'AuctionController@laschance');
+                Route::patch('sold', 'AuctionController@sold');
+                Route::patch('nextlot', 'AuctionController@nextlot');
+                Route::patch('finish', 'AuctionController@finish');
+            });
+            // });
         });
-        Route::patch('offer/{lot_id}/{price}', 'LotController@offer')->name('offer');
-        Route::patch('blitz/{lot_id}', 'LotController@blitz')->name('blitz');
-        Route::group(['prefix' => 'auction/{id}'], function () {
-            Route::get('participate', '\App\Http\Controllers\Api\AuctionController@participate')->name('auction.participate');
-        });
-        // Route::middleware('is_admin')->group(function () {
-        Route::group(['prefix' => 'auction/{id}/admin'], function () {
-            Route::patch('start', 'AuctionController@start');
-            Route::patch('laschance', 'AuctionController@laschance');
-            Route::patch('sold', 'AuctionController@sold');
-            Route::patch('nextlot', 'AuctionController@nextlot');
-            Route::patch('finish', 'AuctionController@finish');
-        });
-        // });
     });
 });

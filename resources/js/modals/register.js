@@ -28,7 +28,13 @@ function RegisterModal(props) {
                 setToken(token);
                 closeModal();
             })
-            .catch(err => console.log(err));
+            .catch(error => {
+                error.json().then(({ errors }) => {
+                    [email, name, password].forEach(({ parseServerError }) =>
+                        parseServerError(errors)
+                    );
+                });
+            });
     };
 
     return (

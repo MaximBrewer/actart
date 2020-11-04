@@ -1,32 +1,32 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
-function InputValue (field) {
-  let [value, setValue] = useState('');
-  let [error, setError] = useState('');
+function InputValue(field, defaultValue = "") {
+    let [value, setValue] = useState(defaultValue);
+    let [error, setError] = useState("");
 
-  let onChange = useCallback(function (event) {
-    setValue(event.currentTarget.value);
-    setError('');
-  }, []);
+    let onChange = useCallback(function(event) {
+        setValue(event.currentTarget.value);
+        setError("");
+    }, []);
 
-  let parseServerError = errors => {
-    if (errors && errors[field]) {
-      setError(errors[field][0]);
-    }
-  };
+    let parseServerError = errors => {
+        if (errors && errors[field]) {
+            setError(errors[field][0]);
+        }
+    };
 
-  return {
-    value,
-    setValue,
-    reset: () => setValue(''),
-    bind: {
-      value,
-      onChange
-    },
-    error,
-    setError,
-    parseServerError
-  };
+    return {
+        value,
+        setValue,
+        reset: () => setValue(""),
+        bind: {
+            value,
+            onChange
+        },
+        error,
+        setError,
+        parseServerError
+    };
 }
 
 export default InputValue;

@@ -211,5 +211,13 @@
     "BLOG_PAGE_TITLE": "Блог Акт-Арт",
 
     "LOT_IN_GALLERY_PAGE_TITLE": "Купить \":lot_name\" автор \":author_name\" в онлайн-галерее Акт-Арт",
-    "LOT_IN_AUCTION_PAGE_TITLE": "Купить \":lot_name\" автор \":author_name\" на онлайн-аукционе Акт-Арт"
+    "LOT_IN_AUCTION_PAGE_TITLE": "Купить \":lot_name\" автор \":author_name\" на онлайн-аукционе Акт-Арт",
+
+    "MODAL_RP_H2": "Смена пароля",
+    "MODAL_RP_EMAIL": "E-mail",
+    "MODAL_RP_PASSWORD": "Пароль",
+    "MODAL_RP_BTN": "Отправить",
+    "MODAL_RP_PASSWORD_CONFIRMATON": "Повторите пароль",
+    "MODAL_RP_LOGIN": "Автоизация"
+    
 }
