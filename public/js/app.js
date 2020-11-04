@@ -56117,7 +56117,7 @@ function Subscribe(props) {
     className: "invalid-feedback"
   }, email.error))), resetSubscribe ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     role: "alert"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", resetFeedback)) : ""));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", resetSubscribe)) : ""));
 }
 
 /***/ }),

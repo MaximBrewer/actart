@@ -60,7 +60,7 @@ export default function Subscribe(props) {
                 </div>
                 {resetSubscribe ? (
                     <div role="alert">
-                        <p> {resetFeedback}</p>
+                        <p> {resetSubscribe}</p>
                     </div>
                 ) : (
                     ``
