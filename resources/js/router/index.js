@@ -244,7 +244,7 @@ function App() {
                             <Home {...rest}  openModal={openModal}/>
                         </Route>
                         <Route exact path="/">
-                            <Home {...rest} />
+                            <Home {...rest}   openModal={openModal}/>
                         </Route>
                         <Route exact path="/blog">
                             <Blog {...rest} />

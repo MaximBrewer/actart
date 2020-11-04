@@ -60906,9 +60906,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Home(props) {
-  var openModal = props.openModal;
+  var openModal = props.openModal,
+      closeModal = props.closeModal;
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("HOME_TITLE"));
-  var token = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["useRouteMatch"])().params;
+  var token = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["useRouteMatch"])().params.token;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (token) openModal("reset");
   }, []);
@@ -62845,7 +62846,9 @@ function App() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_home__WEBPACK_IMPORTED_MODULE_8__["default"], rest)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_home__WEBPACK_IMPORTED_MODULE_8__["default"], _extends({}, rest, {
+    openModal: openModal
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/blog"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_blog__WEBPACK_IMPORTED_MODULE_10__["default"], rest)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {

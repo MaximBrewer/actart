@@ -18,11 +18,11 @@ import {
 import { Hummer, AboutLogo, AboutBgLogo } from "../icons/home";
 
 function Home(props) {
-  
-    const { openModal } = props;
+    const { openModal, closeModal } = props;
+
     useDocumentTitle(__("HOME_TITLE"));
 
-    const token = useRouteMatch().params;
+    const { token } = useRouteMatch().params;
 
     useEffect(() => {
         if (token) openModal("reset");
