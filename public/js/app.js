@@ -56053,7 +56053,6 @@ function _arrayWithHoles(arr) {
 
 function Subscribe(props) {
   var req = props.req;
-  console.log(props);
 
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_1__["useAuth"])(),
       currentUser = _useAuth.currentUser;

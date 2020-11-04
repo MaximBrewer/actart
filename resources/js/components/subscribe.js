@@ -6,7 +6,6 @@ import useInputValue from "../components/input-value";
 
 export default function Subscribe(props) {
     const { req } = props;
-    console.log(props);
 
     let { currentUser } = useAuth();
     let [resetSubscribe, setResetSubscribe] = useState("");
