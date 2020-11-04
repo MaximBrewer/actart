@@ -18,7 +18,10 @@ export default function Subscribe(props) {
         req("/api/" + window.App.locale + "/subscribe/", "PATCH", {
             email: email.value
         })
-            .then(({ status }) => setResetSubscribe(status))
+            .then(({ status }) => {
+                setResetSubscribe(status);
+                email.reset()
+            })
             .catch(error => {
                 error.json().then(({ errors }) => {
                     [email].forEach(({ parseServerError }) =>

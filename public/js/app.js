@@ -56070,7 +56070,8 @@ function Subscribe(props) {
       email: email.value
     }).then(function (_ref) {
       var status = _ref.status;
-      return setResetSubscribe(status);
+      setResetSubscribe(status);
+      email.reset();
     })["catch"](function (error) {
       error.json().then(function (_ref2) {
         var errors = _ref2.errors;
