@@ -36,9 +36,15 @@ class SubscribeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'email' => 'email:rfc,dns|required',
-        ]);
+        $this->validate(
+            $request,
+            [
+                'email' => 'email:rfc,dns|unique:subscribers|required',
+            ],
+            [
+                'email.unique' => 'E-mail уже подписан!'
+            ]
+        );
 
         $subscriber = Subscriber::create([
             'email' => $request->email
