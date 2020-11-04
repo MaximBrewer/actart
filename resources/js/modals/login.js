@@ -14,17 +14,6 @@ function LoginModal(props) {
     let email = useInputValue("email");
     let password = useInputValue("password");
 
-    const req = (url, method = "GET", body = null) => {
-        return new Promise(function(resolve, reject) {
-            client(url, {
-                method: method,
-                body: body
-            })
-                .then(resp => resolve(resp))
-                .catch(err => reject(err));
-        });
-    };
-
     const handleSubmit = e => {
         e.preventDefault();
 

@@ -1,21 +1,70 @@
-import React from 'react';
-import { useAuth } from '../context/auth';
-import __ from '../utils/trans';
-import { Mail } from '../icons/footer'
+import React, { useState } from "react";
+import { useAuth } from "../context/auth";
+import __ from "../utils/trans";
+import { Mail } from "../icons/footer";
+import useInputValue from "../components/input-value";
 
-export default function Subscribe() {
+export default function Subscribe(props) {
+    const { req } = props;
+    console.log(props)
+
     let { currentUser } = useAuth();
+    let [resetSubscribe, setResetSubscribe] = useState("");
+
+    let email = useInputValue("email", !!currentUser ? currentUser.email : "");
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        req("/api/" + window.App.locale + "/subscribe/", "PATCH", {email: email.value})
+            .then(status => setResetSubscribe(status))
+            .catch(error => {
+                error.json().then(({ errors }) => {
+                    email.parseServerError(errors);
+                });
+            });
+    };
 
     return (
-        <form>
+        <form action="#" onSubmit={handleSubmit}>
             <div className="form-group mb-0">
-                <label htmlFor="subscribeFooterEmail">{__('Be the first to know about new lots, special offers, new exhibitions in our mailing list')}</label>
-                <div className="input-group">
-                    <div className="input-group-prepend d-none d-lg-block">
+                <label htmlFor="subscribeFooterEmail">
+                    {__(
+                        "Be the first to know about new lots, special offers, new exhibitions in our mailing list"
+                    )}
+                </label>
+                <div className="input-group" style={{ flexWrap: "nowrap" }}>
+                    <div className="input-group-prepend d-none d-lg-block" onClick={handleSubmit} style={{ cursor: "pointer" }}>
                         <Mail />
                     </div>
-                    <input type="email" className="form-control" aria-describedby="email" placeholder={__('Your E-mail')} id="subscribeFooterEmail" />
+                    <div style={{ flex: "1 1 auto" }}>
+                        <input
+                            type="email"
+                            name="email"
+                            style={{ width: "100%" }}
+                            className={`form-control ${
+                                email.error ? "is-invalid" : ""
+                            }`}
+                            required
+                            autoFocus
+                            {...email.bind}
+                            aria-describedby="email"
+                            placeholder={__("Your E-mail")}
+                        />
+                        {email.error && (
+                            <div className="invalid-feedback">
+                                {email.error}
+                            </div>
+                        )}
+                    </div>
                 </div>
+                {resetSubscribe ? (
+                    <div role="alert">
+                        <p> {resetFeedback}</p>
+                    </div>
+                ) : (
+                    ``
+                )}
             </div>
         </form>
     );

@@ -51,6 +51,7 @@ Route::name('api.')->namespace('Api')->group(function () {
                 $res = DB::table($entity . 's')->select('images')->find($id);
                 return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
             });
+            Route::patch('subscribe', 'SubscribeController@store')->name('subscribe.store');
         });
     });
 

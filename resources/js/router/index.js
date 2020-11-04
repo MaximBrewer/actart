@@ -218,7 +218,7 @@ function App() {
                         <Route exact path="/rules">
                             <Base {...rest} />
                         </Route>
-                        
+
                         <Route exact path="/delivery">
                             <Base {...rest} />
                         </Route>
@@ -241,10 +241,10 @@ function App() {
                             <Base {...rest} />
                         </Route>
                         <Route path="/password/reset/:token">
-                            <Home {...rest}  openModal={openModal}/>
+                            <Home {...rest} openModal={openModal} />
                         </Route>
                         <Route exact path="/">
-                            <Home {...rest}   openModal={openModal}/>
+                            <Home {...rest} openModal={openModal} />
                         </Route>
                         <Route exact path="/blog">
                             <Blog {...rest} />
@@ -336,7 +336,7 @@ function App() {
                     </Switch>
                 </main>
             </div>
-            <Footer />
+            <Footer {...rest} />
             {modals.map((item, index) => (
                 <Modal
                     key={index}

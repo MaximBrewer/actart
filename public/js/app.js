@@ -53320,7 +53320,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Footer() {
+function Footer(props) {
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_1__["useAuth"])(),
       currentUser = _useAuth.currentUser;
 
@@ -53341,7 +53341,7 @@ function Footer() {
     className: "mail-to d-flex flex-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('For partnership:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("For partnership:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "mailto:info@act-art.ru"
@@ -53353,7 +53353,7 @@ function Footer() {
     className: "mail-to d-flex flex-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('For partnership:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("For partnership:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "mailto:info@act-art.ru"
@@ -53378,11 +53378,11 @@ function Footer() {
     className: "order-1 order-md-1 d-flex flex-column flex-md-row flex-xl-column order-xl-2 col-xl-30"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "order-2 order-md-1 pb-md-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_subscribe__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_subscribe__WEBPACK_IMPORTED_MODULE_5__["default"], props)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "order-1 order-md-2 d-flex flex-row soc-wr pb-md-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-none d-xl-block flex-fill"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Анонсы, статьи, новости мира искусства:'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Анонсы, статьи, новости мира искусства:"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#"
@@ -53400,7 +53400,7 @@ function Footer() {
     className: "col-md-20 align-items-center align-items-md-start d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "pb-2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ООО “ВОЛОН”  © 2020'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('When using materials from the site, a link to the site is required.'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ООО “ВОЛОН”  © 2020"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("When using materials from the site, a link to the site is required."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-20 align-items-center align-items-md-start d-none d-sm-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_4__["Unstyled"], {
     items: window.App.menus.copyright
@@ -53410,11 +53410,11 @@ function Footer() {
     className: "d-xl-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Сайт сделан в  ВАША КОМПАНИЯ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Сайт сделан в  ВАША КОМПАНИЯ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-md-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Разработка')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Разработка")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_3__["Cp"], null)))))))));
 }
@@ -55969,29 +55969,155 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/auth */ "./resources/js/context/auth.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/trans */ "./resources/js/utils/trans.js");
 /* harmony import */ var _icons_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons/footer */ "./resources/js/icons/footer.js");
+/* harmony import */ var _components_input_value__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/input-value */ "./resources/js/components/input-value.js");
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
 
 
 
 
-function Subscribe() {
+
+
+function Subscribe(props) {
+  var req = props.req;
+  console.log(props);
+
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_1__["useAuth"])(),
       currentUser = _useAuth.currentUser;
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      resetSubscribe = _useState2[0],
+      setResetSubscribe = _useState2[1];
+
+  var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_4__["default"])("email", !!currentUser ? currentUser.email : "");
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    req("/api/" + window.App.locale + "/subscribe/", "PATCH", {
+      email: email.value
+    }).then(function (status) {
+      return setResetSubscribe(status);
+    })["catch"](function (error) {
+      error.json().then(function (_ref) {
+        var errors = _ref.errors;
+        email.parseServerError(errors);
+      });
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: "#",
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group mb-0"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "subscribeFooterEmail"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Be the first to know about new lots, special offers, new exhibitions in our mailing list')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Be the first to know about new lots, special offers, new exhibitions in our mailing list")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group",
+    style: {
+      flexWrap: "nowrap"
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group-prepend d-none d-lg-block"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_3__["Mail"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "input-group-prepend d-none d-lg-block",
+    onClick: handleSubmit,
+    style: {
+      cursor: "pointer"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_3__["Mail"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      flex: "1 1 auto"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({
     type: "email",
-    className: "form-control",
+    name: "email",
+    style: {
+      width: "100%"
+    },
+    className: "form-control ".concat(email.error ? "is-invalid" : ""),
+    required: true,
+    autoFocus: true
+  }, email.bind, {
     "aria-describedby": "email",
-    placeholder: Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Your E-mail'),
-    id: "subscribeFooterEmail"
-  }))));
+    placeholder: Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Your E-mail")
+  })), email.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback"
+  }, email.error))), resetSubscribe ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    role: "alert"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", resetFeedback)) : ""));
 }
 
 /***/ }),
@@ -59053,21 +59179,6 @@ function LoginModal(props) {
   var email = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_5__["default"])("email");
   var password = Object(_components_input_value__WEBPACK_IMPORTED_MODULE_5__["default"])("password");
 
-  var req = function req(url) {
-    var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "GET";
-    var body = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-    return new Promise(function (resolve, reject) {
-      Object(_api_client__WEBPACK_IMPORTED_MODULE_7__["default"])(url, {
-        method: method,
-        body: body
-      }).then(function (resp) {
-        return resolve(resp);
-      })["catch"](function (err) {
-        return reject(err);
-      });
-    });
-  };
-
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     Object(_api_auth__WEBPACK_IMPORTED_MODULE_3__["login"])({
@@ -59898,7 +60009,7 @@ function _extends() {
 
 
 function AuctionsPage(props) {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTIONS_PAGE_TITLE'));
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTIONS_PAGE_TITLE"));
 
   var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])(),
       pathname = _useLocation.pathname;
@@ -59906,18 +60017,18 @@ function AuctionsPage(props) {
   var scrollToElement = props.scrollToElement;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     switch (pathname) {
-      case '/auctions/special':
-        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('SPECIAL_AUCTIONS_PAGE_TITLE');
+      case "/auctions/special":
+        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SPECIAL_AUCTIONS_PAGE_TITLE");
         scrollToElement(specialEl);
         break;
 
-      case '/auctions/regular':
-        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('REGULAR_AUCTIONS_PAGE_TITLE');
+      case "/auctions/regular":
+        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("REGULAR_AUCTIONS_PAGE_TITLE");
         scrollToElement(regularEl);
         break;
 
       default:
-        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTIONS_PAGE_TITLE');
+        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTIONS_PAGE_TITLE");
         break;
     }
   }, [pathname]);
@@ -59936,9 +60047,9 @@ function AuctionsPage(props) {
     className: "col col-xl-40 col-xxl-38"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "h1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Regular auctions')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Regular auctions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sub_h1 d-none d-xl-block"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update.'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col col-xl-20 col-xxl-22 d-none d-xl-block"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "see-other",
@@ -59950,7 +60061,7 @@ function AuctionsPage(props) {
     className: "text-14"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("see also:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h5"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Themed auctions')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Themed auctions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 36 39",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
@@ -59965,7 +60076,7 @@ function AuctionsPage(props) {
   }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "act-auctions-list"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auction_AuctionsList__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({
-    attr: 'regular'
+    attr: "regular"
   }, props))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "auctions-section special-list",
     ref: specialEl
@@ -59977,9 +60088,9 @@ function AuctionsPage(props) {
     className: "col col-xl-40 col-xxl-38"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "h1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Themed auctions')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Themed auctions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sub_h1 d-none d-xl-block"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update.'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col col-xl-20 col-xxl-22 d-none d-xl-block"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "see-other",
@@ -59991,7 +60102,7 @@ function AuctionsPage(props) {
     className: "text-14"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("see also:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h5"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Regular auctions')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Regular auctions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 36 39",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
@@ -60007,10 +60118,10 @@ function AuctionsPage(props) {
     className: "act-auctions-list",
     "data-attr": "special"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auction_AuctionsList__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({
-    attr: 'special'
+    attr: "special"
   }, props))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section mt-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('closest auctions')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("closest auctions")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "auctions-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
@@ -60023,7 +60134,7 @@ function AuctionsPage(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/auctions/archive",
     className: "btn btn-default"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ARCHIVE OF AUCTIONS')))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ARCHIVE OF AUCTIONS")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "subscribe-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
@@ -60033,7 +60144,7 @@ function AuctionsPage(props) {
     className: "col col-xl-40"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_subscribe__WEBPACK_IMPORTED_MODULE_4__["default"], null)))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_subscribe__WEBPACK_IMPORTED_MODULE_4__["default"], props)))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "auctions-section d-none d-md-block"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
@@ -60043,7 +60154,7 @@ function AuctionsPage(props) {
     className: "col col-xl-40"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-center sub_h1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('You can also purchase selected works by contemporary Russian authors in our permanent online gallery.')))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("You can also purchase selected works by contemporary Russian authors in our permanent online gallery.")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "d-none d-md-block popular-categories-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pt-5 mb-5"
@@ -60053,14 +60164,14 @@ function AuctionsPage(props) {
     className: "popular-categories"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "h4"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Popular Categories')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Popular Categories")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-between categories"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-center align-items-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/gallery",
     className: "btn btn-default"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('VIEW ALL WORKS'))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_marquee__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("VIEW ALL WORKS"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_marquee__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 }
 
 /***/ }),
@@ -63830,7 +63941,7 @@ function App() {
     path: "/auctions/admin/:id"
   }, rest, {
     component: _components_auction_AuctionAdmin__WEBPACK_IMPORTED_MODULE_20__["default"]
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_404__WEBPACK_IMPORTED_MODULE_28__["default"], rest))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_footer__WEBPACK_IMPORTED_MODULE_6__["default"], null), modals.map(function (item, index) {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_404__WEBPACK_IMPORTED_MODULE_28__["default"], rest))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_footer__WEBPACK_IMPORTED_MODULE_6__["default"], rest), modals.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_11___default.a, {
       key: index,
       isOpen: modal[item.key],
