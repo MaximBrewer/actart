@@ -12,12 +12,15 @@ use App\Http\Resources\Lot as LotResource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use App\Bet;
+use App\User;
 use Exception;
 use App\Events\Auction as AuctionEvent;
 use Illuminate\Support\Facades\Mail;
 use App\Events\Lot as LotEvent;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\BeatPrice;
+use App\Notifications\Beat as BeatNotification;
+use App\Notifications\GalleryWinner as GalleryWinnerNotification;
+use App\Notifications\Manager\GalleryWinner as ManagerGalleryWinnerNotification;
 
 class LotController extends Controller
 {
@@ -136,7 +139,7 @@ class LotController extends Controller
                 'blitz' => false
             ]);
             if ($bet)
-                Mail::to($bet->user->email)->send(new BeatPrice($lot));
+                User::find(Auth::id())->notify(new BeatNotification($lot));
 
             return $newBet;
         }
@@ -145,12 +148,13 @@ class LotController extends Controller
 
     public function blitz(Request $request, $lot_id)
     {
+        $user = User::find(Auth::id());
         $lot = Lot::where('id', $lot_id)->where('status', 'gallery')->firstOrFail();
         $bet = Bet::where('lot_id', $lot_id)->orderBy('bet', 'DESC')->first();
 
         if (!$bet || $bet->bet < $lot->blitz) {
             $bet = Bet::create([
-                'user_id' => Auth::id(),
+                'user_id' => $user->id,
                 'bet' => $lot->blitz,
                 'lot_id' => $lot->id,
                 'blitz' => true
@@ -158,6 +162,8 @@ class LotController extends Controller
             $lot->update([
                 'status' => 'gsold'
             ]);
+            foreach (User::where('role_id', 1)->get() as $manager) $manager->notify(new ManagerGalleryWinnerNotification($lot, $user));
+            $user->notify(new GalleryWinnerNotification($lot));
             return ['lot' => new LotResource($lot)];
         }
         return null;

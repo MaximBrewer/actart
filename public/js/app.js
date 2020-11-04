@@ -48217,7 +48217,7 @@ function AuctionAdmin(props) {
 
   var lastChance = function lastChance(e) {
     e.preventDefault();
-    req('/api/auction/' + state.auction.id + '/admin/laschance', "PATCH").then(function () {
+    req('/api/auction/' + state.auction.id + '/admin/lastchance', "PATCH").then(function () {
       return null;
     })["catch"](function () {
       return null;

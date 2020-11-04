@@ -16,7 +16,7 @@ export default function AuctionAdmin(props) {
 
     const lastChance = (e) => {
         e.preventDefault();
-        req('/api/auction/' + state.auction.id + '/admin/laschance', "PATCH")
+        req('/api/auction/' + state.auction.id + '/admin/lastchance', "PATCH")
             .then(() => null)
             .catch(() => null);
     }

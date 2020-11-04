@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\AuctionShort as AuctionResource;
 use App\Http\Resources\User as UserResource;
-use App\Mail\AuctionParticipate;
+use App\Notifications\Participate as ParticipateNotification;
+use App\Notifications\AuctionWinner as AuctionWinnerNotification;
+use App\Notifications\Manager\AuctionWinner as ManagerAuctionWinnerNotification;
+
 use App\Events\UpdateLotStatus as UpdateLotStatusEvent;
 use App\Lot;
 
@@ -60,10 +63,10 @@ class AuctionController extends Controller
     //
     public function participate(Request $request, $id)
     {
-        $user = Auth::user();
+        $user = User::find(Auth::id());
         if (!$user->auctions()->where('auctions.id', $id)->exists()) {
             $auction = Auction::findOrFail($id);
-            Mail::to($user->email)->send(new AuctionParticipate($auction, $user));
+            $user->notify(new ParticipateNotification($auction));
             $user->auctions()->attach($id);
         }
         return ['user' => new UserResource($user)];
@@ -86,7 +89,7 @@ class AuctionController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function laschance($id)
+    public function lastchance($id)
     {
         $auction = Auction::find($id);
         $lot = Lot::where('auction_id', $auction->id)->where('status', 'in_auction')->orderBy('sort', 'ASC')->first();
@@ -108,6 +111,9 @@ class AuctionController extends Controller
         if ($lot) $lot->update([
             'status' => 'sold'
         ]);
+        $user = User::find($lot->bets[0]->user_id);
+        $user->notify(new AuctionWinnerNotification($lot));
+        foreach (User::where('role_id', 1)->get() as $manager) $manager->notify(new ManagerAuctionWinnerNotification($lot, $user));
         $this->next($auction);
         return ['auction' => $auction, 'lot' => $lot];
     }

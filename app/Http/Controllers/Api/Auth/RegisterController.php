@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\User as UserResource;
 use Illuminate\Support\Facades\Mail;
 use Throwable;
+use App\Notifications\Register as RegisterNotification;
 
 class RegisterController extends Controller
 {
@@ -30,7 +31,7 @@ class RegisterController extends Controller
         }
 
         try {
-            Mail::to($user->email)->send(new \App\Mail\Register($user));
+            $user->notify(new RegisterNotification($user));
         } catch (Throwable $e) {
             report($e);
         }

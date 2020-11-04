@@ -72,7 +72,7 @@ Route::name('api.')->namespace('Api')->group(function () {
             // Route::middleware('is_admin')->group(function () {
             Route::group(['prefix' => 'auction/{id}/admin'], function () {
                 Route::patch('start', 'AuctionController@start');
-                Route::patch('laschance', 'AuctionController@laschance');
+                Route::patch('lastchance', 'AuctionController@lastchance');
                 Route::patch('sold', 'AuctionController@sold');
                 Route::patch('nextlot', 'AuctionController@nextlot');
                 Route::patch('finish', 'AuctionController@finish');
