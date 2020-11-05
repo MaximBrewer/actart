@@ -9,7 +9,7 @@ export default function Carousel(props) {
     const { id } = props;
 
     const [state, setState] = useState({
-        items: props.items,
+        items: props.auction.items,
         id: props.id
     });
 
