@@ -6,8 +6,7 @@ import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from '../../../utils/trans';
 
 export default function Carousel(props) {
-    const { id } = props;
-console.log(props)
+    
     const [state, setState] = useState({
         items: props.auction.items,
         id: props.id
@@ -15,8 +14,11 @@ console.log(props)
 
     useEffect(() => {
         document.title = __('LOT_IN_AUCTION_PAGE_TITLE', {lot_name: state.items[getIndex(id)].title, author_name: state.items[getIndex(id)].author});
-        refPicture.current.slickGoTo(getIndex(id), true);
-        refAnnounce.current.slickGoTo(getIndex(id), true);
+       
+        
+        
+        refPicture.current.slickGoTo(getIndex(state.id), true);
+        refAnnounce.current.slickGoTo(getIndex(state.id), true);
     }, [id]);
 
     const refPicture = useRef();

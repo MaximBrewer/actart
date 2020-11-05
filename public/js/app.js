@@ -50829,9 +50829,6 @@ function _arrayWithHoles(arr) {
 
 
 function Carousel(props) {
-  var id = props.id;
-  console.log(props);
-
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     items: props.auction.items,
     id: props.id
@@ -50845,8 +50842,8 @@ function Carousel(props) {
       lot_name: state.items[getIndex(id)].title,
       author_name: state.items[getIndex(id)].author
     });
-    refPicture.current.slickGoTo(getIndex(id), true);
-    refAnnounce.current.slickGoTo(getIndex(id), true);
+    refPicture.current.slickGoTo(getIndex(state.id), true);
+    refAnnounce.current.slickGoTo(getIndex(state.id), true);
   }, [id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
