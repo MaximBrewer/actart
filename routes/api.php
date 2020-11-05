@@ -58,7 +58,7 @@ Route::name('api.')->namespace('Api')->group(function () {
 
     // Protected routes
     Route::middleware('auth:api')->group(function () {
-        Route::namespace('Auth')->group(function () {
+        Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function () {
             Route::patch('offer/{lot_id}/{price}', 'LotController@offer')->name('offer');
             Route::patch('blitz/{lot_id}', 'LotController@blitz')->name('blitz');
             Route::group(['prefix' => 'auction/{id}'], function () {
@@ -66,19 +66,20 @@ Route::name('api.')->namespace('Api')->group(function () {
             });
             Route::post('logout', 'LogoutController@logout')->name('logout');
             Route::patch('profile/favorites/{action}/{id}', 'ProfileController@favorites')->name('profile.favorites');
-            
-            Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function () {
+
+            Route::middleware('is_admin')->group(function () {
+                Route::group(['prefix' => 'auction/{id}/admin'], function () {
+                    Route::patch('start', 'AuctionController@start');
+                    Route::patch('lastchance', 'AuctionController@lastchance');
+                    Route::patch('sold', 'AuctionController@sold');
+                    Route::patch('nextlot', 'AuctionController@nextlot');
+                    Route::patch('finish', 'AuctionController@finish');
+                });
+            });
+
+            Route::namespace('Auth')->group(function () {
                 Route::get('profile', 'ProfileController@index')->name('profile');
             });
-            // Route::middleware('is_admin')->group(function () {
-            Route::group(['prefix' => 'auction/{id}/admin'], function () {
-                Route::patch('start', 'AuctionController@start');
-                Route::patch('lastchance', 'AuctionController@lastchance');
-                Route::patch('sold', 'AuctionController@sold');
-                Route::patch('nextlot', 'AuctionController@nextlot');
-                Route::patch('finish', 'AuctionController@finish');
-            });
-            // });
         });
     });
 });
