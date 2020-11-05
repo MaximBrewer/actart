@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { FavoriteBig } from "../../../icons/icons";
-import __ from '../../../utils/trans';
-import { useAuth } from '../../../context/auth';
+import __ from "../../../utils/trans";
+import { useAuth } from "../../../context/auth";
 
 export default function Right(props) {
     const { req } = props;
     const { initializing, currentUser, setCurrentUser } = useAuth();
-
 
     const [state, setState] = useState({
         item: props.item
@@ -16,13 +15,14 @@ export default function Right(props) {
         setState(prevState => {
             let item = { ...prevState.item };
             item.status = event.detail.status;
-            return prevState
+            return prevState;
         });
     };
 
     const createBet = event => {
         setState(prevState => {
-            let item = { ...prevState.item }, update = false;
+            let item = { ...prevState.item },
+                update = false;
             if (item.id == event.detail.bet.lot_id) {
                 item.bets.unshift(event.detail.bet);
                 item.price = event.detail.bet.bet;
@@ -33,10 +33,9 @@ export default function Right(props) {
                     ...prevState,
                     item: item
                 };
-            return prevState
-        })
+            return prevState;
+        });
     };
-
 
     useEffect(() => {
         window.addEventListener("update-lot-status", updateLotStatus);
@@ -44,32 +43,33 @@ export default function Right(props) {
         return () => {
             window.removeEventListener("update-lot-status", updateLotStatus);
             window.removeEventListener("create-bet", createBet);
-        }
+        };
     }, []);
 
     const offer = (id, price) => {
-        req("/api/offer/" + id + "/" + price, "PATCH")
+        req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH")
             .then(() => null)
-            .catch((err) => console.log(err));
+            .catch(err => console.log(err));
     };
-    const blitz = (id) => {
-        req("/api/blitz/" + id, "PATCH")
+    const blitz = id => {
+        req("/api/" + window.App.locale + "/blitz/" + id, "PATCH")
             .then(({ lot }) => {
                 window.dispatchEvent(
                     new CustomEvent("flash", {
                         detail: {
                             header: __("GET_GALLERY_BLITZ_HEADER"),
-                            message: __(
-                                "GET_GALLERY_BLITZ_TEXT", { lot_name: lot.title, lot_price: lot.price }
-                            ),
+                            message: __("GET_GALLERY_BLITZ_TEXT", {
+                                lot_name: lot.title,
+                                lot_price: lot.price
+                            }),
                             type: "success",
                             delay: 0,
-                            buttons: ['OK']
+                            buttons: ["OK"]
                         }
                     })
                 );
             })
-            .catch((err) => console.log(err));
+            .catch(err => console.log(err));
     };
 
     return (
@@ -112,8 +112,10 @@ export default function Right(props) {
                 ))}
             </div>
             <div className="size">
-                {state.item.width} х {state.item.height} {__("MEASURE_CM")}{state.item.year ? ` / ` + state.item.year + ` ` + __("SHORT_YEAR") : ``}
-
+                {state.item.width} х {state.item.height} {__("MEASURE_CM")}
+                {state.item.year
+                    ? ` / ` + state.item.year + ` ` + __("SHORT_YEAR")
+                    : ``}
             </div>
             <div className="start-price">
                 <span>
@@ -137,8 +139,8 @@ export default function Right(props) {
                             </div>
                         </div>
                     ) : (
-                            ``
-                        )}
+                        ``
+                    )}
                     <a
                         className="btn btn-danger"
                         href="#"
@@ -165,12 +167,12 @@ export default function Right(props) {
                             <div>${state.item.blitz}</div>
                         </div>
                     ) : (
-                            ``
-                        )}
+                        ``
+                    )}
                 </div>
             ) : (
-                    ``
-                )}
+                ``
+            )}
         </div>
     );
 }

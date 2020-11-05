@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { FavoriteBig } from "../../../icons/icons";
-import __ from '../../../utils/trans';
-import { useAuth } from '../../../context/auth';
+import __ from "../../../utils/trans";
+import { useAuth } from "../../../context/auth";
 
 export default function Right(props) {
     const { req, item, auction } = props;
     const { initializing, currentUser, setCurrentUser } = useAuth();
 
-
     const offer = (id, price) => {
-        req("/api/offer/" + id + "/" + price, "PATCH")
+        req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH")
             .then(() => null)
-            .catch((err) => console.log(err));
+            .catch(err => console.log(err));
     };
-    const blitz = (id) => {
-        req("/api/blitz/" + id, "PATCH")
+    const blitz = id => {
+        req("/api/" + window.App.locale + "/blitz/" + id, "PATCH")
             .then(() => {})
-            .catch((err) => console.log(err));
+            .catch(err => console.log(err));
     };
-
 
     return (
         <div className="lot-carousel-right">
@@ -60,14 +58,15 @@ export default function Right(props) {
                 ))}
             </div>
             <div className="size">
-                {item.width} х {item.height} {__("MEASURE_CM")}{item.year ? ` / ` + item.year + ` ` + __("SHORT_YEAR") : ``}
+                {item.width} х {item.height} {__("MEASURE_CM")}
+                {item.year ? ` / ` + item.year + ` ` + __("SHORT_YEAR") : ``}
             </div>
             <div className="start-price">
                 <span>
                     {__("LOT_START_PRICE")}: ${item.startPrice}
                 </span>
             </div>
-            {currentUser != undefined && auction.status == 'started' ? (
+            {currentUser != undefined && auction.status == "started" ? (
                 <div className="user-activity">
                     <div className="user-id">
                         {__("LOT_YOUR_ID")}: <span>#{currentUser.id}</span>
@@ -84,8 +83,8 @@ export default function Right(props) {
                             </div>
                         </div>
                     ) : (
-                            ``
-                        )}
+                        ``
+                    )}
                     <a
                         className="btn btn-danger"
                         href="#"
@@ -112,12 +111,12 @@ export default function Right(props) {
                             <div>${item.blitz}</div>
                         </div>
                     ) : (
-                            ``
-                        )}
+                        ``
+                    )}
                 </div>
             ) : (
-                    ``
-                )}
+                ``
+            )}
         </div>
     );
 }

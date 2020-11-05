@@ -34,7 +34,7 @@ export function FavoriteBig(props) {
 
         let action = active ? "remove" : "add";
 
-        req("/api/profile/favorites/" + action + "/" + item.id, "PATCH")
+        req("/api/" + window.App.locale + "/profile/favorites/" + action + "/" + item.id, "PATCH")
             .then(({ user }) => {
                 window.dispatchEvent(
                     new CustomEvent("flash", {
@@ -104,7 +104,7 @@ export function Favorite(props) {
 
         let action = active ? "remove" : "add";
 
-        req("/api/profile/favorites/" + action + "/" + item.id, "PATCH")
+        req("/api/" + window.App.locale + "/profile/favorites/" + action + "/" + item.id, "PATCH")
             .then(({ user }) => {
                 window.dispatchEvent(
                     new CustomEvent("flash", {

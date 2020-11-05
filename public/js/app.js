@@ -48208,7 +48208,7 @@ function _defineProperty(obj, key, value) {
 function AuctionAdmin(props) {
   var startAuction = function startAuction(e) {
     e.preventDefault();
-    req('/api/auction/' + state.auction.id + '/admin/start', "PATCH").then(function () {
+    req("/api/" + window.App.locale + "/auction/" + state.auction.id + "/admin/start", "PATCH").then(function () {
       return null;
     })["catch"](function () {
       return null;
@@ -48217,7 +48217,7 @@ function AuctionAdmin(props) {
 
   var lastChance = function lastChance(e) {
     e.preventDefault();
-    req('/api/auction/' + state.auction.id + '/admin/lastchance', "PATCH").then(function () {
+    req("/api/" + window.App.locale + "/auction/" + state.auction.id + "/admin/lastchance", "PATCH").then(function () {
       return null;
     })["catch"](function () {
       return null;
@@ -48226,7 +48226,7 @@ function AuctionAdmin(props) {
 
   var sold = function sold(e) {
     e.preventDefault();
-    req('/api/auction/' + state.auction.id + '/admin/sold', "PATCH").then(function () {
+    req("/api/" + window.App.locale + "/auction/" + state.auction.id + "/admin/sold", "PATCH").then(function () {
       return null;
     })["catch"](function () {
       return null;
@@ -48235,7 +48235,7 @@ function AuctionAdmin(props) {
 
   var nextLot = function nextLot(e) {
     e.preventDefault();
-    req('/api/auction/' + state.auction.id + '/admin/nextlot', "PATCH").then(function () {
+    req("/api/" + window.App.locale + "/auction/" + state.auction.id + "/admin/nextlot", "PATCH").then(function () {
       return null;
     })["catch"](function () {
       return null;
@@ -48244,7 +48244,7 @@ function AuctionAdmin(props) {
 
   var finish = function finish(e) {
     e.preventDefault();
-    req('/api/auction/' + state.auction.id + '/admin/finish', "PATCH").then(function () {
+    req("/api/" + window.App.locale + "/auction/" + state.auction.id + "/admin/finish", "PATCH").then(function () {
       return null;
     })["catch"](function () {
       return null;
@@ -48293,7 +48293,7 @@ function AuctionAdmin(props) {
 
         if (lot.id == event.detail.id) {
           lot.status = event.detail.status;
-          if (event.detail.status == 'in_auction') auction.current = lot;
+          if (event.detail.status == "in_auction") auction.current = lot;
           update = true;
         }
 
@@ -48374,7 +48374,7 @@ function AuctionAdmin(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    req('/api/' + window.App.locale + "/auctions/" + id).then(function (_ref) {
+    req("/api/" + window.App.locale + "/auctions/" + id).then(function (_ref) {
       var auction = _ref.auction;
       return setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -48407,7 +48407,7 @@ function AuctionAdmin(props) {
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var lot = _step.value;
-          if (lot.status == 'auction' || lot.status == 'in_auction') all = false;
+          if (lot.status == "auction" || lot.status == "in_auction") all = false;
         }
       } catch (err) {
         _iterator.e(err);
@@ -48432,7 +48432,7 @@ function AuctionAdmin(props) {
     try {
       for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
         var lot = _step2.value;
-        lot.status == 'auction' || lot.status == 'in_auction' && cnt++;
+        lot.status == "auction" || lot.status == "in_auction" && cnt++;
       }
     } catch (err) {
       _iterator2.e(err);
@@ -48461,11 +48461,11 @@ function AuctionAdmin(props) {
     className: "h1"
   }, state.auction.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "online"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ONLINE_BROADCAST_IN_PROPGRESS_TEXT')))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ONLINE_BROADCAST_IN_PROPGRESS_TEXT")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "top-bar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, "\u0442\u043E\u0440\u0433\u0443\u0435\u0442\u0441\u044F ", state.auction.members, " \u0447\u0435\u043B\u043E\u0432\u0435\u043A(\u0430)  / \u043B\u043E\u0442(\u0430/\u043E\u0432) ", state.auction.lots.length, " / \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C ", countLots(state.auction.lots))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "\u0442\u043E\u0440\u0433\u0443\u0435\u0442\u0441\u044F ", state.auction.members, " \u0447\u0435\u043B\u043E\u0432\u0435\u043A(\u0430) / \u043B\u043E\u0442(\u0430/\u043E\u0432) ", state.auction.lots.length, " / \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C", " ", countLots(state.auction.lots))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
@@ -48477,14 +48477,14 @@ function AuctionAdmin(props) {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-40 col-xxl-38"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, state.auction.status == 'finished' && true, state.auction.status == 'coming' && true, state.auction.status == 'canceled' && true, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, state.auction.status == "finished" && true, state.auction.status == "coming" && true, state.auction.status == "canceled" && true, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       paddingTop: "56.25%",
       height: 0,
       position: "relative"
     },
     className: "translation-wrapper"
-  }, html_react_parser__WEBPACK_IMPORTED_MODULE_3___default()(state.translation)), state.auction.status == 'started' && state.auction.current && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, html_react_parser__WEBPACK_IMPORTED_MODULE_3___default()(state.translation)), state.auction.status == "started" && state.auction.current && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "current",
     style: {
       display: "flex",
@@ -48513,7 +48513,7 @@ function AuctionAdmin(props) {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-carousel-right"
-  }, state.auction.status == 'started' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, state.auction.status == "started" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-activity"
   }, state.auction.current && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-3 d-flex justify-content-between"
@@ -48555,7 +48555,7 @@ function AuctionAdmin(props) {
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "size"
-  }, state.auction.current.width, " \u0445 ", state.auction.current.height, " ", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("MEASURE_CM"), state.auction.current.year ? " / " + state.auction.current.year + " " + Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SHORT_YEAR") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, state.auction.current.width, " ", "\u0445", " ", state.auction.current.height, " ", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("MEASURE_CM"), state.auction.current.year ? " / " + state.auction.current.year + " " + Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SHORT_YEAR") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "start-price"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_START_PRICE"), ": $", state.auction.current.startPrice))), state.auction.current && state.auction.current.bets.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "last-price"
@@ -48593,19 +48593,19 @@ function AuctionAdmin(props) {
     onClick: finish
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ADMIN_FINISH")))), state.auction.status == 'finished' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ADMIN_FINISH")))), state.auction.status == "finished" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "py-5 text-center"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTION_HAS_FINISHED'))), state.auction.status == 'coming' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTION_HAS_FINISHED"))), state.auction.status == "coming" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "py-5 text-center color-red"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTION_WILL_START_SOON'))), state.auction.status == 'canceled' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTION_WILL_START_SOON"))), state.auction.status == "canceled" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "py-5 text-center"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('AUCTION_HAS_CANCELED'))))))))), !state.finished && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTION_HAS_CANCELED"))))))))), !state.finished && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-page-inner"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-works-list my-5"
@@ -48615,7 +48615,7 @@ function AuctionAdmin(props) {
     className: "h3"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("FUTHER_IN_THE_AUCTION")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({}, props, {
     items: state.auction.lots,
-    status: 'auction',
+    status: "auction",
     data: {
       auction: state.auction,
       entity: "lots",
@@ -51214,7 +51214,7 @@ function Right(props) {
       setCurrentUser = _useAuth.setCurrentUser;
 
   var offer = function offer(id, price) {
-    req("/api/offer/" + id + "/" + price, "PATCH").then(function () {
+    req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH").then(function () {
       return null;
     })["catch"](function (err) {
       return console.log(err);
@@ -51222,7 +51222,7 @@ function Right(props) {
   };
 
   var blitz = function blitz(id) {
-    req("/api/blitz/" + id, "PATCH").then(function () {})["catch"](function (err) {
+    req("/api/" + window.App.locale + "/blitz/" + id, "PATCH").then(function () {})["catch"](function (err) {
       return console.log(err);
     });
   };
@@ -51277,7 +51277,7 @@ function Right(props) {
     className: "size"
   }, item.width, " \u0445 ", item.height, " ", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("MEASURE_CM"), item.year ? " / " + item.year + " " + Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SHORT_YEAR") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "start-price"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_START_PRICE"), ": $", item.startPrice)), currentUser != undefined && auction.status == 'started' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_START_PRICE"), ": $", item.startPrice)), currentUser != undefined && auction.status == "started" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-id"
@@ -52376,7 +52376,7 @@ function Right(props) {
       setCurrentUser = _useAuth.setCurrentUser;
 
   var offer = function offer(id, price) {
-    req("/api/offer/" + id + "/" + price, "PATCH").then(function () {
+    req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH").then(function () {
       return null;
     })["catch"](function (err) {
       return console.log(err);
@@ -52384,7 +52384,7 @@ function Right(props) {
   };
 
   var blitz = function blitz(id) {
-    req("/api/blitz/" + id, "PATCH").then(function () {})["catch"](function (err) {
+    req("/api/" + window.App.locale + "/blitz/" + id, "PATCH").then(function () {})["catch"](function (err) {
       return console.log(err);
     });
   };
@@ -52462,7 +52462,7 @@ function Right(props) {
     className: "pb-1"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", item.price * 1 + 100)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "color-red"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('LAST_CHANCE_TO_USER'))) : "");
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LAST_CHANCE_TO_USER"))) : "");
 }
 
 /***/ }),
@@ -54509,7 +54509,7 @@ function Right(props) {
   }, []);
 
   var offer = function offer(id, price) {
-    req("/api/offer/" + id + "/" + price, "PATCH").then(function () {
+    req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH").then(function () {
       return null;
     })["catch"](function (err) {
       return console.log(err);
@@ -54517,7 +54517,7 @@ function Right(props) {
   };
 
   var blitz = function blitz(id) {
-    req("/api/blitz/" + id, "PATCH").then(function (_ref) {
+    req("/api/" + window.App.locale + "/blitz/" + id, "PATCH").then(function (_ref) {
       var lot = _ref.lot;
       window.dispatchEvent(new CustomEvent("flash", {
         detail: {
@@ -54528,7 +54528,7 @@ function Right(props) {
           }),
           type: "success",
           delay: 0,
-          buttons: ['OK']
+          buttons: ["OK"]
         }
       }));
     })["catch"](function (err) {
@@ -58756,7 +58756,7 @@ function FavoriteBig(props) {
     }
 
     var action = active ? "remove" : "add";
-    req("/api/profile/favorites/" + action + "/" + item.id, "PATCH").then(function (_ref) {
+    req("/api/" + window.App.locale + "/profile/favorites/" + action + "/" + item.id, "PATCH").then(function (_ref) {
       var user = _ref.user;
       window.dispatchEvent(new CustomEvent("flash", {
         detail: {
@@ -58814,7 +58814,7 @@ function Favorite(props) {
     }
 
     var action = active ? "remove" : "add";
-    req("/api/profile/favorites/" + action + "/" + item.id, "PATCH").then(function (_ref2) {
+    req("/api/" + window.App.locale + "/profile/favorites/" + action + "/" + item.id, "PATCH").then(function (_ref2) {
       var user = _ref2.user;
       window.dispatchEvent(new CustomEvent("flash", {
         detail: {
@@ -63891,7 +63891,7 @@ function App() {
         _iterator.f();
       }
 
-      req("/api/auction/" + auction.id + "/participate").then(function (_ref) {
+      req("/api/" + window.App.locale + "/auction/" + auction.id + "/participate").then(function (_ref) {
         var user = _ref.user;
         setCurrentUser(user);
       })["catch"](function () {

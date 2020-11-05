@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { FavoriteBig } from "../../../../icons/icons";
-import __ from '../../../../utils/trans';
-import { useAuth } from '../../../../context/auth';
+import __ from "../../../../utils/trans";
+import { useAuth } from "../../../../context/auth";
 
 export default function Right(props) {
     const { req, item } = props;
     const { initializing, currentUser, setCurrentUser } = useAuth();
 
-
     const offer = (id, price) => {
-        req("/api/offer/" + id + "/" + price, "PATCH")
+        req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH")
             .then(() => null)
-            .catch((err) => console.log(err));
+            .catch(err => console.log(err));
     };
-    const blitz = (id) => {
-        req("/api/blitz/" + id, "PATCH")
-            .then(() => { })
-            .catch((err) => console.log(err));
+    const blitz = id => {
+        req("/api/" + window.App.locale + "/blitz/" + id, "PATCH")
+            .then(() => {})
+            .catch(err => console.log(err));
     };
-
 
     return (
         <div className="lot-carousel-right">
@@ -60,7 +58,8 @@ export default function Right(props) {
                 ))}
             </div>
             <div className="size">
-                {item.width} х {item.height} {__("MEASURE_CM")}{item.year ? ` / ` + item.year + ` ` + __("SHORT_YEAR") : ``}
+                {item.width} х {item.height} {__("MEASURE_CM")}
+                {item.year ? ` / ` + item.year + ` ` + __("SHORT_YEAR") : ``}
             </div>
             <div className="start-price">
                 <span>
@@ -84,8 +83,8 @@ export default function Right(props) {
                             </div>
                         </div>
                     ) : (
-                            ``
-                        )}
+                        ``
+                    )}
                     <a
                         className="btn btn-danger"
                         href="#"
@@ -97,11 +96,11 @@ export default function Right(props) {
                         <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
                         <div>${item.price * 1 + 100}</div>
                     </a>
-                    <h4 className="color-red">{__('LAST_CHANCE_TO_USER')}</h4>
+                    <h4 className="color-red">{__("LAST_CHANCE_TO_USER")}</h4>
                 </div>
             ) : (
-                    ``
-                )}
+                ``
+            )}
         </div>
     );
 }

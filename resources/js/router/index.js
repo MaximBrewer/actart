@@ -187,7 +187,7 @@ function App() {
                     return true;
                 }
             }
-            req("/api/auction/" + auction.id + "/participate")
+            req("/api/" + window.App.locale + "/auction/" + auction.id + "/participate")
                 .then(({ user }) => {
                     setCurrentUser(user);
                 })
