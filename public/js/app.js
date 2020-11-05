@@ -50838,9 +50838,9 @@ function Carousel(props) {
       setState = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])('LOT_IN_AUCTION_PAGE_TITLE', {
-      lot_name: state.items[getIndex(id)].title,
-      author_name: state.items[getIndex(id)].author
+    document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
+      lot_name: state.items[getIndex(state.id)].title,
+      author_name: state.items[getIndex(state.id)].author
     });
     refPicture.current.slickGoTo(getIndex(state.id), true);
     refAnnounce.current.slickGoTo(getIndex(state.id), true);

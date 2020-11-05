@@ -3,20 +3,20 @@ import Slider from "react-slick";
 import Left from "./Left";
 import Right from "./Right";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
-import __ from '../../../utils/trans';
+import __ from "../../../utils/trans";
 
 export default function Carousel(props) {
-    
     const [state, setState] = useState({
         items: props.auction.items,
         id: props.id
     });
 
     useEffect(() => {
-        document.title = __('LOT_IN_AUCTION_PAGE_TITLE', {lot_name: state.items[getIndex(id)].title, author_name: state.items[getIndex(id)].author});
-       
-        
-        
+        document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
+            lot_name: state.items[getIndex(state.id)].title,
+            author_name: state.items[getIndex(state.id)].author
+        });
+
         refPicture.current.slickGoTo(getIndex(state.id), true);
         refAnnounce.current.slickGoTo(getIndex(state.id), true);
     }, [state.id]);
@@ -37,7 +37,7 @@ export default function Carousel(props) {
         speed: 300,
         auto: true,
         slidesToShow: 1,
-        slidesToScroll: 1,
+        slidesToScroll: 1
         // initialSlide: getIndex(id)
     };
 
