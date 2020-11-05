@@ -11,18 +11,10 @@ export default function Carousel(props) {
         id: props.id
     });
 
-    console.log(state)
-
     useEffect(() => {
-        console.log(
-            state.id
-        );
-        console.log(
-            getIndex(state.id)
-        );
-        console.log(
-            state.items[getIndex(state.id)]
-        );
+        console.log(state.id);
+        console.log(getIndex(state.id));
+        console.log(state.items[getIndex(state.id)]);
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
             lot_name: state.items[getIndex(state.id)].title,
             author_name: state.items[getIndex(state.id)].author
@@ -36,9 +28,9 @@ export default function Carousel(props) {
     const refAnnounce = useRef();
 
     const getIndex = id => {
-        for (let i in state.items) {
-            if (state.items[i].id == id) return i;
-        }
+        console.log(id);
+        for (let i in state.items) if (state.items[i].id == id) return i;
+        return 0;
     };
 
     const setting = {

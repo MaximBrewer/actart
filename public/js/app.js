@@ -50837,7 +50837,6 @@ function Carousel(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  console.log(state);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     console.log(state.id);
     console.log(getIndex(state.id));
@@ -50853,9 +50852,13 @@ function Carousel(props) {
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 
   var getIndex = function getIndex(id) {
+    console.log(id);
+
     for (var i in state.items) {
       if (state.items[i].id == id) return i;
     }
+
+    return 0;
   };
 
   var setting = {
