@@ -77,7 +77,7 @@ class AuctionController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function start($id)
+    public function start(Request $request, $lang, $id)
     {
         $auction = Auction::find($id);
         $this->next($auction);
