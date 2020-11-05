@@ -34,8 +34,8 @@ export default function Carousel(props) {
     const refAnnounce = useRef();
 
     const getIndex = id => {
-        for (let i in props.auction.lots) {
-            if (props.auction.lots[i].id == id) return i;
+        for (let i in state.items) {
+            if (state.items[i].id == id) return i;
         }
     };
 
@@ -109,7 +109,7 @@ export default function Carousel(props) {
                 <div className="col-xl-40 col-xxl-38">
                     <div className="left-side">
                         <Slider {...settingsPicture} ref={refPicture}>
-                            {props.auction.lots.map((item, index) => (
+                            {state.items.map((item, index) => (
                                 <div key={index}>
                                     <Left item={item} {...props} />
                                 </div>
@@ -120,7 +120,7 @@ export default function Carousel(props) {
                 <div className="col-xl-20 col-xxl-22">
                     <div className="right-side">
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
-                            {props.auction.lots.map((item, index) => (
+                            {state.items.map((item, index) => (
                                 <div key={index}>
                                     <Right item={item} {...props} />
                                 </div>

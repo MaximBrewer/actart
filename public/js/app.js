@@ -50852,8 +50852,8 @@ function Carousel(props) {
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 
   var getIndex = function getIndex(id) {
-    for (var i in props.auction.lots) {
-      if (props.auction.lots[i].id == id) return i;
+    for (var i in state.items) {
+      if (state.items[i].id == id) return i;
     }
   };
 
@@ -50914,7 +50914,7 @@ function Carousel(props) {
     className: "left-side"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsPicture, {
     ref: refPicture
-  }), props.auction.lots.map(function (item, index) {
+  }), state.items.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Left__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
@@ -50926,7 +50926,7 @@ function Carousel(props) {
     className: "right-side"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsAnnounce, {
     ref: refAnnounce
-  }), props.auction.lots.map(function (item, index) {
+  }), state.items.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Right__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
