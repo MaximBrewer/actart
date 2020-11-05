@@ -50844,7 +50844,7 @@ function Carousel(props) {
     });
     refPicture.current.slickGoTo(getIndex(state.id), true);
     refAnnounce.current.slickGoTo(getIndex(state.id), true);
-  }, [id]);
+  }, [state.id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 

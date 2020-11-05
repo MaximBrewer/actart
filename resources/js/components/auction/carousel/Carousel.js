@@ -19,7 +19,7 @@ export default function Carousel(props) {
         
         refPicture.current.slickGoTo(getIndex(state.id), true);
         refAnnounce.current.slickGoTo(getIndex(state.id), true);
-    }, [id]);
+    }, [state.id]);
 
     const refPicture = useRef();
     const refAnnounce = useRef();
