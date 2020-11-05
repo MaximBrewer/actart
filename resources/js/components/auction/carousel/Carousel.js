@@ -13,8 +13,12 @@ export default function Carousel(props) {
 
     useEffect(() => {
         console.log(
-            state.id,
-            getIndex(state.id),
+            state.id
+        );
+        console.log(
+            getIndex(state.id)
+        );
+        console.log(
             state.items[getIndex(state.id)]
         );
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
