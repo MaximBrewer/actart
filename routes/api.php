@@ -67,7 +67,7 @@ Route::name('api.')->namespace('Api')->group(function () {
             Route::post('logout', 'LogoutController@logout')->name('logout');
             Route::patch('profile/favorites/{action}/{id}', 'ProfileController@favorites')->name('profile.favorites');
 
-            Route::middleware('is_admin')->group(function () {
+            // Route::middleware('is_admin')->group(function () {
                 Route::group(['prefix' => 'auction/{id}/admin'], function () {
                     Route::patch('start', 'AuctionController@start');
                     Route::patch('lastchance', 'AuctionController@lastchance');
@@ -75,7 +75,7 @@ Route::name('api.')->namespace('Api')->group(function () {
                     Route::patch('nextlot', 'AuctionController@nextlot');
                     Route::patch('finish', 'AuctionController@finish');
                 });
-            });
+            // });
 
             Route::namespace('Auth')->group(function () {
                 Route::get('profile', 'ProfileController@index')->name('profile');
