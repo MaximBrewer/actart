@@ -11,6 +11,8 @@ export default function Carousel(props) {
         id: props.id
     });
 
+    console.log(state)
+
     useEffect(() => {
         console.log(
             state.id

@@ -50837,6 +50837,7 @@ function Carousel(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  console.log(state);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     console.log(state.id);
     console.log(getIndex(state.id));
