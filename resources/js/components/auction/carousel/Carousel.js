@@ -8,7 +8,7 @@ import __ from "../../../utils/trans";
 export default function Carousel(props) {
     const [state, setState] = useState({
         items: props.auction.lots,
-        id: props.id
+        id: props.itemId
     });
 
     useEffect(() => {

@@ -50831,7 +50831,7 @@ function _arrayWithHoles(arr) {
 function Carousel(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     items: props.auction.lots,
-    id: props.id
+    id: props.itemId
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
@@ -51494,15 +51494,16 @@ function _extends() {
 
 function Center(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
-      id = _useParams.id;
+      id = _useParams.id,
+      lotId = _useParams.lotId;
 
-  var auction = props.auction;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
-    id: id
+    id: id,
+    lotId: lotId
   }))));
 }
 
@@ -52125,16 +52126,16 @@ function _extends() {
 
 function Center(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
-      id = _useParams.id;
+      id = _useParams.id,
+      lotId = _useParams.lotId;
 
-  var auction = props.auction;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
     id: id,
-    items: auction.lots
+    lotId: lotId
   }))));
 }
 
