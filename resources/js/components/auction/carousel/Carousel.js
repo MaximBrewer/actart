@@ -8,6 +8,11 @@ import __ from '../../../utils/trans';
 export default function Carousel(props) {
     const { id } = props;
 
+    const [state, setState] = useState({
+        items: props.items,
+        id: props.id
+    });
+
     useEffect(() => {
         document.title = __('LOT_IN_AUCTION_PAGE_TITLE', {lot_name: state.items[getIndex(id)].title, author_name: state.items[getIndex(id)].author});
         refPicture.current.slickGoTo(getIndex(id), true);
