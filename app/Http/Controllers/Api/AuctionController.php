@@ -61,7 +61,7 @@ class AuctionController extends Controller
         ];
     }
     //
-    public function participate(Request $request, $id)
+    public function participate(Request $request, $lang, $id)
     {
         $user = User::find(Auth::id());
         if (!$user->auctions()->where('auctions.id', $id)->exists()) {
@@ -89,7 +89,7 @@ class AuctionController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function lastchance($id)
+    public function lastchance(Request $request, $lang, $id)
     {
         $auction = Auction::find($id);
         $lot = Lot::where('auction_id', $auction->id)->where('status', 'in_auction')->orderBy('sort', 'ASC')->first();
@@ -104,7 +104,7 @@ class AuctionController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function sold($id)
+    public function sold(Request $request, $lang, $id)
     {
         $auction = Auction::find($id);
         $lot = Lot::where('auction_id', $auction->id)->where('status', 'in_auction')->orderBy('sort', 'ASC')->first();
@@ -123,7 +123,7 @@ class AuctionController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function nextlot($id)
+    public function nextlot(Request $request, $lang, $id)
     {
         $auction = Auction::find($id);
         $this->next($auction);
@@ -157,7 +157,7 @@ class AuctionController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function finish($id)
+    public function finish(Request $request, $lang, $id)
     {
         $auction = Auction::find($id);
         $auction->update([
