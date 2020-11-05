@@ -7,7 +7,7 @@ import __ from "../../../utils/trans";
 
 export default function Carousel(props) {
     const [state, setState] = useState({
-        items: props.auction.items,
+        items: props.auction.lots,
         id: props.id
     });
 

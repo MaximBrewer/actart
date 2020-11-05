@@ -50830,7 +50830,7 @@ function _arrayWithHoles(arr) {
 
 function Carousel(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    items: props.auction.items,
+    items: props.auction.lots,
     id: props.id
   }),
       _useState2 = _slicedToArray(_useState, 2),
