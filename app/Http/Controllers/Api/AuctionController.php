@@ -53,6 +53,13 @@ class AuctionController extends Controller
         ];
     }
 
+    public function announce(Request $request, $lang)
+    {
+        return [
+            'auction' => Auction::announce() ? new AuctionResource(Auction::announce()) : null
+        ];
+    }
+
     public function show(Request $request, $lang, $id)
     {
         $auction = Auction::findOrfail($id);
@@ -113,7 +120,7 @@ class AuctionController extends Controller
         ]);
         $user = User::find($lot->bets[0]->user_id);
         $user->notify(new AuctionWinnerNotification($lot));
-        foreach (User::where('role_id', 1)->get() as $manager) $manager->notify(new ManagerAuctionWinnerNotification($lot, $user));
+        foreach (User::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerAuctionWinnerNotification($lot, $user));
         $this->next($auction);
         return ['auction' => $auction, 'lot' => $lot];
     }

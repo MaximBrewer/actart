@@ -138,7 +138,7 @@ class LotController extends Controller
                 'lot_id' => $lot->id,
                 'blitz' => false
             ]);
-            if ($bet)
+            if ($bet && $lot->status == 'gallery')
                 User::find(Auth::id())->notify(new BeatNotification($lot));
 
             return $newBet;
@@ -162,7 +162,7 @@ class LotController extends Controller
             $lot->update([
                 'status' => 'gsold'
             ]);
-            foreach (User::where('role_id', 1)->get() as $manager) $manager->notify(new ManagerGalleryWinnerNotification($lot, $user));
+            foreach (User::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerGalleryWinnerNotification($lot, $user));
             $user->notify(new GalleryWinnerNotification($lot));
             return ['lot' => new LotResource($lot)];
         }
