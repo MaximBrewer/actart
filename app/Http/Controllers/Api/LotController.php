@@ -25,7 +25,7 @@ use App\Notifications\Manager\GalleryWinner as ManagerGalleryWinnerNotification;
 class LotController extends Controller
 {
     //
-    public function index(Request $request)
+    public function index(Request $request, $lang)
     {
         $lots = Lot::where(function ($query) {
             $query;
@@ -90,7 +90,7 @@ class LotController extends Controller
         ]);
     }
 
-    public function gallery(Request $request)
+    public function gallery(Request $request, $lang)
     {
         $auction = Auction::gallery();
         return [
@@ -98,7 +98,7 @@ class LotController extends Controller
         ];
     }
 
-    public function show($lang, $id)
+    public function show(Request $request, $lang, $id)
     {
         $lot = Lot::findOrfail($id);
         return [
@@ -106,7 +106,7 @@ class LotController extends Controller
         ];
     }
 
-    public function favorites(Request $request)
+    public function favorites(Request $request, $lang)
     {
         $ids = explode(",", $request->get('ids'));
         $lots = Lot::whereIn('id', $ids);
@@ -127,7 +127,7 @@ class LotController extends Controller
         ]);
     }
 
-    public function offer(Request $request, $lot_id, $price)
+    public function offer(Request $request, $lang, $lot_id, $price)
     {
         $lot = Lot::where('id', $lot_id)->whereIn('status', ['in_auction', 'gallery'])->firstOrFail();
         $bet = Bet::where('lot_id', $lot_id)->orderBy('bet', 'DESC')->first();
@@ -146,7 +146,7 @@ class LotController extends Controller
         return [];
     }
 
-    public function blitz(Request $request, $lot_id)
+    public function blitz(Request $request, $lang, $lot_id)
     {
         $user = User::find(Auth::id());
         $lot = Lot::where('id', $lot_id)->where('status', 'gallery')->firstOrFail();
