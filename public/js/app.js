@@ -56788,6 +56788,15 @@ function Waterfall(props) {
         });
       }
     }
+
+    window.addEventListener("remove-lot", removeLot);
+    window.addEventListener("update-lot-status", updateLotStatus);
+    window.addEventListener("create-bet", createBet);
+    return function () {
+      window.removeEventListener("remove-lot", removeLot);
+      window.removeEventListener("update-lot-status", updateLotStatus);
+      window.removeEventListener("create-bet", createBet);
+    };
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (!!data.filterable) {
@@ -56824,16 +56833,6 @@ function Waterfall(props) {
       }
     }
   }, [pathname, items]);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    window.addEventListener("remove-lot", removeLot);
-    window.addEventListener("update-lot-status", updateLotStatus);
-    window.addEventListener("create-bet", createBet);
-    return function () {
-      window.removeEventListener("remove-lot", removeLot);
-      window.removeEventListener("update-lot-status", updateLotStatus);
-      window.removeEventListener("create-bet", createBet);
-    };
-  }, []);
 
   var createBet = function createBet(event) {
     setState(function (prevState) {
@@ -56861,6 +56860,7 @@ function Waterfall(props) {
   };
 
   var updateLotStatus = function updateLotStatus(event) {
+    console.log(event);
     setState(function (prevState) {
       var items = [],
           update = false;
