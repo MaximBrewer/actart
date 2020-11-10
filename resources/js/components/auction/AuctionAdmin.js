@@ -670,7 +670,7 @@ export default function AuctionAdmin(props) {
                                                     </div>
                                                 )}
                                                 {state.auction.status ==
-                                                    "coming"(
+                                                    "coming" && (
                                                         !state.finished ? (
                                                             <div className="user-activity">
                                                                 <h3

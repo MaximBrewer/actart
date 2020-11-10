@@ -48641,7 +48641,7 @@ function AuctionAdmin(props) {
     className: "user-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "py-5 text-center"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTION_HAS_FINISHED"))), state.auction.status == "coming"(!state.finished ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTION_HAS_FINISHED"))), state.auction.status == "coming" && (!state.finished ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "py-5 text-center color-red"
