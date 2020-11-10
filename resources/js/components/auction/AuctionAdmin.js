@@ -116,12 +116,15 @@ export default function AuctionAdmin(props) {
             }
             auction.lots = lots;
 
-            if (update)
+            if (update) {
+                if (auction.current.status != "in_auction")
+                    auction.current = null;
                 return {
                     ...prevState,
-                    auction,
-                    finished
+                    auction: auction,
+                    finished: finished
                 };
+            }
             return prevState;
         });
     };
