@@ -52017,6 +52017,11 @@ function Center(props) {
           update = false,
           finished = prevState.finished;
 
+      if (current.id == event.detail.id) {
+        current.lastchance = event.detail.lastchance;
+        update = true;
+      }
+
       for (var i in auction.lots) {
         var lot = auction.lots[i];
 

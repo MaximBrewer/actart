@@ -11,15 +11,18 @@ export default function Center(props) {
         translation: window.App.translation
     });
 
-
     const updateLotLastChance = event => {
-        console.log(event)
+        console.log(event);
         setState(prevState => {
             let auction = prevState.auction,
                 current = prevState.current,
                 lots = [],
                 update = false,
                 finished = prevState.finished;
+            if (current.id == event.detail.id) {
+                current.lastchance = event.detail.lastchance;
+                update = true;
+            }
             for (let i in auction.lots) {
                 let lot = auction.lots[i];
                 if (lot.id == event.detail.id) {
@@ -112,7 +115,10 @@ export default function Center(props) {
         return () => {
             window.removeEventListener("update-translation", updateTranslation);
             window.removeEventListener("update-lot-status", updateLotStatus);
-            window.removeEventListener("update-lot-lastchance", updateLotLastChance);
+            window.removeEventListener(
+                "update-lot-lastchance",
+                updateLotLastChance
+            );
             window.removeEventListener("create-bet", createBet);
         };
     }, []);
