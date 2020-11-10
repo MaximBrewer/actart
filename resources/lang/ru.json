@@ -220,5 +220,7 @@
     "MODAL_RP_PASSWORD_CONFIRMATON": "Повторите пароль",
     "MODAL_RP_LOGIN": "Автоизация",
     
-    "SUBCRIBED_MESSAGE": "Вы подписались на рассылку новостей"
+    "SUBCRIBED_MESSAGE": "Вы подписались на рассылку новостей",
+
+    "ADMIN_PROFILE_AUCTIONS_COMING": "Ближайшие аукционы"
 }

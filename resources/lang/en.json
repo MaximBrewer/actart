@@ -122,5 +122,7 @@
     "MODAL_RP_PASSWORD_CONFIRMATON": "Confirm password",
     "MODAL_RP_LOGIN": "Log in",
 
-    "SUBCRIBED_MESSAGE": "You have subscribed to the newsletter"
+    "SUBCRIBED_MESSAGE": "You have subscribed to the newsletter",
+
+    "ADMIN_PROFILE_AUCTIONS_COMING": "Closest auctions"
 }
