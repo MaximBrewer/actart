@@ -185,6 +185,7 @@ $options->sort->field : 'sort', isset($options->sort) ? $options->sort->directio
     </li>
     @endforeach
 </ul>
+<h4>*Обязательно перемешайте лоты!*</h4>
 
 
 @section("javascript_add")

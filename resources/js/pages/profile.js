@@ -21,6 +21,8 @@ function Profile(props) {
     setIntendedUrl(null);
   };
 
+  console.log(window.App)
+
   return (
     <section className="profile-section">
       <div className="container">
@@ -30,6 +32,7 @@ function Profile(props) {
             <AuctionsProfile />
           </div>
           <div className="col col-xl-20 col-xxl-22">
+
             <h5 className="h5">{__('Profile data')}</h5>
             <hr />
             <dl>
