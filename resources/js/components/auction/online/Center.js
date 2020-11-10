@@ -12,7 +12,6 @@ export default function Center(props) {
     });
 
     const updateLotLastChance = event => {
-        console.log(event);
         setState(prevState => {
             let auction = prevState.auction,
                 current = prevState.current,
