@@ -49,7 +49,7 @@ class AuctionWinner extends Notification
             ->subject('Act-Art.ru - покупка лота')
             ->greeting("Покупка лота на сайте Act-Art.ru.")
             ->line('Лот: ' . $this->lot->title)
-            ->line('Ставка: ' . $this->lot->bets[0]->bet . '₽')
+            ->line('Ставка: ' . $this->lot->bets[0]->bet . '$')
             ->action('Посмотреть', "http://act-art.ru/admin/lots/" . $this->lot->id)
             ->line('Пользователь: ' . $this->user->id)
             ->line('E-mail: ' . $this->user->email)
