@@ -6,7 +6,6 @@ import Parser from "html-react-parser";
 export default function Center(props) {
     const [state, setState] = useState({
         auction: props.auction,
-        current: props.auction.current,
         finished: false,
         translation: window.App.translation
     });
@@ -14,12 +13,11 @@ export default function Center(props) {
     const updateLotLastChance = event => {
         setState(prevState => {
             let auction = prevState.auction,
-                current = prevState.current,
                 lots = [],
                 update = false,
                 finished = prevState.finished;
-            if (current && current.id == event.detail.id) {
-                current.lastchance = event.detail.lastchance;
+            if (auction.current && auction.current.id == event.detail.id) {
+                auction.current.lastchance = event.detail.lastchance;
                 update = true;
             }
             for (let i in auction.lots) {
@@ -35,7 +33,6 @@ export default function Center(props) {
                 return {
                     ...prevState,
                     auction: auction,
-                    current: current,
                     finished: finished
                 };
             return prevState;
@@ -47,17 +44,17 @@ export default function Center(props) {
             let auction = prevState.auction,
                 lots = [],
                 update = false,
-                current = prevState.current,
                 finished = prevState.finished;
-            if (current && current.id == event.detail.id) {
-                current.status = event.detail.status;
+            if (auction.current && auction.current.id == event.detail.id) {
+                auction.current.status = event.detail.status;
                 update = true;
             }
             for (let i in auction.lots) {
                 let lot = auction.lots[i];
                 if (lot.id == event.detail.id) {
                     lot.status = event.detail.status;
-                    if (event.detail.status == "in_auction") current = lot;
+                    if (event.detail.status == "in_auction")
+                        auction.current = lot;
                     update = true;
                 }
                 lots.push(lot);
@@ -67,7 +64,6 @@ export default function Center(props) {
                 return {
                     ...prevState,
                     auction,
-                    current,
                     finished
                 };
             return prevState;
@@ -78,15 +74,14 @@ export default function Center(props) {
         setState(prevState => {
             let auction = prevState.auction,
                 lots = [],
-                update = false,
-                current = prevState.current;
+                update = false;
             for (let i in auction.lots) {
                 let lot = auction.lots[i],
                     bets = lot.bets;
                 if (lot.id == event.detail.bet.lot_id) {
                     bets.unshift(event.detail.bet);
                     lot.price = event.detail.bet.bet;
-                    if (lot.id == current.id) current = lot;
+                    if (lot.id == auction.current.id) auction.current = lot;
                     update = true;
                 }
                 lots.push(lot);
@@ -95,8 +90,7 @@ export default function Center(props) {
             if (update) {
                 return {
                     ...prevState,
-                    auction: auction,
-                    current: current
+                    auction: auction
                 };
             }
             return prevState;
@@ -151,7 +145,7 @@ export default function Center(props) {
                                             justifyContent: "flex-end"
                                         }}
                                     >
-                                        {state.current ? (
+                                        {state.auction.current ? (
                                             <div
                                                 className="py-2"
                                                 style={{
@@ -162,7 +156,8 @@ export default function Center(props) {
                                                 <div
                                                     className="image"
                                                     alt={
-                                                        state.current.thumbnail
+                                                        state.auction.current
+                                                            .thumbnail
                                                     }
                                                     style={{
                                                         display: "block",
@@ -178,7 +173,8 @@ export default function Center(props) {
                                                             "#ECEDED",
                                                         backgroundImage:
                                                             'url("' +
-                                                            state.current
+                                                            state.auction
+                                                                .current
                                                                 .thumbnail +
                                                             '")'
                                                     }}
@@ -193,8 +189,11 @@ export default function Center(props) {
                         </div>
                         <div className="col-xl-20 col-xxl-22">
                             <div className="right-side">
-                                {state.current ? (
-                                    <Right item={state.current} {...props} />
+                                {state.auction.current ? (
+                                    <Right
+                                        item={state.auction.current}
+                                        {...props}
+                                    />
                                 ) : (
                                     <h3
                                         className={`py-5 text-center color-red`}

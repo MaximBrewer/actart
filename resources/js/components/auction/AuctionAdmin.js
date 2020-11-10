@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import __ from "../../utils/trans";
 import Parser from "html-react-parser";
 import Waterfall from "../waterfall/Waterfall";
-import { useAuth } from "../../context/auth";
 
 export default function AuctionAdmin(props) {
     const startAuction = e => {
@@ -85,12 +84,10 @@ export default function AuctionAdmin(props) {
 
     const { req } = props;
     const { id } = useParams();
-    const { initializing, currentUser, setCurrentUser } = useAuth();
 
     const [state, setState] = useState({
         auction: null,
         lots: [],
-        current: null,
         next: null,
         translation: window.App.translation,
         finished: false
@@ -101,29 +98,28 @@ export default function AuctionAdmin(props) {
             let auction = prevState.auction,
                 lots = [],
                 update = false,
-                current = prevState.current,
                 finished = prevState.finished;
-            console.log(current);
-            if (current && current.id == event.detail.id) {
-                current.status = event.detail.status;
+
+            if (auction.current && auction.current.id == event.detail.id) {
+                auction.current.status = event.detail.status;
                 update = true;
             }
             for (let i in auction.lots) {
                 let lot = auction.lots[i];
                 if (lot.id == event.detail.id) {
                     lot.status = event.detail.status;
-                    if (event.detail.status == "in_auction") current = lot;
+                    if (event.detail.status == "in_auction")
+                        auction.current = lot;
                     update = true;
                 }
                 lots.push(lot);
             }
             auction.lots = lots;
-            console.log(current, update);
+
             if (update)
                 return {
                     ...prevState,
                     auction,
-                    current,
                     finished
                 };
             return prevState;

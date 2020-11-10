@@ -48058,7 +48058,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! html-react-parser */ "./node_modules/html-react-parser/index.js");
 /* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(html_react_parser__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
-/* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../context/auth */ "./resources/js/context/auth.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -48246,7 +48245,6 @@ function _defineProperty(obj, key, value) {
 
 
 
-
 function AuctionAdmin(props) {
   var startAuction = function startAuction(e) {
     e.preventDefault();
@@ -48306,15 +48304,9 @@ function AuctionAdmin(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id;
 
-  var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_5__["useAuth"])(),
-      initializing = _useAuth.initializing,
-      currentUser = _useAuth.currentUser,
-      setCurrentUser = _useAuth.setCurrentUser;
-
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     auction: null,
     lots: [],
-    current: null,
     next: null,
     translation: window.App.translation,
     finished: false
@@ -48328,12 +48320,10 @@ function AuctionAdmin(props) {
       var auction = prevState.auction,
           lots = [],
           update = false,
-          current = prevState.current,
           finished = prevState.finished;
-      console.log(current);
 
-      if (current && current.id == event.detail.id) {
-        current.status = event.detail.status;
+      if (auction.current && auction.current.id == event.detail.id) {
+        auction.current.status = event.detail.status;
         update = true;
       }
 
@@ -48342,7 +48332,7 @@ function AuctionAdmin(props) {
 
         if (lot.id == event.detail.id) {
           lot.status = event.detail.status;
-          if (event.detail.status == "in_auction") current = lot;
+          if (event.detail.status == "in_auction") auction.current = lot;
           update = true;
         }
 
@@ -48350,10 +48340,8 @@ function AuctionAdmin(props) {
       }
 
       auction.lots = lots;
-      console.log(current, update);
       if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
         auction: auction,
-        current: current,
         finished: finished
       });
       return prevState;
@@ -51958,7 +51946,6 @@ function _arrayWithHoles(arr) {
 function Center(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     auction: props.auction,
-    current: props.auction.current,
     finished: false,
     translation: window.App.translation
   }),
@@ -51969,13 +51956,12 @@ function Center(props) {
   var updateLotLastChance = function updateLotLastChance(event) {
     setState(function (prevState) {
       var auction = prevState.auction,
-          current = prevState.current,
           lots = [],
           update = false,
           finished = prevState.finished;
 
-      if (current && current.id == event.detail.id) {
-        current.lastchance = event.detail.lastchance;
+      if (auction.current && auction.current.id == event.detail.id) {
+        auction.current.lastchance = event.detail.lastchance;
         update = true;
       }
 
@@ -51993,7 +51979,6 @@ function Center(props) {
       auction.lots = lots;
       if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
         auction: auction,
-        current: current,
         finished: finished
       });
       return prevState;
@@ -52005,11 +51990,10 @@ function Center(props) {
       var auction = prevState.auction,
           lots = [],
           update = false,
-          current = prevState.current,
           finished = prevState.finished;
 
-      if (current && current.id == event.detail.id) {
-        current.status = event.detail.status;
+      if (auction.current && auction.current.id == event.detail.id) {
+        auction.current.status = event.detail.status;
         update = true;
       }
 
@@ -52018,7 +52002,7 @@ function Center(props) {
 
         if (lot.id == event.detail.id) {
           lot.status = event.detail.status;
-          if (event.detail.status == "in_auction") current = lot;
+          if (event.detail.status == "in_auction") auction.current = lot;
           update = true;
         }
 
@@ -52028,7 +52012,6 @@ function Center(props) {
       auction.lots = lots;
       if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
         auction: auction,
-        current: current,
         finished: finished
       });
       return prevState;
@@ -52039,8 +52022,7 @@ function Center(props) {
     setState(function (prevState) {
       var auction = prevState.auction,
           lots = [],
-          update = false,
-          current = prevState.current;
+          update = false;
 
       for (var i in auction.lots) {
         var lot = auction.lots[i],
@@ -52049,7 +52031,7 @@ function Center(props) {
         if (lot.id == event.detail.bet.lot_id) {
           bets.unshift(event.detail.bet);
           lot.price = event.detail.bet.bet;
-          if (lot.id == current.id) current = lot;
+          if (lot.id == auction.current.id) auction.current = lot;
           update = true;
         }
 
@@ -52060,8 +52042,7 @@ function Center(props) {
 
       if (update) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
-          auction: auction,
-          current: current
+          auction: auction
         });
       }
 
@@ -52114,7 +52095,7 @@ function Center(props) {
       display: "flex",
       justifyContent: "flex-end"
     }
-  }, state.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "py-2",
     style: {
       maxWidth: "20rem",
@@ -52122,7 +52103,7 @@ function Center(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "image",
-    alt: state.current.thumbnail,
+    alt: state.auction.current.thumbnail,
     style: {
       display: "block",
       position: "relative",
@@ -52131,14 +52112,14 @@ function Center(props) {
       backgroundPosition: "right bottom",
       paddingTop: "65%",
       backgroundColor: "#ECEDED",
-      backgroundImage: 'url("' + state.current.thumbnail + '")'
+      backgroundImage: 'url("' + state.auction.current.thumbnail + '")'
     }
   })) : "")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right-side"
-  }, state.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_blocks_Right__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
-    item: state.current
+  }, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_blocks_Right__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
+    item: state.auction.current
   }, props)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "py-5 text-center color-red"
   }, !state.finished ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTION_WILL_START_SOON") : Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTION_HAS_FINISHED"))))))));
