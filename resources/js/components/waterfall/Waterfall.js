@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EntityGrid from "./EntityGrid";
 import { Link, useLocation } from "react-router-dom";
-import __ from '../../utils/trans';
+import __ from "../../utils/trans";
 
 export default function Waterfall(props) {
     const { pathname } = useLocation();
@@ -27,7 +27,7 @@ export default function Waterfall(props) {
         setState(prevState => {
             return {
                 ...prevState,
-                items: prevState.items.sort(function (a, b) {
+                items: prevState.items.sort(function(a, b) {
                     if (order == "asc") return a[field] > b[field] ? 1 : -1;
                     else return b[field] > a[field] ? 1 : -1;
                 }),
@@ -93,6 +93,14 @@ export default function Waterfall(props) {
                 });
             }
         }
+        window.addEventListener("remove-lot", removeLot);
+        window.addEventListener("update-lot-status", updateLotStatus);
+        window.addEventListener("create-bet", createBet);
+        return () => {
+            window.removeEventListener("remove-lot", removeLot);
+            window.removeEventListener("update-lot-status", updateLotStatus);
+            window.removeEventListener("create-bet", createBet);
+        };
     }, []);
 
     useEffect(() => {
@@ -119,73 +127,63 @@ export default function Waterfall(props) {
         }
     }, [pathname, items]);
 
-    useEffect(() => {
-        window.addEventListener("remove-lot", removeLot);
-        window.addEventListener("update-lot-status", updateLotStatus);
-        window.addEventListener("create-bet", createBet);
-        return () => {
-            window.removeEventListener("remove-lot", removeLot);
-            window.removeEventListener("update-lot-status", updateLotStatus);
-            window.removeEventListener("create-bet", createBet);
-        }
-    }, []);
-
-
     const createBet = event => {
         setState(prevState => {
-            let items = [], update = false;
+            let items = [],
+                update = false;
             for (let i in prevState.items) {
-                let lot = prevState.items[i], bets = lot.bets;
+                let lot = prevState.items[i],
+                    bets = lot.bets;
                 if (lot.id == event.detail.bet.id) {
                     bets.unshift(event.detail.bet);
                     lot.price = event.detail.bet.bet;
                     update = true;
                 }
-                items.push(lot)
+                items.push(lot);
             }
             if (update)
                 return {
                     ...prevState,
                     items: items
                 };
-            return prevState
-        })
+            return prevState;
+        });
     };
 
     const updateLotStatus = event => {
+        console.log(event)
         setState(prevState => {
-            let items = [], update = false;
+            let items = [],
+                update = false;
             for (let i in prevState.items) {
                 let lot = prevState.items[i];
                 if (lot.id == event.detail.id) {
                     lot.status = event.detail.status;
                     update = true;
                 }
-                items.push(lot)
+                items.push(lot);
             }
             if (update)
                 return {
                     ...prevState,
                     items: items
                 };
-            return prevState
+            return prevState;
         });
     };
 
     const removeLot = event => {
-
         setState(prevState => {
             let lots = [];
             for (let item of prevState.items) {
-                if (event.detail.id != item.id)
-                    lots.push(item)
+                if (event.detail.id != item.id) lots.push(item);
             }
             return {
                 ...prevState,
                 items: lots
-            }
-        })
-    }
+            };
+        });
+    };
 
     return (
         <div className="waterfall-outer row">
@@ -304,35 +302,35 @@ export default function Waterfall(props) {
                                                     {item.title}
                                                 </Link>
                                             ) : (
-                                                    <a
-                                                        className={
-                                                            state.filter[
-                                                                option.id
-                                                            ] == item.id
-                                                                ? `active`
-                                                                : ``
-                                                        }
-                                                        href="#"
-                                                        onClick={e => {
-                                                            e.preventDefault();
-                                                            state.filter[
-                                                                option.id
-                                                            ] == undefined ||
-                                                                state.filter[
-                                                                option.id
-                                                                ] != item.id
-                                                                ? setFilter(
-                                                                    option.id,
-                                                                    item.id
-                                                                )
-                                                                : delFilter(
-                                                                    option.id
-                                                                );
-                                                        }}
-                                                    >
-                                                        {item.title}
-                                                    </a>
-                                                )}
+                                                <a
+                                                    className={
+                                                        state.filter[
+                                                            option.id
+                                                        ] == item.id
+                                                            ? `active`
+                                                            : ``
+                                                    }
+                                                    href="#"
+                                                    onClick={e => {
+                                                        e.preventDefault();
+                                                        state.filter[
+                                                            option.id
+                                                        ] == undefined ||
+                                                        state.filter[
+                                                            option.id
+                                                        ] != item.id
+                                                            ? setFilter(
+                                                                  option.id,
+                                                                  item.id
+                                                              )
+                                                            : delFilter(
+                                                                  option.id
+                                                              );
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </a>
+                                            )}
                                         </li>
                                     ))}
                                     {option.id == "categories" ? (
@@ -347,8 +345,8 @@ export default function Waterfall(props) {
                                             </Link>
                                         </li>
                                     ) : (
-                                            ``
-                                        )}
+                                        ``
+                                    )}
                                 </ul>
                             </li>
                         ))}
