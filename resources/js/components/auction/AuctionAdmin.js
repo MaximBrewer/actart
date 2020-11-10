@@ -232,7 +232,7 @@ export default function AuctionAdmin(props) {
     const countLots = lots => {
         let cnt = 0;
         for (let lot of lots)
-            lot.status == "auction" || (lot.status == "in_auction" && cnt++);
+            (lot.status == "auction" || lot.status == "in_auction") && cnt++;
         return cnt;
     };
 
@@ -264,8 +264,8 @@ export default function AuctionAdmin(props) {
                     </section>
                     <section className={`top-bar`}>
                         <div className="container">
-                            торгуется {state.auction.members} человек(а) /
-                            лот(а/ов) {state.auction.lots.length} / осталось{" "}
+                            участников: {state.auction.members} / лотов:{" "}
+                            {state.auction.lots.length} / осталось:{" "}
                             {countLots(state.auction.lots)}
                         </div>
                     </section>
