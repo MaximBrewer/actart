@@ -73,7 +73,7 @@ function Profile(props) {
                         {currentUser.role.id == 1 ? (
                             <React.Fragment>
                                 <hr />
-                                <h4 class="h4">
+                                <h4 className="h4">
                                     {__("ADMIN_PROFILE_AUCTIONS_COMING")}
                                 </h4>
                                 <hr />
