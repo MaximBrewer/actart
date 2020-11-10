@@ -56873,7 +56873,7 @@ function Waterfall(props) {
           update = true;
         }
 
-        items.push(lot);
+        !!status ? lot.status == status && items.push(lot) : items.push(lot);
       }
 
       if (update) return _objectSpread(_objectSpread({}, prevState), {}, {

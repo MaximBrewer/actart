@@ -151,7 +151,7 @@ export default function Waterfall(props) {
     };
 
     const updateLotStatus = event => {
-        console.log(event)
+        console.log(event);
         setState(prevState => {
             let items = [],
                 update = false;
@@ -161,7 +161,9 @@ export default function Waterfall(props) {
                     lot.status = event.detail.status;
                     update = true;
                 }
-                items.push(lot);
+                !!status
+                    ? lot.status == status && items.push(lot)
+                    : items.push(lot);
             }
             if (update)
                 return {
