@@ -117,6 +117,7 @@ export default function AuctionAdmin(props) {
                 lots.push(lot);
             }
             auction.lots = lots;
+            console.log(current, update)
             if (update)
                 return {
                     ...prevState,

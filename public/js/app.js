@@ -48349,6 +48349,7 @@ function AuctionAdmin(props) {
       }
 
       auction.lots = lots;
+      console.log(current, update);
       if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
         auction: auction,
         current: current,
