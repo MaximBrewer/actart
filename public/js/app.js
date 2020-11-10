@@ -52008,6 +52008,35 @@ function Center(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var updateLotLastChance = function updateLotLastChance(event) {
+    setState(function (prevState) {
+      var auction = prevState.auction,
+          current = prevState.current,
+          lots = [],
+          update = false,
+          finished = prevState.finished;
+
+      for (var i in auction.lots) {
+        var lot = auction.lots[i];
+
+        if (lot.id == event.detail.id) {
+          lot.lastchance = event.detail.lastchance;
+          update = true;
+        }
+
+        lots.push(lot);
+      }
+
+      auction.lots = lots;
+      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
+        auction: auction,
+        current: current,
+        finished: finished
+      });
+      return prevState;
+    });
+  };
+
   var updateLotStatus = function updateLotStatus(event) {
     setState(function (prevState) {
       var auction = prevState.auction,
@@ -52083,12 +52112,12 @@ function Center(props) {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     window.addEventListener("update-translation", updateTranslation);
     window.addEventListener("update-lot-status", updateLotStatus);
-    window.addEventListener("update-lot-chance", updateLotStatus);
+    window.addEventListener("update-lot-lastchance", updateLotLastChance);
     window.addEventListener("create-bet", createBet);
     return function () {
       window.removeEventListener("update-translation", updateTranslation);
       window.removeEventListener("update-lot-status", updateLotStatus);
-      window.removeEventListener("update-lot-chance", updateLotStatus);
+      window.removeEventListener("update-lot-lastchance", updateLotLastChance);
       window.removeEventListener("create-bet", createBet);
     };
   }, []);

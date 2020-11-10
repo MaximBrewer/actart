@@ -11,6 +11,34 @@ export default function Center(props) {
         translation: window.App.translation
     });
 
+
+    const updateLotLastChance = event => {
+        setState(prevState => {
+            let auction = prevState.auction,
+                current = prevState.current,
+                lots = [],
+                update = false,
+                finished = prevState.finished;
+            for (let i in auction.lots) {
+                let lot = auction.lots[i];
+                if (lot.id == event.detail.id) {
+                    lot.lastchance = event.detail.lastchance;
+                    update = true;
+                }
+                lots.push(lot);
+            }
+            auction.lots = lots;
+            if (update)
+                return {
+                    ...prevState,
+                    auction: auction,
+                    current: current,
+                    finished: finished
+                };
+            return prevState;
+        });
+    };
+
     const updateLotStatus = event => {
         setState(prevState => {
             let auction = prevState.auction,
@@ -78,12 +106,12 @@ export default function Center(props) {
     useEffect(() => {
         window.addEventListener("update-translation", updateTranslation);
         window.addEventListener("update-lot-status", updateLotStatus);
-        window.addEventListener("update-lot-chance", updateLotStatus);
+        window.addEventListener("update-lot-lastchance", updateLotLastChance);
         window.addEventListener("create-bet", createBet);
         return () => {
             window.removeEventListener("update-translation", updateTranslation);
             window.removeEventListener("update-lot-status", updateLotStatus);
-            window.removeEventListener("update-lot-chance", updateLotStatus);
+            window.removeEventListener("update-lot-lastchance", updateLotLastChance);
             window.removeEventListener("create-bet", createBet);
         };
     }, []);
