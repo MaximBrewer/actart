@@ -264,8 +264,8 @@ export default function AuctionAdmin(props) {
                     </section>
                     <section className={`top-bar`}>
                         <div className="container">
-                            участников: {state.auction.members} / лотов:{" "}
-                            {state.auction.lots.length} / осталось:{" "}
+                            участников: {state.auction.members} | лотов:{" "}
+                            {state.auction.lots.length} | осталось:{" "}
                             {countLots(state.auction.lots)}
                         </div>
                     </section>

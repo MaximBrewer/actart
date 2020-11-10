@@ -48503,7 +48503,7 @@ function AuctionAdmin(props) {
     className: "top-bar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, "\u0443\u0447\u0430\u0441\u0442\u043D\u0438\u043A\u043E\u0432: ", state.auction.members, " / \u043B\u043E\u0442\u043E\u0432:", " ", state.auction.lots.length, " / \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C:", " ", countLots(state.auction.lots))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "\u0443\u0447\u0430\u0441\u0442\u043D\u0438\u043A\u043E\u0432: ", state.auction.members, " | \u043B\u043E\u0442\u043E\u0432:", " ", state.auction.lots.length, " | \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C:", " ", countLots(state.auction.lots))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
