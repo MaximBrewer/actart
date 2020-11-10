@@ -3,7 +3,6 @@ import Waterfall from "../waterfall/Waterfall";
 import { Link, useParams } from "react-router-dom";
 import Carousel from "./carousel/Carousel";
 import __ from '../../utils/trans';
-import useDocumentTitle from '../../components/document-title';
 
 export default function Lot(props) {
     const { id } = useParams();

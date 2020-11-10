@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Masonry from "react-masonry-css";
 import AuctionTizer from "./tizers/Auction.js";
 import GalleryTizer from "./tizers/Gallery.js";

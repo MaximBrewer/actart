@@ -45,10 +45,14 @@ export default function Center(props) {
     const updateLotStatus = event => {
         setState(prevState => {
             let auction = prevState.auction,
-                current = prevState.current,
                 lots = [],
                 update = false,
+                current = prevState.current,
                 finished = prevState.finished;
+            if (current.id == event.detail.id) {
+                current.status = event.detail.status;
+                update = true;
+            }
             for (let i in auction.lots) {
                 let lot = auction.lots[i];
                 if (lot.id == event.detail.id) {
@@ -62,9 +66,9 @@ export default function Center(props) {
             if (update)
                 return {
                     ...prevState,
-                    auction: auction,
-                    current: current,
-                    finished: finished
+                    auction,
+                    current,
+                    finished
                 };
             return prevState;
         });

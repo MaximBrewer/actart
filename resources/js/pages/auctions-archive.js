@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import __ from '../utils/trans';
 import useDocumentTitle from '../components/document-title';
-import client from '../api/client';
 import AuctionPreviewLeft from "../components/auction/archive/blocks/AuctionPreviewLeft.js";
 import AuctionPreviewRight from "../components/auction/archive/blocks/AuctionPreviewRight";
 

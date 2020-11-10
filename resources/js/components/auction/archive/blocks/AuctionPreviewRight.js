@@ -1,6 +1,5 @@
 import React from "react";
 import Parser from "html-react-parser";
-import Countdown from "../../Countdown";
 import __ from '../../../../utils/trans';
 import { Link } from 'react-router-dom';
 

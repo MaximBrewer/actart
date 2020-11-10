@@ -5,7 +5,7 @@ import { useAuth } from "../../../context/auth";
 
 export default function Right(props) {
     const { req } = props;
-    const { initializing, currentUser, setCurrentUser } = useAuth();
+    const { currentUser } = useAuth();
 
     const [state, setState] = useState({
         item: props.item

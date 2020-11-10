@@ -1,17 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
-import { useAuth } from '../context/auth';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import __ from '../utils/trans';
-import Marquee from '../components/marquee'
-import Announce from '../components/announce'
 import YandexShare from 'react-yandex-share';
 import useDocumentTitle from '../components/document-title';
 import Parser from "../utils/parser";
-import Auctions from "../components/auction/Auctions";
 import MovingGallery from "../components/moving/Gallery";
 import Carousel from "../components/carousel/Carousel";
-import WaterfallAjax from "../components/waterfall/WaterfallAjax";
-import client from '../api/client';
 import App from "../router";
 
 export default function Eventtem(props) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Waterfall from '../waterfall/Waterfall';
 import { useParams, Link } from 'react-router-dom';
 import __ from '../../utils/trans';

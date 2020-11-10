@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import __ from '../../../utils/trans';
-import Countdown from "../Countdown";
 
 export default function ArchiveBottom(props) {
     return (

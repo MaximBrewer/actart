@@ -1,7 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import Echo from "laravel-echo";
-// window.Pusher = require('pusher-js');
 import axios from "axios";
 import Flash from "./helpers/Flash";
 window.axios = axios;
@@ -13,46 +11,6 @@ window.grid = {
     xl: 1440,
     xxl: 100000,
 };
-
-// window.Echo = new Echo({
-//   broadcaster: 'pusher',
-//   key: 'c3601b3f39bca77b9879'
-// });
-
-// window.io = require("socket.io-client");
-// if (typeof io !== "undefined") {
-//   window.Echo = new Echo({
-//     broadcaster: "socket.io",
-//     host: window.location.hostname + ":6001",
-//     headers: {
-//       "X-CSRF-TOKEN": document.getElementsByName("csrf-token").content
-//     }
-//   });
-// window.Echo.channel("Auction").listen("Auction", function (e) {
-//   window.dispatchEvent(
-//     new CustomEvent("auction", {
-//       detail: {
-//         auction: e.auction
-//       }
-//     })
-//   );
-// });
-// window.Echo.channel("Lot").listen("Lot", function (e) {
-//   window.dispatchEvent(
-//     new CustomEvent("lot", {
-//       detail: {
-//         lot: e.lot
-//       }
-//     })
-//   );
-// });
-// }
-
-// Enable pusher logging - don't include this in production
-// Pusher.logToConsole = true;
-
-// Enable pusher logging - don't include this in production
-// Pusher.logToConsole = true;
 
 var pusher = new Pusher("9681c44bc120601864d3", {
     cluster: "eu",

@@ -14,7 +14,6 @@ import AuctionArchiveBottom from "./archive/Bottom.js";
 import AuctionArchiveLotsList from "./archive/LotsList.js";
 import useDocumentTitle from '../../components/document-title';
 import __ from '../../utils/trans';
-import client from '../../api/client';
 
 export default function AuctionBase(props) { 
     useDocumentTitle(__('AUCTIONS_PAGE_TITLE'));

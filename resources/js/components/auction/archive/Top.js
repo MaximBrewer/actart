@@ -1,6 +1,5 @@
 import React from "react";
 import __ from '../../../utils/trans';
-import Countdown from "../Countdown";
 
 export default function ArchiveTop(props) {
     const { auction } = props;

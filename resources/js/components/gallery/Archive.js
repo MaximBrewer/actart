@@ -1,6 +1,5 @@
 import React from "react";
 import Waterfall from "../waterfall/Waterfall";
-import { Link, useParams } from "react-router-dom";
 import __ from '../../utils/trans';
 import useDocumentTitle from '../../components/document-title';
 

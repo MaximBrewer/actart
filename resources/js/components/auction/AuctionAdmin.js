@@ -98,26 +98,30 @@ export default function AuctionAdmin(props) {
 
     const updateLotStatus = event => {
         setState(prevState => {
-            let auction = { ...prevState.auction },
+            let auction = prevState.auction,
                 lots = [],
                 update = false,
+                current = prevState.current,
                 finished = prevState.finished;
+            if (current.id == event.detail.id) {
+                current.status = event.detail.status;
+                update = true;
+            }
             for (let i in auction.lots) {
                 let lot = auction.lots[i];
                 if (lot.id == event.detail.id) {
                     lot.status = event.detail.status;
-                    if (event.detail.status == "in_auction")
-                        auction.current = lot;
+                    if (event.detail.status == "in_auction") current = lot;
                     update = true;
                 }
                 lots.push(lot);
             }
-
             auction.lots = lots;
             if (update)
                 return {
                     ...prevState,
                     auction,
+                    current,
                     finished
                 };
             return prevState;

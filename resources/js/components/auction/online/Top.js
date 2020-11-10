@@ -1,10 +1,9 @@
 import React from "react";
 import __ from '../../../utils/trans';
 import Countdown from "../Countdown";
-import { Link } from "react-router-dom";
 
 export default function OnlineTop(props) {
-    const { auction, participate } = props;
+    const { auction } = props;
     return (
         <section
             className="auction-announce auction-online"

@@ -1,28 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Favorite, Hammer } from "../../../icons/icons";
-import __ from '../../../utils/trans';
-import { useAuth } from '../../../context/auth';
-import {
-    Link
-} from "react-router-dom";
+import __ from "../../../utils/trans";
+import { Link } from "react-router-dom";
 
 export default function Tizer(props) {
-
     const [state, setState] = useState({
-        item: props.item,
+        item: props.item
     });
 
     const updateLotStatus = event => {
         setState(prevState => {
             let item = { ...prevState.item };
             item.status = event.detail.status;
-            return prevState
+            return prevState;
         });
     };
 
     const createBet = event => {
         setState(prevState => {
-            let item = { ...prevState.item }, update = false;
+            let item = { ...prevState.item },
+                update = false;
             if (item.id == event.detail.bet.lot_id) {
                 item.bets.unshift(event.detail.bet);
                 item.price = event.detail.bet.bet;
@@ -33,8 +30,8 @@ export default function Tizer(props) {
                     ...prevState,
                     item: item
                 };
-            return prevState
-        })
+            return prevState;
+        });
     };
 
     useEffect(() => {
@@ -43,9 +40,8 @@ export default function Tizer(props) {
         return () => {
             window.removeEventListener("update-lot-status", updateLotStatus);
             window.removeEventListener("create-bet", createBet);
-        }
+        };
     }, []);
-
 
     const url =
         state.item.status == "gallery"
@@ -60,7 +56,8 @@ export default function Tizer(props) {
                     style={{
                         backgroundImage: "url(" + state.item.thumbnail + ")",
                         paddingTop:
-                            (state.item.pxheight / state.item.pxwidth) * 100 + "%"
+                            (state.item.pxheight / state.item.pxwidth) * 100 +
+                            "%"
                     }}
                     to={url}
                 >
@@ -77,7 +74,10 @@ export default function Tizer(props) {
                 <div className="price">
                     <Hammer />
                     <span>
-                        ${state.item.bets.length ? state.item.bets[0].bet : state.item.price}
+                        $
+                        {state.item.bets.length
+                            ? state.item.bets[0].bet
+                            : state.item.price}
                     </span>
                 </div>
             </div>
@@ -95,8 +95,8 @@ export default function Tizer(props) {
                     {__("#status-" + state.item.status + "#")}
                 </Link>
             ) : (
-                    ``
-                )}
+                ``
+            )}
         </div>
     );
 }

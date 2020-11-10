@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import __ from '../../../utils/trans';
-import { Favorite, Hammer } from "../../../icons/icons";
+import { Favorite } from "../../../icons/icons";
 
 export default function Tizer(props) {
     const { data, item, req } = props;

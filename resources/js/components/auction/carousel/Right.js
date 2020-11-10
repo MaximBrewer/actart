@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FavoriteBig } from "../../../icons/icons";
 import __ from "../../../utils/trans";
 import { useAuth } from "../../../context/auth";
 
 export default function Right(props) {
     const { req, item, auction } = props;
-    const { initializing, currentUser, setCurrentUser } = useAuth();
+    const { currentUser } = useAuth();
 
     const offer = (id, price) => {
         req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH")

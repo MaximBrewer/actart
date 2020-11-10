@@ -3,12 +3,10 @@ import Slider from "react-slick";
 import Left from "./Left";
 import Right from "./Right";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
-import __ from '../../../utils/trans';
-import { NavLink, Link, useHistory } from 'react-router-dom';
-
+import __ from "../../../utils/trans";
+import { useHistory } from "react-router-dom";
 
 export default function Carousel(props) {
-
     let history = useHistory();
 
     const [state, setState] = useState({
@@ -18,18 +16,21 @@ export default function Carousel(props) {
 
     useEffect(() => {
         window.addEventListener("remove-lot", removeLot);
-        return () => window.removeEventListener("remove-lot", removeLot)
+        return () => window.removeEventListener("remove-lot", removeLot);
     }, []);
 
     const removeLot = event => {
-        history.push('/gallery')
-    }
+        history.push("/gallery");
+    };
 
     useEffect(() => {
-        document.title = __('LOT_IN_GALLERY_PAGE_TITLE', {lot_name: state.items[getIndex(state.id)].title, author_name: state.items[getIndex(state.id)].author});
+        document.title = __("LOT_IN_GALLERY_PAGE_TITLE", {
+            lot_name: state.items[getIndex(state.id)].title,
+            author_name: state.items[getIndex(state.id)].author
+        });
         refPicture.current.slickGoTo(getIndex(state.id, true));
         refAnnounce.current.slickGoTo(getIndex(state.id, true));
-        history.replace('/gallery/lot/' + state.id)
+        history.replace("/gallery/lot/" + state.id);
     }, [state.id]);
 
     const refPicture = useRef();
@@ -53,7 +54,8 @@ export default function Carousel(props) {
 
     const settingsPicture = {
         ...setting,
-        afterChange: (current) => history.replace('/gallery/lot/' + state.items[current].id),
+        afterChange: current =>
+            history.replace("/gallery/lot/" + state.items[current].id),
         beforeChange: (current, next) => {
             let cnt = refPicture.current.props.children.length;
             if (

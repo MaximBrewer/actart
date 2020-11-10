@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EntityGrid from "./EntityGrid";
-import { Link, useParams } from "react-router-dom";
-import __ from '../../utils/trans';
-
+import __ from "../../utils/trans";
 
 export default function WaterfallAjax(props) {
     const { data, query } = props;
@@ -10,7 +8,7 @@ export default function WaterfallAjax(props) {
 
     const getPreviews = () => {
         return [];
-    }
+    };
 
     const [state, setState] = useState({
         photos: getPreviews(),
@@ -128,59 +126,60 @@ export default function WaterfallAjax(props) {
 
     const createBet = event => {
         setState(prevState => {
-            let items = [], update = false;
+            let items = [],
+                update = false;
             for (let i in prevState.items) {
-                let lot = prevState.items[i], bets = lot.bets;
+                let lot = prevState.items[i],
+                    bets = lot.bets;
                 if (lot.id == event.detail.bet.id) {
                     bets.unshift(event.detail.bet);
                     lot.price = event.detail.bet.bet;
                     update = true;
                 }
-                items.push(lot)
+                items.push(lot);
             }
             if (update)
                 return {
                     ...prevState,
                     items: items
                 };
-            return prevState
-        })
+            return prevState;
+        });
     };
 
     const updateLotStatus = event => {
         setState(prevState => {
-            let items = [], update = false;
+            let items = [],
+                update = false;
             for (let i in prevState.items) {
                 let lot = prevState.items[i];
                 if (lot.id == event.detail.id) {
                     lot.status = event.detail.status;
                     update = true;
                 }
-                items.push(lot)
+                items.push(lot);
             }
             if (update)
                 return {
                     ...prevState,
                     items: items
                 };
-            return prevState
+            return prevState;
         });
     };
 
     const removeLot = event => {
-
         setState(prevState => {
             let lots = [];
             for (let item of prevState.items) {
-                if (event.detail.id != item.id)
-                    lots.push(item)
+                if (event.detail.id != item.id) lots.push(item);
             }
             return {
                 ...prevState,
                 items: lots
-            }
-        })
-    }
+            };
+        });
+    };
 
     const setSortBy = (field, order) => {
         setState(prevState => {
@@ -194,12 +193,7 @@ export default function WaterfallAjax(props) {
     };
 
     useEffect(() => {
-        getGallery(
-            state.filter,
-            state.sortBy,
-            state.order,
-            state.options
-        );
+        getGallery(state.filter, state.sortBy, state.order, state.options);
         window.addEventListener("remove-lot", removeLot);
         window.addEventListener("update-lot-status", updateLotStatus);
         window.addEventListener("create-bet", createBet);
@@ -207,16 +201,11 @@ export default function WaterfallAjax(props) {
             window.removeEventListener("remove-lot", removeLot);
             window.removeEventListener("update-lot-status", updateLotStatus);
             window.removeEventListener("create-bet", createBet);
-        }
+        };
     }, []);
 
     useEffect(() => {
-        getGallery(
-            state.filter,
-            state.sortBy,
-            state.order,
-            state.options
-        );
+        getGallery(state.filter, state.sortBy, state.order, state.options);
     }, [query]);
 
     return (
@@ -312,11 +301,7 @@ export default function WaterfallAjax(props) {
                     </div>
                 )}
             </div>
-            <div
-                className={
-                    `col-60 stack-grid`
-                }
-            >
+            <div className={`col-60 stack-grid`}>
                 <EntityGrid
                     columns={columns}
                     items={state.photos}
@@ -340,8 +325,8 @@ export default function WaterfallAjax(props) {
                         </a>
                     </div>
                 ) : (
-                        ""
-                    )}
+                    ""
+                )}
             </div>
         </div>
     );
