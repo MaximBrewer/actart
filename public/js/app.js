@@ -51977,10 +51977,15 @@ function Center(props) {
       }
 
       auction.lots = lots;
-      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
-        auction: auction,
-        finished: finished
-      });
+
+      if (update) {
+        if (auction.current.status != "in_auction") auction.current = null;
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          auction: auction,
+          finished: finished
+        });
+      }
+
       return prevState;
     });
   };
@@ -52010,10 +52015,15 @@ function Center(props) {
       }
 
       auction.lots = lots;
-      if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
-        auction: auction,
-        finished: finished
-      });
+
+      if (update) {
+        if (auction.current.status != "in_auction") auction.current = null;
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          auction: auction,
+          finished: finished
+        });
+      }
+
       return prevState;
     });
   };

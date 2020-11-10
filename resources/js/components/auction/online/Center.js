@@ -29,12 +29,15 @@ export default function Center(props) {
                 lots.push(lot);
             }
             auction.lots = lots;
-            if (update)
+            if (update) {
+                if (auction.current.status != "in_auction")
+                    auction.current = null;
                 return {
                     ...prevState,
                     auction: auction,
                     finished: finished
                 };
+            }
             return prevState;
         });
     };
@@ -60,12 +63,15 @@ export default function Center(props) {
                 lots.push(lot);
             }
             auction.lots = lots;
-            if (update)
+            if (update) {
+                if (auction.current.status != "in_auction")
+                    auction.current = null;
                 return {
                     ...prevState,
                     auction,
                     finished
                 };
+            }
             return prevState;
         });
     };
