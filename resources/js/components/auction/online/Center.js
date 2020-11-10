@@ -9,20 +9,6 @@ export default function Center(props) {
         finished: false,
         translation: window.App.translation
     });
-    
-    useEffect(() => {
-        if (state.auction && state.auction.lots) {
-            let all = true;
-            for (const lot of state.auction.lots) {
-                if (lot.status == "auction" || lot.status == "in_auction")
-                    all = false;
-            }
-            setState(prevState => ({
-                ...prevState,
-                finished: all
-            }));
-        }
-    }, [state]);
 
     const updateLotLastChance = event => {
         setState(prevState => {
@@ -43,11 +29,9 @@ export default function Center(props) {
             }
             auction.lots = lots;
             if (update) {
-                if (auction.current.status != "in_auction")
-                    auction.current = null;
                 return {
                     ...prevState,
-                    auction: auction
+                    auction
                 };
             }
             return prevState;
@@ -75,6 +59,11 @@ export default function Center(props) {
             }
             auction.lots = lots;
             if (update) {
+                let finished = true;
+                for (const lot of auction.lots) {
+                    if (lot.status == "auction" || lot.status == "in_auction")
+                        finished = false;
+                }
                 if (auction.current.status != "in_auction")
                     auction.current = null;
                 return {

@@ -48319,8 +48319,7 @@ function AuctionAdmin(props) {
     setState(function (prevState) {
       var auction = prevState.auction,
           lots = [],
-          update = false,
-          finished = prevState.finished;
+          update = false;
 
       if (auction.current && auction.current.id == event.detail.id) {
         auction.current.status = event.detail.status;
@@ -48342,6 +48341,22 @@ function AuctionAdmin(props) {
       auction.lots = lots;
 
       if (update) {
+        var finished = true;
+
+        var _iterator = _createForOfIteratorHelper(auction.lots),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var _lot = _step.value;
+            if (_lot.status == "auction" || _lot.status == "in_auction") finished = false;
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+
         if (auction.current.status != "in_auction") auction.current = null;
         return _objectSpread(_objectSpread({}, prevState), {}, {
           auction: auction,
@@ -48359,12 +48374,16 @@ function AuctionAdmin(props) {
           lots = [],
           update = false;
 
+      if (event.detail.id == auction.current.id) {
+        auction.current.lastchance = event.detail.lastchance;
+        update = true;
+      }
+
       for (var i in auction.lots) {
         var lot = auction.lots[i];
 
         if (lot.id == event.detail.id) {
           lot.lastchance = event.detail.lastchance;
-          if (event.detail.id == auction.current.id) auction.current.lastchance = event.detail.lastchance;
           update = true;
         }
 
@@ -48441,31 +48460,6 @@ function AuctionAdmin(props) {
       window.removeEventListener("create-bet", createBet);
     };
   }, []);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (state.auction && state.auction.lots) {
-      var all = true;
-
-      var _iterator = _createForOfIteratorHelper(state.auction.lots),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var lot = _step.value;
-          if (lot.status == "auction" || lot.status == "in_auction") all = false;
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      setState(function (prevState) {
-        return _objectSpread(_objectSpread({}, prevState), {}, {
-          finished: all
-        });
-      });
-    }
-  }, [state]);
 
   var countLots = function countLots(lots) {
     var cnt = 0;
@@ -51841,55 +51835,6 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
 function _createForOfIteratorHelper(o, allowArrayLike) {
   var it;
 
@@ -51945,6 +51890,55 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
       }
     }
   };
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 function _slicedToArray(arr, i) {
@@ -52019,32 +52013,6 @@ function Center(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    if (state.auction && state.auction.lots) {
-      var all = true;
-
-      var _iterator = _createForOfIteratorHelper(state.auction.lots),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var lot = _step.value;
-          if (lot.status == "auction" || lot.status == "in_auction") all = false;
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      setState(function (prevState) {
-        return _objectSpread(_objectSpread({}, prevState), {}, {
-          finished: all
-        });
-      });
-    }
-  }, [state]);
-
   var updateLotLastChance = function updateLotLastChance(event) {
     setState(function (prevState) {
       var auction = prevState.auction,
@@ -52070,7 +52038,6 @@ function Center(props) {
       auction.lots = lots;
 
       if (update) {
-        if (auction.current.status != "in_auction") auction.current = null;
         return _objectSpread(_objectSpread({}, prevState), {}, {
           auction: auction
         });
@@ -52106,6 +52073,22 @@ function Center(props) {
       auction.lots = lots;
 
       if (update) {
+        var finished = true;
+
+        var _iterator = _createForOfIteratorHelper(auction.lots),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var _lot = _step.value;
+            if (_lot.status == "auction" || _lot.status == "in_auction") finished = false;
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+
         if (auction.current.status != "in_auction") auction.current = null;
         return _objectSpread(_objectSpread({}, prevState), {}, {
           auction: auction

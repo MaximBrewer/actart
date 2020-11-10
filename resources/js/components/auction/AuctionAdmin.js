@@ -97,8 +97,7 @@ export default function AuctionAdmin(props) {
         setState(prevState => {
             let auction = prevState.auction,
                 lots = [],
-                update = false,
-                finished = prevState.finished;
+                update = false;
 
             if (auction.current && auction.current.id == event.detail.id) {
                 auction.current.status = event.detail.status;
@@ -117,12 +116,17 @@ export default function AuctionAdmin(props) {
             auction.lots = lots;
 
             if (update) {
+                let finished = true;
+                for (const lot of auction.lots) {
+                    if (lot.status == "auction" || lot.status == "in_auction")
+                        finished = false;
+                }
                 if (auction.current.status != "in_auction")
                     auction.current = null;
                 return {
                     ...prevState,
-                    auction: auction,
-                    finished: finished
+                    auction,
+                    finished
                 };
             }
             return prevState;
@@ -134,12 +138,14 @@ export default function AuctionAdmin(props) {
             let auction = prevState.auction,
                 lots = [],
                 update = false;
+            if (event.detail.id == auction.current.id) {
+                auction.current.lastchance = event.detail.lastchance;
+                update = true;
+            }
             for (let i in auction.lots) {
                 let lot = auction.lots[i];
                 if (lot.id == event.detail.id) {
                     lot.lastchance = event.detail.lastchance;
-                    if (event.detail.id == auction.current.id)
-                        auction.current.lastchance = event.detail.lastchance;
                     update = true;
                 }
                 lots.push(lot);
@@ -222,20 +228,6 @@ export default function AuctionAdmin(props) {
             window.removeEventListener("create-bet", createBet);
         };
     }, []);
-
-    useEffect(() => {
-        if (state.auction && state.auction.lots) {
-            let all = true;
-            for (const lot of state.auction.lots) {
-                if (lot.status == "auction" || lot.status == "in_auction")
-                    all = false;
-            }
-            setState(prevState => ({
-                ...prevState,
-                finished: all
-            }));
-        }
-    }, [state]);
 
     const countLots = lots => {
         let cnt = 0;
@@ -670,29 +662,28 @@ export default function AuctionAdmin(props) {
                                                     </div>
                                                 )}
                                                 {state.auction.status ==
-                                                    "coming" && (
-                                                        !state.finished ? (
-                                                            <div className="user-activity">
-                                                                <h3
-                                                                    className={`py-5 text-center color-red`}
-                                                                >
-                                                                    {__(
-                                                                        "AUCTION_WILL_START_SOON"
-                                                                    )}
-                                                                </h3>
-                                                            </div>
-                                                        ) : (
-                                                            <div className="user-activity">
-                                                                <h3
-                                                                    className={`py-5 text-center color-red`}
-                                                                >
-                                                                    {__(
-                                                                        "AUCTION_HAS_FINISHED"
-                                                                    )}
-                                                                </h3>
-                                                            </div>
-                                                        )
-                                                    )}
+                                                    "coming" &&
+                                                    (!state.finished ? (
+                                                        <div className="user-activity">
+                                                            <h3
+                                                                className={`py-5 text-center color-red`}
+                                                            >
+                                                                {__(
+                                                                    "AUCTION_WILL_START_SOON"
+                                                                )}
+                                                            </h3>
+                                                        </div>
+                                                    ) : (
+                                                        <div className="user-activity">
+                                                            <h3
+                                                                className={`py-5 text-center color-red`}
+                                                            >
+                                                                {__(
+                                                                    "AUCTION_HAS_FINISHED"
+                                                                )}
+                                                            </h3>
+                                                        </div>
+                                                    ))}
                                                 {state.auction.status ==
                                                     "canceled" && (
                                                     <div className="user-activity">
