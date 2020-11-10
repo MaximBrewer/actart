@@ -52009,6 +52009,7 @@ function Center(props) {
       setState = _useState2[1];
 
   var updateLotLastChance = function updateLotLastChance(event) {
+    console.log(event);
     setState(function (prevState) {
       var auction = prevState.auction,
           current = prevState.current,
