@@ -96,7 +96,13 @@ export default function Right(props) {
                         <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
                         <div>${item.price * 1 + 100}</div>
                     </a>
-                    <h4 className="color-red">{__("LAST_CHANCE_TO_USER")}</h4>
+                    {item.lastchance ? (
+                        <h4 className="color-red text-center">
+                            {__("LAST_CHANCE_TO_USER")}
+                        </h4>
+                    ) : (
+                        ``
+                    )}
                 </div>
             ) : (
                 ``
