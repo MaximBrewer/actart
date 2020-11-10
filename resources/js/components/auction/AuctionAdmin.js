@@ -670,17 +670,29 @@ export default function AuctionAdmin(props) {
                                                     </div>
                                                 )}
                                                 {state.auction.status ==
-                                                    "coming" && (
-                                                    <div className="user-activity">
-                                                        <h3
-                                                            className={`py-5 text-center color-red`}
-                                                        >
-                                                            {__(
-                                                                "AUCTION_WILL_START_SOON"
-                                                            )}
-                                                        </h3>
-                                                    </div>
-                                                )}
+                                                    "coming"(
+                                                        !state.finished ? (
+                                                            <div className="user-activity">
+                                                                <h3
+                                                                    className={`py-5 text-center color-red`}
+                                                                >
+                                                                    {__(
+                                                                        "AUCTION_WILL_START_SOON"
+                                                                    )}
+                                                                </h3>
+                                                            </div>
+                                                        ) : (
+                                                            <div className="user-activity">
+                                                                <h3
+                                                                    className={`py-5 text-center color-red`}
+                                                                >
+                                                                    {__(
+                                                                        "AUCTION_HAS_FINISHED"
+                                                                    )}
+                                                                </h3>
+                                                            </div>
+                                                        )
+                                                    )}
                                                 {state.auction.status ==
                                                     "canceled" && (
                                                     <div className="user-activity">
