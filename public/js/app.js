@@ -62980,17 +62980,17 @@ function Profile(props) {
       setToken = _useAuth.setToken,
       currentUser = _useAuth.currentUser;
 
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_7__["default"])(currentUser.surname + ' ' + currentUser.name + ' ' + currentUser.middlename);
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_7__["default"])(currentUser.surname + " " + currentUser.name + " " + currentUser.middlename);
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
 
   var handleLogout = function handleLogout() {
     setCurrentUser(null);
     setToken(null);
-    history.push('/');
+    history.push("/");
     Object(_utils_auth__WEBPACK_IMPORTED_MODULE_4__["setIntendedUrl"])(null);
   };
 
-  console.log(window.App);
+  console.log(window.App.coming);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "profile-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -63001,21 +63001,25 @@ function Profile(props) {
     className: "col col-xl-40 col-xxl-38"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "h5"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('You wanted to take part in the auctions:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auction_AuctionsProfile__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("You wanted to take part in the auctions:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auction_AuctionsProfile__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "h5"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Profile data')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Your ID:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, "#", currentUser.id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Status:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])(currentUser.role.display_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Full name:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, currentUser.name + (currentUser.surname ? " " + currentUser.surname : ""))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Логин:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, currentUser.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Profile data")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Your ID:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, "#", currentUser.id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Status:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])(currentUser.role.display_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Full name:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, currentUser.name + (currentUser.surname ? " " + currentUser.surname : ""))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Логин:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, currentUser.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/profile/vip"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('WANTED_VIP'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("WANTED_VIP"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     onClick: handleLogout
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/"
-  }, "Logout")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Logout")), currentUser.role.id == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, window.App.coming.map(function (item, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/auctions/admin/" + item.id
+    }, item.title);
+  }))) : "")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "art-waterfall-wrapper py-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "h5"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Favorites:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Favorites:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "act-waterfall"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({}, props, {
     items: currentUser.favorites,
