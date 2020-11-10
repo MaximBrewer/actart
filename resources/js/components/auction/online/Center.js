@@ -9,13 +9,26 @@ export default function Center(props) {
         finished: false,
         translation: window.App.translation
     });
+    
+    useEffect(() => {
+        if (state.auction && state.auction.lots) {
+            let all = true;
+            for (const lot of state.auction.lots) {
+                if (lot.status == "auction" || lot.status == "in_auction")
+                    all = false;
+            }
+            setState(prevState => ({
+                ...prevState,
+                finished: all
+            }));
+        }
+    }, [state]);
 
     const updateLotLastChance = event => {
         setState(prevState => {
             let auction = prevState.auction,
                 lots = [],
-                update = false,
-                finished = prevState.finished;
+                update = false;
             if (auction.current && auction.current.id == event.detail.id) {
                 auction.current.lastchance = event.detail.lastchance;
                 update = true;
@@ -34,8 +47,7 @@ export default function Center(props) {
                     auction.current = null;
                 return {
                     ...prevState,
-                    auction: auction,
-                    finished: finished
+                    auction: auction
                 };
             }
             return prevState;
@@ -46,8 +58,7 @@ export default function Center(props) {
         setState(prevState => {
             let auction = prevState.auction,
                 lots = [],
-                update = false,
-                finished = prevState.finished;
+                update = false;
             if (auction.current && auction.current.id == event.detail.id) {
                 auction.current.status = event.detail.status;
                 update = true;
@@ -68,8 +79,7 @@ export default function Center(props) {
                     auction.current = null;
                 return {
                     ...prevState,
-                    auction,
-                    finished
+                    auction
                 };
             }
             return prevState;

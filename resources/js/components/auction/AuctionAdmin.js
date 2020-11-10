@@ -235,7 +235,7 @@ export default function AuctionAdmin(props) {
                 finished: all
             }));
         }
-    }, [state.auction]);
+    }, [state]);
 
     const countLots = lots => {
         let cnt = 0;

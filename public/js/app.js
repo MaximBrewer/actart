@@ -48465,7 +48465,7 @@ function AuctionAdmin(props) {
         });
       });
     }
-  }, [state.auction]);
+  }, [state]);
 
   var countLots = function countLots(lots) {
     var cnt = 0;
@@ -51890,6 +51890,63 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it;
+
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it) o = it;
+      var i = 0;
+
+      var F = function F() {};
+
+      return {
+        s: F,
+        n: function n() {
+          if (i >= o.length) return {
+            done: true
+          };
+          return {
+            done: false,
+            value: o[i++]
+          };
+        },
+        e: function e(_e2) {
+          throw _e2;
+        },
+        f: F
+      };
+    }
+
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  var normalCompletion = true,
+      didErr = false,
+      err;
+  return {
+    s: function s() {
+      it = o[Symbol.iterator]();
+    },
+    n: function n() {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function e(_e3) {
+      didErr = true;
+      err = _e3;
+    },
+    f: function f() {
+      try {
+        if (!normalCompletion && it["return"] != null) it["return"]();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
+}
+
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
@@ -51962,12 +52019,37 @@ function Center(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (state.auction && state.auction.lots) {
+      var all = true;
+
+      var _iterator = _createForOfIteratorHelper(state.auction.lots),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var lot = _step.value;
+          if (lot.status == "auction" || lot.status == "in_auction") all = false;
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      setState(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          finished: all
+        });
+      });
+    }
+  }, [state]);
+
   var updateLotLastChance = function updateLotLastChance(event) {
     setState(function (prevState) {
       var auction = prevState.auction,
           lots = [],
-          update = false,
-          finished = prevState.finished;
+          update = false;
 
       if (auction.current && auction.current.id == event.detail.id) {
         auction.current.lastchance = event.detail.lastchance;
@@ -51990,8 +52072,7 @@ function Center(props) {
       if (update) {
         if (auction.current.status != "in_auction") auction.current = null;
         return _objectSpread(_objectSpread({}, prevState), {}, {
-          auction: auction,
-          finished: finished
+          auction: auction
         });
       }
 
@@ -52003,8 +52084,7 @@ function Center(props) {
     setState(function (prevState) {
       var auction = prevState.auction,
           lots = [],
-          update = false,
-          finished = prevState.finished;
+          update = false;
 
       if (auction.current && auction.current.id == event.detail.id) {
         auction.current.status = event.detail.status;
@@ -52028,8 +52108,7 @@ function Center(props) {
       if (update) {
         if (auction.current.status != "in_auction") auction.current = null;
         return _objectSpread(_objectSpread({}, prevState), {}, {
-          auction: auction,
-          finished: finished
+          auction: auction
         });
       }
 
