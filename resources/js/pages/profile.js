@@ -73,13 +73,13 @@ function Profile(props) {
                         {currentUser.role.id == 1 ? (
                             <React.Fragment>
                                 <hr />
-                                <h6 class="h6">
+                                <h4 class="h4">
                                     {__("ADMIN_PROFILE_AUCTIONS_COMING")}
-                                </h6>
+                                </h4>
                                 <hr />
                                 <div>
                                     {window.App.coming.map((item, index) => (
-                                        <Link to={`/auctions/admin/` + item.id}>
+                                        <Link to={`/auctions/admin/` + item.id} key={index}>
                                             {item.title}
                                         </Link>
                                     ))}
