@@ -68,7 +68,8 @@ export default function Center(props) {
                     auction.current = null;
                 return {
                     ...prevState,
-                    auction
+                    auction,
+                    finished
                 };
             }
             return prevState;

@@ -52091,7 +52091,8 @@ function Center(props) {
 
         if (auction.current.status != "in_auction") auction.current = null;
         return _objectSpread(_objectSpread({}, prevState), {}, {
-          auction: auction
+          auction: auction,
+          finished: finished
         });
       }
 
