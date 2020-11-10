@@ -103,6 +103,7 @@ export default function AuctionAdmin(props) {
                 update = false,
                 current = prevState.current,
                 finished = prevState.finished;
+            console.log(current);
             if (current && current.id == event.detail.id) {
                 current.status = event.detail.status;
                 update = true;
@@ -117,7 +118,7 @@ export default function AuctionAdmin(props) {
                 lots.push(lot);
             }
             auction.lots = lots;
-            console.log(current, update)
+            console.log(current, update);
             if (update)
                 return {
                     ...prevState,

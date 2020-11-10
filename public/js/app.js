@@ -48330,6 +48330,7 @@ function AuctionAdmin(props) {
           update = false,
           current = prevState.current,
           finished = prevState.finished;
+      console.log(current);
 
       if (current && current.id == event.detail.id) {
         current.status = event.detail.status;
