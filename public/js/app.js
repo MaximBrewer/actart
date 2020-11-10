@@ -48331,7 +48331,7 @@ function AuctionAdmin(props) {
           current = prevState.current,
           finished = prevState.finished;
 
-      if (current.id == event.detail.id) {
+      if (current && current.id == event.detail.id) {
         current.status = event.detail.status;
         update = true;
       }
@@ -51972,7 +51972,7 @@ function Center(props) {
           update = false,
           finished = prevState.finished;
 
-      if (current.id == event.detail.id) {
+      if (current && current.id == event.detail.id) {
         current.lastchance = event.detail.lastchance;
         update = true;
       }
@@ -52006,7 +52006,7 @@ function Center(props) {
           current = prevState.current,
           finished = prevState.finished;
 
-      if (current.id == event.detail.id) {
+      if (current && current.id == event.detail.id) {
         current.status = event.detail.status;
         update = true;
       }

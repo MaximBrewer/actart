@@ -18,7 +18,7 @@ export default function Center(props) {
                 lots = [],
                 update = false,
                 finished = prevState.finished;
-            if (current.id == event.detail.id) {
+            if (current && current.id == event.detail.id) {
                 current.lastchance = event.detail.lastchance;
                 update = true;
             }
@@ -49,7 +49,7 @@ export default function Center(props) {
                 update = false,
                 current = prevState.current,
                 finished = prevState.finished;
-            if (current.id == event.detail.id) {
+            if (current && current.id == event.detail.id) {
                 current.status = event.detail.status;
                 update = true;
             }
