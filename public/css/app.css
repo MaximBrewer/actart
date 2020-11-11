@@ -19851,16 +19851,11 @@ iframe {
 }
 
 .author-page .btn-wrap {
-  max-width: 34rem;
+  max-width: 100%;
 }
 
 .author-page .btn-wrap button {
-  min-width: 15rem;
-  margin-left: 4rem;
-}
-
-.author-page .btn-wrap button:first-child {
-  margin-left: 0;
+  min-width: 100%;
 }
 
 .author-page .photo-block > div {
@@ -19885,6 +19880,21 @@ iframe {
   line-height: 16px;
   letter-spacing: 0.05em;
   margin-bottom: 0.375rem;
+}
+
+@media (min-width: 768px) {
+  .author-page .btn-wrap {
+    max-width: 34rem;
+  }
+
+  .author-page .btn-wrap button {
+    min-width: 15rem;
+    margin-left: 4rem;
+  }
+
+  .author-page .btn-wrap button:first-child {
+    margin-left: 0;
+  }
 }
 
 @media (min-width: 1600px) {

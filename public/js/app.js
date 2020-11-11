@@ -60688,7 +60688,7 @@ function AuthorItem(props) {
   }, state.author.text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "btn-sign"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("You can follow the update of the author's collection or leave a request for the purchase of new works")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "btn-wrap d-flex"
+    className: "btn-wrap d-md-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
     className: "btn btn-default"

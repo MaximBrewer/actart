@@ -51,7 +51,7 @@ export default function AuthorItem(props) {
                                     "You can follow the update of the author's collection or leave a request for the purchase of new works"
                                 )}
                             </div>
-                            <div className="btn-wrap d-flex">
+                            <div className="btn-wrap d-md-flex">
                                 <button
                                     type="button"
                                     className="btn btn-default"

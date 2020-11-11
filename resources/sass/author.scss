@@ -18,13 +18,9 @@
         max-width: 34rem;
     }
     .btn-wrap {
-        max-width: 34rem;
+        max-width: 100%;
         button {
-            min-width: 15rem;
-            margin-left: 4rem;
-            &:first-child {
-                margin-left: 0;
-            }
+            min-width: 100%;
         }
     }
     .photo-block {
@@ -48,6 +44,16 @@
         }
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
+        .btn-wrap {
+            max-width: 34rem;
+            button {
+                min-width: 15rem;
+                margin-left: 4rem;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
     }
     @media (min-width: map.get($grid-breakpoints, "xl")) {
     }
