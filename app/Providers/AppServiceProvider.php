@@ -41,6 +41,6 @@ class AppServiceProvider extends ServiceProvider
         Auction::observe(AuctionObserver::class);
         Bet::observe(BetObserver::class);
         Setting::observe(SettingObserver::class);
-        // User::observe(UserObserver::class);
+        User::observe(UserObserver::class);
     }
 }

@@ -27,14 +27,6 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
         'name', 'surname', 'middlename', 'email', 'password',
         'phone', 'fb', 'inst', 'beh',
     ];
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'fio',
-    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -122,11 +114,6 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
         }, DB::table('favorites')
             ->select('lot_id')
             ->where('user_id', $this->id)->get()->toArray());
-    }
-
-    public function getFioAttribute()
-    {
-        return ($this->surname ? $this->surname . ' ' : '') . $this->name . ($this->middlename ? ' ' . $this->middlename : '');
     }
 
     public function getAidsAttribute()
