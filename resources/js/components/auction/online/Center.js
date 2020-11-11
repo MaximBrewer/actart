@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import Right from "./blocks/Right";
 import __ from "../../../utils/trans";
 import Parser from "html-react-parser";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 
 export default function Center(props) {
     const [state, setState] = useState({
         auction: props.auction,
         finished: false,
-        translation: window.App.translation
+        translation: window.App.translation,
+        lbOpen: false
     });
 
     const updateLotLastChance = event => {
@@ -160,12 +163,19 @@ export default function Center(props) {
                                                 }}
                                             >
                                                 <div
+                                                    onClick={() =>
+                                                        setState(prevState => ({
+                                                            ...prevState,
+                                                            lbOpen: true
+                                                        }))
+                                                    }
                                                     className="image"
                                                     alt={
                                                         state.auction.current
                                                             .thumbnail
                                                     }
                                                     style={{
+                                                        cursor: "pointer",
                                                         display: "block",
                                                         position: "relative",
                                                         backgroundSize:
@@ -185,6 +195,24 @@ export default function Center(props) {
                                                             '")'
                                                     }}
                                                 ></div>
+
+                                                {lbOpen && (
+                                                    <Lightbox
+                                                        mainSrc={
+                                                            state.auction
+                                                                .current
+                                                                .thumbnail
+                                                        }
+                                                        onCloseRequest={() =>
+                                                            setState(
+                                                                prevState => ({
+                                                                    ...prevState,
+                                                                    lbOpen: false
+                                                                })
+                                                            )
+                                                        }
+                                                    />
+                                                )}
                                             </div>
                                         ) : (
                                             ``
