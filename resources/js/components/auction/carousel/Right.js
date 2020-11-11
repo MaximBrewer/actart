@@ -71,7 +71,7 @@ export default function Right(props) {
                     <div className="user-id">
                         {__("LOT_YOUR_ID")}: <span>#{currentUser.id}</span>
                     </div>
-                    {item.bets.length ? (
+                    {item.bets.length && (
                         <div className="last-price">
                             <div className="title">{__("LOT_LAST_PRICE")}</div>
                             <div className="info">
@@ -82,36 +82,19 @@ export default function Right(props) {
                                 </div>
                             </div>
                         </div>
-                    ) : (
-                        ``
                     )}
-                    <a
-                        className="btn btn-danger"
-                        href="#"
-                        onClick={e => {
-                            e.preventDefault();
-                            offer(item.id, 100 + item.price * 1);
-                        }}
-                    >
-                        <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                        <div>${item.price * 1 + 100}</div>
-                    </a>
-                    {item.price * 1 < item.blitz * 1 ? (
-                        <div className="blitz-price">
-                            <a
-                                className="pb-1"
-                                href="#"
-                                onClick={e => {
-                                    e.preventDefault();
-                                    blitz(item.id);
-                                }}
-                            >
-                                <div>{__("LOT_BUTTON_BLITZ")}</div>
-                            </a>
-                            <div>${item.blitz}</div>
-                        </div>
-                    ) : (
-                        ``
+                    {item.status == "in_auction" && (
+                        <a
+                            className="btn btn-danger"
+                            href="#"
+                            onClick={e => {
+                                e.preventDefault();
+                                offer(item.id, 100 + item.price * 1);
+                            }}
+                        >
+                            <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
+                            <div>${item.price * 1 + 100}</div>
+                        </a>
                     )}
                 </div>
             ) : (
