@@ -49242,9 +49242,7 @@ function AuctionRoute(props) {
       path = _useRouteMatch.path,
       url = _useRouteMatch.url;
 
-  var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])(),
-      location = _useLocation.location;
-
+  var location = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])();
   console.log(location);
   console.log(url);
   console.log(path);

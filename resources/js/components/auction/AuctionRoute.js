@@ -12,7 +12,7 @@ import AuctionBase from "./AuctionBase";
 
 export default function AuctionRoute(props) {
     let { path, url } = useRouteMatch();
-    let { location } = useLocation();
+    let location = useLocation();
 
     console.log(location)
     console.log(url)
