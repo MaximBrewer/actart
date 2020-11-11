@@ -5,6 +5,7 @@ import Right from "./Right";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from "../../../utils/trans";
 
+
 export default function Carousel(props) {
     console.log(props);
 
@@ -13,11 +14,16 @@ export default function Carousel(props) {
         id: props.lotId
     });
 
+    const getIndex = () => {
+        for (let i in state.items) if (state.items[i].id == state.id) return i;
+        return 0;
+    };
+
     useEffect(() => {
         // console.log(state.id);
         // console.log(getIndex(state.id));
         // console.log(state.items[getIndex(state.id)]);
-        let index = getIndex(state.id);
+        let index = getIndex();
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
             lot_name: state.items[index].title,
             author_name: state.items[index].author
@@ -29,12 +35,6 @@ export default function Carousel(props) {
 
     const refPicture = useRef();
     const refAnnounce = useRef();
-
-    const getIndex = id => {
-        console.log(id);
-        for (let i in state.items) if (state.items[i].id == id) return i;
-        return 0;
-    };
 
     const setting = {
         arrows: false,

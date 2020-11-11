@@ -50873,11 +50873,19 @@ function Carousel(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var getIndex = function getIndex() {
+    for (var i in state.items) {
+      if (state.items[i].id == state.id) return i;
+    }
+
+    return 0;
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // console.log(state.id);
     // console.log(getIndex(state.id));
     // console.log(state.items[getIndex(state.id)]);
-    var index = getIndex(state.id);
+    var index = getIndex();
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
       lot_name: state.items[index].title,
       author_name: state.items[index].author
@@ -50887,17 +50895,6 @@ function Carousel(props) {
   }, [state.id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
-
-  var getIndex = function getIndex(id) {
-    console.log(id);
-
-    for (var i in state.items) {
-      if (state.items[i].id == id) return i;
-    }
-
-    return 0;
-  };
-
   var setting = {
     arrows: false,
     infinite: true,
