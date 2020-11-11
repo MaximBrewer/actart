@@ -45,7 +45,7 @@ class Beat extends Notification
             ->subject('Act-Art.ru - ставка перебита')
             ->greeting("Ваша ставка перебита.")
             ->line('В Галерее ACT-ART ваша ставка в лоте ' . $this->lot->title . ' была перебита.')
-            ->action('Сделать ответную ставку', "http://act-art.ru/gallery/lot/$this->lot->id");
+            ->action('Сделать ответную ставку', "http://act-art.ru/gallery/lot/" . $this->lot->id);
     }
 
     /**
