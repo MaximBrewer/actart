@@ -40,9 +40,7 @@ export default function Auction(props) {
     const { url } = useRouteMatch();
     const { pathname } = useLocation();
 
-
-    useEffect(() => {
-    }, [pathname]);
+    useEffect(() => {}, [pathname]);
 
     const lotId =
         (pathname == url ? false : pathname.replace(url + "/lot/", "")) * 1;
@@ -171,13 +169,15 @@ export default function Auction(props) {
             <div className={`status-` + state.auction.status}>
                 <Top auction={state.auction} />
                 <div className="sticky-wrapper">
-                        {/* <Center {...props} auction={state.auction} /> */}
-
+                    {state.auction.status == "coming" && lotId ? (
                         <div className="auction-info">
                             <div className="container">
-                                <Carousel {...props}  auction={state.auction}/>
+                                <Carousel {...props} auction={state.auction} />
                             </div>
                         </div>
+                    ) : (
+                        <Center {...props} auction={state.auction} />
+                    )}
                     <div className="auction-page-inner">
                         <div className="auction-works-list my-5">
                             <LotsList {...props} auction={state.auction} />
