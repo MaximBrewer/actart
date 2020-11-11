@@ -17,13 +17,14 @@ export default function Carousel(props) {
         // console.log(state.id);
         // console.log(getIndex(state.id));
         // console.log(state.items[getIndex(state.id)]);
+        let index = getIndex(state.id);
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
-            lot_name: state.items[getIndex(state.id)].title,
-            author_name: state.items[getIndex(state.id)].author
+            lot_name: state.items[index].title,
+            author_name: state.items[index].author
         });
 
-        refPicture.current.slickGoTo(getIndex(state.id), true);
-        refAnnounce.current.slickGoTo(getIndex(state.id), true);
+        refPicture.current.slickGoTo(index, true);
+        refAnnounce.current.slickGoTo(index, true);
     }, [state.id]);
 
     const refPicture = useRef();

@@ -50877,12 +50877,13 @@ function Carousel(props) {
     // console.log(state.id);
     // console.log(getIndex(state.id));
     // console.log(state.items[getIndex(state.id)]);
+    var index = getIndex(state.id);
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
-      lot_name: state.items[getIndex(state.id)].title,
-      author_name: state.items[getIndex(state.id)].author
+      lot_name: state.items[index].title,
+      author_name: state.items[index].author
     });
-    refPicture.current.slickGoTo(getIndex(state.id), true);
-    refAnnounce.current.slickGoTo(getIndex(state.id), true);
+    refPicture.current.slickGoTo(index, true);
+    refAnnounce.current.slickGoTo(index, true);
   }, [state.id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
