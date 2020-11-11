@@ -80,7 +80,7 @@ class Cron extends Command
             [
                 $carbon->addHour()->toDateTimeString()
             ]
-        );
+        )->get();
 
         foreach ($as as $n) {
             $auction = Auction::find($n->auction_id);
