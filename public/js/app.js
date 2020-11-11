@@ -48864,8 +48864,6 @@ function AuctionBase(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  console.log("base");
-
   var updateAuctionStatus = function updateAuctionStatus(event) {
     setState(function (prevState) {
       if (event.detail.id == prevState.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -49155,6 +49153,8 @@ function Lot(props) {
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
       setState = _useState2[1];
+
+  console.log("lot");
 
   var updateAuctionStatus = function updateAuctionStatus(event) {
     setState(function (prevState) {

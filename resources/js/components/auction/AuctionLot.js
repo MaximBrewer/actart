@@ -23,6 +23,8 @@ export default function Lot(props) {
         auction: null
     });
 
+    console.log("lot")
+
     const updateAuctionStatus = event => {
         setState(prevState => {
             if (event.detail.id == prevState.auction.id)
