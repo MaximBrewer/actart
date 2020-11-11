@@ -51645,10 +51645,10 @@ function Top(props) {
     className: "h1"
   }, auction.title), inAuctions(auction.id) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/auctions/" + auction.id,
-    className: "btn btn-danger"
+    className: "btn btn-danger mb-2"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("ALREADY_REGISTERED")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/auctions/" + auction.id,
-    className: "btn btn-danger",
+    className: "btn btn-danger mb-2",
     onClick: function onClick(e) {
       return participate(e, auction);
     }

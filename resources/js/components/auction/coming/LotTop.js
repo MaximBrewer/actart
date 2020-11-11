@@ -22,14 +22,14 @@ export default function Top(props) {
                     {inAuctions(auction.id) ? (
                         <Link
                             to={"/auctions/" + auction.id}
-                            className="btn btn-danger"
+                            className="btn btn-danger mb-2"
                         >
                             {__("ALREADY_REGISTERED")}
                         </Link>
                     ) : (
                         <Link
                             to={"/auctions/" + auction.id}
-                            className="btn btn-danger"
+                            className="btn btn-danger mb-2"
                             onClick={e => participate(e, auction)}
                         >
                             {__("PARTICIPATE")}
