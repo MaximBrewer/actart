@@ -11,8 +11,7 @@ import LotPlaceholderTizer from "./tizers/placeholders/Lot.js";
 import DefaultPlaceholderTizer from "./tizers/placeholders/Default.js";
 
 export default function EntityGrid(props) {
-    
-    const { items, columns, data } = props;
+    const { items, columns, data, loading } = props;
 
     const Tizer = props => {
         switch (data.tizerView) {
@@ -49,28 +48,28 @@ export default function EntityGrid(props) {
         }
     };
     const getPlaceholders = () => {
-
         let size = "xs";
         data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
         !!data.firstLimit || (data.firstLimit = 0);
-        for (size in window.grid) if (window.innerWidth < window.grid[size]) break;
+        for (size in window.grid)
+            if (window.innerWidth < window.grid[size]) break;
         let placeholders = [];
         for (let i = 0; i < data.firstLimit[size]; i++) {
-            placeholders.push(<PlaceholderTizer key={i} />)
+            placeholders.push(<PlaceholderTizer key={i} />);
         }
         return placeholders;
-    }
+    };
     return (
         <Masonry
             breakpointCols={columns()}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
         >
-            {
-                items != undefined && items.length ? items.map((item, index) => (
-                    <Tizer {...props} item={item} key={index} />
-                )) : getPlaceholders()
-            }
+            {!loading && items != undefined
+                ? items.map((item, index) => (
+                      <Tizer {...props} item={item} key={index} />
+                  ))
+                : getPlaceholders()}
         </Masonry>
     );
 }

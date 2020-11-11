@@ -15,6 +15,7 @@ export default function WaterfallAjax(props) {
         more: true,
         options: window.App.options,
         page: 0,
+        loading: true,
         sortBy: "id",
         order: "asc",
         filter: {
@@ -72,6 +73,7 @@ export default function WaterfallAjax(props) {
                         ...prevState,
                         photos: state.photos.concat(res.data.items),
                         page: state.page + 1,
+                        loading: false,
                         more: res.data.next > 0
                     };
                 });
@@ -305,6 +307,7 @@ export default function WaterfallAjax(props) {
                     columns={columns}
                     items={state.photos}
                     data={data}
+                    loading={state.loading}
                     favorites={state.favorites}
                     {...props}
                 />

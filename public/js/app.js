@@ -56406,7 +56406,8 @@ function _extends() {
 function EntityGrid(props) {
   var items = props.items,
       columns = props.columns,
-      data = props.data;
+      data = props.data,
+      loading = props.loading;
 
   var Tizer = function Tizer(props) {
     switch (data.tizerView) {
@@ -56476,7 +56477,7 @@ function EntityGrid(props) {
     breakpointCols: columns(),
     className: "my-masonry-grid",
     columnClassName: "my-masonry-grid_column"
-  }, items != undefined && items.length ? items.map(function (item, index) {
+  }, !loading && items != undefined ? items.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Tizer, _extends({}, props, {
       item: item,
       key: index
@@ -57233,6 +57234,7 @@ function WaterfallAjax(props) {
     more: true,
     options: window.App.options,
     page: 0,
+    loading: true,
     sortBy: "id",
     order: "asc",
     filter: {
@@ -57297,6 +57299,7 @@ function WaterfallAjax(props) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           photos: state.photos.concat(res.data.items),
           page: state.page + 1,
+          loading: false,
           more: res.data.next > 0
         });
       });
@@ -57486,6 +57489,7 @@ function WaterfallAjax(props) {
     columns: columns,
     items: state.photos,
     data: data,
+    loading: state.loading,
     favorites: state.favorites
   }, props)), state.more && data.action == "add" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "show-more"
