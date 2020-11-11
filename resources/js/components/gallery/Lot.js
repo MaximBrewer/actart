@@ -5,7 +5,6 @@ import Carousel from "./carousel/Carousel";
 import __ from '../../utils/trans';
 
 export default function Lot(props) {
-    const { id } = useParams();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [id]);
@@ -13,7 +12,7 @@ export default function Lot(props) {
         <section className="lot-section">
             <div className="sticky-wrapper">
                 <div className="container">
-                    <Carousel {...props} id={id} items={window.App.gallery}/>
+                    <Carousel {...props} items={window.App.gallery}/>
                     <div className="gallery-works" id="galleryWorksList">
                         <div className="h2">{__("Works for sale")}</div>
                         <div className="gallery-works-list">

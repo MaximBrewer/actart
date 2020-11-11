@@ -53929,9 +53929,6 @@ function _extends() {
 
 
 function Lot(props) {
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
-      id = _useParams.id;
-
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     window.scrollTo(0, 0);
   }, [id]);
@@ -53942,7 +53939,6 @@ function Lot(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
-    id: id,
     items: window.App.gallery
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "gallery-works",
@@ -54130,11 +54126,14 @@ function _arrayWithHoles(arr) {
 
 
 function Carousel(props) {
+  var _useParams = useParams(),
+      id = _useParams.id;
+
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useHistory"])();
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     items: props.items,
-    id: props.id
+    id: id
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
@@ -54160,7 +54159,7 @@ function Carousel(props) {
     });
     refPicture.current.slickGoTo(index, true);
     refAnnounce.current.slickGoTo(index, true); // history.replace("/gallery/lot/" + state.id);
-  }, [state.id]);
+  }, [id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 
