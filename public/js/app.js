@@ -49240,7 +49240,7 @@ function AuctionRoute(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id;
 
-  var _useState = useState({
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     auction: null
   }),
       _useState2 = _slicedToArray(_useState, 2),
