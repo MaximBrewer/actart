@@ -22,15 +22,14 @@ export default function Carousel(props) {
     console.log("lot")
 
     useEffect(() => {
-        console.log(lotId)
         let index = getIndex();
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
             lot_name: state.items[index].title,
             author_name: state.items[index].author
         });
-        refPicture.current.slickGoTo(index);
-        refAnnounce.current.slickGoTo(index);
-    }, [lotId]);
+        // refPicture.current.slickGoTo(index, true);
+        // refAnnounce.current.slickGoTo(index, true);
+    }, []);
 
     const refPicture = useRef();
     const refAnnounce = useRef();
@@ -78,6 +77,8 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
+                            refPicture.current.slickPrev();
+                            refAnnounce.current.slickPrev();
                             history.replace(
                                 "/auctions/" + id + "/lot/" + prevId()
                             );
@@ -88,6 +89,8 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
+                            refPicture.current.slickNext();
+                            refAnnounce.current.slickNext();
                             history.replace(
                                 "/auctions/" + id + "/lot/" + nextId()
                             );
