@@ -55,10 +55,18 @@ export default function AuctionRoute(props) {
     return (
         <Switch>
             <Route exact path={path}>
-                <AuctionBase {...props} auction={state.auction} />
+                {state.auction ? (
+                    <AuctionBase {...props} auction={state.auction} />
+                ) : (
+                    ``
+                )}
             </Route>
             <Route path={`${path}/lot/:lotId`}>
-                <AuctionLot {...props} auction={state.auction} />
+                {state.auction ? (
+                    <AuctionLot {...props} auction={state.auction} />
+                ) : (
+                    ``
+                )}
             </Route>
         </Switch>
     );
