@@ -11,6 +11,45 @@ export default function Lot(props) {
     const { auction, participate } = props;
     let { inAuctions } = useAuth();
 
+
+    const [state, setState] = useState({
+        auction: null
+    });
+
+    useEffect(() => {
+        axios
+            .get("/api/" + window.App.locale + "/auctions/" + id)
+            .then(res => {
+                setState({
+                    auction: res.data.auction
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        window.addEventListener("update-auction-status", updateAuctionStatus);
+        return () => {
+            window.removeEventListener(
+                "update-auction-status",
+                updateAuctionStatus
+            );
+        };
+    }, []);
+
+    const updateAuctionStatus = event => {
+        setState(prevState => {
+            if (event.detail.id == prevState.auction.id)
+                return {
+                    ...prevState,
+                    auction: {
+                        ...prevState.auction,
+                        status: event.detail.status
+                    }
+                };
+            else return prevState;
+        });
+    };
+
     // const { auction } = props;
 
     // const Top = props => {
