@@ -50874,9 +50874,9 @@ function Carousel(props) {
       setState = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    console.log(state.id);
-    console.log(getIndex(state.id));
-    console.log(state.items[getIndex(state.id)]);
+    // console.log(state.id);
+    // console.log(getIndex(state.id));
+    // console.log(state.items[getIndex(state.id)]);
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
       lot_name: state.items[getIndex(state.id)].title,
       author_name: state.items[getIndex(state.id)].author
