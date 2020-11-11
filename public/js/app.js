@@ -54163,17 +54163,6 @@ function Carousel(props) {
     }
   };
 
-  var nextId = function nextId() {
-    var index = 0;
-
-    for (var i in state.items) {
-      if (state.items[i].id == id) index = i + 1;
-    }
-
-    index = state.items.length == index ? 0 : index;
-    return state.items[index].id;
-  };
-
   var prevId = function prevId() {
     var index = 0;
 
@@ -54182,6 +54171,18 @@ function Carousel(props) {
     }
 
     index = index < 0 ? state.items.length - 1 : index;
+    return state.items[index].id;
+  };
+
+  var nextId = function nextId() {
+    var index = 0;
+
+    for (var i in state.items) {
+      if (state.items[i].id == id) index = i + 1;
+    }
+
+    console.log(index);
+    index = state.items.length == index ? 0 : index;
     return state.items[index].id;
   };
 
