@@ -54160,7 +54160,7 @@ function Carousel(props) {
     refPicture.current.slickGoTo(index, true);
     refAnnounce.current.slickGoTo(index, true);
     history.replace("/gallery/lot/" + state.id);
-  }, [state.id]);
+  }, [state.id, props.id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 

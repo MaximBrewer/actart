@@ -32,7 +32,7 @@ export default function Carousel(props) {
         refPicture.current.slickGoTo(index, true);
         refAnnounce.current.slickGoTo(index, true);
         history.replace("/gallery/lot/" + state.id);
-    }, [state.id]);
+    }, [state.id, props.id]);
 
     const refPicture = useRef();
     const refAnnounce = useRef();
