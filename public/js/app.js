@@ -48244,6 +48244,7 @@ function Auction(props) {
   var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_24__["useLocation"])(),
       pathname = _useLocation.pathname;
 
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {}, [pathname]);
   var lotId = (pathname == url ? false : pathname.replace(url + "/lot/", "")) * 1;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     axios.get("/api/" + window.App.locale + "/auctions/" + id).then(function (res) {
@@ -48333,9 +48334,13 @@ function Auction(props) {
     auction: state.auction
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Center, _extends({}, props, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "auction-info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, props, {
     auction: state.auction
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-page-inner"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-works-list my-5"
