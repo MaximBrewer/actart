@@ -49241,8 +49241,8 @@ function AuctionRoute(props) {
   var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])(),
       pathname = _useLocation.pathname;
 
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
-      id = _useParams.id;
+  var _ = 16,
+      id = _.id;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     auction: null
@@ -64179,7 +64179,7 @@ function App() {
     exact: true,
     path: "/auctions/archive"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_auctions_archive__WEBPACK_IMPORTED_MODULE_24__["default"], rest)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/auctions/:id"
+    path: "/auctions"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auction_AuctionRoute__WEBPACK_IMPORTED_MODULE_21__["default"], rest)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/search"

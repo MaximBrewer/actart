@@ -11,7 +11,7 @@ export default function AuctionRoute(props) {
     let { path, url } = useRouteMatch();
     let { pathname } = useLocation();
 
-    const { id } = useParams();
+    const { id } = 16;
 
     const [state, setState] = useState({
         auction: null
