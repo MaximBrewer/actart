@@ -17778,6 +17778,7 @@ iframe {
 }
 
 .header .header-top .profile.icon {
+  display: block;
   width: 2rem;
 }
 
@@ -18201,7 +18202,6 @@ iframe {
 
 .search-form .search-container input {
   min-width: 27rem;
-  line-height: 2.31rem;
   background: transparent;
 }
 
