@@ -70,7 +70,7 @@ class Cron extends Command
         //     $user->notify(new ReminderNotification($auction));
 
         $as = DB::query(
-            "SELECT `ua`.`user_id`, `ua`.`auction_id`
+            "SELECT `ua`.`user_id` as `user_id`, `ua`.`auction_id` as `auction_id`
             FROM `user_auction` `ua` 
             left join `auctions` as `a` 
             ON `ua`.`auction_id` = `a`.`id`
