@@ -48223,7 +48223,7 @@ function Auction(props) {
 
   var updateAuctionStatus = function updateAuctionStatus(event) {
     setState(function (prevState) {
-      if (event.detail.id == prevState.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
+      if (event.detail.id == prevstate.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
         auction: _objectSpread(_objectSpread({}, prevState.auction), {}, {
           status: event.detail.status
         })
@@ -48231,8 +48231,8 @@ function Auction(props) {
     });
   }; // const { auction } = props;
   // const Top = props => {
-  //     if (auction.title)
-  //         switch (auction.status) {
+  //     if (state.auction.title)
+  //         switch (state.auction.status) {
   //             case "started":
   //                 return <AuctionOnlineTop {...props} />;
   //             case "finished":
@@ -48243,8 +48243,8 @@ function Auction(props) {
   //     return false;
   // };
   // const Center = props => {
-  //     if (auction.title)
-  //         switch (auction.status) {
+  //     if (state.auction.title)
+  //         switch (state.auction.status) {
   //             case "started":
   //                 return <AuctionOnlineCenter {...props} />;
   //             case "finished":
@@ -48255,8 +48255,8 @@ function Auction(props) {
   //     return false;
   // };
   // const LotsList = props => {
-  //     if (auction.title)
-  //         switch (auction.status) {
+  //     if (state.auction.title)
+  //         switch (state.auction.status) {
   //             case "started":
   //                 return <AuctionOnlineLotsList {...props} />;
   //             case "finished":
@@ -48267,8 +48267,8 @@ function Auction(props) {
   //     return false;
   // };
   // const Bottom = props => {
-  //     if (auction.title)
-  //         switch (auction.status) {
+  //     if (state.auction.title)
+  //         switch (state.auction.status) {
   //             case "started":
   //                 return <AuctionOnlineBottom {...props} />;
   //             case "finished":
@@ -48283,11 +48283,11 @@ function Auction(props) {
   return state.auction ? state.auction.status == "coming" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "auction-page-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "status-" + auction.status
+    className: "status-" + state.auction.status
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "auction-announce auction-coming",
     style: {
-      backgroundImage: "url(" + auction.thumbnail + ")",
+      backgroundImage: "url(" + state.auction.thumbnail + ")",
       backgroundPosition: "top center"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -48295,12 +48295,12 @@ function Auction(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    date: auction.dateatom
+    date: state.auction.dateatom
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h1"
-  }, auction.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, state.auction.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h3"
-  }, auction.date, " \xA0\xA0\xA0")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, state.auction.date, " \xA0\xA0\xA0")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
@@ -48315,7 +48315,7 @@ function Auction(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h3"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("Auction lots")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({}, props, {
-    items: auction.lots,
+    items: state.auction.lots,
     data: {
       auction: auction,
       entity: "lots",
@@ -48341,16 +48341,16 @@ function Auction(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-30"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    date: auction.dateatom
+    date: state.auction.dateatom
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center my-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-30"
   }, inAuctions ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/auctions/" + auction.id,
+    to: "/auctions/" + state.auction.id,
     className: "btn btn-danger"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("ALREADY_REGISTERED")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/auctions/" + auction.id,
+    to: "/auctions/" + state.auction.id,
     className: "btn btn-danger",
     onClick: function onClick(e) {
       return participate(e, auction);
@@ -48369,7 +48369,7 @@ function Auction(props) {
     className: "btn btn-default w-100"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("Online-gallery")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, auction.title))))) : "" : "";
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, state.auction.title))))) : "" : "";
 }
 
 /***/ }),

@@ -39,7 +39,7 @@ export default function Auction(props) {
 
     const updateAuctionStatus = event => {
         setState(prevState => {
-            if (event.detail.id == prevState.auction.id)
+            if (event.detail.id == prevstate.auction.id)
                 return {
                     ...prevState,
                     auction: {
@@ -54,8 +54,8 @@ export default function Auction(props) {
     // const { auction } = props;
 
     // const Top = props => {
-    //     if (auction.title)
-    //         switch (auction.status) {
+    //     if (state.auction.title)
+    //         switch (state.auction.status) {
     //             case "started":
     //                 return <AuctionOnlineTop {...props} />;
     //             case "finished":
@@ -66,8 +66,8 @@ export default function Auction(props) {
     //     return false;
     // };
     // const Center = props => {
-    //     if (auction.title)
-    //         switch (auction.status) {
+    //     if (state.auction.title)
+    //         switch (state.auction.status) {
     //             case "started":
     //                 return <AuctionOnlineCenter {...props} />;
     //             case "finished":
@@ -78,8 +78,8 @@ export default function Auction(props) {
     //     return false;
     // };
     // const LotsList = props => {
-    //     if (auction.title)
-    //         switch (auction.status) {
+    //     if (state.auction.title)
+    //         switch (state.auction.status) {
     //             case "started":
     //                 return <AuctionOnlineLotsList {...props} />;
     //             case "finished":
@@ -90,8 +90,8 @@ export default function Auction(props) {
     //     return false;
     // };
     // const Bottom = props => {
-    //     if (auction.title)
-    //         switch (auction.status) {
+    //     if (state.auction.title)
+    //         switch (state.auction.status) {
     //             case "started":
     //                 return <AuctionOnlineBottom {...props} />;
     //             case "finished":
@@ -105,21 +105,21 @@ export default function Auction(props) {
     return state.auction ? (
         state.auction.status == "coming" ? (
             <section className="auction-page-wrapper">
-                    <div className={`status-` + auction.status}>
+                    <div className={`status-` + state.auction.status}>
                         <section
                             className="auction-announce auction-coming"
                             style={{
                                 backgroundImage:
-                                    "url(" + auction.thumbnail + ")",
+                                    "url(" + state.auction.thumbnail + ")",
                                 backgroundPosition: "top center"
                             }}
                         >
                             <div className="darkener">
                                 <div className="container">
-                                    <Countdown date={auction.dateatom} />
-                                    <div className="h1">{auction.title}</div>
+                                    <Countdown date={state.auction.dateatom} />
+                                    <div className="h1">{state.auction.title}</div>
                                     <div className="h3">
-                                        {auction.date} &nbsp;&nbsp;&nbsp;
+                                        {state.auction.date} &nbsp;&nbsp;&nbsp;
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@ export default function Auction(props) {
                                         </div>
                                         <Waterfall
                                             {...props}
-                                            items={auction.lots}
+                                            items={state.auction.lots}
                                             data={{
                                                 auction: auction,
                                                 entity: "lots",
@@ -162,7 +162,7 @@ export default function Auction(props) {
                                             <div className="row justify-content-center my-5">
                                                 <div className="col-lg-30">
                                                     <Countdown
-                                                        date={auction.dateatom}
+                                                        date={state.auction.dateatom}
                                                     />
                                                 </div>
                                             </div>
@@ -172,7 +172,7 @@ export default function Auction(props) {
                                                         <Link
                                                             to={
                                                                 "/auctions/" +
-                                                                auction.id
+                                                                state.auction.id
                                                             }
                                                             className="btn btn-danger"
                                                         >
@@ -184,7 +184,7 @@ export default function Auction(props) {
                                                         <Link
                                                             to={
                                                                 "/auctions/" +
-                                                                auction.id
+                                                                state.auction.id
                                                             }
                                                             className="btn btn-danger"
                                                             onClick={e =>
@@ -222,7 +222,7 @@ export default function Auction(props) {
                                 </div>
                             </div>
                             <div className="sticky-section">
-                                <span>{auction.title}</span>
+                                <span>{state.auction.title}</span>
                             </div>
                         </div>
                     </div>
