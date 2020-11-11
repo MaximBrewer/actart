@@ -54126,7 +54126,7 @@ function _arrayWithHoles(arr) {
 
 
 function Carousel(props) {
-  var _useParams = useParams(),
+  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useParams"])(),
       id = _useParams.id;
 
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useHistory"])();

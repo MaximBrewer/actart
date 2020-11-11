@@ -4,7 +4,7 @@ import Left from "./Left";
 import Right from "./Right";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from "../../../utils/trans";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 export default function Carousel(props) {
     const { id } = useParams();
