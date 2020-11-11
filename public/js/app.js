@@ -48245,7 +48245,7 @@ function Auction(props) {
       pathname = _useLocation.pathname;
 
   var lotId = pathname.replace(url + "/lot/", "");
-  console.log([lotId]);
+  console.log([lotId, url]);
   console.log(lotId);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     axios.get("/api/" + window.App.locale + "/auctions/" + id).then(function (res) {

@@ -42,7 +42,7 @@ export default function Auction(props) {
 
     const lotId = pathname.replace(url + "/lot/", "");
 
-    console.log([lotId])
+    console.log([lotId, url])
 
     console.log(lotId);
 
