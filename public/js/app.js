@@ -56476,18 +56476,22 @@ function EntityGrid(props) {
     return placeholders;
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_masonry_css__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_masonry_css__WEBPACK_IMPORTED_MODULE_1___default.a, {
     breakpointCols: columns(),
     className: "my-masonry-grid",
     columnClassName: "my-masonry-grid_column"
-  }, !loading && items != undefined ? items.length ? items.map(function (item, index) {
+  }, getPlaceholders()) : !!items && items.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_masonry_css__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    breakpointCols: columns(),
+    className: "my-masonry-grid",
+    columnClassName: "my-masonry-grid_column"
+  }, items.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Tizer, _extends({}, props, {
       item: item,
       key: index
     }));
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "h3"
-  }, Object(_utils_trans_js__WEBPACK_IMPORTED_MODULE_11__["default"])("NOTHING_TO_SHOW")) : getPlaceholders());
+  }, Object(_utils_trans_js__WEBPACK_IMPORTED_MODULE_11__["default"])("NOTHING_TO_SHOW")));
 }
 
 /***/ }),

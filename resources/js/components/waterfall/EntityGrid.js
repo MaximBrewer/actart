@@ -61,22 +61,28 @@ export default function EntityGrid(props) {
         return placeholders;
     };
     return (
-        <Masonry
-            breakpointCols={columns()}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column"
-        >
-            {!loading && items != undefined ? (
-                items.length ? (
-                    items.map((item, index) => (
+        <React.Fragment>
+            {loading ? (
+                <Masonry
+                    breakpointCols={columns()}
+                    className="my-masonry-grid"
+                    columnClassName="my-masonry-grid_column"
+                >
+                    {getPlaceholders()}
+                </Masonry>
+            ) : !!items && items.length ? (
+                <Masonry
+                    breakpointCols={columns()}
+                    className="my-masonry-grid"
+                    columnClassName="my-masonry-grid_column"
+                >
+                    {items.map((item, index) => (
                         <Tizer {...props} item={item} key={index} />
-                    ))
-                ) : (
-                    <h3 className="h3">{__("NOTHING_TO_SHOW")}</h3>
-                )
+                    ))}
+                </Masonry>
             ) : (
-                getPlaceholders()
+                <h3 className="h3">{__("NOTHING_TO_SHOW")}</h3>
             )}
-        </Masonry>
+        </React.Fragment>
     );
 }
