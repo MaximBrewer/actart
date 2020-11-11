@@ -124,4 +124,15 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
             ->select('auction_id')
             ->where('user_id', $this->id)->get()->toArray());
     }
+
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeAuthors($query)
+    {
+        return $query->where('role_id', 3);
+    }
 }
