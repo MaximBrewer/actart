@@ -201,7 +201,6 @@ function App() {
         handleLogout: handleLogout,
         req: req
     };
-    console.log("index")
 
     return initializing ? (
         <FullPageSpinner />

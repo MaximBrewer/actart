@@ -49280,7 +49280,7 @@ function AuctionRoute(props) {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/auctions/:id/lot/:lotId"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionLot__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, props, {
+  }, console.log("AuctionBase"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionLot__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, props, {
     auction: state.auction
   }))));
 }
@@ -51056,7 +51056,7 @@ function Carousel(props) {
     className: "col-xl-40 col-xxl-38"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "left-side"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsPicture, {
+  }, console.log("Slider"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsPicture, {
     ref: refPicture
   }), state.items.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -64080,7 +64080,6 @@ function App() {
     handleLogout: handleLogout,
     req: req
   };
-  console.log("index");
   return initializing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_full_page_spinner__WEBPACK_IMPORTED_MODULE_5__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header__WEBPACK_IMPORTED_MODULE_7__["default"], {

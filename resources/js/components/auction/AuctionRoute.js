@@ -48,7 +48,7 @@ export default function AuctionRoute(props) {
             else return prevState;
         });
     };
-    console.log("route")
+    console.log("route");
 
     return (
         <Switch>
@@ -56,6 +56,7 @@ export default function AuctionRoute(props) {
                 <AuctionBase {...props} auction={state.auction} />
             </Route>
             <Route exact path={`/auctions/:id/lot/:lotId`}>
+                {console.log("AuctionBase")}
                 <AuctionLot {...props} auction={state.auction} />
             </Route>
         </Switch>
