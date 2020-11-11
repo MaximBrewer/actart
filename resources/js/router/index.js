@@ -29,7 +29,7 @@ import AuthorsItem from "../pages/authors-item";
 import Gallery from "../pages/gallery";
 
 import AuctionAdmin from "../components/auction/AuctionAdmin";
-import AuctionRoute from "../components/auction/AuctionRoute";
+import Auction from "../components/auction/Auction";
 import SearchPage from "../pages/search";
 import Auctions from "../pages/auctions";
 import AuctionsArchive from "../pages/auctions-archive";
@@ -294,8 +294,8 @@ function App() {
                         <Route exact path="/auctions/archive">
                             <AuctionsArchive {...rest} />
                         </Route>
-                        <Route path={`/auctions`}>
-                            <AuctionRoute {...rest} />
+                        <Route path={`/auctions/:id`}>
+                            <Auction {...rest} />
                         </Route>
                         <Route exact path={`/search`}>
                             <SearchPage {...rest} />
