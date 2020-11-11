@@ -60352,24 +60352,22 @@ function AuctionsPage(props) {
   var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])(),
       pathname = _useLocation.pathname;
 
-  var scrollToElement = props.scrollToElement;
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    switch (pathname) {
-      case "/auctions/special":
-        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SPECIAL_AUCTIONS_PAGE_TITLE");
-        scrollToElement(specialEl);
-        break;
+  var scrollToElement = props.scrollToElement; // useEffect(() => {
+  //     switch (pathname) {
+  //         case "/auctions/special":
+  //             document.title = __("SPECIAL_AUCTIONS_PAGE_TITLE");
+  //             scrollToElement(specialEl);
+  //             break;
+  //         case "/auctions/regular":
+  //             document.title = __("REGULAR_AUCTIONS_PAGE_TITLE");
+  //             scrollToElement(regularEl);
+  //             break;
+  //         default:
+  //             document.title = __("AUCTIONS_PAGE_TITLE");
+  //             break;
+  //     }
+  // }, [pathname]);
 
-      case "/auctions/regular":
-        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("REGULAR_AUCTIONS_PAGE_TITLE");
-        scrollToElement(regularEl);
-        break;
-
-      default:
-        document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUCTIONS_PAGE_TITLE");
-        break;
-    }
-  }, [pathname]);
   var regularEl = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var specialEl = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
