@@ -12,7 +12,7 @@ import DefaultPlaceholderTizer from "./tizers/placeholders/Default.js";
 
 export default function EntityGrid(props) {
     const { items, columns, data, loading } = props;
-
+console.log(loading)
     const Tizer = props => {
         switch (data.tizerView) {
             case "auction":

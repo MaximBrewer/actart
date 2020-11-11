@@ -56408,6 +56408,7 @@ function EntityGrid(props) {
       columns = props.columns,
       data = props.data,
       loading = props.loading;
+  console.log(loading);
 
   var Tizer = function Tizer(props) {
     switch (data.tizerView) {
