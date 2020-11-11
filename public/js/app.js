@@ -63948,6 +63948,7 @@ var scrollToElement = function scrollToElement(ref) {
   return false;
 };
 
+console.log("index");
 react_modal__WEBPACK_IMPORTED_MODULE_11___default.a.setAppElement("#app");
 var customStyles = {
   overlay: {

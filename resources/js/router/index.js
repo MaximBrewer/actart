@@ -82,6 +82,7 @@ const scrollToElement = ref => {
     window.requestAnimationFrame(step);
     return false;
 };
+console.log("index")
 
 Modal.setAppElement("#app");
 
