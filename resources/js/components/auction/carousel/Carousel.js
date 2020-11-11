@@ -95,7 +95,7 @@ export default function Carousel(props) {
                             refPicture.current.slickPrev();
                             refAnnounce.current.slickPrev();
                             history.replace(
-                                "/auctions/" + id + "/lot/" + prevId()
+                                "/auctions/" + auction.id + "/lot/" + prevId()
                             );
                         }}
                     >
@@ -107,7 +107,7 @@ export default function Carousel(props) {
                             refPicture.current.slickNext();
                             refAnnounce.current.slickNext();
                             history.replace(
-                                "/auctions/" + id + "/lot/" + nextId()
+                                "/auctions/" + auction.id + "/lot/" + nextId()
                             );
                         }}
                     >
