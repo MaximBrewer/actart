@@ -4,7 +4,7 @@ import Countdown from "./Countdown";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import Waterfall from "../waterfall/Waterfall";
-import Carousel from "../carousel/Carousel";
+import Carousel from "./carousel/Carousel";
 
 export default function Auction(props) {
     
