@@ -31,20 +31,12 @@ export default function Carousel(props) {
     useEffect(() => {
         let index = getIndex();
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
-            lot_name: auction.lots[index].title,
-            author_name: auction.lots[index].author
-        });
-    }, [lotId]);
-
-    useEffect(() => {
-        let index = getIndex();
-        document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
             lot_name: state.items[index].title,
             author_name: state.items[index].author
         });
-        refPicture.current.slickGoTo(index, true);
-        refAnnounce.current.slickGoTo(index, true);
-    }, []);
+        refPicture.current.slickGoTo(index);
+        refAnnounce.current.slickGoTo(index);
+    }, [lotId]);
 
     const refPicture = useRef();
     const refAnnounce = useRef();

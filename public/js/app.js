@@ -50273,19 +50273,12 @@ function Carousel(props) {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var index = getIndex();
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
-      lot_name: auction.lots[index].title,
-      author_name: auction.lots[index].author
-    });
-  }, [lotId]);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    var index = getIndex();
-    document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
       lot_name: state.items[index].title,
       author_name: state.items[index].author
     });
-    refPicture.current.slickGoTo(index, true);
-    refAnnounce.current.slickGoTo(index, true);
-  }, []);
+    refPicture.current.slickGoTo(index);
+    refAnnounce.current.slickGoTo(index);
+  }, [lotId]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var setting = {
