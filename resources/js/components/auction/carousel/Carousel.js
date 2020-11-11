@@ -6,6 +6,8 @@ import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from "../../../utils/trans";
 
 export default function Carousel(props) {
+    console.log(props);
+
     const [state, setState] = useState({
         items: props.auction.lots,
         id: props.itemId

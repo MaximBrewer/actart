@@ -50863,6 +50863,8 @@ function _arrayWithHoles(arr) {
 
 
 function Carousel(props) {
+  console.log(props);
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     items: props.auction.lots,
     id: props.itemId
@@ -51265,7 +51267,7 @@ function Right(props) {
     className: "pb-3 d-flex justify-content-between"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-number"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID"), " ", item.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_1__["FavoriteBig"], {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID"), " ", item.sort), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_1__["FavoriteBig"], {
     item: item,
     req: req
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
