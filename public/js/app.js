@@ -54642,7 +54642,7 @@ function Center(props) {
       backgroundImage: 'url("' + state.auction.current.thumbnail + '")'
     }
   }), state.lbOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_image_lightbox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    mainSrc: state.auction.current.thumbnail,
+    mainSrc: state.auction.current.photo,
     onCloseRequest: function onCloseRequest() {
       return setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {

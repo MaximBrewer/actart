@@ -201,7 +201,7 @@ export default function Center(props) {
                                                         mainSrc={
                                                             state.auction
                                                                 .current
-                                                                .thumbnail
+                                                                .photo
                                                         }
                                                         onCloseRequest={() =>
                                                             setState(
