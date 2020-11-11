@@ -49297,11 +49297,11 @@ function AuctionRoute(props) {
     });
   };
 
-  return pathname == url ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionBase__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
+  return state.auction ? pathname == url ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionBase__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
     auction: state.auction
   })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionLot__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, props, {
     auction: state.auction
-  }));
+  })) : "";
 }
 
 /***/ }),

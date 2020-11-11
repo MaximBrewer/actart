@@ -54,9 +54,13 @@ export default function AuctionRoute(props) {
         });
     };
 
-    return pathname == url ? (
-        <AuctionBase {...props} auction={state.auction} />
+    return state.auction ? (
+        pathname == url ? (
+            <AuctionBase {...props} auction={state.auction} />
+        ) : (
+            <AuctionLot {...props} auction={state.auction} />
+        )
     ) : (
-        <AuctionLot {...props} auction={state.auction} />
+        ``
     );
 }
