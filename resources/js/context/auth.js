@@ -20,7 +20,7 @@ function AuthProvider({ children }) {
 
     const inAuctions = id => {
         if (currentUser)
-            for (a of currentUser.auctions) if (a.id == id) return true;
+            for (const a of currentUser.auctions) if (a.id == id) return true;
         return false;
     };
 

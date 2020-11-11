@@ -58288,7 +58288,7 @@ function AuthProvider(_ref) {
 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          a = _step.value;
+          var a = _step.value;
           if (a.id == id) return true;
         }
       } catch (err) {
