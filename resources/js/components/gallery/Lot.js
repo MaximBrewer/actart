@@ -5,6 +5,7 @@ import Carousel from "./carousel/Carousel";
 import __ from '../../utils/trans';
 
 export default function Lot(props) {
+    console.log("lot")
     return (
         <section className="lot-section">
             <div className="sticky-wrapper">
