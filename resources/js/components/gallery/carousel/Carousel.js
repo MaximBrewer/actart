@@ -9,7 +9,6 @@ import { useHistory, useParams } from "react-router-dom";
 export default function Carousel(props) {
     const { id } = useParams();
     let history = useHistory();
-    console.log(id);
     const [state, setState] = useState({
         items: props.items,
         id: id
@@ -26,6 +25,7 @@ export default function Carousel(props) {
 
     useEffect(() => {
         let index = getIndex();
+        console.log(index);
         document.title = __("LOT_IN_GALLERY_PAGE_TITLE", {
             lot_name: state.items[index].title,
             author_name: state.items[index].author
