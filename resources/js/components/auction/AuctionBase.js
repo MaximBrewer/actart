@@ -24,6 +24,8 @@ export default function AuctionBase(props) {
         auction: null
     });
 
+    console.log(base)
+
     const updateAuctionStatus = event => {
         setState(prevState => {
             if (event.detail.id == prevState.auction.id)
