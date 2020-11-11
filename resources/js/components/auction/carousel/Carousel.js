@@ -79,7 +79,10 @@ export default function Carousel(props) {
                         onClick={() => {
                             refPicture.current.slickPrev();
                             refAnnounce.current.slickPrev();
-                            window.history.pushState('', '', "/auctions/" + id + "/lot/" + prevId());
+                            history.replace(
+                                "/auctions/" + id + "/lot/" + prevId(),
+                                state
+                            );
                         }}
                     >
                         <ArrowPrew />
@@ -89,7 +92,10 @@ export default function Carousel(props) {
                         onClick={() => {
                             refPicture.current.slickNext();
                             refAnnounce.current.slickNext();
-                            window.history.pushState('', '', "/auctions/" + id + "/lot/" + nextId());
+                            history.replace(
+                                "/auctions/" + id + "/lot/" + nextId(),
+                                state
+                            );
                         }}
                     >
                         <ArrowNext />
