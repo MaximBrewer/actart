@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import __ from "../../utils/trans";
 import Carousel from "./carousel/Carousel";
 import AuctionComingTop from "./coming/Top.js";
+import AuctionComingLotTop from "./coming/LotTop.js";
 import AuctionComingCenter from "./coming/Center.js";
 import AuctionComingBottom from "./coming/Bottom.js";
 import AuctionComingLotsList from "./coming/LotsList.js";
 import AuctionOnlineTop from "./online/Top.js";
+import AuctionOnlineLotTop from "./online/LotTop.js";
 import AuctionOnlineCenter from "./online/Center.js";
 import AuctionOnlineBottom from "./online/Bottom.js";
 import AuctionOnlineLotsList from "./online/LotsList.js";
 import AuctionArchiveTop from "./archive/Top.js";
+import AuctionArchiveLotTop from "./archive/LotTop.js";
 import AuctionArchiveCenter from "./archive/Center.js";
 import AuctionArchiveBottom from "./archive/Bottom.js";
 import AuctionArchiveLotsList from "./archive/LotsList.js";
@@ -33,7 +36,7 @@ export default function Auction(props) {
 
     const lotId = pathname.replace(url + "/lot/", "");
 
-    console.log(lotId)
+    console.log(lotId);
 
     useEffect(() => {
         axios
@@ -73,11 +76,23 @@ export default function Auction(props) {
         if (state.auction.title)
             switch (state.auction.status) {
                 case "started":
-                    return <AuctionOnlineTop {...props} />;
+                    return lotId ? (
+                        <AuctionOnlineLotTop {...props} />
+                    ) : (
+                        <AuctionOnlineTop {...props} />
+                    );
                 case "finished":
-                    return <AuctionArchiveTop {...props} />;
+                    return lotId ? (
+                        <AuctionArchiveLotTop {...props} />
+                    ) : (
+                        <AuctionArchiveTop {...props} />
+                    );
                 case "coming":
-                    return <AuctionComingTop {...props} />;
+                    return lotId ? (
+                        <AuctionComingLotTop {...props} />
+                    ) : (
+                        <AuctionComingTop {...props} />
+                    );
             }
         return false;
     };
