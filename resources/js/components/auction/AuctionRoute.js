@@ -17,6 +17,8 @@ export default function AuctionRoute(props) {
         auction: null
     });
 
+    console.log("Route");
+
     useEffect(() => {
         axios
             .get("/api/" + window.App.locale + "/auctions/" + id)
