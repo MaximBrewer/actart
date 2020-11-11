@@ -49247,7 +49247,7 @@ function AuctionRoute(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  useEffect(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     axios.get("/api/" + window.App.locale + "/auctions/" + id).then(function (res) {
       setState({
         auction: res.data.auction

@@ -1,10 +1,14 @@
-import React, {useState} from "react";
-import { BrowserRouter as Router, Route, Switch, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    useParams
+} from "react-router-dom";
 import AuctionLot from "./AuctionLot";
 import AuctionBase from "./AuctionBase";
 
 export default function AuctionRoute(props) {
-
     const { id } = useParams();
 
     const [state, setState] = useState({
