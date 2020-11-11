@@ -48,6 +48,7 @@ export default function AuctionRoute(props) {
             else return prevState;
         });
     };
+    console.log("route")
 
     return (
         <Switch>
