@@ -62096,7 +62096,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_auction_Auctions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/auction/Auctions */ "./resources/js/components/auction/Auctions.js");
 /* harmony import */ var _components_moving_Gallery__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/moving/Gallery */ "./resources/js/components/moving/Gallery.js");
 /* harmony import */ var _components_carousel_Carousel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/carousel/Carousel */ "./resources/js/components/carousel/Carousel.js");
-/* harmony import */ var _components_waterfall_WaterfallAjax__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/waterfall/WaterfallAjax */ "./resources/js/components/waterfall/WaterfallAjax.js");
+/* harmony import */ var _components_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _icons_home__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../icons/home */ "./resources/js/icons/home.js");
 function _extends() {
@@ -62173,7 +62173,7 @@ function Home(props) {
     className: "d-none d-md-block pb-4"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("GALLERY_BLOCK_LATEST_BIDS"), ":", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_home__WEBPACK_IMPORTED_MODULE_11__["Hummer"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "act-waterfall"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Waterfall, _extends({}, props, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_9__["default"], _extends({}, props, {
     items: window.App.gallery,
     data: {
       gallery: true,

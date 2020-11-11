@@ -7,7 +7,7 @@ import Parser from "html-react-parser";
 import Auctions from "../components/auction/Auctions";
 import MovingGallery from "../components/moving/Gallery";
 import Carousel from "../components/carousel/Carousel";
-import WaterfallAjax from "../components/waterfall/WaterfallAjax";
+import Waterfall from "../components/waterfall/Waterfall";
 import {
     Link,
     useLocation,
