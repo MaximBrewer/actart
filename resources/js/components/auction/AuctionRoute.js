@@ -59,6 +59,6 @@ export default function AuctionRoute(props) {
     };
 
     return (
-
+<div></div>
     );
 }
