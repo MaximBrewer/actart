@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import __ from "../../utils/trans";
-import { Link, useParams } from "react-router-dom";
 import Carousel from "./carousel/Carousel";
 import AuctionComingTop from "./coming/Top.js";
 import AuctionComingCenter from "./coming/Center.js";
