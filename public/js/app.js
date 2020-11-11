@@ -51391,7 +51391,7 @@ function Right(props) {
     className: "user-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-id"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_YOUR_ID"), ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", currentUser.id)), item.bets.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_YOUR_ID"), ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", currentUser.id)), item.bets.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "last-price"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "title"
@@ -51399,7 +51399,7 @@ function Right(props) {
     className: "info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, "$", item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_SEED"), ":", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", item.bets[0].user_id)))), item.status == "in_auction" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, "$", item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_SEED"), ":", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", item.bets[0].user_id)))) : "", item.status == "in_auction" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-danger",
     href: "#",
     onClick: function onClick(e) {
@@ -51408,7 +51408,7 @@ function Right(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", item.price * 1 + 100))) : "");
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", item.price * 1 + 100)) : "") : "");
 }
 
 /***/ }),

@@ -71,7 +71,7 @@ export default function Right(props) {
                     <div className="user-id">
                         {__("LOT_YOUR_ID")}: <span>#{currentUser.id}</span>
                     </div>
-                    {item.bets.length && (
+                    {item.bets.length ? (
                         <div className="last-price">
                             <div className="title">{__("LOT_LAST_PRICE")}</div>
                             <div className="info">
@@ -82,8 +82,10 @@ export default function Right(props) {
                                 </div>
                             </div>
                         </div>
+                    ) : (
+                        ``
                     )}
-                    {item.status == "in_auction" && (
+                    {item.status == "in_auction" ? (
                         <a
                             className="btn btn-danger"
                             href="#"
@@ -95,6 +97,8 @@ export default function Right(props) {
                             <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
                             <div>${item.price * 1 + 100}</div>
                         </a>
+                    ) : (
+                        ``
                     )}
                 </div>
             ) : (
