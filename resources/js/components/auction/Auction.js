@@ -140,7 +140,7 @@ export default function Auction(props) {
                                             {...props}
                                             items={state.auction.lots}
                                             data={{
-                                                auction: auction,
+                                                auction: state.auction,
                                                 entity: "lots",
                                                 sortable: true,
                                                 tizerView: "auction",

@@ -48317,7 +48317,7 @@ function Auction(props) {
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("Auction lots")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({}, props, {
     items: state.auction.lots,
     data: {
-      auction: auction,
+      auction: state.auction,
       entity: "lots",
       sortable: true,
       tizerView: "auction",
