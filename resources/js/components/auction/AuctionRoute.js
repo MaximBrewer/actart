@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-    useParams,
-    useRouteMatch,
-    useLocation
-} from "react-router-dom";
+import { useParams, useRouteMatch, useLocation } from "react-router-dom";
 import AuctionLot from "./AuctionLot";
 import AuctionBase from "./AuctionBase";
 
@@ -11,7 +7,7 @@ export default function AuctionRoute(props) {
     let { path, url } = useRouteMatch();
     let { pathname } = useLocation();
 
-    const { id } = 16;
+    const id = 16;
 
     const [state, setState] = useState({
         auction: null

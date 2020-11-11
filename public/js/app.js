@@ -49241,8 +49241,7 @@ function AuctionRoute(props) {
   var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])(),
       pathname = _useLocation.pathname;
 
-  var _ = 16,
-      id = _.id;
+  var id = 16;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     auction: null
