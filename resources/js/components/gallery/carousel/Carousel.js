@@ -84,7 +84,7 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
-                            history.replace("/gallery/lot/" + id);
+                            history.replace("/gallery/lot/" + prevId());
                         }}
                     >
                         <ArrowPrew />
@@ -92,8 +92,7 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
-                            refPicture.current.slickNext();
-                            refAnnounce.current.slickNext();
+                            history.replace("/gallery/lot/" + nextId());
                         }}
                     >
                         <ArrowNext />
