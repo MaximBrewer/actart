@@ -1,83 +1,183 @@
 import React, { useState, useEffect } from "react";
-import AuctionComingTop from "./coming/LotTop.js";
-import AuctionComingCenter from "./coming/LotCenter.js";
-import AuctionComingBottom from "./coming/LotBottom.js";
-import AuctionComingLotsList from "./coming/LotsList.js";
-import AuctionOnlineTop from "./online/LotTop.js";
-import AuctionOnlineCenter from "./online/LotCenter.js";
-import AuctionOnlineBottom from "./online/LotBottom.js";
-import AuctionOnlineLotsList from "./online/LotsList.js";
-import AuctionArchiveTop from "./archive/LotTop.js";
-import AuctionArchiveCenter from "./archive/LotCenter.js";
-import AuctionArchiveBottom from "./archive/LotBottom.js";
-import AuctionArchiveLotsList from "./archive/LotsList.js";
 import __ from "../../utils/trans";
+import Countdown from "./Countdown";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/auth";
+import Waterfall from "../waterfall/Waterfall";
+import Carousel from "../carousel/Carousel";
 
 export default function Lot(props) {
 
-    const { auction } = props;
+    const { auction, participate } = props;
+    let { inAuctions } = useAuth();
 
-    const Top = props => {
-        if (auction.title)
-            switch (auction.status) {
-                case "started":
-                    return <AuctionOnlineTop {...props} />;
-                case "finished":
-                    return <AuctionArchiveTop {...props} />;
-                case "coming":
-                    return <AuctionComingTop {...props} />;
-            }
-        return false;
-    };
-    const Center = props => {
-        if (auction.title)
-            switch (auction.status) {
-                case "started":
-                    return <AuctionOnlineCenter {...props} />;
-                case "finished":
-                    return <AuctionArchiveCenter {...props} />;
-                case "coming":
-                    return <AuctionComingCenter {...props} />;
-            }
-        return false;
-    };
-    const LotsList = props => {
-        if (auction.title)
-            switch (auction.status) {
-                case "started":
-                    return <AuctionOnlineLotsList {...props} />;
-                case "finished":
-                    return <AuctionArchiveLotsList {...props} />;
-                case "coming":
-                    return <AuctionComingLotsList {...props} />;
-            }
-        return false;
-    };
-    const Bottom = props => {
-        if (auction.title)
-            switch (auction.status) {
-                case "started":
-                    return <AuctionOnlineBottom {...props} />;
-                case "finished":
-                    return <AuctionArchiveBottom {...props} />;
-                case "coming":
-                    return <AuctionComingBottom {...props} />;
-            }
-        return false;
-    };
+    // const { auction } = props;
+
+    // const Top = props => {
+    //     if (auction.title)
+    //         switch (auction.status) {
+    //             case "started":
+    //                 return <AuctionOnlineTop {...props} />;
+    //             case "finished":
+    //                 return <AuctionArchiveTop {...props} />;
+    //             case "coming":
+    //                 return <AuctionComingTop {...props} />;
+    //         }
+    //     return false;
+    // };
+    // const Center = props => {
+    //     if (auction.title)
+    //         switch (auction.status) {
+    //             case "started":
+    //                 return <AuctionOnlineCenter {...props} />;
+    //             case "finished":
+    //                 return <AuctionArchiveCenter {...props} />;
+    //             case "coming":
+    //                 return <AuctionComingCenter {...props} />;
+    //         }
+    //     return false;
+    // };
+    // const LotsList = props => {
+    //     if (auction.title)
+    //         switch (auction.status) {
+    //             case "started":
+    //                 return <AuctionOnlineLotsList {...props} />;
+    //             case "finished":
+    //                 return <AuctionArchiveLotsList {...props} />;
+    //             case "coming":
+    //                 return <AuctionComingLotsList {...props} />;
+    //         }
+    //     return false;
+    // };
+    // const Bottom = props => {
+    //     if (auction.title)
+    //         switch (auction.status) {
+    //             case "started":
+    //                 return <AuctionOnlineBottom {...props} />;
+    //             case "finished":
+    //                 return <AuctionArchiveBottom {...props} />;
+    //             case "coming":
+    //                 return <AuctionComingBottom {...props} />;
+    //         }
+    //     return false;
+    // };
+
     return (
         <section className="auction-page-wrapper">
             {auction ? (
                 <div className={`status-` + auction.status}>
-                    <Top {...props} />
+                    <section
+                        className="auction-announce auction-coming"
+                        style={{
+                            backgroundImage: "url(" + auction.thumbnail + ")",
+                            backgroundPosition: "top center"
+                        }}
+                    >
+                        <div className="darkener">
+                            <div className="container">
+                                <Countdown date={auction.dateatom} />
+                                <div className="h1">{auction.title}</div>
+                                <div className="h3">
+                                    {auction.date} &nbsp;&nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                     <div className="sticky-wrapper">
-                        <Center {...props} />
+                        <div className="auction-info">
+                            <div className="container">
+                                <Carousel {...props} />
+                            </div>
+                        </div>
                         <div className="auction-page-inner">
                             <div className="auction-works-list my-5">
-                                <LotsList {...props} />
+                                <div className="container">
+                                    <div className="h3">
+                                        {__("Auction lots")}
+                                    </div>
+                                    <Waterfall
+                                        {...props}
+                                        items={auction.lots}
+                                        data={{
+                                            auction: auction,
+                                            entity: "lots",
+                                            sortable: true,
+                                            tizerView: "auction",
+                                            view: {
+                                                xs: 1,
+                                                sm: 2,
+                                                md: 2,
+                                                lg: 4,
+                                                xl: 4,
+                                                xxl: 4
+                                            }
+                                        }}
+                                    />
+                                </div>
                             </div>
                             <div className="my-5">
-                                <Bottom {...props} />
+                                <div className="auction-footer">
+                                    <div className="container">
+                                        <div className="row justify-content-center my-5">
+                                            <div className="col-lg-30">
+                                                <Countdown
+                                                    date={auction.dateatom}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="row justify-content-center my-5">
+                                            <div className="col-lg-30">
+                                                {inAuctions ? (
+                                                    <Link
+                                                        to={
+                                                            "/auctions/" +
+                                                            auction.id
+                                                        }
+                                                        className="btn btn-danger"
+                                                    >
+                                                        {__(
+                                                            "ALREADY_REGISTERED"
+                                                        )}
+                                                    </Link>
+                                                ) : (
+                                                    <Link
+                                                        to={
+                                                            "/auctions/" +
+                                                            auction.id
+                                                        }
+                                                        className="btn btn-danger"
+                                                        onClick={e =>
+                                                            participate(
+                                                                e,
+                                                                auction
+                                                            )
+                                                        }
+                                                    >
+                                                        {__("PARTICIPATE")}
+                                                    </Link>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="row justify-content-center my-5">
+                                            <div className="col-lg-15">
+                                                <Link
+                                                    to="/auctions"
+                                                    className="btn btn-default w-100"
+                                                >
+                                                    {__("All auctions")}
+                                                </Link>
+                                            </div>
+                                            <div className="col-lg-15">
+                                                <Link
+                                                    to="/gallery"
+                                                    className="btn btn-default w-100"
+                                                >
+                                                    {__("Online-gallery")}
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="sticky-section">

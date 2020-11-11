@@ -6,7 +6,6 @@ import GalleryArchive from "../components/gallery/Archive";
 import GalleryCategory from "../components/gallery/Category";
 
 export default function Gallery(props) {
-    console.log("gallery")
     return (
         <Switch>
             <Route exact path={`/gallery`}><GalleryCategory {...props} showLink={false} /></Route>
