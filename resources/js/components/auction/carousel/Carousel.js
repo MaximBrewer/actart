@@ -80,8 +80,7 @@ export default function Carousel(props) {
                             refPicture.current.slickPrev();
                             refAnnounce.current.slickPrev();
                             history.replace(
-                                "/auctions/" + id + "/lot/" + prevId(),
-                                state
+                                "/auctions/" + id + "/lot/" + prevId()
                             );
                         }}
                     >
@@ -93,8 +92,7 @@ export default function Carousel(props) {
                             refPicture.current.slickNext();
                             refAnnounce.current.slickNext();
                             history.replace(
-                                "/auctions/" + id + "/lot/" + nextId(),
-                                state
+                                "/auctions/" + id + "/lot/" + nextId()
                             );
                         }}
                     >

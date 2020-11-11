@@ -4,15 +4,19 @@ import {
     Route,
     Switch,
     useParams,
-    useRouteMatch
+    useRouteMatch,
+    useLocation
 } from "react-router-dom";
 import AuctionLot from "./AuctionLot";
 import AuctionBase from "./AuctionBase";
 
 export default function AuctionRoute(props) {
     let { path, url } = useRouteMatch();
+    let { location } = useLocation();
 
+    console.log(location)
     console.log(url)
+    console.log(path)
     
     const { id } = useParams();
 
@@ -55,22 +59,6 @@ export default function AuctionRoute(props) {
     };
 
     return (
-        <Switch>
-            <Route exact path={path}>
-                {state.auction ? (
-                    <AuctionBase {...props} auction={state.auction} />
-                ) : (
-                    ``
-                )}
-            </Route>
-            <Route path={`${path}/lot`}>
-                {console.log("route")}
-                {state.auction ? (
-                    <AuctionLot {...props} auction={state.auction} />
-                ) : (
-                    ``
-                )}
-            </Route>
-        </Switch>
+
     );
 }
