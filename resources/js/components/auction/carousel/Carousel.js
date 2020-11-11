@@ -6,6 +6,7 @@ import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from "../../../utils/trans";
 import {
     useHistory,
+    useParams,
     useRouteMatch,
     useLocation
 } from "react-router-dom";
