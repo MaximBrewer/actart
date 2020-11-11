@@ -9,10 +9,11 @@ import EventTizer from "./tizers/Event.js";
 import LastbetsTizer from "./tizers/Lastbets.js";
 import LotPlaceholderTizer from "./tizers/placeholders/Lot.js";
 import DefaultPlaceholderTizer from "./tizers/placeholders/Default.js";
+import __ from "../../utils/trans.js";
 
 export default function EntityGrid(props) {
     const { items, columns, data, loading } = props;
-console.log(loading)
+    console.log(loading);
     const Tizer = props => {
         switch (data.tizerView) {
             case "auction":
@@ -65,11 +66,17 @@ console.log(loading)
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
         >
-            {!loading && items != undefined
-                ? items.map((item, index) => (
-                      <Tizer {...props} item={item} key={index} />
-                  ))
-                : getPlaceholders()}
+            {!loading && items != undefined ? (
+                items.length ? (
+                    items.map((item, index) => (
+                        <Tizer {...props} item={item} key={index} />
+                    ))
+                ) : (
+                    <h3 className="h3">{__("NOTHING_TO_SHOW")}</h3>
+                )
+            ) : (
+                getPlaceholders()
+            )}
         </Masonry>
     );
 }

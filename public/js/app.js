@@ -56374,6 +56374,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tizers_Lastbets_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./tizers/Lastbets.js */ "./resources/js/components/waterfall/tizers/Lastbets.js");
 /* harmony import */ var _tizers_placeholders_Lot_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./tizers/placeholders/Lot.js */ "./resources/js/components/waterfall/tizers/placeholders/Lot.js");
 /* harmony import */ var _tizers_placeholders_Default_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./tizers/placeholders/Default.js */ "./resources/js/components/waterfall/tizers/placeholders/Default.js");
+/* harmony import */ var _utils_trans_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/trans.js */ "./resources/js/utils/trans.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -56391,6 +56392,7 @@ function _extends() {
 
   return _extends.apply(this, arguments);
 }
+
 
 
 
@@ -56478,12 +56480,14 @@ function EntityGrid(props) {
     breakpointCols: columns(),
     className: "my-masonry-grid",
     columnClassName: "my-masonry-grid_column"
-  }, !loading && items != undefined ? items.map(function (item, index) {
+  }, !loading && items != undefined ? items.length ? items.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Tizer, _extends({}, props, {
       item: item,
       key: index
     }));
-  }) : getPlaceholders());
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "h3"
+  }, Object(_utils_trans_js__WEBPACK_IMPORTED_MODULE_11__["default"])("NOTHING_TO_SHOW")) : getPlaceholders());
 }
 
 /***/ }),
