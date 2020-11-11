@@ -197,8 +197,8 @@ export default function Header(props) {
                                 <div className="col-md-20 flex-row-reverse right-position d-none d-md-flex">
                                     <div>
                                         {currentUser ?
-                                            <Link className="icon profile" type="submit" to="/profile"><Profile /></Link> :
-                                            <a className="btn btn-default-inverse btn-sm" type="submit" href="#" onClick={(e) => { e.preventDefault(); openModal('login') }}>{Parser(__('Log&nbsp;In'))}</a>
+                                            <Link className="icon profile" to="/profile"><Profile /></Link> :
+                                            <a className="btn btn-default-inverse btn-sm" href="#" onClick={(e) => { e.preventDefault(); openModal('login') }}>{Parser(__('Log&nbsp;In'))}</a>
                                         }
                                     </div>
                                     <div className="header-lang">
