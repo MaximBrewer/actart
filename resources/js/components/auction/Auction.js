@@ -5,21 +5,18 @@ import AuctionComingTop from "./coming/Top.js";
 import AuctionComingLotTop from "./coming/LotTop.js";
 import AuctionComingCenter from "./coming/Center.js";
 import AuctionComingBottom from "./coming/Bottom.js";
-import AuctionComingLotCenter from "./coming/LotCenter.js";
 import AuctionComingLotBottom from "./coming/LotBottom.js";
 import AuctionComingLotsList from "./coming/LotsList.js";
 import AuctionOnlineTop from "./online/Top.js";
 import AuctionOnlineLotTop from "./online/LotTop.js";
 import AuctionOnlineCenter from "./online/Center.js";
 import AuctionOnlineBottom from "./online/Bottom.js";
-import AuctionOnlineLotCenter from "./online/LotCenter.js";
 import AuctionOnlineLotBottom from "./online/LotBottom.js";
 import AuctionOnlineLotsList from "./online/LotsList.js";
 import AuctionArchiveTop from "./archive/Top.js";
 import AuctionArchiveLotTop from "./archive/LotTop.js";
 import AuctionArchiveCenter from "./archive/Center.js";
 import AuctionArchiveBottom from "./archive/Bottom.js";
-import AuctionArchiveLotCenter from "./archive/LotCenter.js";
 import AuctionArchiveLotBottom from "./archive/LotBottom.js";
 import AuctionArchiveLotsList from "./archive/LotsList.js";
 import {
@@ -107,23 +104,11 @@ export default function Auction(props) {
         if (state.auction.title)
             switch (state.auction.status) {
                 case "started":
-                    return lotId ? (
-                        <AuctionOnlineLotCenter {...props} />
-                    ) : (
-                        <AuctionOnlineCenter {...props} />
-                    );
+                    return <AuctionOnlineCenter {...props} />;
                 case "finished":
-                    return lotId ? (
-                        <AuctionArchiveLotCenter {...props} />
-                    ) : (
-                        <AuctionArchiveCenter {...props} />
-                    );
+                    return <AuctionArchiveCenter {...props} />;
                 case "coming":
-                    return lotId ? (
-                        <AuctionComingLotCenter {...props} />
-                    ) : (
-                        <AuctionComingCenter {...props} />
-                    );
+                    return <AuctionComingCenter {...props} />;
             }
         return false;
     };
@@ -169,7 +154,7 @@ export default function Auction(props) {
             <div className={`status-` + state.auction.status}>
                 <Top auction={state.auction} />
                 <div className="sticky-wrapper">
-                    {state.auction.status == "coming" && lotId ? (
+                    {lotId ? (
                         <div className="auction-info">
                             <div className="container">
                                 <Carousel {...props} auction={state.auction} />

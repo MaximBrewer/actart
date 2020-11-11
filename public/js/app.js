@@ -48059,24 +48059,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coming_LotTop_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./coming/LotTop.js */ "./resources/js/components/auction/coming/LotTop.js");
 /* harmony import */ var _coming_Center_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./coming/Center.js */ "./resources/js/components/auction/coming/Center.js");
 /* harmony import */ var _coming_Bottom_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coming/Bottom.js */ "./resources/js/components/auction/coming/Bottom.js");
-/* harmony import */ var _coming_LotCenter_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coming/LotCenter.js */ "./resources/js/components/auction/coming/LotCenter.js");
-/* harmony import */ var _coming_LotBottom_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./coming/LotBottom.js */ "./resources/js/components/auction/coming/LotBottom.js");
-/* harmony import */ var _coming_LotsList_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./coming/LotsList.js */ "./resources/js/components/auction/coming/LotsList.js");
-/* harmony import */ var _online_Top_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./online/Top.js */ "./resources/js/components/auction/online/Top.js");
-/* harmony import */ var _online_LotTop_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./online/LotTop.js */ "./resources/js/components/auction/online/LotTop.js");
-/* harmony import */ var _online_Center_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./online/Center.js */ "./resources/js/components/auction/online/Center.js");
-/* harmony import */ var _online_Bottom_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./online/Bottom.js */ "./resources/js/components/auction/online/Bottom.js");
-/* harmony import */ var _online_LotCenter_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./online/LotCenter.js */ "./resources/js/components/auction/online/LotCenter.js");
-/* harmony import */ var _online_LotBottom_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./online/LotBottom.js */ "./resources/js/components/auction/online/LotBottom.js");
-/* harmony import */ var _online_LotsList_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./online/LotsList.js */ "./resources/js/components/auction/online/LotsList.js");
-/* harmony import */ var _archive_Top_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./archive/Top.js */ "./resources/js/components/auction/archive/Top.js");
-/* harmony import */ var _archive_LotTop_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./archive/LotTop.js */ "./resources/js/components/auction/archive/LotTop.js");
-/* harmony import */ var _archive_Center_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./archive/Center.js */ "./resources/js/components/auction/archive/Center.js");
-/* harmony import */ var _archive_Bottom_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./archive/Bottom.js */ "./resources/js/components/auction/archive/Bottom.js");
-/* harmony import */ var _archive_LotCenter_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./archive/LotCenter.js */ "./resources/js/components/auction/archive/LotCenter.js");
-/* harmony import */ var _archive_LotBottom_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./archive/LotBottom.js */ "./resources/js/components/auction/archive/LotBottom.js");
-/* harmony import */ var _archive_LotsList_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./archive/LotsList.js */ "./resources/js/components/auction/archive/LotsList.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _coming_LotBottom_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coming/LotBottom.js */ "./resources/js/components/auction/coming/LotBottom.js");
+/* harmony import */ var _coming_LotsList_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./coming/LotsList.js */ "./resources/js/components/auction/coming/LotsList.js");
+/* harmony import */ var _online_Top_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./online/Top.js */ "./resources/js/components/auction/online/Top.js");
+/* harmony import */ var _online_LotTop_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./online/LotTop.js */ "./resources/js/components/auction/online/LotTop.js");
+/* harmony import */ var _online_Center_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./online/Center.js */ "./resources/js/components/auction/online/Center.js");
+/* harmony import */ var _online_Bottom_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./online/Bottom.js */ "./resources/js/components/auction/online/Bottom.js");
+/* harmony import */ var _online_LotBottom_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./online/LotBottom.js */ "./resources/js/components/auction/online/LotBottom.js");
+/* harmony import */ var _online_LotsList_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./online/LotsList.js */ "./resources/js/components/auction/online/LotsList.js");
+/* harmony import */ var _archive_Top_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./archive/Top.js */ "./resources/js/components/auction/archive/Top.js");
+/* harmony import */ var _archive_LotTop_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./archive/LotTop.js */ "./resources/js/components/auction/archive/LotTop.js");
+/* harmony import */ var _archive_Center_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./archive/Center.js */ "./resources/js/components/auction/archive/Center.js");
+/* harmony import */ var _archive_Bottom_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./archive/Bottom.js */ "./resources/js/components/auction/archive/Bottom.js");
+/* harmony import */ var _archive_LotBottom_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./archive/LotBottom.js */ "./resources/js/components/auction/archive/LotBottom.js");
+/* harmony import */ var _archive_LotsList_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./archive/LotsList.js */ "./resources/js/components/auction/archive/LotsList.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -48224,11 +48221,8 @@ function _arrayWithHoles(arr) {
 
 
 
-
-
-
 function Auction(props) {
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_24__["useParams"])(),
+  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_21__["useParams"])(),
       id = _useParams.id;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
@@ -48238,10 +48232,10 @@ function Auction(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  var _useRouteMatch = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_24__["useRouteMatch"])(),
+  var _useRouteMatch = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_21__["useRouteMatch"])(),
       url = _useRouteMatch.url;
 
-  var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_24__["useLocation"])(),
+  var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_21__["useLocation"])(),
       pathname = _useLocation.pathname;
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {}, [pathname]);
@@ -48273,10 +48267,10 @@ function Auction(props) {
   var Top = function Top(props) {
     if (state.auction.title) switch (state.auction.status) {
       case "started":
-        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_LotTop_js__WEBPACK_IMPORTED_MODULE_11__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_Top_js__WEBPACK_IMPORTED_MODULE_10__["default"], props);
+        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_LotTop_js__WEBPACK_IMPORTED_MODULE_10__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_Top_js__WEBPACK_IMPORTED_MODULE_9__["default"], props);
 
       case "finished":
-        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_LotTop_js__WEBPACK_IMPORTED_MODULE_18__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_Top_js__WEBPACK_IMPORTED_MODULE_17__["default"], props);
+        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_LotTop_js__WEBPACK_IMPORTED_MODULE_16__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_Top_js__WEBPACK_IMPORTED_MODULE_15__["default"], props);
 
       case "coming":
         return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_LotTop_js__WEBPACK_IMPORTED_MODULE_4__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_Top_js__WEBPACK_IMPORTED_MODULE_3__["default"], props);
@@ -48287,13 +48281,13 @@ function Auction(props) {
   var Center = function Center(props) {
     if (state.auction.title) switch (state.auction.status) {
       case "started":
-        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_LotCenter_js__WEBPACK_IMPORTED_MODULE_14__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_Center_js__WEBPACK_IMPORTED_MODULE_12__["default"], props);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_Center_js__WEBPACK_IMPORTED_MODULE_11__["default"], props);
 
       case "finished":
-        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_LotCenter_js__WEBPACK_IMPORTED_MODULE_21__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_Center_js__WEBPACK_IMPORTED_MODULE_19__["default"], props);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_Center_js__WEBPACK_IMPORTED_MODULE_17__["default"], props);
 
       case "coming":
-        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_LotCenter_js__WEBPACK_IMPORTED_MODULE_7__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_Center_js__WEBPACK_IMPORTED_MODULE_5__["default"], props);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_Center_js__WEBPACK_IMPORTED_MODULE_5__["default"], props);
     }
     return false;
   };
@@ -48301,13 +48295,13 @@ function Auction(props) {
   var LotsList = function LotsList(props) {
     if (state.auction.title) switch (state.auction.status) {
       case "started":
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_LotsList_js__WEBPACK_IMPORTED_MODULE_16__["default"], props);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_LotsList_js__WEBPACK_IMPORTED_MODULE_14__["default"], props);
 
       case "finished":
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_LotsList_js__WEBPACK_IMPORTED_MODULE_23__["default"], props);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_LotsList_js__WEBPACK_IMPORTED_MODULE_20__["default"], props);
 
       case "coming":
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_LotsList_js__WEBPACK_IMPORTED_MODULE_9__["default"], props);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_LotsList_js__WEBPACK_IMPORTED_MODULE_8__["default"], props);
     }
     return false;
   };
@@ -48315,13 +48309,13 @@ function Auction(props) {
   var Bottom = function Bottom(props) {
     if (state.auction.title) switch (state.auction.status) {
       case "started":
-        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_LotBottom_js__WEBPACK_IMPORTED_MODULE_15__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_Bottom_js__WEBPACK_IMPORTED_MODULE_13__["default"], props);
+        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_LotBottom_js__WEBPACK_IMPORTED_MODULE_13__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_Bottom_js__WEBPACK_IMPORTED_MODULE_12__["default"], props);
 
       case "finished":
-        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_LotBottom_js__WEBPACK_IMPORTED_MODULE_22__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_Bottom_js__WEBPACK_IMPORTED_MODULE_20__["default"], props);
+        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_LotBottom_js__WEBPACK_IMPORTED_MODULE_19__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_Bottom_js__WEBPACK_IMPORTED_MODULE_18__["default"], props);
 
       case "coming":
-        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_LotBottom_js__WEBPACK_IMPORTED_MODULE_8__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_Bottom_js__WEBPACK_IMPORTED_MODULE_6__["default"], props);
+        return lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_LotBottom_js__WEBPACK_IMPORTED_MODULE_7__["default"], props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_Bottom_js__WEBPACK_IMPORTED_MODULE_6__["default"], props);
     }
     return false;
   };
@@ -48334,7 +48328,7 @@ function Auction(props) {
     auction: state.auction
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
-  }, state.auction.status == "coming" && lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, lotId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
@@ -50106,31 +50100,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/auction/archive/LotCenter.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/auction/archive/LotCenter.js ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ArchiveCenter; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../carousel/Carousel */ "./resources/js/components/auction/carousel/Carousel.js");
-
-
-function ArchiveCenter(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "auction-info"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_1__["default"], props)));
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/auction/archive/LotTop.js":
 /*!***********************************************************!*\
   !*** ./resources/js/components/auction/archive/LotTop.js ***!
@@ -51313,33 +51282,6 @@ function Bottom(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/auction/coming/LotCenter.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/auction/coming/LotCenter.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Center; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/trans */ "./resources/js/utils/trans.js");
-/* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../carousel/Carousel */ "./resources/js/components/auction/carousel/Carousel.js");
-
-
-
-function Center(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "auction-info"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__["default"], props)));
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/auction/coming/LotTop.js":
 /*!**********************************************************!*\
   !*** ./resources/js/components/auction/coming/LotTop.js ***!
@@ -52040,33 +51982,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_Bottom__WEBPACK_IMPORTED_MODULE_1__["default"]);
-
-/***/ }),
-
-/***/ "./resources/js/components/auction/online/LotCenter.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/auction/online/LotCenter.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Center; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/trans */ "./resources/js/utils/trans.js");
-/* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../carousel/Carousel */ "./resources/js/components/auction/carousel/Carousel.js");
-
-
-
-function Center(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "auction-info"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__["default"], props)));
-}
 
 /***/ }),
 
