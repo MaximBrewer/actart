@@ -19,15 +19,15 @@ export default function Lot(props) {
     const { id, lotId } = useParams();
 
     const getIndex = () => {
-        for (let i in state.items) if (state.items[i].id == lotId) return i;
+        for (let i in auction.lots) if (auction.lots[i].id == lotId) return i;
         return 0;
     };
 
     useEffect(() => {
         let index = getIndex();
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
-            lot_name: state.items[index].title,
-            author_name: state.items[index].author
+            lot_name: auction.lots[index].title,
+            author_name: auction.lots[index].author
         });
     }, [lotId]);
 

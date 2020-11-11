@@ -49019,8 +49019,8 @@ function Lot(props) {
       lotId = _useParams.lotId;
 
   var getIndex = function getIndex() {
-    for (var i in state.items) {
-      if (state.items[i].id == lotId) return i;
+    for (var i in auction.lots) {
+      if (auction.lots[i].id == lotId) return i;
     }
 
     return 0;
@@ -49029,8 +49029,8 @@ function Lot(props) {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var index = getIndex();
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_13__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
-      lot_name: state.items[index].title,
-      author_name: state.items[index].author
+      lot_name: auction.lots[index].title,
+      author_name: auction.lots[index].author
     });
   }, [lotId]);
   var auction = props.auction;
