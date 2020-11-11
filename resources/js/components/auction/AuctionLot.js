@@ -94,9 +94,6 @@ export default function Lot(props) {
             }
         return false;
     };
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [lotId]);
     return (
         <section className="auction-page-wrapper">
             {state.auction ? (
