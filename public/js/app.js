@@ -57426,7 +57426,6 @@ function WaterfallAjax(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    getGallery(state.filter, state.sortBy, state.order, state.options);
     window.addEventListener("remove-lot", removeLot);
     window.addEventListener("update-lot-status", updateLotStatus);
     window.addEventListener("create-bet", createBet);
