@@ -16,6 +16,8 @@ import { useParams } from "react-router-dom";
 
 export default function Lot(props) {
 
+    const { auction } = props;
+
     const { id, lotId } = useParams();
 
     const getIndex = () => {
@@ -30,8 +32,6 @@ export default function Lot(props) {
             author_name: auction.lots[index].author
         });
     }, [lotId]);
-
-    const { auction } = props;
 
     const Top = props => {
         if (auction.title)

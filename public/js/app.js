@@ -49014,6 +49014,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Lot(props) {
+  var auction = props.auction;
+
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_14__["useParams"])(),
       id = _useParams.id,
       lotId = _useParams.lotId;
@@ -49033,7 +49035,6 @@ function Lot(props) {
       author_name: auction.lots[index].author
     });
   }, [lotId]);
-  var auction = props.auction;
 
   var Top = function Top(props) {
     if (auction.title) switch (auction.status) {
