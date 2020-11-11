@@ -3,12 +3,14 @@ import {
     BrowserRouter as Router,
     Route,
     Switch,
-    useParams
+    useParams,
+    useRouteMatch
 } from "react-router-dom";
 import AuctionLot from "./AuctionLot";
 import AuctionBase from "./AuctionBase";
 
 export default function AuctionRoute(props) {
+    let { path, url } = useRouteMatch();
     const { id } = useParams();
 
     const [state, setState] = useState({
@@ -52,11 +54,10 @@ export default function AuctionRoute(props) {
 
     return (
         <Switch>
-            <Route exact path={`/auctions/:id`}>
+            <Route exact path={path}>
                 <AuctionBase {...props} auction={state.auction} />
             </Route>
-            <Route exact path={`/auctions/:id/lot/:lotId`}>
-                {console.log("AuctionBase")}
+            <Route path={`${path}/lot/:lotId`}>
                 <AuctionLot {...props} auction={state.auction} />
             </Route>
         </Switch>
