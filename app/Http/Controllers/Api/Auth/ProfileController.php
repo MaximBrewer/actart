@@ -23,7 +23,7 @@ class ProfileController extends Controller
         return new UserResource($request->user());
     }
 
-    public function favorites(Request $request, $action, $id)
+    public function favorites(Request $request, $lang, $action, $id)
     {
         $user = User::findOrFail(Auth::id());
         $action == "add" && $user->favorites()->attach([$id]);
