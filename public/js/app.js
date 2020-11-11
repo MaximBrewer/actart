@@ -49126,6 +49126,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _AuctionLot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AuctionLot */ "./resources/js/components/auction/AuctionLot.js");
 /* harmony import */ var _AuctionBase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AuctionBase */ "./resources/js/components/auction/AuctionBase.js");
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
 
@@ -49242,10 +49260,8 @@ function AuctionRoute(props) {
       path = _useRouteMatch.path,
       url = _useRouteMatch.url;
 
-  var location = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])();
-  console.log(location);
-  console.log(url);
-  console.log(path);
+  var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])(),
+      pathname = _useLocation.pathname;
 
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id;
@@ -49281,7 +49297,11 @@ function AuctionRoute(props) {
     });
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+  return pathname == url ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionBase__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
+    auction: state.auction
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionLot__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, props, {
+    auction: state.auction
+  }));
 }
 
 /***/ }),

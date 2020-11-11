@@ -12,12 +12,8 @@ import AuctionBase from "./AuctionBase";
 
 export default function AuctionRoute(props) {
     let { path, url } = useRouteMatch();
-    let location = useLocation();
+    let { pathname } = useLocation();
 
-    console.log(location)
-    console.log(url)
-    console.log(path)
-    
     const { id } = useParams();
 
     const [state, setState] = useState({
@@ -58,7 +54,9 @@ export default function AuctionRoute(props) {
         });
     };
 
-    return (
-<div></div>
+    return pathname == url ? (
+        <AuctionBase {...props} auction={state.auction} />
+    ) : (
+        <AuctionLot {...props} auction={state.auction} />
     );
 }
