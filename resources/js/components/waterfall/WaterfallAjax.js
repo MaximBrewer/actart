@@ -18,7 +18,7 @@ export default function WaterfallAjax(props) {
         sortBy: "id",
         order: "asc",
         filter: {
-            status: !!data.archive ? "sold" : "available"
+            status: !!data.archive ? "archive" : "available"
         }
     });
 

@@ -57236,7 +57236,7 @@ function WaterfallAjax(props) {
     sortBy: "id",
     order: "asc",
     filter: {
-      status: !!data.archive ? "sold" : "available"
+      status: !!data.archive ? "archive" : "available"
     }
   }),
       _useState2 = _slicedToArray(_useState, 2),

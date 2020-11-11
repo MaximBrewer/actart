@@ -38,6 +38,9 @@ class LotController extends Controller
                 case "available":
                     $lots->whereIn('status', ["auction", "gallery"]);
                     break;
+                case "archive":
+                    $lots->whereIn('status', ["sold", "gsold"]);
+                    break;
                 default:
                     $lots->where('status', $request->get('status'));
                     break;
