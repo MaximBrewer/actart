@@ -50867,7 +50867,7 @@ function Carousel(props) {
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     items: props.auction.lots,
-    id: props.itemId
+    id: props.lotId
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],

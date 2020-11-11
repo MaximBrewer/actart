@@ -10,7 +10,7 @@ export default function Carousel(props) {
 
     const [state, setState] = useState({
         items: props.auction.lots,
-        id: props.itemId
+        id: props.lotId
     });
 
     useEffect(() => {
