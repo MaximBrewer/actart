@@ -55165,11 +55165,9 @@ function Header(props) {
     className: "col-md-20 flex-row-reverse right-position d-none d-md-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
     className: "icon profile",
-    type: "submit",
     to: "/profile"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_header__WEBPACK_IMPORTED_MODULE_3__["Profile"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default-inverse btn-sm",
-    type: "submit",
     href: "#",
     onClick: function onClick(e) {
       e.preventDefault();
