@@ -5,6 +5,18 @@ import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import Waterfall from "../waterfall/Waterfall";
 import Carousel from "./carousel/Carousel";
+import AuctionComingTop from "./coming/Top.js";
+import AuctionComingCenter from "./coming/Center.js";
+import AuctionComingBottom from "./coming/Bottom.js";
+import AuctionComingLotsList from "./coming/LotsList.js";
+import AuctionOnlineTop from "./online/Top.js";
+import AuctionOnlineCenter from "./online/Center.js";
+import AuctionOnlineBottom from "./online/Bottom.js";
+import AuctionOnlineLotsList from "./online/LotsList.js";
+import AuctionArchiveTop from "./archive/Top.js";
+import AuctionArchiveCenter from "./archive/Center.js";
+import AuctionArchiveBottom from "./archive/Bottom.js";
+import AuctionArchiveLotsList from "./archive/LotsList.js";
 
 export default function Auction(props) {
     const { id } = useParams();
