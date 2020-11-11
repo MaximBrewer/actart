@@ -13,7 +13,7 @@ import __ from "../../utils/trans.js";
 
 export default function EntityGrid(props) {
     const { items, columns, data, loading } = props;
-    console.log(loading);
+    
     const Tizer = props => {
         switch (data.tizerView) {
             case "auction":
