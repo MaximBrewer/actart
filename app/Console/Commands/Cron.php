@@ -87,7 +87,7 @@ class Cron extends Command
             $auction = Auction::find($n->auction_id);
             $user = User::find($n->user_id);
             $user->notify(new ReminderNotification($auction, $user));
-            DB::query(
+            DB::update(
                 "UPDATE `user_auction`
                 SET `notified` = 1
                 WHERE `notified` = 0 
