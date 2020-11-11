@@ -48229,56 +48229,63 @@ function Auction(props) {
         })
       });else return prevState;
     });
-  }; // const { auction } = props;
-  // const Top = props => {
-  //     if (state.auction.title)
-  //         switch (state.auction.status) {
-  //             case "started":
-  //                 return <AuctionOnlineTop {...props} />;
-  //             case "finished":
-  //                 return <AuctionArchiveTop {...props} />;
-  //             case "coming":
-  //                 return <AuctionComingTop {...props} />;
-  //         }
-  //     return false;
-  // };
-  // const Center = props => {
-  //     if (state.auction.title)
-  //         switch (state.auction.status) {
-  //             case "started":
-  //                 return <AuctionOnlineCenter {...props} />;
-  //             case "finished":
-  //                 return <AuctionArchiveCenter {...props} />;
-  //             case "coming":
-  //                 return <AuctionComingCenter {...props} />;
-  //         }
-  //     return false;
-  // };
-  // const LotsList = props => {
-  //     if (state.auction.title)
-  //         switch (state.auction.status) {
-  //             case "started":
-  //                 return <AuctionOnlineLotsList {...props} />;
-  //             case "finished":
-  //                 return <AuctionArchiveLotsList {...props} />;
-  //             case "coming":
-  //                 return <AuctionComingLotsList {...props} />;
-  //         }
-  //     return false;
-  // };
-  // const Bottom = props => {
-  //     if (state.auction.title)
-  //         switch (state.auction.status) {
-  //             case "started":
-  //                 return <AuctionOnlineBottom {...props} />;
-  //             case "finished":
-  //                 return <AuctionArchiveBottom {...props} />;
-  //             case "coming":
-  //                 return <AuctionComingBottom {...props} />;
-  //         }
-  //     return false;
-  // };
+  };
 
+  var Top = function Top(props) {
+    if (state.auction.title) switch (state.auction.status) {
+      case "started":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionOnlineTop, props);
+
+      case "finished":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionArchiveTop, props);
+
+      case "coming":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionComingTop, props);
+    }
+    return false;
+  };
+
+  var Center = function Center(props) {
+    if (state.auction.title) switch (state.auction.status) {
+      case "started":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionOnlineCenter, props);
+
+      case "finished":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionArchiveCenter, props);
+
+      case "coming":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionComingCenter, props);
+    }
+    return false;
+  };
+
+  var LotsList = function LotsList(props) {
+    if (state.auction.title) switch (state.auction.status) {
+      case "started":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionOnlineLotsList, props);
+
+      case "finished":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionArchiveLotsList, props);
+
+      case "coming":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionComingLotsList, props);
+    }
+    return false;
+  };
+
+  var Bottom = function Bottom(props) {
+    if (state.auction.title) switch (state.auction.status) {
+      case "started":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionOnlineBottom, props);
+
+      case "finished":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionArchiveBottom, props);
+
+      case "coming":
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionComingBottom, props);
+    }
+    return false;
+  };
 
   return state.auction ? state.auction.status == "coming" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "auction-page-wrapper"
@@ -48334,42 +48341,9 @@ function Auction(props) {
     }
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "my-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "auction-footer"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row justify-content-center my-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-30"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    date: state.auction.dateatom
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row justify-content-center my-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-30"
-  }, inAuctions ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/auctions/" + state.auction.id,
-    className: "btn btn-danger"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("ALREADY_REGISTERED")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/auctions/" + state.auction.id,
-    className: "btn btn-danger",
-    onClick: function onClick(e) {
-      return participate(e, auction);
-    }
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("PARTICIPATE")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row justify-content-center my-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-15"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/auctions",
-    className: "btn btn-default w-100"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("All auctions"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-15"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/gallery",
-    className: "btn btn-default w-100"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("Online-gallery")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Bottom, _extends({}, props, {
+    auction: state.auction
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, state.auction.title))))) : "" : "";
 }
