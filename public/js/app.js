@@ -54149,6 +54149,7 @@ function Carousel(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var index = getIndex();
+    console.log(id);
     console.log(index);
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_GALLERY_PAGE_TITLE", {
       lot_name: state.items[index].title,

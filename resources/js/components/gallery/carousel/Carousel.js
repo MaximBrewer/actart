@@ -25,6 +25,7 @@ export default function Carousel(props) {
 
     useEffect(() => {
         let index = getIndex();
+        console.log(id);
         console.log(index);
         document.title = __("LOT_IN_GALLERY_PAGE_TITLE", {
             lot_name: state.items[index].title,
