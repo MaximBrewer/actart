@@ -57336,6 +57336,7 @@ function WaterfallAjax(props) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           photos: res.data.items,
           page: 1,
+          loading: false,
           more: res.data.next > 0,
           filter: filter,
           sortBy: sortBy,

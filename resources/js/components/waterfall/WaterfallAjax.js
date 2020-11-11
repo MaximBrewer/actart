@@ -114,6 +114,7 @@ export default function WaterfallAjax(props) {
                         ...prevState,
                         photos: res.data.items,
                         page: 1,
+                        loading: false,
                         more: res.data.next > 0,
                         filter: filter,
                         sortBy: sortBy,
