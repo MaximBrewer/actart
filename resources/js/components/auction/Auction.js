@@ -16,7 +16,7 @@ import AuctionArchiveBottom from "./archive/Bottom.js";
 import AuctionArchiveLotsList from "./archive/LotsList.js";
 
 export default function Auction(props) {
-    
+
     const { id } = useParams();
 
     const [state, setState] = useState({
@@ -109,7 +109,7 @@ export default function Auction(props) {
     return state.auction ? (
         <section className="auction-page-wrapper">
             <div className={`status-` + state.auction.status}>
-                <Top />
+                <Top auction={state.auction} />
                 <div className="sticky-wrapper">
 
                     <div className="auction-info">
