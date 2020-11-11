@@ -24,8 +24,16 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'surname', 'middlename', 'email', 'password',
         'phone', 'fb', 'inst', 'beh',
+    ];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'fio',
     ];
 
     /**
@@ -45,7 +53,7 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -114,6 +122,11 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
         }, DB::table('favorites')
             ->select('lot_id')
             ->where('user_id', $this->id)->get()->toArray());
+    }
+
+    public function getFioAttribute()
+    {
+        return ($this->surname ? $this->surname . ' ' : '') . $this->name . ($this->middlename ? ' ' . $this->middlename : '');
     }
 
     public function getAidsAttribute()
