@@ -92,20 +92,31 @@
 
     .author-works-footer {
         >div {
-            margin-bottom: 2.75rem;
+            margin-bottom: 1.75rem;
         }
 
         .btn {
-            min-width: 15rem;
-            margin-left: 4rem;
-
-            &:first-child {
-                margin-left: 0;
-            }
+            min-width: 100%;
+            margin-bottom: 1rem;
         }
     }
 
-    @media (min-width: map.get($grid-breakpoints, "md")) {}
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        .author-works-footer {
+            >div {
+                margin-bottom: 2.75rem;
+            }
+
+            .btn {
+                min-width: 15rem;
+                margin-left: 4rem;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
 
     @media (min-width: map.get($grid-breakpoints, "xl")) {}
 

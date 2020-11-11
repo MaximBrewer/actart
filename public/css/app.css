@@ -19918,16 +19918,27 @@ iframe {
 }
 
 .author-works .author-works-footer > div {
-  margin-bottom: 2.75rem;
+  margin-bottom: 1.75rem;
 }
 
 .author-works .author-works-footer .btn {
-  min-width: 15rem;
-  margin-left: 4rem;
+  min-width: 100%;
+  margin-bottom: 1rem;
 }
 
-.author-works .author-works-footer .btn:first-child {
-  margin-left: 0;
+@media (min-width: 768px) {
+  .author-works .author-works-footer > div {
+    margin-bottom: 2.75rem;
+  }
+
+  .author-works .author-works-footer .btn {
+    min-width: 15rem;
+    margin-left: 4rem;
+  }
+
+  .author-works .author-works-footer .btn:first-child {
+    margin-left: 0;
+  }
 }
 
 @media (min-width: 1600px) {

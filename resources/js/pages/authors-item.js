@@ -155,7 +155,7 @@ export default function AuthorItem(props) {
                         </div>
                     </div>
                     <div className="author-works-footer">
-                        <div className="d-flex justify-content-center">
+                        <div className="d-md-flex justify-content-center">
                             <Link to="/auctions" className="btn btn-default">
                                 {__("Closest auctions")}
                             </Link>
