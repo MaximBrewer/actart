@@ -280,7 +280,7 @@ export default function Waterfall(props) {
                 )}
             </div>
             {data.filterable && (
-                <div className="waterfall-filterable col-15">
+                <div className="waterfall-filterable col-60 col-md-15">
                     <ul>
                         {state.options.map((option, option_index) => (
                             <li key={option_index}>
@@ -369,7 +369,7 @@ export default function Waterfall(props) {
             )}
             <div
                 className={
-                    `col-` + (data.filterable ? `45` : `60`) + ` stack-grid`
+                    (data.filterable ? `col-60 col-md-45` : `col-60`) + ` stack-grid`
                 }
             >
                 <EntityGrid

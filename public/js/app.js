@@ -56997,7 +56997,7 @@ function Waterfall(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
     d: "M9 18L0.339746 3L17.6603 3L9 18Z"
   }))))), data.filterable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "waterfall-filterable col-15"
+    className: "waterfall-filterable col-60 col-md-15"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, state.options.map(function (option, option_index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       key: option_index
@@ -57027,7 +57027,7 @@ function Waterfall(props) {
       }
     }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("CATEGORY_ALL_LINK")))));
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-" + (data.filterable ? "45" : "60") + " stack-grid"
+    className: (data.filterable ? "col-60 col-md-45" : "col-60") + " stack-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EntityGrid__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, props, {
     columns: columns,
     items: state.items,
