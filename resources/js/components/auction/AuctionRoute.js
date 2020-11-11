@@ -61,7 +61,7 @@ export default function AuctionRoute(props) {
                     ``
                 )}
             </Route>
-            <Route path={`${path}/lot/:lotId`}>
+            <Route path={`${path}/lot`}>
                 {state.auction ? (
                     <AuctionLot {...props} auction={state.auction} />
                 ) : (

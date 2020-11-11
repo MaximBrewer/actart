@@ -49301,7 +49301,7 @@ function AuctionRoute(props) {
   }, state.auction ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionBase__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
     auction: state.auction
   })) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "".concat(path, "/lot/:lotId")
+    path: "".concat(path, "/lot")
   }, state.auction ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionLot__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, props, {
     auction: state.auction
   })) : ""));
