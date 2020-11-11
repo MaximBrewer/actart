@@ -47,6 +47,7 @@ class Lot extends JsonResource
                 'title' => $this->getTranslatedAttribute('title'),
                 'text' => $this->getTranslatedAttribute('text'),
                 'thumbnail' => Voyager::image($this->thumbnail('preview', 'photo')),
+                'photo' => Voyager::image($this->photo),
                 'size' => $sizeBase[0] / $sizeBase[1] > 1 ? 2 : 1,
                 'width' => $this->width,
                 'height' => $this->height,
