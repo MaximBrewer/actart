@@ -48851,7 +48851,7 @@ function _arrayWithHoles(arr) {
 
 
 function AuctionBase(props) {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_14__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_15__["default"])('AUCTIONS_PAGE_TITLE'));
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_14__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_15__["default"])("AUCTIONS_PAGE_TITLE"));
   var req = props.req;
 
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
@@ -48864,8 +48864,18 @@ function AuctionBase(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var updateAuctionStatus = function updateAuctionStatus(event) {
+    setState(function (prevState) {
+      if (event.detail.id == prevState.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
+        auction: _objectSpread(_objectSpread({}, prevState.auction), {}, {
+          status: event.detail.status
+        })
+      });else return prevState;
+    });
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    req('/api/' + window.App.locale + "/auctions/" + id).then(function (_ref) {
+    req("/api/" + window.App.locale + "/auctions/" + id).then(function (_ref) {
       var auction = _ref.auction;
       return setState({
         auction: auction
@@ -48878,16 +48888,6 @@ function AuctionBase(props) {
       window.removeEventListener("update-auction-status", updateAuctionStatus);
     };
   }, []);
-
-  var updateAuctionStatus = function updateAuctionStatus(event) {
-    setState(function (prevState) {
-      if (event.detail.id == prevState.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
-        auction: _objectSpread(_objectSpread({}, prevState.auction), {}, {
-          status: event.detail.status
-        })
-      });else return prevState;
-    });
-  };
 
   var Bottom = function Bottom(props) {
     if (state.auction.title) switch (state.auction.status) {
@@ -49141,7 +49141,7 @@ function _arrayWithHoles(arr) {
 
 
 function Lot(props) {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_14__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_15__["default"])('LOT_IN_AUCTION_PAGE_TITLE'));
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_14__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_15__["default"])("LOT_IN_AUCTION_PAGE_TITLE"));
 
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id,
@@ -49154,11 +49154,13 @@ function Lot(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  var updateAuction = function updateAuction(event) {
+  var updateAuctionStatus = function updateAuctionStatus(event) {
     setState(function (prevState) {
-      return _objectSpread(_objectSpread({}, prevState), {}, {
-        auction: event.detail.auction
-      });
+      if (event.detail.id == prevState.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
+        auction: _objectSpread(_objectSpread({}, prevState.auction), {}, {
+          status: event.detail.status
+        })
+      });else return prevState;
     });
   };
 
@@ -49170,7 +49172,10 @@ function Lot(props) {
     })["catch"](function (err) {
       console.log(err);
     });
-    window.addEventListener("auction", updateAuction);
+    window.addEventListener("update-auction-status", updateAuctionStatus);
+    return function () {
+      window.removeEventListener("update-auction-status", updateAuctionStatus);
+    };
   }, []);
 
   var Top = function Top(props) {
@@ -49419,6 +49424,31 @@ function Auctions(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var updateAuctionStatus = function updateAuctionStatus(event) {
+    setState(function (prevState) {
+      var update = false;
+
+      var auctions = _objectSpread({}, prevState.auctions);
+
+      for (var i in auctions) {
+        if (event.detail.id == auctions[i].id) {
+          auctions[i].status = event.detail.status;
+          update = true;
+        }
+      }
+
+      return update ? _objectSpread(_objectSpread({}, prevState), {}, {
+        auctions: auctions
+      }) : prevState;
+    });
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    window.addEventListener("update-auction-status", updateAuctionStatus);
+    return function () {
+      window.removeEventListener("update-auction-status", updateAuctionStatus);
+    };
+  }, []);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var setting = {
@@ -49510,9 +49540,9 @@ function Auctions(props) {
   }), state.auctions.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
-    }, item.status == 'coming' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
+    }, item.status == "coming" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
       auction: item
-    }, props)) : "", item.status == 'started' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({
+    }, props)) : "", item.status == "started" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({
       auction: item
     }, props)) : "");
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -49524,9 +49554,9 @@ function Auctions(props) {
   }), state.auctions.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
-    }, item.status == 'coming' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
+    }, item.status == "coming" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
       auction: item
-    }, props)) : "", item.status == 'started' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({
+    }, props)) : "", item.status == "started" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({
       auction: item
     }, props)) : "");
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
@@ -49694,6 +49724,55 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
   };
 }
 
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
@@ -49765,6 +49844,25 @@ function AuctionList(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var updateAuctionStatus = function updateAuctionStatus(event) {
+    setState(function (prevState) {
+      var update = false;
+
+      var auctions = _objectSpread({}, prevState.auctions);
+
+      for (var i in auctions) {
+        if (event.detail.id == auctions[i].id) {
+          auctions[i].status = event.detail.status;
+          update = true;
+        }
+      }
+
+      return update ? _objectSpread(_objectSpread({}, prevState), {}, {
+        auctions: auctions
+      }) : prevState;
+    });
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var auctions = [];
 
@@ -49785,6 +49883,10 @@ function AuctionList(props) {
     setState({
       auctions: auctions
     });
+    window.addEventListener("update-auction-status", updateAuctionStatus);
+    return function () {
+      window.removeEventListener("update-auction-status", updateAuctionStatus);
+    };
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, state.auctions.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -49796,17 +49898,17 @@ function AuctionList(props) {
       className: "left-auction-side"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
       className: "d-xl-none"
-    }), item.status == 'coming' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
+    }), item.status == "coming" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
       auction: item
-    }, props)) : "", item.status == 'started' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
+    }, props)) : "", item.status == "started" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
       auction: item
     }, props)) : "")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "col-xl-20 col-xxl-22"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "right-auction-side"
-    }, item.status == 'coming' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
+    }, item.status == "coming" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
       auction: item
-    }, props)) : "", item.status == 'started' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({
+    }, props)) : "", item.status == "started" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({
       auction: item
     }, props)) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
       className: "d-xl-none"
@@ -61755,10 +61857,6 @@ function Events(props) {
       pathname = _useLocation.pathname;
 
   var scrollToElement = props.scrollToElement;
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    pathname == '/events/workshops' && scrollToElement(workshopsEl);
-    pathname == '/events/exhibitions' && scrollToElement(exhibitionsEl);
-  }, [pathname]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     switch (pathname) {
       case '/events/workshops':

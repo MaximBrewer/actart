@@ -14,11 +14,6 @@ export default function Events(props) {
     const { scrollToElement } = props;
 
     useEffect(() => {
-        pathname == '/events/workshops' && scrollToElement(workshopsEl)
-        pathname == '/events/exhibitions' && scrollToElement(exhibitionsEl)
-    }, [pathname]);
-
-    useEffect(() => {
         switch (pathname) {
             case '/events/workshops':
                 document.title = __('WORKSHOPS_PAGE_TITLE')

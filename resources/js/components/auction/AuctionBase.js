@@ -12,11 +12,11 @@ import AuctionArchiveTop from "./archive/Top.js";
 import AuctionArchiveCenter from "./archive/Center.js";
 import AuctionArchiveBottom from "./archive/Bottom.js";
 import AuctionArchiveLotsList from "./archive/LotsList.js";
-import useDocumentTitle from '../../components/document-title';
-import __ from '../../utils/trans';
+import useDocumentTitle from "../../components/document-title";
+import __ from "../../utils/trans";
 
-export default function AuctionBase(props) { 
-    useDocumentTitle(__('AUCTIONS_PAGE_TITLE'));
+export default function AuctionBase(props) {
+    useDocumentTitle(__("AUCTIONS_PAGE_TITLE"));
     const { req } = props;
     const { id } = useParams();
 
@@ -24,8 +24,22 @@ export default function AuctionBase(props) {
         auction: null
     });
 
+    const updateAuctionStatus = event => {
+        setState(prevState => {
+            if (event.detail.id == prevState.auction.id)
+                return {
+                    ...prevState,
+                    auction: {
+                        ...prevState.auction,
+                        status: event.detail.status
+                    }
+                };
+            else return prevState;
+        });
+    };
+
     useEffect(() => {
-        req('/api/' + window.App.locale + "/auctions/" + id)
+        req("/api/" + window.App.locale + "/auctions/" + id)
             .then(({ auction }) =>
                 setState({
                     auction: auction
@@ -34,21 +48,12 @@ export default function AuctionBase(props) {
             .catch(() => null);
         window.addEventListener("update-auction-status", updateAuctionStatus);
         return () => {
-            window.removeEventListener("update-auction-status", updateAuctionStatus);
-        }
+            window.removeEventListener(
+                "update-auction-status",
+                updateAuctionStatus
+            );
+        };
     }, []);
-
-    const updateAuctionStatus = event => {
-        setState(prevState => {
-            if (event.detail.id == prevState.auction.id)
-                return {
-                    ...prevState,
-                    auction: { ...prevState.auction, status: event.detail.status }
-                }
-            else
-                return prevState;
-        });
-    };
 
     const Bottom = props => {
         if (state.auction.title)
@@ -119,8 +124,8 @@ export default function AuctionBase(props) {
                     </div>
                 </div>
             ) : (
-                    ""
-                )}
+                ""
+            )}
         </section>
     );
 }

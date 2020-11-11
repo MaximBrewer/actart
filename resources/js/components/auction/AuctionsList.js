@@ -9,15 +9,40 @@ export default function AuctionList(props) {
         auctions: []
     });
 
+    const updateAuctionStatus = event => {
+        setState(prevState => {
+            let update = false;
+            let auctions = { ...prevState.auctions };
+            for (let i in auctions) {
+                if (event.detail.id == auctions[i].id) {
+                    auctions[i].status = event.detail.status;
+                    update = true;
+                }
+            }
+            return update
+                ? {
+                      ...prevState,
+                      auctions
+                  }
+                : prevState;
+        });
+    };
+
     useEffect(() => {
         let auctions = [];
         for (let item of window.App.coming) {
-            if (props.attr == item.attr)
-                auctions.push(item)
+            if (props.attr == item.attr) auctions.push(item);
         }
         setState({
             auctions: auctions
         });
+        window.addEventListener("update-auction-status", updateAuctionStatus);
+        return () => {
+            window.removeEventListener(
+                "update-auction-status",
+                updateAuctionStatus
+            );
+        };
     }, []);
 
     return (
@@ -27,14 +52,42 @@ export default function AuctionList(props) {
                     <div className="col-xl-40 col-xxl-38">
                         <div className="left-auction-side">
                             <hr className="d-xl-none" />
-                            {item.status == 'coming' ? <AuctionPreviewLeftComing auction={item} {...props} /> : ``}
-                            {item.status == 'started' ? <AuctionPreviewLeftOnline auction={item} {...props} /> : ``}
+                            {item.status == "coming" ? (
+                                <AuctionPreviewLeftComing
+                                    auction={item}
+                                    {...props}
+                                />
+                            ) : (
+                                ``
+                            )}
+                            {item.status == "started" ? (
+                                <AuctionPreviewLeftOnline
+                                    auction={item}
+                                    {...props}
+                                />
+                            ) : (
+                                ``
+                            )}
                         </div>
                     </div>
                     <div className="col-xl-20 col-xxl-22">
                         <div className="right-auction-side">
-                            {item.status == 'coming' ? <AuctionPreviewRightComing auction={item} {...props} /> : ``}
-                            {item.status == 'started' ? <AuctionPreviewRightOnline auction={item} {...props} /> : ``}
+                            {item.status == "coming" ? (
+                                <AuctionPreviewRightComing
+                                    auction={item}
+                                    {...props}
+                                />
+                            ) : (
+                                ``
+                            )}
+                            {item.status == "started" ? (
+                                <AuctionPreviewRightOnline
+                                    auction={item}
+                                    {...props}
+                                />
+                            ) : (
+                                ``
+                            )}
                             <hr className="d-xl-none" />
                         </div>
                     </div>

@@ -12,23 +12,28 @@ import AuctionArchiveTop from "./archive/LotTop.js";
 import AuctionArchiveCenter from "./archive/LotCenter.js";
 import AuctionArchiveBottom from "./archive/LotBottom.js";
 import AuctionArchiveLotsList from "./archive/LotsList.js";
-import useDocumentTitle from '../../components/document-title';
-import __ from '../../utils/trans';
+import useDocumentTitle from "../../components/document-title";
+import __ from "../../utils/trans";
 
 export default function Lot(props) {
-    useDocumentTitle(__('LOT_IN_AUCTION_PAGE_TITLE'));
+    useDocumentTitle(__("LOT_IN_AUCTION_PAGE_TITLE"));
     const { id, lotId } = useParams();
 
     const [state, setState] = useState({
         auction: null
     });
 
-    const updateAuction = event => {
+    const updateAuctionStatus = event => {
         setState(prevState => {
-            return {
-                ...prevState,
-                auction: event.detail.auction
-            };
+            if (event.detail.id == prevState.auction.id)
+                return {
+                    ...prevState,
+                    auction: {
+                        ...prevState.auction,
+                        status: event.detail.status
+                    }
+                };
+            else return prevState;
         });
     };
 
@@ -43,7 +48,13 @@ export default function Lot(props) {
             .catch(err => {
                 console.log(err);
             });
-        window.addEventListener("auction", updateAuction);
+        window.addEventListener("update-auction-status", updateAuctionStatus);
+        return () => {
+            window.removeEventListener(
+                "update-auction-status",
+                updateAuctionStatus
+            );
+        };
     }, []);
 
     const Top = props => {
@@ -115,8 +126,8 @@ export default function Lot(props) {
                     </div>
                 </div>
             ) : (
-                    ""
-                )}
+                ""
+            )}
         </section>
     );
 }

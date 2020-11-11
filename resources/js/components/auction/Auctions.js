@@ -4,7 +4,7 @@ import AuctionPreviewLeftComing from "./coming/blocks/AuctionPreviewLeft";
 import AuctionPreviewRightComing from "./coming/blocks/AuctionPreviewRight";
 import AuctionPreviewLeftOnline from "./online/blocks/AuctionPreviewLeft";
 import AuctionPreviewRightOnline from "./online/blocks/AuctionPreviewRight";
-import __ from '../../utils/trans';
+import __ from "../../utils/trans";
 import { Link } from "react-router-dom";
 
 export default function Auctions(props) {
@@ -13,6 +13,35 @@ export default function Auctions(props) {
         slidesTotal: App.coming.length,
         auctions: App.coming
     });
+
+    const updateAuctionStatus = event => {
+        setState(prevState => {
+            let update = false;
+            let auctions = { ...prevState.auctions };
+            for (let i in auctions) {
+                if (event.detail.id == auctions[i].id) {
+                    auctions[i].status = event.detail.status;
+                    update = true;
+                }
+            }
+            return update
+                ? {
+                      ...prevState,
+                      auctions
+                  }
+                : prevState;
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener("update-auction-status", updateAuctionStatus);
+        return () => {
+            window.removeEventListener(
+                "update-auction-status",
+                updateAuctionStatus
+            );
+        };
+    }, []);
 
     const refPicture = useRef();
     const refAnnounce = useRef();
@@ -30,11 +59,11 @@ export default function Auctions(props) {
     const settingsPicture = {
         ...setting,
         beforeChange: (current, next) => {
-            setState((prevState) => {
+            setState(prevState => {
                 return {
                     slideIndex: next,
                     ...prevState
-                }
+                };
             });
             if (
                 (next > current && (next == 1 || current != 0)) ||
@@ -47,11 +76,11 @@ export default function Auctions(props) {
     const settingsAnnounce = {
         ...setting,
         beforeChange: (current, next) => {
-            setState((prevState) => {
+            setState(prevState => {
                 return {
                     slideIndex: next,
                     ...prevState
-                }
+                };
             });
             if (
                 (next > current && (next == 1 || current != 0)) ||
@@ -85,24 +114,18 @@ export default function Auctions(props) {
                     <div className="col-xl-40 col-xxl-38">
                         <div className="left-auction-side">
                             <hr className="d-xl-none" />
-                            <AuctionPreviewLeft
-                                auction={item}
-                                {...props}
-                            />
+                            <AuctionPreviewLeft auction={item} {...props} />
                         </div>
                     </div>
                     <div className="col-xl-20 col-xxl-22">
                         <div className="right-auction-side">
-                            <AuctionPreviewRight
-                                auction={item}
-                                {...props}
-                            />
+                            <AuctionPreviewRight auction={item} {...props} />
                             <hr className="d-xl-none" />
                         </div>
                     </div>
                 </div>
-            )
-        })
+            );
+        });
     }
     return (
         <React.Fragment>
@@ -113,8 +136,22 @@ export default function Auctions(props) {
                         <Slider {...settingsPicture} ref={refPicture}>
                             {state.auctions.map((item, index) => (
                                 <div key={index}>
-                                    {item.status == 'coming' ? <AuctionPreviewLeftComing auction={item} {...props} /> : ``}
-                                    {item.status == 'started' ? <AuctionPreviewLeftOnline auction={item} {...props} /> : ``}
+                                    {item.status == "coming" ? (
+                                        <AuctionPreviewLeftComing
+                                            auction={item}
+                                            {...props}
+                                        />
+                                    ) : (
+                                        ``
+                                    )}
+                                    {item.status == "started" ? (
+                                        <AuctionPreviewLeftOnline
+                                            auction={item}
+                                            {...props}
+                                        />
+                                    ) : (
+                                        ``
+                                    )}
                                 </div>
                             ))}
                         </Slider>
@@ -125,8 +162,22 @@ export default function Auctions(props) {
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
                             {state.auctions.map((item, index) => (
                                 <div key={index}>
-                                    {item.status == 'coming' ? <AuctionPreviewRightComing auction={item} {...props} /> : ``}
-                                    {item.status == 'started' ? <AuctionPreviewRightOnline auction={item} {...props} /> : ``}
+                                    {item.status == "coming" ? (
+                                        <AuctionPreviewRightComing
+                                            auction={item}
+                                            {...props}
+                                        />
+                                    ) : (
+                                        ``
+                                    )}
+                                    {item.status == "started" ? (
+                                        <AuctionPreviewRightOnline
+                                            auction={item}
+                                            {...props}
+                                        />
+                                    ) : (
+                                        ``
+                                    )}
                                 </div>
                             ))}
                         </Slider>
