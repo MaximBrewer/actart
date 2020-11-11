@@ -48864,7 +48864,7 @@ function AuctionBase(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  console.log(base);
+  console.log("base");
 
   var updateAuctionStatus = function updateAuctionStatus(event) {
     setState(function (prevState) {

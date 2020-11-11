@@ -24,7 +24,7 @@ export default function AuctionBase(props) {
         auction: null
     });
 
-    console.log(base)
+    console.log("base")
 
     const updateAuctionStatus = event => {
         setState(prevState => {
