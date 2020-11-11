@@ -10,8 +10,7 @@ export default function Carousel(props) {
     const { id } = useParams();
     let history = useHistory();
     const [state, setState] = useState({
-        items: props.items,
-        id: id
+        items: window.App.gallery
     });
 
     useEffect(() => {
@@ -25,8 +24,6 @@ export default function Carousel(props) {
 
     useEffect(() => {
         let index = getIndex();
-        console.log(id);
-        console.log(index);
         document.title = __("LOT_IN_GALLERY_PAGE_TITLE", {
             lot_name: state.items[index].title,
             author_name: state.items[index].author
@@ -43,7 +40,7 @@ export default function Carousel(props) {
 
     const getIndex = () => {
         for (let i in state.items) {
-            if (state.items[i].id == state.id) return i;
+            if (state.items[i].id == id) return i;
         }
     };
 

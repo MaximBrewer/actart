@@ -53935,9 +53935,7 @@ function Lot(props) {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
-    items: window.App.gallery
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__["default"], props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "gallery-works",
     id: "galleryWorksList"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -54129,8 +54127,7 @@ function Carousel(props) {
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useHistory"])();
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    items: props.items,
-    id: id
+    items: window.App.gallery
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
@@ -54149,8 +54146,6 @@ function Carousel(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var index = getIndex();
-    console.log(id);
-    console.log(index);
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_GALLERY_PAGE_TITLE", {
       lot_name: state.items[index].title,
       author_name: state.items[index].author
@@ -54165,7 +54160,7 @@ function Carousel(props) {
 
   var getIndex = function getIndex() {
     for (var i in state.items) {
-      if (state.items[i].id == state.id) return i;
+      if (state.items[i].id == id) return i;
     }
   };
 

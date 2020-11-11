@@ -9,7 +9,7 @@ export default function Lot(props) {
         <section className="lot-section">
             <div className="sticky-wrapper">
                 <div className="container">
-                    <Carousel {...props} items={window.App.gallery}/>
+                    <Carousel {...props}/>
                     <div className="gallery-works" id="galleryWorksList">
                         <div className="h2">{__("Works for sale")}</div>
                         <div className="gallery-works-list">
