@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useRouteMatch, useLocation } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    useParams,
+    useRouteMatch
+} from "react-router-dom";
+
 import AuctionLot from "./AuctionLot";
 import AuctionBase from "./AuctionBase";
 
 export default function AuctionRoute(props) {
     let { path, url } = useRouteMatch();
-    let { pathname } = useLocation();
 
-    const id = 16;
+    console.log(url)
+    
+    const { id } = useParams();
 
     const [state, setState] = useState({
         auction: null
     });
-
-    console.log("Route");
 
     useEffect(() => {
         axios
@@ -49,13 +55,22 @@ export default function AuctionRoute(props) {
         });
     };
 
-    return state.auction ? (
-        pathname == url ? (
-            <AuctionBase {...props} auction={state.auction} />
-        ) : (
-            <AuctionLot {...props} auction={state.auction} />
-        )
-    ) : (
-        ``
+    return (
+        <Switch>
+            <Route exact path={path}>
+                {state.auction ? (
+                    <AuctionBase {...props} auction={state.auction} />
+                ) : (
+                    ``
+                )}
+            </Route>
+            <Route path={`${path}/lot/:lotId`}>
+                {state.auction ? (
+                    <AuctionLot {...props} auction={state.auction} />
+                ) : (
+                    ``
+                )}
+            </Route>
+        </Switch>
     );
 }
