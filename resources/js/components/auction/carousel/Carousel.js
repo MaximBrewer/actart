@@ -21,15 +21,12 @@ export default function Carousel(props) {
 
     useEffect(() => {
         let index = getIndex();
-
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
             lot_name: state.items[index].title,
             author_name: state.items[index].author
         });
-
         refPicture.current.slickGoTo(index);
         refAnnounce.current.slickGoTo(index);
-        window.scrollTo(0, 0);
     }, [lotId]);
 
     const refPicture = useRef();

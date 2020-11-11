@@ -7,7 +7,7 @@ import __ from "../../../utils/trans";
 import { useHistory, useParams } from "react-router-dom";
 
 export default function Carousel(props) {
-    
+
     const { id } = useParams();
     let history = useHistory();
 
@@ -32,7 +32,6 @@ export default function Carousel(props) {
         });
         refPicture.current.slickGoTo(index);
         refAnnounce.current.slickGoTo(index);
-        window.scrollTo(0, 0);
     }, [id]);
 
     const refPicture = useRef();

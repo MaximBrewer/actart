@@ -50867,7 +50867,6 @@ function Carousel(props) {
     });
     refPicture.current.slickGoTo(index);
     refAnnounce.current.slickGoTo(index);
-    window.scrollTo(0, 0);
   }, [lotId]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
@@ -54080,7 +54079,6 @@ function Carousel(props) {
     });
     refPicture.current.slickGoTo(index);
     refAnnounce.current.slickGoTo(index);
-    window.scrollTo(0, 0);
   }, [id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
