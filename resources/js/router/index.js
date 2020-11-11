@@ -82,7 +82,6 @@ const scrollToElement = ref => {
     window.requestAnimationFrame(step);
     return false;
 };
-console.log("index")
 
 Modal.setAppElement("#app");
 
@@ -202,6 +201,7 @@ function App() {
         handleLogout: handleLogout,
         req: req
     };
+    console.log("index")
 
     return initializing ? (
         <FullPageSpinner />

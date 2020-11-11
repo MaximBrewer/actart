@@ -63948,7 +63948,6 @@ var scrollToElement = function scrollToElement(ref) {
   return false;
 };
 
-console.log("index");
 react_modal__WEBPACK_IMPORTED_MODULE_11___default.a.setAppElement("#app");
 var customStyles = {
   overlay: {
@@ -64081,6 +64080,7 @@ function App() {
     handleLogout: handleLogout,
     req: req
   };
+  console.log("index");
   return initializing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_full_page_spinner__WEBPACK_IMPORTED_MODULE_5__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header__WEBPACK_IMPORTED_MODULE_7__["default"], {
