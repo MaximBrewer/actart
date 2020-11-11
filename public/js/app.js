@@ -50960,9 +50960,7 @@ function _arrayWithHoles(arr) {
 
 
 function Carousel(props) {
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useParams"])(),
-      id = _useParams.id;
-
+  var auction = props.auction;
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useHistory"])();
 
   var _useRouteMatch = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useRouteMatch"])(),
@@ -50974,7 +50972,7 @@ function Carousel(props) {
   var lotId = pathname.replace(url + "/lot/", "");
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    items: props.auction.lots
+    items: auction.lots
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
@@ -50986,15 +50984,15 @@ function Carousel(props) {
     }
 
     return 0;
-  };
+  }; // useEffect(() => {
+  //     let index = getIndex();
+  //     document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
+  //         lot_name: auction.lots[index].title,
+  //         author_name: auction.lots[index].author
+  //     });
+  // }, [lotId]);
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    var index = getIndex();
-    document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
-      lot_name: auction.lots[index].title,
-      author_name: auction.lots[index].author
-    });
-  }, [lotId]);
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var index = getIndex();
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {

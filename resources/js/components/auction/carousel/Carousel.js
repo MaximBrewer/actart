@@ -12,15 +12,15 @@ import {
 } from "react-router-dom";
 
 export default function Carousel(props) {
-    
-    const { id } = useParams();
+
+    const { auction } = props;
     let history = useHistory();
     let { url } = useRouteMatch();
     let { pathname } = useLocation();
     const lotId = pathname.replace(url + "/lot/", "");
 
     const [state, setState] = useState({
-        items: props.auction.lots
+        items: auction.lots
     });
 
     const getIndex = () => {
@@ -28,13 +28,13 @@ export default function Carousel(props) {
         return 0;
     };
 
-    useEffect(() => {
-        let index = getIndex();
-        document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
-            lot_name: auction.lots[index].title,
-            author_name: auction.lots[index].author
-        });
-    }, [lotId]);
+    // useEffect(() => {
+    //     let index = getIndex();
+    //     document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
+    //         lot_name: auction.lots[index].title,
+    //         author_name: auction.lots[index].author
+    //     });
+    // }, [lotId]);
 
     useEffect(() => {
         let index = getIndex();
