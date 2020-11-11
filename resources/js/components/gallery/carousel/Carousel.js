@@ -60,27 +60,27 @@ export default function Carousel(props) {
         ...setting,
         // afterChange: current =>
         //     history.replace("/gallery/lot/" + state.items[current].id),
-        beforeChange: (current, next) => {
-            let cnt = refPicture.current.props.children.length;
-            if (
-                (next > current && (next == 1 || current != 0)) ||
-                (current == cnt - 1 && next == 0)
-            )
-                refAnnounce.current.slickNext(false);
-            else refAnnounce.current.slickPrev(false);
-        }
+        // beforeChange: (current, next) => {
+        //     let cnt = refPicture.current.props.children.length;
+        //     if (
+        //         (next > current && (next == 1 || current != 0)) ||
+        //         (current == cnt - 1 && next == 0)
+        //     )
+        //         refAnnounce.current.slickNext(false);
+        //     else refAnnounce.current.slickPrev(false);
+        // }
     };
     const settingsAnnounce = {
         ...setting,
-        beforeChange: (current, next) => {
-            let cnt = refPicture.current.props.children.length;
-            if (
-                (next > current && (next == 1 || current != 0)) ||
-                (current == cnt - 1 && next == 0)
-            )
-                refPicture.current.slickNext(false);
-            else refPicture.current.slickPrev(false);
-        }
+        // beforeChange: (current, next) => {
+        //     let cnt = refPicture.current.props.children.length;
+        //     if (
+        //         (next > current && (next == 1 || current != 0)) ||
+        //         (current == cnt - 1 && next == 0)
+        //     )
+        //         refPicture.current.slickNext(false);
+        //     else refPicture.current.slickPrev(false);
+        // }
     };
 
     return (

@@ -54178,21 +54178,9 @@ function Carousel(props) {
     slidesToScroll: 1
   };
 
-  var settingsPicture = _objectSpread(_objectSpread({}, setting), {}, {
-    // afterChange: current =>
-    //     history.replace("/gallery/lot/" + state.items[current].id),
-    beforeChange: function beforeChange(current, next) {
-      var cnt = refPicture.current.props.children.length;
-      if (next > current && (next == 1 || current != 0) || current == cnt - 1 && next == 0) refAnnounce.current.slickNext(false);else refAnnounce.current.slickPrev(false);
-    }
-  });
+  var settingsPicture = _objectSpread({}, setting);
 
-  var settingsAnnounce = _objectSpread(_objectSpread({}, setting), {}, {
-    beforeChange: function beforeChange(current, next) {
-      var cnt = refPicture.current.props.children.length;
-      if (next > current && (next == 1 || current != 0) || current == cnt - 1 && next == 0) refPicture.current.slickNext(false);else refPicture.current.slickPrev(false);
-    }
-  });
+  var settingsAnnounce = _objectSpread({}, setting);
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-carousel"
