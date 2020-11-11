@@ -54152,20 +54152,21 @@ function Carousel(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var index = getIndex();
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_GALLERY_PAGE_TITLE", {
-      lot_name: state.items[getIndex(state.id)].title,
-      author_name: state.items[getIndex(state.id)].author
+      lot_name: state.items[index].title,
+      author_name: state.items[index].author
     });
-    refPicture.current.slickGoTo(getIndex(state.id, true));
-    refAnnounce.current.slickGoTo(getIndex(state.id, true));
+    refPicture.current.slickGoTo(index, true);
+    refAnnounce.current.slickGoTo(index, true);
     history.replace("/gallery/lot/" + state.id);
   }, [state.id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 
-  var getIndex = function getIndex(id) {
+  var getIndex = function getIndex() {
     for (var i in state.items) {
-      if (state.items[i].id == id) return i;
+      if (state.items[i].id == state.id) return i;
     }
   };
 
