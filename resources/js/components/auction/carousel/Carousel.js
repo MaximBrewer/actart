@@ -20,6 +20,7 @@ export default function Carousel(props) {
     };
 
     useEffect(() => {
+        console.log(lotId)
         let index = getIndex();
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
             lot_name: state.items[index].title,
