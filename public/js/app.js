@@ -49260,6 +49260,8 @@ function AuctionRoute(props) {
       path = _useRouteMatch.path,
       url = _useRouteMatch.url;
 
+  console.log(url);
+
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id;
 

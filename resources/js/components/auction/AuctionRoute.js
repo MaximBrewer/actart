@@ -11,6 +11,9 @@ import AuctionBase from "./AuctionBase";
 
 export default function AuctionRoute(props) {
     let { path, url } = useRouteMatch();
+
+    console.log(url)
+    
     const { id } = useParams();
 
     const [state, setState] = useState({
