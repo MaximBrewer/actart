@@ -29,8 +29,7 @@ import AuthorsItem from "../pages/authors-item";
 import Gallery from "../pages/gallery";
 
 import AuctionAdmin from "../components/auction/AuctionAdmin";
-import AuctionBase from "../components/auction/AuctionBase";
-import AuctionLot from "../components/auction/AuctionLot";
+import AuctionBase from "../components/auction/AuctionRoute";
 import SearchPage from "../pages/search";
 import Auctions from "../pages/auctions";
 import AuctionsArchive from "../pages/auctions-archive";
@@ -44,7 +43,6 @@ import LoginModal from "../modals/login";
 import RegisterModal from "../modals/register";
 import ForgotPasswordModal from "../modals/forgot-password";
 import ResetPasswordModal from "../modals/reset-password";
-import { getUser } from "../api/auth";
 import { setIntendedUrl } from "../utils/auth";
 
 import client from "../api/client";
@@ -296,13 +294,9 @@ function App() {
                         <Route exact path="/auctions/archive">
                             <AuctionsArchive {...rest} />
                         </Route>
-                        <Route exact path={`/auctions/:id`}>
-                            <AuctionBase {...rest} />
+                        <Route path={`/auctions/:id`}>
+                            <AuctionRoute {...rest} />
                         </Route>
-                        <Route exact path={`/auctions/:id/lot/:lotId`}>
-                            <AuctionLot {...rest} />
-                        </Route>
-
                         <Route exact path={`/search`}>
                             <SearchPage {...rest} />
                         </Route>

@@ -23,8 +23,6 @@ export default function Lot(props) {
         auction: null
     });
 
-    console.log("lot")
-
     const updateAuctionStatus = event => {
         setState(prevState => {
             if (event.detail.id == prevState.auction.id)
@@ -40,6 +38,8 @@ export default function Lot(props) {
     };
 
     useEffect(() => {
+
+    console.log("lot")
         axios
             .get("/api/" + window.App.locale + "/auctions/" + id)
             .then(res => {
