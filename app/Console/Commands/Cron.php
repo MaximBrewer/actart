@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
+use App\User;
 use App\Notifications\Reminder as ReminderNotification;
 
 class Cron extends Command
@@ -43,9 +44,10 @@ class Cron extends Command
      */
     public function handle()
     {
-        $carbon = new Carbon();
-        Log::notice("Cron started: " . date(DATE_ATOM));
         DB::connection()->enableQueryLog();
+        Log::info("Cron started: " . date(DATE_ATOM));
+
+        $carbon = new Carbon();
         $started = DB::select(
             'select id from auctions where timestamp(date) < timestamp(?) and status = ?',
             [
@@ -55,7 +57,7 @@ class Cron extends Command
         );
         foreach ($started as $auction)
             Auction::find($auction->id)->update(['status' => 'started']);
-            
+
         $finished = DB::select(
             'select id from auctions where timestamp(date) < timestamp(?) and status = ?',
             [
@@ -67,8 +69,26 @@ class Cron extends Command
         //     $auction = Auction::findOrFail($id);
         //     $user->notify(new ReminderNotification($auction));
 
+        $notify = DB::query(
+            "SELECT `ua`.`user_id`, `ua`.`auction_id`
+            FROM `user_auction` `ua` 
+            left join `auctions` as `a` 
+            ON `ua`.`auction_id` = `a`.`id`
+            WHERE `ua`.`notified` = 0 
+            and `a`.`status` = 'coming' 
+            and timestamp(`a`.`date`) < timestamp(?)",
+            [
+                $carbon->addHour()->toDateTimeString()
+            ]
+        );
+
+        foreach ($notify as $n) {
+            $auction = Auction::find($n->auction_id);
+            $user = User::find($n->user_id);
+            $user->notify(new ReminderNotification($auction, $user));
+        }
+
         $queries = DB::getQueryLog();
-        foreach ($finished as $auction) 
-            Auction::find($auction->id)->update(['status' => 'finished']);
+        Log::info($queries);
     }
 }
