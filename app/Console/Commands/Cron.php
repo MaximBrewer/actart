@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
+use App\Notifications\Reminder as ReminderNotification;
 
 class Cron extends Command
 {
@@ -62,6 +63,10 @@ class Cron extends Command
                 'started'
             ]
         );
+
+        //     $auction = Auction::findOrFail($id);
+        //     $user->notify(new ReminderNotification($auction));
+
         $queries = DB::getQueryLog();
         foreach ($finished as $auction) 
             Auction::find($auction->id)->update(['status' => 'finished']);

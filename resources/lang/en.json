@@ -124,5 +124,7 @@
 
     "SUBCRIBED_MESSAGE": "You have subscribed to the newsletter",
 
-    "ADMIN_PROFILE_AUCTIONS_COMING": "Closest auctions"
+    "ADMIN_PROFILE_AUCTIONS_COMING": "Closest auctions",
+
+    "ALREADY_REGISTERED": "You are already registered"
 }

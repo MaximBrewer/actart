@@ -1,10 +1,12 @@
 import React from "react";
 import Countdown from "../../Countdown";
 import Parser from "html-react-parser";
-import __ from '../../../../utils/trans';
-import { Link } from 'react-router-dom';
+import __ from "../../../../utils/trans";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../../../context/auth";
 
 export default function AuctionPreviewRight(props) {
+    let { inAuctions } = useAuth();
     const { auction, participate } = props;
     return (
         <div className="banner-announce">
@@ -17,13 +19,22 @@ export default function AuctionPreviewRight(props) {
                 </div>
             </div>
             <div className="text-xs-center mb-3">
-                <Link
-                    to={"/auctions/" + auction.id}
-                    className="btn btn-danger"
-                    onClick={(e) => participate(e, auction)}
-                >
-                    {__("PARTICIPATE")}
-                </Link>
+                {inAuctions(auction.id) ? (
+                    <Link
+                        to={"/auctions/" + auction.id}
+                        className="btn btn-danger"
+                    >
+                        {__("ALREADY_REGISTERED")}
+                    </Link>
+                ) : (
+                    <Link
+                        to={"/auctions/" + auction.id}
+                        className="btn btn-danger"
+                        onClick={e => participate(e, auction)}
+                    >
+                        {__("PARTICIPATE")}
+                    </Link>
+                )}
             </div>
             <Link
                 to={"/auctions/" + auction.id}
@@ -31,6 +42,6 @@ export default function AuctionPreviewRight(props) {
             >
                 {__("View lots")} →
             </Link>
-        </div >
+        </div>
     );
 }

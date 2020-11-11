@@ -1,54 +1,66 @@
-import React, { useState, useEffect, useMemo} from 'react';
-import PropTypes from 'prop-types';
-import { getToken, setToken } from '../utils/auth';
-import {getUser} from '../api/auth';
+import React, { useState, useEffect, useMemo } from "react";
+import PropTypes from "prop-types";
+import { getToken, setToken } from "../utils/auth";
+import { getUser } from "../api/auth";
 
 const AuthContext = React.createContext();
 
 AuthProvider.propTypes = {
-  children: PropTypes.element.isRequired
+    children: PropTypes.element.isRequired
 };
 
-function AuthProvider ({ children }) {
-  const [initializing, setInitializing] = useState(true);
-  const [currentUser, setCurrentUser] = useState(null);
-  const authenticated = useMemo(() => !!currentUser, [currentUser]);
-  const administration = useMemo(() => !!currentUser && !!currentUser.role.id == 1, [currentUser]);
+function AuthProvider({ children }) {
+    const [initializing, setInitializing] = useState(true);
+    const [currentUser, setCurrentUser] = useState(null);
+    const authenticated = useMemo(() => !!currentUser, [currentUser]);
+    const administration = useMemo(
+        () => !!currentUser && !!currentUser.role.id == 1,
+        [currentUser]
+    );
 
-  const initAuth = () => {
-    return getToken()
-      ? getUser()
-      : Promise.resolve(null);
-  };
+    const inAuctions = id => {
+        if (currentUser)
+            for (a of currentUser.auctions) if (a.id == id) return true;
+        return false;
+    };
 
-  useEffect(() => {
-    initAuth().then((user) => {
-      setCurrentUser(user);
-      setInitializing(false);
-    });
-  }, []);
+    const initAuth = () => {
+        return getToken() ? getUser() : Promise.resolve(null);
+    };
 
-  return (
-    <AuthContext.Provider value={{
-      initializing,
-      authenticated,
-      currentUser,
-      administration,
-      setToken,
-      setCurrentUser }
-    }> { children }
-    </AuthContext.Provider>
-  );
+    useEffect(() => {
+        initAuth().then(user => {
+            setCurrentUser(user);
+            setInitializing(false);
+        });
+    }, []);
+
+    return (
+        <AuthContext.Provider
+            value={{
+                initializing,
+                authenticated,
+                currentUser,
+                administration,
+                setToken,
+                inAuctions,
+                setCurrentUser
+            }}
+        >
+            {" "}
+            {children}
+        </AuthContext.Provider>
+    );
 }
 
-function useAuth () {
-  const context = React.useContext(AuthContext);
+function useAuth() {
+    const context = React.useContext(AuthContext);
 
-  if (context === undefined) {
-    throw new Error(`useAuth must be used within a AuthProvider`);
-  }
+    if (context === undefined) {
+        throw new Error(`useAuth must be used within a AuthProvider`);
+    }
 
-  return context;
+    return context;
 }
 
 export { AuthProvider, useAuth };

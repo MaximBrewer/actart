@@ -51359,6 +51359,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/trans */ "./resources/js/utils/trans.js");
 /* harmony import */ var _Countdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Countdown */ "./resources/js/components/auction/Countdown.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../context/auth */ "./resources/js/context/auth.js");
+
 
 
 
@@ -51366,6 +51368,10 @@ __webpack_require__.r(__webpack_exports__);
 function Bottom(props) {
   var auction = props.auction,
       participate = props.participate;
+
+  var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_4__["useAuth"])(),
+      inAuctions = _useAuth.inAuctions;
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -51380,13 +51386,16 @@ function Bottom(props) {
     className: "row justify-content-center my-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-30"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+  }, inAuctions ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/auctions/" + auction.id,
-    className: "btn btn-danger w-100",
+    className: "btn btn-danger"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("ALREADY_REGISTERED")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+    to: "/auctions/" + auction.id,
+    className: "btn btn-danger",
     onClick: function onClick(e) {
       return participate(e, auction);
     }
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("Participate")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("PARTICIPATE")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center my-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-15"
@@ -51556,6 +51565,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/trans */ "./resources/js/utils/trans.js");
 /* harmony import */ var _Countdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Countdown */ "./resources/js/components/auction/Countdown.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../context/auth */ "./resources/js/context/auth.js");
+
 
 
 
@@ -51563,6 +51574,10 @@ __webpack_require__.r(__webpack_exports__);
 function Top(props) {
   var auction = props.auction,
       participate = props.participate;
+
+  var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_4__["useAuth"])(),
+      inAuctions = _useAuth.inAuctions;
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "auction-announce auction-coming",
     style: {
@@ -51577,9 +51592,12 @@ function Top(props) {
     date: auction.dateatom
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h1"
-  }, auction.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+  }, auction.title), inAuctions(auction.id) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/auctions/" + auction.id,
-    className: "btn btn-danger mb-3",
+    className: "btn btn-danger"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("ALREADY_REGISTERED")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+    to: "/auctions/" + auction.id,
+    className: "btn btn-danger",
     onClick: function onClick(e) {
       return participate(e, auction);
     }
@@ -51741,12 +51759,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(html_react_parser__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../utils/trans */ "./resources/js/utils/trans.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../context/auth */ "./resources/js/context/auth.js");
+
 
 
 
 
 
 function AuctionPreviewRight(props) {
+  var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_5__["useAuth"])(),
+      inAuctions = _useAuth.inAuctions;
+
   var auction = props.auction,
       participate = props.participate;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -51761,7 +51784,10 @@ function AuctionPreviewRight(props) {
     date: auction.dateatom
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-xs-center mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+  }, inAuctions(auction.id) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    to: "/auctions/" + auction.id,
+    className: "btn btn-danger"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("ALREADY_REGISTERED")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     to: "/auctions/" + auction.id,
     className: "btn btn-danger",
     onClick: function onClick(e) {
@@ -58111,6 +58137,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/auth */ "./resources/js/utils/auth.js");
 /* harmony import */ var _api_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/auth */ "./resources/js/api/auth.js");
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it;
+
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it) o = it;
+      var i = 0;
+
+      var F = function F() {};
+
+      return {
+        s: F,
+        n: function n() {
+          if (i >= o.length) return {
+            done: true
+          };
+          return {
+            done: false,
+            value: o[i++]
+          };
+        },
+        e: function e(_e2) {
+          throw _e2;
+        },
+        f: F
+      };
+    }
+
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  var normalCompletion = true,
+      didErr = false,
+      err;
+  return {
+    s: function s() {
+      it = o[Symbol.iterator]();
+    },
+    n: function n() {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function e(_e3) {
+      didErr = true;
+      err = _e3;
+    },
+    f: function f() {
+      try {
+        if (!normalCompletion && it["return"] != null) it["return"]();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
+}
+
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
@@ -58198,6 +58281,26 @@ function AuthProvider(_ref) {
     return !!currentUser && !!currentUser.role.id == 1;
   }, [currentUser]);
 
+  var inAuctions = function inAuctions(id) {
+    if (currentUser) {
+      var _iterator = _createForOfIteratorHelper(currentUser.auctions),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          a = _step.value;
+          if (a.id == id) return true;
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+
+    return false;
+  };
+
   var initAuth = function initAuth() {
     return Object(_utils_auth__WEBPACK_IMPORTED_MODULE_2__["getToken"])() ? Object(_api_auth__WEBPACK_IMPORTED_MODULE_3__["getUser"])() : Promise.resolve(null);
   };
@@ -58215,6 +58318,7 @@ function AuthProvider(_ref) {
       currentUser: currentUser,
       administration: administration,
       setToken: _utils_auth__WEBPACK_IMPORTED_MODULE_2__["setToken"],
+      inAuctions: inAuctions,
       setCurrentUser: setCurrentUser
     }
   }, " ", children);

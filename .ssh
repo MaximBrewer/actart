@@ -11,3 +11,6 @@ cd /var/www/act-art.ru/htdocs
 
 
 Pc47x*4=beQY7fHt
+
+
+UPDATE `lots` SET `status`='auction',`lastchance`=0

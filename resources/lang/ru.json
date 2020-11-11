@@ -222,5 +222,7 @@
     
     "SUBCRIBED_MESSAGE": "Вы подписались на рассылку новостей",
 
-    "ADMIN_PROFILE_AUCTIONS_COMING": "Ближайшие аукционы"
+    "ADMIN_PROFILE_AUCTIONS_COMING": "Ближайшие аукционы",
+
+    "ALREADY_REGISTERED": "Вы уже зарегистрированы"
 }
