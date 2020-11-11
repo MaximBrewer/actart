@@ -9,7 +9,7 @@ import { useHistory, useParams } from "react-router-dom";
 export default function Carousel(props) {
     const { id } = useParams();
     let history = useHistory();
-console.log(id)
+    console.log(id);
     const [state, setState] = useState({
         items: props.items,
         id: id
@@ -25,7 +25,6 @@ console.log(id)
     };
 
     useEffect(() => {
-        console.log(state.id)
         let index = getIndex();
         document.title = __("LOT_IN_GALLERY_PAGE_TITLE", {
             lot_name: state.items[index].title,
@@ -34,7 +33,9 @@ console.log(id)
         refPicture.current.slickGoTo(index, true);
         refAnnounce.current.slickGoTo(index, true);
         // history.replace("/gallery/lot/" + state.id);
-    }, [state.id]);
+
+        window.scrollTo(0, 0);
+    }, [id]);
 
     const refPicture = useRef();
     const refAnnounce = useRef();

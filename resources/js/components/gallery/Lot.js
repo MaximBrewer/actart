@@ -5,9 +5,6 @@ import Carousel from "./carousel/Carousel";
 import __ from '../../utils/trans';
 
 export default function Lot(props) {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [id]);
     return (
         <section className="lot-section">
             <div className="sticky-wrapper">

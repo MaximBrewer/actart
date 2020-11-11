@@ -53929,9 +53929,6 @@ function _extends() {
 
 
 function Lot(props) {
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    window.scrollTo(0, 0);
-  }, [id]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "lot-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -54152,7 +54149,6 @@ function Carousel(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    console.log(state.id);
     var index = getIndex();
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_GALLERY_PAGE_TITLE", {
       lot_name: state.items[index].title,
@@ -54160,7 +54156,9 @@ function Carousel(props) {
     });
     refPicture.current.slickGoTo(index, true);
     refAnnounce.current.slickGoTo(index, true); // history.replace("/gallery/lot/" + state.id);
-  }, [state.id]);
+
+    window.scrollTo(0, 0);
+  }, [id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 
