@@ -196,7 +196,7 @@ export default function Center(props) {
                                                     }}
                                                 ></div>
 
-                                                {lbOpen && (
+                                                {state.lbOpen && (
                                                     <Lightbox
                                                         mainSrc={
                                                             state.auction

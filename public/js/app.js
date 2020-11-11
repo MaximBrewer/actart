@@ -54641,7 +54641,7 @@ function Center(props) {
       backgroundColor: "#ECEDED",
       backgroundImage: 'url("' + state.auction.current.thumbnail + '")'
     }
-  }), lbOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_image_lightbox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), state.lbOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_image_lightbox__WEBPACK_IMPORTED_MODULE_4__["default"], {
     mainSrc: state.auction.current.thumbnail,
     onCloseRequest: function onCloseRequest() {
       return setState(function (prevState) {
