@@ -69,6 +69,7 @@ class Cron extends Command
         //     $auction = Auction::findOrFail($id);
         //     $user->notify(new ReminderNotification($auction));
 
+        $carbon = new Carbon();
         $as = DB::select(
             "SELECT `ua`.`user_id` as `user_id`, `ua`.`auction_id` as `auction_id`
             FROM `user_auction` `ua` 
