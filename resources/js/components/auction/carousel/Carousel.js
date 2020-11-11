@@ -79,9 +79,9 @@ export default function Carousel(props) {
                         onClick={() => {
                             refPicture.current.slickPrev();
                             refAnnounce.current.slickPrev();
-                            history.replace(
-                                "/auctions/" + id + "/lot/" + prevId()
-                            );
+                            // history.replace(
+                            //     "/auctions/" + id + "/lot/" + prevId()
+                            // );
                         }}
                     >
                         <ArrowPrew />
@@ -91,9 +91,9 @@ export default function Carousel(props) {
                         onClick={() => {
                             refPicture.current.slickNext();
                             refAnnounce.current.slickNext();
-                            history.replace(
-                                "/auctions/" + id + "/lot/" + nextId()
-                            );
+                            // history.replace(
+                            //     "/auctions/" + id + "/lot/" + nextId()
+                            // );
                         }}
                     >
                         <ArrowNext />
