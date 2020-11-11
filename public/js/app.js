@@ -54151,8 +54151,7 @@ function Carousel(props) {
       author_name: state.items[index].author
     });
     refPicture.current.slickGoTo(index, true);
-    refAnnounce.current.slickGoTo(index, true); // history.replace("/gallery/lot/" + state.id);
-
+    refAnnounce.current.slickGoTo(index, true);
     window.scrollTo(0, 0);
   }, [id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
@@ -54187,11 +54186,14 @@ function Carousel(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
     onClick: function onClick() {
+      console.log(refPicture.current);
+      refPicture.current.slickPrev();
       refAnnounce.current.slickPrev();
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_4__["ArrowPrew"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
     onClick: function onClick() {
+      refPicture.current.slickNext();
       refAnnounce.current.slickNext();
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_4__["ArrowNext"], null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

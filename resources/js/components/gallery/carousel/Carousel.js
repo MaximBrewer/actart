@@ -30,8 +30,6 @@ export default function Carousel(props) {
         });
         refPicture.current.slickGoTo(index, true);
         refAnnounce.current.slickGoTo(index, true);
-        // history.replace("/gallery/lot/" + state.id);
-
         window.scrollTo(0, 0);
     }, [id]);
 
@@ -55,30 +53,10 @@ export default function Carousel(props) {
     };
 
     const settingsPicture = {
-        ...setting,
-        // afterChange: current =>
-        //     history.replace("/gallery/lot/" + state.items[current].id),
-        // beforeChange: (current, next) => {
-        //     let cnt = refPicture.current.props.children.length;
-        //     if (
-        //         (next > current && (next == 1 || current != 0)) ||
-        //         (current == cnt - 1 && next == 0)
-        //     )
-        //         refAnnounce.current.slickNext(false);
-        //     else refAnnounce.current.slickPrev(false);
-        // }
+        ...setting
     };
     const settingsAnnounce = {
-        ...setting,
-        // beforeChange: (current, next) => {
-        //     let cnt = refPicture.current.props.children.length;
-        //     if (
-        //         (next > current && (next == 1 || current != 0)) ||
-        //         (current == cnt - 1 && next == 0)
-        //     )
-        //         refPicture.current.slickNext(false);
-        //     else refPicture.current.slickPrev(false);
-        // }
+        ...setting
     };
 
     return (
@@ -88,6 +66,8 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
+                            console.log(refPicture.current)
+                            refPicture.current.slickPrev();
                             refAnnounce.current.slickPrev();
                         }}
                     >
@@ -96,6 +76,7 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
+                            refPicture.current.slickNext();
                             refAnnounce.current.slickNext();
                         }}
                     >
