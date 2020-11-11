@@ -69,7 +69,7 @@ class Cron extends Command
         //     $auction = Auction::findOrFail($id);
         //     $user->notify(new ReminderNotification($auction));
 
-        $as = DB::query(
+        $as = DB::select(
             "SELECT `ua`.`user_id` as `user_id`, `ua`.`auction_id` as `auction_id`
             FROM `user_auction` `ua` 
             left join `auctions` as `a` 
@@ -80,7 +80,7 @@ class Cron extends Command
             [
                 $carbon->addHour()->toDateTimeString()
             ]
-        )->get();
+        );
 
         foreach ($as as $n) {
             $auction = Auction::find($n->auction_id);
