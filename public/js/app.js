@@ -54167,7 +54167,7 @@ function Carousel(props) {
     var index = 0;
 
     for (var i in state.items) {
-      if (state.items[i].id == id) index = i - 1;
+      if (state.items[i].id == id) index = i * 1 - 1;
     }
 
     index = index < 0 ? state.items.length - 1 : index;
@@ -54178,10 +54178,9 @@ function Carousel(props) {
     var index = 0;
 
     for (var i in state.items) {
-      if (state.items[i].id == id) index = i + 1;
+      if (state.items[i].id == id) index = i * 1 + 1;
     }
 
-    console.log(index);
     index = state.items.length == index ? 0 : index;
     return state.items[index].id;
   };

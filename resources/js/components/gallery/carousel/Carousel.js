@@ -45,7 +45,7 @@ export default function Carousel(props) {
     const prevId = () => {
         let index = 0;
         for (let i in state.items) {
-            if (state.items[i].id == id) index = i - 1;
+            if (state.items[i].id == id) index = i * 1 - 1;
         }
         index = index < 0 ? state.items.length - 1 : index;
         return state.items[index].id
@@ -54,8 +54,8 @@ export default function Carousel(props) {
     const nextId = () => {
         let index = 0;
         for (let i in state.items) {
-            if (state.items[i].id == id) index = i + 1;
-        }console.log(index)
+            if (state.items[i].id == id) index = i * 1 + 1;
+        }
         index = state.items.length == index ? 0 : index;
         return state.items[index].id
     };
