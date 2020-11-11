@@ -357,7 +357,7 @@ export default function Waterfall(props) {
                                                     delFilter(option.id);
                                                 }}
                                             >
-                                                {item.title}
+                                                {__(`CATEGORY_ALL_LINK`)}
                                             </a>
                                         )}
                                     </li>

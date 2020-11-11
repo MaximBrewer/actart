@@ -56750,11 +56750,11 @@ function Waterfall(props) {
 
     try {
       for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var _item = _step.value;
+        var item = _step.value;
         push = true;
 
         loop: for (var field in filter) {
-          var _iterator2 = _createForOfIteratorHelper(_item[field]),
+          var _iterator2 = _createForOfIteratorHelper(item[field]),
               _step2;
 
           try {
@@ -56774,7 +56774,7 @@ function Waterfall(props) {
           push = false;
         }
 
-        push && newItems.push(_item);
+        push && newItems.push(item);
       }
     } catch (err) {
       _iterator.e(err);
@@ -56815,8 +56815,8 @@ function Waterfall(props) {
 
           try {
             for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-              var _item2 = _step3.value;
-              _item2.status == status && newItems.push(_item2);
+              var item = _step3.value;
+              item.status == status && newItems.push(item);
             }
           } catch (err) {
             _iterator3.e(err);
@@ -56859,8 +56859,8 @@ function Waterfall(props) {
 
           try {
             for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-              var _item3 = _step4.value;
-              _item3.status == status && newItems.push(_item3);
+              var item = _step4.value;
+              item.status == status && newItems.push(item);
             }
           } catch (err) {
             _iterator4.e(err);
@@ -56939,8 +56939,8 @@ function Waterfall(props) {
 
       try {
         for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var _item4 = _step5.value;
-          if (event.detail.id != _item4.id) lots.push(_item4);
+          var item = _step5.value;
+          if (event.detail.id != item.id) lots.push(item);
         }
       } catch (err) {
         _iterator5.e(err);
@@ -57025,7 +57025,7 @@ function Waterfall(props) {
         e.preventDefault();
         delFilter(option.id);
       }
-    }, item.title))));
+    }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("CATEGORY_ALL_LINK")))));
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-" + (data.filterable ? "45" : "60") + " stack-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EntityGrid__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, props, {
