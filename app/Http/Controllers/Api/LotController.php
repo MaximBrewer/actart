@@ -139,7 +139,7 @@ class LotController extends Controller
                 'blitz' => false
             ]);
             if ($bet && $lot->status == 'gallery')
-                User::find(Auth::id())->notify(new BeatNotification($lot));
+                User::find($bet->user_id)->notify(new BeatNotification($lot));
 
             return $newBet;
         }
