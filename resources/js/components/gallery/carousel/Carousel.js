@@ -62,7 +62,8 @@ export default function Carousel(props) {
 
     const setting = {
         arrows: false,
-        infinite: true,
+        infinite: false,
+        draggable: false,
         dots: false,
         speed: 300,
         auto: true,
