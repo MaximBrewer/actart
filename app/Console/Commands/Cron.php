@@ -69,7 +69,7 @@ class Cron extends Command
         //     $auction = Auction::findOrFail($id);
         //     $user->notify(new ReminderNotification($auction));
 
-        $notify = DB::query(
+        $as = DB::query(
             "SELECT `ua`.`user_id`, `ua`.`auction_id`
             FROM `user_auction` `ua` 
             left join `auctions` as `a` 
@@ -82,10 +82,21 @@ class Cron extends Command
             ]
         );
 
-        foreach ($notify as $n) {
+        foreach ($as as $n) {
             $auction = Auction::find($n->auction_id);
             $user = User::find($n->user_id);
             $user->notify(new ReminderNotification($auction, $user));
+            DB::query(
+                "UPDATE `user_auction`
+                SET `notified` = 1
+                WHERE `notified` = 0 
+                AND `user_id` = ?
+                AND `auction_id` = ?",
+                [
+                    $user->id,
+                    $auction->id
+                ]
+            );
         }
 
         $queries = DB::getQueryLog();
