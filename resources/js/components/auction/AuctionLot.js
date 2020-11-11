@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import AuctionComingTop from "./coming/LotTop.js";
 import AuctionComingCenter from "./coming/LotCenter.js";
 import AuctionComingBottom from "./coming/LotBottom.js";

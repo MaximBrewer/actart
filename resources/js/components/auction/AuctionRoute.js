@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Switch, useParams } from "react-router-dom";
 import AuctionLot from "./AuctionLot";
 import AuctionBase from "./AuctionBase";
 
