@@ -7,8 +7,10 @@ import __ from "../../../utils/trans";
 import { useHistory, useParams } from "react-router-dom";
 
 export default function Carousel(props) {
+    
     const { id } = useParams();
     let history = useHistory();
+
     const [state, setState] = useState({
         items: window.App.gallery
     });

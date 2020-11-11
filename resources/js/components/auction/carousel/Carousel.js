@@ -4,24 +4,24 @@ import Left from "./Left";
 import Right from "./Right";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from "../../../utils/trans";
-
+import { useHistory, useParams } from "react-router-dom";
 
 export default function Carousel(props) {
-    console.log(props);
+    const { id, lotId } = useParams();
+    let history = useHistory();
 
     const [state, setState] = useState({
-        items: props.auction.lots,
-        id: props.lotId
+        items: props.auction.lots
     });
 
     const getIndex = () => {
-        for (let i in state.items) if (state.items[i].id == state.id) return i;
+        for (let i in state.items) if (state.items[i].id == lotId) return i;
         return 0;
     };
 
     useEffect(() => {
         let index = getIndex();
-        console.log(index);
+
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
             lot_name: state.items[index].title,
             author_name: state.items[index].author
@@ -29,53 +29,46 @@ export default function Carousel(props) {
 
         refPicture.current.slickGoTo(index, true);
         refAnnounce.current.slickGoTo(index, true);
-    }, [state.id]);
+        window.scrollTo(0, 0);
+    }, [lotId]);
 
     const refPicture = useRef();
     const refAnnounce = useRef();
 
     const setting = {
         arrows: false,
-        infinite: true,
+        infinite: false,
+        draggable: false,
         dots: false,
         speed: 300,
         auto: true,
         slidesToShow: 1,
         slidesToScroll: 1
-        // initialSlide: getIndex(id)
     };
 
     const settingsPicture = {
-        ...setting,
-        beforeChange: (current, next) => {
-            let cnt = refPicture.current.props.children.length;
-            // setState({
-            //     slideIndex: next,
-            //     slidesTotal: cnt
-            // });
-            if (
-                (next > current && (next == 1 || current != 0)) ||
-                (current == cnt - 1 && next == 0)
-            )
-                refAnnounce.current.slickNext(false);
-            else refAnnounce.current.slickPrev(false);
-        }
+        ...setting
     };
     const settingsAnnounce = {
-        ...setting,
-        beforeChange: (current, next) => {
-            let cnt = refPicture.current.props.children.length;
-            // setState({
-            //     slideIndex: next,
-            //     slidesTotal: cnt
-            // });
-            if (
-                (next > current && (next == 1 || current != 0)) ||
-                (current == cnt - 1 && next == 0)
-            )
-                refPicture.current.slickNext(false);
-            else refPicture.current.slickPrev(false);
+        ...setting
+    };
+
+    const prevId = () => {
+        let index = 0;
+        for (let i in state.items) {
+            if (state.items[i].id == lotId) index = i * 1 - 1;
         }
+        index = index < 0 ? state.items.length - 1 : index;
+        return state.items[index].id;
+    };
+
+    const nextId = () => {
+        let index = 0;
+        for (let i in state.items) {
+            if (state.items[i].id == lotId) index = i * 1 + 1;
+        }
+        index = state.items.length == index ? 0 : index;
+        return state.items[index].id;
     };
 
     return (
@@ -85,7 +78,9 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
-                            refAnnounce.current.slickPrev();
+                            history.replace(
+                                "/auctions/" + id + "/lot/" + prevId()
+                            );
                         }}
                     >
                         <ArrowPrew />
@@ -93,7 +88,9 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
-                            refAnnounce.current.slickNext();
+                            history.replace(
+                                "/auctions/" + id + "/lot/" + nextId()
+                            );
                         }}
                     >
                         <ArrowNext />

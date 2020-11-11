@@ -50280,42 +50280,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ArchiveCenter; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../carousel/Carousel */ "./resources/js/components/auction/carousel/Carousel.js");
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-
+/* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../carousel/Carousel */ "./resources/js/components/auction/carousel/Carousel.js");
 
 
 function ArchiveCenter(props) {
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
-      id = _useParams.id,
-      lotId = _useParams.lotId;
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({}, props, {
-    id: id,
-    lotId: lotId
-  }))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_1__["default"], props)));
 }
 
 /***/ }),
@@ -50731,6 +50704,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Right__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Right */ "./resources/js/components/auction/carousel/Right.js");
 /* harmony import */ var _icons_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../icons/icons */ "./resources/js/icons/icons.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -50862,12 +50836,16 @@ function _arrayWithHoles(arr) {
 
 
 
+
 function Carousel(props) {
-  console.log(props);
+  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useParams"])(),
+      id = _useParams.id,
+      lotId = _useParams.lotId;
+
+  var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useHistory"])();
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    items: props.auction.lots,
-    id: props.lotId
+    items: props.auction.lots
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
@@ -50875,7 +50853,7 @@ function Carousel(props) {
 
   var getIndex = function getIndex() {
     for (var i in state.items) {
-      if (state.items[i].id == state.id) return i;
+      if (state.items[i].id == lotId) return i;
     }
 
     return 0;
@@ -50883,48 +50861,52 @@ function Carousel(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var index = getIndex();
-    console.log(index);
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
       lot_name: state.items[index].title,
       author_name: state.items[index].author
     });
     refPicture.current.slickGoTo(index, true);
     refAnnounce.current.slickGoTo(index, true);
-  }, [state.id]);
+    window.scrollTo(0, 0);
+  }, [lotId]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var setting = {
     arrows: false,
-    infinite: true,
+    infinite: false,
+    draggable: false,
     dots: false,
     speed: 300,
     auto: true,
     slidesToShow: 1,
-    slidesToScroll: 1 // initialSlide: getIndex(id)
-
+    slidesToScroll: 1
   };
 
-  var settingsPicture = _objectSpread(_objectSpread({}, setting), {}, {
-    beforeChange: function beforeChange(current, next) {
-      var cnt = refPicture.current.props.children.length; // setState({
-      //     slideIndex: next,
-      //     slidesTotal: cnt
-      // });
+  var settingsPicture = _objectSpread({}, setting);
 
-      if (next > current && (next == 1 || current != 0) || current == cnt - 1 && next == 0) refAnnounce.current.slickNext(false);else refAnnounce.current.slickPrev(false);
+  var settingsAnnounce = _objectSpread({}, setting);
+
+  var prevId = function prevId() {
+    var index = 0;
+
+    for (var i in state.items) {
+      if (state.items[i].id == lotId) index = i * 1 - 1;
     }
-  });
 
-  var settingsAnnounce = _objectSpread(_objectSpread({}, setting), {}, {
-    beforeChange: function beforeChange(current, next) {
-      var cnt = refPicture.current.props.children.length; // setState({
-      //     slideIndex: next,
-      //     slidesTotal: cnt
-      // });
+    index = index < 0 ? state.items.length - 1 : index;
+    return state.items[index].id;
+  };
 
-      if (next > current && (next == 1 || current != 0) || current == cnt - 1 && next == 0) refPicture.current.slickNext(false);else refPicture.current.slickPrev(false);
+  var nextId = function nextId() {
+    var index = 0;
+
+    for (var i in state.items) {
+      if (state.items[i].id == lotId) index = i * 1 + 1;
     }
-  });
+
+    index = state.items.length == index ? 0 : index;
+    return state.items[index].id;
+  };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-carousel"
@@ -50935,12 +50917,12 @@ function Carousel(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
     onClick: function onClick() {
-      refAnnounce.current.slickPrev();
+      history.replace("/auctions/" + id + "/lot/" + prevId());
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_4__["ArrowPrew"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
     onClick: function onClick() {
-      refAnnounce.current.slickNext();
+      history.replace("/auctions/" + id + "/lot/" + nextId());
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_4__["ArrowNext"], null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
@@ -51507,43 +51489,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/trans */ "./resources/js/utils/trans.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../carousel/Carousel */ "./resources/js/components/auction/carousel/Carousel.js");
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-
+/* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../carousel/Carousel */ "./resources/js/components/auction/carousel/Carousel.js");
 
 
 
 function Center(props) {
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
-      id = _useParams.id,
-      lotId = _useParams.lotId;
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
-    id: id,
-    lotId: lotId
-  }))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__["default"], props)));
 }
 
 /***/ }),
@@ -52264,43 +52219,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/trans */ "./resources/js/utils/trans.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../carousel/Carousel */ "./resources/js/components/auction/carousel/Carousel.js");
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-
+/* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../carousel/Carousel */ "./resources/js/components/auction/carousel/Carousel.js");
 
 
 
 function Center(props) {
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
-      id = _useParams.id,
-      lotId = _useParams.lotId;
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
-    id: id,
-    lotId: lotId
-  }))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__["default"], props)));
 }
 
 /***/ }),
