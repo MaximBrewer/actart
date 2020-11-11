@@ -62099,6 +62099,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_waterfall_WaterfallAjax__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/waterfall/WaterfallAjax */ "./resources/js/components/waterfall/WaterfallAjax.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _icons_home__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../icons/home */ "./resources/js/icons/home.js");
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 
 
 
@@ -62155,38 +62173,21 @@ function Home(props) {
     className: "d-none d-md-block pb-4"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("GALLERY_BLOCK_LATEST_BIDS"), ":", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_home__WEBPACK_IMPORTED_MODULE_11__["Hummer"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "act-waterfall"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_waterfall_WaterfallAjax__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Waterfall, _extends({}, props, {
+    items: window.App.gallery,
     data: {
-      entity: "lots",
-      action: "none",
-      lastbets: "true",
-      limit: {
-        xs: 6,
-        sm: 6,
-        md: 12,
-        lg: 12,
-        xl: 24,
-        xxl: 24
-      },
+      gallery: true,
+      tizerView: "gallery",
       view: {
         xs: 1,
         sm: 2,
         md: 2,
         lg: 3,
-        xl: 3,
-        xxl: 4
-      },
-      scroll: {
-        xs: 1,
-        sm: 1,
-        md: 2,
-        lg: 3,
         xl: 4,
         xxl: 4
-      },
-      tizerView: "lastbets"
+      }
     }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "show-more"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dots"

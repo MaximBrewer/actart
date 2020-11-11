@@ -71,36 +71,20 @@ function Home(props) {
                                 <Hummer />
                             </h3>
                             <div className="act-waterfall">
-                                <WaterfallAjax
+                                <Waterfall
+                                    {...props}
+                                    items={window.App.gallery}
                                     data={{
-                                        entity: "lots",
-                                        action: "none",
-                                        lastbets: "true",
-                                        limit: {
-                                            xs: 6,
-                                            sm: 6,
-                                            md: 12,
-                                            lg: 12,
-                                            xl: 24,
-                                            xxl: 24
-                                        },
+                                        gallery: true,
+                                        tizerView: "gallery",
                                         view: {
                                             xs: 1,
                                             sm: 2,
                                             md: 2,
                                             lg: 3,
-                                            xl: 3,
-                                            xxl: 4
-                                        },
-                                        scroll: {
-                                            xs: 1,
-                                            sm: 1,
-                                            md: 2,
-                                            lg: 3,
                                             xl: 4,
                                             xxl: 4
-                                        },
-                                        tizerView: "lastbets"
+                                        }
                                     }}
                                 />
                             </div>
