@@ -136,7 +136,7 @@ export default function Auction(props) {
                                         <div className="h3">
                                             {__("Auction lots")}
                                         </div>
-                                        <Waterfall
+                                        {/* <Waterfall
                                             {...props}
                                             items={state.auction.lots}
                                             data={{
@@ -153,7 +153,7 @@ export default function Auction(props) {
                                                     xxl: 4
                                                 }
                                             }}
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="my-5">
