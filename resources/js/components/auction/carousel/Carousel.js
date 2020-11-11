@@ -7,7 +7,7 @@ import __ from "../../../utils/trans";
 import { useHistory, useParams } from "react-router-dom";
 
 export default function Carousel(props) {
-    
+
     const { id, lotId } = useParams();
     let history = useHistory();
 
@@ -19,6 +19,7 @@ export default function Carousel(props) {
         for (let i in state.items) if (state.items[i].id == lotId) return i;
         return 0;
     };
+    console.log("lot")
 
     useEffect(() => {
         console.log(lotId)

@@ -50983,6 +50983,7 @@ function Carousel(props) {
     return 0;
   };
 
+  console.log("lot");
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     console.log(lotId);
     var index = getIndex();
