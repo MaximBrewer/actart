@@ -20,10 +20,8 @@ export default function Carousel(props) {
     };
 
     useEffect(() => {
-        // console.log(state.id);
-        // console.log(getIndex(state.id));
-        // console.log(state.items[getIndex(state.id)]);
         let index = getIndex();
+        console.log(index);
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
             lot_name: state.items[index].title,
             author_name: state.items[index].author
