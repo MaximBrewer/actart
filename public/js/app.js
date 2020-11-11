@@ -54130,6 +54130,7 @@ function Carousel(props) {
       id = _useParams.id;
 
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useHistory"])();
+  console.log(id);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     items: props.items,
@@ -54159,7 +54160,7 @@ function Carousel(props) {
     });
     refPicture.current.slickGoTo(index, true);
     refAnnounce.current.slickGoTo(index, true); // history.replace("/gallery/lot/" + state.id);
-  }, [id]);
+  }, [state.id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 

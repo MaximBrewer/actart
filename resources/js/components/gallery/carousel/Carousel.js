@@ -9,7 +9,7 @@ import { useHistory, useParams } from "react-router-dom";
 export default function Carousel(props) {
     const { id } = useParams();
     let history = useHistory();
-
+console.log(id)
     const [state, setState] = useState({
         items: props.items,
         id: id
@@ -34,7 +34,7 @@ export default function Carousel(props) {
         refPicture.current.slickGoTo(index, true);
         refAnnounce.current.slickGoTo(index, true);
         // history.replace("/gallery/lot/" + state.id);
-    }, [id]);
+    }, [state.id]);
 
     const refPicture = useRef();
     const refAnnounce = useRef();
