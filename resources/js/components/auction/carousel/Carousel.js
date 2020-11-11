@@ -7,6 +7,7 @@ import __ from "../../../utils/trans";
 import { useHistory, useParams } from "react-router-dom";
 
 export default function Carousel(props) {
+    
     const { id, lotId } = useParams();
     let history = useHistory();
 

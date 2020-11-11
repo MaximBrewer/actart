@@ -17,51 +17,11 @@ import __ from "../../utils/trans";
 
 export default function Lot(props) {
     useDocumentTitle(__("LOT_IN_AUCTION_PAGE_TITLE"));
-    const { id, lotId } = useParams();
-
-    const [state, setState] = useState({
-        auction: null
-    });
-
-    const updateAuctionStatus = event => {
-        setState(prevState => {
-            if (event.detail.id == prevState.auction.id)
-                return {
-                    ...prevState,
-                    auction: {
-                        ...prevState.auction,
-                        status: event.detail.status
-                    }
-                };
-            else return prevState;
-        });
-    };
-
-    useEffect(() => {
-
-    console.log("lot")
-        axios
-            .get("/api/" + window.App.locale + "/auctions/" + id)
-            .then(res => {
-                setState({
-                    auction: res.data.auction
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-        window.addEventListener("update-auction-status", updateAuctionStatus);
-        return () => {
-            window.removeEventListener(
-                "update-auction-status",
-                updateAuctionStatus
-            );
-        };
-    }, []);
+    const { auction } = props;
 
     const Top = props => {
-        if (state.auction.title)
-            switch (state.auction.status) {
+        if (auction.title)
+            switch (auction.status) {
                 case "started":
                     return <AuctionOnlineTop {...props} />;
                 case "finished":
@@ -72,8 +32,8 @@ export default function Lot(props) {
         return false;
     };
     const Center = props => {
-        if (state.auction.title)
-            switch (state.auction.status) {
+        if (auction.title)
+            switch (auction.status) {
                 case "started":
                     return <AuctionOnlineCenter {...props} />;
                 case "finished":
@@ -84,8 +44,8 @@ export default function Lot(props) {
         return false;
     };
     const LotsList = props => {
-        if (state.auction.title)
-            switch (state.auction.status) {
+        if (auction.title)
+            switch (auction.status) {
                 case "started":
                     return <AuctionOnlineLotsList {...props} />;
                 case "finished":
@@ -96,8 +56,8 @@ export default function Lot(props) {
         return false;
     };
     const Bottom = props => {
-        if (state.auction.title)
-            switch (state.auction.status) {
+        if (auction.title)
+            switch (auction.status) {
                 case "started":
                     return <AuctionOnlineBottom {...props} />;
                 case "finished":
@@ -109,21 +69,21 @@ export default function Lot(props) {
     };
     return (
         <section className="auction-page-wrapper">
-            {state.auction ? (
-                <div className={`status-` + state.auction.status}>
-                    <Top {...props} auction={state.auction} />
+            {auction ? (
+                <div className={`status-` + auction.status}>
+                    <Top {...props} />
                     <div className="sticky-wrapper">
-                        <Center {...props} auction={state.auction} />
+                        <Center {...props} />
                         <div className="auction-page-inner">
                             <div className="auction-works-list my-5">
-                                <LotsList {...props} auction={state.auction} />
+                                <LotsList {...props} />
                             </div>
                             <div className="my-5">
-                                <Bottom {...props} auction={state.auction} />
+                                <Bottom {...props} />
                             </div>
                         </div>
                         <div className="sticky-section">
-                            <span>{state.auction.title}</span>
+                            <span>{auction.title}</span>
                         </div>
                     </div>
                 </div>
