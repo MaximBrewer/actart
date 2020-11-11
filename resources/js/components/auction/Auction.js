@@ -127,7 +127,7 @@ export default function Auction(props) {
                         <div className="sticky-wrapper">
                             <div className="auction-info">
                                 <div className="container">
-                                    <Carousel {...props} />
+                                    {/* <Carousel {...props} /> */}
                                 </div>
                             </div>
                             <div className="auction-page-inner">
