@@ -48997,8 +48997,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _archive_LotBottom_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./archive/LotBottom.js */ "./resources/js/components/auction/archive/LotBottom.js");
 /* harmony import */ var _archive_LotsList_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./archive/LotsList.js */ "./resources/js/components/auction/archive/LotsList.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
 
 
 
@@ -49015,26 +49013,6 @@ __webpack_require__.r(__webpack_exports__);
 
 function Lot(props) {
   var auction = props.auction;
-
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_14__["useParams"])(),
-      id = _useParams.id,
-      lotId = _useParams.lotId;
-
-  var getIndex = function getIndex() {
-    for (var i in auction.lots) {
-      if (auction.lots[i].id == lotId) return i;
-    }
-
-    return 0;
-  };
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    var index = getIndex();
-    document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_13__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
-      lot_name: auction.lots[index].title,
-      author_name: auction.lots[index].author
-    });
-  }, [lotId]);
 
   var Top = function Top(props) {
     if (auction.title) switch (auction.status) {
@@ -50982,11 +50960,18 @@ function _arrayWithHoles(arr) {
 
 
 function Carousel(props) {
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useParams"])(),
-      id = _useParams.id,
-      lotId = _useParams.lotId;
+  var _useParams = useParams(),
+      id = _useParams.id;
 
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useHistory"])();
+
+  var _useRouteMatch = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useRouteMatch"])(),
+      url = _useRouteMatch.url;
+
+  var _useLocation = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["useLocation"])(),
+      pathname = _useLocation.pathname;
+
+  var lotId = pathname.replace(url + "/lot/", "");
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     items: props.auction.lots
@@ -51003,7 +50988,13 @@ function Carousel(props) {
     return 0;
   };
 
-  console.log("lot");
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var index = getIndex();
+    document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
+      lot_name: auction.lots[index].title,
+      author_name: auction.lots[index].author
+    });
+  }, [lotId]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var index = getIndex();
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {

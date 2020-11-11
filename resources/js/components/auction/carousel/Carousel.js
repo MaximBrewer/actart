@@ -4,12 +4,19 @@ import Left from "./Left";
 import Right from "./Right";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from "../../../utils/trans";
-import { useHistory, useParams } from "react-router-dom";
+import {
+    useHistory,
+    useRouteMatch,
+    useLocation
+} from "react-router-dom";
 
 export default function Carousel(props) {
-
-    const { id, lotId } = useParams();
+    
+    const { id } = useParams();
     let history = useHistory();
+    let { url } = useRouteMatch();
+    let { pathname } = useLocation();
+    const lotId = pathname.replace(url + "/lot/", "");
 
     const [state, setState] = useState({
         items: props.auction.lots
@@ -19,7 +26,14 @@ export default function Carousel(props) {
         for (let i in state.items) if (state.items[i].id == lotId) return i;
         return 0;
     };
-    console.log("lot")
+
+    useEffect(() => {
+        let index = getIndex();
+        document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
+            lot_name: auction.lots[index].title,
+            author_name: auction.lots[index].author
+        });
+    }, [lotId]);
 
     useEffect(() => {
         let index = getIndex();

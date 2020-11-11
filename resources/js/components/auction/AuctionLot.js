@@ -12,26 +12,10 @@ import AuctionArchiveCenter from "./archive/LotCenter.js";
 import AuctionArchiveBottom from "./archive/LotBottom.js";
 import AuctionArchiveLotsList from "./archive/LotsList.js";
 import __ from "../../utils/trans";
-import { useParams } from "react-router-dom";
 
 export default function Lot(props) {
 
     const { auction } = props;
-
-    const { id, lotId } = useParams();
-
-    const getIndex = () => {
-        for (let i in auction.lots) if (auction.lots[i].id == lotId) return i;
-        return 0;
-    };
-
-    useEffect(() => {
-        let index = getIndex();
-        document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
-            lot_name: auction.lots[index].title,
-            author_name: auction.lots[index].author
-        });
-    }, [lotId]);
 
     const Top = props => {
         if (auction.title)
