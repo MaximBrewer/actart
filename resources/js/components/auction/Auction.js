@@ -14,14 +14,27 @@ import AuctionArchiveTop from "./archive/Top.js";
 import AuctionArchiveCenter from "./archive/Center.js";
 import AuctionArchiveBottom from "./archive/Bottom.js";
 import AuctionArchiveLotsList from "./archive/LotsList.js";
+import {
+    Link,
+    useLocation,
+    useHistory,
+    useRouteMatch,
+    useParams
+} from "react-router-dom";
 
 export default function Auction(props) {
-
     const { id } = useParams();
 
     const [state, setState] = useState({
         auction: null
     });
+
+    const { url } = useRouteMatch();
+    const { pathname } = useLocation();
+
+    const lotId = pathname.replace(url + "/lot/", "");
+
+    console.log(lotId)
 
     useEffect(() => {
         axios
@@ -111,7 +124,6 @@ export default function Auction(props) {
             <div className={`status-` + state.auction.status}>
                 <Top auction={state.auction} />
                 <div className="sticky-wrapper">
-
                     <div className="auction-info">
                         <div className="container">
                             <Carousel {...props} auction={state.auction} />
