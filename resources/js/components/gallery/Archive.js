@@ -1,5 +1,5 @@
 import React from "react";
-import Waterfall from "../waterfall/Waterfall";
+import WaterfallAjax from "../waterfall/WaterfallAjax";
 import __ from '../../utils/trans';
 import useDocumentTitle from '../../components/document-title';
 
@@ -18,7 +18,7 @@ export default function Archive(props) {
                     </div>
                     <div className="gallery-works" id="galleryWorksList">
                         <div className="gallery-works-list">
-                            <Waterfall
+                            <WaterfallAjax
                                 data={{
                                     entity: "lots",
                                     action: "add",

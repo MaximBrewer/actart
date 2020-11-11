@@ -53,6 +53,7 @@
         "react-countdown": "^2.3.1",
         "react-flash-message": "^1.0.4",
         "react-image-gallery": "^1.0.8",
+        "react-image-lightbox": "^5.1.1",
         "react-image-magnify": "^2.7.4",
         "react-img-zoom": "^0.1.0",
         "react-loader-spinner": "^3.1.14",

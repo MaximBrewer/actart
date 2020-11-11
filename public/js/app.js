@@ -53687,7 +53687,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Archive; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
+/* harmony import */ var _waterfall_WaterfallAjax__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../waterfall/WaterfallAjax */ "./resources/js/components/waterfall/WaterfallAjax.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
 /* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/document-title */ "./resources/js/components/document-title.js");
 
@@ -53717,7 +53717,7 @@ function Archive(props) {
     id: "galleryWorksList"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "gallery-works-list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_waterfall_WaterfallAjax__WEBPACK_IMPORTED_MODULE_1__["default"], {
     data: {
       entity: "lots",
       action: "add",
