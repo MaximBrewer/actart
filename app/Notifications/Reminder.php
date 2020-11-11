@@ -49,7 +49,7 @@ class Reminder extends Notification
         return (new MailMessage)
             ->subject('Act-Art.ru - напоминание об аукционе')
             ->greeting("Напоминание об аукционе на сайте Act-Art.ru.")
-            ->line('Вы хотели принять участие в аукционе ' . $this->lot->title)
+            ->line('Вы хотели принять участие в аукционе ' . $this->auction->title)
             ->line('Аукцион состоится ' . $this->auction->dateout)
             ->action('Перейти к аукциону', "http://act-art.ru/auctions/" . $this->auction->id);
     }
