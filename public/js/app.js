@@ -48996,8 +48996,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _archive_LotCenter_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./archive/LotCenter.js */ "./resources/js/components/auction/archive/LotCenter.js");
 /* harmony import */ var _archive_LotBottom_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./archive/LotBottom.js */ "./resources/js/components/auction/archive/LotBottom.js");
 /* harmony import */ var _archive_LotsList_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./archive/LotsList.js */ "./resources/js/components/auction/archive/LotsList.js");
-/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/document-title */ "./resources/js/components/document-title.js");
-/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
@@ -49014,7 +49014,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Lot(props) {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_13__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_14__["default"])("LOT_IN_AUCTION_PAGE_TITLE"));
+  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_14__["useParams"])(),
+      id = _useParams.id,
+      lotId = _useParams.lotId;
+
+  var getIndex = function getIndex() {
+    for (var i in state.items) {
+      if (state.items[i].id == lotId) return i;
+    }
+
+    return 0;
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var index = getIndex();
+    document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_13__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
+      lot_name: state.items[index].title,
+      author_name: state.items[index].author
+    });
+  }, [lotId]);
   var auction = props.auction;
 
   var Top = function Top(props) {
