@@ -48059,6 +48059,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../context/auth */ "./resources/js/context/auth.js");
 /* harmony import */ var _waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
 /* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../carousel/Carousel */ "./resources/js/components/carousel/Carousel.js");
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
 
@@ -48296,7 +48314,23 @@ function Auction(props) {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h3"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("Auction lots")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("Auction lots")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({}, props, {
+    items: state.auction.lots,
+    data: {
+      auction: state.auction,
+      entity: "lots",
+      sortable: true,
+      tizerView: "auction",
+      view: {
+        xs: 1,
+        sm: 2,
+        md: 2,
+        lg: 4,
+        xl: 4,
+        xxl: 4
+      }
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "my-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-footer"
