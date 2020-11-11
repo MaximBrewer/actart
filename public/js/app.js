@@ -54158,8 +54158,7 @@ function Carousel(props) {
       author_name: state.items[index].author
     });
     refPicture.current.slickGoTo(index, true);
-    refAnnounce.current.slickGoTo(index, true);
-    history.replace("/gallery/lot/" + state.id);
+    refAnnounce.current.slickGoTo(index, true); // history.replace("/gallery/lot/" + state.id);
   }, [state.id, props.id]);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
