@@ -334,8 +334,8 @@ export default function Waterfall(props) {
                                             )}
                                         </li>
                                     ))}
-                                    {option.id == "categories" ? (
-                                        <li>
+                                    <li>
+                                        {option.id == "categories" ? (
                                             <Link
                                                 className={
                                                     !category ? `active` : ``
@@ -344,10 +344,23 @@ export default function Waterfall(props) {
                                             >
                                                 {__(`CATEGORY_ALL_LINK`)}
                                             </Link>
-                                        </li>
-                                    ) : (
-                                        ``
-                                    )}
+                                        ) : (
+                                            <a
+                                                className={
+                                                    !state.filter[option.id]
+                                                        ? `active`
+                                                        : ``
+                                                }
+                                                href="#"
+                                                onClick={e => {
+                                                    e.preventDefault();
+                                                    delFilter(option.id);
+                                                }}
+                                            >
+                                                {item.title}
+                                            </a>
+                                        )}
+                                    </li>
                                 </ul>
                             </li>
                         ))}
