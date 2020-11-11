@@ -54179,9 +54179,8 @@ function Carousel(props) {
   };
 
   var settingsPicture = _objectSpread(_objectSpread({}, setting), {}, {
-    afterChange: function afterChange(current) {
-      return history.replace("/gallery/lot/" + state.items[current].id);
-    },
+    // afterChange: current =>
+    //     history.replace("/gallery/lot/" + state.items[current].id),
     beforeChange: function beforeChange(current, next) {
       var cnt = refPicture.current.props.children.length;
       if (next > current && (next == 1 || current != 0) || current == cnt - 1 && next == 0) refAnnounce.current.slickNext(false);else refAnnounce.current.slickPrev(false);

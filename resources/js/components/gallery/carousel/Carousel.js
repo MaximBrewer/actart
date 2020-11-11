@@ -58,8 +58,8 @@ export default function Carousel(props) {
 
     const settingsPicture = {
         ...setting,
-        afterChange: current =>
-            history.replace("/gallery/lot/" + state.items[current].id),
+        // afterChange: current =>
+        //     history.replace("/gallery/lot/" + state.items[current].id),
         beforeChange: (current, next) => {
             let cnt = refPicture.current.props.children.length;
             if (
