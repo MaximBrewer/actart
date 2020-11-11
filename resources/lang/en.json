@@ -126,5 +126,8 @@
 
     "ADMIN_PROFILE_AUCTIONS_COMING": "Closest auctions",
 
-    "ALREADY_REGISTERED": "You are already registered"
+    "ALREADY_REGISTERED": "You are already registered",
+
+    "NOTHING_TO_SHOW": "Nothing found"
+
 }
