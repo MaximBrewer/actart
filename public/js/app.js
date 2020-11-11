@@ -50268,22 +50268,23 @@ function Carousel(props) {
     }
 
     return 0;
-  }; // useEffect(() => {
-  //     let index = getIndex();
-  //     document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
-  //         lot_name: auction.lots[index].title,
-  //         author_name: auction.lots[index].author
-  //     });
-  // }, [lotId]);
+  };
 
-
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var index = getIndex();
+    document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
+      lot_name: auction.lots[index].title,
+      author_name: auction.lots[index].author
+    });
+  }, [lotId]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var index = getIndex();
     document.title = Object(_utils_trans__WEBPACK_IMPORTED_MODULE_5__["default"])("LOT_IN_AUCTION_PAGE_TITLE", {
       lot_name: state.items[index].title,
       author_name: state.items[index].author
-    }); // refPicture.current.slickGoTo(index, true);
-    // refAnnounce.current.slickGoTo(index, true);
+    });
+    refPicture.current.slickGoTo(index, true);
+    refAnnounce.current.slickGoTo(index, true);
   }, []);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
@@ -50333,15 +50334,15 @@ function Carousel(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
     onClick: function onClick() {
-      refPicture.current.slickPrev();
-      refAnnounce.current.slickPrev();
+      // refPicture.current.slickPrev();
+      // refAnnounce.current.slickPrev();
       history.replace("/auctions/" + auction.id + "/lot/" + prevId());
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_4__["ArrowPrew"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
     onClick: function onClick() {
-      refPicture.current.slickNext();
-      refAnnounce.current.slickNext();
+      // refPicture.current.slickNext();
+      // refAnnounce.current.slickNext();
       history.replace("/auctions/" + auction.id + "/lot/" + nextId());
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_4__["ArrowNext"], null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

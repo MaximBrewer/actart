@@ -28,13 +28,13 @@ export default function Carousel(props) {
         return 0;
     };
 
-    // useEffect(() => {
-    //     let index = getIndex();
-    //     document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
-    //         lot_name: auction.lots[index].title,
-    //         author_name: auction.lots[index].author
-    //     });
-    // }, [lotId]);
+    useEffect(() => {
+        let index = getIndex();
+        document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
+            lot_name: auction.lots[index].title,
+            author_name: auction.lots[index].author
+        });
+    }, [lotId]);
 
     useEffect(() => {
         let index = getIndex();
@@ -42,8 +42,8 @@ export default function Carousel(props) {
             lot_name: state.items[index].title,
             author_name: state.items[index].author
         });
-        // refPicture.current.slickGoTo(index, true);
-        // refAnnounce.current.slickGoTo(index, true);
+        refPicture.current.slickGoTo(index, true);
+        refAnnounce.current.slickGoTo(index, true);
     }, []);
 
     const refPicture = useRef();
@@ -92,8 +92,8 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
-                            refPicture.current.slickPrev();
-                            refAnnounce.current.slickPrev();
+                            // refPicture.current.slickPrev();
+                            // refAnnounce.current.slickPrev();
                             history.replace(
                                 "/auctions/" + auction.id + "/lot/" + prevId()
                             );
@@ -104,8 +104,8 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
-                            refPicture.current.slickNext();
-                            refAnnounce.current.slickNext();
+                            // refPicture.current.slickNext();
+                            // refAnnounce.current.slickNext();
                             history.replace(
                                 "/auctions/" + auction.id + "/lot/" + nextId()
                             );
