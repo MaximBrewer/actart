@@ -294,7 +294,7 @@ function App() {
                         <Route exact path="/auctions/archive">
                             <AuctionsArchive {...rest} />
                         </Route>
-                        <Route path={`/auctions/:id`}>
+                        <Route path={`/auctions`}>
                             <AuctionRoute {...rest} />
                         </Route>
                         <Route exact path={`/search`}>
