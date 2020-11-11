@@ -40,7 +40,8 @@ export default function Auction(props) {
     const { url } = useRouteMatch();
     const { pathname } = useLocation();
 
-    const lotId = pathname == url ? false : pathname.replace(url + "/lot/", "");
+    const lotId =
+        (pathname == url ? false : pathname.replace(url + "/lot/", "")) * 1;
 
     useEffect(() => {
         axios
