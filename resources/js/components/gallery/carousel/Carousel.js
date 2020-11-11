@@ -42,6 +42,24 @@ export default function Carousel(props) {
         }
     };
 
+    const nextId = () => {
+        let index = 0;
+        for (let i in state.items) {
+            if (state.items[i].id == id) index = i + 1;
+        }
+        index = state.items.length == index ? 0 : index;
+        return state.items[index].id
+    };
+
+    const prevId = () => {
+        let index = 0;
+        for (let i in state.items) {
+            if (state.items[i].id == id) index = i - 1;
+        }
+        index = index < 0 ? state.items.length - 1 : index;
+        return state.items[index].id
+    };
+
     const setting = {
         arrows: false,
         infinite: true,
@@ -66,9 +84,7 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
-                            console.log(refPicture.current)
-                            refPicture.current.slickPrev();
-                            refAnnounce.current.slickPrev();
+                            history.replace("/gallery/lot/" + id);
                         }}
                     >
                         <ArrowPrew />
