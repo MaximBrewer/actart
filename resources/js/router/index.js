@@ -29,7 +29,7 @@ import AuthorsItem from "../pages/authors-item";
 import Gallery from "../pages/gallery";
 
 import AuctionAdmin from "../components/auction/AuctionAdmin";
-import AuctionBase from "../components/auction/AuctionRoute";
+import AuctionRoute from "../components/auction/AuctionRoute";
 import SearchPage from "../pages/search";
 import Auctions from "../pages/auctions";
 import AuctionsArchive from "../pages/auctions-archive";
