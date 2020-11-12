@@ -128,6 +128,8 @@
 
     "ALREADY_REGISTERED": "You are already registered",
 
+    "LOGOUT_LINK": "Logout",
+
     "NOTHING_TO_SHOW": "Nothing found"
 
 }

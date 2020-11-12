@@ -68,7 +68,7 @@ function Profile(props) {
                         </div>
                         <hr />
                         <div onClick={handleLogout}>
-                            <Link to="/">Logout</Link>
+                            <Link to="/">{__("LOGOUT_LINK")}</Link>
                         </div>
                         {currentUser.role.id == 1 ? (
                             <React.Fragment>
@@ -79,7 +79,10 @@ function Profile(props) {
                                 <hr />
                                 <div>
                                     {window.App.coming.map((item, index) => (
-                                        <Link to={`/auctions/admin/` + item.id} key={index}>
+                                        <Link
+                                            to={`/auctions/admin/` + item.id}
+                                            key={index}
+                                        >
                                             {item.title}
                                         </Link>
                                     ))}

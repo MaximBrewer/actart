@@ -55017,6 +55017,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/auth */ "./resources/js/context/auth.js");
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/auth */ "./resources/js/utils/auth.js");
+/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/trans */ "./resources/js/utils/trans.js");
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
@@ -55080,6 +55081,7 @@ function _arrayWithHoles(arr) {
 
 
 
+
 function AuthNav() {
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_2__["useAuth"])(),
       setCurrentUser = _useAuth.setCurrentUser,
@@ -55106,7 +55108,7 @@ function AuthNav() {
   var handleLogout = function handleLogout() {
     setCurrentUser(null);
     setToken(null);
-    history.push('/');
+    history.push("/");
     Object(_utils_auth__WEBPACK_IMPORTED_MODULE_3__["setIntendedUrl"])(null);
   };
 
@@ -55127,7 +55129,7 @@ function AuthNav() {
     id: "sidebar-open",
     className: "z-50 flex px-6 items-center lg:hidden text-gray-700"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "svg-full ".concat(!hideMobileNav ? 'mobile-nav-show' : '')
+    className: "svg-full ".concat(!hideMobileNav ? "mobile-nav-show" : "")
   }, "MENU \xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     className: "fill-current",
     role: "button",
@@ -55147,7 +55149,7 @@ function AuthNav() {
     width: "14",
     height: "2"
   }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "right lg:flex pt-8 lg:pt-0 right fixed lg:relative bg-white w-full lg:w-auto h-screen lg:h-auto ".concat(hideMobileNav ? 'mobile-hidden' : '')
+    className: "right lg:flex pt-8 lg:pt-0 right fixed lg:relative bg-white w-full lg:w-auto h-screen lg:h-auto ".concat(hideMobileNav ? "mobile-hidden" : "")
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "mt-8 py-8 lg:py-0 lg:mt-0 list-reset flex items-center flex-col lg:flex-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -55180,7 +55182,7 @@ function AuthNav() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/logout",
     className: "capitalize text-2xl font-bold lg:text-sm lg:font-light text-gray-700 underline lg:no-underline"
-  }, "Logout"))))));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])("LOGOUT_LINK")))))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AuthNav);
@@ -65321,13 +65323,13 @@ function Profile(props) {
       setToken = _useAuth.setToken,
       currentUser = _useAuth.currentUser;
 
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_7__["default"])(currentUser.surname + ' ' + currentUser.name + ' ' + currentUser.middlename);
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_7__["default"])(currentUser.surname + " " + currentUser.name + " " + currentUser.middlename);
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
 
   var handleLogout = function handleLogout() {
     setCurrentUser(null);
     setToken(null);
-    history.push('/');
+    history.push("/");
     Object(_utils_auth__WEBPACK_IMPORTED_MODULE_4__["setIntendedUrl"])(null);
   };
 
@@ -65341,11 +65343,11 @@ function Profile(props) {
     className: "col-60"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "h5"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Profile VIP')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Your ID:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, "#", currentUser.id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Status:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])(currentUser.role.display_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Full name:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, currentUser.name + (currentUser.surname ? " " + currentUser.surname : ""))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Логин:')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, currentUser.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Profile VIP")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Your ID:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, "#", currentUser.id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Status:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])(currentUser.role.display_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Full name:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, currentUser.name + (currentUser.surname ? " " + currentUser.surname : ""))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dl", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dt", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Логин:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("dd", null, currentUser.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     onClick: handleLogout
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/"
-  }, "Logout"))))));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("LOGOUT_LINK")))))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Profile);
@@ -65434,7 +65436,7 @@ function Profile(props) {
     onClick: handleLogout
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/"
-  }, "Logout")), currentUser.role.id == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("LOGOUT_LINK"))), currentUser.role.id == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "h4"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("ADMIN_PROFILE_AUCTIONS_COMING")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, window.App.coming.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
