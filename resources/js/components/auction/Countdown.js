@@ -4,7 +4,11 @@ import CountdownMaster, {
 } from "react-countdown";
 import __ from '../../utils/trans';
 
-export default function Countdown(props) {
+export default function CountdownI(){
+    return "";
+}
+
+function Countdown(props) {
     const declOfNum = (number, titles) => {
         let cases = [2, 0, 1, 1, 1, 2];
         return titles[
