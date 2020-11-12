@@ -51524,6 +51524,8 @@ if (!('scrollingElement' in document)) (function () {
 })();
 
 if (typeof Object.assign != "function") {
+  console.log("Object.assign");
+
   Object.assign = function (target) {
     "use strict";
 
