@@ -51231,6 +51231,13 @@ function _defineProperty(obj, key, value) {
 
 
 function AuctionAdmin(props) {
+  var req = props.req;
+
+  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
+      id = _useParams.id;
+
+  console.log(id);
+
   var startAuction = function startAuction(e) {
     e.preventDefault();
     req("/api/" + window.App.locale + "/auction/" + state.auction.id + "/admin/start", "PATCH").then(function () {
@@ -51283,11 +51290,6 @@ function AuctionAdmin(props) {
       });
     });
   };
-
-  var req = props.req;
-
-  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
-      id = _useParams.id;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     auction: null,
