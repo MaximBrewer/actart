@@ -17153,11 +17153,10 @@ a.text-dark:focus {
 }
 
 #app > .wrapper {
-  flex: 1;
+  flex-shrink: 1;
 }
 
 #app .footer {
-  flex: 2;
   flex-shrink: 0;
   color: #d6d6d6;
 }
