@@ -17157,6 +17157,7 @@ a.text-dark:focus {
 }
 
 #app .footer {
+  flex: 2;
   flex-shrink: 0;
   color: #d6d6d6;
 }
