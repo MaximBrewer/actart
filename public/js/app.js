@@ -9007,639 +9007,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/react-countdown/dist/index.es.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/react-countdown/dist/index.es.js ***!
-  \*******************************************************/
-/*! exports provided: default, calcTimeDelta, formatTimeDelta, zeroPad */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calcTimeDelta", function() { return calcTimeDelta; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formatTimeDelta", function() { return formatTimeDelta; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zeroPad", function() { return zeroPad; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-  return arr2;
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function zeroPad(value) {
-  var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
-  var strValue = String(value);
-  if (length === 0) return strValue;
-  var match = strValue.match(/(.*?)([0-9]+)(.*)/);
-  var prefix = match ? match[1] : '';
-  var suffix = match ? match[3] : '';
-  var strNo = match ? match[2] : strValue;
-  var paddedNo = strNo.length >= length ? strNo : (_toConsumableArray(Array(length)).map(function () {
-    return '0';
-  }).join('') + strNo).slice(length * -1);
-  return "".concat(prefix).concat(paddedNo).concat(suffix);
-}
-var timeDeltaFormatOptionsDefaults = {
-  daysInHours: false,
-  zeroPadTime: 2
-};
-function calcTimeDelta(date) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var _options$now = options.now,
-      now = _options$now === void 0 ? Date.now : _options$now,
-      _options$precision = options.precision,
-      precision = _options$precision === void 0 ? 0 : _options$precision,
-      controlled = options.controlled,
-      _options$offsetTime = options.offsetTime,
-      offsetTime = _options$offsetTime === void 0 ? 0 : _options$offsetTime,
-      overtime = options.overtime;
-  var startTimestamp;
-
-  if (typeof date === 'string') {
-    startTimestamp = new Date(date).getTime();
-  } else if (date instanceof Date) {
-    startTimestamp = date.getTime();
-  } else {
-    startTimestamp = date;
-  }
-
-  if (!controlled) {
-    startTimestamp += offsetTime;
-  }
-
-  var timeLeft = controlled ? startTimestamp : startTimestamp - now();
-  var clampedPrecision = Math.min(20, Math.max(0, precision));
-  var total = Math.round(parseFloat(((overtime ? timeLeft : Math.max(0, timeLeft)) / 1000).toFixed(clampedPrecision)) * 1000);
-  var seconds = Math.abs(total) / 1000;
-  return {
-    total: total,
-    days: Math.floor(seconds / (3600 * 24)),
-    hours: Math.floor(seconds / 3600 % 24),
-    minutes: Math.floor(seconds / 60 % 60),
-    seconds: Math.floor(seconds % 60),
-    milliseconds: Number((seconds % 1 * 1000).toFixed()),
-    completed: total <= 0
-  };
-}
-function formatTimeDelta(timeDelta, options) {
-  var days = timeDelta.days,
-      hours = timeDelta.hours,
-      minutes = timeDelta.minutes,
-      seconds = timeDelta.seconds;
-
-  var _Object$assign = Object.assign(Object.assign({}, timeDeltaFormatOptionsDefaults), options),
-      daysInHours = _Object$assign.daysInHours,
-      zeroPadTime = _Object$assign.zeroPadTime,
-      _Object$assign$zeroPa = _Object$assign.zeroPadDays,
-      zeroPadDays = _Object$assign$zeroPa === void 0 ? zeroPadTime : _Object$assign$zeroPa;
-
-  var zeroPadTimeLength = Math.min(2, zeroPadTime);
-  var formattedHours = daysInHours ? zeroPad(hours + days * 24, zeroPadTime) : zeroPad(hours, zeroPadTimeLength);
-  return {
-    days: daysInHours ? '' : zeroPad(days, zeroPadDays),
-    hours: formattedHours,
-    minutes: zeroPad(minutes, zeroPadTimeLength),
-    seconds: zeroPad(seconds, zeroPadTimeLength)
-  };
-}
-
-var Countdown = function (_React$Component) {
-  _inherits(Countdown, _React$Component);
-
-  var _super = _createSuper(Countdown);
-
-  function Countdown() {
-    var _this;
-
-    _classCallCheck(this, Countdown);
-
-    _this = _super.apply(this, arguments);
-    _this.state = {
-      count: _this.props.count || 3
-    };
-
-    _this.startCountdown = function () {
-      _this.interval = window.setInterval(function () {
-        var count = _this.state.count - 1;
-
-        if (count === 0) {
-          _this.stopCountdown();
-
-          _this.props.onComplete && _this.props.onComplete();
-        } else {
-          _this.setState(function (prevState) {
-            return {
-              count: prevState.count - 1
-            };
-          });
-        }
-      }, 1000);
-    };
-
-    _this.stopCountdown = function () {
-      clearInterval(_this.interval);
-    };
-
-    _this.addTime = function (seconds) {
-      _this.stopCountdown();
-
-      _this.setState(function (prevState) {
-        return {
-          count: prevState.count + seconds
-        };
-      }, _this.startCountdown);
-    };
-
-    return _this;
-  }
-
-  _createClass(Countdown, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.startCountdown();
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      clearInterval(this.interval);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return this.props.children ? Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(this.props.children, {
-        count: this.state.count
-      }) : null;
-    }
-  }]);
-
-  return Countdown;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-Countdown.propTypes = {
-  count: prop_types__WEBPACK_IMPORTED_MODULE_1__["number"],
-  children: prop_types__WEBPACK_IMPORTED_MODULE_1__["element"],
-  onComplete: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"]
-};
-
-var Countdown$1 = function (_React$Component) {
-  _inherits(Countdown$1, _React$Component);
-
-  var _super = _createSuper(Countdown$1);
-
-  function Countdown$1(props) {
-    var _this;
-
-    _classCallCheck(this, Countdown$1);
-
-    _this = _super.call(this, props);
-    _this.mounted = false;
-    _this.initialTimestamp = _this.calcOffsetStartTimestamp();
-    _this.offsetStartTimestamp = _this.props.autoStart ? 0 : _this.initialTimestamp;
-    _this.offsetTime = 0;
-    _this.legacyMode = false;
-    _this.legacyCountdownRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
-
-    _this.tick = function () {
-      var timeDelta = _this.calcTimeDelta();
-
-      var callback = timeDelta.completed && !_this.props.overtime ? undefined : _this.props.onTick;
-
-      _this.setTimeDeltaState(timeDelta, undefined, callback);
-    };
-
-    _this.start = function () {
-      if (_this.isStarted()) return;
-      var prevOffsetStartTimestamp = _this.offsetStartTimestamp;
-      _this.offsetStartTimestamp = 0;
-      _this.offsetTime += prevOffsetStartTimestamp ? _this.calcOffsetStartTimestamp() - prevOffsetStartTimestamp : 0;
-
-      var timeDelta = _this.calcTimeDelta();
-
-      _this.setTimeDeltaState(timeDelta, "STARTED", _this.props.onStart);
-
-      if (!_this.props.controlled && (!timeDelta.completed || _this.props.overtime)) {
-        _this.clearTimer();
-
-        _this.interval = window.setInterval(_this.tick, _this.props.intervalDelay);
-      }
-    };
-
-    _this.pause = function () {
-      if (_this.isPaused()) return;
-
-      _this.clearTimer();
-
-      _this.offsetStartTimestamp = _this.calcOffsetStartTimestamp();
-
-      _this.setTimeDeltaState(_this.state.timeDelta, "PAUSED", _this.props.onPause);
-    };
-
-    _this.stop = function () {
-      if (_this.isStopped()) return;
-
-      _this.clearTimer();
-
-      _this.offsetStartTimestamp = _this.calcOffsetStartTimestamp();
-      _this.offsetTime = _this.offsetStartTimestamp - _this.initialTimestamp;
-
-      _this.setTimeDeltaState(_this.calcTimeDelta(), "STOPPED", _this.props.onStop);
-    };
-
-    _this.isStarted = function () {
-      return _this.isStatus("STARTED");
-    };
-
-    _this.isPaused = function () {
-      return _this.isStatus("PAUSED");
-    };
-
-    _this.isStopped = function () {
-      return _this.isStatus("STOPPED");
-    };
-
-    _this.isCompleted = function () {
-      return _this.isStatus("COMPLETED");
-    };
-
-    _this.handleOnComplete = function (timeDelta) {
-      if (_this.props.onComplete) _this.props.onComplete(timeDelta);
-    };
-
-    if (props.date) {
-      var timeDelta = _this.calcTimeDelta();
-
-      _this.state = {
-        timeDelta: timeDelta,
-        status: timeDelta.completed ? "COMPLETED" : "STOPPED"
-      };
-    } else {
-      _this.legacyMode = true;
-    }
-
-    return _this;
-  }
-
-  _createClass(Countdown$1, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (this.legacyMode) {
-        return;
-      }
-
-      this.mounted = true;
-      if (this.props.onMount) this.props.onMount(this.calcTimeDelta());
-      if (this.props.autoStart) this.start();
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      if (this.legacyMode) {
-        return;
-      }
-
-      if (!this.shallowCompare(this.props, prevProps)) {
-        if (this.props.date !== prevProps.date) {
-          this.initialTimestamp = this.calcOffsetStartTimestamp();
-          this.offsetStartTimestamp = this.initialTimestamp;
-          this.offsetTime = 0;
-        }
-
-        this.setTimeDeltaState(this.calcTimeDelta());
-      }
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      if (this.legacyMode) {
-        return;
-      }
-
-      this.mounted = false;
-      this.clearTimer();
-    }
-  }, {
-    key: "calcTimeDelta",
-    value: function calcTimeDelta$1() {
-      var _this$props = this.props,
-          date = _this$props.date,
-          now = _this$props.now,
-          precision = _this$props.precision,
-          controlled = _this$props.controlled,
-          overtime = _this$props.overtime;
-      return calcTimeDelta(date, {
-        now: now,
-        precision: precision,
-        controlled: controlled,
-        offsetTime: this.offsetTime,
-        overtime: overtime
-      });
-    }
-  }, {
-    key: "calcOffsetStartTimestamp",
-    value: function calcOffsetStartTimestamp() {
-      return Date.now();
-    }
-  }, {
-    key: "addTime",
-    value: function addTime(seconds) {
-      this.legacyCountdownRef.current.addTime(seconds);
-    }
-  }, {
-    key: "clearTimer",
-    value: function clearTimer() {
-      window.clearInterval(this.interval);
-    }
-  }, {
-    key: "isStatus",
-    value: function isStatus(status) {
-      return this.state.status === status;
-    }
-  }, {
-    key: "shallowCompare",
-    value: function shallowCompare(objA, objB) {
-      var keysA = Object.keys(objA);
-      return keysA.length === Object.keys(objB).length && !keysA.some(function (keyA) {
-        var valueA = objA[keyA];
-        var valueB = objB[keyA];
-        return !objB.hasOwnProperty(keyA) || !(valueA === valueB || valueA !== valueA && valueB !== valueB);
-      });
-    }
-  }, {
-    key: "setTimeDeltaState",
-    value: function setTimeDeltaState(timeDelta, status, callback) {
-      var _this2 = this;
-
-      if (!this.mounted) return;
-      var completedCallback;
-
-      if (!this.state.timeDelta.completed && timeDelta.completed) {
-        if (!this.props.overtime) this.clearTimer();
-        completedCallback = this.handleOnComplete;
-      }
-
-      var onDone = function onDone() {
-        if (callback) callback(_this2.state.timeDelta);
-        if (completedCallback) completedCallback(_this2.state.timeDelta);
-      };
-
-      return this.setState(function (prevState) {
-        var newStatus = status || prevState.status;
-
-        if (timeDelta.completed && !_this2.props.overtime) {
-          newStatus = "COMPLETED";
-        } else if (!status && newStatus === "COMPLETED") {
-          newStatus = "STOPPED";
-        }
-
-        return {
-          timeDelta: timeDelta,
-          status: newStatus
-        };
-      }, onDone);
-    }
-  }, {
-    key: "getApi",
-    value: function getApi() {
-      return this.api = this.api || {
-        start: this.start,
-        pause: this.pause,
-        stop: this.stop,
-        isStarted: this.isStarted,
-        isPaused: this.isPaused,
-        isStopped: this.isStopped,
-        isCompleted: this.isCompleted
-      };
-    }
-  }, {
-    key: "getRenderProps",
-    value: function getRenderProps() {
-      var _this$props2 = this.props,
-          daysInHours = _this$props2.daysInHours,
-          zeroPadTime = _this$props2.zeroPadTime,
-          zeroPadDays = _this$props2.zeroPadDays;
-      var timeDelta = this.state.timeDelta;
-      return Object.assign(Object.assign({}, timeDelta), {
-        api: this.getApi(),
-        props: this.props,
-        formatted: formatTimeDelta(timeDelta, {
-          daysInHours: daysInHours,
-          zeroPadTime: zeroPadTime,
-          zeroPadDays: zeroPadDays
-        })
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      if (this.legacyMode) {
-        var _this$props3 = this.props,
-            count = _this$props3.count,
-            _children = _this$props3.children,
-            onComplete = _this$props3.onComplete;
-        return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Countdown, {
-          ref: this.legacyCountdownRef,
-          count: count,
-          onComplete: onComplete
-        }, _children);
-      }
-
-      var _this$props4 = this.props,
-          className = _this$props4.className,
-          overtime = _this$props4.overtime,
-          children = _this$props4.children,
-          renderer = _this$props4.renderer;
-      var renderProps = this.getRenderProps();
-
-      if (renderer) {
-        return renderer(renderProps);
-      }
-
-      if (children && this.state.timeDelta.completed && !overtime) {
-        return Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(children, {
-          countdown: renderProps
-        });
-      }
-
-      var _renderProps$formatte = renderProps.formatted,
-          days = _renderProps$formatte.days,
-          hours = _renderProps$formatte.hours,
-          minutes = _renderProps$formatte.minutes,
-          seconds = _renderProps$formatte.seconds;
-      return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
-        className: className
-      }, renderProps.total < 0 ? '-' : '', days, days ? ':' : '', hours, ":", minutes, ":", seconds);
-    }
-  }]);
-
-  return Countdown$1;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-Countdown$1.defaultProps = Object.assign(Object.assign({}, timeDeltaFormatOptionsDefaults), {
-  controlled: false,
-  intervalDelay: 1000,
-  precision: 0,
-  autoStart: true
-});
-Countdown$1.propTypes = {
-  date: Object(prop_types__WEBPACK_IMPORTED_MODULE_1__["oneOfType"])([Object(prop_types__WEBPACK_IMPORTED_MODULE_1__["instanceOf"])(Date), prop_types__WEBPACK_IMPORTED_MODULE_1__["string"], prop_types__WEBPACK_IMPORTED_MODULE_1__["number"]]),
-  daysInHours: prop_types__WEBPACK_IMPORTED_MODULE_1__["bool"],
-  zeroPadTime: prop_types__WEBPACK_IMPORTED_MODULE_1__["number"],
-  zeroPadDays: prop_types__WEBPACK_IMPORTED_MODULE_1__["number"],
-  controlled: prop_types__WEBPACK_IMPORTED_MODULE_1__["bool"],
-  intervalDelay: prop_types__WEBPACK_IMPORTED_MODULE_1__["number"],
-  precision: prop_types__WEBPACK_IMPORTED_MODULE_1__["number"],
-  autoStart: prop_types__WEBPACK_IMPORTED_MODULE_1__["bool"],
-  overtime: prop_types__WEBPACK_IMPORTED_MODULE_1__["bool"],
-  className: prop_types__WEBPACK_IMPORTED_MODULE_1__["string"],
-  children: prop_types__WEBPACK_IMPORTED_MODULE_1__["element"],
-  renderer: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
-  now: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
-  onMount: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
-  onStart: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
-  onPause: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
-  onStop: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
-  onTick: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
-  onComplete: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"]
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Countdown$1);
-
-
-
-/***/ }),
-
 /***/ "./node_modules/react-dom/cjs/react-dom.development.js":
 /*!*************************************************************!*\
   !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
@@ -53938,76 +53305,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CountdownI; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_countdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-countdown */ "./node_modules/react-countdown/dist/index.es.js");
-/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
-
+/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
+ // import CountdownMaster, {
+//     zeroPad
+// } from "react-countdown";
 
 
 function CountdownI() {
   return "";
-}
-
-function Countdown(props) {
-  var declOfNum = function declOfNum(number, titles) {
-    var cases = [2, 0, 1, 1, 1, 2];
-    return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
-  };
-
-  var Completionist = function Completionist() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "banner-counter d-flex h3 h3 color-red"
-    }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('COUNTDOWN_AUCTION_STARTED'));
-  };
-
-  var renderer = function renderer(_ref) {
-    var days = _ref.days,
-        hours = _ref.hours,
-        minutes = _ref.minutes,
-        seconds = _ref.seconds,
-        completed = _ref.completed;
-    if (window.innerWidth < window.grid.sm) return "";
-
-    if (completed) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Completionist, null);
-    } else {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "banner-counter-wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("to start auction")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "banner-counter d-flex"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "days"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "number h5"
-      }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(days)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(days, [Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("день"), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("дня"), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("дней")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "separator h5"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ours"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "number h5"
-      }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(hours)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(hours, [Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("час"), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("часа"), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("часов")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "separator h5"
-      }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "minutes"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "number h5"
-      }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(minutes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(minutes, [Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("мин."), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("мин."), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("мин.")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "separator h5"
-      }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "seconds"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "number h5"
-      }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(seconds)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(seconds, [Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("сек."), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("сек."), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("сек.")])))));
-    }
-  };
-
-  var data = {
-    props: props
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    date: props.date,
-    renderer: renderer
-  });
-}
+} // function Countdown(props) {
+//     const declOfNum = (number, titles) => {
+//         let cases = [2, 0, 1, 1, 1, 2];
+//         return titles[
+//             number % 100 > 4 && number % 100 < 20
+//                 ? 2
+//                 : cases[number % 10 < 5 ? number % 10 : 5]
+//         ];
+//     };
+//     const Completionist = () => (
+//         <div className="banner-counter d-flex h3 h3 color-red">{__('COUNTDOWN_AUCTION_STARTED')}</div>
+//     );
+//     const renderer = ({ days, hours, minutes, seconds, completed }) => {
+//         if (window.innerWidth < window.grid.sm) return "";
+//         if (completed) {
+//             return <Completionist />;
+//         } else {
+//             return (
+//                 <div className="banner-counter-wrapper">
+//                     <p>{__("to start auction")}</p>
+//                     <div className="banner-counter d-flex">
+//                         <div className="days">
+//                             <div className="number h5">{zeroPad(days)}</div>
+//                             <small>
+//                                 {declOfNum(days, [
+//                                     __("день"),
+//                                     __("дня"),
+//                                     __("дней")
+//                                 ])}
+//                             </small>
+//                         </div>
+//                         <div className="separator h5"></div>
+//                         <div className="ours">
+//                             <div className="number h5">{zeroPad(hours)}</div>
+//                             <small>
+//                                 {declOfNum(hours, [
+//                                     __("час"),
+//                                     __("часа"),
+//                                     __("часов")
+//                                 ])}
+//                             </small>
+//                         </div>
+//                         <div className="separator h5">:</div>
+//                         <div className="minutes">
+//                             <div className="number h5">{zeroPad(minutes)}</div>
+//                             <small>
+//                                 {declOfNum(minutes, [
+//                                     __("мин."),
+//                                     __("мин."),
+//                                     __("мин.")
+//                                 ])}
+//                             </small>
+//                         </div>
+//                         <div className="separator h5">:</div>
+//                         <div className="seconds">
+//                             <div className="number h5">{zeroPad(seconds)}</div>
+//                             <small>
+//                                 {declOfNum(seconds, [
+//                                     __("сек."),
+//                                     __("сек."),
+//                                     __("сек.")
+//                                 ])}
+//                             </small>
+//                         </div>
+//                     </div>
+//                 </div>
+//             );
+//         }
+//     };
+//     const data = { props };
+//     return <CountdownMaster date={props.date} renderer={renderer} />;
+// }
 
 /***/ }),
 

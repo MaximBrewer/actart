@@ -1,14 +1,22 @@
-import React from "react";
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = CountdownI;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _trans = _interopRequireDefault(require("../../utils/trans"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
 // import CountdownMaster, {
 //     zeroPad
 // } from "react-countdown";
-import __ from '../../utils/trans';
-
-export default function CountdownI(){
-    return "";
-}
-
-// function Countdown(props) {
+function CountdownI() {
+  return "";
+} // function Countdown(props) {
 //     const declOfNum = (number, titles) => {
 //         let cases = [2, 0, 1, 1, 1, 2];
 //         return titles[
@@ -17,14 +25,11 @@ export default function CountdownI(){
 //                 : cases[number % 10 < 5 ? number % 10 : 5]
 //         ];
 //     };
-
 //     const Completionist = () => (
 //         <div className="banner-counter d-flex h3 h3 color-red">{__('COUNTDOWN_AUCTION_STARTED')}</div>
 //     );
-
 //     const renderer = ({ days, hours, minutes, seconds, completed }) => {
 //         if (window.innerWidth < window.grid.sm) return "";
-
 //         if (completed) {
 //             return <Completionist />;
 //         } else {
