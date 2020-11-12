@@ -6,6 +6,13 @@ import Waterfall from "../waterfall/Waterfall";
 
 export default function AuctionAdmin(props) {
 
+
+
+    const { req } = props;
+    const { id } = useParams();
+
+    console.log(id)
+
     const startAuction = e => {
         e.preventDefault();
         req(
@@ -82,9 +89,6 @@ export default function AuctionAdmin(props) {
             translation: event.detail.translation
         }));
     };
-
-    const { req } = props;
-    const { id } = useParams();
 
     const [state, setState] = useState({
         auction: null,
