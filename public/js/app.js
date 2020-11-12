@@ -51236,7 +51236,7 @@ function AuctionAdmin(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id;
 
-  console.log(id);
+  console.log(req, id);
 
   var startAuction = function startAuction(e) {
     e.preventDefault();
