@@ -5,6 +5,9 @@ import Parser from "html-react-parser";
 import Waterfall from "../waterfall/Waterfall";
 
 export default function AuctionAdmin(props) {
+    
+    const { id } = useParams();
+
     const startAuction = e => {
         e.preventDefault();
         req(
