@@ -294,6 +294,14 @@ function App() {
                         <Route exact path="/auctions/archive">
                             <AuctionsArchive {...rest} />
                         </Route>
+
+                        <AdminRoute
+                            exact
+                            path={`/auctions/admin/:id`}
+                            {...rest}
+                            component={AuctionAdmin}
+                        />
+                        
                         <Route path={`/auctions/:id`}>
                             <Auction {...rest} />
                         </Route>
@@ -315,13 +323,6 @@ function App() {
                             path={"/profile"}
                             component={Profile}
                             {...rest}
-                        />
-
-                        <AdminRoute
-                            exact
-                            path={`/auctions/admin/:id`}
-                            {...rest}
-                            component={AuctionAdmin}
                         />
 
                         <Route>
