@@ -20167,7 +20167,8 @@ iframe {
 }
 
 .gallery-section .gallery-works ul li span {
-  font-weight: bold;
+  font-weight: normal;
+  text-transform: uppercase;
   display: block;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
@@ -20175,13 +20176,14 @@ iframe {
 }
 
 .gallery-section .gallery-works ul li ul {
-  padding: 0 0 2rem 2rem;
+  padding: 0 0 2rem 1rem;
 }
 
 .gallery-section .gallery-works ul li ul li a {
   font-size: 0.875rem;
   line-height: 1rem;
   font-weight: 400;
+  text-transform: none;
   font-family: "Roboto Condensed";
   text-decoration: none !important;
 }
