@@ -64,7 +64,7 @@ export default function Auction(props) {
 
     const updateAuctionStatus = event => {
         setState(prevState => {
-            if (event.detail.id == prevstate.auction.id)
+            if (event.detail.id == prevState.auction.id)
                 return {
                     ...prevState,
                     auction: {

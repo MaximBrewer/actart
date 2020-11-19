@@ -62845,7 +62845,7 @@ function Auction(props) {
 
   var updateAuctionStatus = function updateAuctionStatus(event) {
     setState(function (prevState) {
-      if (event.detail.id == prevstate.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
+      if (event.detail.id == prevState.auction.id) return _objectSpread(_objectSpread({}, prevState), {}, {
         auction: _objectSpread(_objectSpread({}, prevState.auction), {}, {
           status: event.detail.status
         })
