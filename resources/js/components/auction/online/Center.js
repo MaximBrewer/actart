@@ -199,7 +199,7 @@ export default function Center(props) {
                                             <div className="h1">{__("LOT_TEXT_LOT_ID")} {state.auction.current.id}</div>
                                         ) : ``}
                                         {state.auction.current ? (
-                                            <div style="width:40%">
+                                            <div style={{ width: "40%" }}>
                                                 <div
                                                     style={{
                                                         paddingTop: "56.25%",
