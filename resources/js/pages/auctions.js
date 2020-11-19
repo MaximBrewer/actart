@@ -180,7 +180,21 @@ export default function AuctionsPage(props) {
                         <div className="popular-categories">
                             <h4 className="h4">{__("Popular Categories")}</h4>
                             <div className="d-flex justify-content-between categories">
-                                {/* @widget('popular_categories') */}
+                                {window.App.popular.map((item, index) => (
+                                    <Link
+                                        key={index}
+                                        className={`text-decoration-none d-flex justify-content-center align-items-center`}
+                                        to={`/gallery/category/` + item.id}
+                                        style={{
+                                            backgroundImage:
+                                                `url(` + item.preview + `)`
+                                        }}
+                                    >
+                                        <p className="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">
+                                            {item.title}
+                                        </p>
+                                    </Link>
+                                ))}
                             </div>
                             <div className="d-flex justify-content-center align-items-end">
                                 <Link to="/gallery" className="btn btn-default">

@@ -74929,7 +74929,18 @@ function AuctionsPage(props) {
     className: "h4"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Popular Categories")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-between categories"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, window.App.popular.map(function (item, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      key: index,
+      className: "text-decoration-none d-flex justify-content-center align-items-center",
+      to: "/gallery/category/" + item.id,
+      style: {
+        backgroundImage: "url(" + item.preview + ")"
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "px-1 text-center text-nowrap w-100 overflow-hidden text-truncate"
+    }, item.title));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-center align-items-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/gallery",
