@@ -76,13 +76,13 @@ export default function AuctionsArchive(props) {
                 </section>
                 <div className="sticky-section mt-5"><span>{__('ARCHIVE_OF_AUCTIONS')}</span></div>
             </div>
-            <section className="auctions-section">
+            {/* <section className="auctions-section">
                 <div className="container">
                     <div className="text-center">
                         <Link to="/auctions" className="btn btn-default">{__('ARCHIVE_LINK_TO_AUCTIONS')}</Link>
                     </div>
                 </div>
-            </section>
+            </section> */}
         </React.Fragment>
     );
 }

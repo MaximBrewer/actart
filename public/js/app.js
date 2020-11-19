@@ -74723,16 +74723,7 @@ function AuctionsArchive(props) {
     className: "btn btn-default"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('GALLERY_BLOCK_SHOW_MORE_LINK'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section mt-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ARCHIVE_OF_AUCTIONS')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-    className: "auctions-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/auctions",
-    className: "btn btn-default"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ARCHIVE_LINK_TO_AUCTIONS'))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ARCHIVE_OF_AUCTIONS')))));
 }
 
 /***/ }),
