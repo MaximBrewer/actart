@@ -19999,6 +19999,10 @@ iframe {
   padding: 2rem 0 5rem;
 }
 
+.auctions-section.special-list + .sticky-section {
+  margin-top: 1rem;
+}
+
 .auctions-section .h1 {
   font-size: 1.6rem;
 }

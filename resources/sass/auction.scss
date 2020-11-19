@@ -17,12 +17,15 @@
 .auctions-section {
     // padding: 3rem 0 5rem;
 
-    &.regular-list{
-        margin-top:-2rem;
+    &.regular-list {
+        margin-top: -2rem;
         padding: 2rem 0 5rem;
     }
-    &.special-list{
+    &.special-list {
         padding: 2rem 0 5rem;
+        & + .sticky-section {
+            margin-top: 1rem;
+        }
     }
     .h1 {
         font-size: 1.6rem;
