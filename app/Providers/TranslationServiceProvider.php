@@ -53,7 +53,7 @@ class TranslationServiceProvider extends ServiceProvider
         $translates = Translate::all();
         $lang = [];
         foreach ($translates as $translate)
-            $lang['key'] = $translate[app()->getLocale()];
+            $lang[$translate->key] = $translate->{app()->getLocale()};
         return $lang;
     }
 }
