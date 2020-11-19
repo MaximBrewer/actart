@@ -4,6 +4,7 @@ import __ from "../../../utils/trans";
 import { useAuth } from "../../../context/auth";
 
 export default function Right(props) {
+    console.log(props)
     const { req, openModal } = props;
     const { currentUser } = useAuth();
 

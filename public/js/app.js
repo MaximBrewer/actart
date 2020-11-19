@@ -68815,6 +68815,7 @@ function _arrayWithHoles(arr) {
 
 
 function Right(props) {
+  console.log(props);
   var req = props.req,
       openModal = props.openModal;
 
