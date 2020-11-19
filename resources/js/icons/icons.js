@@ -18,18 +18,7 @@ export function FavoriteBig(props) {
     const toFavorite = (e) => {
         e.preventDefault();
         if (!currentUser) {
-            window.dispatchEvent(
-                new CustomEvent("flash", {
-                    detail: {
-                        message: __(
-                            "To add to favorites, authorization is required"
-                        ),
-                        type: "danger",
-                        delay: 4000
-                    }
-                })
-            );
-            return false;
+            props.openModal('login')
         }
 
         let action = active ? "remove" : "add";
@@ -88,18 +77,7 @@ export function Favorite(props) {
     const toFavorite = (e) => {
         e.preventDefault();
         if (!currentUser) {
-            window.dispatchEvent(
-                new CustomEvent("flash", {
-                    detail: {
-                        message: __(
-                            "To add to favorites, authorization is required"
-                        ),
-                        type: "danger",
-                        delay: 4000
-                    }
-                })
-            );
-            return false;
+            props.openModal('login')
         }
 
         let action = active ? "remove" : "add";

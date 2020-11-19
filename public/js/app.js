@@ -73401,14 +73401,7 @@ function FavoriteBig(props) {
     e.preventDefault();
 
     if (!currentUser) {
-      window.dispatchEvent(new CustomEvent("flash", {
-        detail: {
-          message: Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("To add to favorites, authorization is required"),
-          type: "danger",
-          delay: 4000
-        }
-      }));
-      return false;
+      props.openModal('login');
     }
 
     var action = active ? "remove" : "add";
@@ -73459,14 +73452,7 @@ function Favorite(props) {
     e.preventDefault();
 
     if (!currentUser) {
-      window.dispatchEvent(new CustomEvent("flash", {
-        detail: {
-          message: Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("To add to favorites, authorization is required"),
-          type: "danger",
-          delay: 4000
-        }
-      }));
-      return false;
+      props.openModal('login');
     }
 
     var action = active ? "remove" : "add";
