@@ -2,7 +2,6 @@
 
 namespace App\Observers;
 
-use App\Providers\TranslationServiceProvider;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use App\Translate as Model;
@@ -68,6 +67,7 @@ class Translate
 
     private function dbTranslations($locale)
     {
+        die;
         $translates = Model::all();
         $lang = [];
         foreach ($translates as $translate)
