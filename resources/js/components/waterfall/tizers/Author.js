@@ -24,7 +24,7 @@ export default function Tizer(props) {
                 {item.professions.map(
                     (it, i) => (
                         <React.Fragment>
-                            {i ? ' / ' : ''} + <span key={i}>
+                            {i ? ' / ' : ''}<span key={i}>
                                 {it.title}
                             </span>
                         </React.Fragment>

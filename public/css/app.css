@@ -22352,7 +22352,6 @@ a.lot-item:hover {
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
   line-height: 1.25rem;
-  height: 3.75rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -22381,6 +22380,10 @@ a.lot-item:hover {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.author-item .professions {
+  font-size: 0.875rem;
 }
 
 .author-item .address,
