@@ -68815,7 +68815,8 @@ function _arrayWithHoles(arr) {
 
 
 function Right(props) {
-  var req = props.req;
+  var req = props.req,
+      openModal = props.openModal;
 
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_3__["useAuth"])(),
       currentUser = _useAuth.currentUser;
@@ -68837,7 +68838,7 @@ function Right(props) {
   };
 
   var needAuth = function needAuth() {
-    props.openModal('login');
+    openModal('login');
   };
 
   var createBet = function createBet(event) {

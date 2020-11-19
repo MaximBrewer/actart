@@ -4,7 +4,7 @@ import __ from "../../../utils/trans";
 import { useAuth } from "../../../context/auth";
 
 export default function Right(props) {
-    const { req } = props;
+    const { req, openModal } = props;
     const { currentUser } = useAuth();
 
     const [state, setState] = useState({
@@ -20,7 +20,7 @@ export default function Right(props) {
     };
 
     const needAuth = () => {
-        props.openModal('login')
+        openModal('login')
     }
 
     const createBet = event => {
