@@ -74815,7 +74815,7 @@ function AuctionsPage(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "h1"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Regular auctions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sub_h1 d-none d-xl-block"
+    className: "sub_h2 d-none d-xl-block"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col col-xl-20 col-xxl-22 d-none d-xl-block"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -74856,7 +74856,7 @@ function AuctionsPage(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "h1"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Themed auctions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sub_h1 d-none d-xl-block"
+    className: "sub_h2 d-none d-xl-block"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col col-xl-20 col-xxl-22 d-none d-xl-block"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {

@@ -42,7 +42,7 @@ export default function AuctionsPage(props) {
                         <div className="row announce mb-xl-5">
                             <div className="col col-xl-40 col-xxl-38">
                                 <h2 className="h1">{__("Regular auctions")}</h2>
-                                <div className="sub_h1 d-none d-xl-block">
+                                <div className="sub_h2 d-none d-xl-block">
                                     {__(
                                         "Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update."
                                     )}
@@ -92,7 +92,7 @@ export default function AuctionsPage(props) {
                         <div className="row announce mb-xl-5">
                             <div className="col col-xl-40 col-xxl-38">
                                 <h2 className="h1">{__("Themed auctions")}</h2>
-                                <div className="sub_h1 d-none d-xl-block">
+                                <div className="sub_h2 d-none d-xl-block">
                                     {__(
                                         "Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update."
                                     )}
