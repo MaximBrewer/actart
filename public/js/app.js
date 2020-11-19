@@ -67905,8 +67905,10 @@ function Footer(props) {
     className: "d-xl-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Сайт сделан в  ВАША КОМПАНИЯ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d-md-flex"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Сайт сделан в  ВАША КОМПАНИЯ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "d-md-flex",
+    target: "_blank",
+    href: "//good-head.ru/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Разработка")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

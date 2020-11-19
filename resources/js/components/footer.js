@@ -110,14 +110,14 @@ export default function Footer(props) {
                                 <div className="pb-2">
                                     {__("Сайт сделан в  ВАША КОМПАНИЯ")}
                                 </div>
-                                <div className="d-md-flex">
+                                <a className="d-md-flex" target="_blank" href="//good-head.ru/">
                                     <div className="pb-2">
                                         {__("Разработка")}
                                     </div>
                                     <div className="pb-2">
                                         <Cp />
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
