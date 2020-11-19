@@ -59,7 +59,7 @@ export default function Carousel(props) {
 
     // if (window.innerWidth > 767) {
     return (
-        <div className="carousel-wrapper">
+        <div className="carousel-wrapper pb-5">
             <div className="cg">
                 <Slider {...setting} ref={refPicture}>
                     {state.slides.map((item, index) => (
@@ -75,7 +75,7 @@ export default function Carousel(props) {
                     ))}
                 </Slider>
             </div>
-            <div className="carousel-arrows-wrapper">
+            <div className="d-flex justify-content-end py-5">
                 <div className="carousel-arrows">
                     <a
                         className="btn btn-default btn-control d-flex"
