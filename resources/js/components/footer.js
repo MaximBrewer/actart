@@ -93,7 +93,7 @@ export default function Footer(props) {
             <div className="footer-bottom">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-20align-items-start d-flex">
+                        <div className="col-md-20 align-items-start d-flex">
                             <p className="pb-2">
                                 {__("ООО “ВОЛОН”  © 2020")}
                                 <br />
