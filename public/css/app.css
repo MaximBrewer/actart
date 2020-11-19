@@ -19990,6 +19990,15 @@ iframe {
   max-width: 60rem;
 }
 
+.auctions-section.regular-list {
+  margin-top: -2rem;
+  padding: 2rem 0 5rem;
+}
+
+.auctions-section.special-list {
+  padding: 2rem 0 5rem;
+}
+
 .auctions-section .h1 {
   font-size: 1.6rem;
 }
