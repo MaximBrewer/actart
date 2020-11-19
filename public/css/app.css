@@ -20167,7 +20167,7 @@ iframe {
 }
 
 .gallery-section .gallery-works ul li span {
-  font-weight: normal;
+  font-weight: bold;
   text-transform: uppercase;
   display: block;
   padding-bottom: 0.5rem;
