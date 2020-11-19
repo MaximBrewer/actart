@@ -52,7 +52,7 @@ export default function BlogItem(props) {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-60">
+                            <div className="col-60 col-xl-40">
                                 <Parser body={state.post.body} {...props} />
                             </div>
                         </div>

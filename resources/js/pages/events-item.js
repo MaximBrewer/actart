@@ -44,7 +44,7 @@ export default function Eventtem(props) {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-60">
+                                <div className="col-60 col-xl-40">
                                     <Parser body={state.event.body} {...props} />
                                 </div>
                             </div>
