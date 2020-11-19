@@ -41,11 +41,9 @@ export default function AuctionsPage(props) {
                     <div className="container">
                         <div className="row announce mb-xl-5">
                             <div className="col col-xl-40 col-xxl-38">
-                                <h2 className="h1">{__("Regular auctions")}</h2>
+                                <h2 className="h1">{__("REGULAR_AUCTION_TITLE")}</h2>
                                 <div className="sub_h2 d-none d-xl-block">
-                                    {__(
-                                        "Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update."
-                                    )}
+                                    {__("REGULAR_AUCTION_SUBTITLE")}
                                 </div>
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
@@ -58,7 +56,7 @@ export default function AuctionsPage(props) {
                                         {__("see also:")}
                                     </div>
                                     <div className="h5">
-                                        {__("Themed auctions")}
+                                        {__("THEMED_AUCTION_TITLE")}
                                     </div>
                                     <svg
                                         viewBox="0 0 36 39"
@@ -91,11 +89,9 @@ export default function AuctionsPage(props) {
                     <div className="container">
                         <div className="row announce mb-xl-5">
                             <div className="col col-xl-40 col-xxl-38">
-                                <h2 className="h1">{__("Themed auctions")}</h2>
+                                <h2 className="h1">{__("THEMED_AUCTION_TITLE")}</h2>
                                 <div className="sub_h2 d-none d-xl-block">
-                                    {__(
-                                        "Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update."
-                                    )}
+                                    {__("THEMED_AUCTION_SUBTITLE")}
                                 </div>
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
@@ -108,7 +104,7 @@ export default function AuctionsPage(props) {
                                         {__("see also:")}
                                     </div>
                                     <div className="h5">
-                                        {__("Regular auctions")}
+                                        {__("REGULAR_AUCTION_TITLE")}
                                     </div>
                                     <svg
                                         viewBox="0 0 36 39"
