@@ -78740,10 +78740,11 @@ function __(key, replace) {
     if (translation) translationNotFound = false;
   }
 
+  console.log(key);
+  console.log(translationNotFound);
+
   if (translationNotFound) {
     translation = window.App.translations.db[key] ? window.App.translations.db[key] : key;
-    console.log(translationNotFound);
-    console.log(key);
     console.log(window.App.translations.db);
     console.log(window.App.translations.db[key]);
   }
