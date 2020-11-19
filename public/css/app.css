@@ -17490,6 +17490,7 @@ h6,
 
 .sticky-wrapper {
   position: relative;
+  margin: 2rem 0;
 }
 
 .sticky-section {
