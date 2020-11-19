@@ -7,6 +7,7 @@ import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 
 export default function AuthorItem(props) {
     useDocumentTitle(__("AUTHORS_PAGE_TITLE"));
+    let { setCurrentUser, currentUser } = useAuth();
     const [state, setState] = useState({ author: null });
     const { id } = useParams();
     const { req } = props;
@@ -17,13 +18,23 @@ export default function AuthorItem(props) {
             window.dispatchEvent(
                 new CustomEvent("flash", {
                     detail: {
+                        message: __("NEED_AUTH_WILL_SEND_NOTE_AUTHOR"),
+                        type: "danger",
+                        delay: 4000
+                    }
+                })
+            );
+            return false;
+        } else {
+            window.dispatchEvent(
+                new CustomEvent("flash", {
+                    detail: {
                         message: __("WILL_SEND_NOTE_AUTHOR"),
                         type: "success",
                         delay: 4000
                     }
                 })
             );
-            return false;
         }
     }
 

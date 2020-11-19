@@ -75110,6 +75110,10 @@ function _arrayWithHoles(arr) {
 function AuthorItem(props) {
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUTHORS_PAGE_TITLE"));
 
+  var _useAuth = useAuth(),
+      setCurrentUser = _useAuth.setCurrentUser,
+      currentUser = _useAuth.currentUser;
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     author: null
   }),
@@ -75128,12 +75132,20 @@ function AuthorItem(props) {
     if (!currentUser) {
       window.dispatchEvent(new CustomEvent("flash", {
         detail: {
+          message: Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("NEED_AUTH_WILL_SEND_NOTE_AUTHOR"),
+          type: "danger",
+          delay: 4000
+        }
+      }));
+      return false;
+    } else {
+      window.dispatchEvent(new CustomEvent("flash", {
+        detail: {
           message: Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("WILL_SEND_NOTE_AUTHOR"),
           type: "success",
           delay: 4000
         }
       }));
-      return false;
     }
   };
 
