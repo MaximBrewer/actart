@@ -43,7 +43,7 @@ export default function NewsItem(props) {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-60 col-xl-40">
+                                <div className="col-60 tag-p-40">
                                     <Parser body={state.post.body} {...props} />
                                 </div>
                             </div>
