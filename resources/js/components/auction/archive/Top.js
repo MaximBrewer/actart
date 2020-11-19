@@ -1,5 +1,6 @@
 import React from "react";
 import __ from '../../../utils/trans';
+import { Link } from "react-router-dom";
 
 export default function ArchiveTop(props) {
     const { auction } = props;
@@ -13,7 +14,12 @@ export default function ArchiveTop(props) {
         >
             <div className="darkener">
                 <div className="container">
-                    <div className="h1">{auction.title}</div>
+                    <Link
+                        to={`/auctions/` + state.id}
+                        className="btn btn-default-inverse"
+                    >
+                        <div className="h1">{auction.title}</div>
+                    </Link>
                     <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;{__('BIDDING_FINISHED_TEXT')}</div>
                 </div>
             </div>

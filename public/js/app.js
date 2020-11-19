@@ -64984,6 +64984,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 function ArchiveTop(props) {
@@ -64998,9 +65000,12 @@ function ArchiveTop(props) {
     className: "darkener"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    to: "/auctions/" + state.id,
+    className: "btn btn-default-inverse"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h1"
-  }, auction.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, auction.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h3"
   }, auction.date, " \xA0\xA0\xA0", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])('BIDDING_FINISHED_TEXT')))));
 }
@@ -65910,9 +65915,12 @@ function Top(props) {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
     date: auction.dateatom
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+    to: "/auctions/" + state.id,
+    className: "btn btn-default-inverse"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h1"
-  }, auction.title), inAuctions(auction.id) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+  }, auction.title)), inAuctions(auction.id) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/auctions/" + auction.id,
     className: "btn btn-danger mb-2"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("ALREADY_REGISTERED")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
@@ -66021,9 +66029,12 @@ function Top(props) {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
     date: auction.dateatom
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+    to: "/auctions/" + state.id,
+    className: "btn btn-default-inverse"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h1"
-  }, auction.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, auction.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h3"
   }, auction.date, " \xA0\xA0\xA0"))));
 }
@@ -66707,11 +66718,14 @@ function OnlineTop(props) {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
     date: auction.dateatom
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+    to: "/auctions/" + state.id,
+    className: "btn btn-default-inverse"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h1"
   }, auction.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "online"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])('ONLINE_BROADCAST_IN_PROPGRESS_TEXT'))))));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])('ONLINE_BROADCAST_IN_PROPGRESS_TEXT')))))));
 }
 
 /***/ }),
@@ -71843,16 +71857,16 @@ function Tizer(props) {
       req = props.req;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, data.auction.status == 'started' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "image",
     style: {
       backgroundImage: "url(" + item.thumbnail + ")"
     },
     to: "/auctions/" + data.auction.id + "/lot/" + item.id
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_3__["Favorite"], {
+  }, data.auction.status != 'archive' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_3__["Favorite"], {
     item: item,
     req: req
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "number",
     to: "/auctions/" + data.auction.id + "/lot/" + item.id
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Lot") + " " + item.sort), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -71874,7 +71888,7 @@ function Tizer(props) {
     className: "size"
   }, item.width, "\u0445", item.height, "\xA0", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("см"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "price"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Start price"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", item.price)));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Start price"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", item.price))) : "");
 }
 
 /***/ }),

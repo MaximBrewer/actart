@@ -21960,11 +21960,12 @@ section.announces.bggray .background-text {
 .auction-page-wrapper .auction-info:before {
   display: block;
   width: 24%;
-  height: 100%;
+  height: 110%;
+  transform: translateY(-5%);
   position: absolute;
   background-position: right top;
   top: 0;
-  z-index: 1;
+  z-index: -1;
   background-image: url(/images/dot.png);
 }
 
