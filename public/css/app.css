@@ -20812,6 +20812,10 @@ iframe {
   color: #ff665e;
 }
 
+.auction-announce .h1 a {
+  color: inherit;
+}
+
 .auction-announce .h3 {
   font-size: 1.5rem;
 }
