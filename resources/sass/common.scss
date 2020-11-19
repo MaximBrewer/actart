@@ -386,6 +386,13 @@ h6,
         left: 6vw;
     }
 }
+.tag-p-40{
+    p{
+        @media (min-width: map.get($grid-breakpoints, "xl")) {
+            max-width: 70%;
+        }
+    }
+}
 .color-red {
     color: $red;
 }

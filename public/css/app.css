@@ -17579,6 +17579,12 @@ h6,
   }
 }
 
+@media (min-width: 1280px) {
+  .tag-p-40 p {
+    max-width: 70%;
+  }
+}
+
 .color-red {
   color: #ff665e;
 }
