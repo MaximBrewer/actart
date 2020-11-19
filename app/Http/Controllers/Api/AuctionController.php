@@ -13,6 +13,7 @@ use App\Http\Resources\User as UserResource;
 use App\Notifications\Participate as ParticipateNotification;
 use App\Notifications\AuctionWinner as AuctionWinnerNotification;
 use App\Notifications\Manager\AuctionWinner as ManagerAuctionWinnerNotification;
+use Carbon\Carbon;
 
 use App\Events\UpdateLotStatus as UpdateLotStatusEvent;
 use App\Lot;
@@ -101,7 +102,7 @@ class AuctionController extends Controller
         $auction = Auction::find($id);
         $lot = Lot::where('auction_id', $auction->id)->where('status', 'in_auction')->orderBy('sort', 'ASC')->first();
         $lot->update([
-            'lastchance' => 1
+            'lastchance' => Carbon::now()
         ]);
         return ['auction' => $auction];
     }
