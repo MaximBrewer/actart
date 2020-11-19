@@ -97,7 +97,7 @@ export default function Right(props) {
                         <div>${item.price * 1 + 100}</div>
                     </a>
                     {item.lastchance ? (
-                        <h4 className="color-red text-center">
+                        <h4 className="color-red text-center blink">
                             {__("LAST_CHANCE_TO_USER")}
                         </h4>
                     ) : (

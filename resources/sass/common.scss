@@ -341,6 +341,25 @@ h6,
     position: relative;
     margin: 2rem 0;
 }
+
+.blink {
+    animation: blink 2s infinite; /* Параметры анимации */
+}
+@keyframes blink {
+    0% {
+        opacity: 1; /* Непрозрачный текст */
+    }
+    60% {
+        opacity: 1; /* Непрозрачный текст */
+    }
+    75% {
+        opacity: 0; /* Непрозрачный текст */
+    }
+    to {
+        opacity: 0; /* Прозрачный текст */
+    }
+}
+
 .sticky-section {
     display: none;
     z-index: 1;
@@ -363,7 +382,7 @@ h6,
         left: 6vw;
     }
 }
-.color-red{
+.color-red {
     color: $red;
 }
 .sticky-section span {
@@ -535,8 +554,7 @@ iframe {
         margin-left: 1rem;
         cursor: pointer;
         border-radius: 0.3rem;
-        box-shadow: 0 0 0.2rem rgba(255, 255, 255, 0.1),
-            inset 0 0 3rem rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 0.2rem rgba(255, 255, 255, 0.1), inset 0 0 3rem rgba(255, 255, 255, 0.4);
         &:first-child {
             margin-left: 0;
         }

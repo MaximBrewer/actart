@@ -17493,6 +17493,56 @@ h6,
   margin: 2rem 0;
 }
 
+.blink {
+  -webkit-animation: blink 2s infinite;
+          animation: blink 2s infinite;
+  /* Параметры анимации */
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+    /* Непрозрачный текст */
+  }
+
+  60% {
+    opacity: 1;
+    /* Непрозрачный текст */
+  }
+
+  75% {
+    opacity: 0;
+    /* Непрозрачный текст */
+  }
+
+  to {
+    opacity: 0;
+    /* Прозрачный текст */
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+    /* Непрозрачный текст */
+  }
+
+  60% {
+    opacity: 1;
+    /* Непрозрачный текст */
+  }
+
+  75% {
+    opacity: 0;
+    /* Непрозрачный текст */
+  }
+
+  to {
+    opacity: 0;
+    /* Прозрачный текст */
+  }
+}
+
 .sticky-section {
   display: none;
   z-index: 1;
