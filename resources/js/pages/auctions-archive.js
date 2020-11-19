@@ -70,7 +70,7 @@ export default function AuctionsArchive(props) {
                             ))}
                         </div>
                         <div className="text-center">
-                            <a href="#" onClick={(e)=>{e.preventDefault();getAuctions()}}  className="btn btn-default">{__('SHOW_MORE')}</a>
+                            <a href="#" onClick={(e)=>{e.preventDefault();getAuctions()}}  className="btn btn-default">{__('GALLERY_BLOCK_SHOW_MORE_LINK')}</a>
                         </div>
                     </div>
                 </section>
