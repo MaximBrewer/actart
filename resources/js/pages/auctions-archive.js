@@ -74,7 +74,7 @@ export default function AuctionsArchive(props) {
                         </div>
                     </div>
                 </section>
-                <div className="sticky-section mt-5"><span>{__('ARCHIVE_OF_AUCTIONS')}</span></div>
+                <div className="sticky-section"><span>{__('ARCHIVE_OF_AUCTIONS')}</span></div>
             </div>
             {/* <section className="auctions-section">
                 <div className="container">

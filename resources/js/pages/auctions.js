@@ -134,7 +134,7 @@ export default function AuctionsPage(props) {
                         </div>
                     </div>
                 </section>
-                <div className="sticky-section mt-5">
+                <div className="sticky-section">
                     <span>{__("closest auctions")}</span>
                 </div>
             </div>
