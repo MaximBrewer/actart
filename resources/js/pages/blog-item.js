@@ -65,9 +65,6 @@ export default function BlogItem(props) {
                 </section>
                 <div className="sticky-section"><span>{__("act•art blog")}</span> </div>
             </div>
-            <section id="gallery">
-                <MovingGallery />
-            </section>
             <section className="blog-section">
                 <div className="container">
                     <div className="waterfall-wrapper">
@@ -108,6 +105,7 @@ export default function BlogItem(props) {
                     </div>
                 </div>
             </section>
+            <section id="gallery"><MovingGallery /></section>
         </React.Fragment>
     ) : (
             <div className="sticky-wrapper">

@@ -57,7 +57,6 @@ export default function Eventtem(props) {
                     </section>
                     <div className="sticky-section"><span>{__('event announcements')}</span></div>
                 </div>
-                <section id="gallery"><MovingGallery /></section>
                 <section className="announces">
                     <div className="container">
                         <div className="h2">{__('See also')}</div>
@@ -75,6 +74,7 @@ export default function Eventtem(props) {
                         </div>
                     </div>
                 </section>
+                <section id="gallery"><MovingGallery /></section>
             </React.Fragment>
             :
             <div className="sticky-wrapper">
