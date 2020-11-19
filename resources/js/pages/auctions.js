@@ -138,18 +138,15 @@ export default function AuctionsPage(props) {
                     <span>{__("closest auctions")}</span>
                 </div>
             </div>
-            <section className="auctions-section">
+            <section className="auctions-section mb-5">
                 <div className="container">
-                    <div className="row announce">
-                        <div className="col col-xl-40 col-xxl-38"></div>
-                        <div className="col col-xl-20 col-xxl-22 text-center">
-                            <Link
-                                to="/auctions/archive"
-                                className="btn btn-default"
-                            >
-                                {__("ARCHIVE OF AUCTIONS")}
-                            </Link>
-                        </div>
+                    <div className="text-center">
+                        <Link
+                            to="/auctions/archive"
+                            className="btn btn-default"
+                        >
+                            {__("ARCHIVE OF AUCTIONS")}
+                        </Link>
                     </div>
                 </div>
             </section>
