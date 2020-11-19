@@ -21,10 +21,10 @@ export default function Tizer(props) {
                 {item.name + ` ` + item.surname}
             </Link>
             <div className={`professions`}>
-                {state.author.professions.map(
-                    (item, index) => (
-                        <span key={index}>
-                            {item.title}
+                {item.professions.map(
+                    (it, i) => (
+                        <span key={i}>
+                            {it.title}
                         </span>
                     )
                 )}

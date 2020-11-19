@@ -72072,10 +72072,10 @@ function Tizer(props) {
     to: url
   }, item.name + " " + item.surname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "professions"
-  }, state.author.professions.map(function (item, index) {
+  }, item.professions.map(function (it, i) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      key: index
-    }, item.title);
+      key: i
+    }, it.title);
   })));
 }
 
