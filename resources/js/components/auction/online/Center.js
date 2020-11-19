@@ -199,16 +199,17 @@ export default function Center(props) {
                                             <div className="h1">{__("LOT_TEXT_LOT_ID")} {state.auction.current.id}</div>
                                         ) : ``}
                                         {state.auction.current ? (
-                                            <div
-                                                style={{
-                                                    maxWidth: "20rem",
-                                                    paddingTop: "56.25%",
-                                                    height: 0,
-                                                    position: "relative"
-                                                }}
-                                                className={`translation-wrapper`}
-                                            >
-                                                {Parser(state.translation)}
+                                            <div style="width:40%">
+                                                <div
+                                                    style={{
+                                                        paddingTop: "56.25%",
+                                                        height: 0,
+                                                        position: "relative"
+                                                    }}
+                                                    className={`translation-wrapper`}
+                                                >
+                                                    {Parser(state.translation)}
+                                                </div>
                                             </div>
                                         ) : (
                                                 ``
