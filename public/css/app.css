@@ -21507,7 +21507,6 @@ iframe {
 .subscribe-section input.form-control {
   border: none;
   width: auto;
-  max-width: 32rem;
   line-height: 3rem;
   height: 3rem;
   color: #ffffff;
@@ -21721,12 +21720,6 @@ section.announces.bggray .background-text {
   background-image: url("/images/dot.png");
   padding-top: 3rem;
   padding-bottom: 3rem;
-}
-
-@media (min-width: 1600px) {
-  .popular-categories-section {
-    margin-bottom: 9rem;
-  }
 }
 
 .popular-categories .h4 {

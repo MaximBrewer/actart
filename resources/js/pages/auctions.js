@@ -161,7 +161,7 @@ export default function AuctionsPage(props) {
                     </div>
                 </div>
             </section>
-            <section className="auctions-section d-none d-md-block">
+            <section className="auctions-section d-none d-md-block py-5">
                 <div className="container">
                     <div className="row announce justify-content-center">
                         <div className="col col-xl-40">
