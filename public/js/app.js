@@ -71888,7 +71888,38 @@ function Tizer(props) {
     className: "size"
   }, item.width, "\u0445", item.height, "\xA0", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("см"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "price"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Start price"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", item.price))) : "");
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Start price"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", item.price))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "image",
+    style: {
+      backgroundImage: "url(" + item.thumbnail + ")"
+    },
+    to: "/auctions/" + data.auction.id + "/lot/" + item.id
+  }, data.auction.status != 'archive' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_3__["Favorite"], {
+    item: item,
+    req: req
+  }) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "number",
+    to: "/auctions/" + data.auction.id + "/lot/" + item.id
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Lot") + " " + item.sort), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "title",
+    to: "/auctions/" + data.auction.id + "/lot/" + item.id
+  }, item.title ? item.title : Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("No name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "author",
+    to: item.author_url
+  }, item.author), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex matherial-size"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "matherial d-flex"
+  }, item.materials.map(function (m, mi) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      key: mi,
+      className: "m-span"
+    }, m.title);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "size"
+  }, item.width, "\u0445", item.height, "\xA0", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("см"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "price"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Start price"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", item.price))));
 }
 
 /***/ }),
