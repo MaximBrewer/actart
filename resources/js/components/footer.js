@@ -107,10 +107,7 @@ export default function Footer(props) {
                         </div>
                         <div className="col-md-20 align-items-center align-items-md-start">
                             <div className="d-xl-flex">
-                                <a href="#" className="pb-2">
-                                    {__("Сайт сделан в  ВАША КОМПАНИЯ")}
-                                </a>
-                                <a className="color-inherit" target="_blank" href="//good-head.ru/">
+                                <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
                                     <div className="pb-2">
                                         {__("SITE_MADE_IN")}
                                     </div>

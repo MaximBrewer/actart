@@ -67904,10 +67904,7 @@ function Footer(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-xl-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    className: "pb-2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Сайт сделан в  ВАША КОМПАНИЯ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "color-inherit",
+    className: "color-inherit mr-2",
     target: "_blank",
     href: "//good-head.ru/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
