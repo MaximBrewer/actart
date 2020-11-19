@@ -78736,17 +78736,16 @@ function __(key, replace) {
   }
 
   if (translationNotFound) {
-    console.log(translationNotFound);
-    console.log(key);
-    console.log(window.App.translations.db);
-    console.log(window.App.translations.db[key]);
     translation = window.App.translations.json[key] ? window.App.translations.json[key] : key;
     if (translation) translationNotFound = false;
   }
 
   if (translationNotFound) {
     translation = window.App.translations.db[key] ? window.App.translations.db[key] : key;
-    if (translation) translationNotFound = false;
+    console.log(translationNotFound);
+    console.log(key);
+    console.log(window.App.translations.db);
+    console.log(window.App.translations.db[key]);
   }
 
   if (_typeof(replace) == "object") for (var _key in replace) {
