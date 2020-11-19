@@ -62457,6 +62457,8 @@ function Carousel(props) {
       }
     }));
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-arrows-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "carousel-arrows"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
@@ -62496,7 +62498,7 @@ function Carousel(props) {
     d: "M31.3784 18.4054L0.567543 18.4054",
     stroke: "#1E2B32",
     strokeWidth: "8"
-  }))))); // } else {
+  })))))); // } else {
   //     return (
   //         <React.Fragment>
   //             {createSlides()}
@@ -75736,7 +75738,6 @@ function BlogItem(props) {
     req("/api/" + window.App.locale + "/post/" + slug).then(function (_ref) {
       var post = _ref.post;
       return setState(function (prevState) {
-        document.title = post.title;
         return _objectSpread(_objectSpread({}, prevState), {}, {
           post: post
         });
@@ -76110,7 +76111,6 @@ function Eventtem(props) {
     req('/api/' + window.App.locale + '/event/' + id).then(function (_ref) {
       var event = _ref.event;
       return setState(function (prevState) {
-        document.title = event.title;
         return _objectSpread(_objectSpread({}, prevState), {}, {
           event: event
         });
@@ -77099,7 +77099,6 @@ function NewsItem(props) {
     req('/api/' + window.App.locale + '/post/' + slug).then(function (_ref) {
       var post = _ref.post;
       return setState(function (prevState) {
-        document.title = post.title;
         return _objectSpread(_objectSpread({}, prevState), {}, {
           post: post
         });

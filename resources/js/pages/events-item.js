@@ -18,7 +18,6 @@ export default function Eventtem(props) {
     useEffect(() => {
         req('/api/' + window.App.locale + '/event/' + id)
             .then(({ event }) => setState((prevState) => {
-                document.title = event.title;
                 return {
                     ...prevState,
                     event

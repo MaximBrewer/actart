@@ -17,7 +17,6 @@ export default function NewsItem(props) {
     useEffect(() => {
         req('/api/' + window.App.locale + '/post/' + slug)
             .then(({ post }) => setState((prevState) => {
-                document.title = post.title;
                 return {
                     ...prevState,
                     post
