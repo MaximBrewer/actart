@@ -14,12 +14,7 @@ export default function ArchiveTop(props) {
         >
             <div className="darkener">
                 <div className="container">
-                    <Link
-                        to={`/auctions/` + state.id}
-                        className="btn btn-default-inverse"
-                    >
-                        <div className="h1">{auction.title}</div>
-                    </Link>
+                    <div className="h1"><Link to={`/auctions/` + auction.id}>{auction.title}</Link></div>
                     <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;{__('BIDDING_FINISHED_TEXT')}</div>
                 </div>
             </div>

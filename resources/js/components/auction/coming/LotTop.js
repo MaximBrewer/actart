@@ -18,12 +18,7 @@ export default function Top(props) {
             <div className="darkener">
                 <div className="container">
                     <Countdown date={auction.dateatom} />
-                    <Link
-                        to={`/auctions/` + state.id}
-                        className="btn btn-default-inverse"
-                    >
-                        <div className="h1">{auction.title}</div>
-                    </Link>
+                    <div className="h1"><Link to={`/auctions/` + auction.id}>{auction.title}</Link></div>
                     {inAuctions(auction.id) ? (
                         <Link
                             to={"/auctions/" + auction.id}
@@ -32,14 +27,14 @@ export default function Top(props) {
                             {__("ALREADY_REGISTERED")}
                         </Link>
                     ) : (
-                            <Link
-                                to={"/auctions/" + auction.id}
-                                className="btn btn-danger mb-2"
-                                onClick={e => participate(e, auction)}
-                            >
-                                {__("PARTICIPATE")}
-                            </Link>
-                        )}
+                        <Link
+                            to={"/auctions/" + auction.id}
+                            className="btn btn-danger mb-2"
+                            onClick={e => participate(e, auction)}
+                        >
+                            {__("PARTICIPATE")}
+                        </Link>
+                    )}
                     <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;</div>
                 </div>
             </div>

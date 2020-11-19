@@ -16,12 +16,11 @@ export default function OnlineTop(props) {
             <div className="darkener">
                 <div className="container">
                     <Countdown date={auction.dateatom} />
-                    <Link
-                        to={`/auctions/` + state.id}
-                        className="btn btn-default-inverse"
-                    >
-                        <div className="h1">{auction.title}<br /><span className="online">{__('ONLINE_BROADCAST_IN_PROPGRESS_TEXT')}</span></div>
-                    </Link>
+                    <div className="h1">
+                        <Link to={`/auctions/` + auction.id}>{auction.title}</Link>
+                        <br />
+                        <span className="online">{__('ONLINE_BROADCAST_IN_PROPGRESS_TEXT')}</span>
+                    </div>
                 </div>
             </div>
         </section>
