@@ -136,85 +136,83 @@ export default function Center(props) {
                         <div className="col-xl-40 col-xxl-38">
                             <div className="left-side">
                                 <div>
-                                    <div
-                                        style={{
-                                            width: "100%"
-                                        }}
-                                    >
-                                        <div
-                                            onClick={() =>
-                                                setState(prevState => ({
-                                                    ...prevState,
-                                                    lbOpen: true
-                                                }))
-                                            }
-                                            className="image"
-                                            alt={
-                                                state.auction.current
-                                                    .thumbnail
-                                            }
-                                            style={{
-                                                cursor: "pointer",
-                                                display: "block",
-                                                position: "relative",
-                                                backgroundSize:
-                                                    "contain",
-                                                backgroundRepeat:
-                                                    "no-repeat",
-                                                backgroundPosition:
-                                                    "center",
-                                                paddingTop: "65%",
-                                                backgroundColor:
-                                                    "#ECEDED",
-                                                backgroundImage:
-                                                    'url("' +
-                                                    state.auction
-                                                        .current
-                                                        .thumbnail +
-                                                    '")'
-                                            }}
-                                        ></div>
-                                        {state.lbOpen && (
-                                            <Lightbox
-                                                mainSrc={
-                                                    state.auction
-                                                        .current
-                                                        .photo
-                                                }
-                                                onCloseRequest={() =>
-                                                    setState(
-                                                        prevState => ({
-                                                            ...prevState,
-                                                            lbOpen: false
-                                                        })
-                                                    )
-                                                }
-                                            />
-                                        )}
-                                    </div>
                                     {state.auction.current ?
                                         (
                                             <div
-                                                className={`current d-flex justify-content-between py-2`}
+                                                style={{
+                                                    width: "100%"
+                                                }}
                                             >
-                                                <div className="h2">{__("LOT_TEXT_LOT_ID")} {state.auction.current.id}</div>
-                                                <div style={{ width: "40%" }}>
-                                                    <div
-                                                        style={{
-                                                            paddingTop: "56.25%",
-                                                            height: 0,
-                                                            position: "relative"
-                                                        }}
-                                                        className={`translation-wrapper`}
-                                                    >
-                                                        {Parser(state.translation)}
-                                                    </div>
-                                                </div>
+                                                <div
+                                                    onClick={() =>
+                                                        setState(prevState => ({
+                                                            ...prevState,
+                                                            lbOpen: true
+                                                        }))
+                                                    }
+                                                    className="image"
+                                                    alt={
+                                                        state.auction.current
+                                                            .thumbnail
+                                                    }
+                                                    style={{
+                                                        cursor: "pointer",
+                                                        display: "block",
+                                                        position: "relative",
+                                                        backgroundSize:
+                                                            "contain",
+                                                        backgroundRepeat:
+                                                            "no-repeat",
+                                                        backgroundPosition:
+                                                            "center",
+                                                        paddingTop: "65%",
+                                                        backgroundColor:
+                                                            "#ECEDED",
+                                                        backgroundImage:
+                                                            'url("' +
+                                                            state.auction
+                                                                .current
+                                                                .thumbnail +
+                                                            '")'
+                                                    }}
+                                                ></div>
+                                                {state.lbOpen && (
+                                                    <Lightbox
+                                                        mainSrc={
+                                                            state.auction
+                                                                .current
+                                                                .photo
+                                                        }
+                                                        onCloseRequest={() =>
+                                                            setState(
+                                                                prevState => ({
+                                                                    ...prevState,
+                                                                    lbOpen: false
+                                                                })
+                                                            )
+                                                        }
+                                                    />
+                                                )}
                                             </div>
-                                        ) : (
-                                            ``
-                                        )
+                                        ) : ``
                                     }
+                                    <div
+                                        className={`current d-flex justify-content-between py-2`}
+                                    >
+                                        <div className="h2 color-red">{state.auction.current ? __("LOT_TEXT_LOT_ID") + state.auction.current.id : ``}</div>
+                                        <div style={{ width: "40%" }}>
+                                            <div
+                                                style={{
+                                                    paddingTop: "56.25%",
+                                                    height: 0,
+                                                    position: "relative"
+                                                }}
+                                                className={`translation-wrapper`}
+                                            >
+                                                {Parser(state.translation)}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

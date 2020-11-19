@@ -17524,6 +17524,10 @@ h6,
   }
 }
 
+.color-red {
+  color: #ff665e;
+}
+
 .sticky-section span {
   white-space: nowrap;
   font-family: TT Severs;
