@@ -91,7 +91,7 @@ export default function Tizer(props) {
                         }}
                         to={`/auctions/` + data.auction.id + `/lot/` + item.id}
                     >
-                        {data.auction.status != 'archive' ? <Favorite item={item} req={req} /> : ``}
+                        {item.status != 'auction' ? <Favorite item={item} req={req} /> : ``}
                     </Link>
                     <Link
                         className="number"
