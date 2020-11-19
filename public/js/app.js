@@ -67903,15 +67903,28 @@ function Footer(props) {
     className: "col-md-20 align-items-center align-items-md-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-xl-flex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
     className: "pb-2"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Сайт сделан в  ВАША КОМПАНИЯ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "d-md-flex",
+    className: "color-inherit",
     target: "_blank",
     href: "//good-head.ru/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Разработка")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SITE_MADE_IN")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "pb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/images/kuba-logo.png",
+    alt: "",
+    style: "width:90px"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "color-inherit",
+    target: "_blank",
+    href: "//good-head.ru/"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "pb-2"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("DEVELOPMENT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_3__["Cp"], null)))))))));
 }

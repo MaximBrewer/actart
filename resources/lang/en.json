@@ -130,6 +130,9 @@
 
     "LOGOUT_LINK": "Logout",
 
+    "SITE_MADE_IN": "Made by",
+    "DEVELOPMENT": "Development",
+
     "NOTHING_TO_SHOW": "Nothing found"
 
 }

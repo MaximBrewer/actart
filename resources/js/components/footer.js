@@ -107,12 +107,20 @@ export default function Footer(props) {
                         </div>
                         <div className="col-md-20 align-items-center align-items-md-start">
                             <div className="d-xl-flex">
-                                <div className="pb-2">
+                                <a href="#" className="pb-2">
                                     {__("Сайт сделан в  ВАША КОМПАНИЯ")}
-                                </div>
-                                <a className="d-md-flex" target="_blank" href="//good-head.ru/">
+                                </a>
+                                <a className="color-inherit" target="_blank" href="//good-head.ru/">
                                     <div className="pb-2">
-                                        {__("Разработка")}
+                                        {__("SITE_MADE_IN")}
+                                    </div>
+                                    <div className="pb-2">
+                                        <img src="/images/kuba-logo.png" alt="" style="width:90px" />
+                                    </div>
+                                </a>
+                                <a className="color-inherit" target="_blank" href="//good-head.ru/">
+                                    <div className="pb-2">
+                                        {__("DEVELOPMENT")}
                                     </div>
                                     <div className="pb-2">
                                         <Cp />
