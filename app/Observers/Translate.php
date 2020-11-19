@@ -67,7 +67,6 @@ class Translate
 
     private function dbTranslations($locale)
     {
-        die;
         $translates = Model::all();
         $lang = [];
         foreach ($translates as $translate)
