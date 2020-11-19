@@ -17,19 +17,21 @@
                 padding: 0;
                 margin: 0;
                 span {
-                    font-weight: bold;
+                    font-weight: normal;
+                    text-transform: uppercase;
                     display: block;
                     padding-bottom: 0.5rem;
                     margin-bottom: 1rem;
                     border-bottom: 0.25rem solid $dark;
                 }
                 ul {
-                    padding: 0 0 2rem 2rem;
+                    padding: 0 0 2rem 1rem;
                     li {
                         a {
                             font-size: 0.875rem;
                             line-height: 1rem;
                             font-weight: 400;
+                            text-transform: none;
                             font-family: 'Roboto Condensed';
                             text-decoration: none !important;
                             &:hover,
