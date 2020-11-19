@@ -74665,7 +74665,7 @@ function AuctionsArchive(props) {
       return setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           offset: next,
-          auctions: auctions
+          auctions: state.prevState.concat(auctions)
         });
       });
     })["catch"](function () {

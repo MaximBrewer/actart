@@ -24,7 +24,7 @@ export default function AuctionsArchive(props) {
                     return {
                         ...prevState,
                         offset: next,
-                        auctions
+                        auctions: state.prevState.concat(auctions)
                     }
                 })
             )
