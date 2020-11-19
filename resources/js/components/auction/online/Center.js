@@ -205,6 +205,7 @@ export default function Center(props) {
                                                             height: 0,
                                                             position: "relative"
                                                         }}
+                                                        className={`translation-wrapper`}
                                                     >
                                                         {Parser(state.translation)}
                                                     </div>
