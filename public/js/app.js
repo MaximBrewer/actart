@@ -68690,7 +68690,7 @@ function Left(props) {
     className: "lot-carousel-left"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      backgroundColor: "#C4C4C4",
+      // backgroundColor: "#C4C4C4",
       position: "relative"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_zoom_pan_pinch__WEBPACK_IMPORTED_MODULE_1__["TransformWrapper"], {

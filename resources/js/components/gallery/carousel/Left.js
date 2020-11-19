@@ -13,7 +13,7 @@ export default function Left(props) {
         <div className="lot-carousel-left">
             <div
                 style={{
-                    backgroundColor: "#C4C4C4",
+                    // backgroundColor: "#C4C4C4",
                     position: "relative"
                 }}
             >
