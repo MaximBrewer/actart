@@ -20099,6 +20099,7 @@ iframe {
 .see-other .h5 {
   text-align: center;
   font-size: 1.2rem;
+  margin-bottom: 1rem;
   max-width: 80%;
   text-transform: uppercase;
 }
@@ -20107,7 +20108,7 @@ iframe {
   position: absolute;
   width: 2rem;
   height: 2rem;
-  bottom: 2rem;
+  bottom: 2.5rem;
   left: 50%;
   transform: translateX(-50%);
 }
