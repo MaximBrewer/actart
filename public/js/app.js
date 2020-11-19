@@ -75121,6 +75121,22 @@ function AuthorItem(props) {
       id = _useParams.id;
 
   var req = props.req;
+
+  var watchAuthor = function watchAuthor(e) {
+    e.preventDefault();
+
+    if (!currentUser) {
+      window.dispatchEvent(new CustomEvent("flash", {
+        detail: {
+          message: Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("WILL_SEND_NOTE_AUTHOR"),
+          type: "success",
+          delay: 4000
+        }
+      }));
+      return false;
+    }
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     req("/api/" + window.App.locale + "/author/" + id).then(function (_ref) {
       var author = _ref.author;
@@ -75154,8 +75170,10 @@ function AuthorItem(props) {
     className: "btn-wrap d-md-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
+    onClick: watchAuthor,
     className: "btn btn-default"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Follow")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: watchAuthor,
     type: "button",
     className: "btn btn-primary"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Purchase requisition")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

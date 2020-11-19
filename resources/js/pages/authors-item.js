@@ -11,6 +11,22 @@ export default function AuthorItem(props) {
     const { id } = useParams();
     const { req } = props;
 
+    const watchAuthor = (e) => {
+        e.preventDefault();
+        if (!currentUser) {
+            window.dispatchEvent(
+                new CustomEvent("flash", {
+                    detail: {
+                        message: __("WILL_SEND_NOTE_AUTHOR"),
+                        type: "success",
+                        delay: 4000
+                    }
+                })
+            );
+            return false;
+        }
+    }
+
     useEffect(() => {
         req("/api/" + window.App.locale + "/author/" + id)
             .then(({ author }) =>
@@ -35,13 +51,13 @@ export default function AuthorItem(props) {
                                 {state.author.name + ` ` + state.author.surname}
                             </h2>
                             {state.author.groups &&
-                            state.author.groups.length ? (
-                                <div className="h5">
-                                    /{state.author.groups[0].title}/
-                                </div>
-                            ) : (
-                                ``
-                            )}
+                                state.author.groups.length ? (
+                                    <div className="h5">
+                                        /{state.author.groups[0].title}/
+                                    </div>
+                                ) : (
+                                    ``
+                                )}
                             <hr />
                             <div className="d-none d-xl-block description">
                                 {state.author.text}
@@ -54,11 +70,13 @@ export default function AuthorItem(props) {
                             <div className="btn-wrap d-md-flex">
                                 <button
                                     type="button"
+                                    onClick={watchAuthor}
                                     className="btn btn-default"
                                 >
                                     {__("Follow")}
                                 </button>
                                 <button
+                                    onClick={watchAuthor}
                                     type="button"
                                     className="btn btn-primary"
                                 >
@@ -74,48 +92,48 @@ export default function AuthorItem(props) {
                                         `url(` + state.author.avatar + `)`,
                                     paddingTop:
                                         (100 * state.author.pxheight) /
-                                            state.author.pxwidth +
+                                        state.author.pxwidth +
                                         `%`
                                 }}
                             ></div>
                             {state.author.studies &&
-                            state.author.studies.length ? (
-                                <div className="exhibitions">
-                                    <div className="heading">
-                                        {__("STUDIES")}
+                                state.author.studies.length ? (
+                                    <div className="exhibitions">
+                                        <div className="heading">
+                                            {__("STUDIES")}
+                                        </div>
+                                        <ul className="list-unstyled">
+                                            {state.author.studies.map(
+                                                (item, index) => (
+                                                    <li key={index}>
+                                                        {item.title}
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
                                     </div>
-                                    <ul className="list-unstyled">
-                                        {state.author.studies.map(
-                                            (item, index) => (
-                                                <li key={index}>
-                                                    {item.title}
-                                                </li>
-                                            )
-                                        )}
-                                    </ul>
-                                </div>
-                            ) : (
-                                ``
-                            )}
+                                ) : (
+                                    ``
+                                )}
                             {state.author.exhibits &&
-                            state.author.exhibits.length ? (
-                                <div className="exhibitions">
-                                    <div className="heading">
-                                        {__("EXHIBITS")}
+                                state.author.exhibits.length ? (
+                                    <div className="exhibitions">
+                                        <div className="heading">
+                                            {__("EXHIBITS")}
+                                        </div>
+                                        <ul className="list-unstyled">
+                                            {state.author.exhibits.map(
+                                                (item, index) => (
+                                                    <li key={index}>
+                                                        {item.title}
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
                                     </div>
-                                    <ul className="list-unstyled">
-                                        {state.author.exhibits.map(
-                                            (item, index) => (
-                                                <li key={index}>
-                                                    {item.title}
-                                                </li>
-                                            )
-                                        )}
-                                    </ul>
-                                </div>
-                            ) : (
-                                ``
-                            )}
+                                ) : (
+                                    ``
+                                )}
                         </div>
                     </div>
                 </div>
@@ -172,6 +190,6 @@ export default function AuthorItem(props) {
             <Marquee />
         </React.Fragment>
     ) : (
-        ``
-    );
+            ``
+        );
 }
