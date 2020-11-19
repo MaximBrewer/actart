@@ -109,7 +109,7 @@ export default function Category(props) {
                     </svg>
                 </div>
             </section>
-            <div className='sticky-section'>
+            <div className='sticky-section mt-5'>
                 <span>{__('works for sale')}</span>
             </div>
         </div>
