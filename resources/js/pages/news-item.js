@@ -17,6 +17,7 @@ export default function NewsItem(props) {
     useEffect(() => {
         req('/api/' + window.App.locale + '/post/' + slug)
             .then(({ post }) => setState((prevState) => {
+                document.title = post.title;
                 return {
                     ...prevState,
                     post
@@ -53,7 +54,7 @@ export default function NewsItem(props) {
                             </div>
                         </div>
                     </section>
-                    <div className="sticky-section"><span>{state.post.title}</span></div>
+                    <div className="sticky-section"><span>{__('act•art news')}</span></div>
                 </div>
                 <section id="gallery"><MovingGallery /></section>
                 <section className="blog-section">

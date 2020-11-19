@@ -18,6 +18,7 @@ export default function Eventtem(props) {
     useEffect(() => {
         req('/api/' + window.App.locale + '/event/' + id)
             .then(({ event }) => setState((prevState) => {
+                document.title = event.title;
                 return {
                     ...prevState,
                     event
@@ -54,7 +55,7 @@ export default function Eventtem(props) {
                             </div>
                         </div>
                     </section>
-                    <div className="sticky-section"><span>{state.event.title}</span></div>
+                    <div className="sticky-section"><span>{__('event announcements')}</span></div>
                 </div>
                 <section id="gallery"><MovingGallery /></section>
                 <section className="announces">

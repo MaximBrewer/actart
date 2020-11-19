@@ -53,9 +53,7 @@ export default function Blog() {
                             </div>
                         </div>
                     </div>
-                    <div className="sticky-section">
-                        <span>{__("act•art blog")}</span>
-                    </div>
+                    <div className="sticky-section"> <span>{__("act•art blog")}</span> </div>
                 </div>
             </section>
             <Marquee />

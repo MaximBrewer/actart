@@ -18,6 +18,7 @@ export default function BlogItem(props) {
         req("/api/" + window.App.locale + "/post/" + slug)
             .then(({ post }) =>
                 setState(prevState => {
+                    document.title = post.title;
                     return {
                         ...prevState,
                         post
@@ -62,9 +63,7 @@ export default function BlogItem(props) {
                         </div>
                     </div>
                 </section>
-                <div className="sticky-section">
-                    <span>{state.post.title}</span>
-                </div>
+                <div className="sticky-section"><span>{__("act•art blog")}</span> </div>
             </div>
             <section id="gallery">
                 <MovingGallery />
@@ -111,23 +110,52 @@ export default function BlogItem(props) {
             </section>
         </React.Fragment>
     ) : (
-        <div className="sticky-wrapper">
-            <section id="page">
-                <div className="container">
-                    <div className="loading-page">
-                        <div className="row">
-                            <div className={`col-xl-60`}>
-                                <h2 className="h2 title-loading">
+            <div className="sticky-wrapper">
+                <section id="page">
+                    <div className="container">
+                        <div className="loading-page">
+                            <div className="row">
+                                <div className={`col-xl-60`}>
+                                    <h2 className="h2 title-loading">
+                                        <div className="block-loading">
+                                            <div className="block-loading-animation">
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </h2>
+                                    <hr />
+                                    <div className="sub_h2 subtitle-loading">
+                                        <div className="block-loading">
+                                            <div className="block-loading-animation">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-60">
                                     <div className="block-loading">
                                         <div className="block-loading-animation">
                                             <span></span>
-                                        </div>
-                                    </div>
-                                </h2>
-                                <hr />
-                                <div className="sub_h2 subtitle-loading">
-                                    <div className="block-loading">
-                                        <div className="block-loading-animation">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
                                             <span></span>
                                             <span></span>
                                             <span></span>
@@ -136,45 +164,16 @@ export default function BlogItem(props) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-60">
-                                <div className="block-loading">
-                                    <div className="block-loading-animation">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </div>
+                            <hr />
+                            <div className="sharing sticky-loading">
+                                <br />
                             </div>
-                        </div>
-                        <hr />
-                        <div className="sharing sticky-loading">
-                            <br />
                         </div>
                     </div>
+                </section>
+                <div className="sticky-section">
+                    <span className="sticky-loading"></span>
                 </div>
-            </section>
-            <div className="sticky-section">
-                <span className="sticky-loading"></span>
             </div>
-        </div>
-    );
+        );
 }
