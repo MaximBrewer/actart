@@ -106,13 +106,13 @@ export default function Footer(props) {
                             <Unstyled items={window.App.menus.copyright} />
                         </div>
                         <div className="col-md-20 align-items-center align-items-md-start">
-                            <div className="d-xl-flex">
+                            <div className="d-xl-flex text-center">
                                 <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
                                     <div className="pb-2">
                                         {__("SITE_MADE_IN")}
                                     </div>
                                     <div className="pb-2">
-                                        <img src="/images/kuba-logo.png" alt="" style={{ width: "90px" }} />
+                                        <img src="/images/kuba-logo.png" alt="" style={{ width: "3rem" }} />
                                     </div>
                                 </a>
                                 <a className="color-inherit" target="_blank" href="//good-head.ru/">

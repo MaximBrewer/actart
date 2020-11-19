@@ -67902,7 +67902,7 @@ function Footer(props) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-20 align-items-center align-items-md-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d-xl-flex"
+    className: "d-xl-flex text-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "color-inherit mr-2",
     target: "_blank",
@@ -67915,7 +67915,7 @@ function Footer(props) {
     src: "/images/kuba-logo.png",
     alt: "",
     style: {
-      width: "90px"
+      width: "3rem"
     }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "color-inherit",
