@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import __ from "../utils/trans";
+import { useAuth } from '../context/auth';
 import Marquee from "../components/marquee";
 import useDocumentTitle from "../components/document-title";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";

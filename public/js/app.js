@@ -74973,9 +74973,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/trans */ "./resources/js/utils/trans.js");
-/* harmony import */ var _components_marquee__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/marquee */ "./resources/js/components/marquee.js");
-/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/document-title */ "./resources/js/components/document-title.js");
-/* harmony import */ var _components_waterfall_WaterfallAjax__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/waterfall/WaterfallAjax */ "./resources/js/components/waterfall/WaterfallAjax.js");
+/* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/auth */ "./resources/js/context/auth.js");
+/* harmony import */ var _components_marquee__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/marquee */ "./resources/js/components/marquee.js");
+/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/document-title */ "./resources/js/components/document-title.js");
+/* harmony import */ var _components_waterfall_WaterfallAjax__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/waterfall/WaterfallAjax */ "./resources/js/components/waterfall/WaterfallAjax.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -75107,10 +75108,11 @@ function _arrayWithHoles(arr) {
 
 
 
-function AuthorItem(props) {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUTHORS_PAGE_TITLE"));
 
-  var _useAuth = useAuth(),
+function AuthorItem(props) {
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUTHORS_PAGE_TITLE"));
+
+  var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_3__["useAuth"])(),
       setCurrentUser = _useAuth.setCurrentUser,
       currentUser = _useAuth.currentUser;
 
@@ -75226,7 +75228,7 @@ function AuthorItem(props) {
     className: "author-works-list"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "act-waterfall"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_waterfall_WaterfallAjax__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({}, props, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_waterfall_WaterfallAjax__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({}, props, {
     data: {
       entity: "lots",
       action: "add",
@@ -75265,7 +75267,7 @@ function AuthorItem(props) {
     className: "d-flex justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/authors"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("All authors")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_marquee__WEBPACK_IMPORTED_MODULE_3__["default"], null)) : "";
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("All authors")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_marquee__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : "";
 }
 
 /***/ }),
