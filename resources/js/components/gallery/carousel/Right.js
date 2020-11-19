@@ -128,6 +128,12 @@ export default function Right(props) {
                 </span>
             </div>
             <div className="user-activity">
+                {currentUser != undefined ?
+                    <div className="user-id">
+                        {__("LOT_YOUR_ID")}: <span>#{currentUser.id}</span>
+                    </div> : (
+                        ``
+                    )}
                 {state.item.bets.length ? (
                     <div className="last-price">
                         <div className="title">{__("LOT_LAST_PRICE")}</div>
@@ -145,9 +151,6 @@ export default function Right(props) {
                 {currentUser != undefined ?
                     (
                         <React.Fragment>
-                            <div className="user-id">
-                                {__("LOT_YOUR_ID")}: <span>#{currentUser.id}</span>
-                            </div>
                             <a
                                 className="btn btn-danger"
                                 href="#"
