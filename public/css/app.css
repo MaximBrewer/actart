@@ -20257,10 +20257,6 @@ iframe {
 }
 
 @media (min-width: 768px) {
-  .gallery-section {
-    padding: 3.75rem 0 2.725rem;
-  }
-
   .gallery-section .announce > div .h1 {
     font-size: 2.25rem;
     line-height: 1.4em;
@@ -20270,10 +20266,6 @@ iframe {
 }
 
 @media (min-width: 1280px) {
-  .gallery-section {
-    padding: 3rem 0 4rem;
-  }
-
   .gallery-section .gallery-works .h2 {
     border-bottom-width: 0.5rem;
   }
