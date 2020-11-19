@@ -21,6 +21,11 @@ export default function __(key, replace) {
             translationNotFound = false;
     }
 
+    console.log(translationNotFound)
+    console.log(key)
+    console.log(window.App.translations.db)
+    console.log(window.App.translations.db[key])
+
     if (translationNotFound) {
         translation = window.App.translations.db[key]
             ? window.App.translations.db[key]
