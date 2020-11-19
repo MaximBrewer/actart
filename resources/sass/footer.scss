@@ -287,7 +287,7 @@
         p {
             @include sssmal_text_12;
             color: $greylight;
-            padding: 1rem 5rem;
+            max-width: 20rem;
             margin-bottom: 0;
         }
     }

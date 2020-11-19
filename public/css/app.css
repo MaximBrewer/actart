@@ -18603,7 +18603,7 @@ iframe {
     line-height: 14px;
     letter-spacing: 0.05em;
     color: #d6d6d6;
-    padding: 1rem 5rem;
+    max-width: 20rem;
     margin-bottom: 0;
   }
 }
