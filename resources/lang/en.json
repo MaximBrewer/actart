@@ -31,21 +31,17 @@
     "LOT_BUTTON_BLITZ": "Offer blitz price",
     "LOT_START_PRICE": "Start price",
     "MARQUEE_FIRST": "modern&nbsp;•&nbsp;topical&nbsp;•&nbsp;favorites&nbsp;•&nbsp;russian&nbsp;•&nbsp;",
-
     "WANTED_VIP": "Want VIP",
-
     "MODAL_LOGIN_H2": "Log in",
     "MODAL_LOGIN_EMAIL": "E-mail",
     "MODAL_LOGIN_PASSWORD": "Password",
     "MODAL_LOGIN_FORGET_PASSWORD": "Forgot password?",
     "MODAL_LOGIN_SIGN_IN": "Register",
     "MODAL_LOGIN_BTN": "Log in",
-
     "MODAL_FP_H2": "Reset password",
     "MODAL_FP_EMAIL": "E-mail",
     "MODAL_FORGET_PASSWORD_LOGIN": "Log in",
     "MODAL_FP_BTN": "Reset",
-
     "MODAL_SIGNIN_H2": "Sign in",
     "MODAL_SIGNIN_NAME": "Name",
     "MODAL_SIGNIN_EMAIL": "E-mail",
@@ -53,28 +49,21 @@
     "MODAL_SIGNIN_PASSWORD_CONFIRMATON": "Confirm password",
     "MODAL_SIGNIN_LOGIN": "Log in",
     "MODAL_SIGNIN_BTN": "Register",
-
     "ARCHIVE_OF_AUCTIONS_TITLE": "Archive",
     "ARCHIVE_OF_AUCTIONS_PAGE_TITLE": "Archive of auctions",
     "ARCHIVE_LINK_TO_AUCTIONS": "Auctions",
-
     "ARCHIVE_OF_AUCTIONS": "Archive",
     "BIDDING_FINISHED_TEXT": "Bidding is over",
     "IN_THE_SAME_AUCTION": "In the same auction",
-    "TITLE_PAST_AUCTION":"Past auction",
-
-    "ONLINE_BROADCAST_IN_PROPGRESS_TEXT" : "Online broadcast in progress",
-    "ONLINE_BROADCAST_TEXT" : "Online broadcast",
+    "TITLE_PAST_AUCTION": "Past auction",
+    "ONLINE_BROADCAST_IN_PROPGRESS_TEXT": "Online broadcast in progress",
+    "ONLINE_BROADCAST_TEXT": "Online broadcast",
     "FUTHER_IN_THE_AUCTION": "Futher in the auction",
-
     "ARCHIVE_MORE_LINK": "More",
-
     "GET_GALLERY_BLITZ_HEADER": "Поздравляем",
     "GET_GALLERY_BLITZ_TEXT": "Вы купили лот  \":lot_name\" за сумму $:lot_price.<br>В ближайшее время с вами свяжется менеджер для обсуждения дальнейших действий.",
-
     "COUNTDOWN_AUCTION_STARTED": "Аукцион начался",
     "GOTO_AUCTION": "Принять участие",
-
     "#status-gallery#": "Available in the gallery",
     "#status-auction#": "Participates in the auction",
     "#status-discontinued#": "Discontinued",
@@ -83,23 +72,18 @@
     "#BYPRICE#": "price",
     "#BYAUTHOR#": "author name",
     "SORT_BY_LOT_NUMBER": "lot number",
-
     "ADMIN_START_AUCTION": "Start auction",
     "ADMIN_SHOW_FIRST_LOT": "show first lot",
     "ADMIN_LAST_CHANCE": "Last chance",
     "ADMIN_SOLD": "Sold",
     "ADMIN_NEXT_LOT": "Next lot",
     "ADMIN_FINISH": "Finish auction",
-
     "AUCTION_WILL_START_SOON": "Auction will start soon",
     "AUCTION_HAS_FINISHED": "Auction has finished",
     "AUCTION_HAS_CANCELED": "Auction has canceled",
     "TEXT_LAST_CHANCE": "Last chance",
-
     "LAST_CHANCE_TO_USER": "Last chance",
-
     "AUCTION_FINISHED": "Auction finished",
-    
     "AUCTIONS_PAGE_TITLE": "Auction of works of art from Act-Art",
     "SPECIAL_AUCTIONS_PAGE_TITLE": "Act-Art Thematic auctions",
     "REGULAR_AUCTIONS_PAGE_TITLE": "Act-Art Regular auctions",
@@ -111,28 +95,22 @@
     "WORKSHOPS_PAGE_TITLE": "Workshop platforms Act-Art",
     "NEWS_PAGE_TITLE": "News Act-Art",
     "BLOG_PAGE_TITLE": "Blog Act-Art",
-
     "LOT_IN_GALLERY_PAGE_TITLE": "Buy \":lot_name\" author \":author_name\" in the online gallery Act-Art",
     "LOT_IN_AUCTION_PAGE_TITLE": "Buy \":lot_name\" author \":author_name\" at the online auction Act-Art",
-
     "MODAL_RP_H2": "Reset password",
     "MODAL_RP_EMAIL": "E-mail",
     "MODAL_RP_PASSWORD": "Password",
     "MODAL_RP_BTN": "Reset",
     "MODAL_RP_PASSWORD_CONFIRMATON": "Confirm password",
     "MODAL_RP_LOGIN": "Log in",
-
     "SUBCRIBED_MESSAGE": "You have subscribed to the newsletter",
-
     "ADMIN_PROFILE_AUCTIONS_COMING": "Closest auctions",
-
     "ALREADY_REGISTERED": "You are already registered",
-
     "LOGOUT_LINK": "Logout",
-
+    "STUDIES": "Studies",
+    "EXHIBITS": "Exhibits",
+    "AUTHORS_WORKS": "Author's works",
     "SITE_MADE_IN": "Made by",
     "DEVELOPMENT": "Development",
-
     "NOTHING_TO_SHOW": "Nothing found"
-
 }

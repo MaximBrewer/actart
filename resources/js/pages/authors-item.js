@@ -82,7 +82,7 @@ export default function AuthorItem(props) {
                             state.author.studies.length ? (
                                 <div className="exhibitions">
                                     <div className="heading">
-                                        {__("Studies")}
+                                        {__("STUDIES")}
                                     </div>
                                     <ul className="list-unstyled">
                                         {state.author.studies.map(
@@ -101,7 +101,7 @@ export default function AuthorItem(props) {
                             state.author.exhibits.length ? (
                                 <div className="exhibitions">
                                     <div className="heading">
-                                        {__("Exhibits")}
+                                        {__("EXHIBITS")}
                                     </div>
                                     <ul className="list-unstyled">
                                         {state.author.exhibits.map(
@@ -122,7 +122,7 @@ export default function AuthorItem(props) {
             </section>
             <section className="author-works">
                 <div className="container">
-                    <div className="h2">{__("Author's works")}</div>
+                    <div className="h2">{__("AUTHORS_WORKS")}</div>
                     <div className="author-works-list">
                         <div className="act-waterfall">
                             <WaterfallAjax

@@ -75170,7 +75170,7 @@ function AuthorItem(props) {
     className: "exhibitions"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "heading"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Studies")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("STUDIES")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled"
   }, state.author.studies.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -75180,7 +75180,7 @@ function AuthorItem(props) {
     className: "exhibitions"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "heading"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Exhibits")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("EXHIBITS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled"
   }, state.author.exhibits.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -75192,7 +75192,7 @@ function AuthorItem(props) {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Author's works")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("AUTHORS_WORKS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "author-works-list"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "act-waterfall"
