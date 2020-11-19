@@ -61,7 +61,7 @@ export default function Tizer(props) {
                     }}
                     to={url}
                 >
-                    {state.item.status != 'gallery' ? <Favorite item={state.item} {...props} /> : ``}
+                    {state.item.status == 'gallery' ? <Favorite item={state.item} {...props} /> : ``}
                 </Link>
             </div>
             <Link className={`title`} to={url}>

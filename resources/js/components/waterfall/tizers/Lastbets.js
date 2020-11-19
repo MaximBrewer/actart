@@ -21,7 +21,7 @@ export default function Tizer(props) {
                         paddingTop: (item.pxheight / item.pxwidth) * 100 + "%"
                     }}
                 >
-                    {item.status != 'gallery' ? <Favorite item={item} req={req} /> : ``}
+                    {item.status == 'gallery' ? <Favorite item={item} req={req} /> : ``}
                 </Link>
             </div>
             <Link className="title" to={url}>
