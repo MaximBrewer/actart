@@ -17842,6 +17842,11 @@ iframe {
   fill: transparent;
 }
 
+.header .header-top .logo svg {
+  fill: #2C5770;
+  stroke: #2C5770;
+}
+
 .header .header-top .profile.icon {
   display: block;
   width: 2rem;
