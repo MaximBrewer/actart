@@ -17494,8 +17494,8 @@ h6,
 }
 
 .blink {
-  -webkit-animation: blink 2s infinite;
-          animation: blink 2s infinite;
+  -webkit-animation: blink 1s infinite;
+          animation: blink 1s infinite;
   /* Параметры анимации */
 }
 
