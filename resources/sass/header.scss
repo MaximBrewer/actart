@@ -46,6 +46,10 @@
                 fill: transparent;
             }
         }
+        .logo svg{
+            fill: $cyandark;
+            stroke: $cyandark;
+        }
         .profile.icon {
             display:block;
             width: 2rem;
