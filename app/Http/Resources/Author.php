@@ -23,21 +23,13 @@ class Author extends JsonResource
                 'name' => $this->getTranslatedAttribute('name'),
                 'surname' => $this->getTranslatedAttribute('surname'),
                 'preview' => Voyager::image($this->avatar),
-                // 'size' => $size[0] / $size[1] > 1 ? 2 : 1,
-                // 'width' => $this->width,
-                // 'height' => $this->height,
-                // 'materials' => $this->materials,
-                // 'frames' => $this->frames,
-                // 'techniques' => $this->techniques,
-                // 'styles' => $this->styles,
-                // 'author' => trim($this->user->name . " " . $this->user->surname),
-                // 'author_url' => "/authors/" . $this->user->id,
-                // 'url' => "/auctions/" . $this->auction->id . '/lot/' . $this->id,
+                'studies' => $this->studies,
+                'exhibits' => $this->exhibits,
+                'professions' => $this->professions,
+                'studies' => $this->studies,
+                'exhibits' => $this->exhibits,
                 'pxwidth' => $size[0],
                 'pxheight' => $size[1],
-                // 'price' => $this->price,
-                // 'bets' => $this->bets,
-                // 'status' => $this->status
             ];
         }
     }

@@ -20,10 +20,15 @@ export default function Tizer(props) {
             <Link className="title" to={url}>
                 {item.name + ` ` + item.surname}
             </Link>
-            {/* <div className="subtitle">{item.excerpt}</div>
-            <div className="date">{item.dates}</div>
-            <div className="exhibit">{item.space.title}</div>
-            <div className="address">{item.space.address}</div> */}
+            <div className={`professions`}>
+                {state.author.professions.map(
+                    (item, index) => (
+                        <span key={index}>
+                            {item.title}
+                        </span>
+                    )
+                )}
+            </div>
         </div>
     );
 }

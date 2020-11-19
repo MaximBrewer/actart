@@ -72070,7 +72070,13 @@ function Tizer(props) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "title",
     to: url
-  }, item.name + " " + item.surname));
+  }, item.name + " " + item.surname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "professions"
+  }, state.author.professions.map(function (item, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      key: index
+    }, item.title);
+  })));
 }
 
 /***/ }),
