@@ -75,12 +75,12 @@ export default function Footer(props) {
                                         </small>
                                     </div>
                                     <div className="mr-3">
-                                        <a href="#">
+                                        <a href="//fb.me/actart.RU">
                                             <Facebook />
                                         </a>
                                     </div>
                                     <div className="">
-                                        <a href="#">
+                                        <a href="instagram:@actart.RU">
                                             <Instagram />
                                         </a>
                                     </div>
