@@ -17,7 +17,8 @@
     }
     .author {
         @include Text_Name_18;
-        line-height: 32px;
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        display: block;
     }
     .price {
         @include Text_Name_18;

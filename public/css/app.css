@@ -22211,7 +22211,8 @@ section.announces.bggray .background-text {
   line-height: 21px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  line-height: 32px;
+  padding: 0.4rem 0.4rem 0.4rem 0;
+  display: block;
 }
 
 .gallery-item .price {

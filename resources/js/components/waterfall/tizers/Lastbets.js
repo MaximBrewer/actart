@@ -27,7 +27,7 @@ export default function Tizer(props) {
             <Link className="title" to={url}>
                 {item.title}
             </Link>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between flex-wrap">
                 <Link className="author" to={item.author_url}>
                     {item.author}
                 </Link>
