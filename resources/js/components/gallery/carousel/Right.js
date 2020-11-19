@@ -122,57 +122,93 @@ export default function Right(props) {
                     {__("LOT_START_PRICE")}: ${state.item.startPrice}
                 </span>
             </div>
-            {currentUser != undefined ? (
-                <div className="user-activity">
-                    <div className="user-id">
-                        {__("LOT_YOUR_ID")}: <span>#{currentUser.id}</span>
-                    </div>
-                    {state.item.bets.length ? (
-                        <div className="last-price">
-                            <div className="title">{__("LOT_LAST_PRICE")}</div>
-                            <div className="info">
-                                <div className="pb-1">${state.item.price}</div>
-                                <div>
-                                    {__("LOT_SEED")}:{" "}
-                                    <span>#{state.item.bets[0].user_id}</span>
-                                </div>
+            <div className="user-activity">
+                {state.item.bets.length ? (
+                    <div className="last-price">
+                        <div className="title">{__("LOT_LAST_PRICE")}</div>
+                        <div className="info">
+                            <div className="pb-1">${state.item.price}</div>
+                            <div>
+                                {__("LOT_SEED")}:{" "}
+                                <span>#{state.item.bets[0].user_id}</span>
                             </div>
                         </div>
-                    ) : (
+                    </div>
+                ) : (
                         ``
                     )}
-                    <a
-                        className="btn btn-danger"
-                        href="#"
-                        onClick={e => {
-                            e.preventDefault();
-                            offer(state.item.id, 100 + state.item.price * 1);
-                        }}
-                    >
-                        <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                        <div>${state.item.price * 1 + 100}</div>
-                    </a>
-                    {state.item.price * 1 < state.item.blitz * 1 ? (
-                        <div className="blitz-price">
+                {currentUser != undefined ?
+                    (
+                        <React.Fragment>
+                            <div className="user-id">
+                                {__("LOT_YOUR_ID")}: <span>#{currentUser.id}</span>
+                            </div>
                             <a
-                                className="pb-1"
+                                className="btn btn-danger"
                                 href="#"
                                 onClick={e => {
                                     e.preventDefault();
-                                    blitz(state.item.id);
+                                    offer(state.item.id, 100 + state.item.price * 1);
                                 }}
                             >
-                                <div>{__("LOT_BUTTON_BLITZ")}</div>
+                                <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
+                                <div>${state.item.price * 1 + 100}</div>
                             </a>
-                            <div>${state.item.blitz}</div>
-                        </div>
-                    ) : (
-                        ``
-                    )}
-                </div>
-            ) : (
-                ``
-            )}
+                            {state.item.price * 1 < state.item.blitz * 1 ? (
+                                <div className="blitz-price">
+                                    <a
+                                        className="pb-1"
+                                        href="#"
+                                        onClick={e => {
+                                            e.preventDefault();
+                                            blitz(state.item.id);
+                                        }}
+                                    >
+                                        <div>{__("LOT_BUTTON_BLITZ")}</div>
+                                    </a>
+                                    <div>${state.item.blitz}</div>
+                                </div>
+                            ) : (
+                                    ``
+                                )}
+                        </React.Fragment>
+
+                    )
+                    :
+                    (
+                        <React.Fragment>
+                            <a
+                                className="btn btn-danger"
+                                href="#"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    needAuth();
+                                }}
+                            >
+                                <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
+                                <div>${state.item.price * 1 + 100}</div>
+                            </a>
+                            {state.item.price * 1 < state.item.blitz * 1 ? (
+                                <div className="blitz-price">
+                                    <a
+                                        className="pb-1"
+                                        href="#"
+                                        onClick={e => {
+                                            e.preventDefault();
+                                            needAuth();
+                                        }}
+                                    >
+                                        <div>{__("LOT_BUTTON_BLITZ")}</div>
+                                    </a>
+                                    <div>${state.item.blitz}</div>
+                                </div>
+                            ) : (
+                                    ``
+                                )}
+                        </React.Fragment>
+                    )
+                }
+            </div>
         </div>
     );
 }
