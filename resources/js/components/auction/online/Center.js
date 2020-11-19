@@ -3,7 +3,6 @@ import Right from "./blocks/Right";
 import __ from "../../../utils/trans";
 import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
 
 export default function Center(props) {
     const [state, setState] = useState({
@@ -195,7 +194,6 @@ export default function Center(props) {
                                                             '")'
                                                     }}
                                                 ></div>
-
                                                 {state.lbOpen && (
                                                     <Lightbox
                                                         mainSrc={

@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import Flash from "./helpers/Flash";
 import { polyfill } from 'es6-promise'; 
+import "react-image-lightbox/style.css";
 polyfill();
 
 /*! https://mths.be/scrollingelement v1.5.2 by @diegoperini & @mathias | MIT license */

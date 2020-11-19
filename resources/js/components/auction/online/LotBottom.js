@@ -1,3 +1,3 @@
 import React from "react";
-import OnlineBottom from "./Bottom";
-export default OnlineBottom;
+import OnlineLotBottom from "./Bottom";
+export default OnlineLotBottom;
