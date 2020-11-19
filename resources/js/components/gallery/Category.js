@@ -75,12 +75,12 @@ export default function Category(props) {
                                     filterable: true,
                                     tizerView: 'gallery',
                                     view: {
-                                        xs: 1,
+                                        xs: 2,
                                         sm: 2,
                                         md: 2,
-                                        lg: 3,
-                                        xl: 4,
-                                        xxl: 4
+                                        lg: 2,
+                                        xl: 3,
+                                        xxl: 3
                                     }
                                 }}
                             />

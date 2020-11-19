@@ -35,12 +35,12 @@ export default function Archive(props) {
                                         xxl: 12
                                     },
                                     view: {
-                                        xs: 1,
+                                        xs: 2,
                                         sm: 2,
                                         md: 2,
-                                        lg: 4,
-                                        xl: 4,
-                                        xxl: 4
+                                        lg: 2,
+                                        xl: 3,
+                                        xxl: 3
                                     }
                                 }}
                             />

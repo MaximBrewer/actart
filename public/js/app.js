@@ -67994,12 +67994,12 @@ function Archive(props) {
         xxl: 12
       },
       view: {
-        xs: 1,
+        xs: 2,
         sm: 2,
         md: 2,
-        lg: 4,
-        xl: 4,
-        xxl: 4
+        lg: 2,
+        xl: 3,
+        xxl: 3
       }
     }
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -68122,12 +68122,12 @@ function Category(props) {
       filterable: true,
       tizerView: 'gallery',
       view: {
-        xs: 1,
+        xs: 2,
         sm: 2,
         md: 2,
-        lg: 3,
-        xl: 4,
-        xxl: 4
+        lg: 2,
+        xl: 3,
+        xxl: 3
       }
     }
   })), !!showLink ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
