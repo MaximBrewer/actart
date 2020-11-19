@@ -196,7 +196,7 @@ export default function Center(props) {
                                         className={`current d-flex justify-content-between py-2`}
                                     >
                                         {state.auction.current ? (
-                                            <div className="h1">{__("LOT_TEXT_LOT_ID")} {item.id}</div>
+                                            <div className="h1">{__("LOT_TEXT_LOT_ID")} {state.auction.current.id}</div>
                                         ) : ``}
                                         {state.auction.current ? (
                                             <div
