@@ -14,24 +14,18 @@ export default function __(key, replace) {
     }
 
     if (translationNotFound) {
-        translation = window.App.translations.json[key]
-            ? window.App.translations.json[key]
-            : key;
+        translation = window.App.translations.json[key];
         if (translation)
             translationNotFound = false;
     }
-    console.log(key)
-    console.log(translationNotFound)
 
     if (translationNotFound) {
-        translation = window.App.translations.db[key]
-            ? window.App.translations.db[key]
-            : key;
-
-        console.log(window.App.translations.db)
-        console.log(window.App.translations.db[key])
-
+        translation = window.App.translations.db[key];
+        if (translation)
+            translationNotFound = false;
     }
+
+    if (translationNotFound) { translation = key }
 
     if (typeof replace == "object")
         for (let key in replace) {
