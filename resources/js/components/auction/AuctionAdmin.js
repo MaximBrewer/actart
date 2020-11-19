@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import __ from "../../utils/trans";
 import Parser from "html-react-parser";
 import Waterfall from "../waterfall/Waterfall";
+import Lightbox from "react-image-lightbox";
 
 export default function AuctionAdmin(props) {
     const { req } = props;
@@ -14,10 +15,10 @@ export default function AuctionAdmin(props) {
         e.preventDefault();
         req(
             "/api/" +
-                window.App.locale +
-                "/auction/" +
-                state.auction.id +
-                "/admin/start",
+            window.App.locale +
+            "/auction/" +
+            state.auction.id +
+            "/admin/start",
             "PATCH"
         )
             .then(() => null)
@@ -28,10 +29,10 @@ export default function AuctionAdmin(props) {
         e.preventDefault();
         req(
             "/api/" +
-                window.App.locale +
-                "/auction/" +
-                state.auction.id +
-                "/admin/lastchance",
+            window.App.locale +
+            "/auction/" +
+            state.auction.id +
+            "/admin/lastchance",
             "PATCH"
         )
             .then(() => null)
@@ -42,10 +43,10 @@ export default function AuctionAdmin(props) {
         e.preventDefault();
         req(
             "/api/" +
-                window.App.locale +
-                "/auction/" +
-                state.auction.id +
-                "/admin/sold",
+            window.App.locale +
+            "/auction/" +
+            state.auction.id +
+            "/admin/sold",
             "PATCH"
         )
             .then(() => null)
@@ -56,10 +57,10 @@ export default function AuctionAdmin(props) {
         e.preventDefault();
         req(
             "/api/" +
-                window.App.locale +
-                "/auction/" +
-                state.auction.id +
-                "/admin/nextlot",
+            window.App.locale +
+            "/auction/" +
+            state.auction.id +
+            "/admin/nextlot",
             "PATCH"
         )
             .then(() => null)
@@ -70,10 +71,10 @@ export default function AuctionAdmin(props) {
         e.preventDefault();
         req(
             "/api/" +
-                window.App.locale +
-                "/auction/" +
-                state.auction.id +
-                "/admin/finish",
+            window.App.locale +
+            "/auction/" +
+            state.auction.id +
+            "/admin/finish",
             "PATCH"
         )
             .then(() => null)
@@ -92,7 +93,8 @@ export default function AuctionAdmin(props) {
         lots: [],
         next: null,
         translation: window.App.translation,
-        finished: false
+        finished: false,
+        lbOpen: false
     });
 
     const updateLotStatus = event => {
@@ -277,392 +279,400 @@ export default function AuctionAdmin(props) {
                                 <div className="lot-carousel">
                                     <div className="row">
                                         <div className="col-xl-40 col-xxl-38">
-                                            <div>
-                                                {state.auction.status ==
-                                                    "finished" && true}
-                                                {state.auction.status ==
-                                                    "coming" && true}
-                                                {state.auction.status ==
-                                                    "canceled" && true}
-                                                <div
-                                                    style={{
-                                                        paddingTop: "56.25%",
-                                                        height: 0,
-                                                        position: "relative"
-                                                    }}
-                                                    className={`translation-wrapper`}
-                                                >
-                                                    {Parser(state.translation)}
-                                                </div>
-                                                {state.auction.status ==
-                                                    "started" &&
-                                                    state.auction.current && (
-                                                        <div
-                                                            className={`current`}
-                                                            style={{
-                                                                display: "flex",
-                                                                justifyContent:
-                                                                    "flex-end"
-                                                            }}
-                                                        >
+                                            <div className="left-side">
+                                                <div>
+                                                    {state.auction.current ?
+                                                        (
                                                             <div
-                                                                className="py-2"
                                                                 style={{
-                                                                    maxWidth:
-                                                                        "20rem",
-                                                                    width:
-                                                                        "100%"
+                                                                    width: "100%"
                                                                 }}
                                                             >
                                                                 <div
+                                                                    onClick={() =>
+                                                                        setState(prevState => ({
+                                                                            ...prevState,
+                                                                            lbOpen: true
+                                                                        }))
+                                                                    }
                                                                     className="image"
                                                                     alt={
-                                                                        state
-                                                                            .auction
-                                                                            .current
+                                                                        state.auction.current
                                                                             .thumbnail
                                                                     }
                                                                     style={{
-                                                                        display:
-                                                                            "block",
-                                                                        position:
-                                                                            "relative",
+                                                                        cursor: "pointer",
+                                                                        display: "block",
+                                                                        position: "relative",
                                                                         backgroundSize:
                                                                             "contain",
                                                                         backgroundRepeat:
                                                                             "no-repeat",
                                                                         backgroundPosition:
-                                                                            "right bottom",
-                                                                        paddingTop:
-                                                                            "65%",
+                                                                            "center",
+                                                                        paddingTop: "65%",
                                                                         backgroundColor:
                                                                             "#ECEDED",
                                                                         backgroundImage:
                                                                             'url("' +
-                                                                            state
-                                                                                .auction
+                                                                            state.auction
                                                                                 .current
                                                                                 .thumbnail +
                                                                             '")'
                                                                     }}
                                                                 ></div>
+                                                                {state.lbOpen && (
+                                                                    <Lightbox
+                                                                        mainSrc={
+                                                                            state.auction
+                                                                                .current
+                                                                                .photo
+                                                                        }
+                                                                        onCloseRequest={() =>
+                                                                            setState(
+                                                                                prevState => ({
+                                                                                    ...prevState,
+                                                                                    lbOpen: false
+                                                                                })
+                                                                            )
+                                                                        }
+                                                                    />
+                                                                )}
+                                                            </div>
+                                                        ) : ``
+                                                    }
+                                                    <div
+                                                        className={`current d-flex justify-content-between py-2`}
+                                                    >
+                                                        <div className="h2 color-red">{state.auction.current ? __("LOT_TEXT_LOT_ID") + state.auction.current.id : ``}</div>
+                                                        <div style={{ width: "40%" }}>
+                                                            <div
+                                                                style={{
+                                                                    paddingTop: "56.25%",
+                                                                    height: 0,
+                                                                    position: "relative"
+                                                                }}
+                                                                className={`translation-wrapper`}
+                                                            >
+                                                                {Parser(state.translation)}
                                                             </div>
                                                         </div>
-                                                    )}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="col-xl-20 col-xxl-22">
                                             <div className="lot-carousel-right">
                                                 {state.auction.status ==
                                                     "started" && (
-                                                    <div className="user-activity">
-                                                        {state.auction
-                                                            .current && (
-                                                            <div>
-                                                                <div className="pb-3 d-flex justify-content-between">
-                                                                    <div className="lot-number">
-                                                                        {__(
-                                                                            "LOT_TEXT_LOT_ID"
-                                                                        )}{" "}
-                                                                        {
-                                                                            state
-                                                                                .auction
-                                                                                .current
-                                                                                .sort
-                                                                        }
-                                                                    </div>
-                                                                </div>
-                                                                <div className="lot-author">
-                                                                    {
-                                                                        state
-                                                                            .auction
-                                                                            .current
-                                                                            .author
-                                                                    }
-                                                                </div>
-                                                                <div className="lot-title">
-                                                                    {
-                                                                        state
-                                                                            .auction
-                                                                            .current
-                                                                            .title
-                                                                    }
-                                                                </div>
-                                                                <div className="matherial">
-                                                                    {state.auction.current.materials.map(
-                                                                        (
-                                                                            m,
-                                                                            mi
-                                                                        ) => (
-                                                                            <span
-                                                                                key={
-                                                                                    mi
-                                                                                }
-                                                                            >
-                                                                                {
-                                                                                    m.title
-                                                                                }
-                                                                            </span>
-                                                                        )
-                                                                    )}
-                                                                </div>
-                                                                <div className="styles">
-                                                                    {state.auction.current.styles.map(
-                                                                        (
-                                                                            m,
-                                                                            mi
-                                                                        ) => (
-                                                                            <span
-                                                                                key={
-                                                                                    mi
-                                                                                }
-                                                                            >
-                                                                                {
-                                                                                    m.title
-                                                                                }
-                                                                            </span>
-                                                                        )
-                                                                    )}
-                                                                </div>
-                                                                <div className="frames">
-                                                                    {state.auction.current.frames.map(
-                                                                        (
-                                                                            m,
-                                                                            mi
-                                                                        ) => (
-                                                                            <span
-                                                                                key={
-                                                                                    mi
-                                                                                }
-                                                                            >
-                                                                                {
-                                                                                    m.title
-                                                                                }
-                                                                            </span>
-                                                                        )
-                                                                    )}
-                                                                </div>
-                                                                <div className="techniques">
-                                                                    {state.auction.current.techniques.map(
-                                                                        (
-                                                                            m,
-                                                                            mi
-                                                                        ) => (
-                                                                            <span
-                                                                                key={
-                                                                                    mi
-                                                                                }
-                                                                            >
-                                                                                {
-                                                                                    m.title
-                                                                                }
-                                                                            </span>
-                                                                        )
-                                                                    )}
-                                                                </div>
-                                                                <div className="categories">
-                                                                    {state.auction.current.categories.map(
-                                                                        (
-                                                                            m,
-                                                                            mi
-                                                                        ) => (
-                                                                            <span
-                                                                                key={
-                                                                                    mi
-                                                                                }
-                                                                            >
-                                                                                {
-                                                                                    m.title
-                                                                                }
-                                                                            </span>
-                                                                        )
-                                                                    )}
-                                                                </div>
-                                                                <div className="size">
-                                                                    {
-                                                                        state
-                                                                            .auction
-                                                                            .current
-                                                                            .width
-                                                                    }{" "}
-                                                                    х{" "}
-                                                                    {
-                                                                        state
-                                                                            .auction
-                                                                            .current
-                                                                            .height
-                                                                    }{" "}
-                                                                    {__(
-                                                                        "MEASURE_CM"
-                                                                    )}
-                                                                    {state
-                                                                        .auction
-                                                                        .current
-                                                                        .year
-                                                                        ? ` / ` +
-                                                                          state
-                                                                              .auction
-                                                                              .current
-                                                                              .year +
-                                                                          ` ` +
-                                                                          __(
-                                                                              "SHORT_YEAR"
-                                                                          )
-                                                                        : ``}
-                                                                </div>
-                                                                <div className="start-price">
-                                                                    <span>
-                                                                        {__(
-                                                                            "LOT_START_PRICE"
-                                                                        )}
-                                                                        : $
-                                                                        {
-                                                                            state
-                                                                                .auction
-                                                                                .current
-                                                                                .startPrice
-                                                                        }
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        )}
-                                                        {state.auction
-                                                            .current &&
-                                                        state.auction.current
-                                                            .bets.length ? (
-                                                            <div className="last-price">
-                                                                <div className="info">
-                                                                    <div className="pb-1">
-                                                                        $
-                                                                        {
-                                                                            state
-                                                                                .auction
-                                                                                .current
-                                                                                .price
-                                                                        }
-                                                                    </div>
+                                                        <div className="user-activity">
+                                                            {state.auction
+                                                                .current && (
                                                                     <div>
-                                                                        {__(
-                                                                            "LOT_SEED"
-                                                                        )}
-                                                                        :{" "}
-                                                                        <span>
-                                                                            #
+                                                                        <div className="pb-3 d-flex justify-content-between">
+                                                                            <div className="lot-number">
+                                                                                {__(
+                                                                                    "LOT_TEXT_LOT_ID"
+                                                                                )}{" "}
+                                                                                {
+                                                                                    state
+                                                                                        .auction
+                                                                                        .current
+                                                                                        .sort
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="lot-author">
                                                                             {
                                                                                 state
                                                                                     .auction
                                                                                     .current
-                                                                                    .bets[0]
-                                                                                    .user_id
+                                                                                    .author
                                                                             }
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        ) : (
-                                                            ``
-                                                        )}
-                                                        {!state.finished ? (
-                                                            !state.auction
-                                                                .current ? (
-                                                                <a
-                                                                    className="btn btn-primary"
-                                                                    href="#"
-                                                                    onClick={
-                                                                        startAuction
-                                                                    }
-                                                                >
-                                                                    <div className="pb-1">
-                                                                        {__(
-                                                                            "ADMIN_START_AUCTION"
-                                                                        )}
-                                                                    </div>
-                                                                    <div>
-                                                                        <small>
-                                                                            (
-                                                                            {__(
-                                                                                "ADMIN_SHOW_FIRST_LOT"
+                                                                        </div>
+                                                                        <div className="lot-title">
+                                                                            {
+                                                                                state
+                                                                                    .auction
+                                                                                    .current
+                                                                                    .title
+                                                                            }
+                                                                        </div>
+                                                                        <div className="matherial">
+                                                                            {state.auction.current.materials.map(
+                                                                                (
+                                                                                    m,
+                                                                                    mi
+                                                                                ) => (
+                                                                                        <span
+                                                                                            key={
+                                                                                                mi
+                                                                                            }
+                                                                                        >
+                                                                                            {
+                                                                                                m.title
+                                                                                            }
+                                                                                        </span>
+                                                                                    )
                                                                             )}
+                                                                        </div>
+                                                                        <div className="styles">
+                                                                            {state.auction.current.styles.map(
+                                                                                (
+                                                                                    m,
+                                                                                    mi
+                                                                                ) => (
+                                                                                        <span
+                                                                                            key={
+                                                                                                mi
+                                                                                            }
+                                                                                        >
+                                                                                            {
+                                                                                                m.title
+                                                                                            }
+                                                                                        </span>
+                                                                                    )
+                                                                            )}
+                                                                        </div>
+                                                                        <div className="frames">
+                                                                            {state.auction.current.frames.map(
+                                                                                (
+                                                                                    m,
+                                                                                    mi
+                                                                                ) => (
+                                                                                        <span
+                                                                                            key={
+                                                                                                mi
+                                                                                            }
+                                                                                        >
+                                                                                            {
+                                                                                                m.title
+                                                                                            }
+                                                                                        </span>
+                                                                                    )
+                                                                            )}
+                                                                        </div>
+                                                                        <div className="techniques">
+                                                                            {state.auction.current.techniques.map(
+                                                                                (
+                                                                                    m,
+                                                                                    mi
+                                                                                ) => (
+                                                                                        <span
+                                                                                            key={
+                                                                                                mi
+                                                                                            }
+                                                                                        >
+                                                                                            {
+                                                                                                m.title
+                                                                                            }
+                                                                                        </span>
+                                                                                    )
+                                                                            )}
+                                                                        </div>
+                                                                        <div className="categories">
+                                                                            {state.auction.current.categories.map(
+                                                                                (
+                                                                                    m,
+                                                                                    mi
+                                                                                ) => (
+                                                                                        <span
+                                                                                            key={
+                                                                                                mi
+                                                                                            }
+                                                                                        >
+                                                                                            {
+                                                                                                m.title
+                                                                                            }
+                                                                                        </span>
+                                                                                    )
+                                                                            )}
+                                                                        </div>
+                                                                        <div className="size">
+                                                                            {
+                                                                                state
+                                                                                    .auction
+                                                                                    .current
+                                                                                    .width
+                                                                            }{" "}
+                                                                    х{" "}
+                                                                            {
+                                                                                state
+                                                                                    .auction
+                                                                                    .current
+                                                                                    .height
+                                                                            }{" "}
+                                                                            {__(
+                                                                                "MEASURE_CM"
+                                                                            )}
+                                                                            {state
+                                                                                .auction
+                                                                                .current
+                                                                                .year
+                                                                                ? ` / ` +
+                                                                                state
+                                                                                    .auction
+                                                                                    .current
+                                                                                    .year +
+                                                                                ` ` +
+                                                                                __(
+                                                                                    "SHORT_YEAR"
+                                                                                )
+                                                                                : ``}
+                                                                        </div>
+                                                                        <div className="start-price">
+                                                                            <span>
+                                                                                {__(
+                                                                                    "LOT_START_PRICE"
+                                                                                )}
+                                                                        : $
+                                                                        {
+                                                                                    state
+                                                                                        .auction
+                                                                                        .current
+                                                                                        .startPrice
+                                                                                }
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+                                                            {state.auction
+                                                                .current &&
+                                                                state.auction.current
+                                                                    .bets.length ? (
+                                                                    <div className="last-price">
+                                                                        <div className="info">
+                                                                            <div className="pb-1">
+                                                                                $
+                                                                        {
+                                                                                    state
+                                                                                        .auction
+                                                                                        .current
+                                                                                        .price
+                                                                                }
+                                                                            </div>
+                                                                            <div>
+                                                                                {__(
+                                                                                    "LOT_SEED"
+                                                                                )}
+                                                                        :{" "}
+                                                                                <span>
+                                                                                    #
+                                                                            {
+                                                                                        state
+                                                                                            .auction
+                                                                                            .current
+                                                                                            .bets[0]
+                                                                                            .user_id
+                                                                                    }
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                ) : (
+                                                                    ``
+                                                                )}
+                                                            {!state.finished ? (
+                                                                !state.auction
+                                                                    .current ? (
+                                                                        <a
+                                                                            className="btn btn-primary"
+                                                                            href="#"
+                                                                            onClick={
+                                                                                startAuction
+                                                                            }
+                                                                        >
+                                                                            <div className="pb-1">
+                                                                                {__(
+                                                                                    "ADMIN_START_AUCTION"
+                                                                                )}
+                                                                            </div>
+                                                                            <div>
+                                                                                <small>
+                                                                                    (
+                                                                            {__(
+                                                                                    "ADMIN_SHOW_FIRST_LOT"
+                                                                                )}
                                                                             )
                                                                         </small>
-                                                                    </div>
-                                                                </a>
-                                                            ) : !state.auction
-                                                                  .current.bets
-                                                                  .length ? (
-                                                                !state.auction
-                                                                    .current
-                                                                    .lastchance ? (
-                                                                    <a
-                                                                        className="btn btn-danger"
-                                                                        href="#"
-                                                                        onClick={
-                                                                            lastChance
-                                                                        }
-                                                                    >
-                                                                        <div className="pb-1">
-                                                                            {__(
-                                                                                "ADMIN_LAST_CHANCE"
-                                                                            )}
-                                                                        </div>
-                                                                    </a>
-                                                                ) : (
-                                                                    <a
-                                                                        className="btn btn-danger"
-                                                                        href="#"
-                                                                        onClick={
-                                                                            nextLot
-                                                                        }
-                                                                    >
-                                                                        <div className="pb-1">
-                                                                            {__(
-                                                                                "ADMIN_NEXT_LOT"
-                                                                            )}
-                                                                        </div>
-                                                                    </a>
-                                                                )
+                                                                            </div>
+                                                                        </a>
+                                                                    ) : !state.auction
+                                                                        .current.bets
+                                                                        .length ? (
+                                                                            !state.auction
+                                                                                .current
+                                                                                .lastchance ? (
+                                                                                    <a
+                                                                                        className="btn btn-danger"
+                                                                                        href="#"
+                                                                                        onClick={
+                                                                                            lastChance
+                                                                                        }
+                                                                                    >
+                                                                                        <div className="pb-1">
+                                                                                            {__(
+                                                                                                "ADMIN_LAST_CHANCE"
+                                                                                            )}
+                                                                                        </div>
+                                                                                    </a>
+                                                                                ) : (
+                                                                                    <a
+                                                                                        className="btn btn-danger"
+                                                                                        href="#"
+                                                                                        onClick={
+                                                                                            nextLot
+                                                                                        }
+                                                                                    >
+                                                                                        <div className="pb-1">
+                                                                                            {__(
+                                                                                                "ADMIN_NEXT_LOT"
+                                                                                            )}
+                                                                                        </div>
+                                                                                    </a>
+                                                                                )
+                                                                        ) : (
+                                                                            <a
+                                                                                className="btn btn-danger"
+                                                                                href="#"
+                                                                                onClick={
+                                                                                    sold
+                                                                                }
+                                                                            >
+                                                                                <div className="pb-1">
+                                                                                    {__(
+                                                                                        "ADMIN_SOLD"
+                                                                                    )}
+                                                                                </div>
+                                                                            </a>
+                                                                        )
                                                             ) : (
-                                                                <a
-                                                                    className="btn btn-danger"
-                                                                    href="#"
-                                                                    onClick={
-                                                                        sold
-                                                                    }
-                                                                >
-                                                                    <div className="pb-1">
-                                                                        {__(
-                                                                            "ADMIN_SOLD"
-                                                                        )}
-                                                                    </div>
-                                                                </a>
-                                                            )
-                                                        ) : (
-                                                            <a
-                                                                className="btn btn-danger"
-                                                                href="#"
-                                                                onClick={finish}
-                                                            >
-                                                                <div className="pb-1">
-                                                                    {__(
-                                                                        "ADMIN_FINISH"
-                                                                    )}
-                                                                </div>
-                                                            </a>
-                                                        )}
-                                                    </div>
-                                                )}
+                                                                    <a
+                                                                        className="btn btn-danger"
+                                                                        href="#"
+                                                                        onClick={finish}
+                                                                    >
+                                                                        <div className="pb-1">
+                                                                            {__(
+                                                                                "ADMIN_FINISH"
+                                                                            )}
+                                                                        </div>
+                                                                    </a>
+                                                                )}
+                                                        </div>
+                                                    )}
                                                 {state.auction.status ==
                                                     "finished" && (
-                                                    <div className="user-activity">
-                                                        <h3
-                                                            className={`py-5 text-center`}
-                                                        >
-                                                            {__(
-                                                                "AUCTION_HAS_FINISHED"
-                                                            )}
-                                                        </h3>
-                                                    </div>
-                                                )}
+                                                        <div className="user-activity">
+                                                            <h3
+                                                                className={`py-5 text-center`}
+                                                            >
+                                                                {__(
+                                                                    "AUCTION_HAS_FINISHED"
+                                                                )}
+                                                            </h3>
+                                                        </div>
+                                                    )}
                                                 {state.auction.status ==
                                                     "coming" &&
                                                     (!state.finished ? (
@@ -676,28 +686,28 @@ export default function AuctionAdmin(props) {
                                                             </h3>
                                                         </div>
                                                     ) : (
+                                                            <div className="user-activity">
+                                                                <h3
+                                                                    className={`py-5 text-center color-red`}
+                                                                >
+                                                                    {__(
+                                                                        "AUCTION_HAS_FINISHED"
+                                                                    )}
+                                                                </h3>
+                                                            </div>
+                                                        ))}
+                                                {state.auction.status ==
+                                                    "canceled" && (
                                                         <div className="user-activity">
                                                             <h3
-                                                                className={`py-5 text-center color-red`}
+                                                                className={`py-5 text-center`}
                                                             >
                                                                 {__(
-                                                                    "AUCTION_HAS_FINISHED"
+                                                                    "AUCTION_HAS_CANCELED"
                                                                 )}
                                                             </h3>
                                                         </div>
-                                                    ))}
-                                                {state.auction.status ==
-                                                    "canceled" && (
-                                                    <div className="user-activity">
-                                                        <h3
-                                                            className={`py-5 text-center`}
-                                                        >
-                                                            {__(
-                                                                "AUCTION_HAS_CANCELED"
-                                                            )}
-                                                        </h3>
-                                                    </div>
-                                                )}
+                                                    )}
                                             </div>
                                         </div>
                                     </div>
@@ -742,8 +752,8 @@ export default function AuctionAdmin(props) {
                     </div>
                 </div>
             ) : (
-                ""
-            )}
+                    ""
+                )}
         </section>
     );
 }

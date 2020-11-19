@@ -62961,6 +62961,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! html-react-parser */ "./node_modules/html-react-parser/index.js");
 /* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(html_react_parser__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
+/* harmony import */ var react_image_lightbox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-image-lightbox */ "./node_modules/react-image-lightbox/dist/index.es.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -63148,6 +63149,7 @@ function _defineProperty(obj, key, value) {
 
 
 
+
 function AuctionAdmin(props) {
   var req = props.req;
 
@@ -63214,7 +63216,8 @@ function AuctionAdmin(props) {
     lots: [],
     next: null,
     translation: window.App.translation,
-    finished: false
+    finished: false,
+    lbOpen: false
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
@@ -63420,39 +63423,58 @@ function AuctionAdmin(props) {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-40 col-xxl-38"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, state.auction.status == "finished" && true, state.auction.status == "coming" && true, state.auction.status == "canceled" && true, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "left-side"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      width: "100%"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      return setState(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          lbOpen: true
+        });
+      });
+    },
+    className: "image",
+    alt: state.auction.current.thumbnail,
+    style: {
+      cursor: "pointer",
+      display: "block",
+      position: "relative",
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      paddingTop: "65%",
+      backgroundColor: "#ECEDED",
+      backgroundImage: 'url("' + state.auction.current.thumbnail + '")'
+    }
+  }), state.lbOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_image_lightbox__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    mainSrc: state.auction.current.photo,
+    onCloseRequest: function onCloseRequest() {
+      return setState(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          lbOpen: false
+        });
+      });
+    }
+  })) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "current d-flex justify-content-between py-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "h2 color-red"
+  }, state.auction.current ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID") + state.auction.current.id : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      width: "40%"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       paddingTop: "56.25%",
       height: 0,
       position: "relative"
     },
     className: "translation-wrapper"
-  }, html_react_parser__WEBPACK_IMPORTED_MODULE_3___default()(state.translation)), state.auction.status == "started" && state.auction.current && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "current",
-    style: {
-      display: "flex",
-      justifyContent: "flex-end"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "py-2",
-    style: {
-      maxWidth: "20rem",
-      width: "100%"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "image",
-    alt: state.auction.current.thumbnail,
-    style: {
-      display: "block",
-      position: "relative",
-      backgroundSize: "contain",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "right bottom",
-      paddingTop: "65%",
-      backgroundColor: "#ECEDED",
-      backgroundImage: 'url("' + state.auction.current.thumbnail + '")'
-    }
-  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, html_react_parser__WEBPACK_IMPORTED_MODULE_3___default()(state.translation))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-carousel-right"
