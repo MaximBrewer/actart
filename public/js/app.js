@@ -68905,6 +68905,17 @@ function Right(props) {
     });
   };
 
+  var needAuth = function needAuth() {
+    window.dispatchEvent(new CustomEvent("flash", {
+      detail: {
+        message: Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("NEED_AUTH_GALLERY"),
+        type: "danger",
+        delay: 4000
+      }
+    }));
+    return false;
+  };
+
   var createBet = function createBet(event) {
     setState(function (prevState) {
       var item = _objectSpread({}, prevState.item),

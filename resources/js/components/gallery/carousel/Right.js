@@ -19,6 +19,19 @@ export default function Right(props) {
         });
     };
 
+    const needAuth = () => {
+        window.dispatchEvent(
+            new CustomEvent("flash", {
+                detail: {
+                    message: __("NEED_AUTH_GALLERY"),
+                    type: "danger",
+                    delay: 4000
+                }
+            })
+        );
+        return false;
+    }
+
     const createBet = event => {
         setState(prevState => {
             let item = { ...prevState.item },
