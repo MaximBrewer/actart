@@ -66501,7 +66501,7 @@ function Center(props) {
       position: "relative",
       backgroundSize: "contain",
       backgroundRepeat: "no-repeat",
-      backgroundPosition: "right bottom",
+      backgroundPosition: "center",
       paddingTop: "65%",
       backgroundColor: "#ECEDED",
       backgroundImage: 'url("' + state.auction.current.thumbnail + '")'
@@ -66515,11 +66515,11 @@ function Center(props) {
         });
       });
     }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "current d-flex justify-content-between py-2"
-  }, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID"), " ", state.auction.current.id) : "", state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "h2"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID"), " ", state.auction.current.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       width: "40%"
     }
@@ -66528,9 +66528,8 @@ function Center(props) {
       paddingTop: "56.25%",
       height: 0,
       position: "relative"
-    },
-    className: "translation-wrapper"
-  }, html_react_parser__WEBPACK_IMPORTED_MODULE_3___default()(state.translation))) : "")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }
+  }, html_react_parser__WEBPACK_IMPORTED_MODULE_3___default()(state.translation)))) : ""))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right-side"

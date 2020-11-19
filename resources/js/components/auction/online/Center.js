@@ -162,7 +162,7 @@ export default function Center(props) {
                                                 backgroundRepeat:
                                                     "no-repeat",
                                                 backgroundPosition:
-                                                    "right bottom",
+                                                    "center",
                                                 paddingTop: "65%",
                                                 backgroundColor:
                                                     "#ECEDED",
@@ -192,29 +192,28 @@ export default function Center(props) {
                                             />
                                         )}
                                     </div>
-                                    <div
-                                        className={`current d-flex justify-content-between py-2`}
-                                    >
-                                        {state.auction.current ? (
-                                            <div className="h1">{__("LOT_TEXT_LOT_ID")} {state.auction.current.id}</div>
-                                        ) : ``}
-                                        {state.auction.current ? (
-                                            <div style={{ width: "40%" }}>
-                                                <div
-                                                    style={{
-                                                        paddingTop: "56.25%",
-                                                        height: 0,
-                                                        position: "relative"
-                                                    }}
-                                                    className={`translation-wrapper`}
-                                                >
-                                                    {Parser(state.translation)}
+                                    {state.auction.current ?
+                                        (
+                                            <div
+                                                className={`current d-flex justify-content-between py-2`}
+                                            >
+                                                <div className="h2">{__("LOT_TEXT_LOT_ID")} {state.auction.current.id}</div>
+                                                <div style={{ width: "40%" }}>
+                                                    <div
+                                                        style={{
+                                                            paddingTop: "56.25%",
+                                                            height: 0,
+                                                            position: "relative"
+                                                        }}
+                                                    >
+                                                        {Parser(state.translation)}
+                                                    </div>
                                                 </div>
                                             </div>
                                         ) : (
-                                                ``
-                                            )}
-                                    </div>
+                                            ``
+                                        )
+                                    }
                                 </div>
                             </div>
                         </div>
