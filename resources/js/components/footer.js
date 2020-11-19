@@ -115,7 +115,7 @@ export default function Footer(props) {
                                         {__("SITE_MADE_IN")}
                                     </div>
                                     <div className="pb-2">
-                                        <img src="/images/kuba-logo.png" alt="" style="width:90px" />
+                                        <img src="/images/kuba-logo.png" alt="" style={{ width: "90px" }} />
                                     </div>
                                 </a>
                                 <a className="color-inherit" target="_blank" href="//good-head.ru/">
