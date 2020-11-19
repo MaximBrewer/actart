@@ -25,7 +25,7 @@ class AuctionController extends Controller
         $auctions = Auction::where(function ($query) {
             $query;
         });
-        $limit = $request->get('limit') ? $request->get('limit') : 6;
+        $limit = $request->get('limit') ? $request->get('limit') : 10;
         $offset = $request->get('offset') ? $request->get('offset') : 0;
 
         if ($request->get('status')) {

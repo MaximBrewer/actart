@@ -189,7 +189,7 @@ export default function Auctions(props) {
                 <div className="col-30 col-md-15 col-xl-40 col-xxl-38">
                     <div className="carousel-button d-none d-xl-block">
                         <Link to="/auctions" className="btn btn-default">
-                            {__("All auctions")}
+                            {__("BTN_ALL_AUCTIONS")}
                         </Link>
                     </div>
                     <div className="carousel-arrows">
@@ -248,7 +248,7 @@ export default function Auctions(props) {
                 <div className="col-30 col-md-45 col-xl-20 col-xxl-22">
                     <div className="carousel-button d-none d-md-block d-xl-none">
                         <Link to="/auctions" className="btn btn-default">
-                            {__("All auctions")}
+                            {__("BTN_ALL_AUCTIONS")}
                         </Link>
                     </div>
                     <div className="carousel-counter">
@@ -259,7 +259,7 @@ export default function Auctions(props) {
             </div>
             <div className="carousel-button d-md-none">
                 <Link to="/auctions" className="btn btn-default">
-                    {__("All auctions")}
+                    {__("BTN_ALL_AUCTIONS")}
                 </Link>
             </div>
         </React.Fragment>

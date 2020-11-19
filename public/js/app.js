@@ -63894,7 +63894,7 @@ function Auctions(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
     to: "/auctions",
     className: "btn btn-default"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("All auctions"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("BTN_ALL_AUCTIONS"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "carousel-arrows"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
@@ -63941,7 +63941,7 @@ function Auctions(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
     to: "/auctions",
     className: "btn btn-default"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("All auctions"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("BTN_ALL_AUCTIONS"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "carousel-counter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "current"
@@ -63952,7 +63952,7 @@ function Auctions(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
     to: "/auctions",
     className: "btn btn-default"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("All auctions"))));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("BTN_ALL_AUCTIONS"))));
 }
 
 /***/ }),
@@ -64615,19 +64615,19 @@ function ArchiveBottom(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/auctions",
     className: "btn btn-default w-100"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("All auctions"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("BTN_ALL_AUCTIONS"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-15"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/gallery",
     className: "btn btn-default w-100"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Online-gallery")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("BTN_ONLINE_GALLERY")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-center my-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-15"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/auctions/archive",
     className: "btn btn-link"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Archive of auctions"))))));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ARCHIVE_OF_AUCTIONS"))))));
 }
 
 /***/ }),
@@ -65783,12 +65783,12 @@ function Bottom(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/auctions",
     className: "btn btn-default w-100"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("All auctions"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("BTN_ALL_AUCTIONS"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-15"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/gallery",
     className: "btn btn-default w-100"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("Online-gallery"))))));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("BTN_ONLINE_GALLERY"))))));
 }
 
 /***/ }),
@@ -74649,17 +74649,22 @@ function AuctionsArchive(props) {
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_3__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ARCHIVE_OF_AUCTIONS_PAGE_TITLE'));
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    auctions: []
+    auctions: [],
+    offset: 0,
+    limit: 10
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
       setState = _useState2[1];
 
-  var getAuctions = function getAuctions(url) {
+  var getAuctions = function getAuctions() {
+    var url = '/api/' + window.App.locale + '/auctions?status=finished&offset=' + state.offset + '&limit=' + state.limit;
     req(url).then(function (_ref) {
-      var auctions = _ref.auctions;
+      var auctions = _ref.auctions,
+          next = _ref.next;
       return setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
+          offset: next,
           auctions: auctions
         });
       });
@@ -74669,8 +74674,7 @@ function AuctionsArchive(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    var url = '/api/' + window.App.locale + '/auctions?status=finished';
-    getAuctions(url);
+    getAuctions();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
@@ -74708,22 +74712,27 @@ function AuctionsArchive(props) {
     }, props)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
       className: "d-xl-none"
     }))));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      getAuctions();
+    },
+    className: "btn btn-default"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('SHOW_MORE'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section mt-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ARCHIVE_OF_AUCTIONS')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "auctions-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row announce"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col col-xl-40 col-xxl-38"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col col-xl-20 col-xxl-22 text-center"
+    className: "text-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/auctions",
     className: "btn btn-default"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ARCHIVE_LINK_TO_AUCTIONS')))))));
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('ARCHIVE_LINK_TO_AUCTIONS'))))));
 }
 
 /***/ }),
