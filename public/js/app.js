@@ -67892,15 +67892,15 @@ function Footer(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-20 align-items-center align-items-md-start d-flex"
+    className: "col-md-20align-items-start d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "pb-2"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ООО “ВОЛОН”  © 2020"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("When using materials from the site, a link to the site is required."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-20 align-items-center align-items-md-start d-none d-sm-flex"
+    className: "col-md-20 align-items-start d-none d-sm-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_4__["Unstyled"], {
     items: window.App.menus.copyright
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-20 align-items-center align-items-md-start"
+    className: "col-md-20 align-items-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-xl-flex text-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {

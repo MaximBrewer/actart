@@ -93,7 +93,7 @@ export default function Footer(props) {
             <div className="footer-bottom">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-20 align-items-center align-items-md-start d-flex">
+                        <div className="col-md-20align-items-start d-flex">
                             <p className="pb-2">
                                 {__("ООО “ВОЛОН”  © 2020")}
                                 <br />
@@ -102,10 +102,10 @@ export default function Footer(props) {
                                 )}
                             </p>
                         </div>
-                        <div className="col-md-20 align-items-center align-items-md-start d-none d-sm-flex">
+                        <div className="col-md-20 align-items-start d-none d-sm-flex">
                             <Unstyled items={window.App.menus.copyright} />
                         </div>
-                        <div className="col-md-20 align-items-center align-items-md-start">
+                        <div className="col-md-20 align-items-start">
                             <div className="d-xl-flex text-center">
                                 <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
                                     <div className="pb-2">
