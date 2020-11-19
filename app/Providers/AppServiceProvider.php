@@ -8,6 +8,7 @@ use App\Observers\Lot as LotObserver;
 use App\Observers\Auction as AuctionObserver;
 use App\Observers\Setting as SettingObserver;
 use App\Observers\User as UserObserver;
+use App\Observers\Translate as TranslateObserver;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Events\Dispatcher;
 use App\Bet;
@@ -15,6 +16,7 @@ use App\Setting;
 use App\Lot;
 use App\Auction;
 use App\User;
+use App\Translate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -42,5 +44,6 @@ class AppServiceProvider extends ServiceProvider
         Bet::observe(BetObserver::class);
         Setting::observe(SettingObserver::class);
         User::observe(UserObserver::class);
+        Translate::observe(TranslateObserver::class);
     }
 }
