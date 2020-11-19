@@ -72006,7 +72006,7 @@ function Tizer(props) {
       backgroundImage: "url(" + item.thumbnail + ")"
     },
     to: "/auctions/" + data.auction.id + "/lot/" + item.id
-  }, item.status == 'auction' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_3__["Favorite"], {
+  }, data.auction.status == 'coming' && item.status == 'auction' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_3__["Favorite"], {
     item: item,
     req: req
   }) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
