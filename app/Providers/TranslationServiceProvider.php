@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
+use App\Translate;
 
 class TranslationServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,7 @@ class TranslationServiceProvider extends ServiceProvider
             return collect([
                 'php' => $this->phpTranslations(),
                 'json' => $this->jsonTranslations(),
+                'db' => $this->dbTranslations(),
             ]);
         });
     }
@@ -44,5 +46,14 @@ class TranslationServiceProvider extends ServiceProvider
         }
 
         return [];
+    }
+
+    private function dbTranslations()
+    {
+        $translates = Translate::all();
+        $lang = [];
+        foreach ($translates as $translate)
+            $lang['key'] = $translate[app()->getLocale()];
+        return $lang;
     }
 }

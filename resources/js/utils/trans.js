@@ -6,9 +6,9 @@ export default function __(key, replace) {
         translation = key
             .split(".")
             .reduce((t, i) => t[i] || null, window.App.translations);
-        if (translation) {
+        if (translation)
             translationNotFound = false;
-        }
+
     } catch (e) {
         translation = key;
     }
@@ -17,7 +17,18 @@ export default function __(key, replace) {
         translation = window.App.translations.json[key]
             ? window.App.translations.json[key]
             : key;
+        if (translation)
+            translationNotFound = false;
     }
+
+    if (translationNotFound) {
+        translation = window.App.translations.db[key]
+            ? window.App.translations.db[key]
+            : key;
+        if (translation)
+            translationNotFound = false;
+    }
+
     if (typeof replace == "object")
         for (let key in replace) {
             translation = translation.replace(":" + key, replace[key]);

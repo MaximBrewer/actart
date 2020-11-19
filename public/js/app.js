@@ -78730,16 +78730,19 @@ function __(key, replace) {
     translation = key.split(".").reduce(function (t, i) {
       return t[i] || null;
     }, window.App.translations);
-
-    if (translation) {
-      translationNotFound = false;
-    }
+    if (translation) translationNotFound = false;
   } catch (e) {
     translation = key;
   }
 
   if (translationNotFound) {
     translation = window.App.translations.json[key] ? window.App.translations.json[key] : key;
+    if (translation) translationNotFound = false;
+  }
+
+  if (translationNotFound) {
+    translation = window.App.translations.db[key] ? window.App.translations.db[key] : key;
+    if (translation) translationNotFound = false;
   }
 
   if (_typeof(replace) == "object") for (var _key in replace) {

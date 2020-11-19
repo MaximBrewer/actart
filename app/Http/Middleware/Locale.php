@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Config;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use App\Translate;
 
 class Locale
 {
@@ -28,6 +29,7 @@ class Locale
             return collect([
                 'php' => $this->phpTranslations(),
                 'json' => $this->jsonTranslations(),
+                'db' => $this->dbTranslations(),
             ]);
         });
         return $next($request);
@@ -53,5 +55,14 @@ class Locale
         }
 
         return [];
+    }
+
+    private function dbTranslations()
+    {
+        $translates = Translate::all();
+        $lang = [];
+        foreach ($translates as $translate)
+            $lang['key'] = $translate[app()->getLocale()];
+        return $lang;
     }
 }
