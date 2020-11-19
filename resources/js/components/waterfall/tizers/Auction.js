@@ -7,17 +7,19 @@ import Lightbox from "react-image-lightbox";
 export default function Tizer(props) {
     const { data, item, req } = props;
     const [state, setState] = useState({ open: false });
+
     return (
         <div className={`auction-item`}>
             {data.auction.status == 'started' ?
                 <React.Fragment>
                     <a href="#"
-                        onClick={() =>
+                        onClick={(e) => {
+                            e.preventDefault();
                             setState(prevState => ({
                                 ...prevState,
-                                lbOpen: true
+                                open: true
                             }))
-                        }
+                        }}
                         className={`image`}
                         style={{
                             backgroundImage: "url(" + item.thumbnail + ")",
@@ -25,21 +27,25 @@ export default function Tizer(props) {
                         {data.auction.status != 'archive' ? <Favorite item={item} req={req} /> : ``}
                     </a>
                     <a href="#"
-                        onClick={() =>
+                        className="number"
+                        onClick={(e) => {
+                            e.preventDefault();
                             setState(prevState => ({
                                 ...prevState,
-                                lbOpen: true
+                                open: true
                             }))
-                        }>
+                        }}>
                         {__("Lot") + ` ` + item.sort}
                     </a>
                     <a href="#"
-                        onClick={() =>
+                        className="title"
+                        onClick={(e) => {
+                            e.preventDefault();
                             setState(prevState => ({
                                 ...prevState,
-                                lbOpen: true
+                                open: true
                             }))
-                        }>
+                        }}>
                         {item.title ? item.title : __("No name")}
                     </a>
                     <Link className="author" to={item.author_url}>

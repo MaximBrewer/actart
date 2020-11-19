@@ -71931,10 +71931,11 @@ function Tizer(props) {
     className: "auction-item"
   }, data.auction.status == 'started' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    onClick: function onClick() {
-      return setState(function (prevState) {
+    onClick: function onClick(e) {
+      e.preventDefault();
+      setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
-          lbOpen: true
+          open: true
         });
       });
     },
@@ -71947,19 +71948,23 @@ function Tizer(props) {
     req: req
   }) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    onClick: function onClick() {
-      return setState(function (prevState) {
+    className: "number",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
-          lbOpen: true
+          open: true
         });
       });
     }
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Lot") + " " + item.sort), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    onClick: function onClick() {
-      return setState(function (prevState) {
+    className: "title",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
-          lbOpen: true
+          open: true
         });
       });
     }
