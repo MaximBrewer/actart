@@ -9,7 +9,7 @@ export default function Archive(props) {
         <div className="sticky-wrapper">
             <section className="gallery-section">
                 <div id="appGallery"></div>
-                <div className="background-text">{__("Gallery")}</div>
+                <div className="background-text">{__("ARCHIVE_GALLERY_BG")}</div>
                 <div className="container">
                     <div className="row announce mb-5">
                         <div className="col col-xl-40 col-xxl-38">
@@ -58,7 +58,7 @@ export default function Archive(props) {
                 </div>
             </section>
             <div className="sticky-section">
-                <span>{__("works for sale")}</span>
+                <span>{__("ARCHIVE_OF_GALLERY")}</span>
             </div>
         </div>
     );
