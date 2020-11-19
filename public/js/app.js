@@ -72073,9 +72073,9 @@ function Tizer(props) {
   }, item.name + " " + item.surname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "professions"
   }, item.professions.map(function (it, i) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, i ? ' / ' : '', " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: i
-    }, it.title);
+    }, it.title));
   })));
 }
 

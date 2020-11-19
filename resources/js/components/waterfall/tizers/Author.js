@@ -23,9 +23,11 @@ export default function Tizer(props) {
             <div className={`professions`}>
                 {item.professions.map(
                     (it, i) => (
-                        <span key={i}>
-                            {it.title}
-                        </span>
+                        <React.Fragment>
+                            {i ? ' / ' : ''} + <span key={i}>
+                                {it.title}
+                            </span>
+                        </React.Fragment>
                     )
                 )}
             </div>
