@@ -18491,10 +18491,6 @@ iframe {
 }
 
 @media (min-width: 1280px) {
-  .footer-top .footer-logo {
-    margin-left: -2rem;
-  }
-
   .footer-top ul {
     margin-right: 2rem;
   }

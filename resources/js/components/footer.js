@@ -13,7 +13,7 @@ export default function Footer(props) {
                 <div className="container">
                     <div className="row d-none d-xl-flex">
                         <div className="col-xl-15">
-                            <Link to="/" className="footer-logo">
+                            <Link to="/" className="footer-logo" style={{ marginLeft: "-1rem" }}>
                                 <Logo />
                             </Link>
                             <div className="mail-to d-flex flex-column">
