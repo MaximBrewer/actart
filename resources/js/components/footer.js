@@ -65,7 +65,7 @@ export default function Footer(props) {
             <div className="footer-bottom">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-20 align-items-start d-flex">
+                        <div className="col-xl-25">
                             <p className="pb-2">
                                 {__("COPYRIGHT_FOOTER")}
                                 <br />
@@ -74,10 +74,10 @@ export default function Footer(props) {
                                 )}
                             </p>
                         </div>
-                        <div className="col-md-20 align-items-start d-none d-sm-flex">
+                        <div className="col-xl-15">
                             <Unstyled items={window.App.menus.copyright} />
                         </div>
-                        <div className="col-md-20 align-items-start">
+                        <div className="col-xl-20">
                             <div className="d-xl-flex text-center">
                                 <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
                                     <div className="pb-2">
