@@ -67866,8 +67866,6 @@ function Footer(props) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d-xl-flex text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-30"
@@ -67895,7 +67893,7 @@ function Footer(props) {
     className: "pb-2"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("DEVELOPMENT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_2__["Cp"], null)))))))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_2__["Cp"], null))))))))));
 }
 
 /***/ }),

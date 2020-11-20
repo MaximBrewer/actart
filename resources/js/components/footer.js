@@ -78,28 +78,26 @@ export default function Footer(props) {
                             <Unstyled items={window.App.menus.copyright} />
                         </div>
                         <div className="col-xl-20">
-                            <div className="d-xl-flex text-center">
-                                <div className="row">
-                                    <div className="col-30">
-                                        <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
-                                            <div className="pb-2">
-                                                {__("SITE_MADE_IN")}
-                                            </div>
-                                            <div className="pb-2">
-                                                <img src="/images/kuba-logo.png" alt="" style={{ width: "3rem" }} />
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div className="col-30">
-                                        <a className="color-inherit" target="_blank" href="//good-head.ru/">
-                                            <div className="pb-2">
-                                                {__("DEVELOPMENT")}
-                                            </div>
-                                            <div className="pb-2">
-                                                <Cp />
-                                            </div>
-                                        </a>
-                                    </div>
+                            <div className="row">
+                                <div className="col-30">
+                                    <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
+                                        <div className="pb-2">
+                                            {__("SITE_MADE_IN")}
+                                        </div>
+                                        <div className="pb-2">
+                                            <img src="/images/kuba-logo.png" alt="" style={{ width: "3rem" }} />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="col-30">
+                                    <a className="color-inherit" target="_blank" href="//good-head.ru/">
+                                        <div className="pb-2">
+                                            {__("DEVELOPMENT")}
+                                        </div>
+                                        <div className="pb-2">
+                                            <Cp />
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
