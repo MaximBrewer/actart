@@ -34,12 +34,12 @@ export default function Footer(props) {
                                 items={window.App.menus.footerLeft}
                             />
                         </div>
-                        <div className={`col-md-25`}>
+                        <div className={`col-md-15`}>
                             <Unstyled
                                 items={window.App.menus.footerLeft}
                             />
                         </div>
-                        <div className="col-md-30">
+                        <div className="col-md-20">
                             <div className="order-2 order-md-1 pb-md-5">
                                 <Subscribe {...props} />
                             </div>
