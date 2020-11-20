@@ -16,16 +16,7 @@ export default function AuthorItem(props) {
     const watchAuthor = (e) => {
         e.preventDefault();
         if (!currentUser) {
-            window.dispatchEvent(
-                new CustomEvent("flash", {
-                    detail: {
-                        message: __("NEED_AUTH_WILL_SEND_NOTE_AUTHOR"),
-                        type: "danger",
-                        delay: 4000
-                    }
-                })
-            );
-            return false;
+            openModal('login');
         } else {
             window.dispatchEvent(
                 new CustomEvent("flash", {

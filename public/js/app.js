@@ -67789,13 +67789,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Footer; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/auth */ "./resources/js/context/auth.js");
-/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/trans */ "./resources/js/utils/trans.js");
-/* harmony import */ var _icons_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons/footer */ "./resources/js/icons/footer.js");
-/* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/menu */ "./resources/js/components/menu.js");
-/* harmony import */ var _components_subscribe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/subscribe */ "./resources/js/components/subscribe.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
+/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var _icons_footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../icons/footer */ "./resources/js/icons/footer.js");
+/* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/menu */ "./resources/js/components/menu.js");
+/* harmony import */ var _components_subscribe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/subscribe */ "./resources/js/components/subscribe.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
@@ -67803,9 +67801,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Footer(props) {
-  var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_1__["useAuth"])(),
-      currentUser = _useAuth.currentUser;
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
     className: "footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67815,43 +67810,43 @@ function Footer(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-15"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+    className: "col-lg-15"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
     to: "/",
     className: "footer-logo"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_3__["Logo"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_2__["Logo"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mail-to d-flex flex-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("For partnership:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("FOR_PARTNER_FOOTER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "mailto:info@act-art.ru"
   }, "info@act-art.ru")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-10 footer-left-menu"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_4__["Unstyled"], {
+    className: "col-lg-10 footer-left-menu"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_3__["Unstyled"], {
     items: window.App.menus.footerLeft
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-15 footer-right-menu"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_4__["Unstyled"], {
+    className: "col-lg-15 footer-right-menu"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_3__["Unstyled"], {
     items: window.App.menus.footerRight
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-20"
+    className: "col-lg-20"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "order-2 order-md-1 pb-md-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_subscribe__WEBPACK_IMPORTED_MODULE_5__["default"], props)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_subscribe__WEBPACK_IMPORTED_MODULE_4__["default"], props)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "order-1 order-md-2 d-flex flex-row soc-wr pb-md-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d-none d-xl-block flex-fill"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Анонсы, статьи, новости мира искусства:"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-none d-xl-block flex-fill pr-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("ANNOUNCE_FOOTER_NEWS"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "//fb.me/actart.RU"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_3__["Facebook"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_2__["Facebook"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: ""
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "instagram:@actart.RU"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_3__["Instagram"], null)))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_2__["Instagram"], null)))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "footer-bottom"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
@@ -67861,9 +67856,9 @@ function Footer(props) {
     className: "col-md-20 align-items-start d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "pb-2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ООО “ВОЛОН”  © 2020"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("When using materials from the site, a link to the site is required."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("COPYRIGHT_FOOTER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("When using materials from the site, a link to the site is required."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-20 align-items-start d-none d-sm-flex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_4__["Unstyled"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_3__["Unstyled"], {
     items: window.App.menus.copyright
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-20 align-items-start"
@@ -67875,7 +67870,7 @@ function Footer(props) {
     href: "//good-head.ru/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SITE_MADE_IN")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("SITE_MADE_IN")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "/images/kuba-logo.png",
@@ -67889,9 +67884,9 @@ function Footer(props) {
     href: "//good-head.ru/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("DEVELOPMENT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("DEVELOPMENT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_3__["Cp"], null)))))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_footer__WEBPACK_IMPORTED_MODULE_2__["Cp"], null)))))))));
 }
 
 /***/ }),
@@ -75074,14 +75069,7 @@ function AuthorItem(props) {
     e.preventDefault();
 
     if (!currentUser) {
-      window.dispatchEvent(new CustomEvent("flash", {
-        detail: {
-          message: Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("NEED_AUTH_WILL_SEND_NOTE_AUTHOR"),
-          type: "danger",
-          delay: 4000
-        }
-      }));
-      return false;
+      openModal('login');
     } else {
       window.dispatchEvent(new CustomEvent("flash", {
         detail: {

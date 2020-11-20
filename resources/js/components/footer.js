@@ -1,5 +1,4 @@
 import React from "react";
-import { useAuth } from "../context/auth";
 import __ from "../utils/trans";
 import { Logo, Facebook, Instagram, Cp, Mail } from "../icons/footer";
 import { Unstyled } from "../components/menu";
@@ -7,20 +6,19 @@ import Subscribe from "../components/subscribe";
 import { Link } from "react-router-dom";
 
 export default function Footer(props) {
-    let { currentUser } = useAuth();
 
     return (
         <footer className="footer">
             <div className="footer-top">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-15">
+                        <div className="col-lg-15">
                             <Link to="/" className="footer-logo">
                                 <Logo />
                             </Link>
                             <div className="mail-to d-flex flex-column">
                                 <div className="mb-1">
-                                    {__("For partnership:")}
+                                    {__("FOR_PARTNER_FOOTER")}
                                 </div>
                                 <div className="h5">
                                     <a href="mailto:info@act-art.ru">
@@ -29,26 +27,24 @@ export default function Footer(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className={`col-md-10 footer-left-menu`}>
+                        <div className={`col-lg-10 footer-left-menu`}>
                             <Unstyled
                                 items={window.App.menus.footerLeft}
                             />
                         </div>
-                        <div className={`col-md-15 footer-right-menu`}>
+                        <div className={`col-lg-15 footer-right-menu`}>
                             <Unstyled
                                 items={window.App.menus.footerRight}
                             />
                         </div>
-                        <div className="col-md-20">
+                        <div className="col-lg-20">
                             <div className="order-2 order-md-1 pb-md-5">
                                 <Subscribe {...props} />
                             </div>
                             <div className="order-1 order-md-2 d-flex flex-row soc-wr pb-md-5">
-                                <div className="d-none d-xl-block flex-fill">
+                                <div className="d-none d-xl-block flex-fill pr-2">
                                     <small>
-                                        {__(
-                                            "Анонсы, статьи, новости мира искусства:"
-                                        )}
+                                        {__("ANNOUNCE_FOOTER_NEWS")}
                                     </small>
                                 </div>
                                 <div className="mr-3">
@@ -71,7 +67,7 @@ export default function Footer(props) {
                     <div className="row">
                         <div className="col-md-20 align-items-start d-flex">
                             <p className="pb-2">
-                                {__("ООО “ВОЛОН”  © 2020")}
+                                {__("COPYRIGHT_FOOTER")}
                                 <br />
                                 {__(
                                     "When using materials from the site, a link to the site is required."
