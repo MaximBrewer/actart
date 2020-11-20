@@ -11,7 +11,7 @@ export default function Footer(props) {
         <footer className="footer">
             <div className="footer-top">
                 <div className="container">
-                    <div className="row">
+                    <div className="row d-none d-xl-flex">
                         <div className="col-xl-15">
                             <Link to="/" className="footer-logo">
                                 <Logo />
@@ -56,6 +56,54 @@ export default function Footer(props) {
                                     <a href="instagram:@actart.RU">
                                         <Instagram />
                                     </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row d-none d-sm-flex d-xl-none">
+                        <div className="col-20">
+                            <Link to="/" className="footer-logo">
+                                <Logo />
+                            </Link>
+                            <div className="mail-to d-flex flex-column">
+                                <div className="mb-1">
+                                    {__("FOR_PARTNER_FOOTER")}
+                                </div>
+                                <div className="h5">
+                                    <a href="mailto:info@act-art.ru">
+                                        info@act-art.ru
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-40">
+                            <div className="row">
+                                <div className="col-50">
+                                    <Subscribe {...props} />
+                                </div>
+                                <div className="col-10">
+                                    <div className="mr-3">
+                                        <a href="//fb.me/actart.RU">
+                                            <Facebook />
+                                        </a>
+                                    </div>
+                                    <div className="">
+                                        <a href="instagram:@actart.RU">
+                                            <Instagram />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-30 footer-left-menu">
+                                    <Unstyled
+                                        items={window.App.menus.footerLeft}
+                                    />
+                                </div>
+                                <div className="col-30 footer-right-menu">
+                                    <Unstyled
+                                        items={window.App.menus.footerRight}
+                                    />
                                 </div>
                             </div>
                         </div>
