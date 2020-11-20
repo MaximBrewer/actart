@@ -59,10 +59,9 @@ class Cron extends Command
             Auction::find($auction->id)->update(['status' => 'started']);
 
         $finished = DB::select(
-            'select id from auctions where timestamp(date) < timestamp(?) and status = ?',
+            'select id from auctions where timestamp(date) < timestamp(?) and status in (\'started\',\'coming\')',
             [
-                $carbon->subHours(6)->toDateTimeString(),
-                'started'
+                $carbon->subHours(6)->toDateTimeString()
             ]
         );
 
