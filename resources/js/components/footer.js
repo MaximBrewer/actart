@@ -81,7 +81,7 @@ export default function Footer(props) {
                                 <div className="col-50">
                                     <Subscribe {...props} />
                                 </div>
-                                <div className="col-10">
+                                <div className="col-10 soc-wr d-flex justify-content-start">
                                     <div className="mr-3">
                                         <a href="//fb.me/actart.RU">
                                             <Facebook />
@@ -106,6 +106,48 @@ export default function Footer(props) {
                                     />
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className="d-none d-md-none text-center">
+                        <div className="soc-wr d-flex justify-content-start">
+                            <div className="mr-3">
+                                <a href="//fb.me/actart.RU">
+                                    <Facebook />
+                                </a>
+                            </div>
+                            <div className="">
+                                <a href="instagram:@actart.RU">
+                                    <Instagram />
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <Subscribe {...props} />
+                        </div>
+                        <div>
+                            <div className="mail-to d-flex flex-column">
+                                <div className="mb-1">
+                                    {__("FOR_PARTNER_FOOTER")}
+                                </div>
+                                <div className="h5">
+                                    <a href="mailto:info@act-art.ru">
+                                        info@act-art.ru
+                                    </a>
+                                </div>
+                            </div>
+                            <Link to="/" className="footer-logo">
+                                <Logo />
+                            </Link>
+                        </div>
+                        <div className="footer-left-menu">
+                            <Unstyled
+                                items={window.App.menus.footerLeft}
+                            />
+                        </div>
+                        <div className="footer-right-menu">
+                            <Unstyled
+                                items={window.App.menus.footerRight}
+                            />
                         </div>
                     </div>
                 </div>
