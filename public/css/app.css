@@ -18307,7 +18307,6 @@ iframe {
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 2rem;
   color: #6c92a8;
 }
 
@@ -18444,7 +18443,6 @@ iframe {
   .footer-top .form-group label {
     font-weight: bolder;
     text-align: left;
-    margin-bottom: 2rem;
     color: #eceded;
   }
 
@@ -18569,7 +18567,6 @@ iframe {
 
   .footer-top .col:nth-child(4) .form-group label {
     font-weight: 500;
-    margin-bottom: 2rem;
   }
 
   .footer-top .col:nth-child(4) .form-group input {

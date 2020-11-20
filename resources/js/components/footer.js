@@ -60,7 +60,7 @@ export default function Footer(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="row d-none d-sm-flex d-xl-none">
+                    <div className="row d-none d-md-flex d-xl-none">
                         <div className="col-20">
                             <Link to="/" className="footer-logo">
                                 <Logo />
@@ -77,7 +77,7 @@ export default function Footer(props) {
                             </div>
                         </div>
                         <div className="col-40">
-                            <div className="row">
+                            <div className="row mb-5">
                                 <div className="col-50">
                                     <Subscribe {...props} />
                                 </div>
