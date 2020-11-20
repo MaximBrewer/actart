@@ -155,8 +155,8 @@ export default function Footer(props) {
             <div className="footer-bottom">
                 <div className="container">
                     <div className="row">
-                        <div className="col-xl-25">
-                            <p className="pb-2" style={{ maxWidth: "20rem" }}>
+                        <div className="col-md-20 col-xl-25">
+                            <p className="pb-2">
                                 {__("COPYRIGHT_FOOTER")}
                                 <br />
                                 {__(
@@ -164,10 +164,10 @@ export default function Footer(props) {
                                 )}
                             </p>
                         </div>
-                        <div className="col-xl-15">
+                        <div className="col-md-15">
                             <Unstyled items={window.App.menus.copyright} />
                         </div>
-                        <div className="col-xl-20">
+                        <div className="col-md-25 col-xl-20">
                             <div className="row">
                                 <div className="col-30">
                                     <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
