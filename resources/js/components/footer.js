@@ -13,8 +13,8 @@ export default function Footer(props) {
         <footer className="footer">
             <div className="footer-top">
                 <div className="container">
-                    <div className="d-flex flex-column flex-md-row">
-                        <div className="order-1 d-none d-md-block">
+                    <div className="row">
+                        <div className="col-md-15">
                             <Link to="/" className="footer-logo">
                                 <Logo />
                             </Link>
@@ -29,61 +29,37 @@ export default function Footer(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="d-flex flex-column order-2 flex-xl-row">
-                            <div className="order-2 d-flex flex-column d-md-none">
-                                <div className="mail-to d-flex flex-column">
-                                    <div className="mb-1">
-                                        {__("For partnership:")}
-                                    </div>
-                                    <div className="h5">
-                                        <a href="mailto:info@act-art.ru">
-                                            info@act-art.ru
-                                        </a>
-                                    </div>
-                                </div>
-                                <Link to="/" className="footer-logo">
-                                    <Logo />
-                                </Link>
+                        <div className={`col-md-10`}>
+                            <Unstyled
+                                items={window.App.menus.footerLeft}
+                            />
+                        </div>
+                        <div className={`col-md-25`}>
+                            <Unstyled
+                                items={window.App.menus.footerLeft}
+                            />
+                        </div>
+                        <div className="col-md-30">
+                            <div className="order-2 order-md-1 pb-md-5">
+                                <Subscribe {...props} />
                             </div>
-                            <div className="d-flex flex-column flex-md-row order-3 order-md-2 order-xl-1 col-xl-30">
-                                <div className="order-2 order-md-1 footer-left-menu">
-                                    <Unstyled
-                                        items={window.App.menus.footerLeft}
-                                    />
-                                    <div className="d-sm-none">
-                                        <Unstyled
-                                            items={window.App.menus.copyright}
-                                        />
-                                    </div>
+                            <div className="order-1 order-md-2 d-flex flex-row soc-wr pb-md-5">
+                                <div className="d-none d-xl-block flex-fill">
+                                    <small>
+                                        {__(
+                                            "Анонсы, статьи, новости мира искусства:"
+                                        )}
+                                    </small>
                                 </div>
-                                <div className="order-1 order-md-2 footer-right-menu">
-                                    <Unstyled
-                                        items={window.App.menus.footerRight}
-                                    />
+                                <div className="mr-3">
+                                    <a href="//fb.me/actart.RU">
+                                        <Facebook />
+                                    </a>
                                 </div>
-                            </div>
-                            <div className="order-1 order-md-1 d-flex flex-column flex-md-row flex-xl-column order-xl-2 col-xl-30">
-                                <div className="order-2 order-md-1 pb-md-5">
-                                    <Subscribe {...props} />
-                                </div>
-                                <div className="order-1 order-md-2 d-flex flex-row soc-wr pb-md-5">
-                                    <div className="d-none d-xl-block flex-fill">
-                                        <small>
-                                            {__(
-                                                "Анонсы, статьи, новости мира искусства:"
-                                            )}
-                                        </small>
-                                    </div>
-                                    <div className="mr-3">
-                                        <a href="//fb.me/actart.RU">
-                                            <Facebook />
-                                        </a>
-                                    </div>
-                                    <div className="">
-                                        <a href="instagram:@actart.RU">
-                                            <Instagram />
-                                        </a>
-                                    </div>
+                                <div className="">
+                                    <a href="instagram:@actart.RU">
+                                        <Instagram />
+                                    </a>
                                 </div>
                             </div>
                         </div>
