@@ -108,7 +108,7 @@ export default function Footer(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="d-none d-md-none text-center">
+                    <div className="d-md-none text-center">
                         <div className="soc-wr d-flex justify-content-start">
                             <div className="mr-3">
                                 <a href="//fb.me/actart.RU">
