@@ -18293,7 +18293,6 @@ iframe {
 .footer-top .soc-wr a {
   display: block;
   width: 2.5rem;
-  margin-bottom: 1rem;
   stroke: white;
   fill: white;
 }
@@ -18305,6 +18304,7 @@ iframe {
 }
 
 .footer-top .form-group label {
+  margin-bottom: 1rem;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
