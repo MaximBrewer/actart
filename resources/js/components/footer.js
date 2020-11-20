@@ -139,14 +139,14 @@ export default function Footer(props) {
                                 <Logo />
                             </Link>
                         </div>
-                        <div className="footer-left-menu">
-                            <Unstyled
-                                items={window.App.menus.footerLeft}
-                            />
-                        </div>
                         <div className="footer-right-menu">
                             <Unstyled
                                 items={window.App.menus.footerRight}
+                            />
+                        </div>
+                        <div className="footer-left-menu">
+                            <Unstyled
+                                items={window.App.menus.footerLeft}
                             />
                         </div>
                     </div>
