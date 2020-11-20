@@ -29,14 +29,14 @@ export default function Footer(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className={`col-md-10`}>
+                        <div className={`col-md-10 footer-left-menu`}>
                             <Unstyled
                                 items={window.App.menus.footerLeft}
                             />
                         </div>
-                        <div className={`col-md-15`}>
+                        <div className={`col-md-15 footer-right-menu`}>
                             <Unstyled
-                                items={window.App.menus.footerLeft}
+                                items={window.App.menus.footerRight}
                             />
                         </div>
                         <div className="col-md-20">
