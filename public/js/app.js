@@ -67881,7 +67881,8 @@ function Footer(props) {
     src: "/images/kuba-logo.png",
     alt: "",
     style: {
-      width: "3rem"
+      width: "3rem",
+      backgroundColor: "#ffffff"
     }
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-30"

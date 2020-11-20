@@ -85,7 +85,7 @@ export default function Footer(props) {
                                             {__("SITE_MADE_IN")}
                                         </div>
                                         <div className="pb-2">
-                                            <img src="/images/kuba-logo.png" alt="" style={{ width: "3rem" }} />
+                                            <img src="/images/kuba-logo.png" alt="" style={{ width: "3rem", backgroundColor: "#ffffff" }} />
                                         </div>
                                     </a>
                                 </div>
