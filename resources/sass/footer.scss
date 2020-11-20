@@ -183,6 +183,7 @@
 @media (min-width: map.get($grid-breakpoints, "xl")) {
     .footer-top {
         .footer-logo {
+            margin-left:-2rem;
         }
         ul {
             margin-right: 2rem;

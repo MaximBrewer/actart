@@ -12,7 +12,7 @@ export default function Footer(props) {
             <div className="footer-top">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-15">
+                        <div className="col-xl-15">
                             <Link to="/" className="footer-logo">
                                 <Logo />
                             </Link>
@@ -27,17 +27,17 @@ export default function Footer(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className={`col-lg-10 footer-left-menu`}>
+                        <div className={`col-xl-10 footer-left-menu`}>
                             <Unstyled
                                 items={window.App.menus.footerLeft}
                             />
                         </div>
-                        <div className={`col-lg-15 footer-right-menu`}>
+                        <div className={`col-xl-15 footer-right-menu`}>
                             <Unstyled
                                 items={window.App.menus.footerRight}
                             />
                         </div>
-                        <div className="col-lg-20">
+                        <div className="col-xl-20">
                             <div className="order-2 order-md-1 pb-md-5">
                                 <Subscribe {...props} />
                             </div>
