@@ -53,7 +53,7 @@ export default function Footer(props) {
                                     </a>
                                 </div>
                                 <div className="">
-                                    <a href="instagram:@actart.RU">
+                                    <a href="https://www.instagram.com/actart.RU">
                                         <Instagram />
                                     </a>
                                 </div>
@@ -88,7 +88,7 @@ export default function Footer(props) {
                                         </a>
                                     </div>
                                     <div className="">
-                                        <a href="instagram:@actart.RU">
+                                        <a href="https://www.instagram.com/actart.RU">
                                             <Instagram />
                                         </a>
                                     </div>
@@ -116,7 +116,7 @@ export default function Footer(props) {
                                 </a>
                             </div>
                             <div className="">
-                                <a href="instagram:@actart.RU">
+                                <a href="https://www.instagram.com/actart.RU">
                                     <Instagram />
                                 </a>
                             </div>
