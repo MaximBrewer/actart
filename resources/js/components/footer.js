@@ -66,7 +66,7 @@ export default function Footer(props) {
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-25">
-                            <p className="pb-2">
+                            <p className="pb-2" style={{ maxWidth: "20rem" }}>
                                 {__("COPYRIGHT_FOOTER")}
                                 <br />
                                 {__(
@@ -79,22 +79,28 @@ export default function Footer(props) {
                         </div>
                         <div className="col-xl-20">
                             <div className="d-xl-flex text-center">
-                                <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
-                                    <div className="pb-2">
-                                        {__("SITE_MADE_IN")}
+                                <div className="row">
+                                    <div className="col-30">
+                                        <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
+                                            <div className="pb-2">
+                                                {__("SITE_MADE_IN")}
+                                            </div>
+                                            <div className="pb-2">
+                                                <img src="/images/kuba-logo.png" alt="" style={{ width: "3rem" }} />
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div className="pb-2">
-                                        <img src="/images/kuba-logo.png" alt="" style={{ width: "3rem" }} />
+                                    <div className="col-30">
+                                        <a className="color-inherit" target="_blank" href="//good-head.ru/">
+                                            <div className="pb-2">
+                                                {__("DEVELOPMENT")}
+                                            </div>
+                                            <div className="pb-2">
+                                                <Cp />
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                                <a className="color-inherit" target="_blank" href="//good-head.ru/">
-                                    <div className="pb-2">
-                                        {__("DEVELOPMENT")}
-                                    </div>
-                                    <div className="pb-2">
-                                        <Cp />
-                                    </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
