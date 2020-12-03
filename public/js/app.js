@@ -72175,8 +72175,10 @@ function Waterfall(props) {
       position: "relative",
       top: -80
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_sticky_el__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    boundaryElement: ".waterfall-filterable",
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "filtrable-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_sticky_el__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    boundaryElement: ".filtrable-wrapper",
     style: {
       position: 'relative'
     }
