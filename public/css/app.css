@@ -21798,6 +21798,10 @@ section.announces.bggray .background-text {
   }
 }
 
+.gallery-works {
+  padding-top: 1.125rem;
+}
+
 .gallery-works .h2 {
   text-align: center;
   font-size: 1.8rem;
