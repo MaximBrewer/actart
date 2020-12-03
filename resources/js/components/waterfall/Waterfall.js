@@ -294,7 +294,7 @@ export default function Waterfall(props) {
                                 distanceFromBottom,
                                 calculatedHeight
                             }) => (
-                                    <ul>
+                                    <ul style={style}>
                                         {state.options.map((option, option_index) => (
                                             <li key={option_index}>
                                                 <span>{option.title}</span>

@@ -71791,7 +71791,9 @@ function Waterfall(props) {
         distanceFromTop = _ref.distanceFromTop,
         distanceFromBottom = _ref.distanceFromBottom,
         calculatedHeight = _ref.calculatedHeight;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, state.options.map(function (option, option_index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      style: style
+    }, state.options.map(function (option, option_index) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         key: option_index
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, option.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, option.items.map(function (item, index) {
