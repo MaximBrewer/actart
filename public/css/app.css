@@ -22423,7 +22423,7 @@ a.lot-item:hover {
 .news-item {
   display: block;
   text-decoration: none !important;
-  padding-bottom: 1.25rem;
+  padding-bottom: 2.5rem;
   margin-bottom: 0;
   border-top: 0.25rem solid #1e2b32;
 }
