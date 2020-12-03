@@ -12,7 +12,7 @@ export default function Archive(props) {
                 <div className="background-text">{__("ARCHIVE_GALLERY_BG")}</div>
                 <div className="container">
                     <div className="row announce mb-5">
-                        <div className="col col-xl-40 col-xxl-38">
+                        <div className="col-60">
                             <h2 className="h1">{__("GALLERY_ARCHIVE_H2")}</h2>
                         </div>
                     </div>

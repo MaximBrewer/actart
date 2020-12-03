@@ -77538,7 +77538,7 @@ function Archive(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row announce mb-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col col-xl-40 col-xxl-38"
+    className: "col-60"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "h1"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("GALLERY_ARCHIVE_H2")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
