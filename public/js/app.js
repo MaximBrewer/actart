@@ -72169,7 +72169,13 @@ function Waterfall(props) {
     d: "M9 18L0.339746 3L17.6603 3L9 18Z"
   }))))), data.filterable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "waterfall-filterable col-60 col-md-15"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_sticky_el__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      paddingTop: 80,
+      position: "relative",
+      top: -80
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_sticky_el__WEBPACK_IMPORTED_MODULE_4___default.a, {
     boundaryElement: ".waterfall-filterable",
     style: {
       position: 'relative'
@@ -72202,7 +72208,7 @@ function Waterfall(props) {
         delFilter(option.id);
       }
     }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("CATEGORY_ALL_LINK")))));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: (data.filterable ? "col-60 col-md-45" : "col-60") + " stack-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EntityGrid__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, props, {
     columns: columns,
