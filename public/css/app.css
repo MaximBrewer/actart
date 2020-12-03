@@ -22852,6 +22852,7 @@ a.lot-item:hover {
 }
 
 .sticker > div {
+  position: relative;
   padding-top: 80px;
   top: -80px;
 }
