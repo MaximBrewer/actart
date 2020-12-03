@@ -284,7 +284,7 @@ export default function Waterfall(props) {
             {data.filterable && (
                 <div className="waterfall-filterable col-60 col-md-15">
                     <Sticky>
-                        <ul style={style}>
+                        <ul>
                             {state.options.map((option, option_index) => (
                                 <li key={option_index}>
                                     <span>{option.title}</span>
