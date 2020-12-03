@@ -17864,6 +17864,8 @@ iframe {
 
 .header .header-top .logo {
   display: flex;
+  color: #2C5770;
+  font-weight: bold;
 }
 
 .header .header-top + section {
