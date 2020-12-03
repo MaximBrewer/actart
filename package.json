@@ -66,6 +66,7 @@
         "react-router-hash-link": "^2.2.2",
         "react-slick": "^0.26.1",
         "react-stack-grid": "^0.7.1",
+        "react-sticky": "^6.0.3",
         "react-stonecutter": "^0.3.10",
         "react-use": "^15.3.4",
         "react-yandex-share": "^1.0.7",

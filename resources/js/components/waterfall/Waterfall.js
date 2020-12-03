@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import EntityGrid from "./EntityGrid";
 import { Link, useLocation } from "react-router-dom";
 import __ from "../../utils/trans";
+import { StickyContainer, Sticky } from 'react-sticky';
 
 export default function Waterfall(props) {
     const { pathname } = useLocation();
@@ -27,7 +28,7 @@ export default function Waterfall(props) {
         setState(prevState => {
             return {
                 ...prevState,
-                items: prevState.items.sort(function(a, b) {
+                items: prevState.items.sort(function (a, b) {
                     if (order == "asc") return a[field] > b[field] ? 1 : -1;
                     else return b[field] > a[field] ? 1 : -1;
                 }),
@@ -281,90 +282,107 @@ export default function Waterfall(props) {
             </div>
             {data.filterable && (
                 <div className="waterfall-filterable col-60 col-md-15">
-                    <ul>
-                        {state.options.map((option, option_index) => (
-                            <li key={option_index}>
-                                <span>{option.title}</span>
-                                <ul>
-                                    {option.items.map((item, index) => (
-                                        <li key={index}>
-                                            {option.id == "categories" ? (
-                                                <Link
-                                                    className={
-                                                        category == item.id
-                                                            ? `active`
-                                                            : ``
-                                                    }
-                                                    to={
-                                                        `/gallery/category/` +
-                                                        item.id
-                                                    }
-                                                >
-                                                    {item.title}
-                                                </Link>
-                                            ) : (
-                                                <a
-                                                    className={
-                                                        state.filter[
-                                                            option.id
-                                                        ] == item.id
-                                                            ? `active`
-                                                            : ``
-                                                    }
-                                                    href="#"
-                                                    onClick={e => {
-                                                        e.preventDefault();
-                                                        state.filter[
-                                                            option.id
-                                                        ] == undefined ||
-                                                        state.filter[
-                                                            option.id
-                                                        ] != item.id
-                                                            ? setFilter(
-                                                                  option.id,
-                                                                  item.id
-                                                              )
-                                                            : delFilter(
-                                                                  option.id
-                                                              );
-                                                    }}
-                                                >
-                                                    {item.title}
-                                                </a>
-                                            )}
-                                        </li>
-                                    ))}
-                                    <li>
-                                        {option.id == "categories" ? (
-                                            <Link
-                                                className={
-                                                    !category ? `active` : ``
-                                                }
-                                                to={`/gallery`}
-                                            >
-                                                {__(`CATEGORY_ALL_LINK`)}
-                                            </Link>
-                                        ) : (
-                                            <a
-                                                className={
-                                                    !state.filter[option.id]
-                                                        ? `active`
-                                                        : ``
-                                                }
-                                                href="#"
-                                                onClick={e => {
-                                                    e.preventDefault();
-                                                    delFilter(option.id);
-                                                }}
-                                            >
-                                                {__(`CATEGORY_ALL_LINK`)}
-                                            </a>
-                                        )}
-                                    </li>
-                                </ul>
-                            </li>
-                        ))}
-                    </ul>
+                    <StickyContainer>
+                        <Sticky>
+                            {({
+                                style,
+
+                                // the following are also available but unused in this example
+                                isSticky,
+                                wasSticky,
+                                distanceFromTop,
+                                distanceFromBottom,
+                                calculatedHeight
+                            }) => (
+                                    <ul>
+                                        {state.options.map((option, option_index) => (
+                                            <li key={option_index}>
+                                                <span>{option.title}</span>
+                                                <ul>
+                                                    {option.items.map((item, index) => (
+                                                        <li key={index}>
+                                                            {option.id == "categories" ? (
+                                                                <Link
+                                                                    className={
+                                                                        category == item.id
+                                                                            ? `active`
+                                                                            : ``
+                                                                    }
+                                                                    to={
+                                                                        `/gallery/category/` +
+                                                                        item.id
+                                                                    }
+                                                                >
+                                                                    {item.title}
+                                                                </Link>
+                                                            ) : (
+                                                                    <a
+                                                                        className={
+                                                                            state.filter[
+                                                                                option.id
+                                                                            ] == item.id
+                                                                                ? `active`
+                                                                                : ``
+                                                                        }
+                                                                        href="#"
+                                                                        onClick={e => {
+                                                                            e.preventDefault();
+                                                                            state.filter[
+                                                                                option.id
+                                                                            ] == undefined ||
+                                                                                state.filter[
+                                                                                option.id
+                                                                                ] != item.id
+                                                                                ? setFilter(
+                                                                                    option.id,
+                                                                                    item.id
+                                                                                )
+                                                                                : delFilter(
+                                                                                    option.id
+                                                                                );
+                                                                        }}
+                                                                    >
+                                                                        {item.title}
+                                                                    </a>
+                                                                )}
+                                                        </li>
+                                                    ))}
+                                                    <li>
+                                                        {option.id == "categories" ? (
+                                                            <Link
+                                                                className={
+                                                                    !category ? `active` : ``
+                                                                }
+                                                                to={`/gallery`}
+                                                            >
+                                                                {__(`CATEGORY_ALL_LINK`)}
+                                                            </Link>
+                                                        ) : (
+                                                                <a
+                                                                    className={
+                                                                        !state.filter[option.id]
+                                                                            ? `active`
+                                                                            : ``
+                                                                    }
+                                                                    href="#"
+                                                                    onClick={e => {
+                                                                        e.preventDefault();
+                                                                        delFilter(option.id);
+                                                                    }}
+                                                                >
+                                                                    {__(`CATEGORY_ALL_LINK`)}
+                                                                </a>
+                                                            )}
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )
+                            }
+                        </Sticky>
+                        {/* ... */}
+                    </StickyContainer>
                 </div>
             )}
             <div
