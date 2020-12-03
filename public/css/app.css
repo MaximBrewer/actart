@@ -20158,21 +20158,18 @@ iframe {
 }
 
 .gallery-section .gallery-works .waterfall-filterable ul {
-  padding-top: 1.75rem;
-}
-
-.gallery-section .gallery-works ul {
   list-style: outside none;
   padding: 0;
+  padding-top: 1.75rem;
   margin: 0;
 }
 
-.gallery-section .gallery-works ul li {
+.gallery-section .gallery-works .waterfall-filterable ul li {
   padding: 0;
   margin: 0;
 }
 
-.gallery-section .gallery-works ul li span {
+.gallery-section .gallery-works .waterfall-filterable ul li span {
   font-weight: bold;
   text-transform: uppercase;
   display: block;
@@ -20181,11 +20178,11 @@ iframe {
   border-bottom: 0.25rem solid #1e2b32;
 }
 
-.gallery-section .gallery-works ul li ul {
+.gallery-section .gallery-works .waterfall-filterable ul li ul {
   padding: 0 0 2rem 1rem;
 }
 
-.gallery-section .gallery-works ul li ul li a {
+.gallery-section .gallery-works .waterfall-filterable ul li ul li a {
   font-size: 1.125rem;
   line-height: 1.5rem;
   font-weight: 400;
@@ -20194,8 +20191,8 @@ iframe {
   text-decoration: none !important;
 }
 
-.gallery-section .gallery-works ul li ul li a:hover,
-.gallery-section .gallery-works ul li ul li a.active {
+.gallery-section .gallery-works .waterfall-filterable ul li ul li a:hover,
+.gallery-section .gallery-works .waterfall-filterable ul li ul li a.active {
   color: #ff665e;
 }
 
