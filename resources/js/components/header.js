@@ -183,7 +183,7 @@ export default function Header(props) {
                                     <Link to="/" className="logo text-decoration-none">
                                         <div className="align-items-center d-none d-md-flex"><TopLogo /></div>
                                         <div className="align-items-center d-flex d-md-none"><SmallTopLogo /></div>
-                                        <div className="text-nowrap ml-4 align-items-center lh-1125rem d-none d-xl-flex">{Parser(__('online-auction<br>of contemporary art'))}</div>
+                                        <div className="text-nowrap ml-4 align-items-center d-none d-xl-flex">{Parser(__('online-auction<br>of contemporary art'))}</div>
                                     </Link>
                                 </div>
                                 <div className="burger-wrapper col-md-20 col-30 hide-dark">

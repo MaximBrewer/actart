@@ -78954,7 +78954,7 @@ function Header(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_header__WEBPACK_IMPORTED_MODULE_3__["TopLogo"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "align-items-center d-flex d-md-none"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_header__WEBPACK_IMPORTED_MODULE_3__["SmallTopLogo"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-nowrap ml-4 align-items-center lh-1125rem d-none d-xl-flex"
+    className: "text-nowrap ml-4 align-items-center d-none d-xl-flex"
   }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('online-auction<br>of contemporary art'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "burger-wrapper col-md-20 col-30 hide-dark"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
