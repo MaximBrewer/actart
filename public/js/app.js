@@ -72174,7 +72174,7 @@ function Waterfall(props) {
     style: {
       position: 'relative'
     },
-    topOffset: 80
+    topOffset: -80
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, state.options.map(function (option, option_index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       key: option_index

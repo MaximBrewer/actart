@@ -283,7 +283,7 @@ export default function Waterfall(props) {
             </div>
             {data.filterable && (
                 <div className="waterfall-filterable col-60 col-md-15">
-                    <Sticky boundaryElement=".waterfall-filterable" style = {{position: 'relative'}} topOffset={80}>
+                    <Sticky boundaryElement=".waterfall-filterable" style = {{position: 'relative'}} topOffset={-80}>
                         <ul>
                             {state.options.map((option, option_index) => (
                                 <li key={option_index}>
