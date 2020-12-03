@@ -22410,12 +22410,6 @@ a.lot-item:hover {
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .author-item {
-    width: 50%;
-  }
-}
-
 @media (min-width: 992px) {
   .author-item {
     width: auto;
