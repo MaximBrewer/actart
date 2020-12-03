@@ -72169,16 +72169,18 @@ function Waterfall(props) {
     d: "M9 18L0.339746 3L17.6603 3L9 18Z"
   }))))), data.filterable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "waterfall-filterable col-60 col-md-15"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "filtrable-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_sticky_el__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    boundaryElement: ".filtrable-wrapper",
+    boundaryElement: ".waterfall-filterable",
+    style: {
+      position: 'relative'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     style: {
       position: 'relative',
       paddingTop: 80,
       top: -80
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, state.options.map(function (option, option_index) {
+  }, state.options.map(function (option, option_index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       key: option_index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, option.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, option.items.map(function (item, index) {
@@ -72206,7 +72208,7 @@ function Waterfall(props) {
         delFilter(option.id);
       }
     }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("CATEGORY_ALL_LINK")))));
-  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: (data.filterable ? "col-60 col-md-45" : "col-60") + " stack-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EntityGrid__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, props, {
     columns: columns,
