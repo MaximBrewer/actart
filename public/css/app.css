@@ -20157,6 +20157,10 @@ iframe {
   padding-top: 1.75rem;
 }
 
+.gallery-section .gallery-works .waterfall-filterable {
+  padding-top: 1.75rem;
+}
+
 .gallery-section .gallery-works ul {
   list-style: outside none;
   padding: 0;

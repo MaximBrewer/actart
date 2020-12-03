@@ -9,6 +9,9 @@
         .stack-grid {
             padding-top: 1.75rem;
         }
+        .waterfall-filterable {
+            padding-top: 1.75rem;
+        }
         ul {
             list-style: outside none;
             padding: 0;
@@ -33,7 +36,7 @@
                             line-height: 1.5rem;
                             font-weight: 400;
                             text-transform: none;
-                            font-family: 'Roboto Condensed';
+                            font-family: "Roboto Condensed";
                             text-decoration: none !important;
                             &:hover,
                             &.active {
@@ -45,7 +48,7 @@
             }
         }
     }
-    &.other-works-section{
+    &.other-works-section {
         background-color: $greylight;
     }
     .announce {
