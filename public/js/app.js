@@ -72171,11 +72171,7 @@ function Waterfall(props) {
     className: "waterfall-filterable col-60 col-md-15"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_sticky_el__WEBPACK_IMPORTED_MODULE_4___default.a, {
     boundaryElement: ".waterfall-filterable",
-    style: {
-      position: 'relative',
-      paddingTop: 80,
-      top: -80
-    }
+    className: "sticker"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     style: {
       position: 'relative'
