@@ -85105,7 +85105,21 @@ function Base(props) {
       return history.goBack();
     },
     className: "btn btn-default"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('GO_BACK')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    width: "24",
+    height: "24",
+    viewBox: "0 0 39 36",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M20.5946 3L6 18L20.5946 33",
+    stroke: "#1B292B",
+    strokeWidth: "8"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M7.62164 17.5946H38.4325",
+    stroke: "#1E2B32",
+    strokeWidth: "8"
+  })), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('GO_BACK')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, state.page.title))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"

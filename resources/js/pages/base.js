@@ -53,7 +53,25 @@ export default function Base(props) {
                             </div>
                         </div>
                         <hr />
-                        <div onClick={() => history.goBack()} className="btn btn-default">{__('GO_BACK')}</div>
+                        <div onClick={() => history.goBack()} className="btn btn-default">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 39 36"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M20.5946 3L6 18L20.5946 33"
+                                    stroke="#1B292B"
+                                    strokeWidth="8"
+                                />
+                                <path
+                                    d="M7.62164 17.5946H38.4325"
+                                    stroke="#1E2B32"
+                                    strokeWidth="8"
+                                />
+                            </svg>{__('GO_BACK')}</div>
                     </div>
                 </section>
                 <div className="sticky-section"><span>{state.page.title}</span></div>
