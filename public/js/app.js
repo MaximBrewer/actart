@@ -86861,9 +86861,9 @@ function News() {
         "xs": 4,
         "sm": 4,
         "md": 4,
-        "lg": 3,
-        "xl": 3,
-        "xxl": 4
+        "lg": 6,
+        "xl": 6,
+        "xxl": 8
       },
       view: {
         "xs": 1,
@@ -86885,54 +86885,7 @@ function News() {
     }
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('act•art news'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-    id: "gallery"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_moving_Gallery__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-    className: "blog-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "background-text"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('BLOG')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sticky-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "waterfall-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "act-waterfall"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_waterfall_WaterfallAjax__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    data: {
-      entity: "post",
-      action: "none",
-      category: "blog",
-      limit: {
-        "xs": 4,
-        "sm": 4,
-        "md": 4,
-        "lg": 3,
-        "xl": 3,
-        "xxl": 4
-      },
-      view: {
-        "xs": 1,
-        "sm": 2,
-        "md": 2,
-        "lg": 3,
-        "xl": 3,
-        "xxl": 4
-      },
-      scroll: {
-        "xs": 4,
-        "sm": 4,
-        "md": 4,
-        "lg": 3,
-        "xl": 3,
-        "xxl": 4
-      },
-      tizerView: "blog"
-    }
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sticky-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('act•art blog'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_marquee__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('act•art news'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_marquee__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 }
 
 /***/ }),

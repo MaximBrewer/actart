@@ -22,7 +22,7 @@ export default function News() {
                                     entity: "post",
                                     action: "add",
                                     category: "news",
-                                    limit: { "xs": 4, "sm": 4, "md": 4, "lg": 3, "xl": 3, "xxl": 4 },
+                                    limit: { "xs": 4, "sm": 4, "md": 4, "lg": 6, "xl": 6, "xxl": 8 },
                                     view: { "xs": 1, "sm": 2, "md": 2, "lg": 3, "xl": 3, "xxl": 4 },
                                     scroll: { "xs": 4, "sm": 4, "md": 4, "lg": 3, "xl": 3, "xxl": 4 },
                                     tizerView: "news"
@@ -33,7 +33,7 @@ export default function News() {
                     <div className="sticky-section"><span>{__('act•art news')}</span></div>
                 </div>
             </section>
-            <section id="gallery">
+            {/* <section id="gallery">
                 <MovingGallery />
             </section>
             <section className="blog-section">
@@ -46,7 +46,7 @@ export default function News() {
                                     entity: "post",
                                     action: "none",
                                     category: "blog",
-                                    limit: { "xs": 4, "sm": 4, "md": 4, "lg": 3, "xl": 3, "xxl": 4 },
+                                    limit: { "xs": 4, "sm": 4, "md": 4, "lg": 6, "xl": 6, "xxl": 8 },
                                     view: { "xs": 1, "sm": 2, "md": 2, "lg": 3, "xl": 3, "xxl": 4 },
                                     scroll: { "xs": 4, "sm": 4, "md": 4, "lg": 3, "xl": 3, "xxl": 4 },
                                     tizerView: "blog"
@@ -56,7 +56,7 @@ export default function News() {
                     </div>
                     <div className="sticky-section"><span>{__('act•art blog')}</span></div>
                 </div>
-            </section>
+            </section> */}
             <Marquee />
         </React.Fragment>
     );
