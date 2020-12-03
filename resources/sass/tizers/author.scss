@@ -49,6 +49,17 @@
     }
     .professions {
         font-size: 0.875rem;
+        line-height: 1.125rem;
+        height: 2.25rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -moz-box;
+        -moz-box-orient: vertical;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        line-clamp: 2;
+        box-orient: vertical;
     }
     .address,
     .exhibit {
