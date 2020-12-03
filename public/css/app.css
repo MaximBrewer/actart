@@ -22851,6 +22851,12 @@ a.lot-item:hover {
   display: block;
 }
 
+.sticker {
+  position: relative;
+  padding-top: 80px;
+  top: -80px;
+}
+
 .block-loading {
   position: relative;
   background-color: #f1f1f1;
