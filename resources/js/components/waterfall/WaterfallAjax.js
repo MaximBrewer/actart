@@ -19,7 +19,7 @@ export default function WaterfallAjax(props) {
         sortBy: "id",
         order: "asc",
         filter: {
-            status: !!data.archive ? "archive" : "available"
+            status: !!data.archive ? "gsold" : "available"
         }
     });
 
