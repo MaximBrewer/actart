@@ -22354,9 +22354,11 @@ a.lot-item:hover {
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
   line-height: 1.25rem;
+  white-space: nowrap;
   height: 1.25rem;
   text-overflow: ellipsis;
   overflow: hidden;
+  display: block;
 }
 
 .author-item .subtitle {
