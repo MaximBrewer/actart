@@ -85104,7 +85104,7 @@ function Base(props) {
     onClick: function onClick() {
       return history.goBack();
     },
-    className: "btn btn-default"
+    className: "btn btn-default d-inline-flex justify-content-center align-items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     width: "24",
     height: "24",
@@ -85119,7 +85119,7 @@ function Base(props) {
     d: "M7.62164 17.5946H38.4325",
     stroke: "#1E2B32",
     strokeWidth: "8"
-  })), Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('GO_BACK')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), "\xA0\xA0", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('GO_BACK')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, state.page.title))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"

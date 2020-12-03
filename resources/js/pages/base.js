@@ -53,7 +53,7 @@ export default function Base(props) {
                             </div>
                         </div>
                         <hr />
-                        <div onClick={() => history.goBack()} className="btn btn-default">
+                        <div onClick={() => history.goBack()} className="btn btn-default d-inline-flex justify-content-center align-items-center">
                             <svg
                                 width="24"
                                 height="24"
@@ -71,7 +71,7 @@ export default function Base(props) {
                                     stroke="#1E2B32"
                                     strokeWidth="8"
                                 />
-                            </svg>{__('GO_BACK')}</div>
+                            </svg>&nbsp;&nbsp;{__('GO_BACK')}</div>
                     </div>
                 </section>
                 <div className="sticky-section"><span>{state.page.title}</span></div>
