@@ -22608,18 +22608,6 @@ a.lot-item:hover {
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .event-item {
-    width: 50%;
-  }
-}
-
-@media (min-width: 992px) {
-  .event-item {
-    width: auto;
-  }
-}
-
 .event-slide {
   padding: 1rem;
   background-color: #ffffff;

@@ -60,7 +60,6 @@
         font-weight: bold;
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
-        width: 50%;
         &:nth-child(2n + 1) {
         }
         &:nth-child(2n) {
@@ -69,7 +68,6 @@
         }
     }
     @media (min-width: map.get($grid-breakpoints, "lg")) {
-        width: auto;
         &:nth-child(2n + 1) {
         }
         &:nth-child(2n) {
