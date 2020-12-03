@@ -68,6 +68,7 @@
         "react-stack-grid": "^0.7.1",
         "react-sticky": "^6.0.3",
         "react-sticky-el": "^2.0.5",
+        "react-stickynode": "^3.0.4",
         "react-stonecutter": "^0.3.10",
         "react-use": "^15.3.4",
         "react-yandex-share": "^1.0.7",

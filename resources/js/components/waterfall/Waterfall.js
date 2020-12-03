@@ -3,7 +3,8 @@ import EntityGrid from "./EntityGrid";
 import { Link, useLocation } from "react-router-dom";
 import __ from "../../utils/trans";
 // import { StickyContainer, Sticky } from 'react-sticky';
-import Sticky from 'react-sticky-el';
+// import Sticky from 'react-sticky-el';
+import Sticky from 'react-stickynode';
 
 export default function Waterfall(props) {
     const { pathname } = useLocation();
@@ -283,7 +284,7 @@ export default function Waterfall(props) {
             </div>
             {data.filterable && (
                 <div className="waterfall-filterable col-60 col-md-15">
-                    <Sticky boundaryElement=".waterfall-filterable" className={`sticker`}>
+                    <Sticky top='#header-top' bottomBoundary=".waterfall-filterable">
                         <ul style={{ position: 'relative' }}>
                             {state.options.map((option, option_index) => (
                                 <li key={option_index}>
