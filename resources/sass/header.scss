@@ -67,6 +67,8 @@
         }
         .logo {
             display: flex;
+            color: $cyandark;
+            font-weight: bold;
         }
         + section {
             display: none;
