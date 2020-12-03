@@ -38,7 +38,7 @@ export default function BlogItem(props) {
                                 <h2 className="h2">{state.post.title}</h2>
                                 <hr />
                                 <p className="sub_h2 d-none d-xl-block">
-                                    {Parser(state.post.excerpt)}
+                                    <Parser body={state.post.excerpt} {...props} />
                                 </p>
                             </div>
                             <div className="col-xl-30 col-xxl-32 d-none d-xl-block">

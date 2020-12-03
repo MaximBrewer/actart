@@ -36,7 +36,7 @@ export default function NewsItem(props) {
                                 <div className="col-xl-30 col-xxl-28">
                                     <h2 className="h2">{state.post.title}</h2>
                                     <hr />
-                                    <p className="sub_h2 d-none d-xl-block">{Parser(state.post.excerpt)}</p>
+                                    <p className="sub_h2 d-none d-xl-block"><Parser body={state.post.excerpt} {...props} /></p>
                                 </div>
                                 <div className="col-xl-30 col-xxl-32 d-none d-xl-block">
                                     <div className="image-wrapper" style={{ backgroundImage: `url(` + state.post.image + `)` }}></div>
