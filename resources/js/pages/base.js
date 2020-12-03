@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useParams, useLocation, history } from "react-router-dom";
 import __ from '../utils/trans';
 import YandexShare from 'react-yandex-share';
 import Parser from "../utils/parser";
@@ -48,9 +48,11 @@ export default function Base(props) {
                         </div>
                         <div className="row">
                             <div className="col-60">
-                                    <Parser body={state.page.body} {...props} />
+                                <Parser body={state.page.body} {...props} />
                             </div>
                         </div>
+                        <hr />
+                        <div onClick={() => history.goBack()}>{__('GO_BACK')}</div>
                     </div>
                 </section>
                 <div className="sticky-section"><span>{state.page.title}</span></div>
