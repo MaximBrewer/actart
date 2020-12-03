@@ -53,7 +53,7 @@ export default function Base(props) {
                             </div>
                         </div>
                         <hr />
-                        <div onClick={() => history.goBack()}>{__('GO_BACK')}</div>
+                        <div onClick={() => history.goBack()} className="btn btn-default">{__('GO_BACK')}</div>
                     </div>
                 </section>
                 <div className="sticky-section"><span>{state.page.title}</span></div>
