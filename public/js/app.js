@@ -82688,7 +82688,7 @@ function Close() {
 function TopLogo() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     width: "214",
-    height: "29",
+    height: "30",
     viewBox: "0 0 214 29",
     xmlns: "http://www.w3.org/2000/svg"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
