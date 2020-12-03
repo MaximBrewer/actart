@@ -18930,7 +18930,7 @@ iframe {
 
 .home-banner:before {
   display: block;
-  width: calc(50% + 25rem);
+  width: calc(100% - 10rem);
   height: 80%;
   position: absolute;
   top: 0;
@@ -20182,7 +20182,7 @@ iframe {
 }
 
 .gallery-section .gallery-works ul li ul li a {
-  font-size: 0.875rem;
+  font-size: 1.125rem;
   line-height: 1rem;
   font-weight: 400;
   text-transform: none;
