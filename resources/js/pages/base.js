@@ -51,11 +51,6 @@ export default function Base(props) {
                                     <Parser body={state.page.body} {...props} />
                             </div>
                         </div>
-                        <hr />
-                        <div className="sharing">
-                            <p>{__('Liked? Share with your friends!')}</p>
-                            <YandexShare />
-                        </div>
                     </div>
                 </section>
                 <div className="sticky-section"><span>{state.page.title}</span></div>
