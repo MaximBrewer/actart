@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useParams, useLocation, history } from "react-router-dom";
+import { Link, useParams, useLocation, useHistory } from "react-router-dom";
 import __ from '../utils/trans';
 import YandexShare from 'react-yandex-share';
 import Parser from "../utils/parser";
@@ -10,6 +10,7 @@ export default function Base(props) {
     const [state, setState] = useState({ page: null });
 
     const { pathname } = useLocation();
+    let history = useHistory();
 
     useEffect(() => {
         setState((prevState) => {
