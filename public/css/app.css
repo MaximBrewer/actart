@@ -17866,6 +17866,7 @@ iframe {
   display: flex;
   color: #2C5770;
   font-weight: bold;
+  line-height: 1rem;
 }
 
 .header .header-top + section {
