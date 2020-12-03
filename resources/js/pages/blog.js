@@ -27,9 +27,9 @@ export default function Blog() {
                                             xs: 4,
                                             sm: 4,
                                             md: 4,
-                                            lg: 3,
-                                            xl: 3,
-                                            xxl: 4
+                                            lg: 6,
+                                            xl: 6,
+                                            xxl: 6
                                         },
                                         view: {
                                             xs: 1,
@@ -37,7 +37,7 @@ export default function Blog() {
                                             md: 2,
                                             lg: 3,
                                             xl: 3,
-                                            xxl: 4
+                                            xxl: 3
                                         },
                                         scroll: {
                                             xs: 4,
@@ -45,7 +45,7 @@ export default function Blog() {
                                             md: 4,
                                             lg: 3,
                                             xl: 3,
-                                            xxl: 4
+                                            xxl: 3
                                         },
                                         tizerView: "news"
                                     }}
