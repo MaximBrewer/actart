@@ -18404,6 +18404,10 @@ iframe {
   margin-bottom: 0;
 }
 
+.footer-bottom .developers {
+  font-size: 0.75rem;
+}
+
 @media (min-width: 768px) {
   .footer-top {
     padding: 4rem 0 2rem;
