@@ -17496,7 +17496,11 @@ h6,
 
 .sticky-wrapper {
   position: relative;
-  margin: 2rem 0;
+  margin: 2rem 0 0;
+}
+
+.sticky-wrapper.sticky-wrapper-gallery {
+  margin: 6rem 0 0;
 }
 
 .color-inherit {
