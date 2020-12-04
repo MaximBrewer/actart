@@ -198,34 +198,6 @@ export default function Waterfall(props) {
                         <a
                             href="#"
                             className={
-                                state.sortBy == "price"
-                                    ? state.order == "asc"
-                                        ? `active asc`
-                                        : `active desc`
-                                    : ``
-                            }
-                            onClick={e => {
-                                e.preventDefault();
-                                setSortBy(
-                                    "price",
-                                    state.sortBy == "price" &&
-                                        state.order == "asc"
-                                        ? "desc"
-                                        : "asc"
-                                );
-                            }}
-                        >
-                            <span>{__("#BYPRICE#")}</span>
-                            <svg
-                                viewBox="0 0 18 18"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M9 18L0.339746 3L17.6603 3L9 18Z" />
-                            </svg>
-                        </a>
-                        <a
-                            href="#"
-                            className={
                                 state.sortBy == "author"
                                     ? state.order == "asc"
                                         ? `active asc`
@@ -254,6 +226,34 @@ export default function Waterfall(props) {
                         <a
                             href="#"
                             className={
+                                state.sortBy == "title"
+                                    ? state.order == "asc"
+                                        ? `active asc`
+                                        : `active desc`
+                                    : ``
+                            }
+                            onClick={e => {
+                                e.preventDefault();
+                                setSortBy(
+                                    "title",
+                                    state.sortBy == "title" &&
+                                        state.order == "asc"
+                                        ? "desc"
+                                        : "asc"
+                                );
+                            }}
+                        >
+                            <span>{__("#BYLOTNAME#")}</span>
+                            <svg
+                                viewBox="0 0 18 18"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M9 18L0.339746 3L17.6603 3L9 18Z" />
+                            </svg>
+                        </a>
+                        <a
+                            href="#"
+                            className={
                                 state.sortBy == "sort"
                                     ? state.order == "asc"
                                         ? `active asc`
@@ -272,6 +272,34 @@ export default function Waterfall(props) {
                             }}
                         >
                             <span>{__("SORT_BY_LOT_NUMBER")}</span>
+                            <svg
+                                viewBox="0 0 18 18"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M9 18L0.339746 3L17.6603 3L9 18Z" />
+                            </svg>
+                        </a>
+                        <a
+                            href="#"
+                            className={
+                                state.sortBy == "startPrice"
+                                    ? state.order == "asc"
+                                        ? `active asc`
+                                        : `active desc`
+                                    : ``
+                            }
+                            onClick={e => {
+                                e.preventDefault();
+                                setSortBy(
+                                    "startPrice",
+                                    state.sortBy == "startPrice" &&
+                                        state.order == "asc"
+                                        ? "desc"
+                                        : "asc"
+                                );
+                            }}
+                        >
+                            <span>{__("#BYPRICE#")}</span>
                             <svg
                                 viewBox="0 0 18 18"
                                 xmlns="http://www.w3.org/2000/svg"

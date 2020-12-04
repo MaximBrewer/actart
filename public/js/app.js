@@ -81026,18 +81026,6 @@ function Waterfall(props) {
     className: "sorting"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("Sort by"), ": "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    className: state.sortBy == "price" ? state.order == "asc" ? "active asc" : "active desc" : "",
-    onClick: function onClick(e) {
-      e.preventDefault();
-      setSortBy("price", state.sortBy == "price" && state.order == "asc" ? "desc" : "asc");
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("#BYPRICE#")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-    viewBox: "0 0 18 18",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    d: "M9 18L0.339746 3L17.6603 3L9 18Z"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
     className: state.sortBy == "author" ? state.order == "asc" ? "active asc" : "active desc" : "",
     onClick: function onClick(e) {
       e.preventDefault();
@@ -81050,12 +81038,36 @@ function Waterfall(props) {
     d: "M9 18L0.339746 3L17.6603 3L9 18Z"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
+    className: state.sortBy == "title" ? state.order == "asc" ? "active asc" : "active desc" : "",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      setSortBy("title", state.sortBy == "title" && state.order == "asc" ? "desc" : "asc");
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("#BYLOTNAME#")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    viewBox: "0 0 18 18",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M9 18L0.339746 3L17.6603 3L9 18Z"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
     className: state.sortBy == "sort" ? state.order == "asc" ? "active asc" : "active desc" : "",
     onClick: function onClick(e) {
       e.preventDefault();
       setSortBy("sort", state.sortBy == "sort" && state.order == "asc" ? "desc" : "asc");
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("SORT_BY_LOT_NUMBER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    viewBox: "0 0 18 18",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M9 18L0.339746 3L17.6603 3L9 18Z"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: state.sortBy == "startPrice" ? state.order == "asc" ? "active asc" : "active desc" : "",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      setSortBy("startPrice", state.sortBy == "startPrice" && state.order == "asc" ? "desc" : "asc");
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("#BYPRICE#")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 18 18",
     xmlns: "http://www.w3.org/2000/svg"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
