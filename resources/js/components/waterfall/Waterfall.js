@@ -299,7 +299,7 @@ export default function Waterfall(props) {
                                 );
                             }}
                         >
-                            <span>{__("#BYPRICE#")}</span>
+                            <span>{__("#BYSTARTPRICE#")}</span>
                             <svg
                                 viewBox="0 0 18 18"
                                 xmlns="http://www.w3.org/2000/svg"
