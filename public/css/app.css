@@ -20177,6 +20177,10 @@ iframe {
   color: #ff665e;
 }
 
+.gallery-section {
+  padding-top: 3rem;
+}
+
 .gallery-section .gallery-works .h2 {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
@@ -20403,7 +20407,7 @@ iframe {
 
   .gallery-section .background-text {
     color: #eceded;
-    top: 5.25rem;
+    top: -3rem;
     opacity: 1;
   }
 
@@ -20510,12 +20514,6 @@ iframe {
 }
 
 @media (min-width: 1600px) {
-  .gallery-section .background-text {
-    color: #eceded;
-    top: 5.25rem;
-    opacity: 1;
-  }
-
   .gallery-section .announce > div .h2,
   .gallery-section .announce > div .h3 {
     line-height: 3rem;
