@@ -77902,7 +77902,7 @@ function Category(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "h1"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('ONLINE-GALLERY')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "sub_h1 d-none d-xl-block"
+    className: "sub_h2 d-none d-xl-block"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('A permanent gallery-auction where you can purchase selected works of young Russian authors. Follow, choose, bargain, collect your collection. Weekly update.')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
     replace: true,
     to: "/how-to-buy",

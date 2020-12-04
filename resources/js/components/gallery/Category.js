@@ -27,7 +27,7 @@ export default function Category(props) {
                         <div className='row announce mb-5'>
                             <div className='col col-xl-40 col-xxl-38'>
                                 <h2 className='h1'>{__('ONLINE-GALLERY')}</h2>
-                                <div className='sub_h1 d-none d-xl-block'>
+                                <div className='sub_h2 d-none d-xl-block'>
                                     {__(
                                         'A permanent gallery-auction where you can purchase selected works of young Russian authors. Follow, choose, bargain, collect your collection. Weekly update.'
                                     )}
