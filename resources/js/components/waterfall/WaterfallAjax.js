@@ -272,7 +272,7 @@ export default function WaterfallAjax(props) {
                                 <path d="M9 18L0.339746 3L17.6603 3L9 18Z" />
                             </svg>
                         </a>
-                        {gallery ? '' : (
+                        {/* {gallery ? '' : (
                             <React.Fragment>
                                 <a
                                     href="#"
@@ -331,7 +331,7 @@ export default function WaterfallAjax(props) {
                                     </svg>
                                 </a>
                             </React.Fragment>
-                        )}
+                        )} */}
                     </div>
                 )}
             </div>
