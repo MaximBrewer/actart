@@ -81309,8 +81309,7 @@ function _arrayWithHoles(arr) {
 
 function WaterfallAjax(props) {
   var data = props.data,
-      query = props.query,
-      gallery = props.gallery;
+      query = props.query;
   data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
 
   var getPreviews = function getPreviews() {

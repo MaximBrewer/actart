@@ -3,7 +3,7 @@ import EntityGrid from "./EntityGrid";
 import __ from "../../utils/trans";
 
 export default function WaterfallAjax(props) {
-    const { data, query, gallery } = props;
+    const { data, query } = props;
     data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
 
     const getPreviews = () => {
