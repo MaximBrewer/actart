@@ -180,7 +180,7 @@ export default function Footer(props) {
                                     </a>
                                 </div> */}
                                 <div className="col-30 text-right">
-                                    <a className="color-inherit" target="_blank" href="//good-head.ru/">
+                                    <a className="color-inherit d-flex align-items-center " target="_blank" href="//good-head.ru/">
                                         <div className="pb-2">
                                             {__("DEVELOPMENT")}
                                         </div>
