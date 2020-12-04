@@ -167,9 +167,9 @@ export default function Footer(props) {
                         <div className="col-md-15">
                             <Unstyled items={window.App.menus.copyright} />
                         </div>
-                        <div className="col-md-25 col-xl-20">
+                        <div className="col-md-25 col-xl-20 developers">
                             <div className="row">
-                                <div className="col-30">
+                                {/* <div className="col-30">
                                     <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
                                         <div className="pb-2">
                                             {__("SITE_MADE_IN")}
@@ -178,7 +178,7 @@ export default function Footer(props) {
                                             <img src="/images/kuba-logo.png" alt="" style={{ width: "3rem", backgroundColor: "#ffffff" }} />
                                         </div>
                                     </a>
-                                </div>
+                                </div> */}
                                 <div className="col-30">
                                     <a className="color-inherit" target="_blank" href="//good-head.ru/">
                                         <div className="pb-2">
