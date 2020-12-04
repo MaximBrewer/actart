@@ -84617,7 +84617,7 @@ function AuctionsPage(props) {
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("REGULAR_AUCTION_TITLE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sub_h2 d-none d-xl-block"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("REGULAR_AUCTION_SUBTITLE"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col col-xl-20 col-xxl-22 d-none d-xl-block"
+    className: "col col-xl-20 col-xxl-22 d-none d-xl-flex justify-content-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_inview_monitor__WEBPACK_IMPORTED_MODULE_7___default.a, {
     classNameNotInView: "vis-hidden",
     classNameInView: "animate__animated animate__fadeInUp",

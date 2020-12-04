@@ -47,7 +47,7 @@ export default function AuctionsPage(props) {
                                     {__("REGULAR_AUCTION_SUBTITLE")}
                                 </div>
                             </div>
-                            <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
+                            <div className="col col-xl-20 col-xxl-22 d-none d-xl-flex justify-content-end">
                                 <InViewMonitor
                                     classNameNotInView='vis-hidden'
                                     classNameInView='animate__animated animate__fadeInUp'
