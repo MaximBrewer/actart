@@ -168,7 +168,7 @@ export default function Footer(props) {
                             <Unstyled items={window.App.menus.copyright} />
                         </div>
                         <div className="col-md-25 col-xl-20 developers">
-                            <div className="row">
+                            <div className="row justify-content-end">
                                 {/* <div className="col-30">
                                     <a className="color-inherit mr-2" target="_blank" href="//good-head.ru/">
                                         <div className="pb-2">
@@ -179,7 +179,7 @@ export default function Footer(props) {
                                         </div>
                                     </a>
                                 </div> */}
-                                <div className="col-30">
+                                <div className="col-30 text-right">
                                     <a className="color-inherit" target="_blank" href="//good-head.ru/">
                                         <div className="pb-2">
                                             {__("DEVELOPMENT")}
