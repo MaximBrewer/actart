@@ -21,8 +21,8 @@ export default function Category(props) {
         <React.Fragment>
             <Announce />
             <div className='sticky-wrapper sticky-wrapper-gallery'>
-                <section className='gallery-section'>
                     <div className='background-text'>{__('Gallery')}</div>
+                <section className='gallery-section'>
                     <div className='container'>
                         <div className='row announce mb-5'>
                             <div className='col col-xl-40 col-xxl-38'>
