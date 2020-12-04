@@ -47,34 +47,36 @@ export default function AuctionsPage(props) {
                                 </div>
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
-                                <a
-                                    className="see-other"
-                                    href="#"
-                                    onClick={e => scrollToElement(specialEl, e)}
+                                <InViewMonitor
+                                    classNameNotInView='vis-hidden'
+                                    classNameInView='animated fadeInUp'
                                 >
-                                    <div className="text-14">
-                                        {__("see also:")}
-                                    </div>
-                                    <div className="h5">
-                                        {__("THEMED_AUCTION_TITLE")}
-                                    </div>
-                                    <svg
-                                        viewBox="0 0 36 39"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
+                                    <a
+                                        className="see-other"
+                                        href="#"
+                                        onClick={e => scrollToElement(specialEl, e)}
                                     >
-                                        <path
-                                            d="M3 17.8378L18 32.4324L33 17.8378"
-                                            stroke="white"
-                                            strokeWidth="8"
-                                        />
-                                        <path
-                                            d="M17.5947 30.8108L17.5947 -2.2471e-05"
-                                            stroke="white"
-                                            strokeWidth="8"
-                                        />
-                                    </svg>
-                                </a>
+                                        <div className="h5">
+                                            {__("THEMED_AUCTION_TITLE")}
+                                        </div>
+                                        <svg
+                                            viewBox="0 0 36 39"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M3 17.8378L18 32.4324L33 17.8378"
+                                                stroke="white"
+                                                strokeWidth="8"
+                                            />
+                                            <path
+                                                d="M17.5947 30.8108L17.5947 -2.2471e-05"
+                                                stroke="white"
+                                                strokeWidth="8"
+                                            />
+                                        </svg>
+                                    </a>
+                                </InViewMonitor>
                             </div>
                         </div>
                         <div className="act-auctions-list">
@@ -95,34 +97,36 @@ export default function AuctionsPage(props) {
                                 </div>
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
-                                <a
-                                    className="see-other"
-                                    href="#"
-                                    onClick={e => scrollToElement(regularEl, e)}
+                                <InViewMonitor
+                                    classNameNotInView='vis-hidden'
+                                    classNameInView='animated fadeInUp'
                                 >
-                                    <div className="text-14">
-                                        {__("see also:")}
-                                    </div>
-                                    <div className="h5">
-                                        {__("REGULAR_AUCTION_TITLE")}
-                                    </div>
-                                    <svg
-                                        viewBox="0 0 36 39"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
+                                    <a
+                                        className="see-other"
+                                        href="#"
+                                        onClick={e => scrollToElement(regularEl, e)}
                                     >
-                                        <path
-                                            d="M33 20.5946L18 6L3 20.5946"
-                                            stroke="white"
-                                            strokeWidth="8"
-                                        />
-                                        <path
-                                            d="M18.4053 7.62158L18.4053 38.4324"
-                                            stroke="white"
-                                            strokeWidth="8"
-                                        />
-                                    </svg>
-                                </a>
+                                        <div className="h5">
+                                            {__("REGULAR_AUCTION_TITLE")}
+                                        </div>
+                                        <svg
+                                            viewBox="0 0 36 39"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M33 20.5946L18 6L3 20.5946"
+                                                stroke="white"
+                                                strokeWidth="8"
+                                            />
+                                            <path
+                                                d="M18.4053 7.62158L18.4053 38.4324"
+                                                stroke="white"
+                                                strokeWidth="8"
+                                            />
+                                        </svg>
+                                    </a>
+                                </InViewMonitor>
                             </div>
                         </div>
                         <div className="act-auctions-list" data-attr="special">

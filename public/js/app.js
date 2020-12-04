@@ -84342,6 +84342,9 @@ function AuctionsPage(props) {
     className: "sub_h2 d-none d-xl-block"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("REGULAR_AUCTION_SUBTITLE"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col col-xl-20 col-xxl-22 d-none d-xl-block"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(InViewMonitor, {
+    classNameNotInView: "vis-hidden",
+    classNameInView: "animated fadeInUp"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "see-other",
     href: "#",
@@ -84349,8 +84352,6 @@ function AuctionsPage(props) {
       return scrollToElement(specialEl, e);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-14"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("see also:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h5"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("THEMED_AUCTION_TITLE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 36 39",
@@ -84364,7 +84365,7 @@ function AuctionsPage(props) {
     d: "M17.5947 30.8108L17.5947 -2.2471e-05",
     stroke: "white",
     strokeWidth: "8"
-  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "act-auctions-list"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auction_AuctionsList__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({
     attr: "regular"
@@ -84383,6 +84384,9 @@ function AuctionsPage(props) {
     className: "sub_h2 d-none d-xl-block"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("THEMED_AUCTION_SUBTITLE"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col col-xl-20 col-xxl-22 d-none d-xl-block"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(InViewMonitor, {
+    classNameNotInView: "vis-hidden",
+    classNameInView: "animated fadeInUp"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "see-other",
     href: "#",
@@ -84390,8 +84394,6 @@ function AuctionsPage(props) {
       return scrollToElement(regularEl, e);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-14"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("see also:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h5"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("REGULAR_AUCTION_TITLE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 36 39",
@@ -84405,7 +84407,7 @@ function AuctionsPage(props) {
     d: "M18.4053 7.62158L18.4053 38.4324",
     stroke: "white",
     strokeWidth: "8"
-  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "act-auctions-list",
     "data-attr": "special"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auction_AuctionsList__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({
