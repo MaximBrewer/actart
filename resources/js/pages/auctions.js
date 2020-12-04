@@ -49,35 +49,31 @@ export default function AuctionsPage(props) {
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-flex justify-content-end">
                                 <InViewMonitor
-                                    classNameNotInView='vis-hidden'
-                                    classNameInView='animate__animated animate__fadeInRight'
+                                    classNameNotInView='vis-hidden see-other'
+                                    classNameInView='animate__animated animate__fadeInRight see-other'
                                     toggleClassNameOnInView={true}
+                                    href="#"
+                                    onClick={e => scrollToElement(specialEl, e)}
                                 >
-                                    <a
-                                        className="see-other"
-                                        href="#"
-                                        onClick={e => scrollToElement(specialEl, e)}
+                                    <div className="h5">
+                                        {__("THEMED_AUCTION_TITLE")}
+                                    </div>
+                                    <svg
+                                        viewBox="0 0 36 39"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
                                     >
-                                        <div className="h5">
-                                            {__("THEMED_AUCTION_TITLE")}
-                                        </div>
-                                        <svg
-                                            viewBox="0 0 36 39"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M3 17.8378L18 32.4324L33 17.8378"
-                                                stroke="white"
-                                                strokeWidth="8"
-                                            />
-                                            <path
-                                                d="M17.5947 30.8108L17.5947 -2.2471e-05"
-                                                stroke="white"
-                                                strokeWidth="8"
-                                            />
-                                        </svg>
-                                    </a>
+                                        <path
+                                            d="M3 17.8378L18 32.4324L33 17.8378"
+                                            stroke="white"
+                                            strokeWidth="8"
+                                        />
+                                        <path
+                                            d="M17.5947 30.8108L17.5947 -2.2471e-05"
+                                            stroke="white"
+                                            strokeWidth="8"
+                                        />
+                                    </svg>
                                 </InViewMonitor>
                             </div>
                         </div>
