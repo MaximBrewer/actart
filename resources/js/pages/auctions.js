@@ -5,6 +5,7 @@ import Marquee from "../components/marquee";
 import Subscribe from "../components/subscribe";
 import useDocumentTitle from "../components/document-title";
 import AuctionsList from "../components/auction/AuctionsList";
+import InViewMonitor from "react-inview-monitor"
 
 export default function AuctionsPage(props) {
     useDocumentTitle(__("AUCTIONS_PAGE_TITLE"));
