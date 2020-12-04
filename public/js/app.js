@@ -77452,9 +77452,9 @@ function Footer(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row justify-content-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-30 text-right"
+    className: "col-md-30 text-center text-md-right"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "color-inherit d-flex align-items-center ",
+    className: "color-inherit d-flex align-items-center justify-content-center",
     target: "_blank",
     href: "//good-head.ru/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

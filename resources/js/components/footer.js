@@ -179,8 +179,8 @@ export default function Footer(props) {
                                         </div>
                                     </a>
                                 </div> */}
-                                <div className="col-30 text-right">
-                                    <a className="color-inherit d-flex align-items-center " target="_blank" href="//good-head.ru/">
+                                <div className="col-md-30 text-center text-md-right">
+                                    <a className="color-inherit d-flex align-items-center justify-content-center" target="_blank" href="//good-head.ru/">
                                         <div className="pb-2">
                                             {__("DEVELOPMENT")}
                                         </div>
