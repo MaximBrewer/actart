@@ -106,31 +106,33 @@ export default function AuctionsPage(props) {
                                     classNameInView='animate__animated animate__fadeInRight'
                                     toggleClassNameOnInView={true}
                                 >
-                                    <a
-                                        className="see-other"
-                                        href="#"
-                                        onClick={e => scrollToElement(regularEl, e)}
-                                    >
-                                        <div className="h5">
-                                            {__("REGULAR_AUCTION_TITLE")}
-                                        </div>
-                                        <svg
-                                            viewBox="0 0 36 39"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
+                                    <div className="d-flex justify-content-end">
+                                        <a
+                                            className="see-other"
+                                            href="#"
+                                            onClick={e => scrollToElement(regularEl, e)}
                                         >
-                                            <path
-                                                d="M33 20.5946L18 6L3 20.5946"
-                                                stroke="white"
-                                                strokeWidth="8"
-                                            />
-                                            <path
-                                                d="M18.4053 7.62158L18.4053 38.4324"
-                                                stroke="white"
-                                                strokeWidth="8"
-                                            />
-                                        </svg>
-                                    </a>
+                                            <div className="h5">
+                                                {__("REGULAR_AUCTION_TITLE")}
+                                            </div>
+                                            <svg
+                                                viewBox="0 0 36 39"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M33 20.5946L18 6L3 20.5946"
+                                                    stroke="white"
+                                                    strokeWidth="8"
+                                                />
+                                                <path
+                                                    d="M18.4053 7.62158L18.4053 38.4324"
+                                                    stroke="white"
+                                                    strokeWidth="8"
+                                                />
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </InViewMonitor>
                             </div>
                         </div>

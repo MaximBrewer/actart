@@ -84667,6 +84667,8 @@ function AuctionsPage(props) {
     classNameNotInView: "vis-hidden",
     classNameInView: "animate__animated animate__fadeInRight",
     toggleClassNameOnInView: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "see-other",
     href: "#",
@@ -84687,7 +84689,7 @@ function AuctionsPage(props) {
     d: "M18.4053 7.62158L18.4053 38.4324",
     stroke: "white",
     strokeWidth: "8"
-  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "act-auctions-list",
     "data-attr": "special"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_auction_AuctionsList__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({
