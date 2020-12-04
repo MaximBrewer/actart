@@ -72724,7 +72724,7 @@ function Auction(props) {
     auction: state.auction
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, state.auction.title))))) : "";
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, state.auction.status === 'finished' ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])('ARCHIVE_OF_AUCTIONS') : state.auction.title))))) : "";
 }
 
 /***/ }),

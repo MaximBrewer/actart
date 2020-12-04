@@ -172,7 +172,7 @@ export default function Auction(props) {
                         </div>
                     </div>
                     <div className="sticky-section">
-                        <span>{state.auction.title}</span>
+                        <span>{state.auction.status === 'finished' ? __('ARCHIVE_OF_AUCTIONS') : state.auction.title}</span>
                     </div>
                 </div>
             </div>
