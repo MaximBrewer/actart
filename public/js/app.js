@@ -81309,7 +81309,8 @@ function _arrayWithHoles(arr) {
 
 function WaterfallAjax(props) {
   var data = props.data,
-      query = props.query;
+      query = props.query,
+      gallery = props.gallery;
   data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
 
   var getPreviews = function getPreviews() {
@@ -81537,24 +81538,36 @@ function WaterfallAjax(props) {
     className: "sorting"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Sort by"), ": "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    className: state.sortBy == "price" ? state.order == "asc" ? "active asc" : "active desc" : "",
-    onClick: function onClick(e) {
-      e.preventDefault();
-      setSortBy("price", state.sortBy == "price" && state.order == "asc" ? "desc" : "asc");
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#BYPRICE#")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-    viewBox: "0 0 18 18",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    d: "M9 18L0.339746 3L17.6603 3L9 18Z"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
     className: state.sortBy == "author" ? state.order == "asc" ? "active asc" : "active desc" : "",
     onClick: function onClick(e) {
       e.preventDefault();
       setSortBy("author", state.sortBy == "author" && state.order == "asc" ? "desc" : "asc");
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#BYAUTHOR#")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    viewBox: "0 0 18 18",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M9 18L0.339746 3L17.6603 3L9 18Z"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: state.sortBy == "title" ? state.order == "asc" ? "active asc" : "active desc" : "",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      setSortBy("title", state.sortBy == "title" && state.order == "asc" ? "desc" : "asc");
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#BYLOTNAME#")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    viewBox: "0 0 18 18",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M9 18L0.339746 3L17.6603 3L9 18Z"
+  }))), gallery ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: state.sortBy == "price" ? state.order == "asc" ? "active asc" : "active desc" : "",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      setSortBy("price", state.sortBy == "price" && state.order == "asc" ? "desc" : "asc");
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#BYPRICE#")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 18 18",
     xmlns: "http://www.w3.org/2000/svg"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
@@ -81571,7 +81584,7 @@ function WaterfallAjax(props) {
     xmlns: "http://www.w3.org/2000/svg"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
     d: "M9 18L0.339746 3L17.6603 3L9 18Z"
-  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-60 stack-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EntityGrid__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
     columns: columns,
