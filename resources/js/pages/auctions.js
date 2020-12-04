@@ -50,7 +50,7 @@ export default function AuctionsPage(props) {
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
                                 <InViewMonitor
                                     classNameNotInView='vis-hidden'
-                                    classNameInView='animated fadeInUp'
+                                    classNameInView='animate__animated animate__fadeInUp'
                                     toggleClassNameOnInView={true}
                                 >
                                     <a

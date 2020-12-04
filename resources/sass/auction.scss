@@ -54,10 +54,10 @@
     @media (min-width: map.get($grid-breakpoints, "xxl")) {
     }
 }
+.vis-hidden {
+    display: none;
+}
 .see-other {
-    &.vis-hidden{
-        display: none;
-    }
     width: 14rem;
     height: 14rem;
     border-radius: 50%;
