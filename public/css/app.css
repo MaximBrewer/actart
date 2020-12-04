@@ -20101,8 +20101,8 @@ iframe {
 }
 
 .see-other {
-  width: 14rem;
-  height: 14rem;
+  width: 16rem;
+  height: 16rem;
   border-radius: 50%;
   display: flex;
   text-decoration: none !important;
@@ -20118,7 +20118,7 @@ iframe {
 
 .see-other .h5 {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   max-width: 80%;
   text-transform: uppercase;
@@ -20128,7 +20128,7 @@ iframe {
   position: absolute;
   width: 2rem;
   height: 2rem;
-  bottom: 2.5rem;
+  bottom: 3.5rem;
   left: 50%;
   transform: translateX(-50%);
 }
