@@ -51,6 +51,7 @@ export default function AuctionsPage(props) {
                                 <InViewMonitor
                                     classNameNotInView='vis-hidden'
                                     classNameInView='animated fadeInUp'
+                                    repeatOnInView={true}
                                 >
                                     <a
                                         className="see-other"
@@ -101,6 +102,7 @@ export default function AuctionsPage(props) {
                                 <InViewMonitor
                                     classNameNotInView='vis-hidden'
                                     classNameInView='animated fadeInUp'
+                                    repeatOnInView={true}
                                 >
                                     <a
                                         className="see-other"
