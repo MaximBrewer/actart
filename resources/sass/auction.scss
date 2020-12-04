@@ -65,6 +65,8 @@
     justify-content: center;
     position: relative;
     margin-right: -3rem;
+    --widthA: 100vw;
+    --widthB: 2vw;
     top: 0;
     float: right;
     .h5 {
@@ -88,6 +90,18 @@
         max-width: 80%;
         margin-bottom: 1rem;
         font-size: 0.875rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+        margin-right: calc((map.get($grid-breakpoints, "sm") - var(--widthA)) / 2 + var(--widthB));
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        margin-right: calc((map.get($grid-breakpoints, "md") - var(--widthA)) / 2 + var(--widthB));
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        margin-right: calc((map.get($grid-breakpoints, "xl") - var(--widthA)) / 2 + var(--widthB));
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        margin-right: calc((map.get($grid-breakpoints, "xxl") - var(--widthA)) / 2 + var(--widthB));
     }
 }
 .regular-list {

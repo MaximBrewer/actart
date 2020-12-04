@@ -20101,6 +20101,8 @@ iframe {
   justify-content: center;
   position: relative;
   margin-right: -3rem;
+  --widthA: 100vw;
+  --widthB: 2vw;
   top: 0;
   float: right;
 }
@@ -20128,6 +20130,30 @@ iframe {
   max-width: 80%;
   margin-bottom: 1rem;
   font-size: 0.875rem;
+}
+
+@media (min-width: 576px) {
+  .see-other {
+    margin-right: calc((map.get($grid-breakpoints, "sm") - var(--widthA)) / 2 + var(--widthB));
+  }
+}
+
+@media (min-width: 768px) {
+  .see-other {
+    margin-right: calc((map.get($grid-breakpoints, "md") - var(--widthA)) / 2 + var(--widthB));
+  }
+}
+
+@media (min-width: 1280px) {
+  .see-other {
+    margin-right: calc((map.get($grid-breakpoints, "xl") - var(--widthA)) / 2 + var(--widthB));
+  }
+}
+
+@media (min-width: 1600px) {
+  .see-other {
+    margin-right: calc((map.get($grid-breakpoints, "xxl") - var(--widthA)) / 2 + var(--widthB));
+  }
 }
 
 .regular-list {
