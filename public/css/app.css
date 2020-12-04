@@ -20132,27 +20132,9 @@ iframe {
   font-size: 0.875rem;
 }
 
-@media (min-width: 0) {
-  .see-other {
-    margin-right: calc((960px - var(--widthA)) / 2 + var(--widthB));
-  }
-}
-
-@media (min-width: 576px) {
-  .see-other {
-    margin-right: calc((540px - var(--widthA)) / 2 + var(--widthB));
-  }
-}
-
-@media (min-width: 768px) {
-  .see-other {
-    margin-right: calc((720px - var(--widthA)) / 2 + var(--widthB));
-  }
-}
-
 @media (min-width: 1280px) {
   .see-other {
-    margin-right: calc((960px - var(--widthA)) / 2 + var(--widthB));
+    margin-right: calc((1160px - var(--widthA)) / 2 + var(--widthB));
   }
 }
 

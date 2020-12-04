@@ -91,17 +91,8 @@
         margin-bottom: 1rem;
         font-size: 0.875rem;
     }
-    @media (min-width: map.get($grid-breakpoints, "xs")) {
-        margin-right: calc((960px - var(--widthA)) / 2 + var(--widthB));
-    }
-    @media (min-width: map.get($grid-breakpoints, "sm")) {
-        margin-right: calc((540px - var(--widthA)) / 2 + var(--widthB));
-    }
-    @media (min-width: map.get($grid-breakpoints, "md")) {
-        margin-right: calc((720px - var(--widthA)) / 2 + var(--widthB));
-    }
     @media (min-width: map.get($grid-breakpoints, "xl")) {
-        margin-right: calc((960px - var(--widthA)) / 2 + var(--widthB));
+        margin-right: calc((1160px - var(--widthA)) / 2 + var(--widthB));
     }
     @media (min-width: map.get($grid-breakpoints, "xxl")) {
         margin-right: calc((1280px - var(--widthA)) / 2 + var(--widthB));
