@@ -1,6 +1,6 @@
 @use "sass:map";
 .gallery-section {
-    padding-top: 3rem;
+    padding-top: 4rem;
     .gallery-works {
         .h2 {
             padding-bottom: 1rem;
@@ -201,7 +201,7 @@
         }
         .background-text {
             color: $fonlight;
-            top: -3rem;
+            top: 0rem;
             opacity: 1;
         }
         .announce {

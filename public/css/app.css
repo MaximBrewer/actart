@@ -20178,7 +20178,7 @@ iframe {
 }
 
 .gallery-section {
-  padding-top: 3rem;
+  padding-top: 4rem;
 }
 
 .gallery-section .gallery-works .h2 {
@@ -20407,7 +20407,7 @@ iframe {
 
   .gallery-section .background-text {
     color: #eceded;
-    top: -3rem;
+    top: 0rem;
     opacity: 1;
   }
 
