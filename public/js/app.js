@@ -77848,8 +77848,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
-/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/document-title */ "./resources/js/components/document-title.js");
+/* harmony import */ var _components_announce__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/announce */ "./resources/js/components/announce.js");
+/* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/document-title */ "./resources/js/components/document-title.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -77873,8 +77874,9 @@ function _extends() {
 
 
 
+
 function Category(props) {
-  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('GALLERY_PAGE_TITLE'));
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('GALLERY_PAGE_TITLE'));
 
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
       id = _useParams.id;
@@ -77885,13 +77887,13 @@ function Category(props) {
     id && scrollToElement(galEl);
   }, [id]);
   var galEl = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "gallery-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "background-text"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Gallery')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('Gallery')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row announce mb-5"
@@ -77899,17 +77901,17 @@ function Category(props) {
     className: "col col-xl-40 col-xxl-38"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "h1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('ONLINE-GALLERY')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('ONLINE-GALLERY')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sub_h1 d-none d-xl-block"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('A permanent gallery-auction where you can purchase selected works of young Russian authors. Follow, choose, bargain, collect your collection. Weekly update.')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('A permanent gallery-auction where you can purchase selected works of young Russian authors. Follow, choose, bargain, collect your collection. Weekly update.')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
     replace: true,
     to: "/how-to-buy",
     className: "h5 h5_underline d-none d-xl-block pt-4"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('How to buy'), "?"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('How to buy'), "?"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "popular-categories"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "h4"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Popular Categories')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('Popular Categories')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-between categories"
   }, window.App.popular.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -77927,7 +77929,7 @@ function Category(props) {
     ref: galEl
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h2"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('Works for sale')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('Works for sale')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "gallery-works-list"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, props, {
     items: window.App.gallery,
@@ -77951,9 +77953,9 @@ function Category(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
     to: "/gallery",
     className: "btn btn-default"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('BTN_BACK_TO_GALLERY'))) : "")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('BTN_BACK_TO_GALLERY'))) : "")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])('works for sale'))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])('works for sale')))));
 }
 
 /***/ }),
