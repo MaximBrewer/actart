@@ -20096,6 +20096,10 @@ iframe {
   }
 }
 
+.vis-hidden {
+  display: none;
+}
+
 .see-other {
   width: 14rem;
   height: 14rem;
@@ -20111,10 +20115,6 @@ iframe {
   --widthB: 2vw;
   top: 0;
   float: right;
-}
-
-.see-other.vis-hidden {
-  display: none;
 }
 
 .see-other .h5 {
