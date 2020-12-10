@@ -73570,7 +73570,9 @@ function Auctions(props) {
         }
       }
 
-      console.log(auctions);
+      console.log(auctions, update, prevState, _objectSpread(_objectSpread({}, prevState), {}, {
+        auctions: auctions
+      }));
       return update ? _objectSpread(_objectSpread({}, prevState), {}, {
         auctions: auctions
       }) : prevState;

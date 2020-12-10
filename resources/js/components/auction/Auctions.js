@@ -24,12 +24,15 @@ export default function Auctions(props) {
                     update = true;
                 }
             }
-        console.log(auctions)
+            console.log(auctions, update, prevState, {
+                ...prevState,
+                auctions
+            })
             return update
                 ? {
-                      ...prevState,
-                      auctions
-                  }
+                    ...prevState,
+                    auctions
+                }
                 : prevState;
         });
     };
@@ -143,16 +146,16 @@ export default function Auctions(props) {
                                             {...props}
                                         />
                                     ) : (
-                                        ``
-                                    )}
+                                            ``
+                                        )}
                                     {item.status == "started" ? (
                                         <AuctionPreviewLeftOnline
                                             auction={item}
                                             {...props}
                                         />
                                     ) : (
-                                        ``
-                                    )}
+                                            ``
+                                        )}
                                 </div>
                             ))}
                         </Slider>
@@ -169,16 +172,16 @@ export default function Auctions(props) {
                                             {...props}
                                         />
                                     ) : (
-                                        ``
-                                    )}
+                                            ``
+                                        )}
                                     {item.status == "started" ? (
                                         <AuctionPreviewRightOnline
                                             auction={item}
                                             {...props}
                                         />
                                     ) : (
-                                        ``
-                                    )}
+                                            ``
+                                        )}
                                 </div>
                             ))}
                         </Slider>
