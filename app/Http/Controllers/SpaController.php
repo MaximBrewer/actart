@@ -82,12 +82,22 @@ class SpaController extends Controller
                 ->get()
         );
 
+        $ticker = [
+            'picture' => "/storage/" . setting($locale . '.ticker_picture'),
+            'text' => setting($locale . '.ticker_text'),
+            'color' => setting($locale . '.ticker_color'),
+            'bg' => setting($locale . '.ticker_bg'),
+            'ts' => setting($locale . '.text_speed'),
+            'ps' => setting($locale . '.img_speed'),
+        ];
+
         $translation = setting('site.translation');
 
         $translations = cache('translations.' . $locale);
         return view('spa', [
             'app' => compact(
                 'menus',
+                'ticker',
                 'translations',
                 'translation',
                 'options',
