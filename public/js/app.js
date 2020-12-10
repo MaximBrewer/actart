@@ -73547,46 +73547,20 @@ function _arrayWithHoles(arr) {
 
 
 
-function Auctions(props) {
+
+var AuctionSlider = function AuctionSlider(props) {
+  var auctions = props.auctions;
+  var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     slideIndex: 0,
-    slidesTotal: App.coming.length,
-    auctions: App.coming
+    slidesTotal: auctions.length
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
       setState = _useState2[1];
 
-  var updateAuctionStatus = function updateAuctionStatus(event) {
-    setState(function (prevState) {
-      var update = false;
-
-      var auctions = _objectSpread({}, prevState.auctions);
-
-      for (var i in auctions) {
-        if (event.detail.id == auctions[i].id) {
-          auctions[i].status = event.detail.status;
-          update = true;
-        }
-      }
-
-      console.log(auctions, update, prevState, _objectSpread(_objectSpread({}, prevState), {}, {
-        auctions: auctions
-      }));
-      return update ? _objectSpread(_objectSpread({}, prevState), {}, {
-        auctions: auctions
-      }) : prevState;
-    });
-  };
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    window.addEventListener("update-auction-status", updateAuctionStatus);
-    return function () {
-      window.removeEventListener("update-auction-status", updateAuctionStatus);
-    };
-  }, []);
-  var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
-  var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var setting = {
     arrows: false,
     infinite: true,
@@ -73600,69 +73574,27 @@ function Auctions(props) {
   var settingsPicture = _objectSpread(_objectSpread({}, setting), {}, {
     beforeChange: function beforeChange(current, next) {
       setState(function (prevState) {
-        return _objectSpread({
+        return {
+          slidesTotal: auctions.length,
           slideIndex: next
-        }, prevState);
+        };
       });
-      if (next > current && (next == 1 || current != 0) || current == App.coming.length - 1 && next == 0) refAnnounce.current.slickNext(false);else refAnnounce.current.slickPrev(false);
+      if (next > current && (next == 1 || current != 0) || current == auctions.length - 1 && next == 0) refAnnounce.current.slickNext(false);else refAnnounce.current.slickPrev(false);
     }
   });
 
   var settingsAnnounce = _objectSpread(_objectSpread({}, setting), {}, {
     beforeChange: function beforeChange(current, next) {
       setState(function (prevState) {
-        return _objectSpread({
+        return {
+          slidesTotal: auctions.length,
           slideIndex: next
-        }, prevState);
+        };
       });
-      if (next > current && (next == 1 || current != 0) || current == App.coming.length - 1 && next == 0) refPicture.current.slickNext(false);else refPicture.current.slickPrev(false);
+      if (next > current && (next == 1 || current != 0) || current == auctions.length - 1 && next == 0) refPicture.current.slickNext(false);else refPicture.current.slickPrev(false);
     }
   });
 
-  {
-    state.auctions.map(function (item, index) {
-      var AuctionPreviewLeft = function AuctionPreviewLeft(props) {
-        switch (item.status) {
-          case "coming":
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_2__["default"], props);
-
-          case "online":
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_4__["default"], props);
-        }
-      };
-
-      var AuctionPreviewRight = function AuctionPreviewRight(props) {
-        switch (item.status) {
-          case "coming":
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_3__["default"], props);
-
-          case "online":
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_5__["default"], props);
-        }
-      };
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row auction-preview py-4",
-        key: index
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xl-40 col-xxl-38"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "left-auction-side"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        className: "d-xl-none"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionPreviewLeft, _extends({
-        auction: item
-      }, props)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xl-20 col-xxl-22"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "right-auction-side"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionPreviewRight, _extends({
-        auction: item
-      }, props)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        className: "d-xl-none"
-      }))));
-    });
-  }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -73673,7 +73605,7 @@ function Auctions(props) {
     className: "d-xl-none"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsPicture, {
     ref: refPicture
-  }), state.auctions.map(function (item, index) {
+  }), auctions.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
     }, item.status == "coming" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
@@ -73687,7 +73619,7 @@ function Auctions(props) {
     className: "right-auction-side"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsAnnounce, {
     ref: refAnnounce
-  }), state.auctions.map(function (item, index) {
+  }), auctions.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index
     }, item.status == "coming" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
@@ -73765,6 +73697,70 @@ function Auctions(props) {
     to: "/auctions",
     className: "btn btn-default"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_6__["default"])("BTN_ALL_AUCTIONS"))));
+};
+
+function Auctions(props) {
+  var req = props.req;
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    auctions: App.coming,
+    slider: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionSlider, _extends({
+      auctions: App.coming
+    }, props))
+  }),
+      _useState4 = _slicedToArray(_useState3, 2),
+      state = _useState4[0],
+      setState = _useState4[1];
+
+  var updateAuctionStatus = function updateAuctionStatus(event) {
+    setState(function (prevState) {
+      var update = false;
+      var exists = false;
+      var auctions = prevState.auctions;
+
+      for (var i in auctions) {
+        if (event.detail.id == auctions[i].id) {
+          exists = true;
+
+          if (auctions[i].status != event.detail.status) {
+            auctions[i].status = event.detail.status;
+            update = true;
+          }
+        }
+      }
+
+      if (!exists) {
+        req("/api/" + window.App.locale + "/auctions/" + event.detail.id).then(function (_ref) {
+          var auction = _ref.auction;
+          auctions.push(auction);
+          update = true;
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      }
+
+      var toslider = [];
+
+      for (var _i2 in auctions) {
+        if (auctions[_i2].status == 'started' || auctions[_i2].status == 'coming') toslider.push(auctions[_i2]);
+      }
+
+      return update ? {
+        auctions: auctions,
+        slider: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionSlider, _extends({
+          auctions: toslider
+        }, props))
+      } : prevState;
+    });
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    window.addEventListener("update-auction-status", updateAuctionStatus);
+    return function () {
+      window.removeEventListener("update-auction-status", updateAuctionStatus);
+    };
+  }, []);
+  return state.slider;
 }
 
 /***/ }),
@@ -73983,8 +73979,7 @@ function AuctionList(props) {
   var updateAuctionStatus = function updateAuctionStatus(event) {
     setState(function (prevState) {
       var update = false;
-
-      var auctions = _objectSpread({}, prevState.auctions);
+      var auctions = prevState.auctions;
 
       for (var i in auctions) {
         if (event.detail.id == auctions[i].id) {

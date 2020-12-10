@@ -12,7 +12,7 @@ export default function AuctionList(props) {
     const updateAuctionStatus = event => {
         setState(prevState => {
             let update = false;
-            let auctions = { ...prevState.auctions };
+            let auctions = prevState.auctions;
             for (let i in auctions) {
                 if (event.detail.id == auctions[i].id) {
                     auctions[i].status = event.detail.status;
@@ -21,9 +21,9 @@ export default function AuctionList(props) {
             }
             return update
                 ? {
-                      ...prevState,
-                      auctions
-                  }
+                    ...prevState,
+                    auctions
+                }
                 : prevState;
         });
     };
@@ -58,16 +58,16 @@ export default function AuctionList(props) {
                                     {...props}
                                 />
                             ) : (
-                                ``
-                            )}
+                                    ``
+                                )}
                             {item.status == "started" ? (
                                 <AuctionPreviewLeftOnline
                                     auction={item}
                                     {...props}
                                 />
                             ) : (
-                                ``
-                            )}
+                                    ``
+                                )}
                         </div>
                     </div>
                     <div className="col-xl-20 col-xxl-22">
@@ -78,16 +78,16 @@ export default function AuctionList(props) {
                                     {...props}
                                 />
                             ) : (
-                                ``
-                            )}
+                                    ``
+                                )}
                             {item.status == "started" ? (
                                 <AuctionPreviewRightOnline
                                     auction={item}
                                     {...props}
                                 />
                             ) : (
-                                ``
-                            )}
+                                    ``
+                                )}
                             <hr className="d-xl-none" />
                         </div>
                     </div>

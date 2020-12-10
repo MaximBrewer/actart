@@ -7,48 +7,17 @@ import AuctionPreviewRightOnline from "./online/blocks/AuctionPreviewRight";
 import __ from "../../utils/trans";
 import { Link } from "react-router-dom";
 
-export default function Auctions(props) {
-    const [state, setState] = useState({
-        slideIndex: 0,
-        slidesTotal: App.coming.length,
-        auctions: App.coming
-    });
+const AuctionSlider = function (props) {
 
-    const updateAuctionStatus = event => {
-        setState(prevState => {
-            let update = false;
-            let auctions = { ...prevState.auctions };
-            for (let i in auctions) {
-                if (event.detail.id == auctions[i].id) {
-                    auctions[i].status = event.detail.status;
-                    update = true;
-                }
-            }
-            console.log(auctions, update, prevState, {
-                ...prevState,
-                auctions
-            })
-            return update
-                ? {
-                    ...prevState,
-                    auctions
-                }
-                : prevState;
-        });
-    };
-
-    useEffect(() => {
-        window.addEventListener("update-auction-status", updateAuctionStatus);
-        return () => {
-            window.removeEventListener(
-                "update-auction-status",
-                updateAuctionStatus
-            );
-        };
-    }, []);
+    const { auctions } = props;
 
     const refPicture = useRef();
     const refAnnounce = useRef();
+
+    const [state, setState] = useState({
+        slideIndex: 0,
+        slidesTotal: auctions.length
+    });
 
     const setting = {
         arrows: false,
@@ -65,13 +34,13 @@ export default function Auctions(props) {
         beforeChange: (current, next) => {
             setState(prevState => {
                 return {
+                    slidesTotal: auctions.length,
                     slideIndex: next,
-                    ...prevState
                 };
             });
             if (
                 (next > current && (next == 1 || current != 0)) ||
-                (current == App.coming.length - 1 && next == 0)
+                (current == auctions.length - 1 && next == 0)
             )
                 refAnnounce.current.slickNext(false);
             else refAnnounce.current.slickPrev(false);
@@ -82,55 +51,19 @@ export default function Auctions(props) {
         beforeChange: (current, next) => {
             setState(prevState => {
                 return {
+                    slidesTotal: auctions.length,
                     slideIndex: next,
-                    ...prevState
                 };
             });
             if (
                 (next > current && (next == 1 || current != 0)) ||
-                (current == App.coming.length - 1 && next == 0)
+                (current == auctions.length - 1 && next == 0)
             )
                 refPicture.current.slickNext(false);
             else refPicture.current.slickPrev(false);
         }
     };
 
-    {
-        state.auctions.map((item, index) => {
-            const AuctionPreviewLeft = props => {
-                switch (item.status) {
-                    case "coming":
-                        return <AuctionPreviewLeftComing {...props} />;
-                    case "online":
-                        return <AuctionPreviewLeftOnline {...props} />;
-                }
-            };
-            const AuctionPreviewRight = props => {
-                switch (item.status) {
-                    case "coming":
-                        return <AuctionPreviewRightComing {...props} />;
-                    case "online":
-                        return <AuctionPreviewRightOnline {...props} />;
-                }
-            };
-            return (
-                <div className="row auction-preview py-4" key={index}>
-                    <div className="col-xl-40 col-xxl-38">
-                        <div className="left-auction-side">
-                            <hr className="d-xl-none" />
-                            <AuctionPreviewLeft auction={item} {...props} />
-                        </div>
-                    </div>
-                    <div className="col-xl-20 col-xxl-22">
-                        <div className="right-auction-side">
-                            <AuctionPreviewRight auction={item} {...props} />
-                            <hr className="d-xl-none" />
-                        </div>
-                    </div>
-                </div>
-            );
-        });
-    }
     return (
         <React.Fragment>
             <div className="row">
@@ -138,7 +71,7 @@ export default function Auctions(props) {
                     <div className="left-auction-side">
                         <hr className="d-xl-none" />
                         <Slider {...settingsPicture} ref={refPicture}>
-                            {state.auctions.map((item, index) => (
+                            {auctions.map((item, index) => (
                                 <div key={index}>
                                     {item.status == "coming" ? (
                                         <AuctionPreviewLeftComing
@@ -164,7 +97,7 @@ export default function Auctions(props) {
                 <div className="col-xl-20 col-xxl-22">
                     <div className="right-auction-side">
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
-                            {state.auctions.map((item, index) => (
+                            {auctions.map((item, index) => (
                                 <div key={index}>
                                     {item.status == "coming" ? (
                                         <AuctionPreviewRightComing
@@ -268,4 +201,63 @@ export default function Auctions(props) {
             </div>
         </React.Fragment>
     );
+}
+
+export default function Auctions(props) {
+
+    const { req } = props;
+
+    const [state, setState] = useState({
+        auctions: App.coming,
+        slider: <AuctionSlider auctions={App.coming} {...props} />
+    });
+
+    const updateAuctionStatus = event => {
+        setState(prevState => {
+            let update = false;
+            let exists = false;
+            let auctions = prevState.auctions;
+            for (let i in auctions) {
+                if (event.detail.id == auctions[i].id) {
+                    exists = true;
+                    if (auctions[i].status != event.detail.status) {
+                        auctions[i].status = event.detail.status;
+                        update = true;
+                    }
+                }
+            }
+
+            if (!exists) {
+                req("/api/" + window.App.locale + "/auctions/" + event.detail.id)
+                    .then(({ auction }) => {
+                        auctions.push(auction)
+                        update = true
+                    })
+                    .catch((err) => console.log(err));
+            }
+
+            let toslider = [];
+            for (let i in auctions)
+                if (auctions[i].status == 'started' || auctions[i].status == 'coming') toslider.push(auctions[i]);
+
+            return update
+                ? {
+                    auctions: auctions,
+                    slider: <AuctionSlider auctions={toslider} {...props} />
+                }
+                : prevState;
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener("update-auction-status", updateAuctionStatus);
+        return () => {
+            window.removeEventListener(
+                "update-auction-status",
+                updateAuctionStatus
+            );
+        };
+    }, []);
+
+    return state.slider
 }
