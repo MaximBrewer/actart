@@ -3,20 +3,72 @@ import { FavoriteBig } from "../../../../icons/icons";
 import __ from "../../../../utils/trans";
 import { useAuth } from "../../../../context/auth";
 
+import CountdownMaster, {
+    zeroPad
+} from "react-countdown";
+import { useScratch } from "react-use";
+
+
+const Countdown = (props) => {
+
+    const declOfNum = (number, titles) => {
+        let cases = [2, 0, 1, 1, 1, 2];
+        return titles[
+            number % 100 > 4 && number % 100 < 20
+                ? 2
+                : cases[number % 10 < 5 ? number % 10 : 5]
+        ];
+    };
+
+    const renderer = ({ days, hours, minutes, seconds, completed }) => {
+        if (completed) {
+            return <div className="countdown-lot-wrapper"></div>;
+        } else {
+            return (
+                <div className="countdown-lot-wrapper" style={{ textAlign: "center", fontWeight: "bold" }}>
+                    {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+                </div>
+            );
+        }
+    };
+    const data = { props };
+    return <CountdownMaster date={props.date} renderer={renderer} />;
+}
+
 export default function Right(props) {
     const { req, item } = props;
     const { initializing, currentUser, setCurrentUser } = useAuth();
+
+    const [state, setState] = useState({
+        countdowned: false,
+        countdown: false
+    });
+
+    console.log(item)
 
     const offer = (id, price) => {
         req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH")
             .then(() => null)
             .catch(err => console.log(err));
     };
-    const blitz = id => {
-        req("/api/" + window.App.locale + "/blitz/" + id, "PATCH")
-            .then(() => {})
-            .catch(err => console.log(err));
-    };
+
+    const setStartCountdown = event => {
+        setState(prevState => {
+            if (item.auction_id == event.detail.id) {
+                return {
+                    countdowned: true,
+                    countdown: <Countdown date={Date.now() + 1000 * window.App.timer} />
+                }
+            } else return prevState;
+        })
+    }
+
+    useEffect(() => {
+        window.addEventListener("start-countdown", setStartCountdown);
+        return () => {
+            window.removeEventListener("start-countdown", setStartCountdown);
+        };
+    }, []);
 
     return (
         <div className="lot-carousel-right">
@@ -83,8 +135,8 @@ export default function Right(props) {
                             </div>
                         </div>
                     ) : (
-                        ``
-                    )}
+                            ``
+                        )}
                     <a
                         className="btn btn-danger"
                         href="#"
@@ -96,17 +148,18 @@ export default function Right(props) {
                         <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
                         <div>${item.price * 1 + 100}</div>
                     </a>
+                    {state.countdowned && state.countdown}
                     {item.lastchance ? (
                         <h4 className="color-red text-center blink">
                             {__("LAST_CHANCE_TO_USER")}
                         </h4>
                     ) : (
-                        ``
-                    )}
+                            ``
+                        )}
                 </div>
             ) : (
-                ``
-            )}
+                    ``
+                )}
         </div>
     );
 }

@@ -15,7 +15,7 @@ use App\Notifications\AuctionWinner as AuctionWinnerNotification;
 use App\Notifications\Manager\AuctionWinner as ManagerAuctionWinnerNotification;
 use Carbon\Carbon;
 
-use App\Events\UpdateLotStatus as UpdateLotStatusEvent;
+use App\Events\StartCountdown as StartCountdownEvent;
 use App\Lot;
 
 class AuctionController extends Controller
@@ -173,4 +173,17 @@ class AuctionController extends Controller
         ]);
         return ['auction' => $auction];
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function countdown(Request $request, $lang, $id)
+    {
+        event(new StartCountdownEvent($id));
+        return '';
+    }
+
+    
 }

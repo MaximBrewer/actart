@@ -74,6 +74,7 @@ Route::name('api.')->namespace('Api')->group(function () {
                 Route::patch('sold', 'AuctionController@sold');
                 Route::patch('nextlot', 'AuctionController@nextlot');
                 Route::patch('finish', 'AuctionController@finish');
+                Route::patch('countdown', 'AuctionController@countdown');
             });
             // });
 

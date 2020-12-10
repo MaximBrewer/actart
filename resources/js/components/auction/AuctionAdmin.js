@@ -5,11 +5,40 @@ import Parser from "html-react-parser";
 import Waterfall from "../waterfall/Waterfall";
 import Lightbox from "react-image-lightbox";
 
+import CountdownMaster, {
+    zeroPad
+} from "react-countdown";
+
+
+const Countdown = (props) => {
+
+    const declOfNum = (number, titles) => {
+        let cases = [2, 0, 1, 1, 1, 2];
+        return titles[
+            number % 100 > 4 && number % 100 < 20
+                ? 2
+                : cases[number % 10 < 5 ? number % 10 : 5]
+        ];
+    };
+
+    const renderer = ({ days, hours, minutes, seconds, completed }) => {
+        if (completed) {
+            return <div className="countdown-lot-wrapper"></div>;
+        } else {
+            return (
+                <div className="countdown-lot-wrapper" style={{ textAlign: "center", fontWeight: "bold" }}>
+                    {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+                </div>
+            );
+        }
+    };
+    const data = { props };
+    return <CountdownMaster date={props.date} renderer={renderer} />;
+}
+
 export default function AuctionAdmin(props) {
     const { req } = props;
     const { id } = useParams();
-
-    console.log(req, id);
 
     const startAuction = e => {
         e.preventDefault();
@@ -81,6 +110,20 @@ export default function AuctionAdmin(props) {
             .catch(() => null);
     };
 
+    const startCountdown = e => {
+        e.preventDefault();
+        req(
+            "/api/" +
+            window.App.locale +
+            "/auction/" +
+            state.auction.id +
+            "/admin/countdown",
+            "PATCH"
+        )
+            .then(() => null)
+            .catch(() => null);
+    }
+
     const updateTranslation = event => {
         setState(prevState => ({
             ...prevState,
@@ -91,11 +134,26 @@ export default function AuctionAdmin(props) {
     const [state, setState] = useState({
         auction: null,
         lots: [],
+        countdowned: false,
         next: null,
         translation: window.App.translation,
         finished: false,
-        lbOpen: false
+        lbOpen: false,
+        countdown: false
     });
+
+    const setStartCountdown = event => {
+        setState(prevState => {
+            if (prevState.auction.id == event.detail.id) {
+                console.log(prevState.auction)
+                return {
+                    ...prevState,
+                    countdowned: true,
+                    countdown: <Countdown date={Date.now() + 1000 * window.App.timer} />
+                }
+            } else return prevState;
+        })
+    }
 
     const updateLotStatus = event => {
         setState(prevState => {
@@ -213,17 +271,21 @@ export default function AuctionAdmin(props) {
                 }))
             )
             .catch(() => null);
+
+        window.addEventListener("start-countdown", setStartCountdown);
         window.addEventListener("update-translation", updateTranslation);
         window.addEventListener("update-auction-status", updateAuctionStatus);
         window.addEventListener("update-lot-status", updateLotStatus);
         window.addEventListener("update-lot-lastchance", updateLotLastchance);
         window.addEventListener("create-bet", createBet);
+
         return () => {
             window.removeEventListener("update-translation", updateTranslation);
             window.removeEventListener(
                 "update-auction-status",
                 updateAuctionStatus
             );
+            window.removeEventListener("start-countdown", setStartCountdown);
             window.removeEventListener("update-lot-status", updateLotStatus);
             window.removeEventListener(
                 "update-lot-lastchance",
@@ -354,7 +416,7 @@ export default function AuctionAdmin(props) {
                                                                 }}
                                                                 className={`translation-wrapper`}
                                                             >
-                                                                {Parser(state.translation)}
+                                                                {/* {Parser(state.translation)} */}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -578,6 +640,7 @@ export default function AuctionAdmin(props) {
                                                                         <a
                                                                             className="btn btn-primary"
                                                                             href="#"
+                                                                            style={{ display: "block" }}
                                                                             onClick={
                                                                                 startAuction
                                                                             }
@@ -632,19 +695,36 @@ export default function AuctionAdmin(props) {
                                                                                     </a>
                                                                                 )
                                                                         ) : (
-                                                                            <a
-                                                                                className="btn btn-danger"
-                                                                                href="#"
-                                                                                onClick={
-                                                                                    sold
+                                                                            <React.Fragment>
+                                                                                <a
+                                                                                    className="btn btn-danger"
+                                                                                    href="#"
+                                                                                    onClick={
+                                                                                        sold
+                                                                                    }
+                                                                                >
+                                                                                    <div className="pb-1">
+                                                                                        {__(
+                                                                                            "ADMIN_SOLD"
+                                                                                        )}
+                                                                                    </div>
+                                                                                </a>
+                                                                                {
+                                                                                    !state.countdowned ? <a
+                                                                                        className="btn btn-default"
+                                                                                        href="#"
+                                                                                        onClick={
+                                                                                            startCountdown
+                                                                                        }
+                                                                                    >
+                                                                                        <div className="pb-1">
+                                                                                            {__(
+                                                                                                "#ADMIN_COUNTDOWN#"
+                                                                                            )}
+                                                                                        </div>
+                                                                                    </a> : state.countdown
                                                                                 }
-                                                                            >
-                                                                                <div className="pb-1">
-                                                                                    {__(
-                                                                                        "ADMIN_SOLD"
-                                                                                    )}
-                                                                                </div>
-                                                                            </a>
+                                                                            </React.Fragment>
                                                                         )
                                                             ) : (
                                                                     <a

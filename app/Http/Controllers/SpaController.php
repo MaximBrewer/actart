@@ -82,6 +82,8 @@ class SpaController extends Controller
                 ->get()
         );
 
+        $timer = setting('site.timer');
+
         $ticker = [
             'picture' => "/storage/" . setting($locale . '.ticker_picture'),
             'text' => setting($locale . '.ticker_text'),
@@ -98,6 +100,7 @@ class SpaController extends Controller
             'app' => compact(
                 'menus',
                 'ticker',
+                'timer',
                 'translations',
                 'translation',
                 'options',

@@ -21985,12 +21985,15 @@ section.announces.bggray .background-text {
   font-weight: bold;
 }
 
-.lot-carousel .lot-carousel-right .user-activity .btn.btn-danger {
+.lot-carousel .lot-carousel-right .user-activity .btn {
+  margin-left: auto;
+  margin-right: auto;
   display: block;
   padding: 1rem;
   max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .btn.btn-danger {
   margin-bottom: 1.2rem;
 }
 
