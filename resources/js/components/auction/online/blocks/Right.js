@@ -44,8 +44,6 @@ export default function Right(props) {
         countdown: false
     });
 
-    console.log(item)
-
     const offer = (id, price) => {
         req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH")
             .then(() => null)

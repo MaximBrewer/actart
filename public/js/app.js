@@ -84636,8 +84636,6 @@ function Right(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
-  console.log(item);
-
   var offer = function offer(id, price) {
     req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH").then(function () {
       return null;
