@@ -73570,6 +73570,7 @@ function Auctions(props) {
         }
       }
 
+      console.log(auctions);
       return update ? _objectSpread(_objectSpread({}, prevState), {}, {
         auctions: auctions
       }) : prevState;
@@ -87305,6 +87306,9 @@ function Profile(props) {
     className: "h4"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_3__["default"])("ADMIN_PROFILE_AUCTIONS_COMING")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, window.App.coming.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      style: {
+        display: "block"
+      },
       to: "/auctions/admin/" + item.id,
       key: index
     }, item.title);

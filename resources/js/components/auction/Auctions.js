@@ -24,6 +24,7 @@ export default function Auctions(props) {
                     update = true;
                 }
             }
+        console.log(auctions)
             return update
                 ? {
                       ...prevState,

@@ -11,10 +11,10 @@ function Profile(props) {
     let { setCurrentUser, setToken, currentUser } = useAuth();
     useDocumentTitle(
         currentUser.surname +
-            " " +
-            currentUser.name +
-            " " +
-            currentUser.middlename
+        " " +
+        currentUser.name +
+        " " +
+        currentUser.middlename
     );
 
     let history = useHistory();
@@ -80,6 +80,7 @@ function Profile(props) {
                                 <div>
                                     {window.App.coming.map((item, index) => (
                                         <Link
+                                            style={{ display: "block" }}
                                             to={`/auctions/admin/` + item.id}
                                             key={index}
                                         >
@@ -89,8 +90,8 @@ function Profile(props) {
                                 </div>
                             </React.Fragment>
                         ) : (
-                            ``
-                        )}
+                                ``
+                            )}
                     </div>
                 </div>
                 <div className="art-waterfall-wrapper py-5">
