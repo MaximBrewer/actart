@@ -416,7 +416,7 @@ export default function AuctionAdmin(props) {
                                                                 }}
                                                                 className={`translation-wrapper`}
                                                             >
-                                                                {/* {Parser(state.translation)} */}
+                                                                {Parser(state.translation)}
                                                             </div>
                                                         </div>
                                                     </div>
