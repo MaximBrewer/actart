@@ -9,7 +9,7 @@ export default function Marquee() {
     const getString = () => {
         let srt = [];
         for (let i = 0; i < 15; i++) {
-            srt.push(<span key={i} className="sub_h1" style={{ animation: `moveX_-100 ${window.App.ticker.ts}s linear infinite` }}>{window.App.ticker.text}</span>)
+            srt.push(<span key={i} className="sub_h1" style={{ animation: `moveX_-100 ${window.App.ticker.ts}s linear infinite` }}>{window.App.ticker.text}&nbsp;</span>)
         }
         return srt;
     }
@@ -19,7 +19,7 @@ export default function Marquee() {
         for (let i = 0; i < 15; i++) {
             srt.push(
                 <span key={i} style={{ animation: `moveX_-100 ${window.App.ticker.ps}s linear infinite` }}>
-                    <img src={window.App.ticker.picture} alt="" />
+                    <img src={window.App.ticker.picture} alt="" />&nbsp;
                 </span>
             )
         }

@@ -79544,7 +79544,7 @@ function Marquee() {
         style: {
           animation: "moveX_-100 ".concat(window.App.ticker.ts, "s linear infinite")
         }
-      }, window.App.ticker.text));
+      }, window.App.ticker.text, "\xA0"));
     }
 
     return srt;
@@ -79562,7 +79562,7 @@ function Marquee() {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.App.ticker.picture,
         alt: ""
-      })));
+      }), "\xA0"));
     }
 
     return srt;
