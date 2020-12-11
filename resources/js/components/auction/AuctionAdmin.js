@@ -116,7 +116,7 @@ export default function AuctionAdmin(props) {
             "/api/" +
             window.App.locale +
             "/auction/" +
-            state.auction.id +
+            state.auction.current.id +
             "/admin/countdown",
             "PATCH"
         )
@@ -145,7 +145,6 @@ export default function AuctionAdmin(props) {
     const setStartCountdown = event => {
         setState(prevState => {
             if (prevState.auction.id == event.detail.id) {
-                console.log(prevState.auction)
                 return {
                     ...prevState,
                     countdowned: true,
@@ -160,6 +159,7 @@ export default function AuctionAdmin(props) {
             let auction = prevState.auction,
                 lots = [],
                 update = false;
+                countdowned = prevState.countdowned;
 
             if (auction.current && auction.current.id == event.detail.id) {
                 auction.current.status = event.detail.status;
@@ -169,8 +169,10 @@ export default function AuctionAdmin(props) {
                 let lot = auction.lots[i];
                 if (lot.id == event.detail.id) {
                     lot.status = event.detail.status;
-                    if (event.detail.status == "in_auction")
+                    if (event.detail.status == "in_auction") {
                         auction.current = lot;
+                        countdowned = true;
+                    }
                     update = true;
                 }
                 lots.push(lot);
@@ -188,7 +190,8 @@ export default function AuctionAdmin(props) {
                 return {
                     ...prevState,
                     auction,
-                    finished
+                    finished,
+                    countdowned: countdowned
                 };
             }
             return prevState;

@@ -80917,7 +80917,7 @@ function AuctionAdmin(props) {
 
   var startCountdown = function startCountdown(e) {
     e.preventDefault();
-    req("/api/" + window.App.locale + "/auction/" + state.auction.id + "/admin/countdown", "PATCH").then(function () {
+    req("/api/" + window.App.locale + "/auction/" + state.auction.current.id + "/admin/countdown", "PATCH").then(function () {
       return null;
     })["catch"](function () {
       return null;
@@ -80949,7 +80949,6 @@ function AuctionAdmin(props) {
   var setStartCountdown = function setStartCountdown(event) {
     setState(function (prevState) {
       if (prevState.auction.id == event.detail.id) {
-        console.log(prevState.auction);
         return _objectSpread(_objectSpread({}, prevState), {}, {
           countdowned: true,
           countdown: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Countdown, {
@@ -80965,6 +80964,7 @@ function AuctionAdmin(props) {
       var auction = prevState.auction,
           lots = [],
           update = false;
+      countdowned = prevState.countdowned;
 
       if (auction.current && auction.current.id == event.detail.id) {
         auction.current.status = event.detail.status;
@@ -80976,7 +80976,12 @@ function AuctionAdmin(props) {
 
         if (lot.id == event.detail.id) {
           lot.status = event.detail.status;
-          if (event.detail.status == "in_auction") auction.current = lot;
+
+          if (event.detail.status == "in_auction") {
+            auction.current = lot;
+            countdowned = true;
+          }
+
           update = true;
         }
 
@@ -81005,7 +81010,8 @@ function AuctionAdmin(props) {
         if (auction.current.status != "in_auction") auction.current = null;
         return _objectSpread(_objectSpread({}, prevState), {}, {
           auction: auction,
-          finished: finished
+          finished: finished,
+          countdowned: countdowned
         });
       }
 
@@ -84648,7 +84654,6 @@ function Right(props) {
     setState(function (prevState) {
       if (item.auction_id == event.detail.id) {
         return {
-          countdowned: true,
           countdown: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Countdown, {
             date: Date.now() + 1000 * window.App.timer
           })
@@ -84734,7 +84739,7 @@ function Right(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", item.price * 1 + 100)), state.countdowned && state.countdown, item.lastchance ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", item.price * 1 + 100)), state.countdown, item.lastchance ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "color-red text-center blink"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LAST_CHANCE_TO_USER")) : "") : "");
 }

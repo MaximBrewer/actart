@@ -54,7 +54,6 @@ export default function Right(props) {
         setState(prevState => {
             if (item.auction_id == event.detail.id) {
                 return {
-                    countdowned: true,
                     countdown: <Countdown date={Date.now() + 1000 * window.App.timer} />
                 }
             } else return prevState;
@@ -146,7 +145,7 @@ export default function Right(props) {
                         <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
                         <div>${item.price * 1 + 100}</div>
                     </a>
-                    {state.countdowned && state.countdown}
+                    {state.countdown}
                     {item.lastchance ? (
                         <h4 className="color-red text-center blink">
                             {__("LAST_CHANCE_TO_USER")}
