@@ -80982,7 +80982,7 @@ function AuctionAdmin(props) {
             countdowned = true;
           }
 
-          update = true;
+          update = false;
         }
 
         lots.push(lot);

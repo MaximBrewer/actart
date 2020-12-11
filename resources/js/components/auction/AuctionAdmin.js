@@ -173,7 +173,7 @@ export default function AuctionAdmin(props) {
                         auction.current = lot;
                         countdowned = true;
                     }
-                    update = true;
+                    update = false;
                 }
                 lots.push(lot);
             }
