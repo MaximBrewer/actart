@@ -144,7 +144,7 @@ export default function AuctionAdmin(props) {
 
     const setStartCountdown = event => {
         setState(prevState => {
-            if (prevState.auction.id == event.detail.id) {
+            if (prevState.auction.current.id == event.detail.id) {
                 return {
                     ...prevState,
                     countdowned: true,

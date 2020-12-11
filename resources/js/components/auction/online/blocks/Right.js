@@ -52,7 +52,7 @@ export default function Right(props) {
 
     const setStartCountdown = event => {
         setState(prevState => {
-            if (item.auction_id == event.detail.id) {
+            if (item.id == event.detail.id) {
                 return {
                     countdown: <Countdown date={Date.now() + 1000 * window.App.timer} />
                 }

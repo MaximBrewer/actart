@@ -80948,7 +80948,7 @@ function AuctionAdmin(props) {
 
   var setStartCountdown = function setStartCountdown(event) {
     setState(function (prevState) {
-      if (prevState.auction.id == event.detail.id) {
+      if (prevState.auction.current.id == event.detail.id) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           countdowned: true,
           countdown: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Countdown, {
@@ -84652,7 +84652,7 @@ function Right(props) {
 
   var setStartCountdown = function setStartCountdown(event) {
     setState(function (prevState) {
-      if (item.auction_id == event.detail.id) {
+      if (item.id == event.detail.id) {
         return {
           countdown: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Countdown, {
             date: Date.now() + 1000 * window.App.timer
