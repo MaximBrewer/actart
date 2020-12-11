@@ -80979,10 +80979,10 @@ function AuctionAdmin(props) {
 
           if (event.detail.status == "in_auction") {
             auction.current = lot;
-            countdowned = true;
+            countdowned = false;
           }
 
-          update = false;
+          update = true;
         }
 
         lots.push(lot);
