@@ -158,7 +158,7 @@ export default function AuctionAdmin(props) {
         setState(prevState => {
             let auction = prevState.auction,
                 lots = [],
-                update = false;
+                update = false,
                 countdowned = prevState.countdowned;
 
             if (auction.current && auction.current.id == event.detail.id) {

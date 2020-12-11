@@ -80963,8 +80963,8 @@ function AuctionAdmin(props) {
     setState(function (prevState) {
       var auction = prevState.auction,
           lots = [],
-          update = false;
-      countdowned = prevState.countdowned;
+          update = false,
+          countdowned = prevState.countdowned;
 
       if (auction.current && auction.current.id == event.detail.id) {
         auction.current.status = event.detail.status;
