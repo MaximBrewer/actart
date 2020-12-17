@@ -1,3 +1,4 @@
+@use "sass:map";
 .carousel-wrapper {
     position: relative;
     padding: 2rem 0 8rem;
@@ -14,13 +15,21 @@
     }
     .carousel-lines {
         height: 0.4rem;
+        display: flex;
+        flex-wrap: wrap;
         > div {
             cursor: pointer;
-            min-width: 4rem;
+            min-width: 1rem;
             margin-right: 0.5rem;
             border: 1px solid $primary;
             &.active {
                 background-color: $primary;
+            }
+            @media (min-width: map.get($grid-breakpoints, "xl")) {
+                min-width: 2rem;
+            }
+            @media (min-width: map.get($grid-breakpoints, "xl")) {
+                min-width: 4rem;
             }
         }
     }

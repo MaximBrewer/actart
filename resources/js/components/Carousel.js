@@ -91,7 +91,7 @@ export default function Carousel(props) {
                 </Slider>
             </div>
             <div className="d-flex justify-content-between py-5">
-                <div className="carousel-lines d-flex">
+                <div className="carousel-lines">
                     {state.slides.map((item, index) => (
                         <div onClick={() => { console.log(index); refPicture.current.slickGoTo(index) }} className={`line${index == state.slideIndex ? ` active` : ``}`} style={{ display: index > 10 ? `none` : `` }} key={index}></div>
                     ))}

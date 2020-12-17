@@ -21168,17 +21168,31 @@ iframe {
 
 .carousel-wrapper .carousel-lines {
   height: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .carousel-wrapper .carousel-lines > div {
   cursor: pointer;
-  min-width: 4rem;
+  min-width: 1rem;
   margin-right: 0.5rem;
   border: 1px solid #1e2b32;
 }
 
 .carousel-wrapper .carousel-lines > div.active {
   background-color: #1e2b32;
+}
+
+@media (min-width: 1280px) {
+  .carousel-wrapper .carousel-lines > div {
+    min-width: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .carousel-wrapper .carousel-lines > div {
+    min-width: 4rem;
+  }
 }
 
 .my-masonry-grid {
