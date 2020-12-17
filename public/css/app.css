@@ -19057,6 +19057,11 @@ iframe {
     margin-bottom: 4.8125rem;
   }
 
+  .home-banner div.container {
+    padding-top: 1rem;
+    background-color: #ffffff;
+  }
+
   .home-banner .carousel-controls > div:first-child {
     order: 1;
     justify-content: space-between;
