@@ -93,11 +93,14 @@ class SpaController extends Controller
             'ps' => setting($locale . '.img_speed'),
         ];
 
+        $delta = setting("site.delta");
+
         $translation = setting('site.translation');
 
         $translations = cache('translations.' . $locale);
         return view('spa', [
             'app' => compact(
+                'delta',
                 'menus',
                 'ticker',
                 'timer',

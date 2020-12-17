@@ -156,11 +156,11 @@ export default function Right(props) {
                                 href="#"
                                 onClick={e => {
                                     e.preventDefault();
-                                    offer(state.item.id, 100 + state.item.price * 1);
+                                    offer(state.item.id, window.App.delta + state.item.price * 1);
                                 }}
                             >
                                 <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                                <div>${state.item.price * 1 + 100}</div>
+                                <div>${state.item.price * 1 + window.App.delta}</div>
                             </a>
                             {state.item.price * 1 < state.item.blitz * 1 ? (
                                 <div className="blitz-price">
@@ -194,7 +194,7 @@ export default function Right(props) {
                                 }}
                             >
                                 <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                                <div>${state.item.price * 1 + 100}</div>
+                                <div>${state.item.price * 1 + window.App.delta}</div>
                             </a>
                             {state.item.price * 1 < state.item.blitz * 1 ? (
                                 <div className="blitz-price">

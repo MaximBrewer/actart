@@ -139,11 +139,11 @@ export default function Right(props) {
                         href="#"
                         onClick={e => {
                             e.preventDefault();
-                            offer(item.id, 100 + item.price * 1);
+                            offer(item.id, window.App.delta + item.price * 1);
                         }}
                     >
                         <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                        <div>${item.price * 1 + 100}</div>
+                        <div>${item.price * 1 + window.App.delta}</div>
                     </a>
                     {state.countdown}
                     {!item.bets.length && item.lastchance ? (
