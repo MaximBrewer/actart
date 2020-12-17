@@ -224,10 +224,10 @@ export default function AuctionBase(props) {
                         <Center {...props} auction={state.auction} finished={state.finished} started={state.started} />
                         <div className="auction-page-inner">
                             <div className="auction-works-list my-5">
-                                <LotsList {...props} auction={state.auction}  finished={state.finished} started={state.started}/>
+                                <LotsList {...props} auction={state.auction} finished={state.finished} started={state.started}/>
                             </div>
                             <div className="my-5">
-                                <Bottom {...props} auction={state.auction}  finished={state.finished} started={state.started}/>
+                                <Bottom {...props} auction={state.auction} finished={state.finished} started={state.started}/>
                             </div>
                         </div>
                         <div className="sticky-section">

@@ -33,7 +33,8 @@ export default function Auction(props) {
 
     const [state, setState] = useState({
         auction: null,
-        finished: false
+        finished: false,
+        started: false
     });
 
     const updateLotLastChance = event => {
@@ -70,6 +71,7 @@ export default function Auction(props) {
         setState(prevState => {
             let auction = prevState.auction,
                 lots = [],
+                started = prevState.started,
                 update = false;
             if (auction.current && auction.current.id == event.detail.id) {
                 auction.current.status = event.detail.status;
@@ -79,8 +81,10 @@ export default function Auction(props) {
                 let lot = auction.lots[i];
                 if (lot.id == event.detail.id) {
                     lot.status = event.detail.status;
-                    if (event.detail.status == "in_auction")
+                    if (event.detail.status == "in_auction") {
                         auction.current = lot;
+                        started = true;
+                    }
                     update = true;
                 }
                 lots.push(lot);
@@ -98,6 +102,7 @@ export default function Auction(props) {
                 }
                 return {
                     ...prevState,
+                    started,
                     auction,
                     finished
                 };
@@ -137,7 +142,7 @@ export default function Auction(props) {
     const { url } = useRouteMatch();
     const { pathname } = useLocation();
 
-    useEffect(() => {}, [pathname]);
+    useEffect(() => { }, [pathname]);
 
     const lotId =
         (pathname == url ? false : pathname.replace(url + "/lot/", "")) * 1;
@@ -150,9 +155,10 @@ export default function Auction(props) {
         axios
             .get("/api/" + window.App.locale + "/auctions/" + id)
             .then(res => {
-                setState({
+                setState((prevState) => ({
+                    ...prevState,
                     auction: res.data.auction
-                });
+                }));
             })
             .catch(err => {
                 console.log(err);
@@ -192,20 +198,20 @@ export default function Auction(props) {
                     return lotId ? (
                         <AuctionOnlineLotTop {...props} />
                     ) : (
-                        <AuctionOnlineTop {...props} />
-                    );
+                            <AuctionOnlineTop {...props} />
+                        );
                 case "finished":
                     return lotId ? (
                         <AuctionArchiveLotTop {...props} />
                     ) : (
-                        <AuctionArchiveTop {...props} />
-                    );
+                            <AuctionArchiveTop {...props} />
+                        );
                 case "coming":
                     return lotId ? (
                         <AuctionComingLotTop {...props} />
                     ) : (
-                        <AuctionComingTop {...props} />
-                    );
+                            <AuctionComingTop {...props} />
+                        );
             }
         return false;
     };
@@ -240,20 +246,20 @@ export default function Auction(props) {
                     return lotId ? (
                         <AuctionOnlineLotBottom {...props} />
                     ) : (
-                        <AuctionOnlineBottom {...props} />
-                    );
+                            <AuctionOnlineBottom {...props} />
+                        );
                 case "finished":
                     return lotId ? (
                         <AuctionArchiveLotBottom {...props} />
                     ) : (
-                        <AuctionArchiveBottom {...props} />
-                    );
+                            <AuctionArchiveBottom {...props} />
+                        );
                 case "coming":
                     return lotId ? (
                         <AuctionComingLotBottom {...props} />
                     ) : (
-                        <AuctionComingBottom {...props} />
-                    );
+                            <AuctionComingBottom {...props} />
+                        );
             }
         return false;
     };
@@ -261,23 +267,23 @@ export default function Auction(props) {
     return state.auction ? (
         <section className="auction-page-wrapper">
             <div className={`status-` + state.auction.status}>
-                <Top auction={state.auction} />
+                <Top auction={state.auction} finished={state.finished} started={state.started} />
                 <div className="sticky-wrapper">
                     {lotId ? (
                         <div className="auction-info">
                             <div className="container">
-                                <Carousel {...props} auction={state.auction} />
+                                <Carousel {...props} auction={state.auction} finished={state.finished} started={state.started} />
                             </div>
                         </div>
                     ) : (
-                        <Center {...props} auction={state.auction} />
-                    )}
+                            <Center {...props} auction={state.auction} finished={state.finished} started={state.started} />
+                        )}
                     <div className="auction-page-inner">
                         <div className="auction-works-list my-5">
-                            <LotsList {...props} auction={state.auction} />
+                            <LotsList {...props} auction={state.auction} finished={state.finished} started={state.started} />
                         </div>
                         <div className="my-5">
-                            <Bottom {...props} auction={state.auction} />
+                            <Bottom {...props} auction={state.auction} finished={state.finished} started={state.started} />
                         </div>
                     </div>
                     <div className="sticky-section">
@@ -287,6 +293,6 @@ export default function Auction(props) {
             </div>
         </section>
     ) : (
-        ``
-    );
+            ``
+        );
 }

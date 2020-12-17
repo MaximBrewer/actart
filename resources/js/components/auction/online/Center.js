@@ -14,6 +14,8 @@ export default function Center(props) {
         lbOpen: false
     });
 
+    console.log(started, finished)
+
     const updateTranslation = event => {
         setState(prevState => ({
             ...prevState,
