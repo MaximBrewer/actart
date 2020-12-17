@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CountdownMaster, {
     zeroPad
 } from "react-countdown";
 import __ from '../../utils/trans';
 
 export default function Countdown(props) {
+
+
+    const [state, setState] = useState({
+        copletetionText: __('COUNTDOWN_AUCTION_STARTED')
+    });
+
     const declOfNum = (number, titles) => {
         let cases = [2, 0, 1, 1, 1, 2];
         return titles[
@@ -14,8 +20,22 @@ export default function Countdown(props) {
         ];
     };
 
+    const changeCopletetionText = (event) => {
+        setState(prevState => ({
+            ...prevState,
+            copletetionText: event.detail.text
+        }))
+    }
+
+    useEffect(() => {
+        window.addEventListener("change-copletetion-text", changeCopletetionText);
+        return () => {
+            window.removeEventListener("change-copletetion-text", changeCopletetionText);
+        };
+    }, []);
+
     const Completionist = () => (
-        <div className="banner-counter d-flex h3 h3 color-red">{__('COUNTDOWN_AUCTION_STARTED')}</div>
+        <div className="banner-counter d-flex h3 h3 color-red">{state.copletetionText}</div>
     );
 
     const renderer = ({ days, hours, minutes, seconds, completed }) => {

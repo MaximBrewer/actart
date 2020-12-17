@@ -112,6 +112,12 @@
         background-color: transparent;
         padding: 3rem 0 1.725rem;
         margin-bottom: 4.8125rem;
+        div {
+            &.container {
+                padding-top: 1rem;
+                background-color: #fff;
+            }
+        }
         .carousel-controls > div:first-child {
             order: 1;
             justify-content: space-between;

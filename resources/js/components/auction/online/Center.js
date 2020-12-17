@@ -3,107 +3,16 @@ import Right from "./blocks/Right";
 import __ from "../../../utils/trans";
 import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
+import { size } from "lodash";
 
 export default function Center(props) {
+
+    const { auction, finished } = props;
+
     const [state, setState] = useState({
-        auction: props.auction,
-        finished: false,
         translation: window.App.translation,
         lbOpen: false
     });
-
-    const updateLotLastChance = event => {
-        setState(prevState => {
-            let auction = prevState.auction,
-                lots = [],
-                update = false;
-            if (auction.current && auction.current.id == event.detail.id) {
-                auction.current.lastchance = event.detail.lastchance;
-                update = true;
-            }
-            for (let i in auction.lots) {
-                let lot = auction.lots[i];
-                if (lot.id == event.detail.id) {
-                    lot.lastchance = event.detail.lastchance;
-                    update = true;
-                }
-                lots.push(lot);
-            }
-            auction.lots = lots;
-            if (update) {
-                return {
-                    ...prevState,
-                    auction
-                };
-            }
-            return prevState;
-        });
-    };
-
-    const updateLotStatus = event => {
-        setState(prevState => {
-            let auction = prevState.auction,
-                lots = [],
-                update = false;
-            if (auction.current && auction.current.id == event.detail.id) {
-                auction.current.status = event.detail.status;
-                update = true;
-            }
-            for (let i in auction.lots) {
-                let lot = auction.lots[i];
-                if (lot.id == event.detail.id) {
-                    lot.status = event.detail.status;
-                    if (event.detail.status == "in_auction")
-                        auction.current = lot;
-                    update = true;
-                }
-                lots.push(lot);
-            }
-            auction.lots = lots;
-            if (update) {
-                let finished = true;
-                for (const lot of auction.lots) {
-                    if (lot.status == "auction" || lot.status == "in_auction")
-                        finished = false;
-                }
-                if (auction.current.status != "in_auction")
-                    auction.current = null;
-                return {
-                    ...prevState,
-                    auction,
-                    finished
-                };
-            }
-            return prevState;
-        });
-    };
-
-    const createBet = event => {
-        setState(prevState => {
-            let auction = prevState.auction,
-                lots = [],
-                update = false;
-            for (let i in auction.lots) {
-                let lot = auction.lots[i],
-                    bets = lot.bets;
-                if (lot.id == event.detail.bet.lot_id) {
-                    bets.unshift(event.detail.bet);
-                    lot.price = event.detail.bet.bet;
-                    if (lot.id == auction.current.id) auction.current = lot;
-                    update = true;
-                }
-                lots.push(lot);
-            }
-            auction.lots = lots;
-            if (update) {
-                return {
-                    ...prevState,
-                    auction: auction
-                };
-            }
-            return prevState;
-        });
-    };
 
     const updateTranslation = event => {
         setState(prevState => ({
@@ -114,17 +23,8 @@ export default function Center(props) {
 
     useEffect(() => {
         window.addEventListener("update-translation", updateTranslation);
-        window.addEventListener("update-lot-status", updateLotStatus);
-        window.addEventListener("update-lot-lastchance", updateLotLastChance);
-        window.addEventListener("create-bet", createBet);
         return () => {
             window.removeEventListener("update-translation", updateTranslation);
-            window.removeEventListener("update-lot-status", updateLotStatus);
-            window.removeEventListener(
-                "update-lot-lastchance",
-                updateLotLastChance
-            );
-            window.removeEventListener("create-bet", createBet);
         };
     }, []);
 
@@ -136,7 +36,7 @@ export default function Center(props) {
                         <div className="col-xl-40 col-xxl-38">
                             <div className="left-side">
                                 <div>
-                                    {state.auction.current ?
+                                    {auction.current ?
                                         (
                                             <div
                                                 style={{
@@ -152,7 +52,7 @@ export default function Center(props) {
                                                     }
                                                     className="image"
                                                     alt={
-                                                        state.auction.current
+                                                        auction.current
                                                             .thumbnail
                                                     }
                                                     style={{
@@ -170,7 +70,7 @@ export default function Center(props) {
                                                             "#ECEDED",
                                                         backgroundImage:
                                                             'url("' +
-                                                            state.auction
+                                                            auction
                                                                 .current
                                                                 .thumbnail +
                                                             '")'
@@ -179,7 +79,7 @@ export default function Center(props) {
                                                 {state.lbOpen && (
                                                     <Lightbox
                                                         mainSrc={
-                                                            state.auction
+                                                            auction
                                                                 .current
                                                                 .photo
                                                         }
@@ -199,7 +99,7 @@ export default function Center(props) {
                                     <div
                                         className={`current d-flex justify-content-between py-2`}
                                     >
-                                        <div className="h2 color-red">{state.auction.current ? __("LOT_TEXT_LOT_ID") + state.auction.current.id : ``}</div>
+                                        <div className="h2 color-red" style={{ fontSize: "2.5rem" }}>{auction.current ? __("LOT_TEXT_LOT_ID") + auction.current.id : ``}</div>
                                         <div style={{ width: "40%" }}>
                                             <div
                                                 style={{
@@ -218,18 +118,18 @@ export default function Center(props) {
                         </div>
                         <div className="col-xl-20 col-xxl-22">
                             <div className="right-side">
-                                {state.auction.current ? (
+                                {auction.current ? (
                                     <Right
-                                        item={state.auction.current}
+                                        item={auction.current}
                                         {...props}
                                     />
                                 ) : (
                                         <h3
                                             className={`py-5 text-center color-red`}
                                         >
-                                            {!state.finished
-                                                ? __("AUCTION_WILL_START_SOON")
-                                                : __("AUCTION_HAS_FINISHED")}
+                                            {!finished
+                                                ? __("#AUCTION_WILL_START_SOON#")
+                                                : __("#AUCTION_HAS_FINISHED#")}
                                         </h3>
                                     )}
                             </div>

@@ -73,7 +73,7 @@ export default function Right(props) {
                 <div className="lot-number">
                     {__("LOT_TEXT_LOT_ID")} {item.id}
                 </div>
-                <FavoriteBig item={item} req={req} />
+                {/* <FavoriteBig item={item} req={req} /> */}
             </div>
             <div className="lot-author">
                 <a className="author" href={item.author_url}>
@@ -146,7 +146,7 @@ export default function Right(props) {
                         <div>${item.price * 1 + 100}</div>
                     </a>
                     {state.countdown}
-                    {item.lastchance ? (
+                    {!item.bets.length && item.lastchance ? (
                         <h4 className="color-red text-center blink">
                             {__("LAST_CHANCE_TO_USER")}
                         </h4>

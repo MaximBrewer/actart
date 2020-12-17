@@ -764,7 +764,7 @@ export default function AuctionAdmin(props) {
                                                                 className={`py-5 text-center color-red`}
                                                             >
                                                                 {__(
-                                                                    "AUCTION_WILL_START_SOON"
+                                                                    "#AUCTION_WILL_START_SOON_ADMIN#"
                                                                 )}
                                                             </h3>
                                                         </div>
