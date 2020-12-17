@@ -137,6 +137,7 @@ export default function AuctionAdmin(props) {
         countdowned: false,
         next: null,
         translation: window.App.translation,
+        started: false,
         finished: false,
         lbOpen: false,
         countdown: false
@@ -157,6 +158,7 @@ export default function AuctionAdmin(props) {
     const updateLotStatus = event => {
         setState(prevState => {
             let auction = prevState.auction,
+                started = prevState.started,
                 lots = [],
                 update = false,
                 countdowned = prevState.countdowned;
@@ -171,6 +173,7 @@ export default function AuctionAdmin(props) {
                     lot.status = event.detail.status;
                     if (event.detail.status == "in_auction") {
                         auction.current = lot;
+                        started = true;
                         countdowned = false;
                     }
                     update = true;
@@ -189,6 +192,7 @@ export default function AuctionAdmin(props) {
                     auction.current = null;
                 return {
                     ...prevState,
+                    started,
                     auction,
                     finished,
                     countdowned: countdowned
@@ -469,16 +473,16 @@ export default function AuctionAdmin(props) {
                                                                                     m,
                                                                                     mi
                                                                                 ) => (
-                                                                                        <span
-                                                                                            key={
-                                                                                                mi
-                                                                                            }
-                                                                                        >
-                                                                                            {
-                                                                                                m.title
-                                                                                            }
-                                                                                        </span>
-                                                                                    )
+                                                                                    <span
+                                                                                        key={
+                                                                                            mi
+                                                                                        }
+                                                                                    >
+                                                                                        {
+                                                                                            m.title
+                                                                                        }
+                                                                                    </span>
+                                                                                )
                                                                             )}
                                                                         </div>
                                                                         <div className="styles">
@@ -487,16 +491,16 @@ export default function AuctionAdmin(props) {
                                                                                     m,
                                                                                     mi
                                                                                 ) => (
-                                                                                        <span
-                                                                                            key={
-                                                                                                mi
-                                                                                            }
-                                                                                        >
-                                                                                            {
-                                                                                                m.title
-                                                                                            }
-                                                                                        </span>
-                                                                                    )
+                                                                                    <span
+                                                                                        key={
+                                                                                            mi
+                                                                                        }
+                                                                                    >
+                                                                                        {
+                                                                                            m.title
+                                                                                        }
+                                                                                    </span>
+                                                                                )
                                                                             )}
                                                                         </div>
                                                                         <div className="frames">
@@ -505,16 +509,16 @@ export default function AuctionAdmin(props) {
                                                                                     m,
                                                                                     mi
                                                                                 ) => (
-                                                                                        <span
-                                                                                            key={
-                                                                                                mi
-                                                                                            }
-                                                                                        >
-                                                                                            {
-                                                                                                m.title
-                                                                                            }
-                                                                                        </span>
-                                                                                    )
+                                                                                    <span
+                                                                                        key={
+                                                                                            mi
+                                                                                        }
+                                                                                    >
+                                                                                        {
+                                                                                            m.title
+                                                                                        }
+                                                                                    </span>
+                                                                                )
                                                                             )}
                                                                         </div>
                                                                         <div className="techniques">
@@ -523,16 +527,16 @@ export default function AuctionAdmin(props) {
                                                                                     m,
                                                                                     mi
                                                                                 ) => (
-                                                                                        <span
-                                                                                            key={
-                                                                                                mi
-                                                                                            }
-                                                                                        >
-                                                                                            {
-                                                                                                m.title
-                                                                                            }
-                                                                                        </span>
-                                                                                    )
+                                                                                    <span
+                                                                                        key={
+                                                                                            mi
+                                                                                        }
+                                                                                    >
+                                                                                        {
+                                                                                            m.title
+                                                                                        }
+                                                                                    </span>
+                                                                                )
                                                                             )}
                                                                         </div>
                                                                         <div className="categories">
@@ -541,16 +545,16 @@ export default function AuctionAdmin(props) {
                                                                                     m,
                                                                                     mi
                                                                                 ) => (
-                                                                                        <span
-                                                                                            key={
-                                                                                                mi
-                                                                                            }
-                                                                                        >
-                                                                                            {
-                                                                                                m.title
-                                                                                            }
-                                                                                        </span>
-                                                                                    )
+                                                                                    <span
+                                                                                        key={
+                                                                                            mi
+                                                                                        }
+                                                                                    >
+                                                                                        {
+                                                                                            m.title
+                                                                                        }
+                                                                                    </span>
+                                                                                )
                                                                             )}
                                                                         </div>
                                                                         <div className="size">
@@ -640,29 +644,25 @@ export default function AuctionAdmin(props) {
                                                             {!state.finished ? (
                                                                 !state.auction
                                                                     .current ? (
-                                                                        <a
-                                                                            className="btn btn-primary"
-                                                                            href="#"
-                                                                            style={{ display: "block" }}
-                                                                            onClick={
-                                                                                startAuction
-                                                                            }
-                                                                        >
-                                                                            <div className="pb-1">
-                                                                                {__(
-                                                                                    "ADMIN_START_AUCTION"
-                                                                                )}
-                                                                            </div>
-                                                                            <div>
-                                                                                <small>
-                                                                                    (
-                                                                            {__(
-                                                                                    "ADMIN_SHOW_FIRST_LOT"
-                                                                                )}
-                                                                            )
-                                                                        </small>
-                                                                            </div>
-                                                                        </a>
+                                                                        !state.started ? (
+                                                                            <a
+                                                                                className="btn btn-primary"
+                                                                                href="#"
+                                                                                style={{ display: "block" }}
+                                                                                onClick={
+                                                                                    startAuction
+                                                                                }
+                                                                            >
+                                                                                <div className="pb-1">
+                                                                                    {__(
+                                                                                        "ADMIN_START_AUCTION"
+                                                                                    )}
+                                                                                </div>
+                                                                                <div>
+                                                                                    <small>({__("ADMIN_SHOW_FIRST_LOT")})</small>
+                                                                                </div>
+                                                                            </a>
+                                                                        ) : ``
                                                                     ) : !state.auction
                                                                         .current.bets
                                                                         .length ? (

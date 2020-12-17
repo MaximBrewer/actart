@@ -19,7 +19,10 @@ export default function OnlineTop(props) {
                     <div className="h1">
                         <Link to={`/auctions/` + auction.id}>{auction.title}</Link>
                         <br />
-                        <span className="online">{__('ONLINE_BROADCAST_IN_PROPGRESS_TEXT')}</span>
+                        {!props.finished ?
+                            <span className="online">{__('#ONLINE_BROADCAST_IN_PROPGRESS_TEXT#')}</span> :
+                            <span className="online">{__('#ONLINE_BROADCAST_HAS_FINISHED_TEXT#')}</span>
+                        }
                     </div>
                 </div>
             </div>

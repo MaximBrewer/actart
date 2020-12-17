@@ -22,7 +22,8 @@ export default function AuctionBase(props) {
 
     const [state, setState] = useState({
         auction: null,
-        finished: false
+        finished: false,
+        started: false
     });
 
     const updateLotLastChance = event => {
@@ -58,6 +59,7 @@ export default function AuctionBase(props) {
         console.log(event)
         setState(prevState => {
             let auction = prevState.auction,
+                started = prevState.started,
                 lots = [],
                 update = false;
             if (auction.current && auction.current.id == event.detail.id) {
@@ -68,15 +70,16 @@ export default function AuctionBase(props) {
                 let lot = auction.lots[i];
                 if (lot.id == event.detail.id) {
                     lot.status = event.detail.status;
-                    if (event.detail.status == "in_auction")
+                    if (event.detail.status == "in_auction") {
                         auction.current = lot;
+                        started = true;
+                    }
                     update = true;
                 }
                 lots.push(lot);
             }
             auction.lots = lots;
             if (update) {
-                console.log(auction)
                 let finished = true;
                 for (const lot of auction.lots) {
                     if (lot.status == "auction" || lot.status == "in_auction")
@@ -87,6 +90,7 @@ export default function AuctionBase(props) {
                 }
                 return {
                     ...prevState,
+                    started,
                     auction,
                     finished
                 };
@@ -96,7 +100,6 @@ export default function AuctionBase(props) {
     };
 
     const createBet = event => {
-        console.log(event)
         setState(prevState => {
             let auction = prevState.auction,
                 lots = [],
@@ -124,7 +127,6 @@ export default function AuctionBase(props) {
     };
 
     const updateAuctionStatus = event => {
-        console.log(event)
         setState(prevState => {
             if (event.detail.id == prevState.auction.id)
                 return {
@@ -217,15 +219,15 @@ export default function AuctionBase(props) {
         <section className="auction-page-wrapper">
             {state.auction ? (
                 <div className={`status-` + state.auction.status}>
-                    <Top {...props} auction={state.auction} />
+                    <Top {...props} auction={state.auction}  finished={state.finished} started={state.started}/>
                     <div className="sticky-wrapper">
-                        <Center {...props} auction={state.auction} finished={state.finished} />
+                        <Center {...props} auction={state.auction} finished={state.finished} started={state.started} />
                         <div className="auction-page-inner">
                             <div className="auction-works-list my-5">
-                                <LotsList {...props} auction={state.auction} />
+                                <LotsList {...props} auction={state.auction}  finished={state.finished} started={state.started}/>
                             </div>
                             <div className="my-5">
-                                <Bottom {...props} auction={state.auction} />
+                                <Bottom {...props} auction={state.auction}  finished={state.finished} started={state.started}/>
                             </div>
                         </div>
                         <div className="sticky-section">

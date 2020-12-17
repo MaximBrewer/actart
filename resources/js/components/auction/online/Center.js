@@ -7,7 +7,7 @@ import { size } from "lodash";
 
 export default function Center(props) {
 
-    const { auction, finished } = props;
+    const { auction, finished, started } = props;
 
     const [state, setState] = useState({
         translation: window.App.translation,
@@ -123,15 +123,13 @@ export default function Center(props) {
                                         item={auction.current}
                                         {...props}
                                     />
-                                ) : (
-                                        <h3
-                                            className={`py-5 text-center color-red`}
-                                        >
-                                            {!finished
-                                                ? __("#AUCTION_WILL_START_SOON#")
-                                                : __("#AUCTION_HAS_FINISHED#")}
-                                        </h3>
-                                    )}
+                                ) : (!started
+                                    ? <h3 className={`py-5 text-center color-red`}>{__("#AUCTION_WILL_START_SOON#")}</h3>
+                                    : !finished
+                                        ? <h3 className={`py-5 text-center color-red`} >{__("#WAIT_NEXT_LOT#")}</h3>
+                                        : <h3 className={`py-5 text-center color-red`} >{__("#AUCTION_HAS_FINISHED#")}</h3>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>

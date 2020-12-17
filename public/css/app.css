@@ -21167,12 +21167,12 @@ iframe {
 }
 
 .carousel-wrapper .carousel-lines {
-  height: 0.4rem;
   display: flex;
   flex-wrap: wrap;
 }
 
 .carousel-wrapper .carousel-lines > div {
+  height: 0.4rem;
   cursor: pointer;
   min-width: 1rem;
   margin-right: 0.5rem;
@@ -21183,7 +21183,7 @@ iframe {
   background-color: #1e2b32;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 576px) {
   .carousel-wrapper .carousel-lines > div {
     min-width: 2rem;
   }
