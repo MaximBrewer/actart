@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    <style>
+        {{ setting('site.css') }}
+    </style>
     <div id="app"></div>
     <div id="flashHolder"></div>
     <script>
