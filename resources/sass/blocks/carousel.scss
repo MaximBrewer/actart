@@ -12,4 +12,14 @@
         bottom: 2rem;
         right: 0;
     }
+    .carousel-lines{
+        height: .5rem;
+        >div{
+            min-width: 8rem;
+            border: 1px solid $primary;
+            &.active{
+                background-color: $primary;
+            }
+        }
+    }
 }

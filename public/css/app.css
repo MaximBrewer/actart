@@ -21166,6 +21166,19 @@ iframe {
   right: 0;
 }
 
+.carousel-wrapper .carousel-lines {
+  height: 0.5rem;
+}
+
+.carousel-wrapper .carousel-lines > div {
+  min-width: 8rem;
+  border: 1px solid #1e2b32;
+}
+
+.carousel-wrapper .carousel-lines > div.active {
+  background-color: #1e2b32;
+}
+
 .my-masonry-grid {
   /* Not needed if autoprefixing */
   /* Not needed if autoprefixing */

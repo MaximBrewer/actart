@@ -7,7 +7,9 @@ export default function Carousel(props) {
 
     const [state, setState] = useState({
         slides: [],
-        prefix: ''
+        prefix: '',
+        slideIndex: 0,
+        slidesTotal: 0,
     });
 
     const refPicture = useRef();
@@ -42,7 +44,15 @@ export default function Carousel(props) {
         centerPadding: "25%",
         auto: true,
         slidesToShow: slidesToShow(),
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        beforeChange: (current, next) => {
+            setState(prevState => {
+                return {
+                    ...prevState,
+                    slideIndex: next
+                };
+            });
+        }
     };
 
     const addSlides = () => {
@@ -75,7 +85,12 @@ export default function Carousel(props) {
                     ))}
                 </Slider>
             </div>
-            <div className="d-flex justify-content-end py-5">
+            <div className="d-flex justify-content-between py-5">
+                <div className="carousel-lines d-flex">
+                    {state.slides.map((item, index) => (
+                        <div className={`line${index == state.slideIndex ? ` active` : ``}`} style={{ display: index > 5 ? `none` : ``}} key={index}>&nbsp;</div>
+                    ))}
+                </div>
                 <div className="carousel-arrows">
                     <a
                         className="btn btn-default btn-control d-flex"
