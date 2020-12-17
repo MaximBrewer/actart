@@ -91,11 +91,11 @@ export default function Right(props) {
                             href="#"
                             onClick={e => {
                                 e.preventDefault();
-                                offer(item.id, window.App.delta + item.price * 1);
+                                offer(item.id, window.App.delta*1 + item.price * 1);
                             }}
                         >
                             <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                            <div>${item.price * 1 + window.App.delta}</div>
+                            <div>${item.price * 1 + window.App.delta*1}</div>
                         </a>
                     ) : (
                         ``
