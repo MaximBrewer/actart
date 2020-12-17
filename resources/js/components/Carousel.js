@@ -47,6 +47,7 @@ export default function Carousel(props) {
         slidesToScroll: 1,
         beforeChange: (current, next) => {
             setState(prevState => {
+                console.log()
                 return {
                     ...prevState,
                     slideIndex: next
@@ -62,7 +63,11 @@ export default function Carousel(props) {
             "/" +
             props.id)
             .then(({ slides, prefix }) => {
-                setState({ slides, prefix })
+                setState(prevState => ({
+                    ...prevState,
+                    slides: slides,
+                    prefix: prefix
+                }))
             })
             .catch(() => null);
     };
@@ -88,7 +93,7 @@ export default function Carousel(props) {
             <div className="d-flex justify-content-between py-5">
                 <div className="carousel-lines d-flex">
                     {state.slides.map((item, index) => (
-                        <div className={`line${index == state.slideIndex ? ` active` : ``}`} style={{ display: index > 5 ? `none` : ``}} key={index}>&nbsp;</div>
+                        <div onClick={() => { console.log(index); refPicture.current.slickGoTo(index) }} className={`line${index == state.slideIndex ? ` active` : ``}`} style={{ display: index > 10 ? `none` : `` }} key={index}></div>
                     ))}
                 </div>
                 <div className="carousel-arrows">

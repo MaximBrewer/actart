@@ -12,12 +12,14 @@
         bottom: 2rem;
         right: 0;
     }
-    .carousel-lines{
-        height: .5rem;
-        >div{
-            min-width: 8rem;
+    .carousel-lines {
+        height: 0.4rem;
+        > div {
+            cursor: pointer;
+            min-width: 4rem;
+            margin-right: 0.5rem;
             border: 1px solid $primary;
-            &.active{
+            &.active {
                 background-color: $primary;
             }
         }

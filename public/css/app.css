@@ -21167,11 +21167,13 @@ iframe {
 }
 
 .carousel-wrapper .carousel-lines {
-  height: 0.5rem;
+  height: 0.4rem;
 }
 
 .carousel-wrapper .carousel-lines > div {
-  min-width: 8rem;
+  cursor: pointer;
+  min-width: 4rem;
+  margin-right: 0.5rem;
   border: 1px solid #1e2b32;
 }
 
