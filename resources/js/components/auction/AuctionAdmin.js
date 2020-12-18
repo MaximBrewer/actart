@@ -140,7 +140,8 @@ export default function AuctionAdmin(props) {
         started: false,
         finished: false,
         lbOpen: false,
-        countdown: false
+        countdown: false,
+        counting: false
     });
 
     const setStartCountdown = event => {
@@ -149,13 +150,15 @@ export default function AuctionAdmin(props) {
                 return {
                     ...prevState,
                     countdowned: true,
-                    countdown: <Countdown date={Date.now() + 1000 * window.App.timer} />
+                    counting: true,
+                    countdown: <Countdown date={Date.now() + 1000 * window.App.timer} onComplete={setState(prevState => ({
+                        ...prevState,
+                        counting: false
+                    }))} />
                 }
             } else return prevState;
         })
     }
-
-    console.log(state.started, state.finished)
 
     const updateLotStatus = event => {
         setState(prevState => {
@@ -701,7 +704,7 @@ export default function AuctionAdmin(props) {
                                                                                 )
                                                                         ) : (
                                                                             <React.Fragment>
-                                                                                <a
+                                                                                {!counting ? <a
                                                                                     className="btn btn-danger"
                                                                                     href="#"
                                                                                     onClick={
@@ -713,7 +716,8 @@ export default function AuctionAdmin(props) {
                                                                                             "ADMIN_SOLD"
                                                                                         )}
                                                                                     </div>
-                                                                                </a>
+                                                                                </a> : ``}
+
                                                                                 {
                                                                                     !state.countdowned ? <a
                                                                                         className="btn btn-default"
