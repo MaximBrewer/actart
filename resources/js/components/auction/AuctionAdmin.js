@@ -704,7 +704,7 @@ export default function AuctionAdmin(props) {
                                                                                 )
                                                                         ) : (
                                                                             <React.Fragment>
-                                                                                {!counting ? <a
+                                                                                {!state.counting ? <a
                                                                                     className="btn btn-danger"
                                                                                     href="#"
                                                                                     onClick={
