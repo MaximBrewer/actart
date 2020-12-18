@@ -26,8 +26,6 @@ function Profile(props) {
         setIntendedUrl(null);
     };
 
-    console.log(window.App.coming);
-
     return (
         <section className="profile-section">
             <div className="container">

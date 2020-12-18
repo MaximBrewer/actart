@@ -14,8 +14,6 @@ export default function Center(props) {
         lbOpen: false
     });
 
-    console.log(started, finished)
-
     const updateTranslation = event => {
         setState(prevState => ({
             ...prevState,
@@ -101,7 +99,7 @@ export default function Center(props) {
                                     <div
                                         className={`current d-flex justify-content-between py-2`}
                                     >
-                                        <div className="h2 color-red" style={{ fontSize: "2.5rem" }}>{auction.current ? __("LOT_TEXT_LOT_ID") + auction.current.id : ``}</div>
+                                        <div className="h2 color-red">{auction.current ? __("LOT_TEXT_LOT_ID") + ` ` + auction.current.id : ``}</div>
                                         <div style={{ width: "40%" }}>
                                             <div
                                                 style={{

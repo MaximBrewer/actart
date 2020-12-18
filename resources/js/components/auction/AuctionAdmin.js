@@ -155,10 +155,12 @@ export default function AuctionAdmin(props) {
         })
     }
 
+    console.log(state.started, state.finished)
+
     const updateLotStatus = event => {
         setState(prevState => {
             let auction = prevState.auction,
-                started = prevState.started,
+                started = prevState.auction.current ? true : prevState.started,
                 lots = [],
                 update = false,
                 countdowned = prevState.countdowned;
@@ -413,7 +415,7 @@ export default function AuctionAdmin(props) {
                                                     <div
                                                         className={`current d-flex justify-content-between py-2`}
                                                     >
-                                                        <div className="h2 color-red">{state.auction.current ? __("LOT_TEXT_LOT_ID") + state.auction.current.id : ``}</div>
+                                                        <div className="h2 color-red">{state.auction.current ? __("LOT_TEXT_LOT_ID") + ` ` + state.auction.current.id : ``}</div>
                                                         <div style={{ width: "40%" }}>
                                                             <div
                                                                 style={{

@@ -38,7 +38,6 @@ export default function Auction(props) {
     });
 
     const updateLotLastChance = event => {
-        console.log(event)
         setState(prevState => {
             let auction = prevState.auction,
                 lots = [],
@@ -67,11 +66,10 @@ export default function Auction(props) {
     };
 
     const updateLotStatus = event => {
-        console.log(event)
         setState(prevState => {
             let auction = prevState.auction,
                 lots = [],
-                started = prevState.started,
+                started = prevState.auction.current ? true : prevState.started,
                 update = false;
             if (auction.current && auction.current.id == event.detail.id) {
                 auction.current.status = event.detail.status;
@@ -91,7 +89,6 @@ export default function Auction(props) {
             }
             auction.lots = lots;
             if (update) {
-                console.log(auction)
                 let finished = true;
                 for (const lot of auction.lots) {
                     if (lot.status == "auction" || lot.status == "in_auction")
@@ -112,7 +109,6 @@ export default function Auction(props) {
     };
 
     const createBet = event => {
-        console.log(event)
         setState(prevState => {
             let auction = prevState.auction,
                 lots = [],
@@ -157,7 +153,8 @@ export default function Auction(props) {
             .then(res => {
                 setState((prevState) => ({
                     ...prevState,
-                    auction: res.data.auction
+                    auction: res.data.auction,
+                    started: res.data.auction.current ? true : prevState.started
                 }));
             })
             .catch(err => {
