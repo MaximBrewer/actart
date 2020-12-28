@@ -73,21 +73,16 @@ export default function AuctionAdmin(props) {
 
     const sold = e => {
         e.preventDefault();
-        setState(prevState => {
-            req(
-                "/api/" +
-                window.App.locale +
-                "/auction/" +
-                state.auction.id +
-                "/admin/sold",
-                "PATCH"
-            )
-                .then(() => null)
-                .catch(() => null);
-            return {
-                ...prevState
-            }
-        })
+        req(
+            "/api/" +
+            window.App.locale +
+            "/auction/" +
+            state.auction.id +
+            "/admin/sold",
+            "PATCH"
+        )
+            .then(() => null)
+            .catch(() => null);
     };
 
     const nextLot = e => {
