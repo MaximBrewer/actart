@@ -28,6 +28,7 @@ import {
 } from "react-router-dom";
 import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
+import Right from "./online/blocks/Right";
 
 export default function Auction(props) {
     const { id } = useParams();
