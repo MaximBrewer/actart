@@ -292,7 +292,7 @@ export default function Auction(props) {
                                                 <div className="col-xl-40 col-xxl-38">
                                                     <div className="left-side">
                                                         <div>
-                                                            {auction.current ?
+                                                            {state.auction.current ?
                                                                 (
                                                                     <div
                                                                         style={{
@@ -308,7 +308,7 @@ export default function Auction(props) {
                                                                             }
                                                                             className="image"
                                                                             alt={
-                                                                                auction.current
+                                                                                state.auction.current
                                                                                     .thumbnail
                                                                             }
                                                                             style={{
@@ -326,7 +326,7 @@ export default function Auction(props) {
                                                                                     "#ECEDED",
                                                                                 backgroundImage:
                                                                                     'url("' +
-                                                                                    auction
+                                                                                    state.auction
                                                                                         .current
                                                                                         .thumbnail +
                                                                                     '")'
@@ -335,7 +335,7 @@ export default function Auction(props) {
                                                                         {state.lbOpen && (
                                                                             <Lightbox
                                                                                 mainSrc={
-                                                                                    auction
+                                                                                    state.auction
                                                                                         .current
                                                                                         .photo
                                                                                 }
@@ -355,7 +355,7 @@ export default function Auction(props) {
                                                             <div
                                                                 className={`current d-flex justify-content-between py-2`}
                                                             >
-                                                                <div className="h2 color-red">{auction.current ? __("LOT_TEXT_LOT_ID") + ` ` + auction.current.id : ``}</div>
+                                                                <div className="h2 color-red">{state.auction.current ? __("LOT_TEXT_LOT_ID") + ` ` + state.auction.current.id : ``}</div>
                                                                 <div style={{ width: "40%" }}>
                                                                     <div
                                                                         style={{
@@ -374,9 +374,9 @@ export default function Auction(props) {
                                                 </div>
                                                 <div className="col-xl-20 col-xxl-22">
                                                     <div className="right-side">
-                                                        {auction.current ? (
+                                                        {state.auction.current ? (
                                                             <Right
-                                                                item={auction.current}
+                                                                item={state.auction.current}
                                                                 {...props}
                                                             />
                                                         ) : (!started
