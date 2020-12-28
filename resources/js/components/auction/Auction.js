@@ -26,6 +26,8 @@ import {
     useRouteMatch,
     useParams
 } from "react-router-dom";
+import Parser from "html-react-parser";
+import Lightbox from "react-image-lightbox";
 
 export default function Auction(props) {
     const { id } = useParams();
