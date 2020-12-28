@@ -413,6 +413,7 @@
                             <option value="select_dropdown">{{ __('voyager::form.type_selectdropdown') }}</option>
                             <option value="file">{{ __('voyager::form.type_file') }}</option>
                             <option value="image">{{ __('voyager::form.type_image') }}</option>
+                            <option value="table">{{ __('Таблица') }}</option>
                         </select>
                     </div>
                     <div class="col-md-3">
