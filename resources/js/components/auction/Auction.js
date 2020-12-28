@@ -381,10 +381,11 @@ export default function Auction(props) {
                                                             <Right
                                                                 item={state.auction.current}
                                                                 {...props}
+                                                                finished={state.finished} started={state.started}
                                                             />
-                                                        ) : (!started
+                                                        ) : (!state.started
                                                             ? <h3 className={`py-5 text-center color-red`}>{__("#AUCTION_WILL_START_SOON#")}</h3>
-                                                            : !finished
+                                                            : !state.finished
                                                                 ? <h3 className={`py-5 text-center color-red`} >{__("#WAIT_NEXT_LOT#")}</h3>
                                                                 : <h3 className={`py-5 text-center color-red`} >{__("#AUCTION_HAS_FINISHED#")}</h3>
                                                             )
