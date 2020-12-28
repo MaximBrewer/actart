@@ -117,7 +117,7 @@ export default function Tizer(props) {
                             {item.width}х{item.height}&nbsp;{__("см")}
                         </div>
                     </div>
-                    {item.status == 'sold' || data.auction.status == 'finished' ? `` :
+                    {data.auction.status == 'finished' ? `` :
                         <div className="price">
                             {__("Start price")} <span>${item.price}</span>
                         </div>
