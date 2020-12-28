@@ -56,7 +56,6 @@ export default function Subscribe(props) {
                                 email.error ? "is-invalid" : ""
                             }`}
                             required
-                            autoFocus
                             {...email.bind}
                             aria-describedby="email"
                             placeholder={__("Your E-mail")}

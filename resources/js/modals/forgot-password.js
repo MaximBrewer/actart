@@ -49,7 +49,6 @@ function ForgotPasswordModal(props) {
                                     email.error ? "is-invalid" : ""
                                 }`}
                                 required
-                                autoFocus
                                 {...email.bind}
                             />
                             {email.error && (

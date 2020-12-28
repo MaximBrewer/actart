@@ -59,7 +59,6 @@ function RegisterModal(props) {
                                 name.error ? "is-invalid" : ""
                             }`}
                             required
-                            autoFocus
                             {...name.bind}
                         />
                         {name.error && (
