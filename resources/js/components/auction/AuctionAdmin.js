@@ -110,7 +110,7 @@ export default function AuctionAdmin(props) {
             "/api/" +
             window.App.locale +
             "/auction/" +
-            prevState.auction.id +
+            state.auction.id +
             "/admin/finish",
             "PATCH"
         )
