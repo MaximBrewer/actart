@@ -218,8 +218,10 @@ function App() {
                             <Route exact path="/rules">
                                 <Base {...rest} />
                             </Route>
-
                             <Route exact path="/delivery">
+                                <Base {...rest} />
+                            </Route>
+                            <Route exact path="/payment">
                                 <Base {...rest} />
                             </Route>
                             <Route exact path="/contacts">
