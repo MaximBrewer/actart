@@ -63,9 +63,11 @@ export default function Tizer(props) {
                             {item.width}х{item.height}&nbsp;{__("см")}
                         </div>
                     </div>
-                    <div className="price">
-                        {__("Start price")} <span>${item.price}</span>
-                    </div>
+                    {item.status == 'sold' ? `` :
+                        <div className="price">
+                            {__("Start price")} <span>${item.price}</span>
+                        </div>
+                    }
                     {state.open && (
                         <Lightbox
                             mainSrc={
@@ -120,9 +122,11 @@ export default function Tizer(props) {
                             {item.width}х{item.height}&nbsp;{__("см")}
                         </div>
                     </div>
-                    <div className="price">
-                        {__("Start price")} <span>${item.price}</span>
-                    </div>
+                    {item.status == 'sold' ? `` :
+                        <div className="price">
+                            {__("Start price")} <span>${item.price}</span>
+                        </div>
+                    }
                 </React.Fragment>
             }
         </div>
