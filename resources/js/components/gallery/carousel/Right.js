@@ -9,10 +9,25 @@ export default function Right(props) {
     const { currentUser } = useAuth();
 
     const [state, setState] = useState({
-        item: props.item
+        item: props.item,
+        steps: window.App.steps
     });
 
+    const getStep = () => {
+        for(let step of state.steps){
+            if(step.to > item.price || !step.to) return step.step * 1
+        }
+    }
+
     const updateLotStatus = event => {
+        setState(prevState => {
+            let item = { ...prevState.item };
+            item.status = event.detail.status;
+            return prevState;
+        });
+    };
+
+    const updateLotSteps = event => {
         setState(prevState => {
             let item = { ...prevState.item };
             item.status = event.detail.status;
@@ -76,6 +91,7 @@ export default function Right(props) {
             })
             .catch(err => console.log(err));
     };
+
 
     return (
         <div className="lot-carousel-right">
@@ -156,11 +172,11 @@ export default function Right(props) {
                                 href="#"
                                 onClick={e => {
                                     e.preventDefault();
-                                    offer(state.item.id, window.App.delta*1 + state.item.price * 1);
+                                    offer(state.item.id, getStep() + state.item.price * 1);
                                 }}
                             >
                                 <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                                <div>${state.item.price * 1 + window.App.delta*1}</div>
+                                <div>${state.item.price * 1 + getStep()}</div>
                             </a>
                             {state.item.price * 1 < state.item.blitz * 1 ? (
                                 <div className="blitz-price">
@@ -194,7 +210,7 @@ export default function Right(props) {
                                 }}
                             >
                                 <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                                <div>${state.item.price * 1 + window.App.delta*1}</div>
+                                <div>${state.item.price * 1 + getStep()}</div>
                             </a>
                             {state.item.price * 1 < state.item.blitz * 1 ? (
                                 <div className="blitz-price">

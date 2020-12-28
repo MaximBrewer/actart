@@ -67,6 +67,12 @@ export default function Right(props) {
         };
     }, []);
 
+    const getStep = () => {
+        for(let step of window.App.steps){
+            if(step.to > item.price || !step.to) return step.step * 1
+        }
+    }
+
     return (
         <div className="lot-carousel-right">
             <div className="pb-3 d-flex justify-content-between">
@@ -139,11 +145,11 @@ export default function Right(props) {
                         href="#"
                         onClick={e => {
                             e.preventDefault();
-                            offer(item.id, window.App.delta*1 + item.price * 1);
+                            offer(item.id, getStep() + item.price * 1);
                         }}
                     >
                         <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                        <div>${item.price * 1 + window.App.delta*1}</div>
+                        <div>${item.price * 1 + getStep()}</div>
                     </a>
                     {state.countdown}
                     {!item.bets.length && item.lastchance ? (

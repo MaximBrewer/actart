@@ -14,9 +14,17 @@ export default function Right(props) {
     };
     const blitz = id => {
         req("/api/" + window.App.locale + "/blitz/" + id, "PATCH")
-            .then(() => {})
+            .then(() => { })
             .catch(err => console.log(err));
     };
+
+    console.log(10000)
+
+    const getStep = () => {
+        for(let step of window.App.steps){
+            if(step.to > item.price || !step.to) return step.step * 1
+        }
+    }
 
     return (
         <div className="lot-carousel-right">
@@ -83,27 +91,27 @@ export default function Right(props) {
                             </div>
                         </div>
                     ) : (
-                        ``
-                    )}
+                            ``
+                        )}
                     {item.status == "in_auction" ? (
                         <a
                             className="btn btn-danger"
                             href="#"
                             onClick={e => {
                                 e.preventDefault();
-                                offer(item.id, window.App.delta*1 + item.price * 1);
+                                offer(item.id, getStep() + item.price * 1);
                             }}
                         >
                             <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                            <div>${item.price * 1 + window.App.delta*1}</div>
+                            <div>${item.price * 1 + getStep()}</div>
                         </a>
                     ) : (
-                        ``
-                    )}
+                            ``
+                        )}
                 </div>
             ) : (
-                ``
-            )}
+                    ``
+                )}
         </div>
     );
 }

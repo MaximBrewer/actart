@@ -10,35 +10,38 @@ import CountdownMaster, {
 } from "react-countdown";
 
 
-const Countdown = (props) => {
-
-    const declOfNum = (number, titles) => {
-        let cases = [2, 0, 1, 1, 1, 2];
-        return titles[
-            number % 100 > 4 && number % 100 < 20
-                ? 2
-                : cases[number % 10 < 5 ? number % 10 : 5]
-        ];
-    };
-
-    const renderer = ({ days, hours, minutes, seconds, completed }) => {
-        if (completed) {
-            return <div className="countdown-lot-wrapper"></div>;
-        } else {
-            return (
-                <div className="countdown-lot-wrapper" style={{ textAlign: "center", fontWeight: "bold" }}>
-                    {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
-                </div>
-            );
-        }
-    };
-    const data = { props };
-    return <CountdownMaster date={props.date} renderer={renderer} />;
-}
-
 export default function AuctionAdmin(props) {
     const { req } = props;
     const { id } = useParams();
+
+    const Countdown = (props) => {
+
+        const renderer = ({ days, hours, minutes, seconds, completed }) => {
+            if (completed) {
+                return <a
+                    className="btn btn-danger"
+                    href="#"
+                    onClick={
+                        sold
+                    }
+                >
+                    <div className="pb-1">
+                        {__(
+                            "ADMIN_SOLD"
+                        )}
+                    </div>
+                </a>;
+            } else {
+                return (
+                    <div className="countdown-lot-wrapper" style={{ textAlign: "center", fontWeight: "bold" }}>
+                        {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+                    </div>
+                );
+            }
+        };
+        const data = { props };
+        return <CountdownMaster date={props.date} renderer={renderer} />;
+    }
 
     const startAuction = e => {
         e.preventDefault();
@@ -70,16 +73,21 @@ export default function AuctionAdmin(props) {
 
     const sold = e => {
         e.preventDefault();
-        req(
-            "/api/" +
-            window.App.locale +
-            "/auction/" +
-            state.auction.id +
-            "/admin/sold",
-            "PATCH"
-        )
-            .then(() => null)
-            .catch(() => null);
+        setState(prevState => {
+            req(
+                "/api/" +
+                window.App.locale +
+                "/auction/" +
+                state.auction.id +
+                "/admin/sold",
+                "PATCH"
+            )
+                .then(() => null)
+                .catch(() => null);
+            return {
+                ...prevState
+            }
+        })
     };
 
     const nextLot = e => {
@@ -102,7 +110,7 @@ export default function AuctionAdmin(props) {
             "/api/" +
             window.App.locale +
             "/auction/" +
-            state.auction.id +
+            prevState.auction.id +
             "/admin/finish",
             "PATCH"
         )
@@ -151,10 +159,7 @@ export default function AuctionAdmin(props) {
                     ...prevState,
                     countdowned: true,
                     counting: true,
-                    countdown: <Countdown date={Date.now() + 1000 * window.App.timer} onComplete={setState(prevState => ({
-                        ...prevState,
-                        counting: false
-                    }))} />
+                    countdown: <Countdown date={Date.now() + 1000 * window.App.timer} />
                 }
             } else return prevState;
         })
@@ -704,34 +709,35 @@ export default function AuctionAdmin(props) {
                                                                                 )
                                                                         ) : (
                                                                             <React.Fragment>
-                                                                                {!state.counting ? <a
-                                                                                    className="btn btn-danger"
-                                                                                    href="#"
-                                                                                    onClick={
-                                                                                        sold
-                                                                                    }
-                                                                                >
-                                                                                    <div className="pb-1">
-                                                                                        {__(
-                                                                                            "ADMIN_SOLD"
-                                                                                        )}
-                                                                                    </div>
-                                                                                </a> : ``}
-
                                                                                 {
-                                                                                    !state.countdowned ? <a
-                                                                                        className="btn btn-default"
-                                                                                        href="#"
-                                                                                        onClick={
-                                                                                            startCountdown
-                                                                                        }
-                                                                                    >
-                                                                                        <div className="pb-1">
-                                                                                            {__(
-                                                                                                "#ADMIN_COUNTDOWN#"
-                                                                                            )}
-                                                                                        </div>
-                                                                                    </a> : state.countdown
+                                                                                    !state.countdowned ? <React.Fragment>
+                                                                                        <a
+                                                                                            className="btn btn-danger"
+                                                                                            href="#"
+                                                                                            onClick={
+                                                                                                sold
+                                                                                            }
+                                                                                        >
+                                                                                            <div className="pb-1">
+                                                                                                {__(
+                                                                                                    "ADMIN_SOLD"
+                                                                                                )}
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <a
+                                                                                            className="btn btn-default"
+                                                                                            href="#"
+                                                                                            onClick={
+                                                                                                startCountdown
+                                                                                            }
+                                                                                        >
+                                                                                            <div className="pb-1">
+                                                                                                {__(
+                                                                                                    "#ADMIN_COUNTDOWN#"
+                                                                                                )}
+                                                                                            </div>
+                                                                                        </a>
+                                                                                    </React.Fragment> : state.countdown
                                                                                 }
                                                                             </React.Fragment>
                                                                         )
