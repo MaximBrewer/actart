@@ -358,7 +358,7 @@ export default function Auction(props) {
                                                             <div
                                                                 className={`current d-flex justify-content-between py-2`}
                                                             >
-                                                                <div className="h2 color-red">{state.auction.current ? __("LOT_TEXT_LOT_ID") + ` ` + state.auction.current.id : ``}</div>
+                                                                <div className="h2 color-red">{state.auction.current ? __("LOT_TEXT_LOT_ID") + ` ` + state.auction.current.sort : ``}</div>
                                                                 <div style={{ width: "40%" }}>
                                                                     <div
                                                                         style={{
