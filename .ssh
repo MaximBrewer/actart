@@ -13,4 +13,6 @@ cd /var/www/act-art.ru/htdocs
 Pc47x*4=beQY7fHt
 
 
-UPDATE `lots` SET `status`='auction',`lastchance`=0
+update auctions set status='started' where id=19;
+update lots set status ='auction', lastchance=null where auction_id=19;
+truncate table bets;
