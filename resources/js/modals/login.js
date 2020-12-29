@@ -39,6 +39,7 @@ function LoginModal(props) {
                             })
                             .catch(err => console.log(err));
                     history.push("/auctions/" + window.participate);
+                    delete(window.participate)
                 }
                 location.reload();
                 closeModal();
