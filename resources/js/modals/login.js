@@ -31,8 +31,8 @@ function LoginModal(props) {
                     if (!skip)
                         client(
                             "/api/auction/" +
-                                window.participate +
-                                "/participate"
+                            window.participate +
+                            "/participate"
                         )
                             .then(({ user }) => {
                                 setCurrentUser(user);
@@ -40,6 +40,7 @@ function LoginModal(props) {
                             .catch(err => console.log(err));
                     history.push("/auctions/" + window.participate);
                 }
+                location.reload();
                 closeModal();
             })
             .catch(error => {
@@ -65,9 +66,8 @@ function LoginModal(props) {
                             id="email"
                             type="email"
                             name="email"
-                            className={`form-control ${
-                                email.error ? "is-invalid" : ""
-                            }`}
+                            className={`form-control ${email.error ? "is-invalid" : ""
+                                }`}
                             required
                             {...email.bind}
                         />

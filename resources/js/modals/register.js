@@ -27,6 +27,7 @@ function RegisterModal(props) {
                 setCurrentUser(user);
                 setToken(token);
                 closeModal();
+                location.reload();
             })
             .catch(error => {
                 error.json().then(({ errors }) => {
