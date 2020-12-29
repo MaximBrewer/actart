@@ -278,7 +278,7 @@ export default function Auction(props) {
     return state.auction ? (
         <section className="auction-page-wrapper">
             <div className={`status-` + state.auction.status}>
-                <Top auction={state.auction} finished={state.finished} started={state.started} />
+                <Top {...props} auction={state.auction} finished={state.finished} started={state.started} />
                 <div className="sticky-wrapper">
                     {lotId ? (
                         <div className="auction-info">
@@ -379,8 +379,8 @@ export default function Auction(props) {
                                                     <div className="right-side">
                                                         {state.auction.current ? (
                                                             <Right
-                                                                item={state.auction.current}
                                                                 {...props}
+                                                                item={state.auction.current}
                                                                 finished={state.finished} started={state.started}
                                                             />
                                                         ) : (!state.started
