@@ -16,6 +16,7 @@ function AuthNav() {
         setCurrentUser(null);
         setToken(null);
         history.push("/");
+        location.reload();
         setIntendedUrl(null);
     };
 
