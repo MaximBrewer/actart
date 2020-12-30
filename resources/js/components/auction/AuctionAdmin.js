@@ -145,6 +145,7 @@ export default function AuctionAdmin(props) {
     const startCountdown = e => {
         e.preventDefault();
         setState(prevState => {
+            let auction = prevState.auction;
             req(
                 "/api/" +
                 window.App.locale +
