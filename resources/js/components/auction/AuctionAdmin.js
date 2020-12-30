@@ -14,6 +14,19 @@ export default function AuctionAdmin(props) {
     const { req } = props;
     const { id } = useParams();
 
+    const [state, setState] = useState({
+        auction: null,
+        lots: [],
+        countdowned: false,
+        next: null,
+        translation: window.App.translation,
+        started: false,
+        finished: false,
+        lbOpen: false,
+        countdown: false,
+        counting: false
+    });
+
     const Countdown = (props) => {
 
         const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -45,17 +58,21 @@ export default function AuctionAdmin(props) {
 
     const startAuction = e => {
         e.preventDefault();
-        req(
-            "/api/" +
-            window.App.locale +
-            "/auction/" +
-            state.auction.id +
-            "/admin/start",
-            "PATCH"
-        )
-            .then(() => null)
-            .catch(() => null);
-    };
+        setState(prevState => {
+            let auction = prevState.auction;
+            req(
+                "/api/" +
+                window.App.locale +
+                "/auction/" +
+                auction.id +
+                "/admin/start",
+                "PATCH"
+            )
+                .then(() => null)
+                .catch(() => null);
+            return prevState;
+        })
+    }
 
     const lastChance = e => {
         e.preventDefault();
@@ -73,58 +90,73 @@ export default function AuctionAdmin(props) {
 
     const sold = e => {
         e.preventDefault();
-        req(
-            "/api/" +
-            window.App.locale +
-            "/auction/" +
-            state.auction.id +
-            "/admin/sold",
-            "PATCH"
-        )
-            .then(() => null)
-            .catch(() => null);
+        setState(prevState => {
+            let auction = prevState.auction;
+            req(
+                "/api/" +
+                window.App.locale +
+                "/auction/" +
+                auction.id +
+                "/admin/sold",
+                "PATCH"
+            )
+                .then(() => null)
+                .catch(() => null);
+            return prevState;
+        })
     };
 
     const nextLot = e => {
         e.preventDefault();
-        req(
-            "/api/" +
-            window.App.locale +
-            "/auction/" +
-            state.auction.id +
-            "/admin/nextlot",
-            "PATCH"
-        )
-            .then(() => null)
-            .catch(() => null);
+        setState(prevState => {
+            let auction = prevState.auction;
+            req(
+                "/api/" +
+                window.App.locale +
+                "/auction/" +
+                auction.id +
+                "/admin/nextlot",
+                "PATCH"
+            )
+                .then(() => null)
+                .catch(() => null);
+            return prevState;
+        })
     };
 
     const finish = e => {
         e.preventDefault();
-        req(
-            "/api/" +
-            window.App.locale +
-            "/auction/" +
-            state.auction.id +
-            "/admin/finish",
-            "PATCH"
-        )
-            .then(() => null)
-            .catch(() => null);
+        setState(prevState => {
+            let auction = prevState.auction;
+            req(
+                "/api/" +
+                window.App.locale +
+                "/auction/" +
+                auction.id +
+                "/admin/finish",
+                "PATCH"
+            )
+                .then(() => null)
+                .catch(() => null);
+            return prevState;
+        })
     };
 
     const startCountdown = e => {
         e.preventDefault();
-        req(
-            "/api/" +
-            window.App.locale +
-            "/auction/" +
-            state.auction.current.id +
-            "/admin/countdown",
-            "PATCH"
-        )
-            .then(() => null)
-            .catch(() => null);
+        setState(prevState => {
+            req(
+                "/api/" +
+                window.App.locale +
+                "/auction/" +
+                auction.current.id +
+                "/admin/countdown",
+                "PATCH"
+            )
+                .then(() => null)
+                .catch(() => null);
+            return prevState;
+        })
     }
 
     const updateTranslation = event => {
@@ -133,19 +165,6 @@ export default function AuctionAdmin(props) {
             translation: event.detail.translation
         }));
     };
-
-    const [state, setState] = useState({
-        auction: null,
-        lots: [],
-        countdowned: false,
-        next: null,
-        translation: window.App.translation,
-        started: false,
-        finished: false,
-        lbOpen: false,
-        countdown: false,
-        counting: false
-    });
 
     const setStartCountdown = event => {
         setState(prevState => {
