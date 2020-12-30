@@ -25,7 +25,7 @@
     </script>
 
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script src="{{ asset('js/app.js?v=1.12') }}"></script>
+    <script src="{{ asset('js/app.js?v=1.13') }}"></script>
     {!! \App\Setting::where('key', 'site.footer.counters')->first()->value !!}
 </body>
 
