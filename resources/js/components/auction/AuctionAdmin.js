@@ -669,8 +669,6 @@ export default function AuctionAdmin(props) {
                                                                                 .startPrice
                                                                         }
                                                                     </span>
-                                                                </div>
-                                                                <div className="start-price">
                                                                     <span>
                                                                         {__(
                                                                             "#LOT_DECLARED_PRICE#"
