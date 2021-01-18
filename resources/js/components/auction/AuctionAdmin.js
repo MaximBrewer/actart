@@ -17,7 +17,6 @@ export default function AuctionAdmin(props) {
     const [state, setState] = useState({
         auction: null,
         lots: [],
-        countdowned: false,
         countdowning: false,
         next: null,
         translation: window.App.translation,
@@ -172,7 +171,6 @@ export default function AuctionAdmin(props) {
             if (prevState.auction.current.id == event.detail.id) {
                 return {
                     ...prevState,
-                    countdowned: true,
                     countdowning: true,
                     date: Date.now() + 1000 * window.App.timer
                 };
@@ -185,8 +183,7 @@ export default function AuctionAdmin(props) {
             let auction = prevState.auction,
                 started = prevState.auction.current ? true : prevState.started,
                 lots = [],
-                update = false,
-                countdowned = prevState.countdowned;
+                update = false;
 
             if (auction.current && auction.current.id == event.detail.id) {
                 auction.current.status = event.detail.status;
@@ -199,7 +196,6 @@ export default function AuctionAdmin(props) {
                     if (event.detail.status == "in_auction") {
                         auction.current = lot;
                         started = true;
-                        countdowned = false;
                     }
                     update = true;
                 }
@@ -219,8 +215,7 @@ export default function AuctionAdmin(props) {
                     ...prevState,
                     started,
                     auction,
-                    finished,
-                    countdowned: countdowned
+                    finished
                 };
             }
             return prevState;
@@ -292,8 +287,8 @@ export default function AuctionAdmin(props) {
             if (update)
                 return {
                     ...prevState,
+                    countdowning: false,
                     date: Date.now() + 1000 * window.App.timer,
-                    countdowned: true,
                     auction: auction
                 };
             return prevState;

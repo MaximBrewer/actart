@@ -90561,7 +90561,6 @@ function AuctionAdmin(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     auction: null,
     lots: [],
-    countdowned: false,
     countdowning: false,
     next: null,
     translation: window.App.translation,
@@ -90688,7 +90687,6 @@ function AuctionAdmin(props) {
 
       if (prevState.auction.current.id == event.detail.id) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
-          countdowned: true,
           countdowning: true,
           date: Date.now() + 1000 * window.App.timer
         });
@@ -90701,8 +90699,7 @@ function AuctionAdmin(props) {
       var auction = prevState.auction,
           started = prevState.auction.current ? true : prevState.started,
           lots = [],
-          update = false,
-          countdowned = prevState.countdowned;
+          update = false;
 
       if (auction.current && auction.current.id == event.detail.id) {
         auction.current.status = event.detail.status;
@@ -90718,7 +90715,6 @@ function AuctionAdmin(props) {
           if (event.detail.status == "in_auction") {
             auction.current = lot;
             started = true;
-            countdowned = false;
           }
 
           update = true;
@@ -90750,8 +90746,7 @@ function AuctionAdmin(props) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           started: started,
           auction: auction,
-          finished: finished,
-          countdowned: countdowned
+          finished: finished
         });
       }
 
@@ -90823,8 +90818,8 @@ function AuctionAdmin(props) {
 
       auction.lots = lots;
       if (update) return _objectSpread(_objectSpread({}, prevState), {}, {
+        countdowning: false,
         date: Date.now() + 1000 * window.App.timer,
-        countdowned: true,
         auction: auction
       });
       return prevState;
