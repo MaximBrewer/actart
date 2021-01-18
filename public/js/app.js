@@ -91064,7 +91064,7 @@ function AuctionAdmin(props) {
     onClick: finish
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ADMIN_FINISH"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ADMIN_FINISH"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-danger",
     href: "#",
     onClick: nextLot

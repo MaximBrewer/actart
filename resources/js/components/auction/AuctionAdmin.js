@@ -847,6 +847,7 @@ export default function AuctionAdmin(props) {
                                                                 </div>
                                                             </a>
                                                         )}
+                                                        <br />
                                                         <a
                                                             className="btn btn-danger"
                                                             href="#"
