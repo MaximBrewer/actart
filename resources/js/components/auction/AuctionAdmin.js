@@ -281,6 +281,8 @@ export default function AuctionAdmin(props) {
     };
 
     const handleOnComplete = () => {
+        if (countdownElem && countdownElem.current)
+            countdownElem.current.style.display = "none";
         setState(prevState => ({
             ...prevState,
             countdowning: false

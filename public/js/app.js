@@ -90813,6 +90813,7 @@ function AuctionAdmin(props) {
   };
 
   var handleOnComplete = function handleOnComplete() {
+    if (countdownElem && countdownElem.current) countdownElem.current.style.display = "none";
     setState(function (prevState) {
       return _objectSpread(_objectSpread({}, prevState), {}, {
         countdowning: false
