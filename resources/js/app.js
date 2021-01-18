@@ -244,6 +244,15 @@ channel.bind("update-auction-status", function ({ id, status }) {
 import App from "./router";
 import { AuthProvider } from "./context/auth";
 
+
+window.initState = {
+    login: false,
+    register: false,
+    forgot: false,
+    reset: false,
+    confirmation: false
+};
+
 ReactDOM.render(
     <AuthProvider>
         <App />

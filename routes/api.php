@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,17 @@ Route::name('api.')->namespace('Api')->group(function () {
                 // Password Reset Routes...
                 Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
                 Route::post('password/reset', 'ResetPasswordController@reset');
+
+                Route::post('send/confirmation', function (Request $request) {
+                    
+                    $user = User::where('email', $request->email)->whereNull('email_verified_at')->firstOrFail();
+
+                    $user->sendEmailVerificationNotification();
+
+                    return ['status' => __('A verification link has been sent to your email address.')];
+                    
+                })->middleware(['throttle:6,1'])->name('verification.send');
+
             });
 
             Route::get('page/{slug}', '\App\Http\Controllers\Api\PageController@show')->name('page.show');

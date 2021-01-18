@@ -14,7 +14,7 @@ function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const authenticated = useMemo(() => !!currentUser, [currentUser]);
     const administration = useMemo(
-        () => !!currentUser && !!currentUser.role.id == 1,
+        () => !!currentUser && currentUser.role.id == 1,
         [currentUser]
     );
 
@@ -32,6 +32,25 @@ function AuthProvider({ children }) {
         initAuth().then(user => {
             setCurrentUser(user);
             setInitializing(false);
+            if (!!!user)
+                switch (location.hash) {
+                    case "#confirmation":
+                        window.dispatchEvent(
+                            new CustomEvent("openmodal", {
+                                detail: "confirmation"
+                            })
+                        );
+                        break;
+                    case "#login":
+                        window.dispatchEvent(
+                            new CustomEvent("openmodal", {
+                                detail: "login"
+                            })
+                        );
+                        break;
+                    default:
+                        break;
+                }
         });
     }, []);
 

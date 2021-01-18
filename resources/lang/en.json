@@ -76,7 +76,7 @@
     "ADMIN_SHOW_FIRST_LOT": "show first lot",
     "ADMIN_LAST_CHANCE": "Last chance",
     "ADMIN_SOLD": "Sold",
-    "ADMIN_NEXT_LOT": "Next lot",
+    "ADMIN_NEXT_LOT": "Remove lot",
     "ADMIN_FINISH": "Finish auction",
     "AUCTION_WILL_START_SOON": "Auction will start soon",
     "AUCTION_HAS_FINISHED": "Auction has finished",

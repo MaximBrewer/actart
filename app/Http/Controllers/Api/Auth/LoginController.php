@@ -23,6 +23,15 @@ class LoginController extends Controller
             ], 422);
         }
 
+        if (!$request->user()->email_verified_at) {
+            return response()->json([
+                'errors' => [
+                    'email' => [__('Sorry your account has not confirmed.')],
+                    'modal' => 'confirmation'
+                ]
+            ], 422);
+        }
+
         if ($request->user()->ban) {
             return response()->json([
                 'errors' => [

@@ -42,6 +42,7 @@ import NotFound from "../pages/404";
 import LoginModal from "../modals/login";
 import RegisterModal from "../modals/register";
 import ForgotPasswordModal from "../modals/forgot-password";
+import ConfirmationModal from "../modals/confirmation";
 import ResetPasswordModal from "../modals/reset-password";
 import { setIntendedUrl } from "../utils/auth";
 
@@ -51,10 +52,10 @@ const scrollToElement = ref => {
     let elem = ref.current;
     if (!elem) return false;
     let toY =
-        (elem.getBoundingClientRect().top +
-            document.scrollingElement.scrollTop) *
-        1 -
-        68,
+            (elem.getBoundingClientRect().top +
+                document.scrollingElement.scrollTop) *
+                1 -
+            68,
         fromY = document.scrollingElement.scrollTop * 1,
         scrollY = fromY * 1,
         oldTimestamp = null;
@@ -111,7 +112,7 @@ function App() {
     };
 
     const req = (url, method = "GET", body = null) => {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             client(url, {
                 method: method,
                 body: body
@@ -125,7 +126,8 @@ function App() {
         login: false,
         register: false,
         forgot: false,
-        reset: false
+        reset: false,
+        confirmation: false
     };
 
     const modals = [
@@ -158,8 +160,18 @@ function App() {
                     closeModal={closeModal}
                 />
             )
+        },
+        {
+            key: "confirmation",
+            component: (
+                <ConfirmationModal
+                    openModal={openModal}
+                    closeModal={closeModal}
+                />
+            )
         }
     ];
+    const [modal, setModal] = React.useState(window.initState);
 
     function openModal(name) {
         setModal(prevState => {
@@ -171,7 +183,6 @@ function App() {
         setModal(initState);
     }
 
-    const [modal, setModal] = React.useState(initState);
 
     const participate = (e, auction) => {
         if (!currentUser) {
@@ -185,7 +196,13 @@ function App() {
                     return true;
                 }
             }
-            req("/api/" + window.App.locale + "/auction/" + auction.id + "/participate")
+            req(
+                "/api/" +
+                    window.App.locale +
+                    "/auction/" +
+                    auction.id +
+                    "/participate"
+            )
                 .then(({ user }) => {
                     setCurrentUser(user);
                 })
@@ -203,152 +220,163 @@ function App() {
         openModal: openModal,
         closeModal: closeModal
     };
+    
+    const openModalEvent = event => {
+        openModal(event.detail)
+    };
+
+    useEffect(() => {
+        window.addEventListener("openmodal", openModalEvent, false);
+        return () => {
+            window.removeEventListener("openmodal", openModalEvent, false);
+        };
+    }, []);
 
     return initializing ? (
         <FullPageSpinner />
     ) : (
-            <Router>
-                <div className="wrapper">
-                    <Header {...rest} />
-                    <main id="main">
-                        <Switch>
-                            <Route exact path="/about">
-                                <Base {...rest} />
-                            </Route>
-                            <Route exact path="/rules">
-                                <Base {...rest} />
-                            </Route>
-                            <Route exact path="/delivery">
-                                <Base {...rest} />
-                            </Route>
-                            <Route exact path="/payment">
-                                <Base {...rest} />
-                            </Route>
-                            <Route exact path="/contacts">
-                                <Base {...rest} />
-                            </Route>
-                            <Route exact path="/offer">
-                                <Base {...rest} />
-                            </Route>
-                            <Route exact path="/personal">
-                                <Base {...rest} />
-                            </Route>
-                            <Route exact path="/partnership">
-                                <Base {...rest} />
-                            </Route>
-                            <Route exact path="/how-to-buy">
-                                <Base {...rest} />
-                            </Route>
-                            <Route exact path="/how-to-sell">
-                                <Base {...rest} />
-                            </Route>
-                            <Route path="/password/reset/:token">
-                                <Home {...rest} />
-                            </Route>
-                            <Route exact path="/">
-                                <Home {...rest} />
-                            </Route>
-                            <Route exact path="/blog">
-                                <Blog {...rest} />
-                            </Route>
-                            <Route exact path="/blog/:slug">
-                                <BlogItem {...rest} />
-                            </Route>
+        <Router>
+            <div className="wrapper">
+                <Header {...rest} />
+                <main id="main">
+                    <Switch>
+                        <Route exact path="/about">
+                            <Base {...rest} />
+                        </Route>
+                        <Route exact path="/rules">
+                            <Base {...rest} />
+                        </Route>
+                        <Route exact path="/delivery">
+                            <Base {...rest} />
+                        </Route>
+                        <Route exact path="/payment">
+                            <Base {...rest} />
+                        </Route>
+                        <Route exact path="/contacts">
+                            <Base {...rest} />
+                        </Route>
+                        <Route exact path="/offer">
+                            <Base {...rest} />
+                        </Route>
+                        <Route exact path="/personal">
+                            <Base {...rest} />
+                        </Route>
+                        <Route exact path="/partnership">
+                            <Base {...rest} />
+                        </Route>
+                        <Route exact path="/how-to-buy">
+                            <Base {...rest} />
+                        </Route>
+                        <Route exact path="/how-to-sell">
+                            <Base {...rest} />
+                        </Route>
+                        <Route path="/password/reset/:token">
+                            <Home {...rest} />
+                        </Route>
+                        <Route exact path="/">
+                            <Home {...rest} />
+                        </Route>
+                        <Route exact path="/blog">
+                            <Blog {...rest} />
+                        </Route>
+                        <Route exact path="/blog/:slug">
+                            <BlogItem {...rest} />
+                        </Route>
 
-                            <Route exact path="/news">
-                                <News {...rest} />
-                            </Route>
-                            <Route exact path="/news/:slug">
-                                <NewsItem {...rest} />
-                            </Route>
+                        <Route exact path="/news">
+                            <News {...rest} />
+                        </Route>
+                        <Route exact path="/news/:slug">
+                            <NewsItem {...rest} />
+                        </Route>
 
-                            <Route exact path="/events">
-                                <Events {...rest} />
-                            </Route>
-                            <Route exact path="/events/exhibitions">
-                                <Events {...rest} />
-                            </Route>
-                            <Route exact path="/events/workshops">
-                                <Events {...rest} />
-                            </Route>
-                            <Route exact path="/events/:id">
-                                <EventsItem {...rest} />
-                            </Route>
+                        <Route exact path="/events">
+                            <Events {...rest} />
+                        </Route>
+                        <Route exact path="/events/exhibitions">
+                            <Events {...rest} />
+                        </Route>
+                        <Route exact path="/events/workshops">
+                            <Events {...rest} />
+                        </Route>
+                        <Route exact path="/events/:id">
+                            <EventsItem {...rest} />
+                        </Route>
 
-                            <Route exact path="/authors">
-                                <Authors {...rest} />
-                            </Route>
-                            <Route exact path="/authors/:id">
-                                <AuthorsItem {...rest} />
-                            </Route>
+                        <Route exact path="/authors">
+                            <Authors {...rest} />
+                        </Route>
+                        <Route exact path="/authors/:id">
+                            <AuthorsItem {...rest} />
+                        </Route>
 
-                            <Route path={`/gallery`}>
-                                <Gallery {...rest} />
-                            </Route>
+                        <Route path={`/gallery`}>
+                            <Gallery {...rest} />
+                        </Route>
 
-                            <Route exact path="/auctions">
-                                <Auctions {...rest} />
-                            </Route>
-                            <Route exact path="/auctions/special">
-                                <Auctions {...rest} />
-                            </Route>
-                            <Route exact path="/auctions/regular">
-                                <Auctions {...rest} />
-                            </Route>
-                            <Route exact path="/auctions/archive">
-                                <AuctionsArchive {...rest} />
-                            </Route>
+                        <Route exact path="/auctions">
+                            <Auctions {...rest} />
+                        </Route>
+                        <Route exact path="/auctions/special">
+                            <Auctions {...rest} />
+                        </Route>
+                        <Route exact path="/auctions/regular">
+                            <Auctions {...rest} />
+                        </Route>
+                        <Route exact path="/auctions/archive">
+                            <AuctionsArchive {...rest} />
+                        </Route>
 
-                            <AdminRoute
-                                exact
-                                path={`/auctions/admin/:id`}
-                                {...rest}
-                                component={AuctionAdmin}
-                            />
+                        <AdminRoute
+                            exact
+                            path={`/auctions/admin/:id`}
+                            {...rest}
+                            component={AuctionAdmin}
+                        />
 
-                            <Route path={`/auctions/:id`}>
-                                <Auction {...rest} />
-                            </Route>
-                            <Route exact path={`/search`}>
-                                <SearchPage {...rest} />
-                            </Route>
-                            <Route exact path={`/search/:query`}>
-                                <SearchPage {...rest} />
-                            </Route>
+                        <Route path={`/auctions/:id`}>
+                            <Auction {...rest} />
+                        </Route>
+                        <Route exact path={`/search`}>
+                            <SearchPage {...rest} />
+                        </Route>
+                        <Route exact path={`/search/:query`}>
+                            <SearchPage {...rest} />
+                        </Route>
 
-                            <AuthRoute
-                                exact
-                                path={"/profile/vip"}
-                                component={ProfileVIP}
-                                {...rest}
-                            />
-                            <AuthRoute
-                                exact
-                                path={"/profile"}
-                                component={Profile}
-                                {...rest}
-                            />
+                        <AuthRoute
+                            exact
+                            path={"/profile/vip"}
+                            component={ProfileVIP}
+                            {...rest}
+                        />
+                        <AuthRoute
+                            exact
+                            path={"/profile"}
+                            component={Profile}
+                            {...rest}
+                        />
 
-                            <Route>
-                                <NotFound {...rest} />
-                            </Route>
-                        </Switch>
-                    </main>
-                </div>
-                <Footer {...rest} />
-                {modals.map((item, index) => (
-                    <Modal
-                        key={index}
-                        isOpen={modal[item.key]}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                        shouldCloseOnOverlayClick={true}
-                    >
-                        {item.component}
-                    </Modal>
-                ))}
-            </Router>
-        );
+                        <Route>
+                            <NotFound {...rest} />
+                        </Route>
+                    </Switch>
+                </main>
+            </div>
+            <Footer {...rest} />
+            {modals.map((item, index) => (
+                <Modal
+                    key={index}
+                    isOpen={modal[item.key]}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    shouldCloseOnOverlayClick={true}
+                >
+                    {item.component}
+                </Modal>
+            ))}
+        </Router>
+    );
 }
 
 export default App;

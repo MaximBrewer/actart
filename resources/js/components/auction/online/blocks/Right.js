@@ -1,48 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FavoriteBig } from "../../../../icons/icons";
 import __ from "../../../../utils/trans";
 import { useAuth } from "../../../../context/auth";
 
-import CountdownMaster, {
-    zeroPad
-} from "react-countdown";
-import { useScratch } from "react-use";
+import Countdown, { zeroPad } from "react-countdown";
 
+export default function Right(props) {
+    const { req, item } = props;
+    const { initializing, currentUser, setCurrentUser } = useAuth();
+    const countdownRef = useRef(null);
+    const countdownElem = useRef(null);
 
-const Countdown = (props) => {
-
-    const declOfNum = (number, titles) => {
-        let cases = [2, 0, 1, 1, 1, 2];
-        return titles[
-            number % 100 > 4 && number % 100 < 20
-                ? 2
-                : cases[number % 10 < 5 ? number % 10 : 5]
-        ];
-    };
+    const [state, setState] = useState({
+        countdowned: false,
+        date: 0
+    });
 
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
             return <div className="countdown-lot-wrapper"></div>;
         } else {
             return (
-                <div className="countdown-lot-wrapper" style={{ textAlign: "center", fontWeight: "bold" }}>
+                <div
+                    className="countdown-lot-wrapper"
+                    ref={countdownElem}
+                    style={{
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        display: "none"
+                    }}
+                >
                     {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
                 </div>
             );
         }
     };
-    const data = { props };
-    return <CountdownMaster date={props.date} renderer={renderer} />;
-}
-
-export default function Right(props) {
-    const { req, item } = props;
-    const { initializing, currentUser, setCurrentUser } = useAuth();
-
-    const [state, setState] = useState({
-        countdowned: false,
-        countdown: false
-    });
 
     const offer = (id, price) => {
         req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH")
@@ -50,28 +42,50 @@ export default function Right(props) {
             .catch(err => console.log(err));
     };
 
+    const createBet = event => {
+        setState(prevState => {
+            if (item.id == event.detail.bet.lot_id) {
+                if (countdownRef && countdownRef.current)
+                    countdownRef.current.clearTimer();
+                if (countdownElem && countdownElem.current)
+                    countdownElem.current.style.display = "none";
+                return {
+                    date: Date.now() + 1000 * window.App.timer,
+                    countdowned: true
+                };
+            } else return prevState;
+        });
+    };
+
     const setStartCountdown = event => {
         setState(prevState => {
             if (item.id == event.detail.id) {
+                if (countdownRef && countdownRef.current)
+                    countdownRef.current.start();
+                if (countdownElem && countdownElem.current)
+                    countdownElem.current.style.display = "block";
                 return {
-                    countdown: <Countdown date={Date.now() + 1000 * window.App.timer} />
-                }
+                    date: Date.now() + 1000 * window.App.timer,
+                    countdowned: true
+                };
             } else return prevState;
-        })
-    }
+        });
+    };
 
     useEffect(() => {
+        window.addEventListener("create-bet", createBet);
         window.addEventListener("start-countdown", setStartCountdown);
         return () => {
             window.removeEventListener("start-countdown", setStartCountdown);
+            window.removeEventListener("create-bet", createBet);
         };
     }, []);
 
     const getStep = () => {
-        for(let step of window.App.steps){
-            if(step.to > item.price || !step.to) return step.step * 1
+        for (let step of window.App.steps) {
+            if (step.to > item.price || !step.to) return step.step * 1;
         }
-    }
+    };
 
     return (
         <div className="lot-carousel-right">
@@ -138,8 +152,8 @@ export default function Right(props) {
                             </div>
                         </div>
                     ) : (
-                            ``
-                        )}
+                        ``
+                    )}
                     <a
                         className="btn btn-danger"
                         href="#"
@@ -151,18 +165,23 @@ export default function Right(props) {
                         <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
                         <div>${item.price * 1 + getStep()}</div>
                     </a>
-                    {state.countdown}
+                    <Countdown
+                        date={Date.now() + 1000 * window.App.timer}
+                        ref={countdownRef}
+                        autoStart={false}
+                        renderer={renderer}
+                    />
                     {!item.bets.length && item.lastchance ? (
                         <h4 className="color-red text-center blink">
                             {__("LAST_CHANCE_TO_USER")}
                         </h4>
                     ) : (
-                            ``
-                        )}
+                        ``
+                    )}
                 </div>
             ) : (
-                    ``
-                )}
+                ``
+            )}
         </div>
     );
 }

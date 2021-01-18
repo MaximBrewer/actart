@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../context/auth";
 import { register } from "../api/auth";
@@ -14,6 +14,9 @@ function RegisterModal(props) {
     let password = useInputValue("password");
     let passwordConfirmation = useInputValue("password_confirmation");
 
+
+    const [registerFeedback, setRegisterFeedback] = useState("");
+
     const handleSubmit = e => {
         e.preventDefault();
 
@@ -23,14 +26,13 @@ function RegisterModal(props) {
             password: password.value,
             password_confirmation: passwordConfirmation.value
         })
-            .then(({ user, token }) => {
-                setCurrentUser(user);
-                setToken(token);
-                closeModal();
-                location.reload();
+            .then(status => {
+                setRegisterFeedback(status);
             })
             .catch(error => {
+                // console.log(error);
                 error.json().then(({ errors }) => {
+                    setRegisterFeedback("");
                     [email, name, password].forEach(({ parseServerError }) =>
                         parseServerError(errors)
                     );
@@ -46,100 +48,112 @@ function RegisterModal(props) {
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form onSubmit={handleSubmit} method="POST">
+            {registerFeedback ? (
                 <div className={`modal-body`}>
-                    <div className="form-group">
-                        <label htmlFor="username">
-                            {__("MODAL_SIGNIN_NAME")}
-                        </label>
-                        <input
-                            id="username"
-                            type="text"
-                            name="name"
-                            className={`form-control ${
-                                name.error ? "is-invalid" : ""
-                            }`}
-                            required
-                            {...name.bind}
-                        />
-                        {name.error && (
-                            <div className="invalid-feedback">{name.error}</div>
-                        )}
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="email">
-                            {__("MODAL_SIGNIN_EMAIL")}
-                        </label>
-                        <input
-                            id="email"
-                            type="email"
-                            name="email"
-                            className={`form-control ${
-                                email.error ? "is-invalid" : ""
-                            }`}
-                            required
-                            {...email.bind}
-                        />
-                        {email.error && (
-                            <div className="invalid-feedback">
-                                {email.error}
-                            </div>
-                        )}
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password">
-                            {__("MODAL_SIGNIN_PASSWORD")}
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            className={`form-control ${
-                                password.error ? "is-invalid" : ""
-                            }`}
-                            minLength={6}
-                            required
-                            {...password.bind}
-                        />
-                        {password.error && (
-                            <div className="invalid-feedback">
-                                {password.error}
-                            </div>
-                        )}
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password-confirmation">
-                            {__("MODAL_SIGNIN_PASSWORD_CONFIRMATON")}
-                        </label>
-                        <input
-                            type="password"
-                            id="password-confirmation"
-                            name="password_confirmation"
-                            className={`form-control ${
-                                passwordConfirmation.error ? "is-invalid" : ""
-                            }`}
-                            required
-                            {...passwordConfirmation.bind}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <a href="#" onClick={() => openModal("forgot")}>
-                            {__("MODAL_LOGIN_FORGET_PASSWORD")}
-                        </a>
-                        &nbsp;
-                        <a href="#" onClick={() => openModal("login")}>
-                            {__("MODAL_SIGNIN_LOGIN")}
-                        </a>
+                    <div role="alert">
+                        <p> {registerFeedback}</p>
                     </div>
                 </div>
-                <div className={`modal-footer`}>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary">
-                            {__("MODAL_SIGNIN_BTN")}
-                        </button>
+            ) : (
+                <form onSubmit={handleSubmit} method="POST">
+                    <div className={`modal-body`}>
+                        <div className="form-group">
+                            <label htmlFor="username">
+                                {__("MODAL_SIGNIN_NAME")}
+                            </label>
+                            <input
+                                id="username"
+                                type="text"
+                                name="name"
+                                className={`form-control ${
+                                    name.error ? "is-invalid" : ""
+                                }`}
+                                required
+                                {...name.bind}
+                            />
+                            {name.error && (
+                                <div className="invalid-feedback">
+                                    {name.error}
+                                </div>
+                            )}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">
+                                {__("MODAL_SIGNIN_EMAIL")}
+                            </label>
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                className={`form-control ${
+                                    email.error ? "is-invalid" : ""
+                                }`}
+                                required
+                                {...email.bind}
+                            />
+                            {email.error && (
+                                <div className="invalid-feedback">
+                                    {email.error}
+                                </div>
+                            )}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">
+                                {__("MODAL_SIGNIN_PASSWORD")}
+                            </label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                className={`form-control ${
+                                    password.error ? "is-invalid" : ""
+                                }`}
+                                minLength={6}
+                                required
+                                {...password.bind}
+                            />
+                            {password.error && (
+                                <div className="invalid-feedback">
+                                    {password.error}
+                                </div>
+                            )}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password-confirmation">
+                                {__("MODAL_SIGNIN_PASSWORD_CONFIRMATON")}
+                            </label>
+                            <input
+                                type="password"
+                                id="password-confirmation"
+                                name="password_confirmation"
+                                className={`form-control ${
+                                    passwordConfirmation.error
+                                        ? "is-invalid"
+                                        : ""
+                                }`}
+                                required
+                                {...passwordConfirmation.bind}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <a href="#" onClick={() => openModal("forgot")}>
+                                {__("MODAL_LOGIN_FORGET_PASSWORD")}
+                            </a>
+                            &nbsp;
+                            <a href="#" onClick={() => openModal("login")}>
+                                {__("MODAL_SIGNIN_LOGIN")}
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </form>
+                    <div className={`modal-footer`}>
+                        <div className="form-group">
+                            <button type="submit" className="btn btn-primary">
+                                {__("MODAL_SIGNIN_BTN")}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            )}
         </div>
     );
 }

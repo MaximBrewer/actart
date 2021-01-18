@@ -6,6 +6,7 @@ import { getIntendedUrl } from "../utils/auth";
 import useInputValue from "../components/input-value";
 import __ from "../utils/trans";
 import client from "../api/client";
+import Parser from "html-react-parser";
 
 function LoginModal(props) {
     const { openModal, closeModal } = props;
@@ -31,23 +32,27 @@ function LoginModal(props) {
                     if (!skip)
                         client(
                             "/api/auction/" +
-                            window.participate +
-                            "/participate"
+                                window.participate +
+                                "/participate"
                         )
                             .then(({ user }) => {
                                 setCurrentUser(user);
                             })
                             .catch(err => console.log(err));
                     history.push("/auctions/" + window.participate);
-                    delete(window.participate)
+                    delete window.participate;
                 }
                 location.reload();
                 closeModal();
             })
             .catch(error => {
-                error
-                    .json()
-                    .then(({ errors }) => email.parseServerError(errors));
+                error.json().then(({ errors }) => {
+                    email.parseServerError(errors);
+                    if(!!errors.modal){
+                        window.email = email.value;
+                        setTimeout(() => openModal(errors.modal), 1000)
+                    }
+                });
             });
     };
 
@@ -67,14 +72,15 @@ function LoginModal(props) {
                             id="email"
                             type="email"
                             name="email"
-                            className={`form-control ${email.error ? "is-invalid" : ""
-                                }`}
+                            className={`form-control ${
+                                email.error ? "is-invalid" : ""
+                            }`}
                             required
                             {...email.bind}
                         />
                         {email.error && (
                             <div className="invalid-feedback">
-                                {email.error}
+                                {Parser(email.error)}
                             </div>
                         )}
                     </div>

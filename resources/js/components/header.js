@@ -59,7 +59,7 @@ export default function Header(props) {
 
     const changeWindow = () => {
         let mf = document.getElementById("header-full-menu-fixed");
-        if (mf.style.display == 'block') {
+        if (!!mf && mf.style.display == 'block') {
             mf.style.display = 'none';
         }
         if (document.body.classList.contains("home")) {

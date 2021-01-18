@@ -6,16 +6,18 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use  Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\ResetPassword as ResetPasswordNotification;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use TCG\Voyager\Traits\Translatable;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Traits\Resizable;
+use Illuminate\Auth\MustVerifyEmail;
 
 class User extends \TCG\Voyager\Models\User implements JWTSubject
 {
     use Notifiable;
     use Translatable;
     use Resizable;
+    use MustVerifyEmail;
+
     protected $translatable = ['name', 'surname', 'middlename', 'text'];
 
     /**

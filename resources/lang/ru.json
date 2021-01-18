@@ -172,7 +172,7 @@
     "ADMIN_SHOW_FIRST_LOT": "показать первый лот",
     "ADMIN_LAST_CHANCE": "Последний шанс",
     "ADMIN_SOLD": "Продано",
-    "ADMIN_NEXT_LOT": "Следующий лот",
+    "ADMIN_NEXT_LOT": "Снять лот",
     "ADMIN_FINISH": "Завершить аукцион",
     "AUCTION_WILL_START_SOON": "Скоро здесь появится первый лот",
     "AUCTION_HAS_FINISHED": "Аукцион завершен",
@@ -193,12 +193,20 @@
     "BLOG_PAGE_TITLE": "Блог Акт-Арт",
     "LOT_IN_GALLERY_PAGE_TITLE": "Купить \":lot_name\" автор \":author_name\" в онлайн-галерее Акт-Арт",
     "LOT_IN_AUCTION_PAGE_TITLE": "Купить \":lot_name\" автор \":author_name\" на онлайн-аукционе Акт-Арт",
+
+    
     "MODAL_RP_H2": "Смена пароля",
     "MODAL_RP_EMAIL": "E-mail",
     "MODAL_RP_PASSWORD": "Пароль",
     "MODAL_RP_BTN": "Отправить",
     "MODAL_RP_PASSWORD_CONFIRMATON": "Повторите пароль",
     "MODAL_RP_LOGIN": "Авторизация",
+
+    "MODAL_CF_H2": "Подтверждение E-mail",
+    "MODAL_CF_EMAIL": "E-mail",
+    "MODAL_CF_BTN": "Отправить",
+    "MODAL_CF_LOGIN": "Авторизация",
+
     "SUBCRIBED_MESSAGE": "Вы подписались на рассылку новостей",
     "ADMIN_PROFILE_AUCTIONS_COMING": "Ближайшие аукционы",
     "ALREADY_REGISTERED": "Вы уже зарегистрированы",
@@ -211,5 +219,8 @@
     "DEVELOPMENT": "Разработка",
     "Regards": "С уважением",
     "If you’re having trouble clicking the \":actionText\" button, copy and paste the URL below into your web browser:": "Если у вас возникли проблемы с нажатием кнопки \":actionText\", скопируйте и вставьте URL-адрес ниже в свой веб-браузер:",
-    "GO_BACK": "Вернуться"
+    "GO_BACK": "Вернуться",
+    "Sorry your account has not confirmed.": "Ваш аккаунт не подтвержден!",
+    "CONFIRMATION_ERROR": "отправить ссылку на почту?",
+    "A verification link has been sent to your email address.": "Ссылка для подтверждения была отправлена на ваш адрес электронной почты."
 }
