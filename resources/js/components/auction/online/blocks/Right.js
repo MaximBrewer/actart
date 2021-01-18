@@ -17,23 +17,11 @@ export default function Right(props) {
     });
 
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
-        if (completed) {
-            return <div className="countdown-lot-wrapper"></div>;
-        } else {
-            return (
-                <div
-                    className="countdown-lot-wrapper"
-                    ref={countdownElem}
-                    style={{
-                        textAlign: "center",
-                        fontWeight: "bold",
-                        display: "none"
-                    }}
-                >
-                    {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
-                </div>
-            );
-        }
+        return (
+            <div className="countdown-lot-wrapper" ref={countdownElem}>
+                {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+            </div>
+        );
     };
 
     const offer = (id, price) => {
@@ -46,7 +34,7 @@ export default function Right(props) {
         setState(prevState => {
             if (item.id == event.detail.bet.lot_id) {
                 if (countdownRef && countdownRef.current)
-                    countdownRef.current.clearTimer();
+                    countdownRef.current.stop();
                 if (countdownElem && countdownElem.current)
                     countdownElem.current.style.display = "none";
                 return {
@@ -85,6 +73,11 @@ export default function Right(props) {
         for (let step of window.App.steps) {
             if (step.to > item.price || !step.to) return step.step * 1;
         }
+    };
+
+    const handleOnComplete = () => {
+        if (countdownElem && countdownElem.current)
+            countdownElem.current.style.display = "none";
     };
 
     return (
@@ -170,6 +163,7 @@ export default function Right(props) {
                         ref={countdownRef}
                         autoStart={false}
                         renderer={renderer}
+                        onComplete={handleOnComplete}
                     />
                     {!item.bets.length && item.lastchance ? (
                         <h4 className="color-red text-center blink">

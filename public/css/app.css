@@ -22026,9 +22026,6 @@ section.announces.bggray .background-text {
   display: block;
   padding: 1rem;
   max-width: 80%;
-}
-
-.lot-carousel .lot-carousel-right .user-activity .btn.btn-danger {
   margin-bottom: 1.2rem;
 }
 
@@ -23065,5 +23062,12 @@ a.lot-item:hover {
     right: 0;
     left: 100%;
   }
+}
+
+.countdown-lot-wrapper {
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+  display: none;
 }
 

@@ -90579,23 +90579,10 @@ function AuctionAdmin(props) {
         minutes = _ref.minutes,
         seconds = _ref.seconds,
         completed = _ref.completed;
-
-    if (completed) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "countdown-lot-wrapper",
-        ref: countdownElem
-      });
-    } else {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "countdown-lot-wrapper",
-        ref: countdownElem,
-        style: {
-          textAlign: "center",
-          fontWeight: "bold",
-          display: "none"
-        }
-      }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(hours), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(minutes), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(seconds));
-    }
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "countdown-lot-wrapper",
+      ref: countdownElem
+    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(hours), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(minutes), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(seconds));
   };
 
   var startAuction = function startAuction(e) {
@@ -90681,10 +90668,9 @@ function AuctionAdmin(props) {
   };
 
   var setStartCountdown = function setStartCountdown(event) {
+    if (countdownElem && countdownElem.current) countdownElem.current.style.display = "block";
+    if (countdownRef && countdownRef.current) countdownRef.current.start();
     setState(function (prevState) {
-      if (countdownElem && countdownElem.current) countdownElem.current.style.display = "block";
-      if (countdownRef && countdownRef.current) countdownRef.current.start();
-
       if (prevState.auction.current.id == event.detail.id) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           countdowning: true,
@@ -90805,7 +90791,7 @@ function AuctionAdmin(props) {
             bets = lot.bets;
 
         if (lot.id == event.detail.bet.lot_id) {
-          if (countdownRef && countdownRef.current) countdownRef.current.clearTimer();
+          if (countdownRef && countdownRef.current) countdownRef.current.stop();
           if (countdownElem && countdownElem.current) countdownElem.current.style.display = "none";
           bets.unshift(event.detail.bet);
           lot.price = event.detail.bet.bet;
@@ -90839,7 +90825,8 @@ function AuctionAdmin(props) {
       var auction = _ref2.auction;
       return setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
-          auction: auction
+          auction: auction,
+          started: auction.current ? true : false
         });
       });
     })["catch"](function () {
@@ -91059,7 +91046,7 @@ function AuctionAdmin(props) {
     onClick: finish
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ADMIN_FINISH"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("ADMIN_FINISH"))), state.started == true && state.finished == false && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-danger",
     href: "#",
     onClick: nextLot
@@ -94473,22 +94460,10 @@ function Right(props) {
         minutes = _ref.minutes,
         seconds = _ref.seconds,
         completed = _ref.completed;
-
-    if (completed) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "countdown-lot-wrapper"
-      });
-    } else {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "countdown-lot-wrapper",
-        ref: countdownElem,
-        style: {
-          textAlign: "center",
-          fontWeight: "bold",
-          display: "none"
-        }
-      }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(hours), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(minutes), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(seconds));
-    }
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "countdown-lot-wrapper",
+      ref: countdownElem
+    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(hours), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(minutes), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(seconds));
   };
 
   var offer = function offer(id, price) {
@@ -94502,7 +94477,7 @@ function Right(props) {
   var createBet = function createBet(event) {
     setState(function (prevState) {
       if (item.id == event.detail.bet.lot_id) {
-        if (countdownRef && countdownRef.current) countdownRef.current.clearTimer();
+        if (countdownRef && countdownRef.current) countdownRef.current.stop();
         if (countdownElem && countdownElem.current) countdownElem.current.style.display = "none";
         return {
           date: Date.now() + 1000 * window.App.timer,
@@ -94548,6 +94523,10 @@ function Right(props) {
     } finally {
       _iterator.f();
     }
+  };
+
+  var handleOnComplete = function handleOnComplete() {
+    if (countdownElem && countdownElem.current) countdownElem.current.style.display = "none";
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -94622,7 +94601,8 @@ function Right(props) {
     date: Date.now() + 1000 * window.App.timer,
     ref: countdownRef,
     autoStart: false,
-    renderer: renderer
+    renderer: renderer,
+    onComplete: handleOnComplete
   }), !item.bets.length && item.lastchance ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "color-red text-center blink"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LAST_CHANCE_TO_USER")) : "") : "");

@@ -27,28 +27,14 @@ export default function AuctionAdmin(props) {
     });
 
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
-        if (completed) {
-            return (
-                <div
-                    className="countdown-lot-wrapper"
-                    ref={countdownElem}
-                ></div>
-            );
-        } else {
-            return (
-                <div
-                    className="countdown-lot-wrapper"
-                    ref={countdownElem}
-                    style={{
-                        textAlign: "center",
-                        fontWeight: "bold",
-                        display: "none"
-                    }}
-                >
-                    {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
-                </div>
-            );
-        }
+        return (
+            <div
+                className="countdown-lot-wrapper"
+                ref={countdownElem}
+            >
+                {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+            </div>
+        );
     };
 
     const startAuction = e => {
@@ -163,11 +149,10 @@ export default function AuctionAdmin(props) {
     };
 
     const setStartCountdown = event => {
+        if (countdownElem && countdownElem.current)
+            countdownElem.current.style.display = "block";
+        if (countdownRef && countdownRef.current) countdownRef.current.start();
         setState(prevState => {
-            if (countdownElem && countdownElem.current)
-                countdownElem.current.style.display = "block";
-            if (countdownRef && countdownRef.current)
-                countdownRef.current.start();
             if (prevState.auction.current.id == event.detail.id) {
                 return {
                     ...prevState,
@@ -273,7 +258,7 @@ export default function AuctionAdmin(props) {
                     bets = lot.bets;
                 if (lot.id == event.detail.bet.lot_id) {
                     if (countdownRef && countdownRef.current)
-                        countdownRef.current.clearTimer();
+                        countdownRef.current.stop();
                     if (countdownElem && countdownElem.current)
                         countdownElem.current.style.display = "none";
                     bets.unshift(event.detail.bet);
@@ -307,7 +292,8 @@ export default function AuctionAdmin(props) {
             .then(({ auction }) =>
                 setState(prevState => ({
                     ...prevState,
-                    auction: auction
+                    auction: auction,
+                    started: auction.current ? true : false
                 }))
             )
             .catch(() => null);
@@ -842,18 +828,24 @@ export default function AuctionAdmin(props) {
                                                                 </div>
                                                             </a>
                                                         )}
-                                                        <br />
-                                                        <a
-                                                            className="btn btn-danger"
-                                                            href="#"
-                                                            onClick={nextLot}
-                                                        >
-                                                            <div className="pb-1">
-                                                                {__(
-                                                                    "ADMIN_NEXT_LOT"
-                                                                )}
-                                                            </div>
-                                                        </a>
+                                                        {state.started ==
+                                                            true &&
+                                                            state.finished ==
+                                                                false && (
+                                                                <a
+                                                                    className="btn btn-danger"
+                                                                    href="#"
+                                                                    onClick={
+                                                                        nextLot
+                                                                    }
+                                                                >
+                                                                    <div className="pb-1">
+                                                                        {__(
+                                                                            "ADMIN_NEXT_LOT"
+                                                                        )}
+                                                                    </div>
+                                                                </a>
+                                                            )}
                                                     </div>
                                                 )}
                                                 {state.auction.status ==
