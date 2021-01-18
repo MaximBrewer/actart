@@ -775,19 +775,7 @@ export default function AuctionAdmin(props) {
                                                                         </div>
                                                                     </a>
                                                                 ) : (
-                                                                    <a
-                                                                        className="btn btn-danger"
-                                                                        href="#"
-                                                                        onClick={
-                                                                            nextLot
-                                                                        }
-                                                                    >
-                                                                        <div className="pb-1">
-                                                                            {__(
-                                                                                "ADMIN_NEXT_LOT"
-                                                                            )}
-                                                                        </div>
-                                                                    </a>
+                                                                    ``
                                                                 )
                                                             ) : (
                                                                 <React.Fragment>
@@ -859,6 +847,17 @@ export default function AuctionAdmin(props) {
                                                                 </div>
                                                             </a>
                                                         )}
+                                                        <a
+                                                            className="btn btn-danger"
+                                                            href="#"
+                                                            onClick={nextLot}
+                                                        >
+                                                            <div className="pb-1">
+                                                                {__(
+                                                                    "ADMIN_NEXT_LOT"
+                                                                )}
+                                                            </div>
+                                                        </a>
                                                     </div>
                                                 )}
                                                 {state.auction.status ==
