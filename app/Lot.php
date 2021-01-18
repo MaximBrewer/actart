@@ -38,6 +38,16 @@ class Lot extends Model
         return (float) $value / 100;
     }
 
+    public function setDeclaredAttribute($value)
+    {
+        $this->attributes['declared'] = ceil((float) $value * 100);
+    }
+
+    public function getDeclaredAttribute($value)
+    {
+        return (float) $value / 100;
+    }
+
     public function setBlitzAttribute($value)
     {
         $this->attributes['blitz'] = ceil((float) $value * 100);
