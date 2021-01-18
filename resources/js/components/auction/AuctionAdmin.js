@@ -304,8 +304,8 @@ export default function AuctionAdmin(props) {
         setState(prevState => ({
             ...prevState,
             countdowning: false
-        }))
-    }
+        }));
+    };
 
     useEffect(() => {
         req("/api/" + window.App.locale + "/auctions/" + id)
@@ -669,6 +669,7 @@ export default function AuctionAdmin(props) {
                                                                                 .startPrice
                                                                         }
                                                                     </span>
+                                                                    <br />
                                                                     <span>
                                                                         {__(
                                                                             "#LOT_DECLARED_PRICE#"
@@ -843,7 +844,9 @@ export default function AuctionAdmin(props) {
                                                                         renderer={
                                                                             renderer
                                                                         }
-                                                                        onComplete={handleOnComplete}
+                                                                        onComplete={
+                                                                            handleOnComplete
+                                                                        }
                                                                     />
                                                                 </React.Fragment>
                                                             )
