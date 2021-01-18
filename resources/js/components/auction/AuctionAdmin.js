@@ -792,24 +792,20 @@ export default function AuctionAdmin(props) {
                                                             ) : (
                                                                 <React.Fragment>
                                                                     {!state.countdowning ? (
-                                                                        <a
-                                                                            className="btn btn-danger"
-                                                                            href="#"
-                                                                            onClick={
-                                                                                sold
-                                                                            }
-                                                                        >
-                                                                            <div className="pb-1">
-                                                                                {__(
-                                                                                    "ADMIN_SOLD"
-                                                                                )}
-                                                                            </div>
-                                                                        </a>
-                                                                    ) : (
-                                                                        ``
-                                                                    )}
-                                                                    {!state.countdowned ? (
                                                                         <React.Fragment>
+                                                                            <a
+                                                                                className="btn btn-danger"
+                                                                                href="#"
+                                                                                onClick={
+                                                                                    sold
+                                                                                }
+                                                                            >
+                                                                                <div className="pb-1">
+                                                                                    {__(
+                                                                                        "ADMIN_SOLD"
+                                                                                    )}
+                                                                                </div>
+                                                                            </a>
                                                                             <a
                                                                                 className="btn btn-default"
                                                                                 href="#"
