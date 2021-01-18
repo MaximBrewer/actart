@@ -164,10 +164,10 @@ export default function AuctionAdmin(props) {
 
     const setStartCountdown = event => {
         setState(prevState => {
-            if (countdownRef && countdownRef.current)
-                countdownRef.current.start();
             if (countdownElem && countdownElem.current)
                 countdownElem.current.style.display = "block";
+            if (countdownRef && countdownRef.current)
+                countdownRef.current.start();
             if (prevState.auction.current.id == event.detail.id) {
                 return {
                     ...prevState,
