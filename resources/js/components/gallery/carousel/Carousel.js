@@ -7,7 +7,6 @@ import __ from "../../../utils/trans";
 import { useHistory, useParams } from "react-router-dom";
 
 export default function Carousel(props) {
-
     const { id } = useParams();
     let history = useHistory();
 
@@ -26,10 +25,11 @@ export default function Carousel(props) {
 
     useEffect(() => {
         let index = getIndex();
-        document.title = __("LOT_IN_GALLERY_PAGE_TITLE", {
-            lot_name: state.items[index].title,
-            author_name: state.items[index].author
-        });
+        if (state.items[index])
+            document.title = __("LOT_IN_GALLERY_PAGE_TITLE", {
+                lot_name: state.items[index].title,
+                author_name: state.items[index].author
+            });
         refPicture.current.slickGoTo(index);
         refAnnounce.current.slickGoTo(index);
     }, [id]);
@@ -49,7 +49,7 @@ export default function Carousel(props) {
             if (state.items[i].id == id) index = i * 1 - 1;
         }
         index = index < 0 ? state.items.length - 1 : index;
-        return state.items[index].id
+        return state.items[index].id;
     };
 
     const nextId = () => {
@@ -58,7 +58,7 @@ export default function Carousel(props) {
             if (state.items[i].id == id) index = i * 1 + 1;
         }
         index = state.items.length == index ? 0 : index;
-        return state.items[index].id
+        return state.items[index].id;
     };
 
     const setting = {

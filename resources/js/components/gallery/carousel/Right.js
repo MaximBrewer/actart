@@ -15,7 +15,7 @@ export default function Right(props) {
 
     const getStep = () => {
         for(let step of state.steps){
-            if(step.to > item.price || !step.to) return step.step * 1
+            if(step.to > state.item.price || !step.to) return step.step * 1
         }
     }
 
