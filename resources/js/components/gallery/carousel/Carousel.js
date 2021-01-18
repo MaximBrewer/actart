@@ -10,25 +10,29 @@ export default function Carousel(props) {
     const { id } = useParams();
     let history = useHistory();
 
-    const [state, setState] = useState({
-        items: window.App.gallery
-    });
-
-    useEffect(() => {
-        window.addEventListener("remove-lot", removeLot);
-        return () => window.removeEventListener("remove-lot", removeLot);
-    }, []);
-
-    const removeLot = event => {
-        history.push("/gallery");
+    const updateLotStatus = event => {
+        if (
+            id == event.detail.id &&
+            event.detail.status != "gallery"
+        )
+            history.push("/gallery");
     };
 
     useEffect(() => {
+        window.addEventListener("update-lot-status", updateLotStatus);
+        return () => {
+            window.removeEventListener("update-lot-status", updateLotStatus);
+        };
+    }, []);
+
+    useEffect(() => {
+        window.removeEventListener("update-lot-status", updateLotStatus);
+        window.addEventListener("update-lot-status", updateLotStatus);
         let index = getIndex();
-        if (state.items[index])
+        if (props.items[index])
             document.title = __("LOT_IN_GALLERY_PAGE_TITLE", {
-                lot_name: state.items[index].title,
-                author_name: state.items[index].author
+                lot_name: props.items[index].title,
+                author_name: props.items[index].author
             });
         refPicture.current.slickGoTo(index);
         refAnnounce.current.slickGoTo(index);
@@ -38,27 +42,27 @@ export default function Carousel(props) {
     const refAnnounce = useRef();
 
     const getIndex = () => {
-        for (let i in state.items) {
-            if (state.items[i].id == id) return i;
+        for (let i in props.items) {
+            if (props.items[i].id == id) return i;
         }
     };
 
     const prevId = () => {
         let index = 0;
-        for (let i in state.items) {
-            if (state.items[i].id == id) index = i * 1 - 1;
+        for (let i in props.items) {
+            if (props.items[i].id == id) index = i * 1 - 1;
         }
-        index = index < 0 ? state.items.length - 1 : index;
-        return state.items[index].id;
+        index = index < 0 ? props.items.length - 1 : index;
+        return props.items[index].id;
     };
 
     const nextId = () => {
         let index = 0;
-        for (let i in state.items) {
-            if (state.items[i].id == id) index = i * 1 + 1;
+        for (let i in props.items) {
+            if (props.items[i].id == id) index = i * 1 + 1;
         }
-        index = state.items.length == index ? 0 : index;
-        return state.items[index].id;
+        index = props.items.length == index ? 0 : index;
+        return props.items[index].id;
     };
 
     const setting = {
@@ -105,7 +109,7 @@ export default function Carousel(props) {
                 <div className="col-xl-40 col-xxl-38">
                     <div className="left-side">
                         <Slider {...settingsPicture} ref={refPicture}>
-                            {state.items.map((item, index) => (
+                            {props.items.map((item, index) => (
                                 <div key={index}>
                                     <Left item={item} {...props} />
                                 </div>
@@ -116,7 +120,7 @@ export default function Carousel(props) {
                 <div className="col-xl-20 col-xxl-22">
                     <div className="right-side">
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
-                            {state.items.map((item, index) => (
+                            {props.items.map((item, index) => (
                                 <div key={index}>
                                     <Right item={item} {...props} />
                                 </div>

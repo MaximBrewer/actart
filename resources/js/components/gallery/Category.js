@@ -70,7 +70,6 @@ export default function Category(props) {
                             <div className='gallery-works-list'>
                                 <Waterfall
                                     {...props}
-                                    items={window.App.gallery}
                                     category={id}
                                     data={{
                                         sortable: true,

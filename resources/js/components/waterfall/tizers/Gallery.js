@@ -5,15 +5,17 @@ import { Link } from "react-router-dom";
 
 export default function Tizer(props) {
     const [state, setState] = useState({
-        item: props.item
+        item: props.item,
+        url: ""
     });
 
     const updateLotStatus = event => {
-        setState(prevState => {
-            let item = { ...prevState.item };
-            item.status = event.detail.status;
-            return prevState;
-        });
+        // setState(prevState => {
+        //     for(let item of prevState.items)
+        //     let item = { ...prevState.item };
+        //     item.status = event.detail.status;
+        //     return prevState;
+        // });
     };
 
     const createBet = event => {
@@ -37,16 +39,35 @@ export default function Tizer(props) {
     useEffect(() => {
         window.addEventListener("update-lot-status", updateLotStatus);
         window.addEventListener("create-bet", createBet);
+        switch (state.item.status) {
+            case "gallery":
+                setState(prevState => ({
+                    ...prevState,
+                    url: "/gallery/lot/" + state.item.id
+                }));
+                break;
+            case "gsold":
+                setState(prevState => ({
+                    ...prevState,
+                    url: "/gallery/archive/lot/" + state.item.id
+                }));
+                break;
+            default:
+                setState(prevState => ({
+                    ...prevState,
+                    url:
+                        "/auctions/" +
+                        state.item.auction_id +
+                        "/lot/" +
+                        state.item.id
+                }));
+                break;
+        }
         return () => {
             window.removeEventListener("update-lot-status", updateLotStatus);
             window.removeEventListener("create-bet", createBet);
         };
     }, []);
-
-    const url =
-        state.item.status == "gallery"
-            ? "/gallery/lot/" + state.item.id
-            : "/auctions/" + state.item.auction_id + "/lot/" + state.item.id;
 
     return (
         <div className={`gallery-item`}>
@@ -59,12 +80,16 @@ export default function Tizer(props) {
                             (state.item.pxheight / state.item.pxwidth) * 100 +
                             "%"
                     }}
-                    to={url}
+                    to={state.url}
                 >
-                    {state.item.status == 'gallery' ? <Favorite item={state.item} {...props} /> : ``}
+                    {state.item.status == "gallery" ? (
+                        <Favorite item={state.item} {...props} />
+                    ) : (
+                        ``
+                    )}
                 </Link>
             </div>
-            <Link className={`title`} to={url}>
+            <Link className={`title`} to={state.url}>
                 {state.item.title}
             </Link>
             <div className="d-flex justify-content-between flex-wrap">
@@ -91,12 +116,12 @@ export default function Tizer(props) {
                 {__("MEASURE_CM")}
             </div>
             {props.data.showStatus ? (
-                <Link className={state.item.status + ` status`} to={url}>
+                <Link className={state.item.status + ` status`} to={state.url}>
                     {__("#status-" + state.item.status + "#")}
                 </Link>
             ) : (
-                    ``
-                )}
+                ``
+            )}
         </div>
     );
 }

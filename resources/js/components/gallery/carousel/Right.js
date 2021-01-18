@@ -19,22 +19,6 @@ export default function Right(props) {
         }
     }
 
-    const updateLotStatus = event => {
-        setState(prevState => {
-            let item = { ...prevState.item };
-            item.status = event.detail.status;
-            return prevState;
-        });
-    };
-
-    const updateLotSteps = event => {
-        setState(prevState => {
-            let item = { ...prevState.item };
-            item.status = event.detail.status;
-            return prevState;
-        });
-    };
-
     const needAuth = () => {
         openModal('login')
     }
@@ -58,10 +42,8 @@ export default function Right(props) {
     };
 
     useEffect(() => {
-        window.addEventListener("update-lot-status", updateLotStatus);
         window.addEventListener("create-bet", createBet);
         return () => {
-            window.removeEventListener("update-lot-status", updateLotStatus);
             window.removeEventListener("create-bet", createBet);
         };
     }, []);

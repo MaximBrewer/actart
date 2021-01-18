@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import Waterfall from "../waterfall/Waterfall";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import Carousel from "./carousel/Carousel";
-import __ from '../../utils/trans';
+import __ from "../../utils/trans";
 
 export default function Lot(props) {
+
     return (
         <section className="lot-section">
             <div className="sticky-wrapper">
                 <div className="container">
-                    <Carousel {...props}/>
+                    <Carousel {...props} items={props.items} />
                     <div className="gallery-works" id="galleryWorksList">
                         <div className="h2">{__("Works for sale")}</div>
                         <div className="gallery-works-list">
                             <Waterfall
                                 {...props}
-                                items={window.App.gallery}
                                 data={{
                                     sortable: true,
                                     gallery: true,
