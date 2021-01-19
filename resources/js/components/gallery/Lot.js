@@ -1,16 +1,52 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Waterfall from "../waterfall/Waterfall";
 import { Link, useParams, useHistory } from "react-router-dom";
 import Carousel from "./carousel/Carousel";
 import __ from "../../utils/trans";
 
 export default function Lot(props) {
+    const [state, setstate] = useState({
+        carousel: <Carousel {...props} />,
+        items: props.items
+    });
+
+    const updateLotStatus = event => {
+        setstate(prevState => ({
+            ...prevState,
+            carousel: ""
+        }));
+        setstate(prevState => {
+            let newItems = [];
+            for (let item of prevState.items) {
+                if (
+                    event.detail.id != item.id ||
+                    event.detail.status == "gallery"
+                ) {
+                    newItems.push(item);
+                }
+            }
+            console.log(newItems);
+            return {
+                carousel: <Carousel {...props} items={newItems} />,
+                items: newItems
+            };
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener("update-lot-status", updateLotStatus);
+        return () => {
+            window.removeEventListener("update-lot-status", updateLotStatus);
+        };
+    }, []);
+
+    // useEffect(setCarousel(<Carousel {...props} items={items} />), [items]);
 
     return (
         <section className="lot-section">
             <div className="sticky-wrapper">
                 <div className="container">
-                    <Carousel {...props} items={props.items} />
+                    {state.carousel}
                     <div className="gallery-works" id="galleryWorksList">
                         <div className="h2">{__("Works for sale")}</div>
                         <div className="gallery-works-list">

@@ -10,24 +10,7 @@ export default function Carousel(props) {
     const { id } = useParams();
     let history = useHistory();
 
-    const updateLotStatus = event => {
-        if (
-            id == event.detail.id &&
-            event.detail.status != "gallery"
-        )
-            history.push("/gallery");
-    };
-
     useEffect(() => {
-        window.addEventListener("update-lot-status", updateLotStatus);
-        return () => {
-            window.removeEventListener("update-lot-status", updateLotStatus);
-        };
-    }, []);
-
-    useEffect(() => {
-        window.removeEventListener("update-lot-status", updateLotStatus);
-        window.addEventListener("update-lot-status", updateLotStatus);
         let index = getIndex();
         if (props.items[index])
             document.title = __("LOT_IN_GALLERY_PAGE_TITLE", {
