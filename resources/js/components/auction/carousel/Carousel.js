@@ -86,6 +86,7 @@ export default function Carousel(props) {
                         onClick={() => {
                             // refPicture.current.slickPrev();
                             // refAnnounce.current.slickPrev();
+                            window.skipScroll = true;
                             history.replace(
                                 "/auctions/" + auction.id + "/lot/" + prevId()
                             );
@@ -98,6 +99,7 @@ export default function Carousel(props) {
                         onClick={() => {
                             // refPicture.current.slickNext();
                             // refAnnounce.current.slickNext();
+                            window.skipScroll = true;
                             history.replace(
                                 "/auctions/" + auction.id + "/lot/" + nextId()
                             );

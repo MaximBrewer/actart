@@ -16,3 +16,7 @@ Pc47x*4=beQY7fHt
 update auctions set status='started' where id=19;
 update lots set status ='auction', lastchance=null where auction_id=19;
 truncate table bets;
+
+
+delete from bets where blitz=1;
+UPDATE lots set status = 'gallery' where id > 0 AND status = 'gsold';

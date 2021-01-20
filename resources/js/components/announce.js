@@ -3,11 +3,12 @@ import __ from "../utils/trans";
 import Parser from "html-react-parser";
 import { Link } from "react-router-dom";
 
-export default function Announce() {
+export default function Announce(props) {
+    const { req } = props;
     const [state, setState] = useState(window.App.announce);
 
     const updateAuctionStatus = event => {
-        if (event.detail.id == state.id && event.detail.status != 'coming') {
+        if (event.detail.id == state.id && event.detail.status != "coming") {
             req("/api/" + window.App.locale + "/auctions/announce")
                 .then(({ auction }) => setState(auction))
                 .catch(() => null);

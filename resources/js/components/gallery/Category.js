@@ -19,7 +19,7 @@ export default function Category(props) {
 
     return (
         <React.Fragment>
-            <Announce />
+            <Announce {...props} />
             <div className='sticky-wrapper sticky-wrapper-gallery'>
                 <section className='gallery-section'>
                     <div className='background-text'>{__('Gallery')}</div>

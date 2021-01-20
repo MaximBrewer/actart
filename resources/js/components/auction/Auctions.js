@@ -7,8 +7,7 @@ import AuctionPreviewRightOnline from "./online/blocks/AuctionPreviewRight";
 import __ from "../../utils/trans";
 import { Link } from "react-router-dom";
 
-const AuctionSlider = function (props) {
-
+const AuctionSlider = function(props) {
     const { auctions } = props;
 
     const refPicture = useRef();
@@ -35,7 +34,7 @@ const AuctionSlider = function (props) {
             setState(prevState => {
                 return {
                     slidesTotal: auctions.length,
-                    slideIndex: next,
+                    slideIndex: next
                 };
             });
             if (
@@ -52,7 +51,7 @@ const AuctionSlider = function (props) {
             setState(prevState => {
                 return {
                     slidesTotal: auctions.length,
-                    slideIndex: next,
+                    slideIndex: next
                 };
             });
             if (
@@ -79,16 +78,16 @@ const AuctionSlider = function (props) {
                                             {...props}
                                         />
                                     ) : (
-                                            ``
-                                        )}
+                                        ``
+                                    )}
                                     {item.status == "started" ? (
                                         <AuctionPreviewLeftOnline
                                             auction={item}
                                             {...props}
                                         />
                                     ) : (
-                                            ``
-                                        )}
+                                        ``
+                                    )}
                                 </div>
                             ))}
                         </Slider>
@@ -105,16 +104,16 @@ const AuctionSlider = function (props) {
                                             {...props}
                                         />
                                     ) : (
-                                            ``
-                                        )}
+                                        ``
+                                    )}
                                     {item.status == "started" ? (
                                         <AuctionPreviewRightOnline
                                             auction={item}
                                             {...props}
                                         />
                                     ) : (
-                                            ``
-                                        )}
+                                        ``
+                                    )}
                                 </div>
                             ))}
                         </Slider>
@@ -201,18 +200,18 @@ const AuctionSlider = function (props) {
             </div>
         </React.Fragment>
     );
-}
+};
 
 export default function Auctions(props) {
-
     const { req } = props;
 
     const [state, setState] = useState({
-        auctions: App.coming,
-        slider: <AuctionSlider auctions={App.coming} {...props} />
+        auctions: window.App.coming,
+        slider: <AuctionSlider auctions={window.App.coming} {...props} />
     });
 
     const updateAuctionStatus = event => {
+        let reload = false;
         setState(prevState => {
             let update = false;
             let exists = false;
@@ -228,25 +227,45 @@ export default function Auctions(props) {
             }
 
             if (!exists) {
-                req("/api/" + window.App.locale + "/auctions/" + event.detail.id)
+                req(
+                    "/api/" + window.App.locale + "/auctions/" + event.detail.id
+                )
                     .then(({ auction }) => {
-                        auctions.push(auction)
-                        update = true
+                        auctions.push(auction);
+                        update = true;
                     })
-                    .catch((err) => console.log(err));
+                    .catch(err => console.log(err));
             }
 
             let toslider = [];
-            for (let i in auctions)
-                if (auctions[i].status == 'started' || auctions[i].status == 'coming') toslider.push(auctions[i]);
-
-            return update
-                ? {
-                    auctions: auctions,
-                    slider: <AuctionSlider auctions={toslider} {...props} />
+            for (let i in auctions) {
+                if (
+                    auctions[i].status == "started" ||
+                    auctions[i].status == "coming"
+                ) {
+                    toslider.push(auctions[i]);
+                } else {
+                    update = true;
                 }
-                : prevState;
+            }
+
+            if (update) {
+                reload = true;
+                return {
+                    auctions: auctions,
+                    slider: ""
+                };
+            }
+            return prevState;
         });
+        if (reload) {
+            setState(prevState => ({
+                ...prevState,
+                slider: (
+                    <AuctionSlider auctions={prevState.auctions} {...props} />
+                )
+            }));
+        }
     };
 
     useEffect(() => {
@@ -259,5 +278,5 @@ export default function Auctions(props) {
         };
     }, []);
 
-    return state.slider
+    return state.slider;
 }

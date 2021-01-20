@@ -46,9 +46,10 @@ export default function Header(props) {
     useEffect(() => {
         closeMobile()
         document.body.className = pathname == "/" ? 'home' : '';
-        if (pathname.indexOf('gallery/category') == -1) {
+        if(!window.skipScroll && pathname.indexOf('gallery/category') == -1) {
             window.scrollTo(0, 0);
         }
+        window.skipScroll = false;
         changeWindow()
     }, [pathname]);
 

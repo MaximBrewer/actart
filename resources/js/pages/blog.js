@@ -6,12 +6,12 @@ import Announce from "../components/announce";
 import useDocumentTitle from "../components/document-title";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 
-export default function Blog() {
+export default function Blog(props) {
     useDocumentTitle(__("BLOG_PAGE_TITLE"));
 
     return (
         <React.Fragment>
-            <Announce />
+            <Announce {...props} />
             <section className="blog-section">
                 <div className="background-text">{__("BLOG")}</div>
                 <div className="sticky-wrapper">

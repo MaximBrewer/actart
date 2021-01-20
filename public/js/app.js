@@ -88978,8 +88978,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var es6_promise__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(es6_promise__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react_image_lightbox_style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-image-lightbox/style.css */ "./node_modules/react-image-lightbox/style.css");
 /* harmony import */ var react_image_lightbox_style_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_image_lightbox_style_css__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
-/* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./context/auth */ "./resources/js/context/auth.js");
+/* harmony import */ var _api_client__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./api/client */ "./resources/js/api/client.js");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
+/* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./context/auth */ "./resources/js/context/auth.js");
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it;
+
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it) o = it;
+      var i = 0;
+
+      var F = function F() {};
+
+      return {
+        s: F,
+        n: function n() {
+          if (i >= o.length) return {
+            done: true
+          };
+          return {
+            done: false,
+            value: o[i++]
+          };
+        },
+        e: function e(_e) {
+          throw _e;
+        },
+        f: F
+      };
+    }
+
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  var normalCompletion = true,
+      didErr = false,
+      err;
+  return {
+    s: function s() {
+      it = o[Symbol.iterator]();
+    },
+    n: function n() {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function e(_e2) {
+      didErr = true;
+      err = _e2;
+    },
+    f: function f() {
+      try {
+        if (!normalCompletion && it["return"] != null) it["return"]();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+
 
 
 
@@ -88990,7 +89068,7 @@ __webpack_require__.r(__webpack_exports__);
 Object(es6_promise__WEBPACK_IMPORTED_MODULE_5__["polyfill"])();
 /*! https://mths.be/scrollingelement v1.5.2 by @diegoperini & @mathias | MIT license */
 
-if (!('scrollingElement' in document)) (function () {
+if (!("scrollingElement" in document)) (function () {
   function computeStyle(element) {
     if (window.getComputedStyle) {
       // Support Firefox < 4 which throws on a single parameter.
@@ -89046,8 +89124,8 @@ if (!('scrollingElement' in document)) (function () {
     if (isCompliantCached === void 0) {
       // When called for the first time, check whether the browser is
       // standard-compliant, and cache the result.
-      var iframe = document.createElement('iframe');
-      iframe.style.height = '1px';
+      var iframe = document.createElement("iframe");
+      iframe.style.height = "1px";
       (document.body || document.documentElement || document).appendChild(iframe);
       var doc = iframe.contentWindow.document;
       doc.write('<!DOCTYPE html><div style="height:9999em">x</div>');
@@ -89060,7 +89138,7 @@ if (!('scrollingElement' in document)) (function () {
   };
 
   function isRendered(style) {
-    return style.display != 'none' && !(style.visibility == 'collapse' && /^table-(.+-group|row|column)$/.test(style.display));
+    return style.display != "none" && !(style.visibility == "collapse" && /^table-(.+-group|row|column)$/.test(style.display));
   }
 
   function isScrollable(body) {
@@ -89068,7 +89146,7 @@ if (!('scrollingElement' in document)) (function () {
     // non-`visible` overflow and are both being rendered.
     var bodyStyle = computeStyle(body);
     var htmlStyle = computeStyle(document.documentElement);
-    return bodyStyle.overflow != 'visible' && htmlStyle.overflow != 'visible' && isRendered(bodyStyle) && isRendered(htmlStyle);
+    return bodyStyle.overflow != "visible" && htmlStyle.overflow != "visible" && isRendered(bodyStyle) && isRendered(htmlStyle);
   }
 
   var scrollingElement = function scrollingElement() {
@@ -89087,21 +89165,21 @@ if (!('scrollingElement' in document)) (function () {
 
   if (Object.defineProperty) {
     // Support modern browsers that lack a native implementation.
-    Object.defineProperty(document, 'scrollingElement', {
-      'get': scrollingElement
+    Object.defineProperty(document, "scrollingElement", {
+      get: scrollingElement
     });
   } else if (document.__defineGetter__) {
     // Support Firefox ≤ 3.6.9, Safari ≤ 4.1.3.
-    document.__defineGetter__('scrollingElement', scrollingElement);
+    document.__defineGetter__("scrollingElement", scrollingElement);
   } else {
     // IE ≤ 4 lacks `attachEvent`, so it only gets this one assignment. IE ≤ 7
     // gets it too, but the value is updated later (see `propertychange`).
     document.scrollingElement = scrollingElement();
-    document.attachEvent && document.attachEvent('onpropertychange', function () {
+    document.attachEvent && document.attachEvent("onpropertychange", function () {
       // This is for IE ≤ 7 only.
       // A `propertychange` event fires when `<body>` is parsed because
       // `document.activeElement` then changes.
-      if (window.event.propertyName == 'activeElement') {
+      if (window.event.propertyName == "activeElement") {
         document.scrollingElement = scrollingElement();
       }
     });
@@ -89137,6 +89215,7 @@ if (typeof Object.assign != "function") {
 }
 
 window.axios = axios__WEBPACK_IMPORTED_MODULE_3___default.a;
+window.skipScroll = false;
 window.grid = {
   xs: 576,
   sm: 768,
@@ -89227,9 +89306,60 @@ channel.bind("update-lot-lastchance", function (_ref6) {
     }
   }));
 });
+
+var req = function req(url) {
+  var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "GET";
+  var body = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  return new Promise(function (resolve, reject) {
+    Object(_api_client__WEBPACK_IMPORTED_MODULE_7__["default"])(url, {
+      method: method,
+      body: body
+    }).then(function (resp) {
+      return resolve(resp);
+    })["catch"](function (err) {
+      return reject(err);
+    });
+  });
+};
+
 channel.bind("update-auction-status", function (_ref7) {
   var id = _ref7.id,
       status = _ref7.status;
+  var coming = [],
+      exists = false;
+
+  var _iterator = _createForOfIteratorHelper(window.App.coming),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var a = _step.value;
+
+      if (id == a.id) {
+        if (status == "started" || status == "coming") {
+          coming.push(a);
+          exists = true;
+        }
+      } else {
+        coming.push(a);
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  if (!exists) {
+    req("/api/" + window.App.locale + "/auctions/" + id).then(function (_ref8) {
+      var auction = _ref8.auction;
+      coming.push(auction);
+    })["catch"](function (err) {
+      return console.log(err);
+    });
+  }
+
+  window.App.coming = coming;
   window.dispatchEvent(new CustomEvent("update-auction-status", {
     detail: {
       id: id,
@@ -89246,7 +89376,7 @@ window.initState = {
   reset: false,
   confirmation: false
 };
-react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_context_auth__WEBPACK_IMPORTED_MODULE_8__["AuthProvider"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_router__WEBPACK_IMPORTED_MODULE_7__["default"], null)), document.getElementById("app"));
+react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_context_auth__WEBPACK_IMPORTED_MODULE_9__["AuthProvider"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_router__WEBPACK_IMPORTED_MODULE_8__["default"], null)), document.getElementById("app"));
 react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_helpers_Flash__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById("flashHolder"));
 
 function changeWindow() {
@@ -89683,14 +89813,16 @@ function _arrayWithHoles(arr) {
 
 
 
-function Announce() {
+function Announce(props) {
+  var req = props.req;
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(window.App.announce),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
       setState = _useState2[1];
 
   var updateAuctionStatus = function updateAuctionStatus(event) {
-    if (event.detail.id == state.id && event.detail.status != 'coming') {
+    if (event.detail.id == state.id && event.detail.status != "coming") {
       req("/api/" + window.App.locale + "/auctions/announce").then(function (_ref) {
         var auction = _ref.auction;
         return setState(auction);
@@ -90573,6 +90705,11 @@ function AuctionAdmin(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var declOfNum = function declOfNum(number, titles) {
+    var cases = [2, 0, 1, 1, 1, 2];
+    return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
+  };
+
   var renderer = function renderer(_ref) {
     var days = _ref.days,
         hours = _ref.hours,
@@ -90580,9 +90717,9 @@ function AuctionAdmin(props) {
         seconds = _ref.seconds,
         completed = _ref.completed;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "countdown-lot-wrapper",
+      className: "countdown-lot-wrapper h5 color-red",
       ref: countdownElem
-    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(hours), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(minutes), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(seconds));
+    }, window.App.locale == 'ru' ? "\u041E\u0441\u0442\u0430\u043B\u043E\u0441\u044C 00:".concat(Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(seconds), " ").concat(declOfNum(seconds, ['секунда', 'секунды', 'секунд'])) : "00:".concat(Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(seconds), " ").concat(declOfNum(seconds, ['second', 'seconds', 'seconds']), " left"));
   };
 
   var startAuction = function startAuction(e) {
@@ -91413,9 +91550,9 @@ function Auctions(props) {
   var req = props.req;
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    auctions: App.coming,
+    auctions: window.App.coming,
     slider: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionSlider, _extends({
-      auctions: App.coming
+      auctions: window.App.coming
     }, props))
   }),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -91423,6 +91560,7 @@ function Auctions(props) {
       setState = _useState4[1];
 
   var updateAuctionStatus = function updateAuctionStatus(event) {
+    var reload = false;
     setState(function (prevState) {
       var update = false;
       var exists = false;
@@ -91452,16 +91590,33 @@ function Auctions(props) {
       var toslider = [];
 
       for (var _i2 in auctions) {
-        if (auctions[_i2].status == 'started' || auctions[_i2].status == 'coming') toslider.push(auctions[_i2]);
+        if (auctions[_i2].status == "started" || auctions[_i2].status == "coming") {
+          toslider.push(auctions[_i2]);
+        } else {
+          update = true;
+        }
       }
 
-      return update ? {
-        auctions: auctions,
-        slider: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionSlider, _extends({
-          auctions: toslider
-        }, props))
-      } : prevState;
+      if (update) {
+        reload = true;
+        return {
+          auctions: auctions,
+          slider: ""
+        };
+      }
+
+      return prevState;
     });
+
+    if (reload) {
+      setState(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          slider: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AuctionSlider, _extends({
+            auctions: prevState.auctions
+          }, props))
+        });
+      });
+    }
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -92971,6 +93126,7 @@ function Carousel(props) {
     onClick: function onClick() {
       // refPicture.current.slickPrev();
       // refAnnounce.current.slickPrev();
+      window.skipScroll = true;
       history.replace("/auctions/" + auction.id + "/lot/" + prevId());
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_4__["ArrowPrew"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -92978,6 +93134,7 @@ function Carousel(props) {
     onClick: function onClick() {
       // refPicture.current.slickNext();
       // refAnnounce.current.slickNext();
+      window.skipScroll = true;
       history.replace("/auctions/" + auction.id + "/lot/" + nextId());
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_4__["ArrowNext"], null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -94455,6 +94612,11 @@ function Right(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var declOfNum = function declOfNum(number, titles) {
+    var cases = [2, 0, 1, 1, 1, 2];
+    return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
+  };
+
   var renderer = function renderer(_ref) {
     var days = _ref.days,
         hours = _ref.hours,
@@ -94462,9 +94624,9 @@ function Right(props) {
         seconds = _ref.seconds,
         completed = _ref.completed;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "countdown-lot-wrapper",
+      className: "countdown-lot-wrapper h5 color-red",
       ref: countdownElem
-    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(hours), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(minutes), ":", Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(seconds));
+    }, window.App.locale == "ru" ? "\u041E\u0441\u0442\u0430\u043B\u043E\u0441\u044C 00:".concat(Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(seconds), " ").concat(declOfNum(seconds, ["секунда", "секунды", "секунд"])) : "00:".concat(Object(react_countdown__WEBPACK_IMPORTED_MODULE_4__["zeroPad"])(seconds), " ").concat(declOfNum(seconds, ["second", "seconds", "seconds"]), " left"));
   };
 
   var offer = function offer(id, price) {
@@ -95840,7 +96002,7 @@ function Category(props) {
     id && scrollToElement(galEl);
   }, [id]);
   var galEl = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_3__["default"], props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper sticky-wrapper-gallery"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "gallery-section"
@@ -96222,6 +96384,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./carousel/Carousel */ "./resources/js/components/gallery/carousel/Carousel.js");
 /* harmony import */ var _utils_trans__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/trans */ "./resources/js/utils/trans.js");
+/* harmony import */ var _LotCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LotCard */ "./resources/js/components/gallery/LotCard.js");
+/* harmony import */ var _LotCard__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_LotCard__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -96234,7 +96399,7 @@ function Lot(props) {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LotCard__WEBPACK_IMPORTED_MODULE_6___default.a, props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "gallery-works",
     id: "galleryWorksList"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -96277,6 +96442,17 @@ function Lot(props) {
     className: "sticky-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_4__["default"])("works for sale")))));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/gallery/LotCard.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/gallery/LotCard.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 
@@ -96442,11 +96618,13 @@ function Carousel(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
     onClick: function onClick() {
+      window.skipScroll = true;
       history.replace("/gallery/lot/" + prevId());
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_4__["ArrowPrew"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
     onClick: function onClick() {
+      window.skipScroll = true;
       history.replace("/gallery/lot/" + nextId());
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_icons__WEBPACK_IMPORTED_MODULE_4__["ArrowNext"], null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -97284,10 +97462,11 @@ function Header(props) {
     closeMobile();
     document.body.className = pathname == "/" ? 'home' : '';
 
-    if (pathname.indexOf('gallery/category') == -1) {
+    if (!window.skipScroll && pathname.indexOf('gallery/category') == -1) {
       window.scrollTo(0, 0);
     }
 
+    window.skipScroll = false;
     changeWindow();
   }, [pathname]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -103605,7 +103784,7 @@ function _extends() {
 
 function Authors(props) {
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("AUTHORS_PAGE_TITLE"));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_3__["default"], props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "authors"
@@ -104249,9 +104428,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Blog() {
+function Blog(props) {
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("BLOG_PAGE_TITLE"));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_4__["default"], props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "blog-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "background-text"
@@ -104653,7 +104832,7 @@ function Events(props) {
   }, [pathname]);
   var workshopsEl = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var exhibitionsEl = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_4__["default"], props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "announces",
@@ -105848,9 +106027,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function News() {
+function News(props) {
   Object(_components_document_title__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('NEWS_PAGE_TITLE'));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_announce__WEBPACK_IMPORTED_MODULE_4__["default"], props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "news-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "background-text"

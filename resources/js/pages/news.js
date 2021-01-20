@@ -7,11 +7,11 @@ import useDocumentTitle from '../components/document-title';
 import MovingGallery from "../components/moving/Gallery";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 
-export default function News() {
+export default function News(props) {
     useDocumentTitle(__('NEWS_PAGE_TITLE'));
     return (
         <React.Fragment>
-            <Announce />
+            <Announce {...props} />
             <section className="news-section">
                 <div className="background-text">{__('NEWS')}</div>
                 <div className="sticky-wrapper">

@@ -3,13 +3,14 @@ import WaterfallAjax from "../waterfall/WaterfallAjax";
 import { Link, useParams } from "react-router-dom";
 import Carousel from "./carousel/Carousel";
 import __ from "../../utils/trans";
+import LotCard from "./LotCard";
 
 export default function Lot(props) {
     return (
         <section className="lot-section">
             <div className="sticky-wrapper">
                 <div className="container">
-                    
+                    <LotCard {...props} />
                     <div className="gallery-works" id="galleryWorksList">
                         <div className="row announce mb-5">
                             <div className="col-60">

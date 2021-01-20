@@ -73,6 +73,7 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
+                            window.skipScroll = true;
                             history.replace("/gallery/lot/" + prevId());
                         }}
                     >
@@ -81,6 +82,7 @@ export default function Carousel(props) {
                     <a
                         className="btn btn-default btn-control d-flex"
                         onClick={() => {
+                            window.skipScroll = true;
                             history.replace("/gallery/lot/" + nextId());
                         }}
                     >

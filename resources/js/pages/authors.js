@@ -10,7 +10,7 @@ export default function Authors(props) {
     useDocumentTitle(__("AUTHORS_PAGE_TITLE"));
     return (
         <React.Fragment>
-            <Announce />
+            <Announce {...props} />
             <div className="sticky-wrapper">
                 <section className="authors">
                     <div className="background-text">{__("Authors")}</div>

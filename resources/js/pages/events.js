@@ -34,7 +34,7 @@ export default function Events(props) {
 
     return (
         <React.Fragment>
-            <Announce />
+            <Announce {...props} />
             <div className="sticky-wrapper">
                 <section className="announces" ref={exhibitionsEl}>
                     <div className="background-text">{__('Exhibitions')}</div>
