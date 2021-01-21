@@ -91600,7 +91600,7 @@ function Auctions(props) {
       if (update) {
         reload = true;
         return {
-          auctions: auctions,
+          auctions: toslider,
           slider: ""
         };
       }
