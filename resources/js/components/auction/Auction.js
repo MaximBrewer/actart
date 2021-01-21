@@ -408,12 +408,12 @@ export default function Auction(props) {
                                                                 {Parser(
                                                                     state.translation
                                                                 )}
-                                                                <small className="text-red">
-                                                                    {__(
-                                                                        "TRANSLATION_HELP"
-                                                                    )}
-                                                                </small>
                                                             </div>
+                                                            <small className="text-red">
+                                                                {__(
+                                                                    "TRANSLATION_HELP"
+                                                                )}
+                                                            </small>
                                                         </div>
                                                     </div>
                                                 </div>
