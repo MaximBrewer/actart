@@ -64,9 +64,9 @@ class Cron extends Command
                 $carbon->subHours(6)->toDateTimeString()
             ]
         );
-
-        //     $auction = Auction::findOrFail($id);
-        //     $user->notify(new ReminderNotification($auction));
+        
+        foreach ($finished as $auction)
+            Auction::find($auction->id)->update(['status' => 'finished']);
 
         $carbon = new Carbon();
         $as = DB::select(
