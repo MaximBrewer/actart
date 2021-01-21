@@ -162,11 +162,11 @@ class LotController extends Controller
                 'lot_id' => $lot->id,
                 'blitz' => true
             ]);
-            $lot->update([
-                'status' => 'gsold'
-            ]);
-            foreach (User::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerGalleryWinnerNotification($lot, $user));
-            $user->notify(new GalleryWinnerNotification($lot));
+            // $lot->update([
+            //     'status' => 'gsold'
+            // ]);
+            // foreach (User::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerGalleryWinnerNotification($lot, $user));
+            // $user->notify(new GalleryWinnerNotification($lot));
             return ['lot' => new LotResource($lot)];
         }
         return null;
