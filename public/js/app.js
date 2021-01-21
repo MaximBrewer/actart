@@ -90491,7 +90491,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(html_react_parser__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _waterfall_Waterfall__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../waterfall/Waterfall */ "./resources/js/components/waterfall/Waterfall.js");
 /* harmony import */ var react_image_lightbox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-image-lightbox */ "./node_modules/react-image-lightbox/dist/index.es.js");
-/* harmony import */ var react_countdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-countdown */ "./node_modules/react-countdown/dist/index.es.js");
+/* harmony import */ var _components_document_title__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/document-title */ "./resources/js/components/document-title.js");
+/* harmony import */ var react_countdown__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-countdown */ "./node_modules/react-countdown/dist/index.es.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -90681,8 +90682,9 @@ function _arrayWithHoles(arr) {
 
 
 
+
 function AuctionAdmin(props) {
-  useDocumentTitle(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#AUCTIONS_ADMIN_PAGE_TITLE#"));
+  Object(_components_document_title__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#AUCTIONS_ADMIN_PAGE_TITLE#"));
   var req = props.req;
 
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
@@ -90720,7 +90722,7 @@ function AuctionAdmin(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "countdown-lot-wrapper h5 color-red",
       ref: countdownElem
-    }, window.App.locale == "ru" ? "\u041E\u0441\u0442\u0430\u043B\u043E\u0441\u044C \n                ".concat(Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(seconds), " ").concat(declOfNum(seconds, ["секунда", "секунды", "секунд"])) : "".concat(Object(react_countdown__WEBPACK_IMPORTED_MODULE_6__["zeroPad"])(seconds), " ").concat(declOfNum(seconds, ["second", "seconds", "seconds"]), " left"));
+    }, window.App.locale == "ru" ? "\u041E\u0441\u0442\u0430\u043B\u043E\u0441\u044C \n                ".concat(Object(react_countdown__WEBPACK_IMPORTED_MODULE_7__["zeroPad"])(seconds), " ").concat(declOfNum(seconds, ["секунда", "секунды", "секунд"])) : "".concat(Object(react_countdown__WEBPACK_IMPORTED_MODULE_7__["zeroPad"])(seconds), " ").concat(declOfNum(seconds, ["second", "seconds", "seconds"]), " left"));
   };
 
   var startAuction = function startAuction(e) {
@@ -91173,7 +91175,7 @@ function AuctionAdmin(props) {
     onClick: startCountdown
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#ADMIN_COUNTDOWN#")))) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#ADMIN_COUNTDOWN#")))) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_7__["default"], {
     date: Date.now() + 1000 * window.App.timer,
     ref: countdownRef,
     autoStart: false,

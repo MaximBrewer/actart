@@ -4,6 +4,7 @@ import __ from "../../utils/trans";
 import Parser from "html-react-parser";
 import Waterfall from "../waterfall/Waterfall";
 import Lightbox from "react-image-lightbox";
+import useDocumentTitle from "../../components/document-title";
 
 import Countdown, { zeroPad } from "react-countdown";
 
