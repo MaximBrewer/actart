@@ -110,6 +110,9 @@ export default function Center(props) {
                                                 className={`translation-wrapper`}
                                             >
                                                 {Parser(state.translation)}
+                                                <small className="text-red">
+                                                    {__("TRANSLATION_HELP")}
+                                                </small>
                                             </div>
                                         </div>
                                     </div>
