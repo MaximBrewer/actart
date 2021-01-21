@@ -58,13 +58,23 @@ class Cron extends Command
         foreach ($started as $auction)
             Auction::find($auction->id)->update(['status' => 'started']);
 
-        $finished = DB::select(
-            'select id from auctions where timestamp(date) < timestamp(?) and status in (\'started\',\'coming\')',
+        $canceled = DB::select(
+            'select id from auctions where timestamp(date) < timestamp(?) and status  = \'coming\'',
             [
                 $carbon->subHours(6)->toDateTimeString()
             ]
         );
-        
+
+        foreach ($canceled as $auction)
+            Auction::find($auction->id)->update(['status' => 'finished']);
+
+        $finished = DB::select(
+            'select id from auctions where timestamp(date) < timestamp(?) and status = \'started\'',
+            [
+                $carbon->subHours(6)->toDateTimeString()
+            ]
+        );
+
         foreach ($finished as $auction)
             Auction::find($auction->id)->update(['status' => 'finished']);
 
