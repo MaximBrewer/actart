@@ -48,9 +48,9 @@ class GalleryBlitz extends Notification
             ->line('Лот: ' . $this->bet->lot->title)
             ->line('Ставка: ' . $this->bet->bet . '$')
             ->action('Посмотреть', "http://act-art.ru/admin/lots/" . $this->bet->lot->id)
-            ->line('Пользователь: ' . $this->bet->user->id)
-            ->line('E-mail: ' . $this->bet->email)
-            ->line('Телефон: ' . $this->bet->phone)
+            ->line('Пользователь: #' . $this->bet->user->id)
+            ->line('E-mail: ' . $this->bet->user->email)
+            ->line('Телефон: ' . $this->bet->user->phone)
             ->action('Посмотреть', "http://act-art.ru/admin/users/" . $this->bet->user->id);
     }
 
