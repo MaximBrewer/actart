@@ -33,7 +33,6 @@ import Right from "./online/blocks/Right";
 export default function Auction(props) {
     const { id } = useParams();
 
-
     const [state, setState] = useState({
         auction: null,
         finished: false,
@@ -150,7 +149,7 @@ export default function Auction(props) {
     const { url } = useRouteMatch();
     const { pathname } = useLocation();
 
-    useEffect(() => { }, [pathname]);
+    useEffect(() => {}, [pathname]);
 
     const lotId =
         (pathname == url ? false : pathname.replace(url + "/lot/", "")) * 1;
@@ -164,7 +163,7 @@ export default function Auction(props) {
         axios
             .get("/api/" + window.App.locale + "/auctions/" + id)
             .then(res => {
-                setState((prevState) => ({
+                setState(prevState => ({
                     ...prevState,
                     auction: res.data.auction,
                     started: res.data.auction.current ? true : prevState.started
@@ -209,20 +208,20 @@ export default function Auction(props) {
                     return lotId ? (
                         <AuctionOnlineLotTop {...props} />
                     ) : (
-                            <AuctionOnlineTop {...props} />
-                        );
+                        <AuctionOnlineTop {...props} />
+                    );
                 case "finished":
                     return lotId ? (
                         <AuctionArchiveLotTop {...props} />
                     ) : (
-                            <AuctionArchiveTop {...props} />
-                        );
+                        <AuctionArchiveTop {...props} />
+                    );
                 case "coming":
                     return lotId ? (
                         <AuctionComingLotTop {...props} />
                     ) : (
-                            <AuctionComingTop {...props} />
-                        );
+                        <AuctionComingTop {...props} />
+                    );
             }
         return false;
     };
@@ -257,20 +256,20 @@ export default function Auction(props) {
                     return lotId ? (
                         <AuctionOnlineLotBottom {...props} />
                     ) : (
-                            <AuctionOnlineBottom {...props} />
-                        );
+                        <AuctionOnlineBottom {...props} />
+                    );
                 case "finished":
                     return lotId ? (
                         <AuctionArchiveLotBottom {...props} />
                     ) : (
-                            <AuctionArchiveBottom {...props} />
-                        );
+                        <AuctionArchiveBottom {...props} />
+                    );
                 case "coming":
                     return lotId ? (
                         <AuctionComingLotBottom {...props} />
                     ) : (
-                            <AuctionComingBottom {...props} />
-                        );
+                        <AuctionComingBottom {...props} />
+                    );
             }
         return false;
     };
@@ -278,142 +277,223 @@ export default function Auction(props) {
     return state.auction ? (
         <section className="auction-page-wrapper">
             <div className={`status-` + state.auction.status}>
-                <Top {...props} auction={state.auction} finished={state.finished} started={state.started} />
+                <Top
+                    {...props}
+                    auction={state.auction}
+                    finished={state.finished}
+                    started={state.started}
+                />
                 <div className="sticky-wrapper">
                     {lotId ? (
                         <div className="auction-info">
                             <div className="container">
-                                <Carousel {...props} auction={state.auction} finished={state.finished} started={state.started} />
+                                <Carousel
+                                    {...props}
+                                    auction={state.auction}
+                                    finished={state.finished}
+                                    started={state.started}
+                                />
                             </div>
                         </div>
-                    ) : (
-                            state.auction.status == 'started' ? (
-                                <div className="auction-info">
-                                    <div className="container">
-                                        <div className="lot-carousel">
-                                            <div className="row">
-                                                <div className="col-xl-40 col-xxl-38">
-                                                    <div className="left-side">
-                                                        <div>
-                                                            {state.auction.current ?
-                                                                (
-                                                                    <div
-                                                                        style={{
-                                                                            width: "100%"
-                                                                        }}
-                                                                    >
-                                                                        <div
-                                                                            onClick={() =>
-                                                                                setState(prevState => ({
-                                                                                    ...prevState,
-                                                                                    lbOpen: true
-                                                                                }))
-                                                                            }
-                                                                            className="image"
-                                                                            alt={
-                                                                                state.auction.current
-                                                                                    .thumbnail
-                                                                            }
-                                                                            style={{
-                                                                                cursor: "pointer",
-                                                                                display: "block",
-                                                                                position: "relative",
-                                                                                backgroundSize:
-                                                                                    "contain",
-                                                                                backgroundRepeat:
-                                                                                    "no-repeat",
-                                                                                backgroundPosition:
-                                                                                    "center",
-                                                                                paddingTop: "65%",
-                                                                                backgroundColor:
-                                                                                    "#ECEDED",
-                                                                                backgroundImage:
-                                                                                    'url("' +
-                                                                                    state.auction
-                                                                                        .current
-                                                                                        .thumbnail +
-                                                                                    '")'
-                                                                            }}
-                                                                        ></div>
-                                                                        {state.lbOpen && (
-                                                                            <Lightbox
-                                                                                mainSrc={
-                                                                                    state.auction
-                                                                                        .current
-                                                                                        .photo
-                                                                                }
-                                                                                onCloseRequest={() =>
-                                                                                    setState(
-                                                                                        prevState => ({
-                                                                                            ...prevState,
-                                                                                            lbOpen: false
-                                                                                        })
-                                                                                    )
-                                                                                }
-                                                                            />
-                                                                        )}
-                                                                    </div>
-                                                                ) : ``
-                                                            }
+                    ) : state.auction.status == "started" ? (
+                        <div className="auction-info">
+                            <div className="container">
+                                <div className="lot-carousel">
+                                    <div className="row">
+                                        <div className="col-xl-40 col-xxl-38">
+                                            <div className="left-side">
+                                                <div>
+                                                    {state.auction.current ? (
+                                                        <div
+                                                            style={{
+                                                                width: "100%"
+                                                            }}
+                                                        >
                                                             <div
-                                                                className={`current d-flex justify-content-between py-2`}
+                                                                onClick={() =>
+                                                                    setState(
+                                                                        prevState => ({
+                                                                            ...prevState,
+                                                                            lbOpen: true
+                                                                        })
+                                                                    )
+                                                                }
+                                                                className="image"
+                                                                alt={
+                                                                    state
+                                                                        .auction
+                                                                        .current
+                                                                        .thumbnail
+                                                                }
+                                                                style={{
+                                                                    cursor:
+                                                                        "pointer",
+                                                                    display:
+                                                                        "block",
+                                                                    position:
+                                                                        "relative",
+                                                                    backgroundSize:
+                                                                        "contain",
+                                                                    backgroundRepeat:
+                                                                        "no-repeat",
+                                                                    backgroundPosition:
+                                                                        "center",
+                                                                    paddingTop:
+                                                                        "65%",
+                                                                    backgroundColor:
+                                                                        "#ECEDED",
+                                                                    backgroundImage:
+                                                                        'url("' +
+                                                                        state
+                                                                            .auction
+                                                                            .current
+                                                                            .thumbnail +
+                                                                        '")'
+                                                                }}
+                                                            ></div>
+                                                            {state.lbOpen && (
+                                                                <Lightbox
+                                                                    mainSrc={
+                                                                        state
+                                                                            .auction
+                                                                            .current
+                                                                            .photo
+                                                                    }
+                                                                    onCloseRequest={() =>
+                                                                        setState(
+                                                                            prevState => ({
+                                                                                ...prevState,
+                                                                                lbOpen: false
+                                                                            })
+                                                                        )
+                                                                    }
+                                                                />
+                                                            )}
+                                                        </div>
+                                                    ) : (
+                                                        ``
+                                                    )}
+                                                    <div
+                                                        className={`current d-flex justify-content-between py-2`}
+                                                    >
+                                                        <div className="h2 color-red">
+                                                            {state.auction
+                                                                .current
+                                                                ? __(
+                                                                      "LOT_TEXT_LOT_ID"
+                                                                  ) +
+                                                                  ` ` +
+                                                                  state.auction
+                                                                      .current
+                                                                      .sort
+                                                                : ``}
+                                                        </div>
+                                                        <div
+                                                            style={{
+                                                                width: "100%",
+                                                                maxWidth:
+                                                                    "340px"
+                                                            }}
+                                                        >
+                                                            <div
+                                                                style={{
+                                                                    paddingTop:
+                                                                        "76.47%",
+                                                                    height: 0,
+                                                                    position:
+                                                                        "relative"
+                                                                }}
+                                                                className={`translation-wrapper`}
                                                             >
-                                                                <div className="h2 color-red">{state.auction.current ? __("LOT_TEXT_LOT_ID") + ` ` + state.auction.current.sort : ``}</div>
-                                                                <div style={{ width: "40%" }}>
-                                                                    <div
-                                                                        style={{
-                                                                            paddingTop: "56.25%",
-                                                                            height: 0,
-                                                                            position: "relative"
-                                                                        }}
-                                                                        className={`translation-wrapper`}
-                                                                    >
-                                                                        {Parser(state.translation)}
-                                                                    </div>
-                                                                </div>
+                                                                {Parser(
+                                                                    state.translation
+                                                                )}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="col-xl-20 col-xxl-22">
-                                                    <div className="right-side">
-                                                        {state.auction.current ? (
-                                                            <Right
-                                                                {...props}
-                                                                item={state.auction.current}
-                                                                finished={state.finished} started={state.started}
-                                                            />
-                                                        ) : (!state.started
-                                                            ? <h3 className={`py-5 text-center color-red`}>{__("#AUCTION_WILL_START_SOON#")}</h3>
-                                                            : !state.finished
-                                                                ? <h3 className={`py-5 text-center color-red`} >{__("#WAIT_NEXT_LOT#")}</h3>
-                                                                : <h3 className={`py-5 text-center color-red`} >{__("#AUCTION_HAS_FINISHED#")}</h3>
-                                                            )
+                                            </div>
+                                        </div>
+                                        <div className="col-xl-20 col-xxl-22">
+                                            <div className="right-side">
+                                                {state.auction.current ? (
+                                                    <Right
+                                                        {...props}
+                                                        item={
+                                                            state.auction
+                                                                .current
                                                         }
-                                                    </div>
-                                                </div>
+                                                        finished={
+                                                            state.finished
+                                                        }
+                                                        started={state.started}
+                                                    />
+                                                ) : !state.started ? (
+                                                    <h3
+                                                        className={`py-5 text-center color-red`}
+                                                    >
+                                                        {__(
+                                                            "#AUCTION_WILL_START_SOON#"
+                                                        )}
+                                                    </h3>
+                                                ) : !state.finished ? (
+                                                    <h3
+                                                        className={`py-5 text-center color-red`}
+                                                    >
+                                                        {__("#WAIT_NEXT_LOT#")}
+                                                    </h3>
+                                                ) : (
+                                                    <h3
+                                                        className={`py-5 text-center color-red`}
+                                                    >
+                                                        {__(
+                                                            "#AUCTION_HAS_FINISHED#"
+                                                        )}
+                                                    </h3>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            ) :
-                                <Center {...props} auction={state.auction} finished={state.finished} started={state.started} />
-                        )}
+                            </div>
+                        </div>
+                    ) : (
+                        <Center
+                            {...props}
+                            auction={state.auction}
+                            finished={state.finished}
+                            started={state.started}
+                        />
+                    )}
                     <div className="auction-page-inner">
                         <div className="auction-works-list my-5">
-                            <LotsList {...props} auction={state.auction} finished={state.finished} started={state.started} />
+                            <LotsList
+                                {...props}
+                                auction={state.auction}
+                                finished={state.finished}
+                                started={state.started}
+                            />
                         </div>
                         <div className="my-5">
-                            <Bottom {...props} auction={state.auction} finished={state.finished} started={state.started} />
+                            <Bottom
+                                {...props}
+                                auction={state.auction}
+                                finished={state.finished}
+                                started={state.started}
+                            />
                         </div>
                     </div>
                     <div className="sticky-section">
-                        <span>{state.auction.status === 'finished' ? __('ARCHIVE_OF_AUCTIONS') : state.auction.title}</span>
+                        <span>
+                            {state.auction.status === "finished"
+                                ? __("ARCHIVE_OF_AUCTIONS")
+                                : state.auction.title}
+                        </span>
                     </div>
                 </div>
             </div>
         </section>
     ) : (
-            ``
-        );
+        ``
+    );
 }

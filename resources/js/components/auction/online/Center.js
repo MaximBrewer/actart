@@ -6,7 +6,6 @@ import Lightbox from "react-image-lightbox";
 import { size } from "lodash";
 
 export default function Center(props) {
-
     const { auction, finished, started } = props;
 
     const [state, setState] = useState({
@@ -36,74 +35,75 @@ export default function Center(props) {
                         <div className="col-xl-40 col-xxl-38">
                             <div className="left-side">
                                 <div>
-                                    {auction.current ?
-                                        (
+                                    {auction.current ? (
+                                        <div
+                                            style={{
+                                                width: "100%"
+                                            }}
+                                        >
                                             <div
+                                                onClick={() =>
+                                                    setState(prevState => ({
+                                                        ...prevState,
+                                                        lbOpen: true
+                                                    }))
+                                                }
+                                                className="image"
+                                                alt={auction.current.thumbnail}
                                                 style={{
-                                                    width: "100%"
+                                                    cursor: "pointer",
+                                                    display: "block",
+                                                    position: "relative",
+                                                    backgroundSize: "contain",
+                                                    backgroundRepeat:
+                                                        "no-repeat",
+                                                    backgroundPosition:
+                                                        "center",
+                                                    paddingTop: "65%",
+                                                    backgroundColor: "#ECEDED",
+                                                    backgroundImage:
+                                                        'url("' +
+                                                        auction.current
+                                                            .thumbnail +
+                                                        '")'
                                                 }}
-                                            >
-                                                <div
-                                                    onClick={() =>
+                                            ></div>
+                                            {state.lbOpen && (
+                                                <Lightbox
+                                                    mainSrc={
+                                                        auction.current.photo
+                                                    }
+                                                    onCloseRequest={() =>
                                                         setState(prevState => ({
                                                             ...prevState,
-                                                            lbOpen: true
+                                                            lbOpen: false
                                                         }))
                                                     }
-                                                    className="image"
-                                                    alt={
-                                                        auction.current
-                                                            .thumbnail
-                                                    }
-                                                    style={{
-                                                        cursor: "pointer",
-                                                        display: "block",
-                                                        position: "relative",
-                                                        backgroundSize:
-                                                            "contain",
-                                                        backgroundRepeat:
-                                                            "no-repeat",
-                                                        backgroundPosition:
-                                                            "center",
-                                                        paddingTop: "65%",
-                                                        backgroundColor:
-                                                            "#ECEDED",
-                                                        backgroundImage:
-                                                            'url("' +
-                                                            auction
-                                                                .current
-                                                                .thumbnail +
-                                                            '")'
-                                                    }}
-                                                ></div>
-                                                {state.lbOpen && (
-                                                    <Lightbox
-                                                        mainSrc={
-                                                            auction
-                                                                .current
-                                                                .photo
-                                                        }
-                                                        onCloseRequest={() =>
-                                                            setState(
-                                                                prevState => ({
-                                                                    ...prevState,
-                                                                    lbOpen: false
-                                                                })
-                                                            )
-                                                        }
-                                                    />
-                                                )}
-                                            </div>
-                                        ) : ``
-                                    }
+                                                />
+                                            )}
+                                        </div>
+                                    ) : (
+                                        ``
+                                    )}
                                     <div
                                         className={`current d-flex justify-content-between py-2`}
                                     >
-                                        <div className="h2 color-red">{auction.current ? __("LOT_TEXT_LOT_ID") + ` ` + auction.current.id : ``}</div>
-                                        <div style={{ width: "40%" }}>
+                                        <div className="h2 color-red">
+                                            {auction.current
+                                                ? __("LOT_TEXT_LOT_ID") +
+                                                  ` ` +
+                                                  auction.current.id
+                                                : ``}
+                                        </div>
+                                        <div
+                                            style={{
+                                                width: "100%",
+                                                maxWidth: "340px"
+                                            }}
+                                        >
                                             <div
                                                 style={{
-                                                    paddingTop: "56.25%",
+                                                    paddingTop: "76.47%",
                                                     height: 0,
                                                     position: "relative"
                                                 }}
@@ -119,17 +119,26 @@ export default function Center(props) {
                         <div className="col-xl-20 col-xxl-22">
                             <div className="right-side">
                                 {auction.current ? (
-                                    <Right
-                                        item={auction.current}
-                                        {...props}
-                                    />
-                                ) : (!started
-                                    ? <h3 className={`py-5 text-center color-red`}>{__("#AUCTION_WILL_START_SOON#")}</h3>
-                                    : !finished
-                                        ? <h3 className={`py-5 text-center color-red`} >{__("#WAIT_NEXT_LOT#")}</h3>
-                                        : <h3 className={`py-5 text-center color-red`} >{__("#AUCTION_HAS_FINISHED#")}</h3>
-                                    )
-                                }
+                                    <Right item={auction.current} {...props} />
+                                ) : !started ? (
+                                    <h3
+                                        className={`py-5 text-center color-red`}
+                                    >
+                                        {__("#AUCTION_WILL_START_SOON#")}
+                                    </h3>
+                                ) : !finished ? (
+                                    <h3
+                                        className={`py-5 text-center color-red`}
+                                    >
+                                        {__("#WAIT_NEXT_LOT#")}
+                                    </h3>
+                                ) : (
+                                    <h3
+                                        className={`py-5 text-center color-red`}
+                                    >
+                                        {__("#AUCTION_HAS_FINISHED#")}
+                                    </h3>
+                                )}
                             </div>
                         </div>
                     </div>

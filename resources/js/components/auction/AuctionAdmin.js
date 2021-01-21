@@ -479,13 +479,15 @@ export default function AuctionAdmin(props) {
                                                         </div>
                                                         <div
                                                             style={{
-                                                                width: "40%"
+                                                                width: "100%",
+                                                                maxWidth:
+                                                                    "340px"
                                                             }}
                                                         >
                                                             <div
                                                                 style={{
                                                                     paddingTop:
-                                                                        "56.25%",
+                                                                        "76.47%",
                                                                     height: 0,
                                                                     position:
                                                                         "relative"

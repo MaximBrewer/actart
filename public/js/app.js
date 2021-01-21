@@ -90373,7 +90373,7 @@ function Auction(props) {
     auction: state.auction,
     finished: state.finished,
     started: state.started
-  })))) : state.auction.status == 'started' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })))) : state.auction.status == "started" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "auction-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
@@ -90425,11 +90425,12 @@ function Auction(props) {
     className: "h2 color-red"
   }, state.auction.current ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("LOT_TEXT_LOT_ID") + " " + state.auction.current.sort : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      width: "40%"
+      width: "100%",
+      maxWidth: "340px"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      paddingTop: "56.25%",
+      paddingTop: "76.47%",
       height: 0,
       position: "relative"
     },
@@ -90468,7 +90469,7 @@ function Auction(props) {
     started: state.started
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sticky-section"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, state.auction.status === 'finished' ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])('ARCHIVE_OF_AUCTIONS') : state.auction.title))))) : "";
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, state.auction.status === "finished" ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("ARCHIVE_OF_AUCTIONS") : state.auction.title))))) : "";
 }
 
 /***/ }),
@@ -91085,11 +91086,12 @@ function AuctionAdmin(props) {
     className: "h2 color-red"
   }, state.auction.current ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID") + " " + state.auction.current.sort : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      width: "40%"
+      width: "100%",
+      maxWidth: "340px"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      paddingTop: "56.25%",
+      paddingTop: "76.47%",
       height: 0,
       position: "relative"
     },
@@ -94213,11 +94215,12 @@ function Center(props) {
     className: "h2 color-red"
   }, auction.current ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID") + " " + auction.current.id : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      width: "40%"
+      width: "100%",
+      maxWidth: "340px"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      paddingTop: "56.25%",
+      paddingTop: "76.47%",
       height: 0,
       position: "relative"
     },
