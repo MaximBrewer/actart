@@ -19,8 +19,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Events\Lot as LotEvent;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\Beat as BeatNotification;
-use App\Notifications\GalleryWinner as GalleryWinnerNotification;
-use App\Notifications\Manager\GalleryWinner as ManagerGalleryWinnerNotification;
 
 class LotController extends Controller
 {
@@ -162,11 +160,6 @@ class LotController extends Controller
                 'lot_id' => $lot->id,
                 'blitz' => true
             ]);
-            // $lot->update([
-            //     'status' => 'gsold'
-            // ]);
-            // foreach (User::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerGalleryWinnerNotification($lot, $user));
-            // $user->notify(new GalleryWinnerNotification($lot));
             return ['lot' => new LotResource($lot)];
         }
         return null;

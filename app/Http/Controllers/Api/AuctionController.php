@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\AuctionShort as AuctionResource;
 use App\Http\Resources\User as UserResource;
 use App\Notifications\Participate as ParticipateNotification;
-use App\Notifications\AuctionWinner as AuctionWinnerNotification;
-use App\Notifications\Manager\AuctionWinner as ManagerAuctionWinnerNotification;
 use Carbon\Carbon;
 
 use App\Events\StartCountdown as StartCountdownEvent;
@@ -119,9 +117,6 @@ class AuctionController extends Controller
         if ($lot) $lot->update([
             'status' => 'sold'
         ]);
-        $user = User::find($lot->bets[0]->user_id);
-        $user->notify(new AuctionWinnerNotification($lot));
-        foreach (User::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerAuctionWinnerNotification($lot, $user));
         $this->next($auction);
         return ['auction' => $auction, 'lot' => $lot];
     }

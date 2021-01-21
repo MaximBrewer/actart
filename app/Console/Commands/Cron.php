@@ -67,9 +67,6 @@ class Cron extends Command
             $lotModel = Lot::find($lot->id);
             if (count($lotModel->bets)) {
                 $lotModel->update(['status' => 'gsold']);
-                $user = User::find(end($lotModel->bets)->user_id);
-                foreach (User::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerGalleryWinnerNotification($lot, $user));
-                $user->notify(new GalleryWinnerNotification($lot));
             } else {
                 $lotModel->update(['status' => 'discontinued']);
             }
