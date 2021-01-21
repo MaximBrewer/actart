@@ -103,7 +103,7 @@ export default function Center(props) {
                                         >
                                             <div
                                                 style={{
-                                                    paddingTop: "76.47%",
+                                                    paddingTop: "58.82%",
                                                     height: 0,
                                                     position: "relative"
                                                 }}
@@ -112,7 +112,7 @@ export default function Center(props) {
                                                 {Parser(state.translation)}
                                             </div>
                                             <small className="text-red">
-                                                {__("TRANSLATION_HELP")}
+                                                {__("#TRANSLATION_HELP#")}
                                             </small>
                                         </div>
                                     </div>

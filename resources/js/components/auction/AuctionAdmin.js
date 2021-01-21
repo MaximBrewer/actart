@@ -487,7 +487,7 @@ export default function AuctionAdmin(props) {
                                                             <div
                                                                 style={{
                                                                     paddingTop:
-                                                                        "76.47%",
+                                                                        "58.82%",
                                                                     height: 0,
                                                                     position:
                                                                         "relative"
@@ -500,7 +500,7 @@ export default function AuctionAdmin(props) {
                                                             </div>
                                                             <small className="text-red">
                                                                 {__(
-                                                                    "TRANSLATION_HELP"
+                                                                    "#TRANSLATION_HELP#"
                                                                 )}
                                                             </small>
                                                         </div>

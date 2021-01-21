@@ -90430,14 +90430,14 @@ function Auction(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      paddingTop: "76.47%",
+      paddingTop: "58.82%",
       height: 0,
       position: "relative"
     },
     className: "translation-wrapper"
   }, html_react_parser__WEBPACK_IMPORTED_MODULE_22___default()(state.translation)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "text-red"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("TRANSLATION_HELP"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("#TRANSLATION_HELP#"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right-side"
@@ -91093,14 +91093,14 @@ function AuctionAdmin(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      paddingTop: "76.47%",
+      paddingTop: "58.82%",
       height: 0,
       position: "relative"
     },
     className: "translation-wrapper"
   }, html_react_parser__WEBPACK_IMPORTED_MODULE_3___default()(state.translation)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "text-red"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("TRANSLATION_HELP"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#TRANSLATION_HELP#"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-carousel-right"
@@ -94224,14 +94224,14 @@ function Center(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      paddingTop: "76.47%",
+      paddingTop: "58.82%",
       height: 0,
       position: "relative"
     },
     className: "translation-wrapper"
   }, html_react_parser__WEBPACK_IMPORTED_MODULE_3___default()(state.translation)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "text-red"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("TRANSLATION_HELP"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#TRANSLATION_HELP#"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right-side"
