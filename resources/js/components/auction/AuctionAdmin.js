@@ -498,7 +498,7 @@ export default function AuctionAdmin(props) {
                                                                     state.translation
                                                                 )}
                                                             </div>
-                                                            <small className="text-red">
+                                                            <small className="color-red">
                                                                 {__(
                                                                     "#TRANSLATION_HELP#"
                                                                 )}

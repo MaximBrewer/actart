@@ -111,7 +111,7 @@ export default function Center(props) {
                                             >
                                                 {Parser(state.translation)}
                                             </div>
-                                            <small className="text-red">
+                                            <small className="color-red">
                                                 {__("#TRANSLATION_HELP#")}
                                             </small>
                                         </div>
