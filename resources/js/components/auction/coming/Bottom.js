@@ -11,19 +11,22 @@ export default function Bottom(props) {
         <div className="auction-footer">
             <div className="container">
                 <div className="row justify-content-center my-5">
-                    <div className="col-lg-30">
+                    <div className="col-lg-30 h-center">
                         <Countdown date={auction.dateatom} />
                     </div>
                 </div>
                 <div className="row justify-content-center my-5">
-                    <div className="col-lg-30">
+                    <div className="col-lg-15">
                         {inAuctions ? (
-                            <Link
-                                to={"/auctions/" + auction.id}
-                                className="btn btn-danger"
-                            >
-                                {__("ALREADY_REGISTERED")}
-                            </Link>
+                            <div className="d-flex flex-column justify-content-center">
+                                <Link
+                                    to={"/auctions/" + auction.id}
+                                    className="btn btn-danger"
+                                >
+                                    {__("ALREADY_REGISTERED")}
+                                </Link>
+                                <p className="text-center py-3">{__("#ALREADY_REGISTERED_HELP#")}</p>
+                            </div>
                         ) : (
                             <Link
                                 to={"/auctions/" + auction.id}

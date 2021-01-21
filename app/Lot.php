@@ -11,7 +11,7 @@ class Lot extends Model
 {
     use Translatable;
     use Resizable;
-    
+
     protected $translatable = ['title', 'text'];
     protected $appends = ['number'];
     protected $fillable = ['auction_id', 'sort', 'status', 'lastchance'];
@@ -25,6 +25,15 @@ class Lot extends Model
     public function getNumberAttribute()
     {
         return str_pad($this->id, 3, "0", STR_PAD_LEFT);
+    }
+    //
+    public function getNextIdAttribute()
+    {
+        return self::where('id', '>', $this->id)->where('status', $this->status)->orderBy('id', 'asc')->pluck('id')->first();
+    }
+    public function getPrevIdAttribute()
+    {
+        return self::where('id', '<', $this->id)->where('status', $this->status)->orderBy('id', 'desc')->pluck('id')->first();
     }
 
 
@@ -100,6 +109,4 @@ class Lot extends Model
     {
         return $this->belongsToMany('App\Material', 'material_lot');
     }
-
-    
 }

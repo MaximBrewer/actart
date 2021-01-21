@@ -22164,6 +22164,10 @@ section.announces.bggray .background-text {
   text-align: left;
 }
 
+.h-center .d-flex {
+  justify-content: center;
+}
+
 .favorite-link {
   font-size: 1rem;
   color: #818486;
@@ -22242,7 +22246,6 @@ section.announces.bggray .background-text {
   background-repeat: no-repeat;
   background-position: center bottom;
   padding-top: 111% !important;
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .auction-item .number {

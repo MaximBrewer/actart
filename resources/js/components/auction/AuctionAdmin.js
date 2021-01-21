@@ -25,15 +25,33 @@ export default function AuctionAdmin(props) {
         lbOpen: false,
         date: 0
     });
-    const declOfNum = (number, titles) => {  
-        let cases = [2, 0, 1, 1, 1, 2];  
-        return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];  
-    }
+    const declOfNum = (number, titles) => {
+        let cases = [2, 0, 1, 1, 1, 2];
+        return titles[
+            number % 100 > 4 && number % 100 < 20
+                ? 2
+                : cases[number % 10 < 5 ? number % 10 : 5]
+        ];
+    };
 
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         return (
-            <div className="countdown-lot-wrapper h5 color-red" ref={countdownElem}>
-                {window.App.locale == 'ru' ? `Осталось 00:${zeroPad(seconds)} ${declOfNum(seconds, ['секунда', 'секунды', 'секунд'])}` : `00:${zeroPad(seconds)} ${declOfNum(seconds, ['second', 'seconds', 'seconds'])} left`}
+            <div
+                className="countdown-lot-wrapper h5 color-red"
+                ref={countdownElem}
+            >
+                {window.App.locale == "ru"
+                    ? `Осталось 
+                ${zeroPad(seconds)} ${declOfNum(seconds, [
+                          "секунда",
+                          "секунды",
+                          "секунд"
+                      ])}`
+                    : `${zeroPad(seconds)} ${declOfNum(seconds, [
+                          "second",
+                          "seconds",
+                          "seconds"
+                      ])} left`}
             </div>
         );
     };

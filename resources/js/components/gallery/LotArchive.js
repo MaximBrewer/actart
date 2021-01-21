@@ -3,7 +3,7 @@ import WaterfallAjax from "../waterfall/WaterfallAjax";
 import { Link, useParams } from "react-router-dom";
 import Carousel from "./carousel/Carousel";
 import __ from "../../utils/trans";
-import LotCard from "./LotCard";
+import LotCard from "./lotcard/LotCard";
 
 export default function Lot(props) {
     return (

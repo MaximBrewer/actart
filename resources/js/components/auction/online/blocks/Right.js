@@ -27,12 +27,12 @@ export default function Right(props) {
                 ref={countdownElem}
             >
                 {window.App.locale == "ru"
-                    ? `Осталось 00:${zeroPad(seconds)} ${declOfNum(seconds, [
+                    ? `Осталось ${zeroPad(seconds)} ${declOfNum(seconds, [
                           "секунда",
                           "секунды",
                           "секунд"
                       ])}`
-                    : `00:${zeroPad(seconds)} ${declOfNum(seconds, [
+                    : `${zeroPad(seconds)} ${declOfNum(seconds, [
                           "second",
                           "seconds",
                           "seconds"
