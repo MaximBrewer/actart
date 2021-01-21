@@ -8,6 +8,7 @@ import Lightbox from "react-image-lightbox";
 import Countdown, { zeroPad } from "react-countdown";
 
 export default function AuctionAdmin(props) {
+    useDocumentTitle(__("#AUCTIONS_ADMIN_PAGE_TITLE#"));
     const { req } = props;
     const { id } = useParams();
 

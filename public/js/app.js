@@ -90682,6 +90682,7 @@ function _arrayWithHoles(arr) {
 
 
 function AuctionAdmin(props) {
+  useDocumentTitle(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#AUCTIONS_ADMIN_PAGE_TITLE#"));
   var req = props.req;
 
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
