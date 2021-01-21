@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
 use App\User;
+use App\Lot;
 use App\Notifications\Reminder as ReminderNotification;
 
 class Cron extends Command
@@ -44,10 +45,31 @@ class Cron extends Command
      */
     public function handle()
     {
-        DB::connection()->enableQueryLog();
-        Log::info("Cron started: " . date(DATE_ATOM));
+        // DB::connection()->enableQueryLog();
+        // Log::info("Cron started: " . date(DATE_ATOM));
 
         $carbon = new Carbon();
+
+
+
+
+        $galleryLots = DB::select(
+            'select id from lots where timestamp(until) < timestamp(?) and status = ?',
+            [
+                $carbon->toDateTimeString(),
+                'gallery'
+            ]
+        );
+
+        foreach ($galleryLots as $lot) {
+            $lotModel = Lot::find($lot->id);
+            if (count($lotModel->bets)) {
+                $lotModel->update(['status' => 'gsold']);
+            } else {
+                $lotModel->update(['status' => 'discontinued']);
+            }
+        }
+
         $started = DB::select(
             'select id from auctions where timestamp(date) < timestamp(?) and status = ?',
             [
@@ -109,7 +131,7 @@ class Cron extends Command
             );
         }
 
-        $queries = DB::getQueryLog();
-        Log::info($queries);
+        // $queries = DB::getQueryLog();
+        // Log::info($queries);
     }
 }
