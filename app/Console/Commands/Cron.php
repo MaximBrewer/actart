@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Config;
 use App\User;
 use App\Lot;
 use App\Notifications\Reminder as ReminderNotification;
+use App\Notifications\GalleryWinner as GalleryWinnerNotification;
+use App\Notifications\Manager\GalleryWinner as ManagerGalleryWinnerNotification;
 
 class Cron extends Command
 {
@@ -65,6 +67,9 @@ class Cron extends Command
             $lotModel = Lot::find($lot->id);
             if (count($lotModel->bets)) {
                 $lotModel->update(['status' => 'gsold']);
+                $user = User::find(end($lotModel->bets)->user_id);
+                foreach (User::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerGalleryWinnerNotification($lot, $user));
+                $user->notify(new GalleryWinnerNotification($lot));
             } else {
                 $lotModel->update(['status' => 'discontinued']);
             }
