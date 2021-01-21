@@ -29,11 +29,11 @@ class Lot
         if ($lot->wasChanged('status')) {
             switch ($lot->status) {
                 case "gsold":
-                    $user = UserModel::find(end($lot->bets)->user_id);
+                    $user = UserModel::find($lot->bets[0]->user_id);
                     foreach (UserModel::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerGalleryWinnerNotification($lot, $user));
                     $user->notify(new GalleryWinnerNotification($lot));
                 case "sold":
-                    $user = UserModel::find(end($lot->bets)->user_id);
+                    $user = UserModel::find($lot->bets[0]->user_id);
                     $user->notify(new AuctionWinnerNotification($lot));
                     foreach (UserModel::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerAuctionWinnerNotification($lot, $user));
             }

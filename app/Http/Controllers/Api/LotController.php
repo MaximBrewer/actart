@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Events\Lot as LotEvent;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\Beat as BeatNotification;
+use App\Notifications\Manager\GalleryBlitz as ManagerGalleryBlitzNotification;
 
 class LotController extends Controller
 {
@@ -160,6 +161,7 @@ class LotController extends Controller
                 'lot_id' => $lot->id,
                 'blitz' => true
             ]);
+            foreach (User::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerGalleryBlitzNotification($bet));
             return ['lot' => new LotResource($lot)];
         }
         return null;

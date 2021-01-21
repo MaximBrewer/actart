@@ -25,4 +25,9 @@ class Bet extends Model
         return $this->belongsTo('App\Lot');
     }
 
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
