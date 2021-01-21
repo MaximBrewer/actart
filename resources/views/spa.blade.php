@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link href="{{ asset('css/app.css?v=1.17') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css?v=1.18') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     </script>
 
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script src="{{ asset('js/app.js?v=1.17') }}"></script>
+    <script src="{{ asset('js/app.js?v=1.18') }}"></script>
     {!! \App\Setting::where('key', 'site.footer.counters')->first()->value !!}
 </body>
 
