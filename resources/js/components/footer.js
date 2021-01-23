@@ -180,7 +180,7 @@ export default function Footer(props) {
                                     </a>
                                 </div> */}
                                 <div className="col-md-30 text-center text-md-right">
-                                    <a className="color-inherit d-flex align-items-center justify-content-center" target="_blank" href="//good-head.ru/">
+                                    <a className="color-inherit d-flex align-items-center justify-content-center" target="_blank" href="http://good-head.ru/">
                                         <div className="pb-2">
                                             {__("DEVELOPMENT")}
                                         </div>
