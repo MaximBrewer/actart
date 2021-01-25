@@ -26,6 +26,9 @@ class Lot
                 report($e);
             }
         }
+        if ($lot->wasChanged('auction_id')) {
+            $lot->bets()->delete();
+        }
         if ($lot->wasChanged('status')) {
             switch ($lot->status) {
                 case "gallery":
