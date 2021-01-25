@@ -28,14 +28,20 @@ class Lot
         }
         if ($lot->wasChanged('status')) {
             switch ($lot->status) {
+                case "gallery":
+                case "auction":
+                    $lot->bets()->delete();
+                    break;
                 case "gsold":
                     $user = UserModel::find($lot->bets[0]->user_id);
                     foreach (UserModel::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerGalleryWinnerNotification($lot, $user));
                     $user->notify(new GalleryWinnerNotification($lot));
+                    break;
                 case "sold":
                     $user = UserModel::find($lot->bets[0]->user_id);
                     $user->notify(new AuctionWinnerNotification($lot));
                     foreach (UserModel::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerAuctionWinnerNotification($lot, $user));
+                    break;
             }
             try {
                 event(new UpdateLotStatusEvent($lot->id, $lot->status));
