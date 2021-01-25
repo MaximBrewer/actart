@@ -23,6 +23,20 @@ export default function Right(props) {
         openModal("login");
     };
 
+    const removeBet = event => {
+        setState(prevState => {
+            let item = { ...prevState.item };
+            let bets = [];
+            for (let bet of item.bets) bet.id == event.detail.id || bets.push(bet);
+            item.bets = bets;
+            item.price = item.bets.length ? item.bets[0].bet : item.startPrice
+            return {
+                ...prevState,
+                item: item
+            };
+        });
+    };
+
     const createBet = event => {
         setState(prevState => {
             let item = { ...prevState.item },
@@ -42,8 +56,10 @@ export default function Right(props) {
     };
 
     useEffect(() => {
+        window.addEventListener("remove-bet", removeBet);
         window.addEventListener("create-bet", createBet);
         return () => {
+            window.removeEventListener("remove-bet", removeBet);
             window.removeEventListener("create-bet", createBet);
         };
     }, []);
@@ -135,7 +151,9 @@ export default function Right(props) {
                 {state.item.bets.length ? (
                     state.item.bets[0].blitz ? (
                         <div className="last-price last-price-blitz">
-                            <div className="title">{__("#LOT_LAST_PRICE_BLITZ#")}</div>
+                            <div className="title">
+                                {__("#LOT_LAST_PRICE_BLITZ#")}
+                            </div>
                             <div className="info">
                                 <div className="pb-1">${state.item.price}</div>
                                 <div>
@@ -146,7 +164,9 @@ export default function Right(props) {
                         </div>
                     ) : (
                         <div className="last-price">
-                            <div className="title">{__("#LOT_LAST_PRICE#")}</div>
+                            <div className="title">
+                                {__("#LOT_LAST_PRICE#")}
+                            </div>
                             <div className="info">
                                 <div className="pb-1">${state.item.price}</div>
                                 <div>

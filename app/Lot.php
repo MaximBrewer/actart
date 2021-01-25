@@ -69,7 +69,7 @@ class Lot extends Model
 
     public function bets()
     {
-        return $this->hasMany('App\Bet')->orderBy('created_at', 'DESC');;
+        return $this->hasMany('App\Bet')->orderBy('id', 'DESC');;
     }
 
 

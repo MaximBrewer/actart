@@ -201,6 +201,24 @@ channel.bind("remove-lot", function({ id }) {
     );
 });
 
+channel.bind("remove-bet", function({ id }) {
+    let g = [];
+    for (let lot of window.App.gallery) {
+        let bets = [];
+        for (let bet of lot.bets) bet.id == id || bets.push(bet);
+        lot.bets = bets;
+        g.push(lot);
+    }
+    window.App.gallery = g;
+    window.dispatchEvent(
+        new CustomEvent("remove-bet", {
+            detail: {
+                id: id
+            }
+        })
+    );
+});
+
 channel.bind("create-bet", function({ bet }) {
     window.dispatchEvent(
         new CustomEvent("create-bet", {
@@ -247,7 +265,6 @@ channel.bind("update-lot-lastchance", function({ id, lastchance }) {
         })
     );
 });
-
 
 const req = (url, method = "GET", body = null) => {
     return new Promise(function(resolve, reject) {

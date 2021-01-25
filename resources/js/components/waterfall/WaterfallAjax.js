@@ -184,6 +184,25 @@ export default function WaterfallAjax(props) {
         });
     };
 
+
+    const removeBet = event => {
+        setState(prevState => {
+            let lots = [];
+            for (let lot of prevState.items) {
+                let bets = [];
+                console.log(lot);
+                for (let bet of lot.bets)
+                    bet.id == event.detail.id || bets.push(bet);
+                lot.bets = bets;
+                lots.push(lot);
+            }
+            return {
+                ...prevState,
+                items: lots
+            };
+        });
+    };
+
     const setSortBy = (field, order) => {
         setState(prevState => {
             return {
@@ -197,10 +216,12 @@ export default function WaterfallAjax(props) {
 
     useEffect(() => {
         window.addEventListener("remove-lot", removeLot);
+        window.addEventListener("remove-bet", removeBet);
         window.addEventListener("update-lot-status", updateLotStatus);
         window.addEventListener("create-bet", createBet);
         return () => {
             window.removeEventListener("remove-lot", removeLot);
+            window.removeEventListener("remove-bet", removeBet);
             window.removeEventListener("update-lot-status", updateLotStatus);
             window.removeEventListener("create-bet", createBet);
         };

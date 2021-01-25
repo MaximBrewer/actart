@@ -89252,25 +89252,67 @@ channel.bind("remove-lot", function (_ref2) {
     }
   }));
 });
-channel.bind("create-bet", function (_ref3) {
-  var bet = _ref3.bet;
+channel.bind("remove-bet", function (_ref3) {
+  var id = _ref3.id;
+  var g = [];
+
+  var _iterator = _createForOfIteratorHelper(window.App.gallery),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var lot = _step.value;
+      var bets = [];
+
+      var _iterator2 = _createForOfIteratorHelper(lot.bets),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var bet = _step2.value;
+          bet.id == id || bets.push(bet);
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      lot.bets = bets;
+      g.push(lot);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  window.App.gallery = g;
+  window.dispatchEvent(new CustomEvent("remove-bet", {
+    detail: {
+      id: id
+    }
+  }));
+});
+channel.bind("create-bet", function (_ref4) {
+  var bet = _ref4.bet;
   window.dispatchEvent(new CustomEvent("create-bet", {
     detail: {
       bet: bet
     }
   }));
 });
-channel.bind("start-countdown", function (_ref4) {
-  var id = _ref4.id;
+channel.bind("start-countdown", function (_ref5) {
+  var id = _ref5.id;
   window.dispatchEvent(new CustomEvent("start-countdown", {
     detail: {
       id: id
     }
   }));
 });
-channel.bind("update-lot-status", function (_ref5) {
-  var id = _ref5.id,
-      status = _ref5.status;
+channel.bind("update-lot-status", function (_ref6) {
+  var id = _ref6.id,
+      status = _ref6.status;
   var g = [];
 
   for (var i in window.App.gallery) {
@@ -89287,9 +89329,9 @@ channel.bind("update-lot-status", function (_ref5) {
     }
   }));
 });
-channel.bind("update-lot-lastchance", function (_ref6) {
-  var id = _ref6.id,
-      lastchance = _ref6.lastchance;
+channel.bind("update-lot-lastchance", function (_ref7) {
+  var id = _ref7.id,
+      lastchance = _ref7.lastchance;
   var g = [];
 
   for (var i in window.App.gallery) {
@@ -89322,18 +89364,18 @@ var req = function req(url) {
   });
 };
 
-channel.bind("update-auction-status", function (_ref7) {
-  var id = _ref7.id,
-      status = _ref7.status;
+channel.bind("update-auction-status", function (_ref8) {
+  var id = _ref8.id,
+      status = _ref8.status;
   var coming = [],
       exists = false;
 
-  var _iterator = _createForOfIteratorHelper(window.App.coming),
-      _step;
+  var _iterator3 = _createForOfIteratorHelper(window.App.coming),
+      _step3;
 
   try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var a = _step.value;
+    for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+      var a = _step3.value;
 
       if (id == a.id) {
         if (status == "started" || status == "coming") {
@@ -89345,14 +89387,14 @@ channel.bind("update-auction-status", function (_ref7) {
       }
     }
   } catch (err) {
-    _iterator.e(err);
+    _iterator3.e(err);
   } finally {
-    _iterator.f();
+    _iterator3.f();
   }
 
   if (!exists) {
-    req("/api/" + window.App.locale + "/auctions/" + id).then(function (_ref8) {
-      var auction = _ref8.auction;
+    req("/api/" + window.App.locale + "/auctions/" + id).then(function (_ref9) {
+      var auction = _ref9.auction;
       coming.push(auction);
     })["catch"](function (err) {
       return console.log(err);
@@ -97089,6 +97131,34 @@ function Right(props) {
     openModal("login");
   };
 
+  var removeBet = function removeBet(event) {
+    setState(function (prevState) {
+      var item = _objectSpread({}, prevState.item);
+
+      var bets = [];
+
+      var _iterator2 = _createForOfIteratorHelper(item.bets),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var bet = _step2.value;
+          bet.id == event.detail.id || bets.push(bet);
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      item.bets = bets;
+      item.price = item.bets.length ? item.bets[0].bet : item.startPrice;
+      return _objectSpread(_objectSpread({}, prevState), {}, {
+        item: item
+      });
+    });
+  };
+
   var createBet = function createBet(event) {
     setState(function (prevState) {
       var item = _objectSpread({}, prevState.item),
@@ -97108,8 +97178,10 @@ function Right(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    window.addEventListener("remove-bet", removeBet);
     window.addEventListener("create-bet", createBet);
     return function () {
+      window.removeEventListener("remove-bet", removeBet);
       window.removeEventListener("create-bet", createBet);
     };
   }, []);
@@ -99799,10 +99871,12 @@ function Waterfall(props) {
       }
     }
 
+    window.addEventListener("remove-bet", removeBet);
     window.addEventListener("remove-lot", removeLot);
     window.addEventListener("update-lot-status", updateLotStatus);
     window.addEventListener("create-bet", createBet);
     return function () {
+      window.removeEventListener("remove-bet", removeBet);
       window.removeEventListener("remove-lot", removeLot);
       window.removeEventListener("update-lot-status", updateLotStatus);
       window.removeEventListener("create-bet", createBet);
@@ -99916,6 +99990,48 @@ function Waterfall(props) {
     });
   };
 
+  var removeBet = function removeBet(event) {
+    setState(function (prevState) {
+      var lots = [];
+
+      var _iterator6 = _createForOfIteratorHelper(prevState.items),
+          _step6;
+
+      try {
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var lot = _step6.value;
+          var bets = [];
+          console.log(lot);
+
+          var _iterator7 = _createForOfIteratorHelper(lot.bets),
+              _step7;
+
+          try {
+            for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+              var bet = _step7.value;
+              bet.id == event.detail.id || bets.push(bet);
+            }
+          } catch (err) {
+            _iterator7.e(err);
+          } finally {
+            _iterator7.f();
+          }
+
+          lot.bets = bets;
+          lots.push(lot);
+        }
+      } catch (err) {
+        _iterator6.e(err);
+      } finally {
+        _iterator6.f();
+      }
+
+      return _objectSpread(_objectSpread({}, prevState), {}, {
+        items: lots
+      });
+    });
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "waterfall-outer row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -99977,7 +100093,7 @@ function Waterfall(props) {
     bottomBoundary: ".waterfall-filterable"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     style: {
-      position: 'relative'
+      position: "relative"
     }
   }, state.options.map(function (option, option_index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -100416,6 +100532,48 @@ function WaterfallAjax(props) {
     });
   };
 
+  var removeBet = function removeBet(event) {
+    setState(function (prevState) {
+      var lots = [];
+
+      var _iterator2 = _createForOfIteratorHelper(prevState.items),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var lot = _step2.value;
+          var bets = [];
+          console.log(lot);
+
+          var _iterator3 = _createForOfIteratorHelper(lot.bets),
+              _step3;
+
+          try {
+            for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+              var bet = _step3.value;
+              bet.id == event.detail.id || bets.push(bet);
+            }
+          } catch (err) {
+            _iterator3.e(err);
+          } finally {
+            _iterator3.f();
+          }
+
+          lot.bets = bets;
+          lots.push(lot);
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      return _objectSpread(_objectSpread({}, prevState), {}, {
+        items: lots
+      });
+    });
+  };
+
   var setSortBy = function setSortBy(field, order) {
     setState(function (prevState) {
       return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -100428,10 +100586,12 @@ function WaterfallAjax(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     window.addEventListener("remove-lot", removeLot);
+    window.addEventListener("remove-bet", removeBet);
     window.addEventListener("update-lot-status", updateLotStatus);
     window.addEventListener("create-bet", createBet);
     return function () {
       window.removeEventListener("remove-lot", removeLot);
+      window.removeEventListener("remove-bet", removeBet);
       window.removeEventListener("update-lot-status", updateLotStatus);
       window.removeEventListener("create-bet", createBet);
     };

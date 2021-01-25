@@ -34,6 +34,7 @@ Route::get('lang/{locale}', '\App\Http\Controllers\LangController@index');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::patch('/resort', '\App\Http\Controllers\Voyager\VoyagerBaseController@resort')->name('voyager.base.resort');
+    Route::get('/lots/{id}/remove-blitz', '\App\Http\Controllers\Voyager\VoyagerLotsController@removeBlitz')->name('voyager.bets.blitz.remove');
     Voyager::routes();
 });
 

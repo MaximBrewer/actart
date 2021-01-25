@@ -33,6 +33,7 @@ export default function Lot(props) {
         });
     };
 
+
     useEffect(() => {
         window.addEventListener("update-lot-status", updateLotStatus);
         return () => {

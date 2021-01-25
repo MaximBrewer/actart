@@ -28,6 +28,11 @@
             <span class="glyphicon glyphicon-list"></span>&nbsp;
             {{ __('voyager::generic.return_to_list') }}
         </a>
+        @if(count($dataTypeContent->bets) && $dataTypeContent->bets[0]['blitz'])
+        <a href="{{ route('voyager.bets.blitz.remove', $dataTypeContent->getKey()) }}" class="btn btn-danger">
+            {{ __('Удалить блиц ставку') }}
+        </a>
+        @endif
     </h1>
     @include('voyager::multilingual.language-selector')
 @stop

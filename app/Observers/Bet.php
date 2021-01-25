@@ -21,4 +21,26 @@ class Bet
         $lot = LotModel::find($bet->lot_id);
         event(new \App\Events\CreateBet($bet));
     }
+
+    /**
+     * Handle the User "deleted" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function deleted(BetModel $bet)
+    {
+        event(new \App\Events\RemoveBet($bet->id));
+    }
+
+    /**
+     * Handle the User "forceDeleted" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function forceDeleted(BetModel $bet)
+    {
+        event(new \App\Events\RemoveBet($bet->id));
+    }
 }
