@@ -19,17 +19,14 @@ export default function Right(props) {
         }
     };
 
-    const needAuth = () => {
-        openModal("login");
-    };
-
     const removeBet = event => {
         setState(prevState => {
             let item = { ...prevState.item };
             let bets = [];
-            for (let bet of item.bets) bet.id == event.detail.id || bets.push(bet);
+            for (let bet of item.bets)
+                bet.id == event.detail.id || bets.push(bet);
             item.bets = bets;
-            item.price = item.bets.length ? item.bets[0].bet : item.startPrice
+            item.price = item.bets.length ? item.bets[0].bet : item.startPrice;
             return {
                 ...prevState,
                 item: item
@@ -215,7 +212,36 @@ export default function Right(props) {
                         )}
                     </React.Fragment>
                 ) : (
-                    <React.Fragment></React.Fragment>
+                    <React.Fragment>
+                        <a
+                            className="btn btn-danger"
+                            href="#"
+                            onClick={e => {
+                                e.preventDefault();
+                                openModal("login");
+                            }}
+                        >
+                            <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
+                            <div>${state.item.price * 1 + getStep()}</div>
+                        </a>
+                        {state.item.price * 1 < state.item.blitz * 1 ? (
+                            <div className="blitz-price">
+                                <a
+                                    className="pb-1"
+                                    href="#"
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        openModal("login");
+                                    }}
+                                >
+                                    <div>{__("LOT_BUTTON_BLITZ")}</div>
+                                </a>
+                                <div>${state.item.blitz}</div>
+                            </div>
+                        ) : (
+                            ``
+                        )}
+                    </React.Fragment>
                 )}
             </div>
         </div>
