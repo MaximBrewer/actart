@@ -5,6 +5,7 @@ import Parser from "html-react-parser";
 import Waterfall from "../waterfall/Waterfall";
 import Lightbox from "react-image-lightbox";
 import useDocumentTitle from "../../components/document-title";
+import YouTube from "react-youtube";
 
 import Countdown, { zeroPad } from "react-countdown";
 
@@ -163,6 +164,7 @@ export default function AuctionAdmin(props) {
     };
 
     const updateTranslation = event => {
+        console.log(event.detail.translation)
         setState(prevState => ({
             ...prevState,
             translation: event.detail.translation
@@ -255,6 +257,20 @@ export default function AuctionAdmin(props) {
         });
     };
 
+    const updateAuctionSeeders = event => {
+        setState(prevState => {
+            if (event.detail.id == prevState.auction.id)
+                return {
+                    ...prevState,
+                    auction: {
+                        ...prevState.auction,
+                        members: event.detail.seeders
+                    }
+                };
+            else return prevState;
+        });
+    };
+
     const updateAuctionStatus = event => {
         setState(prevState => {
             if (event.detail.id == prevState.auction.id)
@@ -324,6 +340,7 @@ export default function AuctionAdmin(props) {
         window.addEventListener("start-countdown", setStartCountdown);
         window.addEventListener("update-translation", updateTranslation);
         window.addEventListener("update-auction-status", updateAuctionStatus);
+        window.addEventListener("update-auction-seeders", updateAuctionSeeders);
         window.addEventListener("update-lot-status", updateLotStatus);
         window.addEventListener("update-lot-lastchance", updateLotLastchance);
         window.addEventListener("create-bet", createBet);
@@ -341,6 +358,10 @@ export default function AuctionAdmin(props) {
                 updateLotLastchance
             );
             window.removeEventListener("create-bet", createBet);
+            window.removeEventListener(
+                "update-auction-seeders",
+                updateAuctionSeeders
+            );
         };
     }, []);
 
@@ -349,6 +370,26 @@ export default function AuctionAdmin(props) {
         for (let lot of lots)
             (lot.status == "auction" || lot.status == "in_auction") && cnt++;
         return cnt;
+    };
+    const opts = {
+        width: "360px",
+        height: "240px",
+        videoId: state.translation,
+        playerVars: {
+            autoplay: 1,
+            playsinline: 1,
+            controls: 1,
+            modestbranding: 1,
+            showinfo: 0,
+            fs: 0,
+            iv_load_policy: 3
+        }
+    };
+
+    const onPlayerReady = event => {
+        event.target.mute();
+        event.target.playVideo();
+        event.target.unMute();
     };
 
     return (
@@ -465,7 +506,7 @@ export default function AuctionAdmin(props) {
                                                     <div
                                                         className={`current d-flex justify-content-between py-2`}
                                                     >
-                                                        <div className="h2 color-red">
+                                                        <div className="h2 color-red d-none d-sm-block">
                                                             {state.auction
                                                                 .current
                                                                 ? __(
@@ -494,9 +535,11 @@ export default function AuctionAdmin(props) {
                                                                 }}
                                                                 className={`translation-wrapper`}
                                                             >
-                                                                {Parser(
-                                                                    state.translation
-                                                                )}
+                                                                <YouTube
+                                                                    videoId={state.translation}
+                                                                    opts={opts}
+                                                                    onReady={onPlayerReady}
+                                                                />
                                                             </div>
                                                             <small className="color-red">
                                                                 {__(

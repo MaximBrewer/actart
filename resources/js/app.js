@@ -309,6 +309,14 @@ channel.bind("update-auction-status", function({ id, status }) {
     );
 });
 
+channel.bind("update-auction-seeders", function({ id, seeders }) {
+    window.dispatchEvent(
+        new CustomEvent("update-auction-seeders", {
+            detail: { id, seeders }
+        })
+    );
+});
+
 import App from "./router";
 import { AuthProvider } from "./context/auth";
 

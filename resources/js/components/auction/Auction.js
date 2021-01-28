@@ -29,6 +29,7 @@ import {
 import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
 import Right from "./online/blocks/Right";
+import YouTube from "react-youtube";
 
 export default function Auction(props) {
     const { id } = useParams();
@@ -274,6 +275,27 @@ export default function Auction(props) {
         return false;
     };
 
+    const opts = {
+        width: "360px",
+        height: "240px",
+        videoId: state.translation,
+        playerVars: {
+            autoplay: 1,
+            playsinline: 1,
+            controls: 1,
+            modestbranding: 1,
+            showinfo: 0,
+            fs: 0,
+            iv_load_policy: 3
+        }
+    };
+
+    const onPlayerReady = event => {
+        event.target.mute();
+        event.target.playVideo();
+        event.target.unMute();
+    };
+
     return state.auction ? (
         <section className="auction-page-wrapper">
             <div className={`status-` + state.auction.status}>
@@ -376,7 +398,7 @@ export default function Auction(props) {
                                                     <div
                                                         className={`current d-flex justify-content-between py-2`}
                                                     >
-                                                        <div className="h2 color-red">
+                                                        <div className="h2 color-red d-none d-sm-block">
                                                             {state.auction
                                                                 .current
                                                                 ? __(
@@ -405,9 +427,11 @@ export default function Auction(props) {
                                                                 }}
                                                                 className={`translation-wrapper`}
                                                             >
-                                                                {Parser(
-                                                                    state.translation
-                                                                )}
+                                                                <YouTube
+                                                                    videoId={state.translation}
+                                                                    opts={opts}
+                                                                    onReady={onPlayerReady}
+                                                                />
                                                             </div>
                                                             <small className="color-red">
                                                                 {__(

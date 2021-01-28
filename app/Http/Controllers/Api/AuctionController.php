@@ -12,6 +12,8 @@ use App\Http\Resources\AuctionShort as AuctionResource;
 use App\Http\Resources\User as UserResource;
 use App\Notifications\Participate as ParticipateNotification;
 use Carbon\Carbon;
+use App\Events\UpdateAuctionSeeders as UpdateAuctionSeedersEvents;
+use Illuminate\Support\Facades\DB;
 
 use App\Events\StartCountdown as StartCountdownEvent;
 use App\Lot;
@@ -74,6 +76,7 @@ class AuctionController extends Controller
             $auction = Auction::findOrFail($id);
             $user->notify(new ParticipateNotification($auction));
             $user->auctions()->attach($id);
+            event(new UpdateAuctionSeedersEvents($id, DB::table('user_auction')->where('auction_id', $auction->id)->count()));
         }
         return ['user' => new UserResource($user)];
     }

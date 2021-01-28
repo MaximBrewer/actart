@@ -17,6 +17,25 @@ use App\User as UserModel;
 
 class Lot
 {
+    public function updating(LotModel $lot)
+    {
+        if ($lot->isDirty('auction_id')) {
+            $lot->lastchance = null;
+        }
+        if ($lot->isDirty('status')) {
+            switch ($lot->status) {
+                case "gallery":
+                case "auction":
+                    $lot->lastchance = null;
+                    break;
+                case "gsold":
+                    break;
+                case "sold":
+                    break;
+            }
+        }
+    }
+
     public function updated(LotModel $lot)
     {
         if ($lot->wasChanged('lastchance')) {

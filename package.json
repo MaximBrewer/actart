@@ -75,6 +75,7 @@
         "react-stonecutter": "^0.3.10",
         "react-use": "^15.3.4",
         "react-yandex-share": "^1.0.7",
+        "react-youtube": "^7.13.1",
         "react-zoom-pan-pinch": "^1.6.1",
         "slick-carousel": "^1.8.1",
         "socket.io": "^2.3.0",

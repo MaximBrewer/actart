@@ -4,6 +4,7 @@ import __ from "../../../utils/trans";
 import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
 import { size } from "lodash";
+import YouTube from "react-youtube";
 
 export default function Center(props) {
     const { auction, finished, started } = props;
@@ -26,6 +27,27 @@ export default function Center(props) {
             window.removeEventListener("update-translation", updateTranslation);
         };
     }, []);
+
+    const opts = {
+        width: "360px",
+        height: "240px",
+        videoId: state.translation,
+        playerVars: {
+            autoplay: 1,
+            playsinline: 1,
+            controls: 1,
+            modestbranding: 1,
+            showinfo: 0,
+            fs: 0,
+            iv_load_policy: 3
+        }
+    };
+
+    const onPlayerReady = event => {
+        event.target.mute();
+        event.target.playVideo();
+        event.target.unMute();
+    };
 
     return (
         <div className="auction-info">
@@ -88,7 +110,7 @@ export default function Center(props) {
                                     <div
                                         className={`current d-flex justify-content-between py-2`}
                                     >
-                                        <div className="h2 color-red">
+                                        <div className="h2 color-red d-none d-sm-block">
                                             {auction.current
                                                 ? __("LOT_TEXT_LOT_ID") +
                                                   ` ` +
@@ -109,7 +131,11 @@ export default function Center(props) {
                                                 }}
                                                 className={`translation-wrapper`}
                                             >
-                                                {Parser(state.translation)}
+                                                <YouTube
+                                                    videoId={state.translation}
+                                                    opts={opts}
+                                                    onReady={onPlayerReady}
+                                                />
                                             </div>
                                             <small className="color-red">
                                                 {__("#TRANSLATION_HELP#")}

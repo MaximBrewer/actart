@@ -271,7 +271,7 @@ export default function Header(props) {
                         <div className="p-4 d-flex justify-content-between d-md-none">
                             {currentUser ?
                                 <Link to="/profile">{__('кабинет')}</Link> :
-                                <a href="#" onClick={(e) => { e.preventDefault(); openModal('login') }}>{Parser(__('Log&nbsp;In'))}</a>
+                                <a href="#" onClick={(e) => { e.preventDefault();closeMobile(); openModal('login') }}>{Parser(__('Log&nbsp;In'))}</a>
                             }
                             <div className="lang-menu text-nowrap">
                                 <a href="/lang/ru" className={App.locale == 'ru' ? `active` : ``}>Rus</a> | <a href="/lang/en" className={App.locale == 'en' ? `active` : ``}>Eng</a>
