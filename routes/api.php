@@ -38,7 +38,7 @@ Route::name('api.')->namespace('Api')->group(function () {
 
                     return ['status' => __('A verification link has been sent to your email address.')];
                     
-                })->middleware(['throttle:6,1'])->name('verification.send');
+                })->middleware(['throttle:60,1'])->name('verification.send');
 
             });
 
