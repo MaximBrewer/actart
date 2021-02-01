@@ -15,6 +15,8 @@ export default function AuctionAdmin(props) {
     const { req } = props;
     const { id } = useParams();
 
+    const youTubeRef = useRef(null);
+
     const countdownRef = useRef(null);
     const countdownElem = useRef(null);
 
@@ -567,6 +569,9 @@ export default function AuctionAdmin(props) {
                                                                 className={`translation-wrapper`}
                                                             >
                                                                 <YouTube
+                                                                    ref={
+                                                                        youTubeRef
+                                                                    }
                                                                     videoId={
                                                                         state.translation
                                                                     }
@@ -575,6 +580,24 @@ export default function AuctionAdmin(props) {
                                                                         onPlayerReady
                                                                     }
                                                                 />
+                                                                <button
+                                                                    style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+                                                                    type="button"
+                                                                    onClick={event =>
+                                                                        youTubeRef.current.mute()
+                                                                    }
+                                                                >
+                                                                    вкл ЗВУК
+                                                                </button>
+                                                                <button
+                                                                    style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+                                                                    type="button"
+                                                                    onClick={event =>
+                                                                        youTubeRef.current.unmute()
+                                                                    }
+                                                                >
+                                                                    выкл ЗВУК
+                                                                </button>
                                                             </div>
                                                             <small className="color-red">
                                                                 {__(

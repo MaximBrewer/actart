@@ -92399,6 +92399,7 @@ function AuctionAdmin(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id;
 
+  var youTubeRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var countdownRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var countdownElem = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
 
@@ -92864,10 +92865,23 @@ function AuctionAdmin(props) {
     },
     className: "translation-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_youtube__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    ref: youTubeRef,
     videoId: state.translation,
     opts: opts,
     onReady: onPlayerReady
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    style: "width: 178px; height: 16px; line-height: 16px; padding-top: 0px;",
+    type: "button",
+    onClick: function onClick(event) {
+      return youTubeRef.current.mute();
+    }
+  }, "\u0432\u043A\u043B \u0417\u0412\u0423\u041A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    style: "width: 178px; height: 16px; line-height: 16px; padding-top: 0px;",
+    type: "button",
+    onClick: function onClick(event) {
+      return youTubeRef.current.unmute();
+    }
+  }, "\u0432\u044B\u043A\u043B \u0417\u0412\u0423\u041A")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "color-red"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#TRANSLATION_HELP#"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
