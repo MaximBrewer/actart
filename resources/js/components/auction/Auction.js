@@ -49,6 +49,8 @@ export default function Auction(props) {
         }));
     };
 
+    let player;
+
     const updateLotLastChance = event => {
         setState(prevState => {
             let auction = prevState.auction,
@@ -293,6 +295,7 @@ export default function Auction(props) {
     const onPlayerReady = event => {
         event.target.mute();
         event.target.playVideo();
+        player = event.target;
     };
 
     return state.auction ? (
@@ -431,6 +434,24 @@ export default function Auction(props) {
                                                                     opts={opts}
                                                                     onReady={onPlayerReady}
                                                                 />
+                                                                <button
+                                                                    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+                                                                    type="button"
+                                                                    onClick={() =>
+                                                                        player.unMute()
+                                                                    }
+                                                                >
+                                                                    вкл ЗВУК
+                                                                </button>
+                                                                <button
+                                                                    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+                                                                    type="button"
+                                                                    onClick={() =>
+                                                                        player.mute()
+                                                                    }
+                                                                >
+                                                                    выкл ЗВУК
+                                                                </button>
                                                             </div>
                                                             <small className="color-red">
                                                                 {__(

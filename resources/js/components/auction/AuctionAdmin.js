@@ -16,6 +16,7 @@ export default function AuctionAdmin(props) {
     const { id } = useParams();
 
     const youTubeRef = useRef(null);
+    let player;
 
     const countdownRef = useRef(null);
     const countdownElem = useRef(null);
@@ -423,6 +424,7 @@ export default function AuctionAdmin(props) {
     const onPlayerReady = event => {
         event.target.mute();
         event.target.playVideo();
+        player = event.target;
     };
 
     return (
@@ -569,6 +571,7 @@ export default function AuctionAdmin(props) {
                                                                 className={`translation-wrapper`}
                                                             >
                                                                 <YouTube
+                                                                    id="youtubeId"
                                                                     ref={
                                                                         youTubeRef
                                                                     }
@@ -583,8 +586,8 @@ export default function AuctionAdmin(props) {
                                                                 <button
                                                                     // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
                                                                     type="button"
-                                                                    onClick={event =>
-                                                                        youTubeRef.current.mute()
+                                                                    onClick={() =>
+                                                                        player.unMute()
                                                                     }
                                                                 >
                                                                     вкл ЗВУК
@@ -592,8 +595,8 @@ export default function AuctionAdmin(props) {
                                                                 <button
                                                                     // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
                                                                     type="button"
-                                                                    onClick={event =>
-                                                                        youTubeRef.current.unmute()
+                                                                    onClick={() =>
+                                                                        player.mute()
                                                                     }
                                                                 >
                                                                     выкл ЗВУК

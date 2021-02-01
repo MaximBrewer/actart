@@ -91804,6 +91804,8 @@ function Auction(props) {
     });
   };
 
+  var player;
+
   var updateLotLastChance = function updateLotLastChance(event) {
     setState(function (prevState) {
       var auction = prevState.auction,
@@ -92050,6 +92052,7 @@ function Auction(props) {
   var onPlayerReady = function onPlayerReady(event) {
     event.target.mute();
     event.target.playVideo();
+    player = event.target;
   };
 
   return state.auction ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -92136,7 +92139,19 @@ function Auction(props) {
     videoId: state.translation,
     opts: opts,
     onReady: onPlayerReady
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+    type: "button",
+    onClick: function onClick() {
+      return player.unMute();
+    }
+  }, "\u0432\u043A\u043B \u0417\u0412\u0423\u041A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+    type: "button",
+    onClick: function onClick() {
+      return player.mute();
+    }
+  }, "\u0432\u044B\u043A\u043B \u0417\u0412\u0423\u041A")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "color-red"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("#TRANSLATION_HELP#"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
@@ -92400,6 +92415,7 @@ function AuctionAdmin(props) {
       id = _useParams.id;
 
   var youTubeRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
+  var player;
   var countdownRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var countdownElem = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
 
@@ -92776,6 +92792,7 @@ function AuctionAdmin(props) {
   var onPlayerReady = function onPlayerReady(event) {
     event.target.mute();
     event.target.playVideo();
+    player = event.target;
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -92865,6 +92882,7 @@ function AuctionAdmin(props) {
     },
     className: "translation-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_youtube__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    id: "youtubeId",
     ref: youTubeRef,
     videoId: state.translation,
     opts: opts,
@@ -92872,14 +92890,14 @@ function AuctionAdmin(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
     type: "button",
-    onClick: function onClick(event) {
-      return youTubeRef.current.mute();
+    onClick: function onClick() {
+      return player.unMute();
     }
   }, "\u0432\u043A\u043B \u0417\u0412\u0423\u041A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
     type: "button",
-    onClick: function onClick(event) {
-      return youTubeRef.current.unmute();
+    onClick: function onClick() {
+      return player.mute();
     }
   }, "\u0432\u044B\u043A\u043B \u0417\u0412\u0423\u041A")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "color-red"
@@ -95932,6 +95950,8 @@ function Center(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var player;
+
   var updateTranslation = function updateTranslation(event) {
     setState(function (prevState) {
       return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -95964,7 +95984,7 @@ function Center(props) {
   var onPlayerReady = function onPlayerReady(event) {
     event.target.mute();
     event.target.playVideo();
-    event.target.unMute();
+    player = event.target();
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -96033,7 +96053,19 @@ function Center(props) {
     videoId: state.translation,
     opts: opts,
     onReady: onPlayerReady
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+    type: "button",
+    onClick: function onClick() {
+      return player.unMute();
+    }
+  }, "\u0432\u043A\u043B \u0417\u0412\u0423\u041A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+    type: "button",
+    onClick: function onClick() {
+      return player.mute();
+    }
+  }, "\u0432\u044B\u043A\u043B \u0417\u0412\u0423\u041A")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "color-red"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#TRANSLATION_HELP#"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"

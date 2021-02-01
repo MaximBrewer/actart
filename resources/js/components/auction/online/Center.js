@@ -14,6 +14,8 @@ export default function Center(props) {
         lbOpen: false
     });
 
+    let player;
+
     const updateTranslation = event => {
         setState(prevState => ({
             ...prevState,
@@ -46,7 +48,7 @@ export default function Center(props) {
     const onPlayerReady = event => {
         event.target.mute();
         event.target.playVideo();
-        event.target.unMute();
+        player = event.target();
     };
 
     return (
@@ -136,6 +138,24 @@ export default function Center(props) {
                                                     opts={opts}
                                                     onReady={onPlayerReady}
                                                 />
+                                                <button
+                                                    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+                                                    type="button"
+                                                    onClick={() =>
+                                                        player.unMute()
+                                                    }
+                                                >
+                                                    вкл ЗВУК
+                                                </button>
+                                                <button
+                                                    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+                                                    type="button"
+                                                    onClick={() =>
+                                                        player.mute()
+                                                    }
+                                                >
+                                                    выкл ЗВУК
+                                                </button>
                                             </div>
                                             <small className="color-red">
                                                 {__("#TRANSLATION_HELP#")}
