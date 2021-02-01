@@ -21,6 +21,7 @@ class Lot
     {
         if ($lot->isDirty('auction_id')) {
             $lot->lastchance = null;
+            $lot->countdown = null;
         }
         if ($lot->isDirty('status')) {
             switch ($lot->status) {
