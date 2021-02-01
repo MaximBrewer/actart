@@ -92775,7 +92775,6 @@ function AuctionAdmin(props) {
   var onPlayerReady = function onPlayerReady(event) {
     event.target.mute();
     event.target.playVideo();
-    event.target.unMute();
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {

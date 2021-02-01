@@ -421,7 +421,6 @@ export default function AuctionAdmin(props) {
     const onPlayerReady = event => {
         event.target.mute();
         event.target.playVideo();
-        event.target.unMute();
     };
 
     return (
