@@ -228,10 +228,10 @@ channel.bind("create-bet", function({ bet }) {
         })
     );
 });
-channel.bind("start-countdown", function({ id }) {
+channel.bind("update-countdown", function({ id, countdown }) {
     window.dispatchEvent(
-        new CustomEvent("start-countdown", {
-            detail: { id: id }
+        new CustomEvent("update-countdown", {
+            detail: { id: id, countdown: countdown }
         })
     );
 });

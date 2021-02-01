@@ -8,6 +8,7 @@ import useDocumentTitle from "../../components/document-title";
 import YouTube from "react-youtube";
 
 import Countdown, { zeroPad } from "react-countdown";
+import { now } from "lodash";
 
 export default function AuctionAdmin(props) {
     useDocumentTitle(__("#AUCTIONS_ADMIN_PAGE_TITLE#"));
@@ -26,7 +27,7 @@ export default function AuctionAdmin(props) {
         started: false,
         finished: false,
         lbOpen: false,
-        date: 0
+        countdown: ""
     });
     const declOfNum = (number, titles) => {
         let cases = [2, 0, 1, 1, 1, 2];
@@ -41,7 +42,7 @@ export default function AuctionAdmin(props) {
         return (
             <div
                 className="countdown-lot-wrapper h5 color-red"
-                ref={countdownElem}
+                style={{ display: seconds > 0 ? "block" : "none" }}
             >
                 {window.App.locale == "ru"
                     ? `Осталось 
@@ -164,25 +165,53 @@ export default function AuctionAdmin(props) {
     };
 
     const updateTranslation = event => {
-        console.log(event.detail.translation)
+        console.log(event.detail.translation);
         setState(prevState => ({
             ...prevState,
             translation: event.detail.translation
         }));
     };
 
-    const setStartCountdown = event => {
-        if (countdownElem && countdownElem.current)
-            countdownElem.current.style.display = "block";
-        if (countdownRef && countdownRef.current) countdownRef.current.start();
-        console.log(Date.now(), event.detail.countdown)
+    const updateCountdown = event => {
         setState(prevState => {
             if (prevState.auction.current.id == event.detail.id) {
                 return {
                     ...prevState,
-                    countdowning: true,
-                    date: Date.now() + 1000 * window.App.timer
+                    countdowning: false,
+                    countdown: ""
                 };
+            }
+        });
+        setState(prevState => {
+            if (prevState.auction.current.id == event.detail.id) {
+                let auction = prevState.auction;
+                auction.current.countdown = event.detail.countdown;
+                if (
+                    new Date().getTime() - 1000 * window.App.timer <
+                    new Date(event.detail.countdown).getTime()
+                ) {
+                    return {
+                        ...prevState,
+                        countdowning: true,
+                        countdown: (
+                            <Countdown
+                                date={
+                                    new Date(event.detail.countdown).getTime() +
+                                    1000 * window.App.timer
+                                }
+                                renderer={renderer}
+                                onComplete={handleOnComplete}
+                            />
+                        )
+                    };
+                } else {
+                    return {
+                        ...prevState,
+                        auction: auction,
+                        countdowning: false,
+                        countdown: ""
+                    };
+                }
             } else return prevState;
         });
     };
@@ -295,10 +324,6 @@ export default function AuctionAdmin(props) {
                 let lot = auction.lots[i],
                     bets = lot.bets;
                 if (lot.id == event.detail.bet.lot_id) {
-                    if (countdownRef && countdownRef.current)
-                        countdownRef.current.stop();
-                    if (countdownElem && countdownElem.current)
-                        countdownElem.current.style.display = "none";
                     bets.unshift(event.detail.bet);
                     lot.price = event.detail.bet.bet;
                     if (lot.id == auction.current.id) auction.current = lot;
@@ -311,7 +336,7 @@ export default function AuctionAdmin(props) {
                 return {
                     ...prevState,
                     countdowning: false,
-                    date: Date.now() + 1000 * window.App.timer,
+                    date: 0,
                     auction: auction
                 };
             return prevState;
@@ -319,8 +344,6 @@ export default function AuctionAdmin(props) {
     };
 
     const handleOnComplete = () => {
-        if (countdownElem && countdownElem.current)
-            countdownElem.current.style.display = "none";
         setState(prevState => ({
             ...prevState,
             countdowning: false
@@ -329,16 +352,24 @@ export default function AuctionAdmin(props) {
 
     useEffect(() => {
         req("/api/" + window.App.locale + "/auctions/" + id)
-            .then(({ auction }) =>
-                setState(prevState => ({
-                    ...prevState,
-                    auction: auction,
-                    started: auction.current ? true : false
-                }))
-            )
+            .then(({ auction }) => {
+                setState(prevState => {
+                    return {
+                        ...prevState,
+                        auction: auction,
+                        started: auction.current ? true : false
+                    };
+                });
+                updateCountdown({
+                    detail: {
+                        id: auction.current.id,
+                        countdown: auction.current.countdown
+                    }
+                });
+            })
             .catch(() => null);
 
-        window.addEventListener("start-countdown", setStartCountdown);
+        window.addEventListener("update-countdown", updateCountdown);
         window.addEventListener("update-translation", updateTranslation);
         window.addEventListener("update-auction-status", updateAuctionStatus);
         window.addEventListener("update-auction-seeders", updateAuctionSeeders);
@@ -352,7 +383,7 @@ export default function AuctionAdmin(props) {
                 "update-auction-status",
                 updateAuctionStatus
             );
-            window.removeEventListener("start-countdown", setStartCountdown);
+            window.removeEventListener("update-countdown", updateCountdown);
             window.removeEventListener("update-lot-status", updateLotStatus);
             window.removeEventListener(
                 "update-lot-lastchance",
@@ -537,9 +568,13 @@ export default function AuctionAdmin(props) {
                                                                 className={`translation-wrapper`}
                                                             >
                                                                 <YouTube
-                                                                    videoId={state.translation}
+                                                                    videoId={
+                                                                        state.translation
+                                                                    }
                                                                     opts={opts}
-                                                                    onReady={onPlayerReady}
+                                                                    onReady={
+                                                                        onPlayerReady
+                                                                    }
                                                                 />
                                                             </div>
                                                             <small className="color-red">
@@ -866,27 +901,9 @@ export default function AuctionAdmin(props) {
                                                                     ) : (
                                                                         ``
                                                                     )}
-                                                                    <Countdown
-                                                                        date={
-                                                                            Date.now() +
-                                                                            1000 *
-                                                                                window
-                                                                                    .App
-                                                                                    .timer
-                                                                        }
-                                                                        ref={
-                                                                            countdownRef
-                                                                        }
-                                                                        autoStart={
-                                                                            false
-                                                                        }
-                                                                        renderer={
-                                                                            renderer
-                                                                        }
-                                                                        onComplete={
-                                                                            handleOnComplete
-                                                                        }
-                                                                    />
+                                                                    {
+                                                                        state.countdown
+                                                                    }
                                                                 </React.Fragment>
                                                             )
                                                         ) : (

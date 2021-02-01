@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class StartCountdown implements ShouldBroadcast
+class UpdateCountdown implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -30,7 +30,7 @@ class StartCountdown implements ShouldBroadcast
   
     public function broadcastAs()
     {
-        return 'start-countdown';
+        return 'update-countdown';
     }
 
     /**

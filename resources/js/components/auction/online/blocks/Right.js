@@ -12,19 +12,25 @@ export default function Right(props) {
     const countdownElem = useRef(null);
 
     const [state, setState] = useState({
-        countdowned: false,
-        date: 0
+        countdown: "",
+        item: item
     });
-    const declOfNum = (number, titles) => {  
-        let cases = [2, 0, 1, 1, 1, 2];  
-        return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];  
-    }
+
+    const [hideOffer, setHideOffer] = useState(false);
+    const declOfNum = (number, titles) => {
+        let cases = [2, 0, 1, 1, 1, 2];
+        return titles[
+            number % 100 > 4 && number % 100 < 20
+                ? 2
+                : cases[number % 10 < 5 ? number % 10 : 5]
+        ];
+    };
 
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         return (
             <div
                 className="countdown-lot-wrapper h5 color-red"
-                ref={countdownElem}
+                style={{ display: seconds > 0 ? "block" : "none" }}
             >
                 {window.App.locale == "ru"
                     ? `Осталось ${zeroPad(seconds)} ${declOfNum(seconds, [
@@ -49,7 +55,7 @@ export default function Right(props) {
 
     const createBet = event => {
         setState(prevState => {
-            if (item.id == event.detail.bet.lot_id) {
+            if (state.item.id == event.detail.bet.lot_id) {
                 if (countdownRef && countdownRef.current)
                     countdownRef.current.stop();
                 if (countdownElem && countdownElem.current)
@@ -62,87 +68,125 @@ export default function Right(props) {
         });
     };
 
-    const setStartCountdown = event => {
+    const updateCountdown = event => {
         setState(prevState => {
-            if (item.id == event.detail.id) {
-                if (countdownRef && countdownRef.current)
-                    countdownRef.current.start();
-                if (countdownElem && countdownElem.current)
-                    countdownElem.current.style.display = "block";
+            if (state.item.id == event.detail.id) {
                 return {
-                    date: Date.now() + 1000 * window.App.timer,
-                    countdowned: true
+                    ...prevState,
+                    countdowning: false,
+                    countdown: ""
                 };
+            }
+        });
+        setState(prevState => {
+            if (state.item.id == event.detail.id) {
+                state.item.countdown = event.detail.countdown;
+                if (
+                    new Date().getTime() - 1000 * window.App.timer <
+                    new Date(event.detail.countdown).getTime()
+                ) {
+                    return {
+                        ...prevState,
+                        countdown: (
+                            <Countdown
+                                date={
+                                    new Date(event.detail.countdown).getTime() +
+                                    1000 * window.App.timer
+                                }
+                                renderer={renderer}
+                                onComplete={handleOnComplete}
+                            />
+                        )
+                    };
+                } else {
+                    return {
+                        ...prevState,
+                        countdown: ""
+                    };
+                }
             } else return prevState;
         });
     };
 
     useEffect(() => {
+        updateCountdown({
+            detail: {
+                id: state.item.id,
+                countdown: state.item.countdown
+            }
+        });
+        setHideOffer(
+            state.item.countdown &&
+                new Date(state.item.countdown).getTime() +
+                    1000 * window.App.timer <
+                    new Date().getTime()
+        );
         window.addEventListener("create-bet", createBet);
-        window.addEventListener("start-countdown", setStartCountdown);
+        window.addEventListener("update-countdown", updateCountdown);
         return () => {
-            window.removeEventListener("start-countdown", setStartCountdown);
+            window.removeEventListener("update-countdown", updateCountdown);
             window.removeEventListener("create-bet", createBet);
         };
     }, []);
 
     const getStep = () => {
         for (let step of window.App.steps) {
-            if (step.to > item.price || !step.to) return step.step * 1;
+            if (step.to > state.item.price || !step.to) return step.step * 1;
         }
     };
 
     const handleOnComplete = () => {
-        if (countdownElem && countdownElem.current)
-            countdownElem.current.style.display = "none";
+        setHideOffer(true);
     };
 
     return (
         <div className="lot-carousel-right">
             <div className="pb-3 d-flex justify-content-between">
                 <div className="lot-number">
-                    {__("LOT_TEXT_LOT_ID")} {item.sort}
+                    {__("LOT_TEXT_LOT_ID")} {state.item.sort}
                 </div>
-                {/* <FavoriteBig item={item} req={req} /> */}
+                {/* <FavoriteBig state.item={state.item} req={req} /> */}
             </div>
             <div className="lot-author">
-                <a className="author" href={item.author_url}>
-                    {item.author}
+                <a className="author" href={state.item.author_url}>
+                    {state.item.author}
                 </a>
             </div>
-            <div className="lot-title">{item.title}</div>
+            <div className="lot-title">{state.item.title}</div>
             <div className="matherial">
-                {item.materials.map((m, mi) => (
+                {state.item.materials.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
             </div>
             <div className="styles">
-                {item.styles.map((m, mi) => (
+                {state.item.styles.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
             </div>
             <div className="frames">
-                {item.frames.map((m, mi) => (
+                {state.item.frames.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
             </div>
             <div className="techniques">
-                {item.techniques.map((m, mi) => (
+                {state.item.techniques.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
             </div>
             <div className="categories">
-                {item.categories.map((m, mi) => (
+                {state.item.categories.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
             </div>
             <div className="size">
-                {item.width} х {item.height} {__("MEASURE_CM")}
-                {item.year ? ` / ` + item.year + ` ` + __("SHORT_YEAR") : ``}
+                {state.item.width} х {state.item.height} {__("MEASURE_CM")}
+                {state.item.year
+                    ? ` / ` + state.item.year + ` ` + __("SHORT_YEAR")
+                    : ``}
             </div>
             <div className="start-price">
                 <span>
-                    {__("LOT_START_PRICE")}: ${item.startPrice}
+                    {__("LOT_START_PRICE")}: ${state.item.startPrice}
                 </span>
             </div>
             {currentUser != undefined ? (
@@ -150,39 +194,41 @@ export default function Right(props) {
                     <div className="user-id">
                         {__("LOT_YOUR_ID")}: <span>#{currentUser.id}</span>
                     </div>
-                    {item.bets.length ? (
+                    {state.item.bets.length ? (
                         <div className="last-price">
                             <div className="title">{__("LOT_LAST_PRICE")}</div>
                             <div className="info">
-                                <div className="pb-1">${item.price}</div>
+                                <div className="pb-1">${state.item.price}</div>
                                 <div>
                                     {__("LOT_SEED")}:{" "}
-                                    <span>#{item.bets[0].user_id}</span>
+                                    <span>#{state.item.bets[0].user_id}</span>
                                 </div>
                             </div>
                         </div>
                     ) : (
                         ``
                     )}
-                    <a
-                        className="btn btn-danger"
-                        href="#"
-                        onClick={e => {
-                            e.preventDefault();
-                            offer(item.id, getStep() + item.price * 1);
-                        }}
-                    >
-                        <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
-                        <div>${item.price * 1 + getStep()}</div>
-                    </a>
-                    <Countdown
-                        date={Date.now() + 1000 * window.App.timer}
-                        ref={countdownRef}
-                        autoStart={false}
-                        renderer={renderer}
-                        onComplete={handleOnComplete}
-                    />
-                    {!item.bets.length && item.lastchance ? (
+                    {hideOffer ? (
+                        ``
+                    ) : (
+                        <a
+                            className="btn btn-danger"
+                            href="#"
+                            onClick={e => {
+                                e.preventDefault();
+                                offer(
+                                    state.item.id,
+                                    getStep() + state.item.price * 1
+                                );
+                            }}
+                        >
+                            <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
+                            <div>${state.item.price * 1 + getStep()}</div>
+                        </a>
+                    )}
+
+                    {state.countdown}
+                    {!state.item.bets.length && state.item.lastchance ? (
                         <h4 className="color-red text-center blink">
                             {__("LAST_CHANCE_TO_USER")}
                         </h4>

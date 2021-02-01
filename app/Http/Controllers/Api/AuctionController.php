@@ -15,7 +15,7 @@ use Carbon\Carbon;
 use App\Events\UpdateAuctionSeeders as UpdateAuctionSeedersEvents;
 use Illuminate\Support\Facades\DB;
 
-use App\Events\StartCountdown as StartCountdownEvent;
+use App\Events\UpdateCountdown as UpdateCountdownEvent;
 use App\Lot;
 
 class AuctionController extends Controller
@@ -179,11 +179,11 @@ class AuctionController extends Controller
      */
     public function countdown(Request $request, $lang, $id)
     {
-        $lot = Lot::finrOdFail($id);
+        $lot = Lot::findOrFail($id);
         $lot->update([
             'countdown' => Carbon::now()
         ]);
-        event(new StartCountdownEvent($lot));
+        event(new UpdateCountdownEvent($lot));
         return '';
     }
 

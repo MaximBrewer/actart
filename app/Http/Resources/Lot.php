@@ -5,6 +5,8 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use TCG\Voyager\Facades\Voyager;
 
+use Illuminate\Support\Carbon;
+
 class Lot extends JsonResource
 {
     /**
@@ -72,6 +74,7 @@ class Lot extends JsonResource
                 'blitz' => $this->blitz,
                 'bets' => $this->bets,
                 'sort' => $this->sort,
+                'countdown' => $this->countdown ? Carbon::parse($this->countdown)->format(DATE_ATOM) : $this->countdown,
                 'status' => $this->status,
                 'price' => count($this->bets) ? $this->bets[0]['bet'] : $this->price
             ];

@@ -14,7 +14,7 @@ class Lot extends Model
 
     protected $translatable = ['title', 'text'];
     protected $appends = ['number'];
-    protected $fillable = ['auction_id', 'sort', 'status', 'lastchance'];
+    protected $fillable = ['auction_id', 'sort', 'status', 'lastchance', 'countdown'];
 
     protected $dateFormat = 'Y-m-d H:i:s';
     protected $dateTimeOutFormat = 'j/m/Y';
