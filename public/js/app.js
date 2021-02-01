@@ -92870,13 +92870,13 @@ function AuctionAdmin(props) {
     opts: opts,
     onReady: onPlayerReady
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    style: "width: 178px; height: 16px; line-height: 16px; padding-top: 0px;",
+    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
     type: "button",
     onClick: function onClick(event) {
       return youTubeRef.current.mute();
     }
   }, "\u0432\u043A\u043B \u0417\u0412\u0423\u041A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    style: "width: 178px; height: 16px; line-height: 16px; padding-top: 0px;",
+    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
     type: "button",
     onClick: function onClick(event) {
       return youTubeRef.current.unmute();

@@ -581,7 +581,7 @@ export default function AuctionAdmin(props) {
                                                                     }
                                                                 />
                                                                 <button
-                                                                    style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+                                                                    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
                                                                     type="button"
                                                                     onClick={event =>
                                                                         youTubeRef.current.mute()
@@ -590,7 +590,7 @@ export default function AuctionAdmin(props) {
                                                                     вкл ЗВУК
                                                                 </button>
                                                                 <button
-                                                                    style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
+                                                                    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
                                                                     type="button"
                                                                     onClick={event =>
                                                                         youTubeRef.current.unmute()
