@@ -293,7 +293,6 @@ export default function Auction(props) {
     const onPlayerReady = event => {
         event.target.mute();
         event.target.playVideo();
-        event.target.unMute();
     };
 
     return state.auction ? (
