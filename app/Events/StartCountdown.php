@@ -15,14 +15,16 @@ class StartCountdown implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $id;
+    public $countdown;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct($lot)
     {
-        $this->id = $id;
+        $this->id = $lot->id;
+        $this->countdown = $lot->countdown;
         //
     }
   

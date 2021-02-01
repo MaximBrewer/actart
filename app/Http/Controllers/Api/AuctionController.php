@@ -179,7 +179,11 @@ class AuctionController extends Controller
      */
     public function countdown(Request $request, $lang, $id)
     {
-        event(new StartCountdownEvent($id));
+        $lot = Lot::finrOdFail($id);
+        $lot->update([
+            'countdown' => Carbon::now()
+        ]);
+        event(new StartCountdownEvent($lot));
         return '';
     }
 
