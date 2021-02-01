@@ -96450,8 +96450,7 @@ function _arrayWithHoles(arr) {
 
 
 function Right(props) {
-  var req = props.req,
-      item = props.item;
+  var req = props.req;
 
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_3__["useAuth"])(),
       initializing = _useAuth.initializing,
@@ -96463,7 +96462,7 @@ function Right(props) {
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     countdown: "",
-    item: item
+    item: props.item
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
@@ -96506,10 +96505,10 @@ function Right(props) {
       if (state.item.id == event.detail.bet.lot_id) {
         if (countdownRef && countdownRef.current) countdownRef.current.stop();
         if (countdownElem && countdownElem.current) countdownElem.current.style.display = "none";
-        return {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
           date: Date.now() + 1000 * window.App.timer,
           countdowned: true
-        };
+        });
       } else return prevState;
     });
   };
@@ -96523,6 +96522,11 @@ function Right(props) {
         });
       }
     });
+
+    if (state.item.id == event.detail.id) {
+      setHideOffer(event.detail.countdown && new Date(event.detail.countdown).getTime() + 1000 * window.App.timer < new Date().getTime());
+    }
+
     setState(function (prevState) {
       if (state.item.id == event.detail.id) {
         state.item.countdown = event.detail.countdown;
@@ -96577,10 +96581,10 @@ function Right(props) {
   };
 
   var handleOnComplete = function handleOnComplete() {
-    setHideOffer(true);
+    setHideOffer(state.item.countdown && new Date(state.item.countdown).getTime() + 1000 * window.App.timer < new Date().getTime());
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return state.item ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-carousel-right"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-3 d-flex justify-content-between"
@@ -96650,7 +96654,7 @@ function Right(props) {
     className: "pb-1"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", state.item.price * 1 + getStep())), state.countdown, !state.item.bets.length && state.item.lastchance ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "color-red text-center blink"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LAST_CHANCE_TO_USER")) : "") : "");
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LAST_CHANCE_TO_USER")) : "") : "") : "";
 }
 
 /***/ }),

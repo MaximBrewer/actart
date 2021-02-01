@@ -6,14 +6,14 @@ import { useAuth } from "../../../../context/auth";
 import Countdown, { zeroPad } from "react-countdown";
 
 export default function Right(props) {
-    const { req, item } = props;
+    const { req } = props;
     const { initializing, currentUser, setCurrentUser } = useAuth();
     const countdownRef = useRef(null);
     const countdownElem = useRef(null);
 
     const [state, setState] = useState({
         countdown: "",
-        item: item
+        item: props.item
     });
 
     const [hideOffer, setHideOffer] = useState(false);
@@ -61,6 +61,7 @@ export default function Right(props) {
                 if (countdownElem && countdownElem.current)
                     countdownElem.current.style.display = "none";
                 return {
+                    ...prevState,
                     date: Date.now() + 1000 * window.App.timer,
                     countdowned: true
                 };
@@ -78,6 +79,14 @@ export default function Right(props) {
                 };
             }
         });
+        if (state.item.id == event.detail.id) {
+            setHideOffer(
+                event.detail.countdown &&
+                    new Date(event.detail.countdown).getTime() +
+                        1000 * window.App.timer <
+                        new Date().getTime()
+            );
+        }
         setState(prevState => {
             if (state.item.id == event.detail.id) {
                 state.item.countdown = event.detail.countdown;
@@ -136,10 +145,15 @@ export default function Right(props) {
     };
 
     const handleOnComplete = () => {
-        setHideOffer(true);
+        setHideOffer(
+            state.item.countdown &&
+                new Date(state.item.countdown).getTime() +
+                    1000 * window.App.timer <
+                    new Date().getTime()
+        );
     };
 
-    return (
+    return state.item ? (
         <div className="lot-carousel-right">
             <div className="pb-3 d-flex justify-content-between">
                 <div className="lot-number">
@@ -240,5 +254,7 @@ export default function Right(props) {
                 ``
             )}
         </div>
+    ) : (
+        ``
     );
 }
