@@ -28,6 +28,7 @@ class Lot
                 case "gallery":
                 case "auction":
                     $lot->lastchance = null;
+                    $lot->countdown = null;
                     break;
                 case "gsold":
                     break;
