@@ -328,9 +328,26 @@ window.initState = {
     confirmation: false
 };
 
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "./components/react-alert-template-basic";
+
+
+// optional configuration
+const options = {
+    // you can also just use 'bottom center'
+    position: positions.BOTTOM_CENTER,
+    timeout: 3000,
+    offset: "1rem",
+    // you can also just use 'scale'
+    transition: transitions.SCALE
+};
+
+
 ReactDOM.render(
     <AuthProvider>
-        <App />
+        <AlertProvider template={AlertTemplate} {...options}>
+            <App />
+        </AlertProvider>
     </AuthProvider>,
     document.getElementById("app")
 );
