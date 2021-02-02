@@ -20,6 +20,7 @@ use App\Events\Lot as LotEvent;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\Beat as BeatNotification;
 use App\Notifications\Manager\GalleryBlitz as ManagerGalleryBlitzNotification;
+use Illuminate\Support\Carbon;
 
 class LotController extends Controller
 {
@@ -133,6 +134,22 @@ class LotController extends Controller
     {
         $lot = Lot::where('id', $lot_id)->whereIn('status', ['in_auction', 'gallery'])->firstOrFail();
         $bet = Bet::where('lot_id', $lot_id)->orderBy('bet', 'DESC')->first();
+
+        if (
+            $lot->countdown
+            &&
+            Carbon::parse($lot->countdown)->addSeconds(setting('site.timer'))->toDateTimeString() <
+            (new Carbon())
+            ->toDateTimeString()
+        ) {
+            return response()->json([
+                'errors' => [
+                    'email' => [__('#YOUR_BET_IS_LATE#')],
+                    'modal' => 'confirmation'
+                ]
+            ], 422);
+        }
+
         if (!$bet || ($bet->user_id != Auth::id() && $bet->bet < $price)) {
             $newBet = Bet::create([
                 'user_id' => Auth::id(),
