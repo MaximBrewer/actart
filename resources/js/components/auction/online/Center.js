@@ -134,6 +134,7 @@ export default function Center(props) {
                                                 className={`translation-wrapper`}
                                             >
                                                 <YouTube
+                                                    id="translationEl"
                                                     videoId={state.translation}
                                                     opts={opts}
                                                     onReady={onPlayerReady}

@@ -19,6 +19,7 @@ class Bet
     public function created(BetModel $bet)
     {
         $lot = LotModel::find($bet->lot_id);
+        $lot->update(['countdown' => null]);
         event(new \App\Events\CreateBet($bet));
     }
 

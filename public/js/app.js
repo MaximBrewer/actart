@@ -91804,7 +91804,10 @@ function Auction(props) {
     });
   };
 
-  var player;
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      player = _useState4[0],
+      setPlayer = _useState4[1];
 
   var updateLotLastChance = function updateLotLastChance(event) {
     setState(function (prevState) {
@@ -92052,7 +92055,7 @@ function Auction(props) {
   var onPlayerReady = function onPlayerReady(event) {
     event.target.mute();
     event.target.playVideo();
-    player = event.target;
+    setPlayer(event.target);
   };
 
   return state.auction ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -92136,6 +92139,7 @@ function Auction(props) {
     },
     className: "translation-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_youtube__WEBPACK_IMPORTED_MODULE_25__["default"], {
+    id: "translationEl",
     videoId: state.translation,
     opts: opts,
     onReady: onPlayerReady
@@ -92143,13 +92147,13 @@ function Auction(props) {
     // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
     type: "button",
     onClick: function onClick() {
-      return player.unMute();
+      return player && player.unMute();
     }
   }, "\u0432\u043A\u043B \u0417\u0412\u0423\u041A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
     type: "button",
     onClick: function onClick() {
-      return player.mute();
+      return player && player.mute();
     }
   }, "\u0432\u044B\u043A\u043B \u0417\u0412\u0423\u041A")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "color-red"
@@ -96050,6 +96054,7 @@ function Center(props) {
     },
     className: "translation-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_youtube__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    id: "translationEl",
     videoId: state.translation,
     opts: opts,
     onReady: onPlayerReady
@@ -96494,7 +96499,8 @@ function _arrayWithHoles(arr) {
 
 
 function Right(props) {
-  var req = props.req;
+  var req = props.req,
+      item = props.item;
 
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_3__["useAuth"])(),
       initializing = _useAuth.initializing,
@@ -96505,8 +96511,7 @@ function Right(props) {
   var countdownElem = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    countdown: "",
-    item: props.item
+    countdown: ""
   }),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
@@ -96546,7 +96551,10 @@ function Right(props) {
 
   var createBet = function createBet(event) {
     setState(function (prevState) {
-      if (state.item.id == event.detail.bet.lot_id) {
+      console.log(event);
+      console.log(prevState);
+
+      if (item.id == event.detail.bet.lot_id) {
         if (countdownRef && countdownRef.current) countdownRef.current.stop();
         if (countdownElem && countdownElem.current) countdownElem.current.style.display = "none";
         return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -96559,7 +96567,7 @@ function Right(props) {
 
   var updateCountdown = function updateCountdown(event) {
     setState(function (prevState) {
-      if (state.item.id == event.detail.id) {
+      if (item.id == event.detail.id) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           countdowning: false,
           countdown: ""
@@ -96567,13 +96575,13 @@ function Right(props) {
       }
     });
 
-    if (state.item.id == event.detail.id) {
+    if (item.id == event.detail.id) {
       setHideOffer(event.detail.countdown && new Date(event.detail.countdown).getTime() + 1000 * window.App.timer < new Date().getTime());
     }
 
     setState(function (prevState) {
-      if (state.item.id == event.detail.id) {
-        state.item.countdown = event.detail.countdown;
+      if (item.id == event.detail.id) {
+        item.countdown = event.detail.countdown;
 
         if (new Date().getTime() - 1000 * window.App.timer < new Date(event.detail.countdown).getTime()) {
           return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -96593,13 +96601,7 @@ function Right(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    updateCountdown({
-      detail: {
-        id: state.item.id,
-        countdown: state.item.countdown
-      }
-    });
-    setHideOffer(state.item.countdown && new Date(state.item.countdown).getTime() + 1000 * window.App.timer < new Date().getTime());
+    setHideOffer(item.countdown && new Date(item.countdown).getTime() + 1000 * window.App.timer < new Date().getTime());
     window.addEventListener("create-bet", createBet);
     window.addEventListener("update-countdown", updateCountdown);
     return function () {
@@ -96607,6 +96609,14 @@ function Right(props) {
       window.removeEventListener("create-bet", createBet);
     };
   }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    updateCountdown({
+      detail: {
+        id: item.id,
+        countdown: item.countdown
+      }
+    });
+  }, [item]);
 
   var getStep = function getStep() {
     var _iterator = _createForOfIteratorHelper(window.App.steps),
@@ -96615,7 +96625,7 @@ function Right(props) {
     try {
       for (_iterator.s(); !(_step = _iterator.n()).done;) {
         var step = _step.value;
-        if (step.to > state.item.price || !step.to) return step.step * 1;
+        if (step.to > item.price || !step.to) return step.step * 1;
       }
     } catch (err) {
       _iterator.e(err);
@@ -96625,61 +96635,61 @@ function Right(props) {
   };
 
   var handleOnComplete = function handleOnComplete() {
-    setHideOffer(state.item.countdown && new Date(state.item.countdown).getTime() + 1000 * window.App.timer < new Date().getTime());
+    setHideOffer(item.countdown && new Date(item.countdown).getTime() + 1000 * window.App.timer < new Date().getTime());
   };
 
-  return state.item ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return item ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-carousel-right"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-3 d-flex justify-content-between"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-number"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID"), " ", state.item.sort)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_TEXT_LOT_ID"), " ", item.sort)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-author"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "author",
-    href: state.item.author_url
-  }, state.item.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    href: item.author_url
+  }, item.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-title"
-  }, state.item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "matherial"
-  }, state.item.materials.map(function (m, mi) {
+  }, item.materials.map(function (m, mi) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: mi
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "styles"
-  }, state.item.styles.map(function (m, mi) {
+  }, item.styles.map(function (m, mi) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: mi
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "frames"
-  }, state.item.frames.map(function (m, mi) {
+  }, item.frames.map(function (m, mi) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: mi
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "techniques"
-  }, state.item.techniques.map(function (m, mi) {
+  }, item.techniques.map(function (m, mi) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: mi
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "categories"
-  }, state.item.categories.map(function (m, mi) {
+  }, item.categories.map(function (m, mi) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: mi
     }, m.title);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "size"
-  }, state.item.width, " \u0445 ", state.item.height, " ", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("MEASURE_CM"), state.item.year ? " / " + state.item.year + " " + Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SHORT_YEAR") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, item.width, " \u0445 ", item.height, " ", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("MEASURE_CM"), item.year ? " / " + item.year + " " + Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("SHORT_YEAR") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "start-price"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_START_PRICE"), ": $", state.item.startPrice)), currentUser != undefined ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_START_PRICE"), ": $", item.startPrice)), currentUser != undefined ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-activity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-id"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_YOUR_ID"), ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", currentUser.id)), state.item.bets.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_YOUR_ID"), ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", currentUser.id)), item.bets.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "last-price"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "title"
@@ -96687,16 +96697,16 @@ function Right(props) {
     className: "info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, "$", state.item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_SEED"), ":", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", state.item.bets[0].user_id)))) : "", hideOffer ? "" : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, "$", item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_SEED"), ":", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", item.bets[0].user_id)))) : "", hideOffer ? "" : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-danger",
     href: "#",
     onClick: function onClick(e) {
       e.preventDefault();
-      offer(state.item.id, getStep() + state.item.price * 1);
+      offer(item.id, getStep() + item.price * 1);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pb-1"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", state.item.price * 1 + getStep())), state.countdown, !state.item.bets.length && state.item.lastchance ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", item.price * 1 + getStep())), state.countdown, !item.bets.length && item.lastchance ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "color-red text-center blink"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("LAST_CHANCE_TO_USER")) : "") : "") : "";
 }

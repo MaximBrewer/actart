@@ -15,6 +15,8 @@ use App\Notifications\Manager\AuctionWinner as ManagerAuctionWinnerNotification;
 use Throwable;
 use App\User as UserModel;
 
+use App\Events\UpdateCountdown as UpdateCountdownEvent;
+
 class Lot
 {
     public function updating(LotModel $lot)
@@ -40,6 +42,13 @@ class Lot
 
     public function updated(LotModel $lot)
     {
+        if ($lot->wasChanged('countdown')) {
+            try {
+                event(new UpdateCountdownEvent($lot));
+            } catch (Throwable $e) {
+                report($e);
+            }
+        }
         if ($lot->wasChanged('lastchance')) {
             try {
                 event(new UpdateLotLastchanceEvent($lot->id, $lot->lastchance));

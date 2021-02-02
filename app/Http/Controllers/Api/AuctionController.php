@@ -14,8 +14,6 @@ use App\Notifications\Participate as ParticipateNotification;
 use Carbon\Carbon;
 use App\Events\UpdateAuctionSeeders as UpdateAuctionSeedersEvents;
 use Illuminate\Support\Facades\DB;
-
-use App\Events\UpdateCountdown as UpdateCountdownEvent;
 use App\Lot;
 
 class AuctionController extends Controller
@@ -183,7 +181,6 @@ class AuctionController extends Controller
         $lot->update([
             'countdown' => Carbon::now()
         ]);
-        event(new UpdateCountdownEvent($lot));
         return '';
     }
 

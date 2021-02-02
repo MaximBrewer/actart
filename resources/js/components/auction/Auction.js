@@ -49,7 +49,7 @@ export default function Auction(props) {
         }));
     };
 
-    let player;
+    const [player, setPlayer] = useState(null);
 
     const updateLotLastChance = event => {
         setState(prevState => {
@@ -295,7 +295,7 @@ export default function Auction(props) {
     const onPlayerReady = event => {
         event.target.mute();
         event.target.playVideo();
-        player = event.target;
+        setPlayer(event.target);
     };
 
     return state.auction ? (
@@ -430,14 +430,20 @@ export default function Auction(props) {
                                                                 className={`translation-wrapper`}
                                                             >
                                                                 <YouTube
-                                                                    videoId={state.translation}
+                                                                    id="translationEl"
+                                                                    videoId={
+                                                                        state.translation
+                                                                    }
                                                                     opts={opts}
-                                                                    onReady={onPlayerReady}
+                                                                    onReady={
+                                                                        onPlayerReady
+                                                                    }
                                                                 />
                                                                 <button
                                                                     // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
                                                                     type="button"
                                                                     onClick={() =>
+                                                                        player &&
                                                                         player.unMute()
                                                                     }
                                                                 >
@@ -447,6 +453,7 @@ export default function Auction(props) {
                                                                     // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
                                                                     type="button"
                                                                     onClick={() =>
+                                                                        player &&
                                                                         player.mute()
                                                                     }
                                                                 >
