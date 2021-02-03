@@ -9,8 +9,6 @@ use App\Auction;
 
 class SendNotification extends Command
 {
-    public $user_id;
-    public $auction_id;
     /**
      * The name and signature of the console command.
      *
@@ -32,8 +30,6 @@ class SendNotification extends Command
      */
     public function __construct()
     {
-        $this->user_id  = $this->argument('user_id');
-        $this->auction_id  = $this->argument('auction_id');
         parent::__construct();
     }
 
@@ -44,7 +40,7 @@ class SendNotification extends Command
      */
     public function handle()
     {
-        User::find($this->user_id)->notify(new ParticipateNotification(User::find($this->auction_id)));
+        User::find($this->argument('user_id'))->notify(new ParticipateNotification(Auction::find($this->argument('auction_id'))));
         return 0;
     }
 }
