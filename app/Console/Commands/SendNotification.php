@@ -40,7 +40,9 @@ class SendNotification extends Command
      */
     public function handle()
     {
-        User::find($this->argument('user_id'))->notify(new ParticipateNotification(Auction::find($this->argument('auction_id'))));
+        $user = User::find($this->argument('user_id'));
+        $user->notify(new ParticipateNotification(Auction::find($this->argument('auction_id'))));
+        var_dump($user->email);
         return 0;
     }
 }
