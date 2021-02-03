@@ -32,6 +32,7 @@ export default function AuctionAdmin(props) {
         lbOpen: false,
         countdown: ""
     });
+    
     const declOfNum = (number, titles) => {
         let cases = [2, 0, 1, 1, 1, 2];
         return titles[
@@ -256,7 +257,9 @@ export default function AuctionAdmin(props) {
                     ...prevState,
                     started,
                     auction,
-                    finished
+                    finished,
+                    countdowning: false,
+                    countdown: ""
                 };
             }
             return prevState;

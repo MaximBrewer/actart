@@ -26,17 +26,62 @@ import {
     useRouteMatch,
     useParams
 } from "react-router-dom";
-import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
-import Right from "./online/blocks/Right";
 import YouTube from "react-youtube";
+import Countdown, { zeroPad } from "react-countdown";
+import { useAuth } from "../../context/auth";
 
 export default function Auction(props) {
+    const { req } = props;
+    const { currentUser } = useAuth();
     const { id } = useParams();
+
+    const declOfNum = (number, titles) => {
+        let cases = [2, 0, 1, 1, 1, 2];
+        return titles[
+            number % 100 > 4 && number % 100 < 20
+                ? 2
+                : cases[number % 10 < 5 ? number % 10 : 5]
+        ];
+    };
+
+    useEffect(() => {
+        if (!currentUser) history.push("/#login");
+    }, [currentUser]);
+
+    const hideOffer = false;
+
+    const renderer = ({ seconds }) => {
+        return (
+            <div
+                className="countdown-lot-wrapper h5 color-red"
+                style={{ display: seconds > 0 ? "block" : "none" }}
+            >
+                {window.App.locale == "ru"
+                    ? `Осталось ${zeroPad(seconds)} ${declOfNum(seconds, [
+                          "секунда",
+                          "секунды",
+                          "секунд"
+                      ])}`
+                    : `${zeroPad(seconds)} ${declOfNum(seconds, [
+                          "second",
+                          "seconds",
+                          "seconds"
+                      ])} left`}
+            </div>
+        );
+    };
+
+    const offer = (id, price) => {
+        req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH")
+            .then(() => null)
+            .catch(err => console.log(err));
+    };
 
     const [state, setState] = useState({
         auction: null,
         finished: false,
+        countdown: "",
         started: false,
         translation: window.App.translation,
         lbOpen: false
@@ -113,6 +158,7 @@ export default function Auction(props) {
                 }
                 return {
                     ...prevState,
+                    countdown: "",
                     started,
                     auction,
                     finished
@@ -142,12 +188,59 @@ export default function Auction(props) {
             if (update) {
                 return {
                     ...prevState,
+                    countdown: "",
                     auction: auction
                 };
             }
             return prevState;
         });
     };
+
+    const updateCountdown = event => {
+        setState(prevState => {
+            let auction = prevState.auction;
+            if (auction.current.id == event.detail.id) {
+                return {
+                    ...prevState,
+                    countdown: ""
+                };
+            }
+        });
+        setState(prevState => {
+            let auction = prevState.auction;
+            if (auction.current.id == event.detail.id) {
+                auction.current.countdown = event.detail.countdown;
+                if (
+                    new Date().getTime() - 1000 * window.App.timer <
+                    new Date(event.detail.countdown).getTime()
+                ) {
+                    return {
+                        ...prevState,
+                        countdown: (
+                            <Countdown
+                                date={
+                                    new Date(event.detail.countdown).getTime() +
+                                    1000 * window.App.timer
+                                }
+                                renderer={renderer}
+                                onComplete={handleOnComplete}
+                            />
+                        )
+                    };
+                }
+            }
+            return prevState;
+        });
+    };
+
+    const getStep = () => {
+        for (let step of window.App.steps) {
+            if (step.to > state.auction.current.price || !step.to)
+                return step.step * 1;
+        }
+    };
+
+    const handleOnComplete = () => {};
 
     const { url } = useRouteMatch();
     const { pathname } = useLocation();
@@ -158,6 +251,7 @@ export default function Auction(props) {
         (pathname == url ? false : pathname.replace(url + "/lot/", "")) * 1;
 
     useEffect(() => {
+        window.addEventListener("update-countdown", updateCountdown);
         window.addEventListener("update-auction-status", updateAuctionStatus);
         window.addEventListener("update-lot-status", updateLotStatus);
         window.addEventListener("update-lot-lastchance", updateLotLastChance);
@@ -166,16 +260,39 @@ export default function Auction(props) {
         axios
             .get("/api/" + window.App.locale + "/auctions/" + id)
             .then(res => {
-                setState(prevState => ({
-                    ...prevState,
-                    auction: res.data.auction,
-                    started: res.data.auction.current ? true : prevState.started
-                }));
+                let countdown =
+                    new Date().getTime() - 1000 * window.App.timer <
+                    new Date(res.data.auction.current.countdown).getTime() ? (
+                        <Countdown
+                            date={
+                                new Date(
+                                    res.data.auction.current.countdown
+                                ).getTime() +
+                                1000 * window.App.timer
+                            }
+                            renderer={renderer}
+                            onComplete={handleOnComplete}
+                        />
+                    ) : (
+                        ""
+                    );
+
+                setState(prevState => {
+                    return {
+                        ...prevState,
+                        auction: res.data.auction,
+                        countdown: countdown,
+                        started: res.data.auction.current
+                            ? true
+                            : prevState.started
+                    };
+                });
             })
             .catch(err => {
                 console.log(err);
             });
         return () => {
+            window.removeEventListener("update-countdown", updateCountdown);
             window.removeEventListener("update-translation", updateTranslation);
             window.removeEventListener(
                 "update-auction-status",
@@ -473,17 +590,278 @@ export default function Auction(props) {
                                         <div className="col-xl-20 col-xxl-22">
                                             <div className="right-side">
                                                 {state.auction.current ? (
-                                                    <Right
-                                                        {...props}
-                                                        item={
-                                                            state.auction
-                                                                .current
-                                                        }
-                                                        finished={
-                                                            state.finished
-                                                        }
-                                                        started={state.started}
-                                                    />
+                                                    <div className="lot-carousel-right">
+                                                        <div className="pb-3 d-flex justify-content-between">
+                                                            <div className="lot-number">
+                                                                {__(
+                                                                    "LOT_TEXT_LOT_ID"
+                                                                )}{" "}
+                                                                {
+                                                                    state
+                                                                        .auction
+                                                                        .current
+                                                                        .sort
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div className="lot-author">
+                                                            <a
+                                                                className="author"
+                                                                href={
+                                                                    state
+                                                                        .auction
+                                                                        .current
+                                                                        .author_url
+                                                                }
+                                                            >
+                                                                {
+                                                                    state
+                                                                        .auction
+                                                                        .current
+                                                                        .author
+                                                                }
+                                                            </a>
+                                                        </div>
+                                                        <div className="lot-title">
+                                                            {
+                                                                state.auction
+                                                                    .current
+                                                                    .title
+                                                            }
+                                                        </div>
+                                                        <div className="matherial">
+                                                            {state.auction.current.materials.map(
+                                                                (m, mi) => (
+                                                                    <span
+                                                                        key={mi}
+                                                                    >
+                                                                        {
+                                                                            m.title
+                                                                        }
+                                                                    </span>
+                                                                )
+                                                            )}
+                                                        </div>
+                                                        <div className="styles">
+                                                            {state.auction.current.styles.map(
+                                                                (m, mi) => (
+                                                                    <span
+                                                                        key={mi}
+                                                                    >
+                                                                        {
+                                                                            m.title
+                                                                        }
+                                                                    </span>
+                                                                )
+                                                            )}
+                                                        </div>
+                                                        <div className="frames">
+                                                            {state.auction.current.frames.map(
+                                                                (m, mi) => (
+                                                                    <span
+                                                                        key={mi}
+                                                                    >
+                                                                        {
+                                                                            m.title
+                                                                        }
+                                                                    </span>
+                                                                )
+                                                            )}
+                                                        </div>
+                                                        <div className="techniques">
+                                                            {state.auction.current.techniques.map(
+                                                                (m, mi) => (
+                                                                    <span
+                                                                        key={mi}
+                                                                    >
+                                                                        {
+                                                                            m.title
+                                                                        }
+                                                                    </span>
+                                                                )
+                                                            )}
+                                                        </div>
+                                                        <div className="categories">
+                                                            {state.auction.current.categories.map(
+                                                                (m, mi) => (
+                                                                    <span
+                                                                        key={mi}
+                                                                    >
+                                                                        {
+                                                                            m.title
+                                                                        }
+                                                                    </span>
+                                                                )
+                                                            )}
+                                                        </div>
+                                                        <div className="size">
+                                                            {
+                                                                state.auction
+                                                                    .current
+                                                                    .width
+                                                            }{" "}
+                                                            х{" "}
+                                                            {
+                                                                state.auction
+                                                                    .current
+                                                                    .height
+                                                            }{" "}
+                                                            {__("MEASURE_CM")}
+                                                            {state.auction
+                                                                .current.year
+                                                                ? ` / ` +
+                                                                  state.auction
+                                                                      .current
+                                                                      .year +
+                                                                  ` ` +
+                                                                  __(
+                                                                      "SHORT_YEAR"
+                                                                  )
+                                                                : ``}
+                                                        </div>
+                                                        <div className="start-price">
+                                                            <span>
+                                                                {__(
+                                                                    "LOT_START_PRICE"
+                                                                )}
+                                                                : $
+                                                                {
+                                                                    state
+                                                                        .auction
+                                                                        .current
+                                                                        .startPrice
+                                                                }
+                                                            </span>
+                                                        </div>
+                                                        {currentUser !=
+                                                        undefined ? (
+                                                            <div className="user-activity">
+                                                                <div className="user-id">
+                                                                    {__(
+                                                                        "LOT_YOUR_ID"
+                                                                    )}
+                                                                    :{" "}
+                                                                    <span>
+                                                                        #
+                                                                        {
+                                                                            currentUser.id
+                                                                        }
+                                                                    </span>
+                                                                </div>
+                                                                {state.auction
+                                                                    .current
+                                                                    .bets
+                                                                    .length ? (
+                                                                    <div className="last-price">
+                                                                        <div className="title">
+                                                                            {__(
+                                                                                "LOT_LAST_PRICE"
+                                                                            )}
+                                                                        </div>
+                                                                        <div className="info">
+                                                                            <div className="pb-1">
+                                                                                $
+                                                                                {
+                                                                                    state
+                                                                                        .auction
+                                                                                        .current
+                                                                                        .price
+                                                                                }
+                                                                            </div>
+                                                                            <div>
+                                                                                {__(
+                                                                                    "LOT_SEED"
+                                                                                )}
+
+                                                                                :{" "}
+                                                                                <span>
+                                                                                    #
+                                                                                    {
+                                                                                        state
+                                                                                            .auction
+                                                                                            .current
+                                                                                            .bets[0]
+                                                                                            .user_id
+                                                                                    }
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                ) : (
+                                                                    ``
+                                                                )}
+                                                                {state.auction
+                                                                    .current
+                                                                    .countdown &&
+                                                                new Date(
+                                                                    state.auction.current.countdown
+                                                                ).getTime() +
+                                                                    1000 *
+                                                                        window
+                                                                            .App
+                                                                            .timer <
+                                                                    new Date().getTime() ? (
+                                                                    ``
+                                                                ) : (
+                                                                    <a
+                                                                        className="btn btn-danger"
+                                                                        href="#"
+                                                                        onClick={e => {
+                                                                            e.preventDefault();
+                                                                            offer(
+                                                                                state
+                                                                                    .auction
+                                                                                    .current
+                                                                                    .id,
+                                                                                getStep() +
+                                                                                    state
+                                                                                        .auction
+                                                                                        .current
+                                                                                        .price *
+                                                                                        1
+                                                                            );
+                                                                        }}
+                                                                    >
+                                                                        <div className="pb-1">
+                                                                            {__(
+                                                                                "LOT_BUTTON_OFFER"
+                                                                            )}
+                                                                        </div>
+                                                                        <div>
+                                                                            $
+                                                                            {state
+                                                                                .auction
+                                                                                .current
+                                                                                .price *
+                                                                                1 +
+                                                                                getStep()}
+                                                                        </div>
+                                                                    </a>
+                                                                )}
+
+                                                                {
+                                                                    state.countdown
+                                                                }
+                                                                {!state.auction
+                                                                    .current
+                                                                    .bets
+                                                                    .length &&
+                                                                state.auction
+                                                                    .current
+                                                                    .lastchance ? (
+                                                                    <h4 className="color-red text-center blink">
+                                                                        {__(
+                                                                            "LAST_CHANCE_TO_USER"
+                                                                        )}
+                                                                    </h4>
+                                                                ) : (
+                                                                    ``
+                                                                )}
+                                                            </div>
+                                                        ) : (
+                                                            ``
+                                                        )}
+                                                    </div>
                                                 ) : !state.started ? (
                                                     <h3
                                                         className={`py-5 text-center color-red`}

@@ -94206,11 +94206,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _archive_LotBottom_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./archive/LotBottom.js */ "./resources/js/components/auction/archive/LotBottom.js");
 /* harmony import */ var _archive_LotsList_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./archive/LotsList.js */ "./resources/js/components/auction/archive/LotsList.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! html-react-parser */ "./node_modules/html-react-parser/index.js");
-/* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(html_react_parser__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var react_image_lightbox__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-image-lightbox */ "./node_modules/react-image-lightbox/dist/index.es.js");
-/* harmony import */ var _online_blocks_Right__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./online/blocks/Right */ "./resources/js/components/auction/online/blocks/Right.js");
-/* harmony import */ var react_youtube__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-youtube */ "./node_modules/react-youtube/dist/index.esm.js");
+/* harmony import */ var react_image_lightbox__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! react-image-lightbox */ "./node_modules/react-image-lightbox/dist/index.es.js");
+/* harmony import */ var react_youtube__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-youtube */ "./node_modules/react-youtube/dist/index.esm.js");
+/* harmony import */ var react_countdown__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! react-countdown */ "./node_modules/react-countdown/dist/index.es.js");
+/* harmony import */ var _context_auth__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../context/auth */ "./resources/js/context/auth.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -94420,12 +94419,46 @@ function _arrayWithHoles(arr) {
 
 
 function Auction(props) {
+  var req = props.req;
+
+  var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_25__["useAuth"])(),
+      currentUser = _useAuth.currentUser;
+
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_21__["useParams"])(),
       id = _useParams.id;
+
+  var declOfNum = function declOfNum(number, titles) {
+    var cases = [2, 0, 1, 1, 1, 2];
+    return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (!currentUser) history.push("/#login");
+  }, [currentUser]);
+  var hideOffer = false;
+
+  var renderer = function renderer(_ref) {
+    var seconds = _ref.seconds;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "countdown-lot-wrapper h5 color-red",
+      style: {
+        display: seconds > 0 ? "block" : "none"
+      }
+    }, window.App.locale == "ru" ? "\u041E\u0441\u0442\u0430\u043B\u043E\u0441\u044C ".concat(Object(react_countdown__WEBPACK_IMPORTED_MODULE_24__["zeroPad"])(seconds), " ").concat(declOfNum(seconds, ["секунда", "секунды", "секунд"])) : "".concat(Object(react_countdown__WEBPACK_IMPORTED_MODULE_24__["zeroPad"])(seconds), " ").concat(declOfNum(seconds, ["second", "seconds", "seconds"]), " left"));
+  };
+
+  var offer = function offer(id, price) {
+    req("/api/" + window.App.locale + "/offer/" + id + "/" + price, "PATCH").then(function () {
+      return null;
+    })["catch"](function (err) {
+      return console.log(err);
+    });
+  };
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     auction: null,
     finished: false,
+    countdown: "",
     started: false,
     translation: window.App.translation,
     lbOpen: false
@@ -94534,6 +94567,7 @@ function Auction(props) {
         }
 
         return _objectSpread(_objectSpread({}, prevState), {}, {
+          countdown: "",
           started: started,
           auction: auction,
           finished: finished
@@ -94568,6 +94602,7 @@ function Auction(props) {
 
       if (update) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
+          countdown: "",
           auction: auction
         });
       }
@@ -94575,6 +94610,55 @@ function Auction(props) {
       return prevState;
     });
   };
+
+  var updateCountdown = function updateCountdown(event) {
+    setState(function (prevState) {
+      var auction = prevState.auction;
+
+      if (auction.current.id == event.detail.id) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          countdown: ""
+        });
+      }
+    });
+    setState(function (prevState) {
+      var auction = prevState.auction;
+
+      if (auction.current.id == event.detail.id) {
+        auction.current.countdown = event.detail.countdown;
+
+        if (new Date().getTime() - 1000 * window.App.timer < new Date(event.detail.countdown).getTime()) {
+          return _objectSpread(_objectSpread({}, prevState), {}, {
+            countdown: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_24__["default"], {
+              date: new Date(event.detail.countdown).getTime() + 1000 * window.App.timer,
+              renderer: renderer,
+              onComplete: handleOnComplete
+            })
+          });
+        }
+      }
+
+      return prevState;
+    });
+  };
+
+  var getStep = function getStep() {
+    var _iterator2 = _createForOfIteratorHelper(window.App.steps),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var step = _step2.value;
+        if (step.to > state.auction.current.price || !step.to) return step.step * 1;
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+  };
+
+  var handleOnComplete = function handleOnComplete() {};
 
   var _useRouteMatch = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_21__["useRouteMatch"])(),
       url = _useRouteMatch.url;
@@ -94585,15 +94669,22 @@ function Auction(props) {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {}, [pathname]);
   var lotId = (pathname == url ? false : pathname.replace(url + "/lot/", "")) * 1;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    window.addEventListener("update-countdown", updateCountdown);
     window.addEventListener("update-auction-status", updateAuctionStatus);
     window.addEventListener("update-lot-status", updateLotStatus);
     window.addEventListener("update-lot-lastchance", updateLotLastChance);
     window.addEventListener("create-bet", createBet);
     window.addEventListener("update-translation", updateTranslation);
     axios.get("/api/" + window.App.locale + "/auctions/" + id).then(function (res) {
+      var countdown = new Date().getTime() - 1000 * window.App.timer < new Date(res.data.auction.current.countdown).getTime() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_24__["default"], {
+        date: new Date(res.data.auction.current.countdown).getTime() + 1000 * window.App.timer,
+        renderer: renderer,
+        onComplete: handleOnComplete
+      }) : "";
       setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           auction: res.data.auction,
+          countdown: countdown,
           started: res.data.auction.current ? true : prevState.started
         });
       });
@@ -94601,6 +94692,7 @@ function Auction(props) {
       console.log(err);
     });
     return function () {
+      window.removeEventListener("update-countdown", updateCountdown);
       window.removeEventListener("update-translation", updateTranslation);
       window.removeEventListener("update-auction-status", updateAuctionStatus);
       window.removeEventListener("update-lot-status", updateLotStatus);
@@ -94751,7 +94843,7 @@ function Auction(props) {
       backgroundColor: "#ECEDED",
       backgroundImage: 'url("' + state.auction.current.thumbnail + '")'
     }
-  }), state.lbOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_image_lightbox__WEBPACK_IMPORTED_MODULE_23__["default"], {
+  }), state.lbOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_image_lightbox__WEBPACK_IMPORTED_MODULE_22__["default"], {
     mainSrc: state.auction.current.photo,
     onCloseRequest: function onCloseRequest() {
       return setState(function (prevState) {
@@ -94776,7 +94868,7 @@ function Auction(props) {
       position: "relative"
     },
     className: "translation-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_youtube__WEBPACK_IMPORTED_MODULE_25__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_youtube__WEBPACK_IMPORTED_MODULE_23__["default"], {
     id: "translationEl",
     videoId: state.translation,
     opts: opts,
@@ -94799,11 +94891,77 @@ function Auction(props) {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right-side"
-  }, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_blocks_Right__WEBPACK_IMPORTED_MODULE_24__["default"], _extends({}, props, {
-    item: state.auction.current,
-    finished: state.finished,
-    started: state.started
-  })) : !state.started ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+  }, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "lot-carousel-right"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "pb-3 d-flex justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "lot-number"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("LOT_TEXT_LOT_ID"), " ", state.auction.current.sort)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "lot-author"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "author",
+    href: state.auction.current.author_url
+  }, state.auction.current.author)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "lot-title"
+  }, state.auction.current.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "matherial"
+  }, state.auction.current.materials.map(function (m, mi) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      key: mi
+    }, m.title);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "styles"
+  }, state.auction.current.styles.map(function (m, mi) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      key: mi
+    }, m.title);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "frames"
+  }, state.auction.current.frames.map(function (m, mi) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      key: mi
+    }, m.title);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "techniques"
+  }, state.auction.current.techniques.map(function (m, mi) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      key: mi
+    }, m.title);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "categories"
+  }, state.auction.current.categories.map(function (m, mi) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      key: mi
+    }, m.title);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "size"
+  }, state.auction.current.width, " ", "\u0445", " ", state.auction.current.height, " ", Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("MEASURE_CM"), state.auction.current.year ? " / " + state.auction.current.year + " " + Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("SHORT_YEAR") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "start-price"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("LOT_START_PRICE"), ": $", state.auction.current.startPrice)), currentUser != undefined ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "user-activity"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "user-id"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("LOT_YOUR_ID"), ":", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", currentUser.id)), state.auction.current.bets.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "last-price"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "title"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("LOT_LAST_PRICE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "pb-1"
+  }, "$", state.auction.current.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("LOT_SEED"), ":", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "#", state.auction.current.bets[0].user_id)))) : "", state.auction.current.countdown && new Date(state.auction.current.countdown).getTime() + 1000 * window.App.timer < new Date().getTime() ? "" : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "btn btn-danger",
+    href: "#",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      offer(state.auction.current.id, getStep() + state.auction.current.price * 1);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "pb-1"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("LOT_BUTTON_OFFER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "$", state.auction.current.price * 1 + getStep())), state.countdown, !state.auction.current.bets.length && state.auction.current.lastchance ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+    className: "color-red text-center blink"
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("LAST_CHANCE_TO_USER")) : "") : "") : !state.started ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "py-5 text-center color-red"
   }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("#AUCTION_WILL_START_SOON#")) : !state.finished ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "py-5 text-center color-red"
@@ -95264,7 +95422,9 @@ function AuctionAdmin(props) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           started: started,
           auction: auction,
-          finished: finished
+          finished: finished,
+          countdowning: false,
+          countdown: ""
         });
       }
 
