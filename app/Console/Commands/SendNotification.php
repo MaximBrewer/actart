@@ -30,10 +30,10 @@ class SendNotification extends Command
      *
      * @return void
      */
-    public function __construct($user_id, $auction_id)
+    public function __construct()
     {
-        $this->user_id  = $user_id;
-        $this->auction_id  = $auction_id;
+        $this->user_id  = $this->argument('user_id');
+        $this->auction_id  = $this->argument('auction_id');
         parent::__construct();
     }
 
