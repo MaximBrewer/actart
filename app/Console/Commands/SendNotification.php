@@ -16,7 +16,7 @@ class SendNotification extends Command
      *
      * @var string
      */
-    protected $signature = 'send:notification';
+    protected $signature = 'send:notification {user_id} {auction_id}';
 
     /**
      * The console command description.
