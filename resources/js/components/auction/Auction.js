@@ -261,8 +261,14 @@ export default function Auction(props) {
             .get("/api/" + window.App.locale + "/auctions/" + id)
             .then(res => {
                 let countdown =
+                    res.data &&
+                    res.data.auction &&
+                    res.data.auction.current &&
+                    res.data.auction.current.countdown &&
                     new Date().getTime() - 1000 * window.App.timer <
-                    new Date(res.data.auction.current.countdown).getTime() ? (
+                        new Date(
+                            res.data.auction.current.countdown
+                        ).getTime() ? (
                         <Countdown
                             date={
                                 new Date(

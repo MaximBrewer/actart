@@ -94676,7 +94676,7 @@ function Auction(props) {
     window.addEventListener("create-bet", createBet);
     window.addEventListener("update-translation", updateTranslation);
     axios.get("/api/" + window.App.locale + "/auctions/" + id).then(function (res) {
-      var countdown = new Date().getTime() - 1000 * window.App.timer < new Date(res.data.auction.current.countdown).getTime() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_24__["default"], {
+      var countdown = res.data && res.data.auction && res.data.auction.current && res.data.auction.current.countdown && new Date().getTime() - 1000 * window.App.timer < new Date(res.data.auction.current.countdown).getTime() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_24__["default"], {
         date: new Date(res.data.auction.current.countdown).getTime() + 1000 * window.App.timer,
         renderer: renderer,
         onComplete: handleOnComplete
