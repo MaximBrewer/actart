@@ -222,5 +222,6 @@
     "GO_BACK": "Вернуться",
     "Sorry your account has not confirmed.": "Ваш аккаунт не подтвержден!",
     "CONFIRMATION_ERROR": "отправить ссылку на почту?",
-    "A verification link has been sent to your email address.": "Ссылка для подтверждения была отправлена на ваш адрес электронной почты."
+    "A verification link has been sent to your email address.": "Ссылка для подтверждения была отправлена на ваш адрес электронной почты.",
+    "Sorry we couldn't sign you in with those details.": "Извиняемся, данные не верны."
 }
