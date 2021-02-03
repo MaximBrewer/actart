@@ -94467,6 +94467,11 @@ function Auction(props) {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      muted = _useState4[0],
+      setMuted = _useState4[1];
+
   var updateTranslation = function updateTranslation(event) {
     setState(function (prevState) {
       return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -94475,10 +94480,10 @@ function Auction(props) {
     });
   };
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
-      _useState4 = _slicedToArray(_useState3, 2),
-      player = _useState4[0],
-      setPlayer = _useState4[1];
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState6 = _slicedToArray(_useState5, 2),
+      player = _useState6[0],
+      setPlayer = _useState6[1];
 
   var updateLotLastChance = function updateLotLastChance(event) {
     setState(function (prevState) {
@@ -94873,21 +94878,18 @@ function Auction(props) {
     videoId: state.translation,
     opts: opts,
     onReady: onPlayerReady
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
-    type: "button",
-    onClick: function onClick() {
-      return player && player.unMute();
-    }
-  }, "\u0432\u043A\u043B \u0417\u0412\u0423\u041A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
-    type: "button",
-    onClick: function onClick() {
-      return player && player.mute();
-    }
-  }, "\u0432\u044B\u043A\u043B \u0417\u0412\u0423\u041A")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "color-red"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("#TRANSLATION_HELP#"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("#TRANSLATION_HELP#")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "d-block btn-default btn btn-sm my-1",
+    onClick: function onClick() {
+      return setMuted(function (prevState) {
+        player && (prevState ? player.unMute() : player.mute());
+        return !prevState;
+      });
+    }
+  }, muted ? "\u0432\u043A\u043B \u0417\u0412\u0423\u041A" : "\u0432\u044B\u043A\u043B \u0417\u0412\u0423\u041A")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right-side"
@@ -95215,11 +95217,20 @@ function AuctionAdmin(props) {
       id = _useParams.id;
 
   var youTubeRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
-  var player;
   var countdownRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
   var countdownElem = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState2 = _slicedToArray(_useState, 2),
+      muted = _useState2[0],
+      setMuted = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      player = _useState4[0],
+      setPlayer = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     auction: null,
     lots: [],
     countdowning: false,
@@ -95230,9 +95241,9 @@ function AuctionAdmin(props) {
     lbOpen: false,
     countdown: ""
   }),
-      _useState2 = _slicedToArray(_useState, 2),
-      state = _useState2[0],
-      setState = _useState2[1];
+      _useState6 = _slicedToArray(_useState5, 2),
+      state = _useState6[0],
+      setState = _useState6[1];
 
   var declOfNum = function declOfNum(number, titles) {
     var cases = [2, 0, 1, 1, 1, 2];
@@ -95594,7 +95605,7 @@ function AuctionAdmin(props) {
   var onPlayerReady = function onPlayerReady(event) {
     event.target.mute();
     event.target.playVideo();
-    player = event.target;
+    setPlayer(event.target);
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -95689,21 +95700,18 @@ function AuctionAdmin(props) {
     videoId: state.translation,
     opts: opts,
     onReady: onPlayerReady
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
-    type: "button",
-    onClick: function onClick() {
-      return player.unMute();
-    }
-  }, "\u0432\u043A\u043B \u0417\u0412\u0423\u041A"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
-    type: "button",
-    onClick: function onClick() {
-      return player.mute();
-    }
-  }, "\u0432\u044B\u043A\u043B \u0417\u0412\u0423\u041A")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "color-red"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#TRANSLATION_HELP#"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("#TRANSLATION_HELP#")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "d-block btn-default btn btn-sm my-1",
+    onClick: function onClick() {
+      return setMuted(function (prevState) {
+        player && (prevState ? player.unMute() : player.mute());
+        return !prevState;
+      });
+    }
+  }, muted ? "\u0432\u043A\u043B \u0417\u0412\u0423\u041A" : "\u0432\u044B\u043A\u043B \u0417\u0412\u0423\u041A")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lot-carousel-right"

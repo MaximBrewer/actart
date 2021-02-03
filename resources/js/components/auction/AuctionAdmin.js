@@ -16,10 +16,12 @@ export default function AuctionAdmin(props) {
     const { id } = useParams();
 
     const youTubeRef = useRef(null);
-    let player;
 
     const countdownRef = useRef(null);
     const countdownElem = useRef(null);
+    
+    const [muted, setMuted] = useState(true);
+    const [player, setPlayer] = useState(null);
 
     const [state, setState] = useState({
         auction: null,
@@ -32,7 +34,7 @@ export default function AuctionAdmin(props) {
         lbOpen: false,
         countdown: ""
     });
-    
+
     const declOfNum = (number, titles) => {
         let cases = [2, 0, 1, 1, 1, 2];
         return titles[
@@ -427,7 +429,7 @@ export default function AuctionAdmin(props) {
     const onPlayerReady = event => {
         event.target.mute();
         event.target.playVideo();
-        player = event.target;
+        setPlayer(event.target);
     };
 
     return (
@@ -586,30 +588,31 @@ export default function AuctionAdmin(props) {
                                                                         onPlayerReady
                                                                     }
                                                                 />
-                                                                <button
-                                                                    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
-                                                                    type="button"
-                                                                    onClick={() =>
-                                                                        player.unMute()
-                                                                    }
-                                                                >
-                                                                    вкл ЗВУК
-                                                                </button>
-                                                                <button
-                                                                    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
-                                                                    type="button"
-                                                                    onClick={() =>
-                                                                        player.mute()
-                                                                    }
-                                                                >
-                                                                    выкл ЗВУК
-                                                                </button>
                                                             </div>
                                                             <small className="color-red">
                                                                 {__(
                                                                     "#TRANSLATION_HELP#"
                                                                 )}
                                                             </small>
+                                                            <button
+                                                                type="button"
+                                                                className="d-block btn-default btn btn-sm my-1"
+                                                                onClick={() =>
+                                                                    setMuted(
+                                                                        prevState => {
+                                                                            player &&
+                                                                                (prevState
+                                                                                    ? player.unMute()
+                                                                                    : player.mute());
+                                                                            return !prevState;
+                                                                        }
+                                                                    )
+                                                                }
+                                                            >
+                                                                {muted
+                                                                    ? `вкл ЗВУК`
+                                                                    : `выкл ЗВУК`}
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>

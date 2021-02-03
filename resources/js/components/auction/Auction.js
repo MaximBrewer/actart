@@ -87,6 +87,8 @@ export default function Auction(props) {
         lbOpen: false
     });
 
+    const [muted, setMuted] = useState(true);
+
     const updateTranslation = event => {
         setState(prevState => ({
             ...prevState,
@@ -562,32 +564,31 @@ export default function Auction(props) {
                                                                         onPlayerReady
                                                                     }
                                                                 />
-                                                                <button
-                                                                    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
-                                                                    type="button"
-                                                                    onClick={() =>
-                                                                        player &&
-                                                                        player.unMute()
-                                                                    }
-                                                                >
-                                                                    вкл ЗВУК
-                                                                </button>
-                                                                <button
-                                                                    // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
-                                                                    type="button"
-                                                                    onClick={() =>
-                                                                        player &&
-                                                                        player.mute()
-                                                                    }
-                                                                >
-                                                                    выкл ЗВУК
-                                                                </button>
                                                             </div>
                                                             <small className="color-red">
                                                                 {__(
                                                                     "#TRANSLATION_HELP#"
                                                                 )}
                                                             </small>
+                                                            <button
+                                                                type="button"
+                                                                className="d-block btn-default btn btn-sm my-1"
+                                                                onClick={() =>
+                                                                    setMuted(
+                                                                        prevState => {
+                                                                            player &&
+                                                                                (prevState
+                                                                                    ? player.unMute()
+                                                                                    : player.mute());
+                                                                            return !prevState;
+                                                                        }
+                                                                    )
+                                                                }
+                                                            >
+                                                                {muted
+                                                                    ? `вкл ЗВУК`
+                                                                    : `выкл ЗВУК`}
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
