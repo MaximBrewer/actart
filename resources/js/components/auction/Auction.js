@@ -242,7 +242,17 @@ export default function Auction(props) {
         }
     };
 
-    const handleOnComplete = () => {};
+    const handleOnComplete = () => {
+        setState(prevState => {
+            return {
+                ...prevState,
+                auction: {
+                    ...prevState.auction,
+                    current: prevState.auction.current
+                }
+            }
+        })
+    };
 
     const { url } = useRouteMatch();
     const { pathname } = useLocation();

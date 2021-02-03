@@ -94663,7 +94663,15 @@ function Auction(props) {
     }
   };
 
-  var handleOnComplete = function handleOnComplete() {};
+  var handleOnComplete = function handleOnComplete() {
+    setState(function (prevState) {
+      return _objectSpread(_objectSpread({}, prevState), {}, {
+        auction: _objectSpread(_objectSpread({}, prevState.auction), {}, {
+          current: prevState.auction.current
+        })
+      });
+    });
+  };
 
   var _useRouteMatch = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_21__["useRouteMatch"])(),
       url = _useRouteMatch.url;
