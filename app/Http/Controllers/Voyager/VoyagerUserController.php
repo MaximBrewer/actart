@@ -181,8 +181,8 @@ class VoyagerUserController extends VoyagerBaseController
             }
         }
 
-        if (isset($data['password']))
-            $data['password'] = Hash::make($data['password']);
+        // if (isset($data['password']))
+        //     $data['password'] = Hash::make($data['password']);
 
         $data->save();
 
