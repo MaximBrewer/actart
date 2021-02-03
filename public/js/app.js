@@ -94823,7 +94823,10 @@ function Auction(props) {
     className: "col-xl-40 col-xxl-38"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "left-side"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex flex-column"
+  }, state.auction.current ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "order-2 order-sm-1",
     style: {
       width: "100%"
     }
@@ -94858,14 +94861,11 @@ function Auction(props) {
       });
     }
   })) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "current d-flex justify-content-between py-2"
+    className: "order-1 order-sm-2 current d-flex justify-content-between py-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h2 color-red d-none d-sm-block"
   }, state.auction.current ? Object(_utils_trans__WEBPACK_IMPORTED_MODULE_1__["default"])("LOT_TEXT_LOT_ID") + " " + state.auction.current.sort : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      width: "100%",
-      maxWidth: "340px"
-    }
+    className: "w-100 mw-sm-340"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       paddingTop: "58.82%",

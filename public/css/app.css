@@ -22084,7 +22084,7 @@ section.announces.bggray .background-text {
 
 .auction-page-wrapper .auction-info {
   position: relative;
-  margin-top: 6rem;
+  margin-top: 2rem;
   margin-bottom: 4rem;
 }
 
@@ -22138,6 +22138,16 @@ section.announces.bggray .background-text {
   font-weight: bold;
   color: #1e2b32;
   text-decoration: underline;
+}
+
+@media (min-width: 576px) {
+  .auction-page-wrapper .auction-info {
+    margin-top: 6rem;
+  }
+
+  .auction-page-wrapper .auction-info .mw-sm-340 {
+    max-width: 340px;
+  }
 }
 
 .auction-page-wrapper .auction-carousel {

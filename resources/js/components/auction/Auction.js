@@ -451,9 +451,10 @@ export default function Auction(props) {
                                     <div className="row">
                                         <div className="col-xl-40 col-xxl-38">
                                             <div className="left-side">
-                                                <div>
+                                                <div className="d-flex flex-column">
                                                     {state.auction.current ? (
                                                         <div
+                                                            className="order-2 order-sm-1"
                                                             style={{
                                                                 width: "100%"
                                                             }}
@@ -523,7 +524,7 @@ export default function Auction(props) {
                                                         ``
                                                     )}
                                                     <div
-                                                        className={`current d-flex justify-content-between py-2`}
+                                                        className={`order-1 order-sm-2 current d-flex justify-content-between py-2`}
                                                     >
                                                         <div className="h2 color-red d-none d-sm-block">
                                                             {state.auction
@@ -537,13 +538,7 @@ export default function Auction(props) {
                                                                       .sort
                                                                 : ``}
                                                         </div>
-                                                        <div
-                                                            style={{
-                                                                width: "100%",
-                                                                maxWidth:
-                                                                    "340px"
-                                                            }}
-                                                        >
+                                                        <div className="w-100 mw-sm-340">
                                                             <div
                                                                 style={{
                                                                     paddingTop:

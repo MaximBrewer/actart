@@ -2,7 +2,7 @@
 .auction-page-wrapper {
     .auction-info {
         position: relative;
-        margin-top: 6rem;
+        margin-top: 2rem;
         margin-bottom: 4rem;
         &:before {
             display: block;
@@ -56,6 +56,12 @@
                 text-decoration: underline;
             }
         }
+        @media (min-width: map.get($grid-breakpoints, "sm")) {
+            margin-top: 6rem;
+            .mw-sm-340 {
+                max-width: 340px;
+            }
+        }
     }
     .auction-carousel {
         margin-top: 6rem;
@@ -84,8 +90,8 @@
     }
 }
 
-.h-center{
-    .d-flex{
+.h-center {
+    .d-flex {
         justify-content: center;
     }
 }
