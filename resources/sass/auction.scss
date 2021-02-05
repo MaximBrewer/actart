@@ -18,8 +18,10 @@
     // padding: 3rem 0 5rem;
 
     &.regular-list {
-        margin-top: -2rem;
         padding: 2rem 0 5rem;
+        @media (min-width: map.get($grid-breakpoints, "sm")) {
+            margin-top: -2rem;
+        }
     }
     &.special-list {
         padding: 2rem 0 5rem;
