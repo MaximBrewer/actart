@@ -17980,6 +17980,7 @@ iframe {
 
 .header .header-bottom-logo a svg {
   width: 240px;
+  height: 33px;
 }
 
 @media (min-width: 1600px) {
@@ -17993,6 +17994,7 @@ iframe {
 
   .header .header-bottom-logo a svg {
     width: 379px;
+    height: 53px;
   }
 }
 

@@ -46,12 +46,12 @@
                 fill: transparent;
             }
         }
-        .logo svg{
+        .logo svg {
             fill: $cyandark;
             stroke: $cyandark;
         }
         .profile.icon {
-            display:block;
+            display: block;
             width: 2rem;
             svg {
             }
@@ -150,6 +150,7 @@
             }
             svg {
                 width: 240px;
+                height: 33px;
             }
         }
         @media (min-width: map.get($grid-breakpoints, "xxl")) {
@@ -160,6 +161,7 @@
                 }
                 svg {
                     width: 379px;
+                    height: 53px;
                 }
             }
         }
