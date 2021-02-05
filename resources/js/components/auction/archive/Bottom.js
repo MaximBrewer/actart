@@ -7,7 +7,7 @@ export default function ArchiveBottom(props) {
         <div className="auction-footer">
             <div className="container">
                 <div className="row justify-content-center my-5">
-                    <div className="col-lg-15">
+                    <div className="col-lg-15 mb-2">
                         <Link to="/auctions" className="btn btn-default w-100">
                             {__("BTN_ALL_AUCTIONS")}
                         </Link>

@@ -40,7 +40,7 @@ export default function Bottom(props) {
                 </div>
                 <div className="row justify-content-center my-5">
                     <div className="col-lg-15">
-                        <Link to="/auctions" className="btn btn-default w-100">
+                        <Link to="/auctions" className="btn btn-default w-100 mb-2">
                             {__("BTN_ALL_AUCTIONS")}
                         </Link>
                     </div>
