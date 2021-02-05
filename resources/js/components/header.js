@@ -232,10 +232,10 @@ export default function Header(props) {
                                     <div>
                                         {currentUser ? (
                                             <Link
-                                                className="icon profile"
+                                                className="icon profile d-block"
                                                 to="/profile"
                                             >
-                                                {/* <Profile /> */}
+                                                <Profile />
                                             </Link>
                                         ) : (
                                             <a
