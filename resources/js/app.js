@@ -6,6 +6,7 @@ import Flash from "./helpers/Flash";
 import { polyfill } from "es6-promise";
 import "react-image-lightbox/style.css";
 import client from "./api/client";
+require("./polyfills/CustomEvent");
 polyfill();
 
 import "react-app-polyfill/ie11";

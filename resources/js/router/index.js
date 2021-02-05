@@ -183,7 +183,6 @@ function App() {
         setModal(initState);
     }
 
-
     const participate = (e, auction) => {
         if (!currentUser) {
             e.preventDefault();
@@ -220,9 +219,9 @@ function App() {
         openModal: openModal,
         closeModal: closeModal
     };
-    
+
     const openModalEvent = event => {
-        openModal(event.detail)
+        openModal(event.detail);
     };
 
     useEffect(() => {
@@ -238,7 +237,7 @@ function App() {
         <Router>
             <div className="wrapper">
                 <Header {...rest} />
-                <main id="main">
+                <div id="main">
                     <Switch>
                         <Route exact path="/about">
                             <Base {...rest} />
@@ -361,7 +360,7 @@ function App() {
                             <NotFound {...rest} />
                         </Route>
                     </Switch>
-                </main>
+                </div>
             </div>
             <Footer {...rest} />
             {modals.map((item, index) => (
