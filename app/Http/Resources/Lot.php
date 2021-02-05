@@ -75,6 +75,7 @@ class Lot extends JsonResource
                 'bets' => $this->bets,
                 'sort' => $this->sort,
                 'countdown' => $this->countdown ? Carbon::parse($this->countdown)->format(DATE_ATOM) : $this->countdown,
+                'delta' => $this->countdown ? (new Carbon())->toDateTimeString() - Carbon::parse($this->countdown)->toDateTimeString() : $this->countdown,
                 'status' => $this->status,
                 'price' => count($this->bets) ? $this->bets[0]['bet'] : $this->price
             ];

@@ -16,6 +16,7 @@ class UpdateCountdown implements ShouldBroadcast
 
     public $id;
     public $countdown;
+    public $delta;
     /**
      * Create a new event instance.
      *
@@ -25,6 +26,7 @@ class UpdateCountdown implements ShouldBroadcast
     {
         $this->id = $lot->id;
         $this->countdown = $lot->countdown;
+        $this->delta = $lot->delta;
         //
     }
   
