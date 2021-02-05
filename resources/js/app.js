@@ -8,8 +8,8 @@ import "react-image-lightbox/style.css";
 import client from "./api/client";
 polyfill();
 
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
 
 /*! https://mths.be/scrollingelement v1.5.2 by @diegoperini & @mathias | MIT license */
 if (!("scrollingElement" in document))
@@ -231,10 +231,10 @@ channel.bind("create-bet", function({ bet }) {
         })
     );
 });
-channel.bind("update-countdown", function({ id, countdown }) {
+channel.bind("update-countdown", function({ id, countdown, delta }) {
     window.dispatchEvent(
         new CustomEvent("update-countdown", {
-            detail: { id: id, countdown: countdown }
+            detail: { id: id, countdown: countdown, delta: delta }
         })
     );
 });
@@ -334,7 +334,6 @@ window.initState = {
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "./components/react-alert-template-basic";
 
-
 // optional configuration
 const options = {
     // you can also just use 'bottom center'
@@ -344,7 +343,6 @@ const options = {
     // you can also just use 'scale'
     transition: transitions.SCALE
 };
-
 
 ReactDOM.render(
     <AuthProvider>

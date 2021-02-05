@@ -212,18 +212,22 @@ export default function Auction(props) {
         setState(prevState => {
             let auction = prevState.auction;
             if (auction.current.id == event.detail.id) {
+                console.log(
+                    event.detail.delta < window.App.timer,
+                    event.detail.delta,
+                    window.App.timer
+                );
                 auction.current.countdown = event.detail.countdown;
-                if (
-                    new Date().getTime() - 1000 * window.App.timer <
-                    new Date(event.detail.countdown).getTime()
-                ) {
+                auction.current.delta = event.detail.delta;
+                if (event.detail.delta < window.App.timer) {
                     return {
                         ...prevState,
                         countdown: (
                             <Countdown
                                 date={
-                                    new Date(event.detail.countdown).getTime() +
-                                    1000 * window.App.timer
+                                    new Date().getTime() +
+                                    1000 *
+                                        (window.App.timer - event.detail.delta)
                                 }
                                 renderer={renderer}
                                 onComplete={handleOnComplete}
@@ -249,10 +253,13 @@ export default function Auction(props) {
                 ...prevState,
                 auction: {
                     ...prevState.auction,
-                    current: prevState.auction.current
+                    current: {
+                        ...prevState.auction.current,
+                        delta: window.App.timer
+                    }
                 }
-            }
-        })
+            };
+        });
     };
 
     const { url } = useRouteMatch();
@@ -277,17 +284,14 @@ export default function Auction(props) {
                     res.data &&
                     res.data.auction &&
                     res.data.auction.current &&
-                    res.data.auction.current.countdown &&
-                    new Date().getTime() - 1000 * window.App.timer <
-                        new Date(
-                            res.data.auction.current.countdown
-                        ).getTime() ? (
+                    res.data.auction.current.delta &&
+                    res.data.auction.current.delta < window.App.timer ? (
                         <Countdown
                             date={
-                                new Date(
-                                    res.data.auction.current.countdown
-                                ).getTime() +
-                                1000 * window.App.timer
+                                new Date().getTime() +
+                                1000 *
+                                    (window.App.timer -
+                                        res.data.auction.current.delta)
                             }
                             renderer={renderer}
                             onComplete={handleOnComplete}
@@ -805,15 +809,12 @@ export default function Auction(props) {
                                                                 )}
                                                                 {state.auction
                                                                     .current
-                                                                    .countdown &&
-                                                                new Date(
-                                                                    state.auction.current.countdown
-                                                                ).getTime() +
-                                                                    1000 *
-                                                                        window
-                                                                            .App
-                                                                            .timer <
-                                                                    new Date().getTime() ? (
+                                                                    .delta &&
+                                                                state.auction
+                                                                    .current
+                                                                    .delta >=
+                                                                    window.App
+                                                                        .timer ? (
                                                                     ``
                                                                 ) : (
                                                                     <a

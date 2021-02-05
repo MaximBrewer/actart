@@ -10,6 +10,8 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
+use Illuminate\Support\Carbon;
+
 class UpdateCountdown implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
@@ -22,14 +24,19 @@ class UpdateCountdown implements ShouldBroadcast
      *
      * @return void
      */
+
+
     public function __construct($lot)
     {
         $this->id = $lot->id;
         $this->countdown = $lot->countdown;
-        $this->delta = $lot->delta;
+        $this->delta = $lot->countdown ?
+            Carbon::now()->timestamp
+            - Carbon::parse($lot->countdown)->timestamp
+            : $lot->countdown;
         //
     }
-  
+
     public function broadcastAs()
     {
         return 'update-countdown';
