@@ -233,6 +233,7 @@ export default function Header(props) {
                                         {currentUser ? (
                                             <Link
                                                 className="icon profile d-block"
+                                                style={{width: "2rem", height: "2rem"}}
                                                 to="/profile"
                                             >
                                                 <Profile />
