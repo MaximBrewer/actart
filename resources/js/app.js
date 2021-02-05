@@ -232,11 +232,10 @@ channel.bind("create-bet", function({ bet }) {
     );
 });
 channel.bind("update-countdown", function({ id, countdown, delta }) {
-    window.dispatchEvent(
-        new CustomEvent("update-countdown", {
-            detail: { id: id, countdown: countdown, delta: delta }
-        })
-    );
+    let event = new CustomEvent("update-countdown", {
+        detail: { id: id, countdown: countdown, delta: delta }
+    });
+    window.dispatchEvent(event);
 });
 
 channel.bind("update-lot-status", function({ id, status }) {
