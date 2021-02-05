@@ -341,7 +341,9 @@ h6,
 }
 .sticky-wrapper {
     position: relative;
-    margin: 2rem 0 0;
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+        margin: 2rem 0 0;
+    }
     &.sticky-wrapper-gallery{
         margin: 6rem 0 0;
     }
