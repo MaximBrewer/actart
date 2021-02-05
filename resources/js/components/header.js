@@ -229,7 +229,7 @@ export default function Header(props) {
                                     </a>
                                 </div>
                                 <div className="col-md-20 flex-row-reverse right-position d-none d-md-flex">
-                                    <div>
+                                    {/* <div>
                                         {currentUser ? (
                                             <Link
                                                 className="icon profile"
@@ -292,7 +292,7 @@ export default function Header(props) {
                                                 <Lens />
                                             </a>
                                         )}
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
