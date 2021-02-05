@@ -32,6 +32,7 @@ import Countdown, { zeroPad } from "react-countdown";
 import { useAuth } from "../../context/auth";
 
 export default function Auction(props) {
+    let history = useHistory();
     const { req } = props;
     const { currentUser } = useAuth();
     const { id } = useParams();

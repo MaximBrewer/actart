@@ -94419,6 +94419,7 @@ function _arrayWithHoles(arr) {
 
 
 function Auction(props) {
+  var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_21__["useHistory"])();
   var req = props.req;
 
   var _useAuth = Object(_context_auth__WEBPACK_IMPORTED_MODULE_25__["useAuth"])(),
