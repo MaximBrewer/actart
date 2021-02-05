@@ -8,6 +8,9 @@ import "react-image-lightbox/style.css";
 import client from "./api/client";
 polyfill();
 
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+
 /*! https://mths.be/scrollingelement v1.5.2 by @diegoperini & @mathias | MIT license */
 if (!("scrollingElement" in document))
     (function() {
