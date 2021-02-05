@@ -55,12 +55,6 @@
 @import "./tizers/slides/expert";
 @import "./tizers/slides/post";
 
-#main {
-    padding-top: 3rem;
-    @media (min-width: map.get($grid-breakpoints, "sm")) {
-        padding-top: 0;
-    }
-}
 b,
 strong {
     font-weight: bold;

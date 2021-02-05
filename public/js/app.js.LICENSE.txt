@@ -65,6 +65,11 @@ and limitations under the License.
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
 
+/**
+* @link https://github.com/gajus/sister for the canonical source repository
+* @license https://github.com/gajus/sister/blob/master/LICENSE BSD 3-Clause
+*/
+
 /** @license React v0.19.1
  * scheduler.production.min.js
  *
