@@ -17173,6 +17173,7 @@ img {
 
 input.form-control {
   outline: none !important;
+  line-height: 1;
 }
 
 .container-fluid,
@@ -17953,7 +17954,6 @@ iframe {
 
 .header .header-top.bg-dark input {
   min-width: 27rem;
-  line-height: 2.31rem;
   background: transparent;
   color: #d6d6d6;
   border: 1px solid #d6d6d6;
@@ -18328,7 +18328,6 @@ iframe {
 .footer-top .form-group input.form-control {
   border: none;
   width: 100%;
-  line-height: 2.75rem;
   height: 2.75rem;
   color: #ffffff;
   font-weight: bold;
@@ -18475,7 +18474,6 @@ iframe {
 
   .footer-top .form-group input.form-control {
     width: auto;
-    line-height: 2.25rem;
     height: 2.25rem;
   }
 

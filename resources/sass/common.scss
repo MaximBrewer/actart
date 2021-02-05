@@ -21,6 +21,7 @@ input.form-control {
     // border: none;
     outline: none !important;
     @include box-shadow(none);
+    line-height: 1;
 }
 .container-fluid {
     max-width: 1920px;
