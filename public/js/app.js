@@ -102752,9 +102752,9 @@ function Header(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     closeMobile();
-    document.body.className = pathname == "/" ? 'home' : '';
+    document.body.className = pathname == "/" ? "home" : "";
 
-    if (!window.skipScroll && pathname.indexOf('gallery/category') == -1) {
+    if (!window.skipScroll && pathname.indexOf("gallery/category") == -1) {
       window.scrollTo(0, 0);
     }
 
@@ -102774,8 +102774,8 @@ function Header(props) {
   var changeWindow = function changeWindow() {
     var mf = document.getElementById("header-full-menu-fixed");
 
-    if (!!mf && mf.style.display == 'block') {
-      mf.style.display = 'none';
+    if (!!mf && mf.style.display == "block") {
+      mf.style.display = "none";
     }
 
     if (document.body.classList.contains("home")) {
@@ -102816,7 +102816,7 @@ function Header(props) {
           button.classList.remove("btn-default-inverse");
           button.classList.add("btn-primary-inverse");
         });
-        document.getElementById("header-full-menu").style.display = "none";
+        document.getElementById("header-full-menu") && (document.getElementById("header-full-menu").style.display = "none");
         document.getElementById("header-content").classList.remove("bg-dark");
       }
     } else {
@@ -102845,8 +102845,8 @@ function Header(props) {
     if (window.innerWidth > 1279) {
       var menu = document.getElementById("header-full-menu-fixed");
 
-      if (menu.style.display == 'block') {
-        menu.style.display = 'none';
+      if (menu.style.display == "block") {
+        menu.style.display = "none";
       } else {
         var headerTop = document.getElementById("header-top");
         menu.style.marginTop = headerTop.offsetHeight + "px";
@@ -102910,7 +102910,7 @@ function Header(props) {
     className: "align-items-center d-flex d-md-none"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_header__WEBPACK_IMPORTED_MODULE_3__["SmallTopLogo"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-nowrap ml-4 align-items-center d-none d-xl-flex"
-  }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('online-auction<br>of contemporary art'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("online-auction<br>of contemporary art"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "burger-wrapper col-md-20 col-30 hide-dark"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
@@ -102920,7 +102920,7 @@ function Header(props) {
     },
     className: "burger text-decoration-none align-items-center justify-content-between",
     id: "burgerMenuToggle"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_header__WEBPACK_IMPORTED_MODULE_3__["Burger"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Menu')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_header__WEBPACK_IMPORTED_MODULE_3__["Burger"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Menu")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-20 flex-row-reverse right-position d-none d-md-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
     className: "icon profile",
@@ -102930,18 +102930,18 @@ function Header(props) {
     href: "#",
     onClick: function onClick(e) {
       e.preventDefault();
-      openModal('login');
+      openModal("login");
     }
-  }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Log&nbsp;In')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Log&nbsp;In")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "header-lang"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lang-menu mx-3 text-nowrap"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/lang/ru",
-    className: App.locale == 'ru' ? "active" : ""
-  }, "Rus"), " | ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: App.locale == "ru" ? "active" : ""
+  }, "Rus"), " ", "|", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/lang/en",
-    className: App.locale == 'en' ? "active" : ""
+    className: App.locale == "en" ? "active" : ""
   }, "Eng"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "hide-dark-lens"
   }, state.openedSearch ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -102965,7 +102965,7 @@ function Header(props) {
     className: "header-logo"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_header__WEBPACK_IMPORTED_MODULE_3__["Logo"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "h5 py-4"
-  }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('online-auction<br>of contemporary art'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("online-auction<br>of contemporary art"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row header-bottom-menu flex-row-reverse"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col col-xl-12"
@@ -103010,10 +103010,10 @@ function Header(props) {
     className: "lang-menu text-nowrap d-none d-md-block"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/lang/ru",
-    className: App.locale == 'ru' ? "active" : ""
-  }, "Rus"), " | ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: App.locale == "ru" ? "active" : ""
+  }, "Rus"), " ", "|", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/lang/en",
-    className: App.locale == 'en' ? "active" : ""
+    className: App.locale == "en" ? "active" : ""
   }, "Eng")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     className: "close-mobile d-md-none",
@@ -103036,26 +103036,26 @@ function Header(props) {
     className: "p-4 d-flex justify-content-between d-md-none"
   }, currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
     to: "/profile"
-  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('кабинет')) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("кабинет")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     onClick: function onClick(e) {
       e.preventDefault();
       closeMobile();
-      openModal('login');
+      openModal("login");
     }
-  }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('Log&nbsp;In'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("Log&nbsp;In"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "lang-menu text-nowrap"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/lang/ru",
-    className: App.locale == 'ru' ? "active" : ""
-  }, "Rus"), " | ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: App.locale == "ru" ? "active" : ""
+  }, "Rus"), " ", "|", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/lang/en",
-    className: App.locale == 'en' ? "active" : ""
+    className: App.locale == "en" ? "active" : ""
   }, "Eng")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "header-full-menu",
     id: "header-full-menu-fixed",
     style: {
-      display: 'none'
+      display: "none"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container mt-4"
@@ -103066,7 +103066,7 @@ function Header(props) {
     className: "header-logo"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_icons_header__WEBPACK_IMPORTED_MODULE_3__["Logo"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "h5 py-4"
-  }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])('online-auction<br>of contemporary art'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, html_react_parser__WEBPACK_IMPORTED_MODULE_7___default()(Object(_utils_trans__WEBPACK_IMPORTED_MODULE_2__["default"])("online-auction<br>of contemporary art"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row header-bottom-menu flex-row-reverse"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col col-xl-12"
