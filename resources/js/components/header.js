@@ -233,7 +233,10 @@ export default function Header(props) {
                                         {currentUser ? (
                                             <Link
                                                 className="icon profile d-block"
-                                                style={{width: "2rem", height: "2rem"}}
+                                                style={{
+                                                    width: "2rem",
+                                                    height: "2rem"
+                                                }}
                                                 to="/profile"
                                             >
                                                 <Profile />
@@ -303,7 +306,23 @@ export default function Header(props) {
                     <div className="container mt-4">
                         <div className="header-bottom-logo">
                             <Link to="/" className="header-logo">
-                                <Logo />
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        paddingTop: "14%",
+                                        position: "relative"
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            position: "absolute",
+                                            top: 0,
+                                            left: 0
+                                        }}
+                                    >
+                                        <Logo />
+                                    </div>
+                                </div>
                                 <p className="h5 py-4">
                                     {Parser(
                                         __(
