@@ -229,13 +229,13 @@ export default function Header(props) {
                                     </a>
                                 </div>
                                 <div className="col-md-20 flex-row-reverse right-position d-none d-md-flex">
-                                    {/* <div>
+                                    <div>
                                         {currentUser ? (
                                             <Link
                                                 className="icon profile"
                                                 to="/profile"
                                             >
-                                                <Profile />
+                                                {/* <Profile /> */}
                                             </Link>
                                         ) : (
                                             <a
@@ -249,7 +249,7 @@ export default function Header(props) {
                                                 {Parser(__("Log&nbsp;In"))}
                                             </a>
                                         )}
-                                    </div> */}
+                                    </div>
                                     <div className="header-lang">
                                         <div className="lang-menu mx-3 text-nowrap">
                                             <a
