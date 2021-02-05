@@ -364,6 +364,6 @@
 #main {
     padding-top: 3rem;
     @media (min-width: map.get($grid-breakpoints, "sm")) {
-        padding-top: 0;
+        padding-top: 3.5;
     }
 }

@@ -608,7 +608,7 @@ export default function Auction(props) {
                                             <div className="right-side">
                                                 {state.auction.current ? (
                                                     <div className="lot-carousel-right">
-                                                        <div className="pb-3 d-flex justify-content-between">
+                                                        <div className="pb-3 d-flex justify-content-center justify-content-sm-between">
                                                             <div className="lot-number">
                                                                 {__(
                                                                     "LOT_TEXT_LOT_ID"
