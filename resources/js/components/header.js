@@ -249,7 +249,7 @@ export default function Header(props) {
                                                 {Parser(__("Log&nbsp;In"))}
                                             </a>
                                         )}
-                                    </div>
+                                    </div> */}
                                     <div className="header-lang">
                                         <div className="lang-menu mx-3 text-nowrap">
                                             <a
@@ -292,7 +292,7 @@ export default function Header(props) {
                                                 <Lens />
                                             </a>
                                         )}
-                                    </div> */}
+                                    </div>
                                 </div>
                             </div>
                         </div>
