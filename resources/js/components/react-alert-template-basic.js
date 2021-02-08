@@ -134,7 +134,7 @@ var AlertTemplate = function AlertTemplate(_ref) {
         options.type === "info" && React.createElement(InfoIcon, null),
         options.type === "success" && React.createElement(SuccessIcon, null),
         options.type === "error" && React.createElement(ErrorIcon, null),
-        React.createElement("span", { style: { flex: 2 } }, message),
+        React.createElement("div", { style: { flex: 2 } }, message),
         React.createElement(
             "button",
             { onClick: close, style: buttonStyle },

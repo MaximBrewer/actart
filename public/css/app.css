@@ -21933,15 +21933,13 @@ section.announces.bggray .background-text {
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
+  margin-bottom: 0.3rem;
 }
 
-.lot-carousel .lot-carousel-right .lot-author {
-  font-family: TT Severs;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 24px;
-  margin-bottom: 1rem;
+@media (min-width: 576px) {
+  .lot-carousel .lot-carousel-right .lot-author {
+    margin-bottom: 1rem;
+  }
 }
 
 .lot-carousel .lot-carousel-right .lot-title {
@@ -21949,7 +21947,13 @@ section.announces.bggray .background-text {
   font-style: normal;
   font-weight: bold;
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+@media (min-width: 576px) {
+  .lot-carousel .lot-carousel-right .lot-title {
+    margin-bottom: 1rem;
+  }
 }
 
 .lot-carousel .lot-carousel-right .matherial,
@@ -21957,7 +21961,17 @@ section.announces.bggray .background-text {
 .lot-carousel .lot-carousel-right .frames,
 .lot-carousel .lot-carousel-right .techniques,
 .lot-carousel .lot-carousel-right .categories {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.2rem;
+}
+
+@media (min-width: 576px) {
+  .lot-carousel .lot-carousel-right .matherial,
+  .lot-carousel .lot-carousel-right .styles,
+  .lot-carousel .lot-carousel-right .frames,
+  .lot-carousel .lot-carousel-right .techniques,
+  .lot-carousel .lot-carousel-right .categories {
+    margin-bottom: 0.6rem;
+  }
 }
 
 .lot-carousel .lot-carousel-right .matherial span,
@@ -21970,6 +21984,22 @@ section.announces.bggray .background-text {
   line-height: 16px;
   letter-spacing: 0.05em;
   color: #818486;
+}
+
+.lot-carousel .lot-carousel-right .matherial span:after,
+.lot-carousel .lot-carousel-right .styles span:after,
+.lot-carousel .lot-carousel-right .frames span:after,
+.lot-carousel .lot-carousel-right .techniques span:after,
+.lot-carousel .lot-carousel-right .categories span:after {
+  content: ", ";
+}
+
+.lot-carousel .lot-carousel-right .matherial span:last-child:after,
+.lot-carousel .lot-carousel-right .styles span:last-child:after,
+.lot-carousel .lot-carousel-right .frames span:last-child:after,
+.lot-carousel .lot-carousel-right .techniques span:last-child:after,
+.lot-carousel .lot-carousel-right .categories span:last-child:after {
+  content: "";
 }
 
 .lot-carousel .lot-carousel-right .size {
@@ -21995,11 +22025,17 @@ section.announces.bggray .background-text {
   font-size: 18px;
   text-align: right;
   letter-spacing: 0.05em;
-  margin-bottom: 1.8rem;
+  margin-bottom: 0.3rem;
 }
 
 .lot-carousel .lot-carousel-right .user-activity .user-id span {
   font-weight: bold;
+}
+
+@media (min-width: 576px) {
+  .lot-carousel .lot-carousel-right .user-activity .user-id {
+    margin-bottom: 1.8rem;
+  }
 }
 
 .lot-carousel .lot-carousel-right .user-activity .last-price .title {

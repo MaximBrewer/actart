@@ -136,6 +136,7 @@ class LotController extends Controller
         $bet = Bet::where('lot_id', $lot_id)->orderBy('bet', 'DESC')->first();
 
         if (
+            true ||
             $lot->countdown
             &&
             Carbon::parse($lot->countdown)->addSeconds(setting('site.timer'))->toDateTimeString() <
@@ -144,7 +145,9 @@ class LotController extends Controller
         ) {
             return response()->json([
                 'errors' => [
-                    'email' => [__('#YOUR_BET_IS_LATE#')],
+                    'offer' => [__('<b>ВАША СТАВКА ОТМЕНЕНА</b><br/>
+                    Вы сделали ставку после удара молотка.
+                    Нажмите "&times;", чтобы продолжить торги.')],
                     'modal' => 'confirmation'
                 ]
             ], 422);
