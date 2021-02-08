@@ -136,7 +136,7 @@ class LotController extends Controller
         $bet = Bet::where('lot_id', $lot_id)->orderBy('bet', 'DESC')->first();
 
         if (
-            true ||
+            // true ||
             $lot->countdown
             &&
             Carbon::parse($lot->countdown)->addSeconds(setting('site.timer'))->toDateTimeString() <
