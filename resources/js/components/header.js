@@ -392,7 +392,7 @@ export default function Header(props) {
                         </div>
                         <div className="p-4 d-flex justify-content-between d-md-none">
                             {currentUser ? (
-                                <Link to="/profile">{__("кабинет")}</Link>
+                                <Link to="/profile">{__("#CABINET_LINK_TEXT#")}</Link>
                             ) : (
                                 <a
                                     href="#"

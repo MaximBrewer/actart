@@ -19,7 +19,7 @@ export default function AuctionAdmin(props) {
 
     const countdownRef = useRef(null);
     const countdownElem = useRef(null);
-    
+
     const [muted, setMuted] = useState(true);
     const [player, setPlayer] = useState(null);
 
@@ -610,8 +610,12 @@ export default function AuctionAdmin(props) {
                                                                 }
                                                             >
                                                                 {muted
-                                                                    ? `вкл ЗВУК`
-                                                                    : `выкл ЗВУК`}
+                                                                    ? __(
+                                                                          "#TURN_VOICE_ON#"
+                                                                      )
+                                                                    : __(
+                                                                          "#TURN_VOICE_OFF#"
+                                                                      )}
                                                             </button>
                                                         </div>
                                                     </div>
@@ -752,7 +756,7 @@ export default function AuctionAdmin(props) {
                                                                             .current
                                                                             .width
                                                                     }{" "}
-                                                                    х{" "}
+                                                                    &times;{" "}
                                                                     {
                                                                         state
                                                                             .auction

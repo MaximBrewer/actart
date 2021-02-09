@@ -10,7 +10,7 @@ export default function Footer(props) {
             <div className="show-more">
                 <div className="dots">•••</div>
                 <Link to="/gallery" className="text">
-                    Показать больше
+                    {__("#SHOW_MORE_LINK_TEXT#")}
                 </Link>
             </div>
         );
@@ -20,7 +20,7 @@ export default function Footer(props) {
                 <div className="carousel-controls">
                     <div className="carousel-button">
                         <Link to="/news" className="btn btn-default">
-                            {__("ЧИТАТЬ")}
+                            {__("#TO_READ#")}
                         </Link>
                     </div>
 

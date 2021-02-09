@@ -142,6 +142,10 @@ return [
                 'icon_class' => 'voyager-power',
             ],
         ],
+        
+        'data_tables' => [
+            "pageLength" => 100,
+        ],
 
         'widgets' => [
 

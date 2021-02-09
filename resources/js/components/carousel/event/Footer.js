@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
-import __ from '../../../utils/trans';
+import __ from "../../../utils/trans";
 import { Link } from "react-router-dom";
 
 export default function Footer(props) {
@@ -9,15 +9,11 @@ export default function Footer(props) {
         return (
             <React.Fragment>
                 <p className="d-none d-md-block d-lg-none">
-                    Платформа Act-Art – независимый коммерческий проект. Наша
-                    цель – популяризация современного российского искуства в
-                    России и мире. Мы помогаем молодым и именитым авторам найти
-                    своего зрителя и ценителя, делая процесс приобретения
-                    произведений максимально удобным и демократичным.
+                    {__("#EVENTS_FOOTER_DESC#")}
                 </p>
                 <div className="text-center button-wrapper pt-4">
                     <Link to="/events" className="btn btn-default">
-                        ВСЕ АННОНСЫ
+                        {__("#ALL_ANOUNCEMENT_LINK#")}
                     </Link>
                 </div>
             </React.Fragment>
@@ -28,14 +24,11 @@ export default function Footer(props) {
                 <div className="carousel-controls">
                     <div className="carousel-button">
                         <Link to="/events" className="btn btn-default">
-                            ВСЕ АННОНСЫ
+                            {__("#ALL_ANOUNCEMENT_LINK#")}
                         </Link>
                     </div>
                     <div className="carousel-counter">
-                        <span className="current">
-                            {state.slideIndex + 1}
-                        </span>
-                        /
+                        <span className="current">{state.slideIndex + 1}</span>/
                         <span className="total">{state.slidesTotal}</span>
                     </div>
                     <div className="carousel-arrows">

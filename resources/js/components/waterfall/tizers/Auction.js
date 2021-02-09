@@ -60,7 +60,7 @@ export default function Tizer(props) {
                             ))}
                         </div>
                         <div className="size">
-                            {item.width}х{item.height}&nbsp;{__("см")}
+                            {item.width} &times; {item.height}&nbsp;{__("MEASURE_CM")}
                         </div>
                     </div>
                     {state.open && (
@@ -114,7 +114,7 @@ export default function Tizer(props) {
                             ))}
                         </div>
                         <div className="size">
-                            {item.width}х{item.height}&nbsp;{__("см")}
+                            {item.width} &times; {item.height}&nbsp;{__("MEASURE_CM")}
                         </div>
                     </div>
                     {data.auction.status == 'finished' ? `` :

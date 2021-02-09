@@ -146,7 +146,7 @@ export default function Center(props) {
                                                         player.unMute()
                                                     }
                                                 >
-                                                    вкл ЗВУК
+                                                    {__("#TURN_VOICE_ON#")}
                                                 </button>
                                                 <button
                                                     // style="width: 178px; height: 16px; line-height: 16px; padding-top: 0px;"
@@ -155,7 +155,7 @@ export default function Center(props) {
                                                         player.mute()
                                                     }
                                                 >
-                                                    выкл ЗВУК
+                                                    {__("#TURN_VOICE_OFF#")}
                                                 </button>
                                             </div>
                                             <small className="color-red">

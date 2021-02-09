@@ -609,8 +609,8 @@ export default function Auction(props) {
                                                                 }
                                                             >
                                                                 {muted
-                                                                    ? `вкл ЗВУК`
-                                                                    : `выкл ЗВУК`}
+                                                                    ? __("#TURN_VOICE_ON#")
+                                                                    : __("#TURN_VOICE_OFF#")}
                                                             </button>
                                                         </div>
                                                     </div>
@@ -773,7 +773,7 @@ export default function Auction(props) {
                                                                         .current
                                                                         .width
                                                                 }{" "}
-                                                                х{" "}
+                                                                &times;{" "}
                                                                 {
                                                                     state
                                                                         .auction

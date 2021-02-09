@@ -44,7 +44,7 @@ export default function Tizer(props) {
                 ))}
             </div>
             <div className="size">
-                {item.width} х {item.height}
+                {item.width} &times; {item.height}
                 {__("MEASURE_CM")}
             </div>
             <a className={item.status + ` status`} href="#">

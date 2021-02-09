@@ -112,7 +112,7 @@ export default function Tizer(props) {
                 ))}
             </div>
             <div className="size">
-                {state.item.width} х {state.item.height}
+                {state.item.width} &times; {state.item.height}
                 {__("MEASURE_CM")}
             </div>
             {props.data.showStatus ? (

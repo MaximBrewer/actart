@@ -52,9 +52,9 @@ export default function Countdown(props) {
                             <div className="number h5">{zeroPad(days)}</div>
                             <small>
                                 {declOfNum(days, [
-                                    __("день"),
-                                    __("дня"),
-                                    __("дней")
+                                    __("#COUNTDOWN_DAYS_1#"),
+                                    __("#COUNTDOWN_DAYS_2#"),
+                                    __("#COUNTDOWN_DAYS_3#")
                                 ])}
                             </small>
                         </div>
@@ -63,9 +63,9 @@ export default function Countdown(props) {
                             <div className="number h5">{zeroPad(hours)}</div>
                             <small>
                                 {declOfNum(hours, [
-                                    __("час"),
-                                    __("часа"),
-                                    __("часов")
+                                    __("#COUNTDOWN_HOURS_1#"),
+                                    __("#COUNTDOWN_HOURS_3#"),
+                                    __("#COUNTDOWN_HOURS_3#")
                                 ])}
                             </small>
                         </div>
@@ -74,9 +74,9 @@ export default function Countdown(props) {
                             <div className="number h5">{zeroPad(minutes)}</div>
                             <small>
                                 {declOfNum(minutes, [
-                                    __("мин."),
-                                    __("мин."),
-                                    __("мин.")
+                                    __("#COUNTDOWN_MINUTES_1#"),
+                                    __("#COUNTDOWN_MINUTES_1#"),
+                                    __("#COUNTDOWN_MINUTES_1#")
                                 ])}
                             </small>
                         </div>
@@ -85,9 +85,9 @@ export default function Countdown(props) {
                             <div className="number h5">{zeroPad(seconds)}</div>
                             <small>
                                 {declOfNum(seconds, [
-                                    __("сек."),
-                                    __("сек."),
-                                    __("сек.")
+                                    __("#COUNTDOWN_SECONDS_1#"),
+                                    __("#COUNTDOWN_SECONDS_1#"),
+                                    __("#COUNTDOWN_SECONDS_1#")
                                 ])}
                             </small>
                         </div>

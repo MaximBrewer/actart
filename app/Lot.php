@@ -12,6 +12,8 @@ class Lot extends Model
     use Translatable;
     use Resizable;
 
+    protected $perPage = 30;
+
     protected $translatable = ['title', 'text'];
     protected $appends = ['number'];
     protected $fillable = ['auction_id', 'sort', 'status', 'lastchance', 'countdown'];

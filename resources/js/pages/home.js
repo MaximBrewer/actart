@@ -144,81 +144,69 @@ function Home(props) {
                         <div className="row">
                             <div className="col-xl-20"></div>
                             <div className="col-xl-40">
-                                <h2 className="h2">{__("О ПЛАТФОРМЕ")}</h2>
+                                <h2 className="h2">
+                                    {__("#HOME_ABOUT_TITLE#")}
+                                </h2>
                                 <hr />
                                 <p className="sub_h2">
-                                    Платформа Act-Art – независимый
-                                    социально-ориентированный коммерческий
-                                    проект. Наша цель – популяризация
-                                    современного российского искуства в России и
-                                    мире. Мы помогаем молодым и именитым авторам
-                                    найти своего зрителя и ценителя, делая
-                                    процесс приобретения произведений
-                                    максимально удобным и демократичным.
+                                    {__("#HOME_ABOUT_DESC#")}
                                 </p>
                                 <p className="sub_h2">
-                                    Являясь куратором возрождённого легендарного
-                                    творческого объединения “ВсекоХудожник”,
-                                    платформа Аct-Art эксклюзивно представляет
-                                    лучшие работы его авторов. Часть вырученных
-                                    на аукционах средств идёт на обеспечение и
-                                    развитие мастерских, выставок, поддержку
-                                    творческих проектов, образовательные
-                                    инициативы для горожан.
+                                    {__("#HOME_ABOUT_DESC2#")}
                                 </p>
                                 <ul className="list-unstyled d-md-flex justify-content-between">
                                     <li className="h5 h5_underline">
                                         <Link to="/about">
-                                            Подробнее о&nbsp;платформе
+                                            {__("#HOME_LINK_ABOUT#")}
                                         </Link>
                                     </li>
                                     <li className="h5 h5_underline">
                                         <Link to="/spaces#exhibitions">
-                                            Выставочные пространства
+                                            {__("#HOME_LINK_EXHIBITIONS#")}
                                         </Link>
                                     </li>
                                     <li className="h5 h5_underline">
                                         <Link to="/spaces#workshops">
-                                            Мастерские «ВсекоХудожник»
+                                            {__("#HOME_ABOUT_WORKSHOPS#")}
                                         </Link>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div className="rolling-strings d-none">
+                        {/* <div className="rolling-strings d-none">
                             <div className="row">
                                 <div className="col col-md-50 align-self-end">
                                     <div
                                         className="d-flex"
                                         style={{ transform: "translateX(40%)" }}
                                     >
-                                        <div className="h7">образование</div>
-                                        <div className="h7">поддержка</div>
-                                        <div className="h7">поддержка</div>
+                                        <div className="h7">{__("#HOME_EDUCATION#")}</div>
+                                        <div className="h7">{__("#HOME_EDUCATION#")}</div>
+                                        <div className="h7">{__("#HOME_EDUCATION#")}</div>
                                     </div>
                                     <div
                                         className="d-flex"
                                         style={{ transform: "translateX(30%)" }}
                                     >
-                                        <div className="h7">искусство</div>
-                                        <div className="h7">ОБЩЕСТВО</div>
-                                        <div className="h7">словослово</div>
+                                        <div className="h7">{__("#HOME_EDUCATION#")}</div>
+                                        <div className="h7">{__("#HOME_EDUCATION#")}</div>
+                                        <div className="h7">{__("#HOME_EDUCATION#")}</div>
                                     </div>
                                     <div
                                         className="d-flex"
                                         style={{ transform: "translateX(55%)" }}
                                     >
                                         <div className="h7">
-                                            ОТВЕТСТВЕННОСТЬ
+                                            {__("#HOME_EDUCATION#")}
                                         </div>
-                                        <div className="h7">просвещение</div>
+                                        <div className="h7">{__("#HOME_EDUCATION#")}</div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="sticky-section">
-                        <span>{__("о проекте")}</span>
+                        <span>{__("#STICKY_ABOUT_THE_PROJECT#")}</span>
                     </div>
                 </div>
             </section>
@@ -229,32 +217,24 @@ function Home(props) {
                         <div className="row announce">
                             <div className="col-xl-40 col-xxl-38">
                                 <h2 className="h2">
-                                    ВЫСТАВКИ <span>и</span>&nbsp;МАСТЕРСКИЕ
+                                    {Parser(__("#HOME_EVENTS_TITLE#"))}
                                 </h2>
                                 <p className="sub_h2 d-none d-xl-block">
-                                    Платформа Акт-Арт представляет три
-                                    творческих кластера с собственными
-                                    творческими мастерскими и выставочными
-                                    галереями. Все кластеры находятся в
-                                    историческом центре Москвы и далее какой-то
-                                    текст.
+                                    {__("#HOME_EVENTS_DESC#")}
                                 </p>
                                 <p className="sub_h2 d-none d-xl-block">
-                                    Все кластеры находятся в историческом центре
-                                    Москвы и далее какой-то текст. Все кластеры
-                                    находятся в историческом центре Москвы и
-                                    далее какой-то текст.
+                                    {__("#HOME_EVENTS_DESC2#")}
                                 </p>
                             </div>
                             <div className="col-xl-20 col-xxl-22 d-none d-xl-block">
-                                <h3 className="h3">Адреса:</h3>
+                                <h3 className="h3">{__("#ADDRESSES#")}:</h3>
                                 <dl>
-                                    <dt>Акт-Арт Фрунзенская</dt>
-                                    <dd>Фрунзенская набережная, 1</dd>
-                                    <dt>Акт-Арт Пречистенка</dt>
-                                    <dd>Пречистенка, 24</dd>
-                                    <dt>Акт-Арт Солянка</dt>
-                                    <dd>Пречистенка, 24</dd>
+                                    {window.App.spaces.map((item, index) => (
+                                        <React.Fragment key={index}>
+                                            <dt>{item.title}</dt>
+                                            <dd>{item.address}</dd>
+                                        </React.Fragment>
+                                    ))}
                                 </dl>
                             </div>
                         </div>
@@ -299,7 +279,7 @@ function Home(props) {
                         </div>
                     </div>
                     <div className="sticky-section">
-                        <span>анонсы мероприятий</span>
+                        <span>{__("#STICKY_ANNOUNCES#")}</span>
                     </div>
                 </div>
             </section>
@@ -307,10 +287,10 @@ function Home(props) {
                 <MovingGallery />
             </section>
             <section id="news">
-                <div className="background-text">НОВОСТИ</div>
+                <div className="background-text">{__("#HOME_NEWS_TITLE#")}</div>
                 <div className="sticky-wrapper">
                     <div className="container">
-                        <div className="h5 d-xl-none">БЛОГ И НОВОСТИ</div>
+                        <div className="h5 d-xl-none">{__("#HOME_H5_BLOG_NEWS#")}</div>
                         <div className="news-slider-wrapper">
                             <div
                                 className="news-slider act-carousel"
@@ -352,7 +332,7 @@ function Home(props) {
                         </div>
                     </div>
                     <div className="sticky-section">
-                        <span>последние заметки</span>
+                        <span>{__("#RECENT_NOTES#")}</span>
                     </div>
                 </div>
             </section>
@@ -360,7 +340,7 @@ function Home(props) {
                 <div>
                     <div className="sticky-wrapper">
                         <div className="container">
-                            <h2 className="h2">ЭКСПЕРТНЫЙ СОВЕТ</h2>
+                            <h2 className="h2">{__("#HOME_EXPERTS_TITLE#")}</h2>
                             <div className="experts-slider-wrapper">
                                 <div
                                     className="experts-slider act-carousel"
@@ -402,7 +382,7 @@ function Home(props) {
                             </div>
                         </div>
                         <div className="sticky-section">
-                            <span>экспертный совет</span>
+                            <span>{__("#HOME_EXPERTS_STICKY#")}</span>
                         </div>
                     </div>
                 </div>
@@ -411,10 +391,10 @@ function Home(props) {
                 <div className="container mb-5">
                     <div className="footer-buttons">
                         <Link to="/auctions" className="btn btn-default">
-                            {__("Смотреть аукционы")}
+                            {__("#LINK_VIEW_AUCTIONS#")}
                         </Link>
                         <Link to="/gallery" className="btn btn-primary">
-                            {__("To Gallery")}
+                            {__("#LINK_VIEW_GALLERY#")}
                         </Link>
                     </div>
                 </div>

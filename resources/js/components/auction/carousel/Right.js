@@ -66,7 +66,7 @@ export default function Right(props) {
                 ))}
             </div>
             <div className="size">
-                {item.width} х {item.height} {__("MEASURE_CM")}
+                {item.width} &times; {item.height} {__("MEASURE_CM")}
                 {item.year ? ` / ` + item.year + ` ` + __("SHORT_YEAR") : ``}
             </div>
             <div className="start-price">

@@ -51,7 +51,7 @@ function Profile(props) {
                             </dd>
                         </dl>
                         <dl>
-                            <dt>{__("Логин:")}</dt>
+                            <dt>{__("#PROFILE_LOGIN_TEXT#")}:</dt>
                             <dd>{currentUser.email}</dd>
                         </dl>
                         <hr />

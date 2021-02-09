@@ -43,7 +43,7 @@ export default function Announce(props) {
                                 to={`/auctions/` + state.id}
                                 className="btn btn-default-inverse"
                             >
-                                {__("подробнее")}
+                                {__("#MORE_DETAILS_LINK#")}
                             </Link>
                         </div>
                     </div>

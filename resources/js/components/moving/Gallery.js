@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import __ from '../../utils/trans';
+import __ from "../../utils/trans";
 
 const getRandomColor = () => {
     var letters = "0123456789ABCDEF";
@@ -119,8 +119,7 @@ export default function Gallery() {
                     l: 0,
                     t: 0,
                     bg: getRandomColor(),
-                    href:
-                        "/auctions/" + App.toGallery.id + "/lot/" + lot.id
+                    href: "/auctions/" + App.toGallery.id + "/lot/" + lot.id
                 };
                 let set = false;
                 loop2: for (let j in grid) {
@@ -191,16 +190,16 @@ export default function Gallery() {
                 <div className="row">
                     <div className="col-xs-6">
                         <div className="g-title">
-                            <h5 className="h5">{__("Аукцион")}</h5>
+                            <h5 className="h5">{__("#AUCTION_WORD#")}</h5>
                             <h1 className="h1">{state.auction.title}</h1>
                             <div className="sub_h2">
-                                Лучшее из коллекции Всекохудожник 2020 г.
+                                {__("#THE_BEST_VSEKO_LINK#")}
                             </div>
                             <a
                                 className="h5_underline"
                                 href={"/auctions/" + state.auction.id}
                             >
-                                {__("Смотреть лоты")} →
+                                {__("#VIEW_LOTS_LINK#")} →
                             </a>
                         </div>
                     </div>

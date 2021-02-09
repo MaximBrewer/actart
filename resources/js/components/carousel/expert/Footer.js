@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
-import __ from '../../../utils/trans';
+import __ from "../../../utils/trans";
 
 export default function Footer(props) {
     const { data, state, refPicture } = props;
@@ -9,15 +9,7 @@ export default function Footer(props) {
             <div className="row">
                 <div className="col col-md-40">
                     <div className="carousel-description">
-                        <p className="sub_h2">
-                            Платформа Акт-Арт представляет три творческих
-                            кластера с собственными творческими мастерскими и
-                            выставочными галереями. Все кластеры находятся в
-                            историческом центре Москвы и далее какой-то текст.
-                            Все кластеры находятся в историческом центре Москвы
-                            и далее какой-то текст. Все кластеры находятся в
-                            историческом центре Москвы.
-                        </p>
+                        <p className="sub_h2">{__("#EXPERTS_FOOTER_DESC#")}</p>
                     </div>
                 </div>
                 <div className="col col-md-20">

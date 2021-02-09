@@ -15,6 +15,7 @@ class Event extends Model
 {
     use Translatable;
     use Resizable;
+    protected $perPage = 30;
 
     protected $translatable = ['title', 'seo_title', 'excerpt', 'body', 'meta_description', 'meta_keywords'];
 
