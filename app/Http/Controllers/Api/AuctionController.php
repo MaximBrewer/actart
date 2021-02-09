@@ -147,7 +147,7 @@ class AuctionController extends Controller
                 'status' => 'discontinued'
             ]);
         }
-        if (Lot::where('auction_id', $auction->id)->whereNot('status', 'auction')->count()) sleep(3);
+        if (Lot::where('auction_id', $auction->id)->where('status', '<>', 'auction')->count()) sleep(3);
         $lot = Lot::where('auction_id', $auction->id)->where('status', 'auction')->orderBy('sort', 'ASC')->first();
         if ($lot) {
             $lot->update([
