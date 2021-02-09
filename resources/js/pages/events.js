@@ -6,6 +6,7 @@ import Announce from "../components/announce";
 import useDocumentTitle from "../components/document-title";
 import MovingGallery from "../components/moving/Gallery";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
+import Parser from "html-react-parser";
 
 export default function Events(props) {
     useDocumentTitle(__("EXHIBITIONS_PAGE_TITLE"));
@@ -41,7 +42,7 @@ export default function Events(props) {
                     <div className="container">
                         <div className="row announce">
                             <div className="col-xxl-45 col-xl-40">
-                                <h2 className="h2">{__("#PAGE_EXHIBITIONS_TITLE#")}</h2>
+                                <h2 className="h2">{Parser(__("#PAGE_EXHIBITIONS_TITLE#"))}</h2>
                                 <p className="sub_h2 d-none d-xl-block">
                                     {__("#PAGE_EXHIBITIONS_DESC#")}
                                 </p>
@@ -50,10 +51,10 @@ export default function Events(props) {
                                 </p>
                             </div>
                             <div className="col-xxl-15 col-xl-20 d-none d-xl-block">
-                                <h3 className="h3">{__("#ADDRESSES")}:</h3>
+                                <h3 className="h3">{__("#ADDRESSES#")}:</h3>
                                 <dl>
                                     {window.App.spaces.map((space, index) => {
-                                        if (space.type == "workshop")
+                                        if (space.type == "exhibition")
                                             return (
                                                 <React.Fragment key={index}>
                                                     <dt>{space.title}</dt>
@@ -119,7 +120,7 @@ export default function Events(props) {
                                 <h3 className="h3">{__("Addresses:")}</h3>
                                 <dl>
                                     {window.App.spaces.map((space, index) => {
-                                        if (space.type == "exhibition")
+                                        if (space.type == "workshop")
                                             return (
                                                 <React.Fragment key={index}>
                                                     <dt>{space.title}</dt>

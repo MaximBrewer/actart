@@ -30,6 +30,7 @@ class Lot extends JsonResource
                     ]
                 ];
             }
+            $photos = [];
             $phArr = json_decode($this->photos);
             if (is_array($phArr)) {
                 foreach ($phArr as $ph) {
@@ -50,7 +51,7 @@ class Lot extends JsonResource
                 'text' => $this->getTranslatedAttribute('text'),
                 'thumbnail' => Voyager::image($this->thumbnail('preview', 'photo')),
                 'photo' => Voyager::image($this->photo),
-                'size' => $sizeBase[0] / $sizeBase[1] > 1 ? 2 : 1,
+                'size' => $sizeBase ? ($sizeBase[0] / $sizeBase[1] > 1 ? 2 : 1) : 1,
                 'width' => $this->width,
                 'height' => $this->height,
                 'materials' => $this->materials,
