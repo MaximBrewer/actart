@@ -8,7 +8,8 @@ export default function Carousel(props) {
         slides: [],
         prefix: "",
         slideIndex: 0,
-        slidesTotal: 0
+        slidesTotal: 0,
+        height: 0
     });
 
     const refPicture = useRef();
@@ -33,21 +34,16 @@ export default function Carousel(props) {
         for (size in grid) if (window.innerWidth < grid[size]) break;
         return gridCount[size];
     };
-
     const setting = {
         arrows: false,
-        infinite: true,
         dots: false,
         speed: 300,
         centerMode: true,
-        centerPadding: "25%",
         auto: true,
         variableWidth: true,
-        slidesToShow: slidesToShow(),
         slidesToScroll: 1,
         beforeChange: (current, next) => {
             setState(prevState => {
-                console.log();
                 return {
                     ...prevState,
                     slideIndex: next
@@ -66,28 +62,49 @@ export default function Carousel(props) {
                 props.id
         )
             .then(({ slides, prefix }) => {
-                setState(prevState => ({
-                    ...prevState,
-                    slides: slides,
-                    prefix: prefix
-                }));
+                setState(prevState => {
+                    let maxWidth = 0;
+                    for (let i in slides)
+                        maxWidth =
+                            maxWidth > slides[i].w / slides[i].h
+                                ? maxWidth
+                                : slides[i].w / slides[i].h;
+                    let height = (window.innerWidth - 40) / maxWidth;
+                    return {
+                        ...prevState,
+                        slides: slides,
+                        prefix: prefix,
+                        height: height < 400 ? height : 400
+                    };
+                });
             })
             .catch(() => null);
     };
 
-    // if (window.innerWidth > 767) {
     return (
         <div className="carousel-wrapper pb-5">
             <div className="cg">
                 <Slider {...setting} ref={refPicture}>
-                    {state.slides.map((item, index) => (
-                        <div
-                        className="px-2"
-                            key={index}
-                        >
-                            <img src={item.path} alt="" style={{width: item.w/item.h*300}}/>
-                        </div>
-                    ))}
+                    {state.slides.map((item, index) => {
+                        let height;
+                        return (
+                            <div
+                                className="px-2"
+                                key={index}
+                                style={{
+                                    width: (item.w * state.height) / item.h
+                                }}
+                            >
+                                <img
+                                    src={item.path}
+                                    alt=""
+                                    style={{
+                                        width: "100%"
+                                    }}
+                                />
+                            </div>
+                        );
+                    })}
                 </Slider>
             </div>
             <div className="d-flex justify-content-between py-5">
@@ -95,7 +112,6 @@ export default function Carousel(props) {
                     {state.slides.map((item, index) => (
                         <div
                             onClick={() => {
-                                console.log(index);
                                 refPicture.current.slickGoTo(index);
                             }}
                             className={`line${
@@ -161,11 +177,4 @@ export default function Carousel(props) {
             </div>
         </div>
     );
-    // } else {
-    //     return (
-    //         <React.Fragment>
-    //             {createSlides()}
-    //         </React.Fragment>
-    //     );
-    // }
 }

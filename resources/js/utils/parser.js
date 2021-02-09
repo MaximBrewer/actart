@@ -12,7 +12,7 @@ export default function Parser(props) {
         let htmlstr = "";
         if (result) {
             htmlstr += str.substr(0, result.index);
-            htmlstr += "<div class='row justify-content-xl-center'><div class='col-xl-40'><div style='padding-top:58.82%;height:0;position:relative;' class='translation-wrapper'>";
+            htmlstr += "<div class='row justify-content-xl-start'><div class='col-xl-42'><div style='padding-top:58.82%;height:0;position:relative;' class='translation-wrapper'>";
             htmlstr += result[0];
             htmlstr += "</div></div></div>";
             htmlstr += str.substr(
@@ -21,7 +21,6 @@ export default function Parser(props) {
             );
         } else htmlstr = str;
 
-            console.log(htmlstr);
         regexp = /\[carousel\]/;
         result = htmlstr.match(regexp);
 
