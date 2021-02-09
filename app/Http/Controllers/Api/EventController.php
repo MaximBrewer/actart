@@ -41,7 +41,7 @@ class EventController extends Controller
     }
     public function show(Request $request, $lang, $id)
     {
-        $page = Event::findOrFail($id);
+        $page = Event::findOrFail(10);
         return [
             'event' => new EventFullResource($page)
         ];

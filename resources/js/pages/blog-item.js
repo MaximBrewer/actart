@@ -38,7 +38,12 @@ export default function BlogItem(props) {
                                 <h2 className="h2">{state.post.title}</h2>
                                 <hr />
                                 <p className="sub_h2 d-none d-xl-block">
-                                    <Parser body={state.post.excerpt} {...props} />
+                                    <Parser
+                                        body={state.post.excerpt}
+                                        entity={`blog`}
+                                        id={state.post.id}
+                                        {...props}
+                                    />
                                 </p>
                             </div>
                             <div className="col-xl-30 col-xxl-32 d-none d-xl-block">
@@ -53,7 +58,12 @@ export default function BlogItem(props) {
                         </div>
                         <div className="row">
                             <div className="col-60 tag-p-40">
-                                <Parser body={state.post.body} {...props} />
+                                <Parser
+                                    body={state.post.body}
+                                    entity={`blog`}
+                                    id={state.post.id}
+                                    {...props}
+                                />
                             </div>
                         </div>
                         <hr />
@@ -63,7 +73,9 @@ export default function BlogItem(props) {
                         </div>
                     </div>
                 </section>
-                <div className="sticky-section"><span>{__("act•art blog")}</span> </div>
+                <div className="sticky-section">
+                    <span>{__("act•art blog")}</span>{" "}
+                </div>
             </div>
             <section className="blog-section">
                 <div className="container">
@@ -105,73 +117,75 @@ export default function BlogItem(props) {
                     </div>
                 </div>
             </section>
-            <section id="gallery"><MovingGallery /></section>
+            <section id="gallery">
+                <MovingGallery />
+            </section>
         </React.Fragment>
     ) : (
-            <div className="sticky-wrapper">
-                <section id="page">
-                    <div className="container">
-                        <div className="loading-page">
-                            <div className="row">
-                                <div className={`col-xl-60`}>
-                                    <h2 className="h2 title-loading">
-                                        <div className="block-loading">
-                                            <div className="block-loading-animation">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </h2>
-                                    <hr />
-                                    <div className="sub_h2 subtitle-loading">
-                                        <div className="block-loading">
-                                            <div className="block-loading-animation">
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                            </div>
+        <div className="sticky-wrapper">
+            <section id="page">
+                <div className="container">
+                    <div className="loading-page">
+                        <div className="row">
+                            <div className={`col-xl-60`}>
+                                <h2 className="h2 title-loading">
+                                    <div className="block-loading">
+                                        <div className="block-loading-animation">
+                                            <span></span>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-60">
+                                </h2>
+                                <hr />
+                                <div className="sub_h2 subtitle-loading">
                                     <div className="block-loading">
                                         <div className="block-loading-animation">
                                             <span></span>
                                             <span></span>
                                             <span></span>
                                             <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <hr />
-                            <div className="sharing sticky-loading">
-                                <br />
+                        </div>
+                        <div className="row">
+                            <div className="col-60">
+                                <div className="block-loading">
+                                    <div className="block-loading-animation">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <hr />
+                        <div className="sharing sticky-loading">
+                            <br />
+                        </div>
                     </div>
-                </section>
-                <div className="sticky-section">
-                    <span className="sticky-loading"></span>
                 </div>
+            </section>
+            <div className="sticky-section">
+                <span className="sticky-loading"></span>
             </div>
-        );
+        </div>
+    );
 }
