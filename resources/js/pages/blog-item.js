@@ -40,7 +40,7 @@ export default function BlogItem(props) {
                                 <p className="sub_h2 d-none d-xl-block">
                                     <Parser
                                         body={state.post.excerpt}
-                                        entity={`blog`}
+                                        entity={`post`}
                                         id={state.post.id}
                                         {...props}
                                     />
@@ -60,7 +60,7 @@ export default function BlogItem(props) {
                             <div className="col-60 tag-p-40">
                                 <Parser
                                     body={state.post.body}
-                                    entity={`blog`}
+                                    entity={`post`}
                                     id={state.post.id}
                                     {...props}
                                 />

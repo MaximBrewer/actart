@@ -40,6 +40,8 @@ export default function NewsItem(props) {
                                 <p className="sub_h2 d-none d-xl-block">
                                     <Parser
                                         body={state.post.excerpt}
+                                        entity={`post`}
+                                        id={state.post.id}
                                         {...props}
                                     />
                                 </p>
