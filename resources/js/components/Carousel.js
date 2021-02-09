@@ -2,14 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 
 export default function Carousel(props) {
-
     const { req } = props;
 
     const [state, setState] = useState({
         slides: [],
-        prefix: '',
+        prefix: "",
         slideIndex: 0,
-        slidesTotal: 0,
+        slidesTotal: 0
     });
 
     const refPicture = useRef();
@@ -43,11 +42,12 @@ export default function Carousel(props) {
         centerMode: true,
         centerPadding: "25%",
         auto: true,
+        variableWidth: true,
         slidesToShow: slidesToShow(),
         slidesToScroll: 1,
         beforeChange: (current, next) => {
             setState(prevState => {
-                console.log()
+                console.log();
                 return {
                     ...prevState,
                     slideIndex: next
@@ -57,17 +57,20 @@ export default function Carousel(props) {
     };
 
     const addSlides = () => {
-
-        req('/api/' + window.App.locale + "/get_carousel_items/" +
-            props.entity +
-            "/" +
-            props.id)
+        req(
+            "/api/" +
+                window.App.locale +
+                "/get_carousel_items/" +
+                props.entity +
+                "/" +
+                props.id
+        )
             .then(({ slides, prefix }) => {
                 setState(prevState => ({
                     ...prevState,
                     slides: slides,
                     prefix: prefix
-                }))
+                }));
             })
             .catch(() => null);
     };
@@ -78,14 +81,11 @@ export default function Carousel(props) {
             <div className="cg">
                 <Slider {...setting} ref={refPicture}>
                     {state.slides.map((item, index) => (
-                        <div className="px-2" key={index}>
-                            <div
-                                className="image"
-                                style={{
-                                    backgroundImage:
-                                        'url("' + state.prefix + item + '")'
-                                }}
-                            ></div>
+                        <div
+                        className="px-2"
+                            key={index}
+                        >
+                            <img src={item.path} alt="" style={{width: item.w/item.h*300}}/>
                         </div>
                     ))}
                 </Slider>
@@ -93,7 +93,17 @@ export default function Carousel(props) {
             <div className="d-flex justify-content-between py-5">
                 <div className="carousel-lines">
                     {state.slides.map((item, index) => (
-                        <div onClick={() => { console.log(index); refPicture.current.slickGoTo(index) }} className={`line${index == state.slideIndex ? ` active` : ``}`} style={{ display: index > 10 ? `none` : `` }} key={index}></div>
+                        <div
+                            onClick={() => {
+                                console.log(index);
+                                refPicture.current.slickGoTo(index);
+                            }}
+                            className={`line${
+                                index == state.slideIndex ? ` active` : ``
+                            }`}
+                            style={{ display: index > 10 ? `none` : `` }}
+                            key={index}
+                        ></div>
                     ))}
                 </div>
                 <div className="carousel-arrows">

@@ -22969,6 +22969,10 @@ strong {
   color: #ff665e !important;
 }
 
+.bg-white-100 {
+  background-color: #fafafa;
+}
+
 .top-bar {
   background-color: #1e2b32;
   color: #ffffff;

@@ -31,15 +31,13 @@ Route::name('api.')->namespace('Api')->group(function () {
                 Route::post('password/reset', 'ResetPasswordController@reset');
 
                 Route::post('send/confirmation', function (Request $request) {
-                    
+
                     $user = User::where('email', $request->email)->whereNull('email_verified_at')->firstOrFail();
 
                     $user->sendEmailVerificationNotification();
 
                     return ['status' => __('A verification link has been sent to your email address.')];
-                    
                 })->middleware(['throttle:60,1'])->name('verification.send');
-
             });
 
             Route::get('page/{slug}', '\App\Http\Controllers\Api\PageController@show')->name('page.show');
@@ -63,7 +61,18 @@ Route::name('api.')->namespace('Api')->group(function () {
 
             Route::get('get_carousel_items/{entity}/{id}', function ($lang, $entity, $id) {
                 $res = DB::table($entity . 's')->select('images')->find($id);
-                return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
+                $images = [];
+                foreach (json_decode($res->images) as $img) {
+                    if (is_file(storage_path('app/public/' . $img))) {
+                        $size = getimagesize(storage_path('app/public/' . $img));
+                        $images[] = [
+                            'w' =>  $size[0],
+                            'h' =>  $size[1],
+                            'path' => '/storage/' . $img
+                        ];
+                    }
+                }
+                return json_encode(['slides' => $images]);
             });
             Route::patch('subscribe', 'SubscribeController@store')->name('subscribe.store');
         });
