@@ -91,15 +91,13 @@ export default function Carousel(props) {
                             <div
                                 className="px-2"
                                 key={index}
-                                style={{
-                                    width: (item.w * state.height) / item.h
-                                }}
                             >
                                 <img
                                     src={item.path}
                                     alt=""
                                     style={{
-                                        width: "100%"
+                                        display: "block",
+                                        width: (item.w * state.height) / item.h
                                     }}
                                 />
                             </div>
