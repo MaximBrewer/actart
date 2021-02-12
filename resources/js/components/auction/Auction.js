@@ -609,8 +609,12 @@ export default function Auction(props) {
                                                                 }
                                                             >
                                                                 {muted
-                                                                    ? __("#TURN_VOICE_ON#")
-                                                                    : __("#TURN_VOICE_OFF#")}
+                                                                    ? __(
+                                                                          "#TURN_VOICE_ON#"
+                                                                      )
+                                                                    : __(
+                                                                          "#TURN_VOICE_OFF#"
+                                                                      )}
                                                             </button>
                                                         </div>
                                                     </div>
@@ -621,7 +625,7 @@ export default function Auction(props) {
                                             <div className="right-side">
                                                 {state.auction.current ? (
                                                     <div className="lot-carousel-right">
-                                                        <div className="pb-sm-3 d-flex justify-content-sm-start">
+                                                        <div className="pb-sm-3 d-flex justify-content-between justify-content-sm-start">
                                                             <div className="lot-number">
                                                                 {__(
                                                                     "LOT_TEXT_LOT_ID"
@@ -632,6 +636,20 @@ export default function Auction(props) {
                                                                         .current
                                                                         .sort
                                                                 }
+                                                            </div>
+                                                            <div className="start-price-mobile d-block d-sm-none">
+                                                                <span>
+                                                                    {__(
+                                                                        "LOT_START_PRICE"
+                                                                    )}
+                                                                    : $
+                                                                    {
+                                                                        state
+                                                                            .auction
+                                                                            .current
+                                                                            .startPrice
+                                                                    }
+                                                                </span>
                                                             </div>
                                                         </div>
                                                         <div className="lot-author">
@@ -800,7 +818,7 @@ export default function Auction(props) {
                                                         ) : (
                                                             ``
                                                         )}
-                                                        <div className="start-price">
+                                                        <div className="start-price d-none d-sm-block">
                                                             <span>
                                                                 {__(
                                                                     "LOT_START_PRICE"
