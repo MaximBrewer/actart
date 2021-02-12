@@ -840,8 +840,12 @@ export default function Auction(props) {
                                                                         "LOT_YOUR_ID"
                                                                     )}
                                                                     :{" "}
-                                                                    <span>
-                                                                        #
+                                                                    <span className="color-red">
+                                                                        <small>
+                                                                            <b>
+                                                                                #
+                                                                            </b>
+                                                                        </small>
                                                                         {
                                                                             currentUser.id
                                                                         }
@@ -874,7 +878,11 @@ export default function Auction(props) {
 
                                                                                 :{" "}
                                                                                 <span>
-                                                                                    #
+                                                                                    <small>
+                                                                                        <b>
+                                                                                            #
+                                                                                        </b>
+                                                                                    </small>
                                                                                     {
                                                                                         state
                                                                                             .auction
