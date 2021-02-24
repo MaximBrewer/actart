@@ -13,6 +13,7 @@ import FullPageSpinner from "../components/full-page-spinner";
 
 import Footer from "../components/footer";
 import Header from "../components/header";
+import Plug from "../components/Plug";
 
 import Home from "../pages/home";
 import Base from "../pages/base";
@@ -235,145 +236,152 @@ function App() {
         <FullPageSpinner />
     ) : (
         <Router>
-            <div className="wrapper">
-                <Header {...rest} />
-                <div id="main">
-                    <Switch>
-                        <Route exact path="/about">
-                            <Base {...rest} />
-                        </Route>
-                        <Route exact path="/rules">
-                            <Base {...rest} />
-                        </Route>
-                        <Route exact path="/delivery">
-                            <Base {...rest} />
-                        </Route>
-                        <Route exact path="/payment">
-                            <Base {...rest} />
-                        </Route>
-                        <Route exact path="/contacts">
-                            <Base {...rest} />
-                        </Route>
-                        <Route exact path="/offer">
-                            <Base {...rest} />
-                        </Route>
-                        <Route exact path="/personal">
-                            <Base {...rest} />
-                        </Route>
-                        <Route exact path="/partnership">
-                            <Base {...rest} />
-                        </Route>
-                        <Route exact path="/how-to-buy">
-                            <Base {...rest} />
-                        </Route>
-                        <Route exact path="/how-to-sell">
-                            <Base {...rest} />
-                        </Route>
-                        <Route path="/password/reset/:token">
-                            <Home {...rest} />
-                        </Route>
-                        <Route exact path="/">
-                            <Home {...rest} />
-                        </Route>
-                        <Route exact path="/blog">
-                            <Blog {...rest} />
-                        </Route>
-                        <Route exact path="/blog/:slug">
-                            <BlogItem {...rest} />
-                        </Route>
+            <Switch>
+                <Route exact path="/">
+                    <Plug {...rest} />
+                </Route>
+                <Route path="/">
+                    <div className="wrapper">
+                        <Header {...rest} />
+                        <div id="main">
+                            <Switch>
+                                <Route exact path="/about">
+                                    <Base {...rest} />
+                                </Route>
+                                <Route exact path="/rules">
+                                    <Base {...rest} />
+                                </Route>
+                                <Route exact path="/delivery">
+                                    <Base {...rest} />
+                                </Route>
+                                <Route exact path="/payment">
+                                    <Base {...rest} />
+                                </Route>
+                                <Route exact path="/contacts">
+                                    <Base {...rest} />
+                                </Route>
+                                <Route exact path="/offer">
+                                    <Base {...rest} />
+                                </Route>
+                                <Route exact path="/personal">
+                                    <Base {...rest} />
+                                </Route>
+                                <Route exact path="/partnership">
+                                    <Base {...rest} />
+                                </Route>
+                                <Route exact path="/how-to-buy">
+                                    <Base {...rest} />
+                                </Route>
+                                <Route exact path="/how-to-sell">
+                                    <Base {...rest} />
+                                </Route>
+                                <Route path="/password/reset/:token">
+                                    <Home {...rest} />
+                                </Route>
+                                {/* <Route exact path="/">
+                                <Plug {...rest} />
+                            </Route> */}
+                                <Route exact path="/blog">
+                                    <Blog {...rest} />
+                                </Route>
+                                <Route exact path="/blog/:slug">
+                                    <BlogItem {...rest} />
+                                </Route>
 
-                        <Route exact path="/news">
-                            <News {...rest} />
-                        </Route>
-                        <Route exact path="/news/:slug">
-                            <NewsItem {...rest} />
-                        </Route>
+                                <Route exact path="/news">
+                                    <News {...rest} />
+                                </Route>
+                                <Route exact path="/news/:slug">
+                                    <NewsItem {...rest} />
+                                </Route>
 
-                        <Route exact path="/events">
-                            <Events {...rest} />
-                        </Route>
-                        <Route exact path="/events/exhibitions">
-                            <Events {...rest} />
-                        </Route>
-                        <Route exact path="/events/workshops">
-                            <Events {...rest} />
-                        </Route>
-                        <Route exact path="/events/:id">
-                            <EventsItem {...rest} />
-                        </Route>
+                                <Route exact path="/events">
+                                    <Events {...rest} />
+                                </Route>
+                                <Route exact path="/events/exhibitions">
+                                    <Events {...rest} />
+                                </Route>
+                                <Route exact path="/events/workshops">
+                                    <Events {...rest} />
+                                </Route>
+                                <Route exact path="/events/:id">
+                                    <EventsItem {...rest} />
+                                </Route>
 
-                        <Route exact path="/authors">
-                            <Authors {...rest} />
-                        </Route>
-                        <Route exact path="/authors/:id">
-                            <AuthorsItem {...rest} />
-                        </Route>
+                                <Route exact path="/authors">
+                                    <Authors {...rest} />
+                                </Route>
+                                <Route exact path="/authors/:id">
+                                    <AuthorsItem {...rest} />
+                                </Route>
 
-                        <Route path={`/gallery`}>
-                            <Gallery {...rest} />
-                        </Route>
+                                <Route path={`/gallery`}>
+                                    <Gallery {...rest} />
+                                </Route>
 
-                        <Route exact path="/auctions">
-                            <Auctions {...rest} />
-                        </Route>
-                        <Route exact path="/auctions/special">
-                            <Auctions {...rest} />
-                        </Route>
-                        <Route exact path="/auctions/regular">
-                            <Auctions {...rest} />
-                        </Route>
-                        <Route exact path="/auctions/archive">
-                            <AuctionsArchive {...rest} />
-                        </Route>
+                                <Route exact path="/auctions">
+                                    <Auctions {...rest} />
+                                </Route>
+                                <Route exact path="/auctions/special">
+                                    <Auctions {...rest} />
+                                </Route>
+                                <Route exact path="/auctions/regular">
+                                    <Auctions {...rest} />
+                                </Route>
+                                <Route exact path="/auctions/archive">
+                                    <AuctionsArchive {...rest} />
+                                </Route>
 
-                        <AdminRoute
-                            exact
-                            path={`/auctions/admin/:id`}
-                            {...rest}
-                            component={AuctionAdmin}
-                        />
+                                <AdminRoute
+                                    exact
+                                    path={`/auctions/admin/:id`}
+                                    {...rest}
+                                    component={AuctionAdmin}
+                                />
 
-                        <Route path={`/auctions/:id`}>
-                            <Auction {...rest} />
-                        </Route>
-                        <Route exact path={`/search`}>
-                            <SearchPage {...rest} />
-                        </Route>
-                        <Route exact path={`/search/:query`}>
-                            <SearchPage {...rest} />
-                        </Route>
+                                <Route path={`/auctions/:id`}>
+                                    <Auction {...rest} />
+                                </Route>
+                                <Route exact path={`/search`}>
+                                    <SearchPage {...rest} />
+                                </Route>
+                                <Route exact path={`/search/:query`}>
+                                    <SearchPage {...rest} />
+                                </Route>
 
-                        <AuthRoute
-                            exact
-                            path={"/profile/vip"}
-                            component={ProfileVIP}
-                            {...rest}
-                        />
-                        <AuthRoute
-                            exact
-                            path={"/profile"}
-                            component={Profile}
-                            {...rest}
-                        />
+                                <AuthRoute
+                                    exact
+                                    path={"/profile/vip"}
+                                    component={ProfileVIP}
+                                    {...rest}
+                                />
+                                <AuthRoute
+                                    exact
+                                    path={"/profile"}
+                                    component={Profile}
+                                    {...rest}
+                                />
 
-                        <Route>
-                            <NotFound {...rest} />
-                        </Route>
-                    </Switch>
-                </div>
-            </div>
-            <Footer {...rest} />
-            {modals.map((item, index) => (
-                <Modal
-                    key={index}
-                    isOpen={modal[item.key]}
-                    onRequestClose={closeModal}
-                    style={customStyles}
-                    shouldCloseOnOverlayClick={true}
-                >
-                    {item.component}
-                </Modal>
-            ))}
+                                <Route>
+                                    <NotFound {...rest} />
+                                </Route>
+                            </Switch>
+                        </div>
+                    </div>
+                    <Footer {...rest} />
+                </Route>
+                {modals.map((item, index) => (
+                    <Modal
+                        key={index}
+                        isOpen={modal[item.key]}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                        shouldCloseOnOverlayClick={true}
+                    >
+                        {item.component}
+                    </Modal>
+                ))}
+            </Switch>
         </Router>
     );
 }
