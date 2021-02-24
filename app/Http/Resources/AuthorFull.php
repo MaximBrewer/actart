@@ -25,6 +25,7 @@ class AuthorFull extends JsonResource
                 'avatar' => Voyager::image($this->avatar),
                 'studies' => $this->studies,
                 'exhibits' => $this->exhibits,
+                'text' => $this->text,
                 'pxwidth' => $size[0],
                 'pxheight' => $size[1],
             ];

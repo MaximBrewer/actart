@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import __ from "../utils/trans";
 import { useAuth } from '../context/auth';
 import Marquee from "../components/marquee";
+import Parser from "html-react-parser";
 import useDocumentTitle from "../components/document-title";
 import WaterfallAjax from "../components/waterfall/WaterfallAjax";
 
@@ -63,7 +64,7 @@ export default function AuthorItem(props) {
                                 )}
                             <hr />
                             <div className="d-none d-xl-block description">
-                                {state.author.text}
+                                {Parser(state.author.text)}
                             </div>
                             <div className="btn-sign">
                                 {__(
