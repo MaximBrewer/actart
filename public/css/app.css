@@ -18219,11 +18219,12 @@ iframe {
 
 #main {
   padding-top: 3rem;
+  min-height: 50vh;
 }
 
 @media (min-width: 576px) {
   #main {
-    padding-top: 3.5;
+    padding-top: 3.5rem;
   }
 }
 
