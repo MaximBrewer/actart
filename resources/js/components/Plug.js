@@ -17,11 +17,12 @@ function Plug() {
                     alignItems: "center",
                     minHeight: "100vh",
                     minWidth: "100vw",
-                    backgroundColor: "#FF665E"
+                    backgroundColor: "#FF665E",
+                    padding:"5vh 10vw"
                 }}
             >
                 <svg
-                    style={{ maxWidth: "604px", width:"80%", marginBottom:"3rem" }}
+                    style={{ maxWidth: "604px", width:"100%", maxHeight: "30vh", marginBottom:"3rem" }}
                     viewBox="0 0 604 290"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -31,11 +32,11 @@ function Plug() {
                         fill="#285671"
                     />
                 </svg>
-                <h2 style={{ textAlign: "center", color: "#285671" }}>
+                <h3 style={{ textAlign: "center", color: "#285671" }}>
                     Скоро здесь откроется
                     <br /> онлайн-аукцион
                     <br /> современного искусства
-                </h2>
+                </h3>
             </div>
         </section>
     );
