@@ -17,7 +17,7 @@ class Author extends JsonResource
     {
         if ($this) {
             $dir = storage_path("app/public/");
-            $size = $this->avatar ?
+            $size = $this->avatar  && is_file($dir . $this->avatar) ?
                 getimagesize($dir . $this->avatar) : [0, 0];
             return [
                 'id' => $this->id,
