@@ -16,13 +16,14 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
 
             $path = $this->slug . DIRECTORY_SEPARATOR . date('FY') . DIRECTORY_SEPARATOR;
 
-            $filename = $this->generateFileName($file, $path, $path);
-
             if (isset($this->options->jpeg) && $this->options->jpeg && !$this->is_animated_gif($file)) {
                 $ext = 'jpg';
             } else {
                 $ext = $file->getClientOriginalExtension();
             }
+
+            $filename = $this->generateFileName($file, $path, $ext);
+
             $image = InterventionImage::make($file)->orientate();
 
             $fullPath = $path . $filename . '.' . $ext;
@@ -109,7 +110,7 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
                         if (intval($thumbnails->resize->height)) {
                             $thumb_resize_height = $thumbnails->resize->height;
                         }
-                        
+
                         $resize_quality = isset($thumbnails->quality) ? intval($thumbnails->quality) : 100;
 
                         $image = $image->resize(
@@ -155,9 +156,9 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
             while (Storage::disk(config('voyager.storage.disk'))->exists($path . $filename . '.' . $ext)) {
                 $filename = basename($file->getClientOriginalName(), '.' . $ext) . (string) ($filename_counter++);
             }
+            $filename = str_replace("." . $file->getClientOriginalExtension(), "", $filename);
         } else {
             $filename = Str::random(20);
-
             // Make sure the filename does not exist, if it does, just regenerate
             while (Storage::disk(config('voyager.storage.disk'))->exists($path . $filename . '.' . $ext)) {
                 $filename = Str::random(20);
