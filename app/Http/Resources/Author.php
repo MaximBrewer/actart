@@ -17,12 +17,13 @@ class Author extends JsonResource
     {
         if ($this) {
             $dir = storage_path("app/public/");
-            $size = getimagesize($dir . $this->avatar);
+            $size = $this->avatar ?
+                getimagesize($dir . $this->avatar) : [0, 0];
             return [
                 'id' => $this->id,
                 'name' => $this->getTranslatedAttribute('name'),
                 'surname' => $this->getTranslatedAttribute('surname'),
-                'preview' => Voyager::image($this->avatar),
+                'preview' => $this->avatar ? Voyager::image($this->avatar) : "",
                 'studies' => $this->studies,
                 'exhibits' => $this->exhibits,
                 'professions' => $this->professions,

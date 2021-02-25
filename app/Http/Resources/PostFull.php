@@ -16,7 +16,8 @@ class PostFull extends JsonResource
     public function toArray($request)
     {
         $dir = storage_path("app/public/");
-        $size = getimagesize($dir . $this->image);
+        $size = $this->image ?
+            getimagesize($dir . $this->image) : [0, 0];
         return [
             'id' => $this->id,
             'title' => $this->getTranslatedAttribute('title'),
