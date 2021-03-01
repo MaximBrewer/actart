@@ -55,8 +55,10 @@ function CodeModal(props) {
                                 {__("MODAL_CODE_CODE")}
                             </label>
                             <input
+                                maxlength="4"
+                                minlength="4"
                                 id="code"
-                                type="number"
+                                type="text"
                                 name="code"
                                 className={`form-control ${
                                     code.error ? "is-invalid" : ""

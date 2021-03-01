@@ -39,28 +39,28 @@ class ProfileController extends Controller
         $phone = str_replace("+", "", $phone);
 
         try {
-            $response = Http::get($url, [
-                'api_id' => 'AC2FCABC-92EF-3C42-9658-E714E246B3D7',
-                'to' => $phone,
-                'msg' => $msg,
-                'json' => 1,
-            ]);
-            $response = json_decode($response->body(), true);
-            if ($response['sms'][$phone]['status'] == 'ERROR') {
-                return response()->json([
-                    'errors' => [
-                        'message' => "#ERROR_SENDING_MESSAGE#",
-                        'smsru' => $response['sms'][$phone]['status_text']
-                    ]
-                ], 422);
-            } else {
+            // $response = Http::get($url, [
+            //     'api_id' => 'AC2FCABC-92EF-3C42-9658-E714E246B3D7',
+            //     'to' => $phone,
+            //     'msg' => $msg,
+            //     'json' => 1,
+            // ]);
+            // $response = json_decode($response->body(), true);
+            // if ($response['sms'][$phone]['status'] == 'ERROR') {
+            //     return response()->json([
+            //         'errors' => [
+            //             'message' => "#ERROR_SENDING_MESSAGE#",
+            //             'smsru' => $response['sms'][$phone]['status_text']
+            //         ]
+            //     ], 422);
+            // } else {
                 $user->update([
                     'phone' => $phone,
                     'phone_code' => $code,
                     'phone_sent_at' => Carbon::now()->addMinute(),
                 ]);
                 return ['user' => new UserResource($user)];
-            }
+            // }
         } catch (\Exception $e) {
             return response()->json([
                 'errors' => [
