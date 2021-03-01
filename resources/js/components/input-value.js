@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import __ from "../utils/trans";
 
 function InputValue(field, defaultValue = "") {
     let [value, setValue] = useState(defaultValue);
@@ -11,7 +12,7 @@ function InputValue(field, defaultValue = "") {
 
     let parseServerError = errors => {
         if (errors && errors[field]) {
-            setError(errors[field][0]);
+            setError(__(errors[field][0]));
         }
     };
 
