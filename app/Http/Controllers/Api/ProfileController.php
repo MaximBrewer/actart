@@ -19,14 +19,14 @@ class ProfileController extends Controller
 
         $now = Carbon::now();
 
-        // if ($now < Carbon::parse($user->phone_sent_at)->addMinute())
+        if ($now < Carbon::parse($user->phone_sent_at)->addMinute())
 
-        //     return response()->json([
-        //         'errors' => [
-        //             'timeout' => Carbon::parse($user->phone_sent_at)->addMinute()->timestamp - $now->timestamp,
-        //             'message' => __("#WAIT_FOR_REPEAT_CODE#"),
-        //         ]
-        //     ], 422);
+            return response()->json([
+                'errors' => [
+                    'timeout' => Carbon::parse($user->phone_sent_at)->addMinute()->timestamp - $now->timestamp,
+                    'message' => __("#WAIT_FOR_REPEAT_CODE#"),
+                ]
+            ], 422);
 
         $response = $user->name;
         $code = rand(1111, 9999);
