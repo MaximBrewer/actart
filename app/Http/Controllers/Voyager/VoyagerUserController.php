@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Voyager;
 
 use Illuminate\Http\Request;
@@ -15,9 +14,41 @@ use TCG\Voyager\Events\BreadDataUpdated;
 use TCG\Voyager\Events\BreadImagesDeleted;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class VoyagerUserController extends VoyagerBaseController
 {
+    public function index(Request $request)
+    {
+        $this->dataType = Voyager::model('DataType')->where('slug', '=', 'users')->first();
+        $this->dataType->slug = 'users';
+        return parent::index($request);
+    }
+    public function create(Request $request)
+    {
+        $this->dataType = Voyager::model('DataType')->where('slug', '=', 'users')->first();
+        $this->dataType->slug = 'users';
+        return parent::create($request);
+    }
+    public function show(Request $request, $id)
+    {
+        $this->dataType = Voyager::model('DataType')->where('slug', '=', 'users')->first();
+        $this->dataType->slug = 'users';
+        return parent::show($request, $id);
+    }
+    public function edit(Request $request, $id)
+    {
+        $this->dataType = Voyager::model('DataType')->where('slug', '=', 'users')->first();
+        $this->dataType->slug = 'users';
+        return parent::edit($request, $id);
+    }
+    public function destroy(Request $request, $id)
+    {
+        $this->dataType = Voyager::model('DataType')->where('slug', '=', 'users')->first();
+        $this->dataType->slug = 'users';
+        return parent::destroy($request, $id);
+    }
+
     public function profile(Request $request)
     {
         $route = '';
@@ -34,6 +65,9 @@ class VoyagerUserController extends VoyagerBaseController
     // POST BR(E)AD
     public function update(Request $request, $id)
     {
+        $this->dataType = Voyager::model('DataType')->where('slug', '=', 'users')->first();
+        $this->dataType->slug = 'users';
+
         if (Auth::user()->getKey() == $id) {
             $request->merge([
                 'role_id'                              => Auth::user()->role_id,
@@ -56,7 +90,9 @@ class VoyagerUserController extends VoyagerBaseController
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $this->dataType = Voyager::model('DataType')->where('slug', '=', 'users')->first();
+        $this->dataType->slug = 'users';
+        $dataType = &$this->dataType;
 
         // Check permission
         $this->authorize('add', app($dataType->model_name));
@@ -226,3 +262,5 @@ class VoyagerUserController extends VoyagerBaseController
         return $data;
     }
 }
+
+

@@ -40,10 +40,9 @@ function Profile(props) {
             })
             .catch(error => {
                 error.json().then(({ errors }) => {
-                    console.log(errors)
                     if (errors) {
                         if (errors.message)
-                            alert.show(errors.message, {
+                            alert.show(__(errors.message), {
                                 timeout: 2000,
                                 type: "error"
                             });
