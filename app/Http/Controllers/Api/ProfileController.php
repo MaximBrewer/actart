@@ -19,7 +19,7 @@ class ProfileController extends Controller
 
         $now = Carbon::now();
 
-        if ($now < Carbon::parse($user->phone_sent_at)->addMinute())
+        if ($user->phone_sent_at && $now < Carbon::parse($user->phone_sent_at)->addMinute())
 
             return response()->json([
                 'errors' => [
