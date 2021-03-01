@@ -31,12 +31,6 @@ class ProfileController extends Controller
         $response = $user->name;
         $code = rand(1111, 9999);
 
-        $user->update([
-            'phone' => $phone,
-            'phone_code' => $code,
-            'phone_sent_at' => Carbon::now(),
-        ]);
-
         $msg = "Ваш код: " . $code;
 
         $url = "https://sms.ru/sms/send?";
@@ -59,6 +53,11 @@ class ProfileController extends Controller
                     ]
                 ], 422);
             } else {
+                $user->update([
+                    'phone' => $phone,
+                    'phone_code' => $code,
+                    'phone_sent_at' => Carbon::now(),
+                ]);
                 return [
                     'success' => true,
                 ];
