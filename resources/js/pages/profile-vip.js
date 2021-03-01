@@ -10,6 +10,7 @@ import { OkIcon } from "../icons/icons";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { useAlert } from "react-alert";
+import Countdown, { zeroPad } from "react-countdown";
 
 function Profile(props) {
     const alert = useAlert();
@@ -24,6 +25,8 @@ function Profile(props) {
     );
     const [phone, setPhone] = useState(currentUser.phone);
 
+    const [countdown, setCountdown] = useState(false);
+
     let history = useHistory();
 
     const handleLogout = () => {
@@ -33,9 +36,44 @@ function Profile(props) {
         setIntendedUrl(null);
     };
 
+    const declOfNum = (number, titles) => {
+        let cases = [2, 0, 1, 1, 1, 2];
+        return titles[
+            number % 100 > 4 && number % 100 < 20
+                ? 2
+                : cases[number % 10 < 5 ? number % 10 : 5]
+        ];
+    };
+
+    const renderer = ({ seconds }) => {
+        return (
+            <small className="" style={seconds <= 0 ? { display: "none" } : {}}>
+                {window.App.locale == "ru"
+                    ? `Повторить можно через ${seconds} ${declOfNum(seconds, [
+                          "секунду",
+                          "секунды",
+                          "секунд"
+                      ])}`
+                    : `Replay in ${seconds} ${declOfNum(seconds, [
+                          "second",
+                          "seconds",
+                          "seconds"
+                      ])}`}
+            </small>
+        );
+    };
+
     const sendCode = () => {
         req("/api/" + window.App.locale + "/send/code/" + phone, "GET")
-            .then(() => {
+            .then(({ user }) => {
+                setCurrentUser(user);
+                setCountdown(
+                    <Countdown
+                        date={new Date().getTime() + 60000}
+                        renderer={renderer}
+                        onComplete={() => setCountdown(false)}
+                    />
+                );
                 openModal("code");
             })
             .catch(error => {
@@ -90,7 +128,7 @@ function Profile(props) {
                                         {currentUser.phone} <OkIcon />
                                     </span>
                                 ) : (
-                                    <div className="d-flex">
+                                    <div className="d-flex align-items-center">
                                         <PhoneInput
                                             className="mr-2"
                                             country="RU"
@@ -99,12 +137,16 @@ function Profile(props) {
                                             value={phone}
                                             onChange={setPhone}
                                         />
-                                        <button
-                                            onClick={() => sendCode()}
-                                            className="btn btn-default btn-sm"
-                                        >
-                                            {__("#SEND CODE#")}
-                                        </button>
+                                        {countdown ? (
+                                            countdown
+                                        ) : (
+                                            <button
+                                                onClick={() => sendCode()}
+                                                className="btn btn-default btn-sm"
+                                            >
+                                                {__("#SEND CODE#")}
+                                            </button>
+                                        )}
                                     </div>
                                 )}
                             </dd>

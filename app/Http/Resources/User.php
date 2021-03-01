@@ -21,6 +21,7 @@ class User extends JsonResource
             'email' => $this->email,
             'vip' => $this->vip,
             'phone' => $this->phone,
+            'phone_sent_at' => $this->phone_sent_at,
             'phone_verified_at' => $this->phone_verified_at,
             'username' => $this->username,
             'name' => $this->getTranslatedAttribute('name'),

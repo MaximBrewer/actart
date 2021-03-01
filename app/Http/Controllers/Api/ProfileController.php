@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use App\Http\Resources\User as UserResource;
+use Illuminate\Support\Facades\App;
 
 class ProfileController extends Controller
 {
@@ -19,12 +20,12 @@ class ProfileController extends Controller
 
         $now = Carbon::now();
 
-        if ($user->phone_sent_at && $now < Carbon::parse($user->phone_sent_at)->addMinute())
+        if ($user->phone_sent_at && $now < Carbon::parse($user->phone_sent_at))
 
             return response()->json([
                 'errors' => [
-                    'timeout' => Carbon::parse($user->phone_sent_at)->addMinute()->timestamp - $now->timestamp,
-                    'message' => __("#WAIT_FOR_REPEAT_CODE#"),
+                    'timeout' => Carbon::parse($user->phone_sent_at)->timestamp - $now->timestamp,
+                    'message' => "#WAIT_FOR_REPEAT_CODE#",
                 ]
             ], 422);
 
@@ -48,7 +49,7 @@ class ProfileController extends Controller
             if ($response['sms'][$phone]['status'] == 'ERROR') {
                 return response()->json([
                     'errors' => [
-                        'message' => __("#ERROR_SENDING_MESSAGE#"),
+                        'message' => "#ERROR_SENDING_MESSAGE#",
                         'smsru' => $response['sms'][$phone]['status_text']
                     ]
                 ], 422);
@@ -56,11 +57,9 @@ class ProfileController extends Controller
                 $user->update([
                     'phone' => $phone,
                     'phone_code' => $code,
-                    'phone_sent_at' => Carbon::now(),
+                    'phone_sent_at' => Carbon::now()->addMinute(),
                 ]);
-                return [
-                    'success' => true,
-                ];
+                return ['user' => new UserResource($user)];
             }
         } catch (\Exception $e) {
             return response()->json([
@@ -88,8 +87,8 @@ class ProfileController extends Controller
 
             return response()->json([
                 'errors' => [
-                    'attempts' => $user->phone_attempts,
-                    'message' => __("#TOO MANY ATTEMPTS#"),
+                    'attempts' => true,
+                    'message' => ["#TOO MANY ATTEMPTS#"],
                 ]
             ], 422);
         }
@@ -100,7 +99,7 @@ class ProfileController extends Controller
             ]);
             return response()->json([
                 'errors' => [
-                    'code' => __("#WRONG_PHONE_CODE#")
+                    'code' => ["#WRONG_PHONE_CODE#"]
                 ]
             ], 422);
         }

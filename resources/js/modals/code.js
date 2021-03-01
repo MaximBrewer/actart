@@ -3,9 +3,11 @@ import { sendConfirmationCode } from "../api/auth";
 import useInputValue from "../components/input-value";
 import __ from "../utils/trans";
 import { useAuth } from "../context/auth";
+import { useAlert } from "react-alert";
 
 function CodeModal(props) {
     let { setCurrentUser } = useAuth();
+    const alert = useAlert();
     const { openModal, closeModal } = props;
     let [resetFeedback, setResetFeedback] = useState("");
     let code = useInputValue("code", "");
@@ -20,7 +22,13 @@ function CodeModal(props) {
             })
             .catch(error => {
                 error.json().then(({ errors }) => {
-                    code.parseServerError(errors);
+                    if (errors.attempts) {
+                        closeModal();
+                        alert.show(__(errors.message), {
+                            timeout: 2000,
+                            type: "error"
+                        });
+                    } else code.parseServerError(errors);
                 });
             });
     };
