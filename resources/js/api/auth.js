@@ -40,6 +40,12 @@ export const sendConfirmationLink = ({ email }) => {
     }).then(({ status }) => status);
 };
 
+export const sendConfirmationCode = ({ code }) => {
+    return client("/api/" + window.App.locale + "/code/confirmation", {
+        body: { code }
+    }).then(({ user }) => user);
+};
+
 export const logout = () => {
     return client("/api/logout", { body: {} });
 };

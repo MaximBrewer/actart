@@ -4,7 +4,7 @@ import Marquee from "../components/marquee";
 import Announce from "../components/announce";
 import useDocumentTitle from "../components/document-title";
 import MovingGallery from "../components/moving/Gallery";
-import WaterfallAjax from "../components/waterfall/WaterfallAjax";
+import Waterfall from "../components/waterfall/Waterfall";
 
 export default function Authors(props) {
     useDocumentTitle(__("AUTHORS_PAGE_TITLE"));
@@ -22,7 +22,9 @@ export default function Authors(props) {
                         </div>
                         <div className="announce-slider-wrapper">
                             <div className="act-waterfall">
-                                <WaterfallAjax
+                                {console.log(window.App.authors)}
+                                <Waterfall
+                                    items={window.App.authors}
                                     {...props}
                                     data={{
                                         entity: "authors",

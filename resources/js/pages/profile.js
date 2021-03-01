@@ -11,10 +11,10 @@ function Profile(props) {
     let { setCurrentUser, setToken, currentUser } = useAuth();
     useDocumentTitle(
         currentUser.surname +
-        " " +
-        currentUser.name +
-        " " +
-        currentUser.middlename
+            " " +
+            currentUser.name +
+            " " +
+            currentUser.middlename
     );
 
     let history = useHistory();
@@ -45,7 +45,20 @@ function Profile(props) {
                         </dl>
                         <dl>
                             <dt>{__("Status:")}</dt>
-                            <dd>{__(currentUser.role.display_name)}</dd>
+                            <dd>
+                                {__(currentUser.role.display_name)}{" "}
+                                {currentUser.role.name !== "user" ? (
+                                    <span className="uppercase">
+                                        (
+                                        {currentUser.vip
+                                            ? __("#GUEST#")
+                                            : __("#VIP#")}
+                                        )
+                                    </span>
+                                ) : (
+                                    ``
+                                )}
+                            </dd>
                         </dl>
                         <dl>
                             <dt>{__("Full name:")}</dt>
@@ -61,10 +74,18 @@ function Profile(props) {
                             <dd>{currentUser.email}</dd>
                         </dl>
                         <hr />
-                        <div>
-                            <Link to="/profile/vip">{__("WANTED_VIP")}</Link>
-                        </div>
-                        <hr />
+                        {currentUser.vip ? (
+                            ``
+                        ) : (
+                            <>
+                                <div>
+                                    <Link to="/profile/vip">
+                                        {__("#WANTED_VIP#")}
+                                    </Link>
+                                </div>
+                                <hr />
+                            </>
+                        )}
                         <div onClick={handleLogout}>
                             <Link to="/">{__("LOGOUT_LINK")}</Link>
                         </div>
@@ -88,8 +109,8 @@ function Profile(props) {
                                 </div>
                             </React.Fragment>
                         ) : (
-                                ``
-                            )}
+                            ``
+                        )}
                     </div>
                 </div>
                 <div className="art-waterfall-wrapper py-5">

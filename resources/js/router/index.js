@@ -23,6 +23,8 @@ import BlogItem from "../pages/blog-item";
 import News from "../pages/news";
 import NewsItem from "../pages/news-item";
 import Events from "../pages/events";
+import Sign from "../pages/sign";
+import Contract from "../pages/contract";
 import EventsItem from "../pages/events-item";
 import Authors from "../pages/authors";
 import AuthorsItem from "../pages/authors-item";
@@ -45,6 +47,7 @@ import RegisterModal from "../modals/register";
 import ForgotPasswordModal from "../modals/forgot-password";
 import ConfirmationModal from "../modals/confirmation";
 import ResetPasswordModal from "../modals/reset-password";
+import CodeModal from "../modals/code";
 import { setIntendedUrl } from "../utils/auth";
 
 import client from "../api/client";
@@ -128,7 +131,8 @@ function App() {
         register: false,
         forgot: false,
         reset: false,
-        confirmation: false
+        confirmation: false,
+        code: false
     };
 
     const modals = [
@@ -170,6 +174,12 @@ function App() {
                     closeModal={closeModal}
                 />
             )
+        },
+        {
+            key: "code",
+            component: (
+                <CodeModal openModal={openModal} closeModal={closeModal} />
+            )
         }
     ];
     const [modal, setModal] = React.useState(window.initState);
@@ -177,6 +187,7 @@ function App() {
     function openModal(name) {
         setModal(prevState => {
             initState[name] = true;
+            console.log(initState);
             return initState;
         });
     }
@@ -239,6 +250,12 @@ function App() {
             <Switch>
                 <Route exact path="/">
                     <Plug {...rest} />
+                </Route>
+                <Route exact path="/sign">
+                    <Sign {...rest} />
+                </Route>
+                <Route exact path="/contract">
+                    <Contract {...rest} />
                 </Route>
                 <Route path="/">
                     <div className="wrapper">
@@ -368,19 +385,19 @@ function App() {
                             </Switch>
                         </div>
                     </div>
+                    {modals.map((item, index) => (
+                        <Modal
+                            key={index}
+                            isOpen={modal[item.key]}
+                            onRequestClose={closeModal}
+                            style={customStyles}
+                            shouldCloseOnOverlayClick={true}
+                        >
+                            {item.component}
+                        </Modal>
+                    ))}
                     <Footer {...rest} />
                 </Route>
-                {modals.map((item, index) => (
-                    <Modal
-                        key={index}
-                        isOpen={modal[item.key]}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                        shouldCloseOnOverlayClick={true}
-                    >
-                        {item.component}
-                    </Modal>
-                ))}
             </Switch>
         </Router>
     );

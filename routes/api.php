@@ -82,6 +82,10 @@ Route::name('api.')->namespace('Api')->group(function () {
     // Protected routes
     Route::middleware('auth:api')->group(function () {
         Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function () {
+
+            Route::get('send/code/{phone}', '\App\Http\Controllers\Api\ProfileController@code')->name('code.send');
+            Route::post('code/confirmation', '\App\Http\Controllers\Api\ProfileController@codeVerify')->name('code.confirmation');
+            
             Route::patch('offer/{lot_id}/{price}', 'LotController@offer')->name('offer');
             Route::patch('blitz/{lot_id}', 'LotController@blitz')->name('blitz');
             Route::group(['prefix' => 'auction/{id}'], function () {

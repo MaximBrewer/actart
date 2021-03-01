@@ -16,7 +16,9 @@ use App\Category;
 use App\Style;
 use App\Material;
 use App\Technique;
+use App\User;
 use App\Frame;
+use App\Http\Resources\Author as AuthorResource;
 use App\Http\Resources\Category as CategoryResource;
 
 
@@ -31,6 +33,8 @@ class SpaController extends Controller
     {
 
         $locale = App::getLocale();
+
+        $authors = AuthorResource::collection(User::authors()->where('hidden', 0)->get());
 
         $menus = [
             'topmost' => Menu::display("topmost", "spa"),
@@ -100,6 +104,7 @@ class SpaController extends Controller
         $translations = cache('translations.' . $locale);
         return view('spa', [
             'app' => compact(
+                'authors',
                 'steps',
                 'menus',
                 'ticker',

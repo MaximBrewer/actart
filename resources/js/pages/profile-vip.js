@@ -6,8 +6,14 @@ import { setIntendedUrl } from "../utils/auth";
 import AuctionsProfile from "../components/auction/AuctionsProfile";
 import Waterfall from "../components/waterfall/Waterfall";
 import useDocumentTitle from "../components/document-title";
+import { OkIcon } from "../icons/icons";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+import { useAlert } from "react-alert";
 
 function Profile(props) {
+    const alert = useAlert();
+    const { req, openModal, closeModal } = props;
     let { setCurrentUser, setToken, currentUser } = useAuth();
     useDocumentTitle(
         currentUser.surname +
@@ -16,6 +22,7 @@ function Profile(props) {
             " " +
             currentUser.middlename
     );
+    const [phone, setPhone] = useState(currentUser.phone);
 
     let history = useHistory();
 
@@ -24,6 +31,25 @@ function Profile(props) {
         setToken(null);
         history.push("/");
         setIntendedUrl(null);
+    };
+
+    const sendCode = () => {
+        req("/api/" + window.App.locale + "/send/code/" + phone, "GET")
+            .then(() => {
+                openModal("code");
+            })
+            .catch(error => {
+                error.json().then(({ errors }) => {
+                    console.log(errors)
+                    if (errors) {
+                        if (errors.message)
+                            alert.show(errors.message, {
+                                timeout: 2000,
+                                type: "error"
+                            });
+                    }
+                });
+            });
     };
 
     return (
@@ -52,7 +78,37 @@ function Profile(props) {
                         </dl>
                         <dl>
                             <dt>{__("#PROFILE_LOGIN_TEXT#")}:</dt>
-                            <dd>{currentUser.email}</dd>
+                            <dd>
+                                {" "}
+                                {currentUser.email} <OkIcon />
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>{__("#PROFILE_PHONE_TEXT#")}:</dt>
+                            <dd>
+                                {currentUser.phone_verified_at ? (
+                                    <span>
+                                        {currentUser.phone} <OkIcon />
+                                    </span>
+                                ) : (
+                                    <div className="d-flex">
+                                        <PhoneInput
+                                            className="mr-2"
+                                            country="RU"
+                                            defaultCountry="RU"
+                                            placeholder="Enter phone number"
+                                            value={phone}
+                                            onChange={setPhone}
+                                        />
+                                        <button
+                                            onClick={() => sendCode()}
+                                            className="btn btn-default btn-sm"
+                                        >
+                                            {__("#SEND CODE#")}
+                                        </button>
+                                    </div>
+                                )}
+                            </dd>
                         </dl>
                         <hr />
                         <div onClick={handleLogout}>

@@ -20,7 +20,7 @@ import { Hummer, AboutLogo, AboutBgLogo } from "../icons/home";
 function Home(props) {
     const { openModal, closeModal } = props;
 
-    useDocumentTitle(__("HOME_TITLE"));
+    useDocumentTitle(__("#HOME_TITLE#"));
 
     const { token } = useRouteMatch().params;
 
@@ -336,6 +336,7 @@ function Home(props) {
                     </div>
                 </div>
             </section>
+{/*             
             <section id="experts" className="d-none d-sm-none d-md-block">
                 <div>
                     <div className="sticky-wrapper">
@@ -386,7 +387,7 @@ function Home(props) {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <section className="mb-5">
                 <div className="container mb-5">
                     <div className="footer-buttons">

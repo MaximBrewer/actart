@@ -27,7 +27,7 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
      */
     protected $fillable = [
         'name', 'surname', 'middlename', 'email', 'password',
-        'phone', 'fb', 'inst', 'beh',
+        'phone', 'fb', 'inst', 'beh', 'phone_code', 'phone_sent_at', 'phone_verified_at', 'phone_attempts'
     ];
 
     /**

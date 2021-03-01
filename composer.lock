@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f847c4d4ee8ee42962fdde90d985394",
+    "content-hash": "16565855d7ccab9dd4ee2b0cc1606ffb",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -2790,6 +2790,64 @@
                 "php"
             ],
             "time": "2020-09-26T10:30:38+00:00"
+        },
+        {
+            "name": "nutnet/laravel-sms",
+            "version": "0.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nutnetru/laravel-sms.git",
+                "reference": "0dade83a486bd1f35cc8633f8b8e5d3d5029d4b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nutnetru/laravel-sms/zipball/0dade83a486bd1f35cc8633f8b8e5d3d5029d4b1",
+                "reference": "0dade83a486bd1f35cc8633f8b8e5d3d5029d4b1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.0"
+            },
+            "require-dev": {
+                "franzose/laravel-smpp": "^1.1",
+                "illuminate/log": ">=5.0",
+                "infection/infection": "^0.10",
+                "phpunit/phpunit": "^7.5",
+                "zelenin/smsru": "^4.1"
+            },
+            "suggest": {
+                "franzose/laravel-smpp": "Required for SMPP provider",
+                "illuminate/log": "Required for Log provider",
+                "zelenin/smsru": "Required for Sms.Ru provider"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nutnet\\LaravelSms\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nutnet\\LaravelSms\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Package for sending SMS form your Laravel app, includes pre-installed sms providers and your custom.",
+            "keywords": [
+                "laravel iqsms",
+                "laravel smpp",
+                "laravel sms",
+                "laravel sms.ru",
+                "laravel smsc.ru",
+                "sms"
+            ],
+            "support": {
+                "issues": "https://github.com/nutnetru/laravel-sms/issues",
+                "source": "https://github.com/nutnetru/laravel-sms/tree/0.10.0"
+            },
+            "time": "2020-05-28T17:14:35+00:00"
         },
         {
             "name": "opis/closure",

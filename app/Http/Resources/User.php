@@ -19,6 +19,9 @@ class User extends JsonResource
         return [
             'id' => $this->id,
             'email' => $this->email,
+            'vip' => $this->vip,
+            'phone' => $this->phone,
+            'phone_verified_at' => $this->phone_verified_at,
             'username' => $this->username,
             'name' => $this->getTranslatedAttribute('name'),
             'middlename' => $this->getTranslatedAttribute('middlename'),

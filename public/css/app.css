@@ -19787,6 +19787,44 @@ iframe {
   }
 }
 
+.sing-section {
+  background-color: gray;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.sing-section .container {
+  width: 100%;
+  height: 100vh;
+  top: 10%;
+  left: 10%;
+}
+
+.sing-section .sigContainer {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.sing-section .sigPad {
+  width: 100%;
+  height: 100%;
+}
+
+.sing-section .buttons {
+  width: 100%;
+  height: 30px;
+}
+
+.sing-section .sigImage {
+  background-size: 200px 50px;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+}
+
 #page {
   padding: 3rem 0 4rem;
 }
