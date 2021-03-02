@@ -43,10 +43,12 @@ class GalleryWinner extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->subject('Act-Art.ru - поздравляем с покупкой')
-        ->greeting("Поздравляем с покупкой на галерее ACT-ART!")
-        ->line('Вы купили ' . $this->lot->title . ' за сумму ' . $this->lot->bets[0]->bet . '$')
-        ->line('В ближайшее время с вами свяжется менеджер для обсуждения дальнейших действий.');
+            ->subject('Act-Art.ru - поздравляем с покупкой')
+            ->greeting("Поздравляем с покупкой на галерее ACT-ART!")
+            ->line('Вы купили ' . $this->lot->title . ' за сумму ' . $this->lot->bets[0]->bet . '$')
+            ->line('В ближайшее время с вами свяжется менеджер для обсуждения дальнейших действий.')
+            ->line('Все выигранные лоты Вы можете посмотреть в своём профиле.')
+            ->action('Перейти к профилю', "https://act-art.ru/profile");
     }
 
     /**

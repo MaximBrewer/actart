@@ -135,6 +135,28 @@ function Profile(props) {
                         />
                     </div>
                 </div>
+                <div className="art-waterfall-wrapper py-5">
+                    <h5 className="h5">{__("#LOTS_WON#")}</h5>
+                    <div className="act-waterfall">
+                        <Waterfall
+                            {...props}
+                            items={currentUser.won}
+                            data={{
+                                sortable: true,
+                                gallery: true,
+                                tizerView: "gallery",
+                                view: {
+                                    xs: 1,
+                                    sm: 2,
+                                    md: 2,
+                                    lg: 3,
+                                    xl: 4,
+                                    xxl: 4
+                                }
+                            }}
+                        />
+                    </div>
+                </div>
             </div>
         </section>
     );

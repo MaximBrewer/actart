@@ -116,7 +116,8 @@ class AuctionController extends Controller
         $auction = Auction::find($id);
         $lot = Lot::where('auction_id', $auction->id)->where('status', 'in_auction')->orderBy('sort', 'ASC')->first();
         if ($lot) $lot->update([
-            'status' => 'sold'
+            'status' => 'sold',
+            'won_id' => $lot->bets[0]->user_id
         ]);
         $this->next($auction);
         return ['auction' => $auction, 'lot' => $lot];

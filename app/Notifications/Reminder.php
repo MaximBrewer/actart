@@ -51,7 +51,7 @@ class Reminder extends Notification
             ->greeting("Напоминание об аукционе на сайте Act-Art.ru.")
             ->line('Вы хотели принять участие в аукционе ' . $this->auction->title)
             ->line('Аукцион состоится ' . $this->auction->dateout)
-            ->action('Перейти к аукциону', "http://act-art.ru/auctions/" . $this->auction->id);
+            ->action('Перейти к аукциону', "https://act-art.ru/auctions/" . $this->auction->id);
     }
 
     /**

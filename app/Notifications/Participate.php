@@ -46,7 +46,7 @@ class Participate extends Notification
             ->subject('Act-Art.ru - участие в аукционе')
             ->greeting("Вы запланировали участие в аукционе.")
             ->line('Аукцион состоится ' . $this->auction->dateout)
-            ->action('Перейти к аукциону', "http://act-art.ru/auctions/" . $this->auction->id);
+            ->action('Перейти к аукциону', "https://act-art.ru/auctions/" . $this->auction->id);
     }
 
     /**

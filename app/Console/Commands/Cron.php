@@ -66,7 +66,7 @@ class Cron extends Command
         foreach ($galleryLots as $lot) {
             $lotModel = Lot::find($lot->id);
             if (count($lotModel->bets)) {
-                $lotModel->update(['status' => 'gsold']);
+                $lotModel->update(['status' => 'gsold', 'won_id' => $lotModel->bets[0]->user_id]);
             } else {
                 $lotModel->update(['status' => 'discontinued']);
             }

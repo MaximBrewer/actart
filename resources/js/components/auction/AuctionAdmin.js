@@ -1008,13 +1008,16 @@ export default function AuctionAdmin(props) {
                                                                     .online ? (
                                                                     ``
                                                                 ) : (
-                                                                    <CountdownTop
-                                                                        date={
-                                                                            state
-                                                                                .auction
-                                                                                .dateatom
-                                                                        }
-                                                                    />
+                                                                    <>
+                                                                        <br /><br />
+                                                                        <CountdownTop
+                                                                            date={
+                                                                                state
+                                                                                    .auction
+                                                                                    .dateatom
+                                                                            }
+                                                                        />
+                                                                    </>
                                                                 )}
                                                             </h3>
                                                         </div>

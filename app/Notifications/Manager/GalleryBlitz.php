@@ -47,11 +47,11 @@ class GalleryBlitz extends Notification
             ->greeting("Заявка на Блиц-покупку на сайте Act-Art.ru.")
             ->line('Лот: ' . $this->bet->lot->title)
             ->line('Ставка: ' . $this->bet->bet . '$')
-            ->action('Посмотреть', "http://act-art.ru/admin/lots/" . $this->bet->lot->id)
+            ->action('Посмотреть', "https://act-art.ru/admin/lots/" . $this->bet->lot->id)
             ->line('Пользователь: #' . $this->bet->user->id)
             ->line('E-mail: ' . $this->bet->user->email)
             ->line('Телефон: ' . $this->bet->user->phone)
-            ->action('Посмотреть', "http://act-art.ru/admin/users/" . $this->bet->user->id);
+            ->action('Посмотреть', "https://act-art.ru/admin/users/" . $this->bet->user->id);
     }
 
     /**
