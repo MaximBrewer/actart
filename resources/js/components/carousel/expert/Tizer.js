@@ -10,7 +10,7 @@ export default function Tizer(props) {
                 <div
                     className="image mb-4"
                     style={{
-                        backgroundImage: 'url("' + item.thumbnail + '")'
+                        backgroundImage: `url(${encodeURI(item.thumbnail)})`
                     }}
                 ></div>
                 <div className="fio">

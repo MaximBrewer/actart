@@ -75,7 +75,7 @@ export default function Tizer(props) {
                 <Link
                     className={`image`}
                     style={{
-                        backgroundImage: "url(" + state.item.thumbnail + ")",
+                        backgroundImage: `url(${encodeURI(state.item.thumbnail)})`,
                         paddingTop:
                             (state.item.pxheight / state.item.pxwidth) * 100 +
                             "%"

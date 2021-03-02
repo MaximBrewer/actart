@@ -60,7 +60,7 @@ export default function AuctionProfile(props) {
                     <div
                         className="banner-image"
                         style={{
-                            backgroundImage: 'url("' + item.thumbnail + '")'
+                            backgroundImage: `url(${encodeURI(item.thumbnail)})`
                         }}
                     >
                         <div className="countdown-wrapp">

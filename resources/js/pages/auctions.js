@@ -5,7 +5,7 @@ import Marquee from "../components/marquee";
 import Subscribe from "../components/subscribe";
 import useDocumentTitle from "../components/document-title";
 import AuctionsList from "../components/auction/AuctionsList";
-import InViewMonitor from "react-inview-monitor"
+import InViewMonitor from "react-inview-monitor";
 
 export default function AuctionsPage(props) {
     useDocumentTitle(__("AUCTIONS_PAGE_TITLE"));
@@ -42,22 +42,26 @@ export default function AuctionsPage(props) {
                     <div className="container">
                         <div className="row announce mb-xl-5">
                             <div className="col col-xl-40 col-xxl-38">
-                                <h2 className="h1">{__("REGULAR_AUCTION_TITLE")}</h2>
+                                <h2 className="h1">
+                                    {__("REGULAR_AUCTION_TITLE")}
+                                </h2>
                                 <div className="sub_h2 d-none d-xl-block">
                                     {__("REGULAR_AUCTION_SUBTITLE")}
                                 </div>
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
                                 <InViewMonitor
-                                    classNameNotInView='vis-hidden'
-                                    classNameInView='animate__animated animate__fadeInRight'
+                                    classNameNotInView="vis-hidden"
+                                    classNameInView="animate__animated animate__fadeInRight"
                                     toggleClassNameOnInView={true}
                                 >
                                     <div className="d-flex justify-content-end">
                                         <a
                                             className="see-other"
                                             href="#"
-                                            onClick={e => scrollToElement(specialEl, e)}
+                                            onClick={e =>
+                                                scrollToElement(specialEl, e)
+                                            }
                                         >
                                             <div className="h5">
                                                 {__("THEMED_AUCTION_TITLE")}
@@ -95,22 +99,26 @@ export default function AuctionsPage(props) {
                     <div className="container">
                         <div className="row announce mb-xl-5">
                             <div className="col col-xl-40 col-xxl-38">
-                                <h2 className="h1">{__("THEMED_AUCTION_TITLE")}</h2>
+                                <h2 className="h1">
+                                    {__("THEMED_AUCTION_TITLE")}
+                                </h2>
                                 <div className="sub_h2 d-none d-xl-block">
                                     {__("THEMED_AUCTION_SUBTITLE")}
                                 </div>
                             </div>
                             <div className="col col-xl-20 col-xxl-22 d-none d-xl-block">
                                 <InViewMonitor
-                                    classNameNotInView='vis-hidden'
-                                    classNameInView='animate__animated animate__fadeInRight'
+                                    classNameNotInView="vis-hidden"
+                                    classNameInView="animate__animated animate__fadeInRight"
                                     toggleClassNameOnInView={true}
                                 >
                                     <div className="d-flex justify-content-end">
                                         <a
                                             className="see-other"
                                             href="#"
-                                            onClick={e => scrollToElement(regularEl, e)}
+                                            onClick={e =>
+                                                scrollToElement(regularEl, e)
+                                            }
                                         >
                                             <div className="h5">
                                                 {__("REGULAR_AUCTION_TITLE")}
@@ -193,8 +201,9 @@ export default function AuctionsPage(props) {
                                         className={`text-decoration-none d-flex justify-content-center align-items-center`}
                                         to={`/gallery/category/` + item.id}
                                         style={{
-                                            backgroundImage:
-                                                `url(` + item.preview + `)`
+                                            backgroundImage: `url(${encodeURI(
+                                                item.preview
+                                            )})`
                                         }}
                                     >
                                         <p className="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">

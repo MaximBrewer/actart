@@ -1,12 +1,14 @@
 import React from "react";
-import __ from '../../../../utils/trans';
+import __ from "../../../../utils/trans";
 export default function AuctionPreviewLeft(props) {
     return (
         <div>
             <div
                 className="banner-image"
                 style={{
-                    backgroundImage: 'url("' + props.auction.thumbnail + '")'
+                    backgroundImage: `url(${encodeURI(
+                        props.auction.thumbnail
+                    )})`
                 }}
             >
                 <div className="banner-inner-text">

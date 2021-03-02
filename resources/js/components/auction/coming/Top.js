@@ -11,14 +11,18 @@ export default function Top(props) {
         <section
             className="auction-announce auction-coming"
             style={{
-                backgroundImage: "url(" + auction.thumbnail + ")",
+                backgroundImage: `url(${encodeURI(auction.thumbnail)})`,
                 backgroundPosition: "top center"
             }}
         >
             <div className="darkener">
                 <div className="container">
                     <Countdown date={auction.dateatom} />
-                    <div className="h1"><Link to={`/auctions/` + auction.id}>{auction.title}</Link></div>
+                    <div className="h1">
+                        <Link to={`/auctions/` + auction.id}>
+                            {auction.title}
+                        </Link>
+                    </div>
                     {inAuctions(auction.id) ? (
                         <Link
                             to={"/auctions/" + auction.id}

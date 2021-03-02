@@ -56,8 +56,9 @@ export default function Base(props) {
                                 <div
                                     className="image-wrapper"
                                     style={{
-                                        backgroundImage:
-                                            `url(` + state.page.image + `)`
+                                        backgroundImage: `url(${encodeURI(
+                                            state.page.image
+                                        )})`
                                     }}
                                 ></div>
                             </div>
@@ -76,7 +77,14 @@ export default function Base(props) {
                         </div>
                     </div>
                     <hr />
-                    {props.contacts ? <><Feedback {...props} /><hr /></> : ``}
+                    {props.contacts ? (
+                        <>
+                            <Feedback {...props} />
+                            <hr />
+                        </>
+                    ) : (
+                        ``
+                    )}
                     <div
                         onClick={() => history.goBack()}
                         className="btn btn-default d-inline-flex justify-content-center align-items-center"

@@ -112,8 +112,9 @@ function Home(props) {
                                     className={`text-decoration-none d-flex justify-content-center align-items-center`}
                                     to={`/gallery/category/` + item.id}
                                     style={{
-                                        backgroundImage:
-                                            `url(` + item.preview + `)`
+                                        backgroundImage: `url(${encodeURI(
+                                            item.preview
+                                        )})`
                                     }}
                                 >
                                     <p className="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">

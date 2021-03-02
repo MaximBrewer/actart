@@ -50,8 +50,9 @@ export default function NewsItem(props) {
                                 <div
                                     className="image-wrapper"
                                     style={{
-                                        backgroundImage:
-                                            `url(` + state.post.image + `)`
+                                        backgroundImage: `url(${encodeURI(
+                                            state.post.image
+                                        )})`
                                     }}
                                 ></div>
                             </div>

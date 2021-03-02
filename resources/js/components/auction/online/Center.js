@@ -85,11 +85,10 @@ export default function Center(props) {
                                                         "center",
                                                     paddingTop: "65%",
                                                     backgroundColor: "#ECEDED",
-                                                    backgroundImage:
-                                                        'url("' +
+                                                    backgroundImage: `url(${encodeURI(
                                                         auction.current
-                                                            .thumbnail +
-                                                        '")'
+                                                            .thumbnail
+                                                    )})`
                                                 }}
                                             ></div>
                                             {state.lbOpen && (

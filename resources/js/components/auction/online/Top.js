@@ -1,5 +1,5 @@
 import React from "react";
-import __ from '../../../utils/trans';
+import __ from "../../../utils/trans";
 import Countdown from "../Countdown";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ export default function OnlineTop(props) {
         <section
             className="auction-announce auction-online"
             style={{
-                backgroundImage: "url(" + auction.thumbnail + ")",
+                backgroundImage: `url(${encodeURI(auction.thumbnail)})`,
                 backgroundPosition: "top center"
             }}
         >
@@ -17,12 +17,19 @@ export default function OnlineTop(props) {
                 <div className="container">
                     <Countdown date={auction.dateatom} />
                     <div className="h1">
-                        <Link to={`/auctions/` + auction.id}>{auction.title}</Link>
+                        <Link to={`/auctions/` + auction.id}>
+                            {auction.title}
+                        </Link>
                         <br />
-                        {!props.finished ?
-                            <span className="online">{__('#ONLINE_BROADCAST_IN_PROPGRESS_TEXT#')}</span> :
-                            <span className="online">{__('#ONLINE_BROADCAST_HAS_FINISHED_TEXT#')}</span>
-                        }
+                        {!props.finished ? (
+                            <span className="online">
+                                {__("#ONLINE_BROADCAST_IN_PROPGRESS_TEXT#")}
+                            </span>
+                        ) : (
+                            <span className="online">
+                                {__("#ONLINE_BROADCAST_HAS_FINISHED_TEXT#")}
+                            </span>
+                        )}
                     </div>
                 </div>
             </div>

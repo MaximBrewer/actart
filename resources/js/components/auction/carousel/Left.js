@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { ZoomIn, ZoomOut, ZoomReset } from "../../../icons/icons";
-import __ from '../../../utils/trans';
+import __ from "../../../utils/trans";
 import Lightbox from "react-image-lightbox";
 
 export default function Left(props) {
@@ -23,30 +23,26 @@ export default function Left(props) {
                         paddingTop: "82.3529%",
                         display: "block",
                         position: "relative",
-                        backgroundImage:
-                            "url(" + state.photo.full + ")",
+                        backgroundImage: `url(${encodeURI(state.photo.full)})`,
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "contain",
                         backgroundPosition: "bottom center"
                     }}
-                    onClick={() => setState(prevState => ({
-                        ...prevState,
-                        open: true
-                    }))}
-                >
-                </div>
+                    onClick={() =>
+                        setState(prevState => ({
+                            ...prevState,
+                            open: true
+                        }))
+                    }
+                ></div>
                 {state.open && (
                     <Lightbox
-                        mainSrc={
-                            state.photo.full
-                        }
+                        mainSrc={state.photo.full}
                         onCloseRequest={() =>
-                            setState(
-                                prevState => ({
-                                    ...prevState,
-                                    open: false
-                                })
-                            )
+                            setState(prevState => ({
+                                ...prevState,
+                                open: false
+                            }))
                         }
                     />
                 )}
@@ -68,8 +64,9 @@ export default function Left(props) {
                                         });
                                     }}
                                     style={{
-                                        backgroundImage:
-                                            `url(` + photo.thumbnail + `)`,
+                                        backgroundImage: `url(${encodeURI(
+                                            photo.thumbnail
+                                        )})`,
                                         backgroundPosition: "bottom center",
                                         backgroundRepeat: "no-repeat",
                                         backgroundSize: "contain",
@@ -82,8 +79,8 @@ export default function Left(props) {
                     ))}
                 </div>
             ) : (
-                    ``
-                )}
+                ``
+            )}
         </div>
     );
 }

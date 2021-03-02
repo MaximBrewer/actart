@@ -17,7 +17,7 @@ export default function Tizer(props) {
                     to={url}
                     className={`image`}
                     style={{
-                        backgroundImage: "url(" + item.thumbnail + ")",
+                        backgroundImage: `url(${encodeURI(item.thumbnail)})`,
                         paddingTop: (item.pxheight / item.pxwidth) * 100 + "%"
                     }}
                 >

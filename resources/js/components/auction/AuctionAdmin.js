@@ -439,8 +439,9 @@ export default function AuctionAdmin(props) {
                     <section
                         className="auction-announce auction-online"
                         style={{
-                            backgroundImage:
-                                "url(" + state.auction.thumbnail + ")",
+                            backgroundImage: `url(${encodeURI(
+                                state.auction.thumbnail
+                            )})`,
                             backgroundPosition: "top center"
                         }}
                     >
@@ -512,13 +513,12 @@ export default function AuctionAdmin(props) {
                                                                         "65%",
                                                                     backgroundColor:
                                                                         "#ECEDED",
-                                                                    backgroundImage:
-                                                                        'url("' +
+                                                                    backgroundImage: `url(${encodeURI(
                                                                         state
                                                                             .auction
                                                                             .current
-                                                                            .thumbnail +
-                                                                        '")'
+                                                                            .thumbnail
+                                                                    )})`
                                                                 }}
                                                             ></div>
                                                             {state.lbOpen && (

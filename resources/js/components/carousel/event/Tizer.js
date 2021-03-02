@@ -12,7 +12,7 @@ export default function Tizer(props) {
                     to={url}
                     className={`image mb-4`}
                     style={{
-                        backgroundImage: "url(" + item.preview + ")"
+                        backgroundImage: `url(${encodeURI(item.preview)})`
                     }}
                 ></Link>
                 <Link className="title" to={url}>

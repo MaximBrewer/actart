@@ -519,13 +519,12 @@ export default function Auction(props) {
                                                                         "65%",
                                                                     backgroundColor:
                                                                         "#ECEDED",
-                                                                    backgroundImage:
-                                                                        'url("' +
+                                                                    backgroundImage: `url(${encodeURI(
                                                                         state
                                                                             .auction
                                                                             .current
-                                                                            .thumbnail +
-                                                                        '")'
+                                                                            .thumbnail
+                                                                    )})`
                                                                 }}
                                                             ></div>
                                                             {state.lbOpen && (

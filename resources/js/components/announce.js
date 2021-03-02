@@ -30,7 +30,7 @@ export default function Announce(props) {
             <section
                 className="auction-announce"
                 style={{
-                    backgroundImage: `url(` + state.narrow + `)`,
+                    backgroundImage: `url(${encodeURI(state.narrow)})`,
                     backgroundPosition: `top center`
                 }}
             >

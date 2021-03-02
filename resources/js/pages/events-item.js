@@ -46,8 +46,9 @@ export default function Eventtem(props) {
                                 <div
                                     className="image-wrapper"
                                     style={{
-                                        backgroundImage:
-                                            `url(` + state.event.image + `)`
+                                        backgroundImage: `url(${encodeURI(
+                                            state.event.image
+                                        )})`
                                     }}
                                 ></div>
                             </div>

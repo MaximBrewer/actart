@@ -79,10 +79,9 @@ export default function LotGallery(props) {
                                                         paddingTop: "82.3529%",
                                                         display: "block",
                                                         position: "relative",
-                                                        backgroundImage:
-                                                            "url(" +
-                                                            item.full +
-                                                            ")",
+                                                        backgroundImage: `url(${encodeURI(
+                                                            item.full
+                                                        )})`,
                                                         backgroundRepeat:
                                                             "no-repeat",
                                                         backgroundSize:
@@ -123,7 +122,9 @@ export default function LotGallery(props) {
                                 className="thumbnail"
                                 onClick={e => slider.current.slickGoTo(index)}
                                 style={{
-                                    backgroundImage: `url(` + item.full + `)`,
+                                    backgroundImage: `url(${encodeURI(
+                                        item.full
+                                    )})`,
                                     backgroundPosition: "bottom center",
                                     backgroundRepeat: "no-repeat",
                                     backgroundSize: "contain",

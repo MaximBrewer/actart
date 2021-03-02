@@ -37,7 +37,7 @@ function Block(props) {
                         left: item.l * size + "px",
                         top: item.t * size + "px",
                         backgroundColor: item.bg,
-                        backgroundImage: `url(` + item.path + `)`
+                        backgroundImage: `url(${encodeURI(item.path)})`
                     }}
                 >
                     <div className="picture-inner">

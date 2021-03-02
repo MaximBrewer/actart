@@ -1,18 +1,18 @@
-import React, { useEffect, useRef } from 'react';
-import Waterfall from '../waterfall/Waterfall';
-import { useParams, Link } from 'react-router-dom';
-import Announce from '../../components/announce'
-import __ from '../../utils/trans';
-import useDocumentTitle from '../../components/document-title';
+import React, { useEffect, useRef } from "react";
+import Waterfall from "../waterfall/Waterfall";
+import { useParams, Link } from "react-router-dom";
+import Announce from "../../components/announce";
+import __ from "../../utils/trans";
+import useDocumentTitle from "../../components/document-title";
 
 export default function Category(props) {
-    useDocumentTitle(__('GALLERY_PAGE_TITLE'));
+    useDocumentTitle(__("GALLERY_PAGE_TITLE"));
 
     const { id } = useParams();
     const { showLink, scrollToElement } = props;
 
     useEffect(() => {
-        id && scrollToElement(galEl)
+        id && scrollToElement(galEl);
     }, [id]);
 
     const galEl = useRef(null);
@@ -20,31 +20,31 @@ export default function Category(props) {
     return (
         <React.Fragment>
             <Announce {...props} />
-            <div className='sticky-wrapper sticky-wrapper-gallery'>
-                <section className='gallery-section'>
-                    <div className='background-text'>{__('Gallery')}</div>
-                    <div className='container'>
-                        <div className='row announce mb-5'>
-                            <div className='col col-xl-40 col-xxl-38'>
-                                <h2 className='h1'>{__('ONLINE-GALLERY')}</h2>
-                                <div className='sub_h2 d-none d-xl-block'>
+            <div className="sticky-wrapper sticky-wrapper-gallery">
+                <section className="gallery-section">
+                    <div className="background-text">{__("Gallery")}</div>
+                    <div className="container">
+                        <div className="row announce mb-5">
+                            <div className="col col-xl-40 col-xxl-38">
+                                <h2 className="h1">{__("ONLINE-GALLERY")}</h2>
+                                <div className="sub_h2 d-none d-xl-block">
                                     {__(
-                                        'A permanent gallery-auction where you can purchase selected works of young Russian authors. Follow, choose, bargain, collect your collection. Weekly update.'
+                                        "A permanent gallery-auction where you can purchase selected works of young Russian authors. Follow, choose, bargain, collect your collection. Weekly update."
                                     )}
                                 </div>
 
                                 <Link
                                     replace
                                     to={`/how-to-buy`}
-                                    className='h5 h5_underline d-none d-xl-block pt-4'
+                                    className="h5 h5_underline d-none d-xl-block pt-4"
                                 >
-                                    {__('How to buy')}?
-                            </Link>
+                                    {__("How to buy")}?
+                                </Link>
                             </div>
                         </div>
-                        <div className='popular-categories'>
-                            <h4 className='h4'>{__('Popular Categories')}</h4>
-                            <div className='d-flex justify-content-between categories'>
+                        <div className="popular-categories">
+                            <h4 className="h4">{__("Popular Categories")}</h4>
+                            <div className="d-flex justify-content-between categories">
                                 {window.App.popular.map((item, index) => (
                                     <Link
                                         key={index}
@@ -54,20 +54,21 @@ export default function Category(props) {
                                         }
                                         to={`/gallery/category/` + item.id}
                                         style={{
-                                            backgroundImage:
-                                                `url(` + item.preview + `)`
+                                            backgroundImage: `url(${encodeURI(
+                                                item.preview
+                                            )})`
                                         }}
                                     >
-                                        <p className='px-1 text-center text-nowrap w-100 overflow-hidden text-truncate'>
+                                        <p className="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">
                                             {item.title}
                                         </p>
                                     </Link>
                                 ))}
                             </div>
                         </div>
-                        <div className='gallery-works' ref={galEl}>
-                            <div className='h2'>{__('Works for sale')}</div>
-                            <div className='gallery-works-list'>
+                        <div className="gallery-works" ref={galEl}>
+                            <div className="h2">{__("Works for sale")}</div>
+                            <div className="gallery-works-list">
                                 <Waterfall
                                     {...props}
                                     category={id}
@@ -75,7 +76,7 @@ export default function Category(props) {
                                         sortable: true,
                                         gallery: true,
                                         filterable: true,
-                                        tizerView: 'gallery',
+                                        tizerView: "gallery",
                                         view: {
                                             xs: 2,
                                             sm: 2,
@@ -87,17 +88,17 @@ export default function Category(props) {
                                     }}
                                 />
                                 {!!showLink ? (
-                                    <div className='text-center my-2'>
+                                    <div className="text-center my-2">
                                         <Link
-                                            to='/gallery'
-                                            className='btn btn-default'
+                                            to="/gallery"
+                                            className="btn btn-default"
                                         >
-                                            {__('BTN_BACK_TO_GALLERY')}
+                                            {__("BTN_BACK_TO_GALLERY")}
                                         </Link>
                                     </div>
                                 ) : (
-                                        ``
-                                    )}
+                                    ``
+                                )}
                             </div>
                         </div>
                     </div>
@@ -111,8 +112,8 @@ export default function Category(props) {
                     </svg>
                 </div> */}
                 </section>
-                <div className='sticky-section'>
-                    <span>{__('works for sale')}</span>
+                <div className="sticky-section">
+                    <span>{__("works for sale")}</span>
                 </div>
             </div>
         </React.Fragment>

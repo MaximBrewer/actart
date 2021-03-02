@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import __ from "../utils/trans";
-import { useAuth } from '../context/auth';
+import { useAuth } from "../context/auth";
 import Marquee from "../components/marquee";
 import Parser from "html-react-parser";
 import useDocumentTitle from "../components/document-title";
@@ -14,10 +14,10 @@ export default function AuthorItem(props) {
     const { id } = useParams();
     const { req } = props;
 
-    const watchAuthor = (e) => {
+    const watchAuthor = e => {
         e.preventDefault();
         if (!currentUser) {
-            openModal('login');
+            openModal("login");
         } else {
             window.dispatchEvent(
                 new CustomEvent("flash", {
@@ -29,7 +29,7 @@ export default function AuthorItem(props) {
                 })
             );
         }
-    }
+    };
 
     useEffect(() => {
         req("/api/" + window.App.locale + "/author/" + id)
@@ -55,13 +55,13 @@ export default function AuthorItem(props) {
                                 {state.author.name + ` ` + state.author.surname}
                             </h2>
                             {state.author.groups &&
-                                state.author.groups.length ? (
-                                    <div className="h5">
-                                        /{state.author.groups[0].title}/
-                                    </div>
-                                ) : (
-                                    ``
-                                )}
+                            state.author.groups.length ? (
+                                <div className="h5">
+                                    /{state.author.groups[0].title}/
+                                </div>
+                            ) : (
+                                ``
+                            )}
                             <hr />
                             <div className="d-none d-xl-block description">
                                 {Parser(state.author.text)}
@@ -92,52 +92,51 @@ export default function AuthorItem(props) {
                             <div
                                 className="image-wrapper"
                                 style={{
-                                    backgroundImage:
-                                        `url(` + state.author.avatar + `)`,
+                                    backgroundImage: `url(${encodeURI(state.author.avatar)})`,
                                     paddingTop:
                                         (100 * state.author.pxheight) /
-                                        state.author.pxwidth +
+                                            state.author.pxwidth +
                                         `%`
                                 }}
                             ></div>
                             {state.author.studies &&
-                                state.author.studies.length ? (
-                                    <div className="exhibitions">
-                                        <div className="heading">
-                                            {__("STUDIES")}
-                                        </div>
-                                        <ul className="list-unstyled">
-                                            {state.author.studies.map(
-                                                (item, index) => (
-                                                    <li key={index}>
-                                                        {item.title}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
+                            state.author.studies.length ? (
+                                <div className="exhibitions">
+                                    <div className="heading">
+                                        {__("STUDIES")}
                                     </div>
-                                ) : (
-                                    ``
-                                )}
+                                    <ul className="list-unstyled">
+                                        {state.author.studies.map(
+                                            (item, index) => (
+                                                <li key={index}>
+                                                    {item.title}
+                                                </li>
+                                            )
+                                        )}
+                                    </ul>
+                                </div>
+                            ) : (
+                                ``
+                            )}
                             {state.author.exhibits &&
-                                state.author.exhibits.length ? (
-                                    <div className="exhibitions">
-                                        <div className="heading">
-                                            {__("EXHIBITS")}
-                                        </div>
-                                        <ul className="list-unstyled">
-                                            {state.author.exhibits.map(
-                                                (item, index) => (
-                                                    <li key={index}>
-                                                        {item.title}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
+                            state.author.exhibits.length ? (
+                                <div className="exhibitions">
+                                    <div className="heading">
+                                        {__("EXHIBITS")}
                                     </div>
-                                ) : (
-                                    ``
-                                )}
+                                    <ul className="list-unstyled">
+                                        {state.author.exhibits.map(
+                                            (item, index) => (
+                                                <li key={index}>
+                                                    {item.title}
+                                                </li>
+                                            )
+                                        )}
+                                    </ul>
+                                </div>
+                            ) : (
+                                ``
+                            )}
                         </div>
                     </div>
                 </div>
@@ -194,6 +193,6 @@ export default function AuthorItem(props) {
             <Marquee />
         </React.Fragment>
     ) : (
-            ``
-        );
+        ``
+    );
 }

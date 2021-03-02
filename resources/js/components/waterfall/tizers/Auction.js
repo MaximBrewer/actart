@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import __ from '../../../utils/trans';
+import __ from "../../../utils/trans";
 import { Favorite } from "../../../icons/icons";
 import Lightbox from "react-image-lightbox";
 
@@ -10,42 +10,52 @@ export default function Tizer(props) {
 
     return (
         <div className={`auction-item`}>
-            {data.auction.status == 'started' ?
+            {data.auction.status == "started" ? (
                 <React.Fragment>
-                    <a href="#"
-                        onClick={(e) => {
+                    <a
+                        href="#"
+                        onClick={e => {
                             e.preventDefault();
                             setState(prevState => ({
                                 ...prevState,
                                 open: true
-                            }))
+                            }));
                         }}
                         className={`image`}
                         style={{
-                            backgroundImage: "url(" + item.thumbnail + ")",
-                        }}>
-                        {data.auction.status != 'archive' ? <Favorite item={item} req={req} /> : ``}
+                            backgroundImage: `url(${encodeURI(item.thumbnail)})`
+                        }}
+                    >
+                        {data.auction.status != "archive" ? (
+                            <Favorite item={item} req={req} />
+                        ) : (
+                            ``
+                        )}
                     </a>
-                    <a href="#"
+                    <a
+                        href="#"
                         className="number"
-                        onClick={(e) => {
+                        onClick={e => {
                             e.preventDefault();
                             setState(prevState => ({
                                 ...prevState,
                                 open: true
-                            }))
-                        }}>
+                            }));
+                        }}
+                    >
                         {__("Lot") + ` ` + item.sort}
                     </a>
-                    <a href="#"
+                    <a
+                        href="#"
                         className="title"
-                        onClick={(e) => {
+                        onClick={e => {
                             e.preventDefault();
                             setState(prevState => ({
                                 ...prevState,
                                 open: true
-                            }))
-                        }}>
+                            }));
+                        }}
+                    >
                         {item.title ? item.title : __("No name")}
                     </a>
                     <Link className="author" to={item.author_url}>
@@ -60,35 +70,37 @@ export default function Tizer(props) {
                             ))}
                         </div>
                         <div className="size">
-                            {item.width} &times; {item.height}&nbsp;{__("MEASURE_CM")}
+                            {item.width} &times; {item.height}&nbsp;
+                            {__("MEASURE_CM")}
                         </div>
                     </div>
                     {state.open && (
                         <Lightbox
-                            mainSrc={
-                                item.photo
-                            }
+                            mainSrc={item.photo}
                             onCloseRequest={() =>
-                                setState(
-                                    prevState => ({
-                                        ...prevState,
-                                        open: false
-                                    })
-                                )
+                                setState(prevState => ({
+                                    ...prevState,
+                                    open: false
+                                }))
                             }
                         />
                     )}
                 </React.Fragment>
-                :
+            ) : (
                 <React.Fragment>
                     <Link
                         className={`image`}
                         style={{
-                            backgroundImage: "url(" + item.thumbnail + ")",
+                            backgroundImage: `url(${encodeURI(item.thumbnail)})`
                         }}
                         to={`/auctions/` + data.auction.id + `/lot/` + item.id}
                     >
-                        {data.auction.status == 'coming' && item.status == 'auction' ? <Favorite item={item} req={req} /> : ``}
+                        {data.auction.status == "coming" &&
+                        item.status == "auction" ? (
+                            <Favorite item={item} req={req} />
+                        ) : (
+                            ``
+                        )}
                     </Link>
                     <Link
                         className="number"
@@ -114,16 +126,19 @@ export default function Tizer(props) {
                             ))}
                         </div>
                         <div className="size">
-                            {item.width} &times; {item.height}&nbsp;{__("MEASURE_CM")}
+                            {item.width} &times; {item.height}&nbsp;
+                            {__("MEASURE_CM")}
                         </div>
                     </div>
-                    {data.auction.status == 'finished' ? `` :
+                    {data.auction.status == "finished" ? (
+                        ``
+                    ) : (
                         <div className="price">
                             {__("Start price")} <span>${item.price}</span>
                         </div>
-                    }
+                    )}
                 </React.Fragment>
-            }
+            )}
         </div>
     );
 }
