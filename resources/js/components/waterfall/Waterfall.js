@@ -26,6 +26,38 @@ export default function Waterfall(props) {
         return data.view[size];
     };
 
+    const filterAll = event => {
+        let value = event.target.value.toLowerCase();
+        setState(prevState => {
+            let push,
+                newItems = [];
+            for (const item of items) {
+                push = false;
+                loop: for (const field of data.searching) {
+                    if (
+                        typeof item[field] == "string" &&
+                        item[field].toLowerCase().indexOf(value) > -1
+                    ) {
+                        push = true;
+                        continue loop;
+                    }
+                    // for (const option of item[field]) {
+                    //     console.log(option);
+                    //     //     if (filter[field] == option.id) {
+                    //     //         push = true;
+                    //     //         continue loop;
+                    //     //     }
+                    // }
+                }
+                push && newItems.push(item);
+            }
+            return {
+                ...prevState,
+                items: newItems
+            };
+        });
+    };
+
     const setSortBy = (field, order) => {
         setState(prevState => {
             return {
@@ -39,6 +71,7 @@ export default function Waterfall(props) {
             };
         });
     };
+
     const filterItems = (filter, prevState) => {
         let push = false,
             newItems = [];
@@ -212,6 +245,59 @@ export default function Waterfall(props) {
     return (
         <div className="waterfall-outer row">
             <div className="col-60">
+                <div className="sorting-searching">
+                    {data.sorting && data.sorting.length && (
+                        <div className="sorting">
+                            <span>{__("Sort by")}: </span>
+                            {data.sorting.map((item, index) => (
+                                <a
+                                    key={index}
+                                    href="#"
+                                    className={
+                                        state.sortBy == item
+                                            ? state.order == "asc"
+                                                ? `active asc`
+                                                : `active desc`
+                                            : ``
+                                    }
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        setSortBy(
+                                            item,
+                                            state.sortBy == item &&
+                                                state.order == "asc"
+                                                ? "desc"
+                                                : "asc"
+                                        );
+                                    }}
+                                >
+                                    <span>
+                                        {__(`#BY${item.toUpperCase()}#`)}
+                                    </span>
+                                    <svg
+                                        viewBox="0 0 18 18"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path d="M9 18L0.339746 3L17.6603 3L9 18Z" />
+                                    </svg>
+                                </a>
+                            ))}
+                        </div>
+                    )}
+                    {data.searching && data.searching.length ? (
+                        <div className="searching">
+                            <input
+                                placeholder={__("#SEARCHING_PLACEHOLDER#")}
+                                type="text"
+                                className="form-control"
+                                name="searching"
+                                onChange={event => filterAll(event)}
+                            />
+                        </div>
+                    ) : (
+                        ``
+                    )}
+                </div>
                 {data.sortable && (
                     <div className="sorting">
                         <span>{__("Sort by")}: </span>

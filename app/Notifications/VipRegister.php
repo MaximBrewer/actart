@@ -11,13 +11,15 @@ class VipRegister extends Notification
 {
     use Queueable;
 
+    protected $user;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
+        $this->user = $user;
         //
     }
 
@@ -41,17 +43,14 @@ class VipRegister extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('Act-Art.ru - VIP-статус')
+            ->greeting("Вам присвоен VIP-статус")
+            ->line('Теперь вы можете участвовать во всех аукционах и делать ставки в Галерее Акт-арт без ограничений.');
 
-
-2) Письмо пользователю после VIP регистрации
-VIP-регистрация на сайте ACT-ART
-Вы подали заявку на VIP-регистрацию на сайте act-art.ru
-После проверки данных с вас будут сняты ограничения на участие в аукционах.
-
-
+        // 2) Письмо пользователю после VIP регистрации
+        // VIP-регистрация на сайте ACT-ART
+        // Вы подали заявку на VIP-регистрацию на сайте act-art.ru
+        // После проверки данных с вас будут сняты ограничения на участие в аукционах.
     }
 
     /**

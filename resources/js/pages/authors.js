@@ -27,6 +27,8 @@ export default function Authors(props) {
                                     items={window.App.authors}
                                     {...props}
                                     data={{
+                                        sorting: ["surname"],
+                                        searching: ["name", "surname"],
                                         entity: "authors",
                                         action: "add",
                                         limit: {
