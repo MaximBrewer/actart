@@ -969,23 +969,34 @@ export default function Auction(props) {
                                                                     </>
                                                                 ) : (
                                                                     <>
-                                                                        <strong>
+                                                                        <strong
+                                                                            style={{
+                                                                                textAlign:
+                                                                                    "center",
+                                                                                margin:
+                                                                                    "0 auto",
+                                                                                maxWidth:
+                                                                                    "80%",
+                                                                                display:
+                                                                                    "block"
+                                                                            }}
+                                                                        >
                                                                             <span
                                                                                 className={`color-red`}
                                                                             >
-                                                                                Внимание!
+                                                                                {__(
+                                                                                    "#ATTENTION!#"
+                                                                                )}
                                                                             </span>{" "}
-                                                                            Для
-                                                                            участия
-                                                                            в
-                                                                            торгах
-                                                                            вам
-                                                                            необходимо
-                                                                            пройти{" "}
+                                                                            {__(
+                                                                                "#VIP_FOR_PARTICIPATE_TEXT#"
+                                                                            )}{" "}
                                                                             <Link
                                                                                 to={`/profile/vip`}
                                                                             >
-                                                                                VIP-регистрацию
+                                                                                {__(
+                                                                                    "#VIP_FOR_PARTICIPATE_LINK#"
+                                                                                )}
                                                                             </Link>
                                                                         </strong>
                                                                     </>

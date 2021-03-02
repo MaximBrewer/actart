@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import { FavoriteBig } from "../../../icons/icons";
 import __ from "../../../utils/trans";
 import { useAuth } from "../../../context/auth";
+import {
+    Link,
+    useLocation,
+    useHistory,
+    useRouteMatch,
+    useParams
+} from "react-router-dom";
 
 export default function Right(props) {
     console.log(props);
@@ -127,7 +134,8 @@ export default function Right(props) {
                 ))}
             </div>
             <div className="size">
-                {state.item.width} &times; {state.item.height} {__("MEASURE_CM")}
+                {state.item.width} &times; {state.item.height}{" "}
+                {__("MEASURE_CM")}
                 {state.item.year
                     ? ` / ` + state.item.year + ` ` + __("SHORT_YEAR")
                     : ``}
@@ -179,21 +187,53 @@ export default function Right(props) {
                 {currentUser != undefined &&
                 (!state.item.bets.length || !state.item.bets[0].blitz) ? (
                     <React.Fragment>
+                        {console.log(window.App.viplimit)}
                         <a
-                            className="btn btn-danger"
+                            className={`btn btn-danger ${
+                                getStep() + state.item.price * 1 <
+                                    window.App.viplimit || currentUser.vip
+                                    ? ``
+                                    : `btn-disabled`
+                            }`}
                             href="#"
                             onClick={e => {
                                 e.preventDefault();
-                                offer(
-                                    state.item.id,
-                                    getStep() + state.item.price * 1
-                                );
+                                (getStep() + state.item.price * 1 <
+                                    window.App.viplimit ||
+                                    currentUser.vip) &&
+                                    offer(
+                                        state.item.id,
+                                        getStep() + state.item.price * 1
+                                    );
                             }}
                         >
                             <div className="pb-1">{__("LOT_BUTTON_OFFER")}</div>
                             <div>${state.item.price * 1 + getStep()}</div>
                         </a>
-                        {state.item.price * 1 < state.item.blitz * 1 ? (
+                        {getStep() + state.item.price * 1 <
+                            window.App.viplimit || currentUser.vip ? (
+                            ``
+                        ) : (
+                            <small
+                                style={{
+                                    textAlign: "center",
+                                    margin: "0 auto",
+                                    maxWidth: "80%",
+                                    display: "block"
+                                }}
+                            >
+                                <span className={`color-red`}>
+                                    {__("#ATTENTION!#")}
+                                </span>{" "}
+                                {__("#VIP_FOR_PARTICIPATE_TEXT#")}{" "}
+                                <Link to={`/profile/vip`}>
+                                    {__("#VIP_FOR_PARTICIPATE_LINK#")}
+                                </Link>
+                            </small>
+                        )}
+                        {state.item.price * 1 < state.item.blitz * 1 &&
+                        (currentUser.vip ||
+                            state.item.blitz < window.App.viplimit) ? (
                             <div className="blitz-price">
                                 <a
                                     className="pb-1"
@@ -214,7 +254,7 @@ export default function Right(props) {
                 ) : (
                     <React.Fragment>
                         <a
-                            className="btn btn-danger"
+                            className="btn btn-danger btn-disabled"
                             href="#"
                             onClick={e => {
                                 e.preventDefault();
@@ -225,7 +265,7 @@ export default function Right(props) {
                             <div>${state.item.price * 1 + getStep()}</div>
                         </a>
                         {state.item.price * 1 < state.item.blitz * 1 ? (
-                            <div className="blitz-price">
+                            <div className="blitz-price btn-disabled">
                                 <a
                                     className="pb-1"
                                     href="#"
