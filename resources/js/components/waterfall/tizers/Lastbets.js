@@ -46,9 +46,10 @@ export default function Tizer(props) {
                 {item.materials.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
-            </div>
-            <div className="techniques">
                 {item.techniques.map((m, mi) => (
+                    <span key={mi}>{m.title}</span>
+                ))}
+                {item.styles.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
             </div>
