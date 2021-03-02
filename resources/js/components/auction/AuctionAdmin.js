@@ -1001,6 +1001,9 @@ export default function AuctionAdmin(props) {
                                                             <h3
                                                                 className={`py-5 text-center color-red`}
                                                             >
+                                                                {__(
+                                                                    "#AUCTION_WILL_START_SOON_ADMIN#"
+                                                                )}
                                                                 {state.auction
                                                                     .online ? (
                                                                     ``
@@ -1012,9 +1015,6 @@ export default function AuctionAdmin(props) {
                                                                                 .dateatom
                                                                         }
                                                                     />
-                                                                )}
-                                                                {__(
-                                                                    "#AUCTION_WILL_START_SOON_ADMIN#"
                                                                 )}
                                                             </h3>
                                                         </div>
