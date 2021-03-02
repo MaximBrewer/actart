@@ -53,16 +53,17 @@ export default function Tizer(props) {
                 }));
                 break;
             case "auction":
-                setState(prevState => ({
-                    ...prevState,
-                    url: `/auctions/${state.item.auction_id}/lot/${state.item.id}`
-                }));
-                break;
             case "sold":
-                setState(prevState => ({
-                    ...prevState,
-                    url: `/auctions/${state.item.auction_id}/lot/${state.item.id}`
-                }));
+                if (state.item.auction_id)
+                    setState(prevState => ({
+                        ...prevState,
+                        url: `/auctions/${state.item.auction_id}/lot/${state.item.id}`
+                    }));
+                else
+                    setState(prevState => ({
+                        ...prevState,
+                        url: `javascript:void;`
+                    }));
                 break;
             default:
                 setState(prevState => ({
