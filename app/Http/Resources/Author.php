@@ -23,7 +23,7 @@ class Author extends JsonResource
                 'id' => $this->id,
                 'name' => $this->getTranslatedAttribute('name'),
                 'surname' => $this->getTranslatedAttribute('surname'),
-                'preview' => $this->avatar ? Voyager::image($this->avatar) : "",
+                'preview' => $this->avatar ? urlencode(Voyager::image($this->avatar)) : "",
                 'studies' => $this->studies,
                 'exhibits' => $this->exhibits,
                 'professions' => $this->professions,

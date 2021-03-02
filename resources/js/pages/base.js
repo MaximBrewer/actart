@@ -4,6 +4,7 @@ import __ from "../utils/trans";
 import YandexShare from "react-yandex-share";
 import Parser from "../utils/parser";
 import client from "../api/client";
+import Feedback from "../components/forms/Feedback";
 
 export default function Base(props) {
     const { req } = props;
@@ -75,6 +76,7 @@ export default function Base(props) {
                         </div>
                     </div>
                     <hr />
+                    {props.contacts ? <><Feedback {...props} /><hr /></> : ``}
                     <div
                         onClick={() => history.goBack()}
                         className="btn btn-default d-inline-flex justify-content-center align-items-center"

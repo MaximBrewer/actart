@@ -47,7 +47,7 @@ function Profile(props) {
                             <dt>{__("Status:")}</dt>
                             <dd>
                                 {__(currentUser.role.display_name)}{" "}
-                                {currentUser.role.name !== "user" ? (
+                                {currentUser.role.name == "user" ? (
                                     <span className="uppercase">
                                         (
                                         {currentUser.vip

@@ -239,7 +239,7 @@ export function Close() {
 
 export function OkIcon() {
     return (
-        <svg width="1.5rem" height="1.5rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8267.72 8267.72">
+        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8267.72 8267.72">
             <g>
                 <path
                     fill="#006C3B"

@@ -16,6 +16,7 @@ import Header from "../components/header";
 import Plug from "../components/Plug";
 
 import Home from "../pages/home";
+import Contacts from "../pages/contacts";
 import Base from "../pages/base";
 import Blog from "../pages/blog";
 import Modal from "react-modal";
@@ -23,7 +24,6 @@ import BlogItem from "../pages/blog-item";
 import News from "../pages/news";
 import NewsItem from "../pages/news-item";
 import Events from "../pages/events";
-import Sign from "../pages/sign";
 import ProfileContract from "../pages/profile-contract";
 import EventsItem from "../pages/events-item";
 import Authors from "../pages/authors";
@@ -259,9 +259,6 @@ function App() {
                 <Route exact path="/">
                     <Plug {...rest} />
                 </Route>
-                <Route exact path="/sign">
-                    <Sign {...rest} />
-                </Route>
                 <Route exact path="/profile/contract">
                     <ProfileContract {...rest} />
                 </Route>
@@ -283,7 +280,7 @@ function App() {
                                     <Base {...rest} />
                                 </Route>
                                 <Route exact path="/contacts">
-                                    <Base {...rest} />
+                                    <Contacts {...rest} />
                                 </Route>
                                 <Route exact path="/offer">
                                     <Base {...rest} />

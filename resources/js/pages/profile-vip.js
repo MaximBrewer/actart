@@ -121,7 +121,15 @@ function Profile(props) {
                             </dd>
                         </dl>
                         <dl>
-                            <dt>{__("#PROFILE_PHONE_TEXT#")}:</dt>
+                            <dt
+                                className={`${
+                                    currentUser.phone_verified_at
+                                        ? ``
+                                        : `color-red`
+                                }`}
+                            >
+                                {__("#PROFILE_PHONE_TEXT#")}:
+                            </dt>
                             <dd>
                                 {currentUser.phone_verified_at ? (
                                     <span>
@@ -152,25 +160,32 @@ function Profile(props) {
                             </dd>
                         </dl>
                         <dl>
-                            <dt>{__("#PROFILE_CONTRACT_TEXT#")}:</dt>
+                            <dt
+                                className={`${
+                                    currentUser.vip ? `` : `color-red`
+                                }`}
+                            >
+                                {__("#PROFILE_CONTRACT_TEXT#")}:
+                            </dt>
                             <dd>
-                                {currentUser.contract ? (
-                                    <>
-                                        <Link
-                                            className="btn btn-default btn-sm"
-                                            to="/profile/contract"
-                                        >
-                                            {__("#OPEN_CONTRACT#")}
-                                        </Link>{" "}
+                                {currentUser.vip ? (
+                                    <strong>
+                                        {__("#PROFILE_CONTRACT_SIGNED#")}{" "}
                                         <OkIcon />
-                                    </>
+                                    </strong>
                                 ) : (
-                                    <Link
-                                        className="btn btn-default btn-sm"
-                                        to="/profile/contract"
-                                    >
-                                        {__("#SIGN_CONTRACT#")}
-                                    </Link>
+                                    <>
+                                        <a
+                                            target="_blank"
+                                            href="https://act-art.na3.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhB2ciYi_sxl2AXEJrMNVoeNzorg-zEIzevP1KTAYqXokOZJHhsYflPlFvoY6Ytkzvw*&hosted=false"
+                                        >
+                                            <strong>{__("#PROFILE_CONTRACT_LINK#")}</strong>
+                                        </a>
+                                        <br />
+                                        <small>
+                                            {__("#PROFILE_CONTRACT_SIGN#")}
+                                        </small>
+                                    </>
                                 )}
                             </dd>
                         </dl>

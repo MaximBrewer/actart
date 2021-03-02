@@ -87,6 +87,7 @@ class SpaController extends Controller
         );
 
         $timer = setting('site.timer');
+        $viplimit = setting('site.viplimit');
 
         $ticker = [
             'picture' => "/storage/" . setting($locale . '.ticker_picture'),
@@ -105,6 +106,7 @@ class SpaController extends Controller
         return view('spa', [
             'app' => compact(
                 'authors',
+                'viplimit',
                 'steps',
                 'menus',
                 'ticker',

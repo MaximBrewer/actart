@@ -9,7 +9,6 @@ import AuctionComingLotBottom from "./coming/LotBottom.js";
 import AuctionComingLotsList from "./coming/LotsList.js";
 import AuctionOnlineTop from "./online/Top.js";
 import AuctionOnlineLotTop from "./online/LotTop.js";
-import AuctionOnlineCenter from "./online/Center.js";
 import AuctionOnlineBottom from "./online/Bottom.js";
 import AuctionOnlineLotBottom from "./online/LotBottom.js";
 import AuctionOnlineLotsList from "./online/LotsList.js";
@@ -385,7 +384,7 @@ export default function Auction(props) {
         if (state.auction.title)
             switch (state.auction.status) {
                 case "started":
-                    return <AuctionOnlineCenter {...props} />;
+                    return null;
                 case "finished":
                     return <AuctionArchiveCenter {...props} />;
                 case "coming":
@@ -897,69 +896,100 @@ export default function Auction(props) {
                                                                 ) : (
                                                                     ``
                                                                 )}
-                                                                {state.auction
-                                                                    .current
-                                                                    .delta &&
-                                                                state.auction
-                                                                    .current
-                                                                    .delta >=
-                                                                    window.App
-                                                                        .timer ? (
-                                                                    ``
-                                                                ) : (
-                                                                    <a
-                                                                        className="btn btn-danger"
-                                                                        href="#"
-                                                                        onClick={e => {
-                                                                            e.preventDefault();
-                                                                            offer(
-                                                                                state
-                                                                                    .auction
-                                                                                    .current
-                                                                                    .id,
-                                                                                getStep() +
-                                                                                    state
+                                                                {currentUser.vip ? (
+                                                                    <>
+                                                                        {state
+                                                                            .auction
+                                                                            .current
+                                                                            .delta &&
+                                                                        state
+                                                                            .auction
+                                                                            .current
+                                                                            .delta >=
+                                                                            window
+                                                                                .App
+                                                                                .timer ? (
+                                                                            ``
+                                                                        ) : (
+                                                                            <a
+                                                                                className="btn btn-danger"
+                                                                                href="#"
+                                                                                onClick={e => {
+                                                                                    e.preventDefault();
+                                                                                    offer(
+                                                                                        state
+                                                                                            .auction
+                                                                                            .current
+                                                                                            .id,
+                                                                                        getStep() +
+                                                                                            state
+                                                                                                .auction
+                                                                                                .current
+                                                                                                .price *
+                                                                                                1
+                                                                                    );
+                                                                                }}
+                                                                            >
+                                                                                <div className="pb-1">
+                                                                                    {__(
+                                                                                        "LOT_BUTTON_OFFER"
+                                                                                    )}
+                                                                                </div>
+                                                                                <div>
+                                                                                    $
+                                                                                    {state
                                                                                         .auction
                                                                                         .current
                                                                                         .price *
-                                                                                        1
-                                                                            );
-                                                                        }}
-                                                                    >
-                                                                        <div className="pb-1">
-                                                                            {__(
-                                                                                "LOT_BUTTON_OFFER"
-                                                                            )}
-                                                                        </div>
-                                                                        <div>
-                                                                            $
-                                                                            {state
-                                                                                .auction
-                                                                                .current
-                                                                                .price *
-                                                                                1 +
-                                                                                getStep()}
-                                                                        </div>
-                                                                    </a>
-                                                                )}
-
-                                                                {
-                                                                    state.countdown
-                                                                }
-                                                                {!state.auction
-                                                                    .current
-                                                                    .bets
-                                                                    .length &&
-                                                                state.auction
-                                                                    .current
-                                                                    .lastchance ? (
-                                                                    <h4 className="color-red text-center blink">
-                                                                        {__(
-                                                                            "LAST_CHANCE_TO_USER"
+                                                                                        1 +
+                                                                                        getStep()}
+                                                                                </div>
+                                                                            </a>
                                                                         )}
-                                                                    </h4>
+
+                                                                        {
+                                                                            state.countdown
+                                                                        }
+                                                                        {!state
+                                                                            .auction
+                                                                            .current
+                                                                            .bets
+                                                                            .length &&
+                                                                        state
+                                                                            .auction
+                                                                            .current
+                                                                            .lastchance ? (
+                                                                            <h4 className="color-red text-center blink">
+                                                                                {__(
+                                                                                    "LAST_CHANCE_TO_USER"
+                                                                                )}
+                                                                            </h4>
+                                                                        ) : (
+                                                                            ``
+                                                                        )}
+                                                                    </>
                                                                 ) : (
-                                                                    ``
+                                                                    <>
+                                                                        <strong>
+                                                                            <span
+                                                                                className={`color-red`}
+                                                                            >
+                                                                                Внимание!
+                                                                            </span>{" "}
+                                                                            Для
+                                                                            участия
+                                                                            в
+                                                                            торгах
+                                                                            вам
+                                                                            необходимо
+                                                                            пройти{" "}
+                                                                            <Link
+                                                                                to={`/profile/vip`}
+                                                                            >
+                                                                                VIP-регистрацию
+                                                                            </Link>
+                                                                        </strong>
+                                                                    </>
                                                                 )}
                                                             </div>
                                                         ) : (
