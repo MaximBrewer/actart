@@ -11,7 +11,7 @@ function InputValue(field, defaultValue = "") {
     }, []);
 
     let parseServerError = errors => {
-        console.log(__(errors[field][0]));
+        console.log(errors)
         if (errors && errors[field]) {
             setError(__(errors[field][0]));
         }

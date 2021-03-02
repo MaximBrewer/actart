@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { useAuth } from "../../context/auth";
 import __ from "../../utils/trans";
 import useInputValue from "../../components/input-value";
+import Parser from "html-react-parser";
+import { useAlert } from "react-alert";
 
 export default function Feedback(props) {
     const { req } = props;
+    const alert = useAlert();
 
     let { currentUser } = useAuth();
     let [resetSubscribe, setResetSubscribe] = useState("");
@@ -23,6 +26,10 @@ export default function Feedback(props) {
         })
             .then(({ status }) => {
                 setResetSubscribe(status);
+                alert.show(__(status), {
+                    timeout: 5000,
+                    type: "success"
+                });
                 message.reset();
                 name.reset();
                 email.reset();

@@ -75,6 +75,7 @@ Route::name('api.')->namespace('Api')->group(function () {
                 return json_encode(['slides' => $images]);
             });
             Route::patch('subscribe', 'SubscribeController@store')->name('subscribe.store');
+            Route::patch('feedback', 'FeedbackController@store')->name('feedback.store');
         });
     });
 
