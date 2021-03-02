@@ -75,7 +75,9 @@ export default function Tizer(props) {
                 <Link
                     className={`image`}
                     style={{
-                        backgroundImage: `url(${encodeURI(state.item.thumbnail)})`,
+                        backgroundImage: `url(${encodeURI(
+                            state.item.thumbnail
+                        )})`,
                         paddingTop:
                             (state.item.pxheight / state.item.pxwidth) * 100 +
                             "%"
@@ -108,6 +110,11 @@ export default function Tizer(props) {
             </div>
             <div className="matherial">
                 {state.item.materials.map((m, mi) => (
+                    <span key={mi}>{m.title}</span>
+                ))}
+            </div>
+            <div className="techniques">
+                {state.item.techniques.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
             </div>

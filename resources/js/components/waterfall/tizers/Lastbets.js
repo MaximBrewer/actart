@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Favorite, Hammer } from "../../../icons/icons";
-import __ from '../../../utils/trans';
+import __ from "../../../utils/trans";
 
 export default function Tizer(props) {
     const { data, item, req } = props;
@@ -21,7 +21,11 @@ export default function Tizer(props) {
                         paddingTop: (item.pxheight / item.pxwidth) * 100 + "%"
                     }}
                 >
-                    {item.status == 'gallery' ? <Favorite item={item} req={req} /> : ``}
+                    {item.status == "gallery" ? (
+                        <Favorite item={item} req={req} />
+                    ) : (
+                        ``
+                    )}
                 </Link>
             </div>
             <Link className="title" to={url}>
@@ -40,6 +44,11 @@ export default function Tizer(props) {
             </div>
             <div className="matherial">
                 {item.materials.map((m, mi) => (
+                    <span key={mi}>{m.title}</span>
+                ))}
+            </div>
+            <div className="techniques">
+                {item.techniques.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
             </div>
