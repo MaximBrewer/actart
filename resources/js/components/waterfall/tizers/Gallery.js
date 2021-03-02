@@ -43,23 +43,31 @@ export default function Tizer(props) {
             case "gallery":
                 setState(prevState => ({
                     ...prevState,
-                    url: "/gallery/lot/" + state.item.id
+                    url: `/gallery/lot/${state.item.id}`
                 }));
                 break;
             case "gsold":
                 setState(prevState => ({
                     ...prevState,
-                    url: "/gallery/archive/lot/" + state.item.id
+                    url: `/gallery/archive/lot/${state.item.id}`
+                }));
+                break;
+            case "auction":
+                setState(prevState => ({
+                    ...prevState,
+                    url: `/auctions/${state.item.auction_id}/lot/${state.item.id}`
+                }));
+                break;
+            case "sold":
+                setState(prevState => ({
+                    ...prevState,
+                    url: `/auctions/${state.item.auction_id}/lot/${state.item.id}`
                 }));
                 break;
             default:
                 setState(prevState => ({
                     ...prevState,
-                    url:
-                        "/auctions/" +
-                        state.item.auction_id +
-                        "/lot/" +
-                        state.item.id
+                    url: `javascript:void;`
                 }));
                 break;
         }

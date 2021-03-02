@@ -20390,6 +20390,7 @@ iframe {
   height: 14px;
 }
 
+.gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .techniques,
 .gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial {
   font-size: 13px;
   line-height: 15px;
@@ -20398,14 +20399,17 @@ iframe {
   color: #818486;
 }
 
+.gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .techniques span,
 .gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial span {
   text-transform: lowercase;
 }
 
+.gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .techniques span:after,
 .gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial span:after {
   content: ", ";
 }
 
+.gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .techniques span:last-child:after,
 .gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial span:last-child:after {
   content: "";
 }
@@ -20553,6 +20557,7 @@ iframe {
     line-height: 32px;
   }
 
+  .gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .techniques,
   .gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial {
     font-size: 13px;
     line-height: 15px;
@@ -20656,6 +20661,7 @@ iframe {
     line-height: 32px;
   }
 
+  .gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .techniques,
   .gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial {
     font-size: 13px;
     line-height: 15px;
@@ -22496,6 +22502,7 @@ section.announces.bggray .background-text {
   height: 14px;
 }
 
+.gallery-item .techniques,
 .gallery-item .matherial {
   font-size: 13px;
   line-height: 15px;
@@ -22504,14 +22511,17 @@ section.announces.bggray .background-text {
   color: #818486;
 }
 
+.gallery-item .techniques span,
 .gallery-item .matherial span {
   text-transform: lowercase;
 }
 
+.gallery-item .techniques span:after,
 .gallery-item .matherial span:after {
   content: ", ";
 }
 
+.gallery-item .techniques span:last-child:after,
 .gallery-item .matherial span:last-child:after {
   content: "";
 }
