@@ -160,10 +160,19 @@ export default function Tizer(props) {
                 {state.item.width} &times; {state.item.height}
                 {__("MEASURE_CM")}
             </div>
-            {props.data.showStatus ? (
-                <Link className={state.item.status + ` status`} to={state.url}>
-                    {__("#status-" + state.item.status + "#")}
-                </Link>
+            {state.url ? (
+                <>
+                    {props.data.showStatus ? (
+                        <Link
+                            className={state.item.status + ` status`}
+                            to={state.url}
+                        >
+                            {__("#status-" + state.item.status + "#")}
+                        </Link>
+                    ) : (
+                        ``
+                    )}
+                </>
             ) : (
                 ``
             )}
