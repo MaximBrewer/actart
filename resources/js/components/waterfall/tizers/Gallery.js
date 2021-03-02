@@ -62,13 +62,13 @@ export default function Tizer(props) {
                 else
                     setState(prevState => ({
                         ...prevState,
-                        url: `javascript:void;`
+                        url: false
                     }));
                 break;
             default:
                 setState(prevState => ({
                     ...prevState,
-                    url: `javascript:void;`
+                    url: false
                 }));
                 break;
         }
@@ -81,28 +81,55 @@ export default function Tizer(props) {
     return (
         <div className={`gallery-item`}>
             <div className="image-holder">
-                <Link
-                    className={`image`}
-                    style={{
-                        backgroundImage: `url(${encodeURI(
-                            state.item.thumbnail
-                        )})`,
-                        paddingTop:
-                            (state.item.pxheight / state.item.pxwidth) * 100 +
-                            "%"
-                    }}
-                    to={state.url}
-                >
-                    {state.item.status == "gallery" ? (
-                        <Favorite item={state.item} {...props} />
-                    ) : (
-                        ``
-                    )}
-                </Link>
+                {state.url ? (
+                    <>
+                        <Link
+                            className={`image`}
+                            style={{
+                                backgroundImage: `url(${encodeURI(
+                                    state.item.thumbnail
+                                )})`,
+                                paddingTop:
+                                    (state.item.pxheight / state.item.pxwidth) *
+                                        100 +
+                                    "%"
+                            }}
+                            to={state.url}
+                        >
+                            {state.item.status == "gallery" ? (
+                                <Favorite item={state.item} {...props} />
+                            ) : (
+                                ``
+                            )}
+                        </Link>
+                        <Link className={`title`} to={state.url}>
+                            {state.item.title}
+                        </Link>
+                    </>
+                ) : (
+                    <>
+                        <div
+                            className={`image`}
+                            style={{
+                                backgroundImage: `url(${encodeURI(
+                                    state.item.thumbnail
+                                )})`,
+                                paddingTop:
+                                    (state.item.pxheight / state.item.pxwidth) *
+                                        100 +
+                                    "%"
+                            }}
+                        >
+                            {state.item.status == "gallery" ? (
+                                <Favorite item={state.item} {...props} />
+                            ) : (
+                                ``
+                            )}
+                        </div>
+                        <span className={`title`}>{state.item.title}</span>
+                    </>
+                )}
             </div>
-            <Link className={`title`} to={state.url}>
-                {state.item.title}
-            </Link>
             <div className="d-flex justify-content-between flex-wrap">
                 <Link className="author" to={state.item.author_url}>
                     {state.item.author}
