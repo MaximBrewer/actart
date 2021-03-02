@@ -80,9 +80,9 @@ export default function Tizer(props) {
 
     return (
         <div className={`gallery-item`}>
-            <div className="image-holder">
-                {state.url ? (
-                    <>
+            {state.url ? (
+                <>
+                    <div className="image-holder">
                         <Link
                             className={`image`}
                             style={{
@@ -102,12 +102,14 @@ export default function Tizer(props) {
                                 ``
                             )}
                         </Link>
-                        <Link className={`title`} to={state.url}>
-                            {state.item.title}
-                        </Link>
-                    </>
-                ) : (
-                    <>
+                    </div>
+                    <Link className={`title`} to={state.url}>
+                        {state.item.title}
+                    </Link>
+                </>
+            ) : (
+                <>
+                    <div className="image-holder">
                         <div
                             className={`image`}
                             style={{
@@ -126,10 +128,10 @@ export default function Tizer(props) {
                                 ``
                             )}
                         </div>
-                        <span className={`title`}>{state.item.title}</span>
-                    </>
-                )}
-            </div>
+                    </div>
+                    <span className={`title`}>{state.item.title}</span>
+                </>
+            )}
             <div className="d-flex justify-content-between flex-wrap">
                 <Link className="author" to={state.item.author_url}>
                     {state.item.author}
