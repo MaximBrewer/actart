@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../context/auth";
 import __ from "../utils/trans";
 import { setIntendedUrl } from "../utils/auth";
 import AuctionsProfile from "../components/auction/AuctionsProfile";
@@ -10,6 +9,7 @@ import { OkIcon } from "../icons/icons";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { useAlert } from "react-alert";
+import { useAuth } from "../context/auth";
 import Countdown, { zeroPad } from "react-countdown";
 
 function Profile(props) {
@@ -144,10 +144,33 @@ function Profile(props) {
                                                 onClick={() => sendCode()}
                                                 className="btn btn-default btn-sm"
                                             >
-                                                {__("#SEND CODE#")}
+                                                {__("#SEND_CODE#")}
                                             </button>
                                         )}
                                     </div>
+                                )}
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>{__("#PROFILE_CONTRACT_TEXT#")}:</dt>
+                            <dd>
+                                {currentUser.contract ? (
+                                    <>
+                                        <Link
+                                            className="btn btn-default btn-sm"
+                                            to="/profile/contract"
+                                        >
+                                            {__("#OPEN_CONTRACT#")}
+                                        </Link>{" "}
+                                        <OkIcon />
+                                    </>
+                                ) : (
+                                    <Link
+                                        className="btn btn-default btn-sm"
+                                        to="/profile/contract"
+                                    >
+                                        {__("#SIGN_CONTRACT#")}
+                                    </Link>
                                 )}
                             </dd>
                         </dl>

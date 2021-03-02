@@ -19787,38 +19787,30 @@ iframe {
   }
 }
 
-.sing-section {
-  background-color: gray;
+.sing-modal {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
 }
 
-.sing-section .container {
+.sing-modal .sigContainer {
   width: 100%;
-  height: 100vh;
-  top: 10%;
-  left: 10%;
-}
-
-.sing-section .sigContainer {
-  width: 80%;
-  height: 80%;
+  height: 100%;
   margin: 0 auto;
   background-color: #fff;
 }
 
-.sing-section .sigPad {
+.sing-modal .sigPad {
   width: 100%;
   height: 100%;
 }
 
-.sing-section .buttons {
+.sing-modal .buttons {
   width: 100%;
   height: 30px;
 }
 
-.sing-section .sigImage {
+.sing-modal .sigImage {
   background-size: 200px 50px;
   width: 200px;
   height: 50px;
