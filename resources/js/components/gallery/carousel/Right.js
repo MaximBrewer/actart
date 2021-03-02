@@ -11,7 +11,6 @@ import {
 } from "react-router-dom";
 
 export default function Right(props) {
-    console.log(props);
     const { req, openModal } = props;
     const { currentUser } = useAuth();
 
@@ -226,7 +225,11 @@ export default function Right(props) {
                                     {__("#ATTENTION!#")}
                                 </span>{" "}
                                 {__("#VIP_FOR_PARTICIPATE_TEXT#")}{" "}
-                                <Link to={`/profile/vip`}>
+                                <Link
+                                    to={`/profile/vip`}
+                                    style={{whiteSpace: "nowrap"}}
+                                    className={`color-red font-weight-bolder`}
+                                >
                                     {__("#VIP_FOR_PARTICIPATE_LINK#")}
                                 </Link>
                             </small>

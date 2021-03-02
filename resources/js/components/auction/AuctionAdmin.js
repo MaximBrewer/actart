@@ -6,6 +6,7 @@ import Waterfall from "../waterfall/Waterfall";
 import Lightbox from "react-image-lightbox";
 import useDocumentTitle from "../../components/document-title";
 import YouTube from "react-youtube";
+import CountdownTop from "./Countdown";
 
 import Countdown, { zeroPad } from "react-countdown";
 import { now } from "lodash";
@@ -447,14 +448,21 @@ export default function AuctionAdmin(props) {
                     >
                         <div className="darkener">
                             <div className="container">
+                                <CountdownTop date={state.auction.dateatom} />
                                 <div className="h1">
                                     {state.auction.title}
-                                    <br />
-                                    <span className="online">
-                                        {__(
-                                            "ONLINE_BROADCAST_IN_PROPGRESS_TEXT"
-                                        )}
-                                    </span>
+                                    {state.auction.online ? (
+                                        <>
+                                            <br />
+                                            <span className="online">
+                                                {__(
+                                                    "ONLINE_BROADCAST_IN_PROPGRESS_TEXT"
+                                                )}
+                                            </span>
+                                        </>
+                                    ) : (
+                                        ``
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -993,6 +1001,18 @@ export default function AuctionAdmin(props) {
                                                             <h3
                                                                 className={`py-5 text-center color-red`}
                                                             >
+                                                                {state.auction
+                                                                    .online ? (
+                                                                    ``
+                                                                ) : (
+                                                                    <CountdownTop
+                                                                        date={
+                                                                            state
+                                                                                .auction
+                                                                                .dateatom
+                                                                        }
+                                                                    />
+                                                                )}
                                                                 {__(
                                                                     "#AUCTION_WILL_START_SOON_ADMIN#"
                                                                 )}

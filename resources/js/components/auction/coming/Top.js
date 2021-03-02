@@ -6,7 +6,7 @@ import { useAuth } from "../../../context/auth";
 
 export default function Top(props) {
     const { auction, participate } = props;
-    let { inAuctions } = useAuth();
+    let { inAuctions, currentUser } = useAuth();
     return (
         <section
             className="auction-announce auction-coming"
@@ -28,7 +28,11 @@ export default function Top(props) {
                             to={"/auctions/" + auction.id}
                             className="btn btn-danger mb-2"
                         >
-                            {__("ALREADY_REGISTERED")}
+                            {__("#YOUR_STATUS_IS:#")}{" "}
+                            {currentUser.vip
+                                ? __("#VIP_STATUS#")
+                                : __("#GUEST_STATUS#")}
+                            {/* {__("ALREADY_REGISTERED")} */}
                         </Link>
                     ) : (
                         <Link
@@ -36,7 +40,11 @@ export default function Top(props) {
                             className="btn btn-danger mb-2"
                             onClick={e => participate(e, auction)}
                         >
-                            {__("PARTICIPATE")}
+                            {__("#YOUR_STATUS_IS:#")}{" "}
+                            {currentUser.vip
+                                ? __("#VIP_STATUS#")
+                                : __("#GUEST_STATUS#")}
+                            {/* {__("PARTICIPATE")} */}
                         </Link>
                     )}
                     <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;</div>

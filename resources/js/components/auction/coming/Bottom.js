@@ -6,7 +6,7 @@ import { useAuth } from "../../../context/auth";
 
 export default function Bottom(props) {
     const { auction, participate } = props;
-    let { inAuctions } = useAuth();
+    let { inAuctions, currentUser } = useAuth();
     return (
         <div className="auction-footer">
             <div className="container">
@@ -16,31 +16,80 @@ export default function Bottom(props) {
                     </div>
                 </div>
                 <div className="row justify-content-center my-5">
-                    <div className="col-lg-15">
-                        {inAuctions ? (
-                            <div className="d-flex flex-column justify-content-center">
+                    <div className="col-lg-40">
+                        {currentUser ? (
+                            inAuctions ? (
+                                <div className="d-flex flex-column justify-content-center">
+                                    <p className="text-center pt-3">
+                                        {__("#ALREADY_REGISTERED_HELP#")}
+                                    </p>
+                                    <div className="text-center mb-3">
+                                        <Link
+                                            to={"/auctions/" + auction.id}
+                                            className="btn btn-danger"
+                                        >
+                                            {currentUser.vip
+                                                ? __(
+                                                      "#ALREADY_REGISTERED_VIP_STATUS#"
+                                                  )
+                                                : __(
+                                                      "#ALREADY_REGISTERED_GUEST_STATUS#"
+                                                  )}
+                                            {/* {__("ALREADY_REGISTERED")} */}
+                                        </Link>
+                                    </div>
+                                    {currentUser.vip ? (
+                                        ``
+                                    ) : (
+                                        <strong
+                                            style={{
+                                                textAlign: "center",
+                                                margin: "0 auto",
+                                                maxWidth: "80%",
+                                                display: "block"
+                                            }}
+                                        >
+                                            <span className={`color-red`}>
+                                                {__("#ATTENTION!#")}
+                                            </span>{" "}
+                                            {__("#VIP_FOR_PARTICIPATE_TEXT#")}{" "}
+                                            <Link
+                                                to={`/profile/vip`}
+                                                style={{whiteSpace: "nowrap"}}
+                                                className={`color-red font-weight-bolder`}
+                                            >
+                                                {__(
+                                                    "#VIP_FOR_PARTICIPATE_LINK#"
+                                                )}
+                                            </Link>
+                                        </strong>
+                                    )}
+                                </div>
+                            ) : (
                                 <Link
                                     to={"/auctions/" + auction.id}
                                     className="btn btn-danger"
+                                    onClick={e => participate(e, auction)}
                                 >
-                                    {__("ALREADY_REGISTERED")}
+                                    {currentUser.vip
+                                        ? __("#ALREADY_REGISTERED_VIP_STATUS#")
+                                        : __(
+                                              "#ALREADY_REGISTERED_GUEST_STATUS#"
+                                          )}
+                                    {/* {__("PARTICIPATE")} */}
                                 </Link>
-                                <p className="text-center py-3">{__("#ALREADY_REGISTERED_HELP#")}</p>
-                            </div>
+                            )
                         ) : (
-                            <Link
-                                to={"/auctions/" + auction.id}
-                                className="btn btn-danger"
-                                onClick={e => participate(e, auction)}
-                            >
-                                {__("PARTICIPATE")}
-                            </Link>
+                            ``
                         )}
                     </div>
                 </div>
                 <div className="row justify-content-center my-5">
                     <div className="col-lg-15">
-                        <Link to="/auctions" className="btn btn-default w-100 mb-2">
+                        <Link
+                            to="/auctions"
+                            className="btn btn-default w-100 mb-2"
+                        >
                             {__("BTN_ALL_AUCTIONS")}
                         </Link>
                     </div>
