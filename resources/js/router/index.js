@@ -48,7 +48,6 @@ import ForgotPasswordModal from "../modals/forgot-password";
 import ConfirmationModal from "../modals/confirmation";
 import ResetPasswordModal from "../modals/reset-password";
 import CodeModal from "../modals/code";
-import SignModal from "../modals/sign";
 import { setIntendedUrl } from "../utils/auth";
 
 import client from "../api/client";
@@ -133,8 +132,7 @@ function App() {
         forgot: false,
         reset: false,
         confirmation: false,
-        code: false,
-        sign: false
+        code: false
     };
 
     const modals = [
@@ -181,12 +179,6 @@ function App() {
             key: "code",
             component: (
                 <CodeModal openModal={openModal} closeModal={closeModal} />
-            )
-        },
-        {
-            key: "sign",
-            component: (
-                <SignModal openModal={openModal} closeModal={closeModal} />
             )
         }
     ];
@@ -257,10 +249,19 @@ function App() {
         <Router>
             <Switch>
                 <Route exact path="/">
-                    <Plug {...rest} />
-                </Route>
-                <Route exact path="/profile/contract">
-                    <ProfileContract {...rest} />
+                    {window.App.plug ? (
+                        <Plug {...rest} />
+                    ) : (
+                        <>
+                            <div className="wrapper">
+                                <Header {...rest} />
+                                <div id="main">
+                                    <Home {...rest} />
+                                </div>
+                            </div>
+                            <Footer {...rest} />
+                        </>
+                    )}
                 </Route>
                 <Route path="/">
                     <div className="wrapper">
@@ -300,9 +301,6 @@ function App() {
                                 <Route path="/password/reset/:token">
                                     <Home {...rest} />
                                 </Route>
-                                {/* <Route exact path="/">
-                                <Plug {...rest} />
-                            </Route> */}
                                 <Route exact path="/blog">
                                     <Blog {...rest} />
                                 </Route>
