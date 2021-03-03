@@ -57,6 +57,7 @@ $isModelTranslatable = true;
                         'avatar',
                         'password',
                         'vip',
+                        'hidden',
                         'ban'
                         ])) continue;
 
