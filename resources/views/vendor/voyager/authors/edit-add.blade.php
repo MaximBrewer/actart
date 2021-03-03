@@ -57,6 +57,7 @@ $isModelTranslatable = true;
                         'avatar',
                         'password',
                         'vip',
+                        'hidden',
                         'ban'
                         ])) continue;
 
@@ -144,7 +145,8 @@ $isModelTranslatable = true;
 
                         if(!in_array($row->field, [
                         'vip',
-                        'ban'
+                        'ban',
+                        'hiddeb'
                         ])) continue;
 
                         @endphp

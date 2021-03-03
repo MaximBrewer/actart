@@ -10,17 +10,17 @@ export default function Bottom(props) {
     return (
         <div className="auction-footer">
             <div className="container">
-                <div className="row justify-content-center my-5">
+                <div className="row justify-content-center mt-5 mb-2">
                     <div className="col-lg-30 h-center">
                         <Countdown date={auction.dateatom} />
                     </div>
                 </div>
-                <div className="row justify-content-center my-5">
+                <div className="row justify-content-center mt-2 mb-4">
                     <div className="col-lg-40">
                         {currentUser ? (
                             inAuctions ? (
                                 <div className="d-flex flex-column justify-content-center">
-                                    <p className="text-center pt-3">
+                                    <p className="text-center pb-3">
                                         {__("#ALREADY_REGISTERED_HELP#")}
                                     </p>
                                     <div className="text-center mb-3">
@@ -84,7 +84,7 @@ export default function Bottom(props) {
                         )}
                     </div>
                 </div>
-                <div className="row justify-content-center my-5">
+                <div className="row justify-content-center my-5 py-5">
                     <div className="col-lg-15">
                         <Link
                             to="/auctions"
