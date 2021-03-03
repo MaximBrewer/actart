@@ -146,7 +146,7 @@ $isModelTranslatable = true;
                         if(!in_array($row->field, [
                         'vip',
                         'ban',
-                        'hiddeb'
+                        'hidden'
                         ])) continue;
 
                         @endphp
