@@ -337,9 +337,9 @@ function Home(props) {
                     </div>
                 </div>
             </section>
-{/*             
+            
             <section id="experts" className="d-none d-sm-none d-md-block">
-                <div>
+                {/* <div>
                     <div className="sticky-wrapper">
                         <div className="container">
                             <h2 className="h2">{__("#HOME_EXPERTS_TITLE#")}</h2>
@@ -387,8 +387,8 @@ function Home(props) {
                             <span>{__("#HOME_EXPERTS_STICKY#")}</span>
                         </div>
                     </div>
-                </div>
-            </section> */}
+                </div> */}
+            </section>
             <section className="mb-5">
                 <div className="container mb-5">
                     <div className="footer-buttons">
