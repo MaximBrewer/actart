@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Notifications\Manager\Feedback as ManagerFeedbackNotification;
 
 use App\Feedback;
+use App\User;
 
 class FeedbackController extends Controller
 {
@@ -49,12 +51,21 @@ class FeedbackController extends Controller
             ]
         );
 
-        $subscriber = Feedback::create([
+        $feedback = Feedback::create([
             'name' => $request->name,
             'email' => $request->email,
             'message' => $request->message
         ]);
 
+        try {
+            (new User)->forceFill([
+                'name' => 'info@act-art.ru',
+                'email' => 'info@act-art.ru',
+            ])->notify(new ManagerFeedbackNotification($feedback));
+        } catch (\Throwable $e) {
+            report($e);
+        }
+        
         return response()->json(['status' => __("#FEEDBACK_SUCCESS_MESSAGE#")], 200);
     }
 
