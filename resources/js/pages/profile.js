@@ -51,8 +51,8 @@ function Profile(props) {
                                     <span className="uppercase">
                                         (
                                         {currentUser.vip
-                                            ? __("#GUEST#")
-                                            : __("#VIP#")}
+                                            ? __("#VIP#")
+                                            : __("#GUEST#")}
                                         )
                                     </span>
                                 ) : (

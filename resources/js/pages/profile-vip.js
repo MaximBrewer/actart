@@ -102,7 +102,20 @@ function Profile(props) {
                         </dl>
                         <dl>
                             <dt>{__("Status:")}</dt>
-                            <dd>{__(currentUser.role.display_name)}</dd>
+                            <dd>
+                                {__(currentUser.role.display_name)}{" "}
+                                {currentUser.role.name == "user" ? (
+                                    <span className="uppercase">
+                                        (
+                                        {currentUser.vip
+                                            ? __("#VIP#")
+                                            : __("#GUEST#")}
+                                        )
+                                    </span>
+                                ) : (
+                                    ``
+                                )}
+                            </dd>
                         </dl>
                         <dl>
                             <dt>{__("Full name:")}</dt>
@@ -179,7 +192,9 @@ function Profile(props) {
                                             target="_blank"
                                             href="https://act-art.na3.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhB2ciYi_sxl2AXEJrMNVoeNzorg-zEIzevP1KTAYqXokOZJHhsYflPlFvoY6Ytkzvw*&hosted=false"
                                         >
-                                            <strong>{__("#PROFILE_CONTRACT_LINK#")}</strong>
+                                            <strong>
+                                                {__("#PROFILE_CONTRACT_LINK#")}
+                                            </strong>
                                         </a>
                                         <br />
                                         <small>
