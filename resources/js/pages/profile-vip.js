@@ -133,7 +133,7 @@ function Profile(props) {
                                 {currentUser.email} <OkIcon />
                             </dd>
                         </dl>
-                        <dl>
+                        <dl className="dl-xs-block">
                             <dt
                                 className={`${
                                     currentUser.phone_verified_at
@@ -149,30 +149,32 @@ function Profile(props) {
                                         {currentUser.phone} <OkIcon />
                                     </span>
                                 ) : (
-                                    <div className="d-flex align-items-center">
+                                    <div className="d-block d-sm-flex align-items-center">
                                         <PhoneInput
-                                            className="mr-2"
+                                            className="mr-sm-2 mb-3 mb-sm-0"
                                             country="RU"
                                             defaultCountry="RU"
                                             placeholder="Enter phone number"
                                             value={phone}
                                             onChange={setPhone}
                                         />
-                                        {countdown ? (
-                                            countdown
-                                        ) : (
-                                            <button
-                                                onClick={() => sendCode()}
-                                                className="btn btn-default btn-sm"
-                                            >
-                                                {__("#SEND_CODE#")}
-                                            </button>
-                                        )}
+                                        <div className="text-right text-sm-left">
+                                            {countdown ? (
+                                                countdown
+                                            ) : (
+                                                <button
+                                                    onClick={() => sendCode()}
+                                                    className="btn btn-default btn-sm"
+                                                >
+                                                    {__("#SEND_CODE#")}
+                                                </button>
+                                            )}
+                                        </div>
                                     </div>
                                 )}
                             </dd>
                         </dl>
-                        <dl>
+                        <dl className="dl-xs-block">
                             <dt
                                 className={`${
                                     currentUser.vip ? `` : `color-red`

@@ -20092,11 +20092,52 @@ iframe {
 }
 
 .profile-section dl dt {
-  width: 50%;
+  width: 30%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile-section dl dd {
-  width: 50%;
+  width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-section dl.dl-xs-block {
+  display: block;
+}
+
+.profile-section dl.dl-xs-block dt {
+  width: 100%;
+  padding-bottom: 0.7rem;
+}
+
+.profile-section dl.dl-xs-block dd {
+  white-space: normal;
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .profile-section dl.dl-xs-block {
+    display: flex;
+  }
+
+  .profile-section dl.dl-xs-block dt {
+    width: 30%;
+    padding-bottom: 0;
+  }
+
+  .profile-section dl.dl-xs-block dd {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .profile-section dl.dl-xs-block {
+    justify-content: flex-end;
+  }
 }
 
 .profile-section .auction-preview {
