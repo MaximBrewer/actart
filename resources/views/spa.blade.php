@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/app.css?v=1.49') }}" rel="stylesheet">
+    <meta name="description" content="{{setting(app()->getLocale() . '.meta_description')}}">
+    <meta name="keywords" content="{{setting(app()->getLocale() . '.meta_description')}}">
 </head>
 
 <body>
