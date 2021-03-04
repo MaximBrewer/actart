@@ -186,7 +186,6 @@ export default function Right(props) {
                 {currentUser != undefined &&
                 (!state.item.bets.length || !state.item.bets[0].blitz) ? (
                     <React.Fragment>
-                        {console.log(window.App.viplimit)}
                         <a
                             className={`btn btn-danger ${
                                 getStep() + state.item.price * 1 <

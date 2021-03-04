@@ -41,13 +41,6 @@ export default function Waterfall(props) {
                         push = true;
                         continue loop;
                     }
-                    // for (const option of item[field]) {
-                    //     console.log(option);
-                    //     //     if (filter[field] == option.id) {
-                    //     //         push = true;
-                    //     //         continue loop;
-                    //     //     }
-                    // }
                 }
                 push && newItems.push(item);
             }
@@ -229,7 +222,6 @@ export default function Waterfall(props) {
             let lots = [];
             for (let lot of prevState.items) {
                 let bets = [];
-                console.log(lot);
                 for (let bet of lot.bets)
                     bet.id == event.detail.id || bets.push(bet);
                 lot.bets = bets;

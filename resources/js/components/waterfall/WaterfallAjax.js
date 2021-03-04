@@ -190,7 +190,6 @@ export default function WaterfallAjax(props) {
             let lots = [];
             for (let lot of prevState.items) {
                 let bets = [];
-                console.log(lot);
                 for (let bet of lot.bets)
                     bet.id == event.detail.id || bets.push(bet);
                 lot.bets = bets;

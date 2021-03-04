@@ -172,7 +172,6 @@ export default function AuctionAdmin(props) {
     };
 
     const updateTranslation = event => {
-        console.log(event.detail.translation);
         setState(prevState => ({
             ...prevState,
             translation: event.detail.translation

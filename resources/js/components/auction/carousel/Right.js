@@ -17,9 +17,6 @@ export default function Right(props) {
             .then(() => { })
             .catch(err => console.log(err));
     };
-
-    console.log(10000)
-
     const getStep = () => {
         for(let step of window.App.steps){
             if(step.to > item.price || !step.to) return step.step * 1

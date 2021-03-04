@@ -187,7 +187,6 @@ function App() {
     function openModal(name) {
         setModal(prevState => {
             initState[name] = true;
-            console.log(initState);
             return initState;
         });
     }

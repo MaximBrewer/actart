@@ -30,7 +30,6 @@ function RegisterModal(props) {
                 setRegisterFeedback(status);
             })
             .catch(error => {
-                // console.log(error);
                 error.json().then(({ errors }) => {
                     setRegisterFeedback("");
                     [email, name, password].forEach(({ parseServerError }) =>

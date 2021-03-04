@@ -112,7 +112,6 @@ export default function Carousel(props) {
             <div className="row">
                 <div className="col-xl-40 col-xxl-38">
                     <div className="left-side">
-                        {console.log("Slider")}
                         <Slider {...settingsPicture} ref={refPicture}>
                             {state.items.map((item, index) => (
                                 <div key={index}>

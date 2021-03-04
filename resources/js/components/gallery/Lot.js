@@ -25,7 +25,6 @@ export default function Lot(props) {
                     newItems.push(item);
                 }
             }
-            console.log(newItems);
             return {
                 carousel: <Carousel {...props} items={newItems} />,
                 items: newItems

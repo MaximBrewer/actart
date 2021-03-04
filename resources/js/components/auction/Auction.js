@@ -224,11 +224,6 @@ export default function Auction(props) {
         setState(prevState => {
             let auction = prevState.auction;
             if (auction.current.id == event.detail.id) {
-                console.log(
-                    event.detail.delta < window.App.timer,
-                    event.detail.delta,
-                    window.App.timer
-                );
                 auction.current.countdown = event.detail.countdown;
                 auction.current.delta = event.detail.delta;
                 if (event.detail.delta < window.App.timer) {

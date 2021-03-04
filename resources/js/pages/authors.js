@@ -22,7 +22,6 @@ export default function Authors(props) {
                         </div>
                         <div className="announce-slider-wrapper">
                             <div className="act-waterfall">
-                                {console.log(window.App.authors)}
                                 <Waterfall
                                     items={window.App.authors}
                                     {...props}
