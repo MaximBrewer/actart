@@ -90,6 +90,10 @@ class SpaController extends Controller
         $viplimit = setting('site.viplimit');
         $plug = setting('site.plug');
 
+        $meta_title = setting($locale . '.meta_title');
+        $meta_description = setting($locale . '.meta_description');
+        $meta_keywords = setting($locale . '.meta_keywords');
+
         $ticker = [
             'picture' => "/storage/" . setting($locale . '.ticker_picture'),
             'text' => setting($locale . '.ticker_text'),
@@ -106,6 +110,9 @@ class SpaController extends Controller
         $translations = cache('translations.' . $locale);
         return view('spa', [
             'app' => compact(
+                'meta_title',
+                'meta_description',
+                'meta_keywords',
                 'authors',
                 'viplimit',
                 'plug',
