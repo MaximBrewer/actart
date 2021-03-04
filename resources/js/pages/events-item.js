@@ -20,8 +20,8 @@ export default function Eventtem(props) {
             .then(({ event }) =>
                 setState(prevState => {
                     document.title = event.seo_title ? event.seo_title : event.title;
-                    document.querySelector('meta[name="description"]').setAttribute("content", event.meta_description ?? window.App.meta_description);
-                    document.querySelector('meta[name="keywords"]').setAttribute("content", event.meta_keywords ?? window.App.meta_keywords);
+                    document.querySelector('meta[name="description"]').setAttribute("content", event.meta_description ? event.meta_description : window.App.meta_description);
+                    document.querySelector('meta[name="keywords"]').setAttribute("content", event.meta_keywords ? event.meta_keywords : window.App.meta_keywords);
                     return {
                         ...prevState,
                         event
