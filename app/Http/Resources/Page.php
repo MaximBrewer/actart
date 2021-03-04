@@ -18,7 +18,7 @@ class Page extends JsonResource
         return [
             'id' => $this->id,
             'author_id' => $this->author_id,
-            'meta_title' => $this->getTranslatedAttribute('meta_title'),
+            'seo_title' => $this->getTranslatedAttribute('seo_title'),
             'meta_description' => $this->getTranslatedAttribute('meta_description'),
             'meta_keywords' => $this->getTranslatedAttribute('meta_keywords'),
             'status' => $this->status,

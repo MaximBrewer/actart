@@ -23,7 +23,7 @@ class PostFull extends JsonResource
             'title' => $this->getTranslatedAttribute('title'),
             'excerpt' => $this->getTranslatedAttribute('excerpt'),
             'body' => $this->getTranslatedAttribute('body'),
-            'meta_title' => $this->getTranslatedAttribute('meta_title'),
+            'seo_title' => $this->getTranslatedAttribute('seo_title'),
             'meta_description' => $this->getTranslatedAttribute('meta_description'),
             'meta_keywords' => $this->getTranslatedAttribute('meta_keywords'),
             'date' => $this->dateout,

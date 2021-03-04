@@ -21,7 +21,7 @@ class Post extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->getTranslatedAttribute('title'),
-            'meta_title' => $this->getTranslatedAttribute('meta_title'),
+            'seo_title' => $this->getTranslatedAttribute('seo_title'),
             'meta_description' => $this->getTranslatedAttribute('meta_description'),
             'meta_keywords' => $this->getTranslatedAttribute('meta_keywords'),
             'excerpt' => $this->getTranslatedAttribute('excerpt'),
