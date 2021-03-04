@@ -24,7 +24,7 @@ export default function Base(props) {
             .then(({ page }) =>
                 setState(prevState => {
                     document.title = page.seo_title ? page.seo_title : page.title;
-                    document.querySelector('meta[name="description"]').setAttribute("content", page.description ?? window.App.meta_description);
+                    document.querySelector('meta[name="description"]').setAttribute("content", page.meta_description ?? window.App.meta_description);
                     document.querySelector('meta[name="keywords"]').setAttribute("content", page.meta_keywords ?? window.App.meta_keywords);
                     return {
                         ...prevState,

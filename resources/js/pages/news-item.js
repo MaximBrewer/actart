@@ -19,7 +19,7 @@ export default function NewsItem(props) {
             .then(({ post }) =>
                 setState(prevState => {
                     document.title = post.seo_title ? post.seo_title : post.title;
-                    document.querySelector('meta[name="description"]').setAttribute("content", post.description ?? window.App.meta_description);
+                    document.querySelector('meta[name="description"]').setAttribute("content", post.meta_description ?? window.App.meta_description);
                     document.querySelector('meta[name="keywords"]').setAttribute("content", post.meta_keywords ?? window.App.meta_keywords);
                     return {
                         ...prevState,
