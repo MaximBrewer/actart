@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/app.css?v=1.49') }}" rel="stylesheet">
     <meta name="description" content="{{setting(app()->getLocale() . '.meta_description')}}">
-    <meta name="keywords" content="{{setting(app()->getLocale() . '.meta_description')}}">
+    <meta name="keywords" content="{{setting(app()->getLocale() . '.meta_keywords')}}">
 </head>
 
 <body>
