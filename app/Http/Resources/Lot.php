@@ -18,6 +18,7 @@ class Lot extends JsonResource
     public function toArray($request)
     {
         if ($this) {
+            $photos = [];
             $dir = storage_path("app/public/");
             $sizeBase = @getimagesize($dir . $this->photo);
             if ($sizeBase) {
@@ -30,7 +31,6 @@ class Lot extends JsonResource
                     ]
                 ];
             }
-            $photos = [];
             $phArr = json_decode($this->photos);
             if (is_array($phArr)) {
                 foreach ($phArr as $ph) {
@@ -51,6 +51,7 @@ class Lot extends JsonResource
                 'text' => $this->getTranslatedAttribute('text'),
                 'thumbnail' => Voyager::image($this->thumbnail('preview', 'photo')),
                 'photo' => Voyager::image($this->photo),
+                'photos' => $photos,
                 'size' => $sizeBase ? ($sizeBase[0] / $sizeBase[1] > 1 ? 2 : 1) : 1,
                 'width' => $this->width,
                 'height' => $this->height,
@@ -59,7 +60,6 @@ class Lot extends JsonResource
                 'frames' => $this->frames,
                 'techniques' => $this->techniques,
                 'lastchance' => $this->lastchance,
-                'photos' => $photos,
                 'styles' => $this->styles,
                 'nextId' => $this->nextId,
                 'prevId' => $this->prevId,
