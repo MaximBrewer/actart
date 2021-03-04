@@ -25,6 +25,9 @@ class Event extends JsonResource
             'height' => 360,
             'url' => "/events/" . $this->id,
             'space' => $this->space,
+            'meta_title' => $this->getTranslatedAttribute('meta_title'),
+            'meta_description' => $this->getTranslatedAttribute('meta_description'),
+            'meta_keywords' => $this->getTranslatedAttribute('meta_keywords'),
             'dates' => $this->dates
         ];
     }

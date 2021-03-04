@@ -94,7 +94,7 @@ function Profile(props) {
             <div className="container">
                 <div className="row announce">
                     <div className="col-60">
-                        <h5 className="h5">{__("Profile VIP")}</h5>
+                        <h5 className="h5">{__("#PROFILE_VIP_H5#")}</h5>
                         <hr />
                         <dl>
                             <dt>{__("Your ID:")}</dt>

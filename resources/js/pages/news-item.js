@@ -18,7 +18,9 @@ export default function NewsItem(props) {
         req("/api/" + window.App.locale + "/post/" + slug)
             .then(({ post }) =>
                 setState(prevState => {
-                    document.title = post.title;
+                    document.title = post.seo_title ? post.seo_title : post.title;
+                    document.querySelector('meta[name="description"]').setAttribute("content", post.meta_description);
+                    document.querySelector('meta[name="keywords"]').setAttribute("content", post.meta_keywords);
                     return {
                         ...prevState,
                         post

@@ -23,7 +23,9 @@ export default function Base(props) {
         req("/api/" + window.App.locale + "/page" + pathname)
             .then(({ page }) =>
                 setState(prevState => {
-                    document.title = page.meta_title;
+                    document.title = page.seo_title ? page.seo_title : page.title;
+                    document.querySelector('meta[name="description"]').setAttribute("content", page.meta_description);
+                    document.querySelector('meta[name="keywords"]').setAttribute("content", page.meta_keywords);
                     return {
                         ...prevState,
                         page
