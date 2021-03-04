@@ -1,5 +1,5 @@
 @php
-$row->details->default == 'CURRENT_TIMESTAMP' && ($dataTypeContent->{$row->field} = \Carbon\Carbon::now()->format('d.m.Y H:i'));
+$row->details->default && $row->details->default == 'CURRENT_TIMESTAMP' && ($dataTypeContent->{$row->field} = \Carbon\Carbon::now()->format('d.m.Y H:i'));
 @endphp
 
 <input @if ($row->required == 1) required @endif type="datetime"
