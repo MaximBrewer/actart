@@ -189,36 +189,29 @@ export default function AuctionAdmin(props) {
             }
         });
         setState(prevState => {
-            if (prevState.auction.current.id == event.detail.id) {
-                let auction = prevState.auction;
+            let auction = prevState.auction;
+            if (auction.current.id == event.detail.id) {
                 auction.current.countdown = event.detail.countdown;
-                if (
-                    new Date().getTime() - 1000 * window.App.timer <
-                    new Date(event.detail.countdown).getTime()
-                ) {
+                auction.current.delta = event.detail.delta;
+                if (event.detail.delta < window.App.timer) {
                     return {
                         ...prevState,
                         countdowning: true,
                         countdown: (
                             <Countdown
                                 date={
-                                    new Date(event.detail.countdown).getTime() +
-                                    1000 * window.App.timer
+                                    new Date().getTime() +
+                                    1000 *
+                                        (window.App.timer - event.detail.delta)
                                 }
                                 renderer={renderer}
                                 onComplete={handleOnComplete}
                             />
                         )
                     };
-                } else {
-                    return {
-                        ...prevState,
-                        auction: auction,
-                        countdowning: false,
-                        countdown: ""
-                    };
                 }
-            } else return prevState;
+            }
+            return prevState;
         });
     };
 

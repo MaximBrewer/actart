@@ -33,8 +33,8 @@ class Lot
                     $lot->countdown = null;
                     break;
                 case "gsold":
-                    break;
                 case "sold":
+                    $lot->won_id = $lot->bets[0]->user_id;
                     break;
             }
         }
