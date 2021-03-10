@@ -77,7 +77,7 @@ class Lot
                     break;
             }
             try {
-                event(new UpdateLotStatusEvent($lot->id, $lot->status));
+                event(new UpdateLotStatusEvent($lot->id, $lot->status, $lot->won_id));
             } catch (Throwable $e) {
                 report($e);
             }

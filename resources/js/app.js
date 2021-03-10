@@ -238,7 +238,7 @@ channel.bind("update-countdown", function({ id, countdown, delta }) {
     window.dispatchEvent(event);
 });
 
-channel.bind("update-lot-status", function({ id, status }) {
+channel.bind("update-lot-status", function({ id, status, won_id }) {
     let g = [];
     for (let i in window.App.gallery) {
         let lot = window.App.gallery[i];
@@ -248,7 +248,7 @@ channel.bind("update-lot-status", function({ id, status }) {
     window.App.gallery = g;
     window.dispatchEvent(
         new CustomEvent("update-lot-status", {
-            detail: { id, status }
+            detail: { id, status, won_id }
         })
     );
 });

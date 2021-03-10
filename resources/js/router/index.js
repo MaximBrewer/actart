@@ -49,6 +49,7 @@ import ConfirmationModal from "../modals/confirmation";
 import ResetPasswordModal from "../modals/reset-password";
 import CodeModal from "../modals/code";
 import { setIntendedUrl } from "../utils/auth";
+import { getUser } from "../api/auth";
 
 import client from "../api/client";
 
@@ -124,6 +125,29 @@ function App() {
                 .then(resp => resolve(resp))
                 .catch(err => reject(err));
         });
+    };
+
+    useEffect(() => {
+        window.addEventListener("update-lot-status", updateLotStatus);
+        return () => {
+            window.removeEventListener("update-lot-status", updateLotStatus);
+        };
+    }, []);
+
+    const updateLotStatus = event => {
+        let won = [];
+        let user_id = null;
+        setCurrentUser(prevState => {
+            won = prevState.won;
+            user_id = prevState.id;
+            return prevState;
+        });
+        if (!user_id || event.detail.won_id != user_id) return;
+        for (let lot of won) if (lot.id == event.detail.id) return;
+        return req(
+            "/api/" + window.App.locale + "/profile",
+            "GET"
+        ).then(({ data }) => setCurrentUser(data));
     };
 
     const initState = {

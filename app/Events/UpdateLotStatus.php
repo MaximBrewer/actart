@@ -16,15 +16,17 @@ class UpdateLotStatus implements ShouldBroadcast
 
     public $id;
     public $status;
+    public $won_id;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($id, $status)
+    public function __construct($id, $status, $won_id)
     {
         $this->id = $id;
         $this->status = $status;
+        $this->won_id = $won_id;
         //
     }
   
