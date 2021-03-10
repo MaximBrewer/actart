@@ -129,10 +129,26 @@ function App() {
 
     useEffect(() => {
         window.addEventListener("update-lot-status", updateLotStatus);
+        window.addEventListener("update-auction-status", updateAuctionStatus);
         return () => {
             window.removeEventListener("update-lot-status", updateLotStatus);
+            window.removeEventListener(
+                "update-auction-status",
+                updateAuctionStatus
+            );
         };
     }, []);
+
+    const updateAuctionStatus = event => {
+        let rand = Math.random() * 2000;
+        console.log(rand);
+        setTimeout(() => {
+            req(
+                "/api/" + window.App.locale + "/profile",
+                "GET"
+            ).then(({ data }) => setCurrentUser(data));
+        }, rand);
+    };
 
     const updateLotStatus = event => {
         let won = [];
@@ -144,10 +160,9 @@ function App() {
         });
         if (!user_id || event.detail.won_id != user_id) return;
         for (let lot of won) if (lot.id == event.detail.id) return;
-        return req(
-            "/api/" + window.App.locale + "/profile",
-            "GET"
-        ).then(({ data }) => setCurrentUser(data));
+        req("/api/" + window.App.locale + "/profile", "GET").then(({ data }) =>
+            setCurrentUser(data)
+        );
     };
 
     const initState = {
