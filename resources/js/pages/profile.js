@@ -6,6 +6,7 @@ import { setIntendedUrl } from "../utils/auth";
 import AuctionsProfile from "../components/auction/AuctionsProfile";
 import Waterfall from "../components/waterfall/Waterfall";
 import useDocumentTitle from "../components/document-title";
+import Parser from "html-react-parser";
 
 function Profile(props) {
     let { setCurrentUser, setToken, currentUser } = useAuth();
