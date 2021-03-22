@@ -90,6 +90,8 @@ class SpaController extends Controller
         $viplimit = setting('site.viplimit');
         $plug = setting('site.plug');
 
+        $how_to_pay = setting($locale . '.how_to_pay');
+
         $meta_title = setting($locale . '.meta_title');
         $meta_description = setting($locale . '.meta_description');
         $meta_keywords = setting($locale . '.meta_keywords');
@@ -111,6 +113,7 @@ class SpaController extends Controller
         return view('spa', [
             'app' => compact(
                 'meta_title',
+                'how_to_pay',
                 'meta_description',
                 'meta_keywords',
                 'authors',

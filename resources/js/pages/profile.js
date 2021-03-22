@@ -157,6 +157,9 @@ function Profile(props) {
                         />
                     </div>
                 </div>
+                <div className="py-5">
+                    {Parser(window.App.how_to_pay)}
+                </div>
             </div>
         </section>
     );
