@@ -50,7 +50,7 @@ export default function Base(props) {
                             <h2 className="h2">{state.page.title}</h2>
                             <hr />
                             <div className="sub_h2 d-none d-xl-block">
-                                {Parser(state.page.excerpt)}
+                                {Parser(state.page.excerpt ?? "")}
                             </div>
                         </div>
                         {state.page.image ? (

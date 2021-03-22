@@ -51,7 +51,7 @@ export default function Flash() {
                 </div> : ``}
                 {state.message ? 
                 <div className={`content mb-3`}>
-                    {Parser(state.message)}
+                    {Parser(state.message ?? "")}
                 </div> : ``}
                 {state.buttons ? 
                 <div className={`buttons text-right`} onClick={hide}>

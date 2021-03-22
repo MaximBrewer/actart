@@ -80,7 +80,7 @@ function LoginModal(props) {
                         />
                         {email.error && (
                             <div className="invalid-feedback">
-                                {Parser(email.error)}
+                                {Parser(email.error ?? "")}
                             </div>
                         )}
                     </div>

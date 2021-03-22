@@ -13,7 +13,7 @@ export default function ArchiveCenter(props) {
                             <span className='title h3'>{__('TITLE_PAST_AUCTION')}:<br />{auction.title}</span>
                             <span className='date'>{auction.date}</span>
                         </div>
-                        <div className='sub_2 sublime-wrapper'>{Parser(auction.text)}</div>
+                        <div className='sub_2 sublime-wrapper'>{Parser(auction.text ?? "")}</div>
                     </div>
                 </div>
             </div>

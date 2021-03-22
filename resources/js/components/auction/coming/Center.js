@@ -17,7 +17,7 @@ export default function Center(props) {
                             <span className="date">{auction.date}</span>
                         </div>
                         <div className="sub_2 sublime-wrapper">
-                            {Parser(auction.text)}
+                            {Parser(auction.text ?? "")}
                         </div>
                         <div className="link-holder">
                             <Link to={`/rules`}>

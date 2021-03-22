@@ -73,7 +73,7 @@ export default function Feedback(props) {
                 />
                 {email.error && (
                     <div className="invalid-feedback">
-                        {Parser(email.error)}
+                        {Parser(email.error ?? "")}
                     </div>
                 )}
             </div>
@@ -90,7 +90,7 @@ export default function Feedback(props) {
                 />
                 {message.error && (
                     <div className="invalid-feedback">
-                        {Parser(message.error)}
+                        {Parser(message.error ?? "")}
                     </div>
                 )}
             </div>

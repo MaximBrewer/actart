@@ -26,7 +26,7 @@ export default function Parser(props) {
 
         return result ? (
             <React.Fragment>
-                <section>{ReactParser(htmlstr.substr(0, result.index))}</section>
+                <section>{ReactParser(htmlstr.substr(0, result.index) ?? "")}</section>
                 {entity && id ? (
                     <Carousel entity={entity} id={id} {...props} />
                 ) : (
@@ -37,12 +37,12 @@ export default function Parser(props) {
                         htmlstr.substr(
                             result.index + result[0].length,
                             result.input.length
-                        )
+                        ) ?? ""
                     )}
                 </section>
             </React.Fragment>
         ) : (
-            ReactParser(htmlstr)
+            ReactParser(htmlstr ?? "")
         );
     };
 

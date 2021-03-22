@@ -64,7 +64,7 @@ export default function AuthorItem(props) {
                             )}
                             <hr />
                             <div className="d-none d-xl-block description">
-                                {Parser(state.author.text)}
+                                {Parser(state.author.text ?? "")}
                             </div>
                             <div className="btn-sign">
                                 {__(
