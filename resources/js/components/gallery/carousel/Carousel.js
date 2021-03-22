@@ -4,19 +4,24 @@ import Left from "./Left";
 import Right from "./Right";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from "../../../utils/trans";
+import Parser from "html-react-parser";
 import { useHistory, useParams } from "react-router-dom";
 
 export default function Carousel(props) {
     const { id } = useParams();
     let history = useHistory();
 
+    const [currentItem, setCurrentItem] = useState(null);
+
     useEffect(() => {
         let index = getIndex();
-        if (props.items[index])
+        if (props.items[index]) {
             document.title = __("LOT_IN_GALLERY_PAGE_TITLE", {
                 lot_name: props.items[index].title,
                 author_name: props.items[index].author
             });
+            setCurrentItem(props.items[index]);
+        }
         refPicture.current.slickGoTo(index);
         refAnnounce.current.slickGoTo(index);
     }, [id]);
@@ -114,6 +119,16 @@ export default function Carousel(props) {
                     </div>
                 </div>
             </div>
+            {currentItem && currentItem.text ? (
+                <div className="row d-none d-xl-block my-4">
+                    <div className="col-xl-40 col-xxl-38">
+                        {Parser(currentItem.text)}
+                    </div>
+                    <div className="col-xl-20 col-xxl-22"></div>
+                </div>
+            ) : (
+                ``
+            )}
         </div>
     );
 }

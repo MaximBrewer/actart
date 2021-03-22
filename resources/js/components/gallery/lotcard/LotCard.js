@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import Left from "./Left";
 import Right from "./Right";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
+import Parser from "html-react-parser";
 import __ from "../../..//utils/trans";
 import { useHistory, useParams } from "react-router-dom";
 
@@ -80,6 +81,16 @@ export default function LotCard(props) {
                             </div>
                         </div>
                     </div>
+                    {item.text ? (
+                        <div className="row d-none d-xl-block my-4">
+                            <div className="col-xl-40 col-xxl-38">
+                                {Parser(item.text)}
+                            </div>
+                            <div className="col-xl-20 col-xxl-22"></div>
+                        </div>
+                    ) : (
+                        ``
+                    )}
                 </>
             )}
         </div>

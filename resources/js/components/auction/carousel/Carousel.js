@@ -4,6 +4,7 @@ import Left from "./Left";
 import Right from "./Right";
 import { ArrowPrew, ArrowNext } from "../../../icons/icons";
 import __ from "../../../utils/trans";
+import Parser from "html-react-parser";
 import {
     useHistory,
     useParams,
@@ -12,7 +13,6 @@ import {
 } from "react-router-dom";
 
 export default function Carousel(props) {
-
     const { auction } = props;
     let history = useHistory();
     let { url } = useRouteMatch();
@@ -28,6 +28,8 @@ export default function Carousel(props) {
         return 0;
     };
 
+    const [currentItem, setCurrentItem] = useState(null);
+
     useEffect(() => {
         let index = getIndex();
         document.title = __("LOT_IN_AUCTION_PAGE_TITLE", {
@@ -36,6 +38,8 @@ export default function Carousel(props) {
         });
         refPicture.current.slickGoTo(index);
         refAnnounce.current.slickGoTo(index);
+        console.log(props.items, index);
+        setCurrentItem(state.items[index]);
     }, [lotId]);
 
     const refPicture = useRef();
@@ -133,6 +137,16 @@ export default function Carousel(props) {
                     </div>
                 </div>
             </div>
+            {currentItem && currentItem.text ? (
+                <div className="row d-none d-xl-block my-4">
+                    <div className="col-xl-40 col-xxl-38">
+                        {Parser(currentItem.text)}
+                    </div>
+                    <div className="col-xl-20 col-xxl-22"></div>
+                </div>
+            ) : (
+                ``
+            )}
         </div>
     );
 }
