@@ -1,1 +1,7 @@
-{}
+{
+    "#status-gallery#": "Available in the gallery",
+    "#status-auction#": "Participates in the auction",
+    "#status-discontinued#": "Discontinued",
+    "#status-sold#": "Sold",
+    "#status-empty#": "HZ"
+}

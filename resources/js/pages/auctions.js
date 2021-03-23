@@ -160,7 +160,7 @@ export default function AuctionsPage(props) {
                             to="/auctions/archive"
                             className="btn btn-default"
                         >
-                            {__("ARCHIVE OF AUCTIONS")}
+                            {__("#ARCHIVE_OF_AUCTIONS#")}
                         </Link>
                     </div>
                 </div>
