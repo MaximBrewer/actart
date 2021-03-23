@@ -36,12 +36,12 @@ function Home(props) {
                 <div className="sticky-wrapper">
                     <div className="container">
                         <div className="h5 d-xl-none">
-                            {Parser(__("AUCTIONS_BLOCK_TITLE"))}
+                            {Parser(__("#AUCTIONS_BLOCK_TITLE#"))}
                         </div>
                         <Auctions {...props} />
                     </div>
                     <div className="sticky-section">
-                        <span>{__("AUCTIONS_BLOCK_STICKY")}</span>
+                        <span>{__("#AUCTIONS_BLOCK_STICKY#")}</span>
                     </div>
                 </div>
             </section>
