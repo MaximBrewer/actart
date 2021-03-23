@@ -46,7 +46,9 @@ class Register extends Notification
             ->subject('Act-Art.ru - регистрация')
             ->greeting("Добро пожаловать!")
             ->line('Вы зарегистрировались на сайте act-art.ru.')
-            ->line('Ваш логин: ' . $this->user->email);
+            ->line('Ваш логин: ' . $this->user->email)
+            ->line('Внимание! Для участия в аукционах и торгах в галерее без ограничений вам необходимо')
+            ->action('пройти VIP-регистрацию', "https://act-art.ru/profile/vip");
     }
 
     /**
