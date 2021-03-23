@@ -3,5 +3,7 @@
     "#status-auction#": "Participates in the auction",
     "#status-discontinued#": "Discontinued",
     "#status-sold#": "Sold",
-    "#status-empty#": "HZ"
+    "#status-empty#": "HZ",
+    "POSTS_BLOCK_CATEGORY_NEWS": "News",
+    "POSTS_BLOCK_CATEGORY_BLOG": "Blog"
 }
