@@ -214,7 +214,7 @@ export default function AuctionsPage(props) {
                             </div>
                             <div className="d-flex justify-content-center align-items-end">
                                 <Link to="/gallery" className="btn btn-default">
-                                    {__("VIEW ALL WORKS")}
+                                    {__("#VIEW_ALL_WORKS#")}
                                 </Link>
                             </div>
                         </div>
