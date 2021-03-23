@@ -52,10 +52,10 @@ function Home(props) {
                         <div className="row announce">
                             <div className="col col-md-40 offset-md-20 col-xl-45 offset-xl-15">
                                 <h2 className="h1">
-                                    {__("GALLERY_BLOCK_TITLE")}
+                                    {__("#GALLERY_BLOCK_TITLE#")}
                                 </h2>
                                 <div className="sub_h2 d-none d-xl-block">
-                                    {__("GALLERY_BLOCK_INTROTEXT")}
+                                    {__("#GALLERY_BLOCK_INTROTEXT#")}
                                 </div>
                                 <Link
                                     to="/how-to-buy"
