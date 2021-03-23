@@ -13,11 +13,11 @@ export default function Authors(props) {
             <Announce {...props} />
             <div className="sticky-wrapper">
                 <section className="authors">
-                    <div className="background-text">{__("Authors")}</div>
+                    <div className="background-text">{__("#AUTHORS_BACKGROUND_TEXT#")}</div>
                     <div className="container">
                         <div className="row announce">
                             <div className="col-xxl-45 col-xl-40">
-                                <h2 className="h2">{__("Authors")}</h2>
+                                <h2 className="h2">{__("#AUTHORS_PAGE_TITLE#")}</h2>
                             </div>
                         </div>
                         <div className="announce-slider-wrapper">
@@ -54,7 +54,7 @@ export default function Authors(props) {
                     </div>
                 </section>
                 <div className="sticky-section">
-                    <span>{__("authors")}</span>
+                    <span>{__("#AUTHORS_STICKY_TEXT#")}</span>
                 </div>
             </div>
             <section id="gallery">
