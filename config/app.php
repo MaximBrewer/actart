@@ -175,7 +175,8 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\TranslationServiceProvider::class,
+        // App\Providers\TranslationServiceProvider::class,
+        Waavi\Translation\TranslationServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Webwizo\Shortcodes\ShortcodesServiceProvider::class,
         App\Providers\ShortcodesServiceProvider::class

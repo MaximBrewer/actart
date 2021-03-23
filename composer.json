@@ -23,6 +23,7 @@
         "pusher/pusher-php-server": "^4.1",
         "tcg/voyager": "^1.4",
         "tymon/jwt-auth": "^1.0",
+        "waavi/translation": "^2.4",
         "webwizo/laravel-shortcodes": "^1.0"
     },
     "require-dev": {

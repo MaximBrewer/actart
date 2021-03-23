@@ -5,5 +5,6 @@
     "#status-sold#": "Sold",
     "#status-empty#": "HZ",
     "POSTS_BLOCK_CATEGORY_NEWS": "News",
-    "POSTS_BLOCK_CATEGORY_BLOG": "Blog"
+    "POSTS_BLOCK_CATEGORY_BLOG": "Blog",
+    "SUBCRIBED_MESSAGE": "You have subscribed to the newsletter"
 }
