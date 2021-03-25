@@ -192,7 +192,7 @@ function Profile(props) {
                                     <>
                                         <a
                                             target="_blank"
-                                            href="https://act-art.na3.documents.adobe.com/public/esignWidget?wid=CBFCIBAA3AAABLblqZhB2ciYi_sxl2AXEJrMNVoeNzorg-zEIzevP1KTAYqXokOZJHhsYflPlFvoY6Ytkzvw*&hosted=false"
+                                            href={window.App.contract_link}
                                         >
                                             <strong>
                                                 {__("#PROFILE_CONTRACT_LINK#")}

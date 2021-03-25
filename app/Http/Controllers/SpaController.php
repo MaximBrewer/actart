@@ -96,6 +96,8 @@ class SpaController extends Controller
         $meta_description = setting($locale . '.meta_description');
         $meta_keywords = setting($locale . '.meta_keywords');
 
+        $contract_link = setting($locale . '.contract_link');
+
         $ticker = [
             'picture' => "/storage/" . setting($locale . '.ticker_picture'),
             'text' => setting($locale . '.ticker_text'),
@@ -134,7 +136,8 @@ class SpaController extends Controller
                 'announce',
                 'spaces',
                 'gallery',
-                'popular'
+                'popular',
+                'contract_link'
             )
         ]);
     }
