@@ -156,6 +156,12 @@ export default function Tizer(props) {
                 {state.item.styles.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
+                {state.item.frames.map((m, mi) => (
+                    <span key={mi}>{m.title}</span>
+                ))}
+                {state.item.categories.map((m, mi) => (
+                    <span key={mi}>{m.title}</span>
+                ))}
             </div>
             <div className="size">
                 {state.item.width} &times; {state.item.height}
