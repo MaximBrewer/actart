@@ -17811,6 +17811,10 @@ iframe {
   fill: #ffffff;
 }
 
+iframe {
+  max-width: 100% !important;
+}
+
 .header {
   z-index: 100;
   position: relative;
