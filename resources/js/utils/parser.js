@@ -3,16 +3,20 @@ import React, { useState, useEffect, useRef } from "react";
 import Carousel from "../components/Carousel";
 
 export default function Parser(props) {
-    const { body, entity, id } = props;
+    const { body, entity = 0, id = 0 } = props;
 
     const parse = str => {
+        let regex = /youtube.com/;
+        let resul = str.match(regex);
+
         let regexp = /<iframe[^>]*><\/iframe>/;
         let result = str.match(regexp);
 
         let htmlstr = "";
-        if (result) {
+        if (resul && result) {
             htmlstr += str.substr(0, result.index);
-            htmlstr += "<div class='row justify-content-xl-start'><div class='col-xl-42'><div style='padding-top:58.82%;height:0;position:relative;' class='translation-wrapper'>";
+            htmlstr +=
+                "<div class='row justify-content-xl-start'><div class='col-xl-42'><div style='padding-top:58.82%;height:0;position:relative;' class='translation-wrapper'>";
             htmlstr += result[0];
             htmlstr += "</div></div></div>";
             htmlstr += str.substr(
@@ -26,7 +30,9 @@ export default function Parser(props) {
 
         return result ? (
             <React.Fragment>
-                <section>{ReactParser(htmlstr.substr(0, result.index) ?? "")}</section>
+                <section>
+                    {ReactParser(htmlstr.substr(0, result.index) ?? "")}
+                </section>
                 {entity && id ? (
                     <Carousel entity={entity} id={id} {...props} />
                 ) : (

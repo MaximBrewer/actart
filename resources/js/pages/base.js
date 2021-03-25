@@ -23,9 +23,25 @@ export default function Base(props) {
         req("/api/" + window.App.locale + "/page" + pathname)
             .then(({ page }) =>
                 setState(prevState => {
-                    document.title = page.seo_title ? page.seo_title : page.title;
-                    document.querySelector('meta[name="description"]').setAttribute("content", page.meta_description ? page.meta_description : window.App.meta_description);
-                    document.querySelector('meta[name="keywords"]').setAttribute("content", page.meta_keywords ? page.meta_keywords : window.App.meta_keywords);
+                    document.title = page.seo_title
+                        ? page.seo_title
+                        : page.title;
+                    document
+                        .querySelector('meta[name="description"]')
+                        .setAttribute(
+                            "content",
+                            page.meta_description
+                                ? page.meta_description
+                                : window.App.meta_description
+                        );
+                    document
+                        .querySelector('meta[name="keywords"]')
+                        .setAttribute(
+                            "content",
+                            page.meta_keywords
+                                ? page.meta_keywords
+                                : window.App.meta_keywords
+                        );
                     return {
                         ...prevState,
                         page
@@ -50,7 +66,10 @@ export default function Base(props) {
                             <h2 className="h2">{state.page.title}</h2>
                             <hr />
                             <div className="sub_h2 d-none d-xl-block">
-                                {Parser(state.page.excerpt ?? "")}
+                                <Parser
+                                    body={state.page.excerpt ?? ""}
+                                    {...props}
+                                />
                             </div>
                         </div>
                         {state.page.image ? (
