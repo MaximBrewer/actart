@@ -41,23 +41,15 @@ export default function Right(props) {
                 {item.materials.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
-            </div>
-            <div className="styles">
                 {item.styles.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
-            </div>
-            <div className="frames">
                 {item.frames.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
-            </div>
-            <div className="techniques">
                 {item.techniques.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}
-            </div>
-            <div className="categories">
                 {item.categories.map((m, mi) => (
                     <span key={mi}>{m.title}</span>
                 ))}

@@ -676,8 +676,6 @@ export default function AuctionAdmin(props) {
                                                                             </span>
                                                                         )
                                                                     )}
-                                                                </div>
-                                                                <div className="styles">
                                                                     {state.auction.current.styles.map(
                                                                         (
                                                                             m,
@@ -694,8 +692,6 @@ export default function AuctionAdmin(props) {
                                                                             </span>
                                                                         )
                                                                     )}
-                                                                </div>
-                                                                <div className="frames">
                                                                     {state.auction.current.frames.map(
                                                                         (
                                                                             m,
@@ -712,8 +708,6 @@ export default function AuctionAdmin(props) {
                                                                             </span>
                                                                         )
                                                                     )}
-                                                                </div>
-                                                                <div className="techniques">
                                                                     {state.auction.current.techniques.map(
                                                                         (
                                                                             m,
@@ -730,8 +724,6 @@ export default function AuctionAdmin(props) {
                                                                             </span>
                                                                         )
                                                                     )}
-                                                                </div>
-                                                                <div className="categories">
                                                                     {state.auction.current.categories.map(
                                                                         (
                                                                             m,

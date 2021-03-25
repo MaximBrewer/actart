@@ -670,109 +670,111 @@ export default function Auction(props) {
                                                                     .title
                                                             }
                                                         </div>
-                                                        {state.auction.current
-                                                            .materials
-                                                            .length ? (
-                                                            <div className="matherial">
-                                                                {state.auction.current.materials.map(
-                                                                    (m, mi) => (
-                                                                        <span
-                                                                            key={
-                                                                                mi
-                                                                            }
-                                                                        >
-                                                                            {
-                                                                                m.title
-                                                                            }
-                                                                        </span>
-                                                                    )
-                                                                )}
-                                                            </div>
-                                                        ) : (
-                                                            ``
-                                                        )}
-                                                        {state.auction.current
-                                                            .styles.length ? (
-                                                            <div className="styles">
-                                                                {state.auction.current.styles.map(
-                                                                    (m, mi) => (
-                                                                        <span
-                                                                            key={
-                                                                                mi
-                                                                            }
-                                                                        >
-                                                                            {
-                                                                                m.title
-                                                                            }
-                                                                        </span>
-                                                                    )
-                                                                )}
-                                                            </div>
-                                                        ) : (
-                                                            ``
-                                                        )}
-                                                        {state.auction.current
-                                                            .frames.length ? (
-                                                            <div className="frames">
-                                                                {state.auction.current.frames.map(
-                                                                    (m, mi) => (
-                                                                        <span
-                                                                            key={
-                                                                                mi
-                                                                            }
-                                                                        >
-                                                                            {
-                                                                                m.title
-                                                                            }
-                                                                        </span>
-                                                                    )
-                                                                )}
-                                                            </div>
-                                                        ) : (
-                                                            ``
-                                                        )}
-                                                        {state.auction.current
-                                                            .techniques
-                                                            .length ? (
-                                                            <div className="techniques">
-                                                                {state.auction.current.techniques.map(
-                                                                    (m, mi) => (
-                                                                        <span
-                                                                            key={
-                                                                                mi
-                                                                            }
-                                                                        >
-                                                                            {
-                                                                                m.title
-                                                                            }
-                                                                        </span>
-                                                                    )
-                                                                )}
-                                                            </div>
-                                                        ) : (
-                                                            ``
-                                                        )}
-                                                        {state.auction.current
-                                                            .categories
-                                                            .length ? (
-                                                            <div className="categories">
-                                                                {state.auction.current.categories.map(
-                                                                    (m, mi) => (
-                                                                        <span
-                                                                            key={
-                                                                                mi
-                                                                            }
-                                                                        >
-                                                                            {
-                                                                                m.title
-                                                                            }
-                                                                        </span>
-                                                                    )
-                                                                )}
-                                                            </div>
-                                                        ) : (
-                                                            ``
-                                                        )}
+                                                        <div className="matherial">
+                                                            {state.auction
+                                                                .current
+                                                                .materials
+                                                                .length
+                                                                ? state.auction.current.materials.map(
+                                                                      (
+                                                                          m,
+                                                                          mi
+                                                                      ) => (
+                                                                          <span
+                                                                              key={
+                                                                                  mi
+                                                                              }
+                                                                          >
+                                                                              {
+                                                                                  m.title
+                                                                              }
+                                                                          </span>
+                                                                      )
+                                                                  )
+                                                                : ``}
+                                                            {state.auction
+                                                                .current.styles
+                                                                .length
+                                                                ? state.auction.current.styles.map(
+                                                                      (
+                                                                          m,
+                                                                          mi
+                                                                      ) => (
+                                                                          <span
+                                                                              key={
+                                                                                  mi
+                                                                              }
+                                                                          >
+                                                                              {
+                                                                                  m.title
+                                                                              }
+                                                                          </span>
+                                                                      )
+                                                                  )
+                                                                : ``}
+                                                            {state.auction
+                                                                .current.frames
+                                                                .length
+                                                                ? state.auction.current.frames.map(
+                                                                      (
+                                                                          m,
+                                                                          mi
+                                                                      ) => (
+                                                                          <span
+                                                                              key={
+                                                                                  mi
+                                                                              }
+                                                                          >
+                                                                              {
+                                                                                  m.title
+                                                                              }
+                                                                          </span>
+                                                                      )
+                                                                  )
+                                                                : ``}
+                                                            {state.auction
+                                                                .current
+                                                                .techniques
+                                                                .length
+                                                                ? state.auction.current.techniques.map(
+                                                                      (
+                                                                          m,
+                                                                          mi
+                                                                      ) => (
+                                                                          <span
+                                                                              key={
+                                                                                  mi
+                                                                              }
+                                                                          >
+                                                                              {
+                                                                                  m.title
+                                                                              }
+                                                                          </span>
+                                                                      )
+                                                                  )
+                                                                : ``}
+                                                            {state.auction
+                                                                .current
+                                                                .categories
+                                                                .length
+                                                                ? state.auction.current.categories.map(
+                                                                      (
+                                                                          m,
+                                                                          mi
+                                                                      ) => (
+                                                                          <span
+                                                                              key={
+                                                                                  mi
+                                                                              }
+                                                                          >
+                                                                              {
+                                                                                  m.title
+                                                                              }
+                                                                          </span>
+                                                                      )
+                                                                  )
+                                                                : ``}
+                                                        </div>
                                                         {state.auction.current
                                                             .width ||
                                                         state.auction.current
@@ -988,7 +990,10 @@ export default function Auction(props) {
                                                                             )}{" "}
                                                                             <Link
                                                                                 to={`/profile/vip`}
-                                                                                style={{whiteSpace: "nowrap"}}
+                                                                                style={{
+                                                                                    whiteSpace:
+                                                                                        "nowrap"
+                                                                                }}
                                                                                 className={`color-red font-weight-bolder`}
                                                                             >
                                                                                 {__(
