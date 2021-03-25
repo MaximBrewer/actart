@@ -21486,12 +21486,6 @@ iframe {
   font-weight: bold;
   font-size: 18px;
   line-height: 21px;
-  height: 42px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
   letter-spacing: 0.03em;
   margin-bottom: 1rem;
 }
@@ -21503,12 +21497,6 @@ iframe {
 
 .news-section .waterfall .waterfall-inner .waterfall-item .announce,
 .blog-section .waterfall .waterfall-inner .waterfall-item .announce {
-  height: 105px;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
   font-size: 18px;
   line-height: 21px;
   letter-spacing: 0.03em;
@@ -21542,6 +21530,26 @@ iframe {
     text-align: left;
     padding-bottom: 1.5rem;
     border-bottom-width: 0.5rem;
+  }
+
+  .news-section .waterfall .waterfall-inner .waterfall-item .title,
+  .blog-section .waterfall .waterfall-inner .waterfall-item .title {
+    height: 42px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .news-section .waterfall .waterfall-inner .waterfall-item .announce,
+  .blog-section .waterfall .waterfall-inner .waterfall-item .announce {
+    height: 105px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 
@@ -22680,24 +22688,12 @@ a.lot-item:hover {
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
   line-height: 1.25rem;
-  white-space: nowrap;
-  height: 1.25rem;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: block;
 }
 
 .author-item .subtitle {
   margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.125rem;
-  height: 2.5rem;
-  white-space: nowrap;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .author-item .date {
@@ -22734,6 +22730,25 @@ a.lot-item:hover {
 
 .author-item .exhibit {
   font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .author-item .fio,
+  .author-item .title {
+    height: 1.25rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+  }
+
+  .author-item .subtitle {
+    height: 2.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
 @media (min-width: 992px) {
@@ -22780,26 +22795,34 @@ a.lot-item:hover {
 .news-item .title {
   font-weight: bold;
   line-height: 21px;
-  height: 63px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  letter-spacing: 0.03em;
-  margin-bottom: 1rem;
 }
 
 .news-item .announce {
   font-size: 1rem;
   line-height: 1.125rem;
-  height: 6, 125rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  letter-spacing: 0.03em;
+}
+
+@media (min-width: 768px) {
+  .news-item .title {
+    height: 63px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    letter-spacing: 0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .news-item .announce {
+    height: 6, 125rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    letter-spacing: 0.03em;
+  }
 }
 
 .blog-item {
@@ -22841,14 +22864,6 @@ a.lot-item:hover {
 .blog-item .title {
   font-weight: bold;
   line-height: 21px;
-  height: 42px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  letter-spacing: 0.03em;
-  margin-bottom: 1rem;
 }
 
 .blog-item .excerpt {
@@ -22864,6 +22879,20 @@ a.lot-item:hover {
   overflow: hidden;
   letter-spacing: 0.03em;
   margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .blog-item .title {
+    line-height: 21px;
+    height: 42px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    letter-spacing: 0.03em;
+    margin-bottom: 1rem;
+  }
 }
 
 .event-item {
@@ -22891,25 +22920,12 @@ a.lot-item:hover {
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
   line-height: 1.25rem;
-  height: 3.75rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .event-item .subtitle {
   margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.125rem;
-  height: 2.5rem;
-  white-space: nowrap;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .event-item .date {
@@ -22932,6 +22948,30 @@ a.lot-item:hover {
 
 .event-item .exhibit {
   font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .event-item .fio,
+  .event-item .title {
+    height: 3.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .event-item .subtitle {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.125rem;
+    height: 2.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
 .event-slide {

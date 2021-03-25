@@ -32,14 +32,6 @@
     .title {
         font-weight: bold;
         line-height: 21px;
-        height: 42px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        letter-spacing: 0.03em;
-        margin-bottom: 1rem;
     }
     .excerpt {
         font-size: 1rem;
@@ -55,6 +47,17 @@
         margin-bottom: 1rem;
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
+        .title {
+            line-height: 21px;
+            height: 42px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            letter-spacing: 0.03em;
+            margin-bottom: 1rem;
+        }
     }
     @media (min-width: map.get($grid-breakpoints, "lg")) {
     }
