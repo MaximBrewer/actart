@@ -21936,12 +21936,6 @@ section.announces.bggray .background-text {
   font-weight: bold;
   font-size: 1.5rem;
   line-height: 1.5rem;
-  height: 4.5rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .event-wrapper .event-inner .subtitle {
@@ -21969,6 +21963,17 @@ section.announces.bggray .background-text {
 
 .event-wrapper .event-inner .exhibit {
   font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .event-wrapper .event-inner .title {
+    height: 4.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
 .popular-categories-section {
@@ -22795,11 +22800,14 @@ a.lot-item:hover {
 .news-item .title {
   font-weight: bold;
   line-height: 21px;
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
 }
 
 .news-item .announce {
   font-size: 1rem;
   line-height: 1.125rem;
+  letter-spacing: 0.03em;
 }
 
 @media (min-width: 768px) {
@@ -22810,8 +22818,6 @@ a.lot-item:hover {
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
-    letter-spacing: 0.03em;
-    margin-bottom: 1rem;
   }
 
   .news-item .announce {
@@ -22821,7 +22827,6 @@ a.lot-item:hover {
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
-    letter-spacing: 0.03em;
   }
 }
 
@@ -22864,6 +22869,8 @@ a.lot-item:hover {
 .blog-item .title {
   font-weight: bold;
   line-height: 21px;
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
 }
 
 .blog-item .excerpt {
@@ -22883,15 +22890,12 @@ a.lot-item:hover {
 
 @media (min-width: 768px) {
   .blog-item .title {
-    line-height: 21px;
     height: 42px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
-    letter-spacing: 0.03em;
-    margin-bottom: 1rem;
   }
 }
 
@@ -22962,9 +22966,6 @@ a.lot-item:hover {
   }
 
   .event-item .subtitle {
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    line-height: 1.125rem;
     height: 2.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -23003,25 +23004,12 @@ a.lot-item:hover {
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
   line-height: 1.25rem;
-  height: 3.75rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .event-slide .slide-inner .subtitle {
   margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.125rem;
-  height: 2.5rem;
-  white-space: nowrap;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .event-slide .slide-inner .date {
@@ -23044,6 +23032,27 @@ a.lot-item:hover {
 
 .event-slide .slide-inner .exhibit {
   font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .event-slide .slide-inner .fio,
+  .event-slide .slide-inner .title {
+    height: 3.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .event-slide .slide-inner .subtitle {
+    height: 2.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
 @media (min-width: 768px) {
@@ -23155,12 +23164,6 @@ a.lot-item:hover {
 .post-slide .slide-inner .title {
   font-weight: bold;
   line-height: 21px;
-  height: 42px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
   letter-spacing: 0.03em;
   margin-bottom: 1rem;
 }
@@ -23168,13 +23171,27 @@ a.lot-item:hover {
 .post-slide .slide-inner .announce {
   font-size: 1rem;
   line-height: 1.125rem;
-  height: 6, 125rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
   letter-spacing: 0.03em;
+}
+
+@media (min-width: 768px) {
+  .post-slide .slide-inner .title {
+    height: 42px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .post-slide .slide-inner .announce {
+    height: 6, 125rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
 @media (min-width: 768px) {

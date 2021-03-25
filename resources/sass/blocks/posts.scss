@@ -30,25 +30,31 @@
                 font-weight: bold;
                 font-size: 18px;
                 line-height: 21px;
-                height: 63px;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                text-overflow: ellipsis;
-                overflow: hidden;
                 letter-spacing: 0.03em;
                 margin-bottom: 1rem;
             }
             .announce {
-                height: 105px;
-                display: -webkit-box;
-                -webkit-line-clamp: 5;
-                -webkit-box-orient: vertical;
-                text-overflow: ellipsis;
-                overflow: hidden;
                 font-size: 18px;
                 line-height: 21px;
                 letter-spacing: 0.03em;
+            }
+            @media (min-width: map.get($grid-breakpoints, "md")) {
+                .title {
+                    height: 63px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+                .announce {
+                    height: 105px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
             }
         }
     }

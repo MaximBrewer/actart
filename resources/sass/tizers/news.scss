@@ -31,10 +31,13 @@
     .title {
         font-weight: bold;
         line-height: 21px;
+        letter-spacing: 0.03em;
+        margin-bottom: 1rem;
     }
     .announce {
         font-size: 1rem;
         line-height: 1.125rem;
+        letter-spacing: 0.03em;
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
         .title {
@@ -44,8 +47,6 @@
             -webkit-box-orient: vertical;
             text-overflow: ellipsis;
             overflow: hidden;
-            letter-spacing: 0.03em;
-            margin-bottom: 1rem;
         }
         .announce {
             height: 6,125rem;
@@ -54,7 +55,6 @@
             -webkit-box-orient: vertical;
             text-overflow: ellipsis;
             overflow: hidden;
-            letter-spacing: 0.03em;
         }
     }
     @media (min-width: map.get($grid-breakpoints, "lg")) {

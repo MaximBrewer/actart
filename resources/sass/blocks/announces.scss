@@ -119,12 +119,6 @@ section.announces {
             font-weight: bold;
             font-size: 1.5rem;
             line-height: 1.5rem;
-            height: 4.5rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            text-overflow: ellipsis;
-            overflow: hidden;
         }
         .subtitle {
             padding: 0.5rem 0 1.5rem;
@@ -147,6 +141,16 @@ section.announces {
         }
         .exhibit {
             font-weight: bold;
+        }
+        @media (min-width: map.get($grid-breakpoints, "md")) {
+            .title {
+                height: 4.5rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
         }
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
