@@ -6,7 +6,7 @@ import __ from "../../utils/trans";
 import useDocumentTitle from "../../components/document-title";
 
 export default function Category(props) {
-    useDocumentTitle(__("GALLERY_PAGE_TITLE"));
+    useDocumentTitle(__("#GALLERY_PAGE_TITLE#"));
 
     const { id } = useParams();
     const { showLink, scrollToElement } = props;
@@ -22,15 +22,13 @@ export default function Category(props) {
             <Announce {...props} />
             <div className="sticky-wrapper sticky-wrapper-gallery">
                 <section className="gallery-section">
-                    <div className="background-text">{__("Gallery")}</div>
+                    <div className="background-text">{__("#BACKGROUND_GALLERY#")}</div>
                     <div className="container">
                         <div className="row announce mb-5">
                             <div className="col col-xl-40 col-xxl-38">
-                                <h2 className="h1">{__("ONLINE-GALLERY")}</h2>
+                                <h2 className="h1">{__("#ONLINE_GALLERY_PAGE_TITLE#")}</h2>
                                 <div className="sub_h2 d-none d-xl-block">
-                                    {__(
-                                        "A permanent gallery-auction where you can purchase selected works of young Russian authors. Follow, choose, bargain, collect your collection. Weekly update."
-                                    )}
+                                    {__("#ONLINE_GALLERY_TEXT#")}
                                 </div>
 
                                 <Link
@@ -38,12 +36,12 @@ export default function Category(props) {
                                     to={`/how-to-buy`}
                                     className="h5 h5_underline d-none d-xl-block pt-4"
                                 >
-                                    {__("How to buy")}?
+                                    {__("#HOW_TO_BUY_LINK#")}
                                 </Link>
                             </div>
                         </div>
                         <div className="popular-categories">
-                            <h4 className="h4">{__("Popular Categories")}</h4>
+                            <h4 className="h4">{__("#POPULAR_CATEGORIES#")}</h4>
                             <div className="d-flex justify-content-between categories">
                                 {window.App.popular.map((item, index) => (
                                     <Link
@@ -67,7 +65,7 @@ export default function Category(props) {
                             </div>
                         </div>
                         <div className="gallery-works" ref={galEl}>
-                            <div className="h2">{__("Works for sale")}</div>
+                            <div className="h2">{__("#WORK_FOR_SALE_H2#")}</div>
                             <div className="gallery-works-list">
                                 <Waterfall
                                     {...props}
@@ -93,7 +91,7 @@ export default function Category(props) {
                                             to="/gallery"
                                             className="btn btn-default"
                                         >
-                                            {__("BTN_BACK_TO_GALLERY")}
+                                            {__("#BTN_BACK_TO_GALLERY#")}
                                         </Link>
                                     </div>
                                 ) : (
@@ -113,7 +111,7 @@ export default function Category(props) {
                 </div> */}
                 </section>
                 <div className="sticky-section">
-                    <span>{__("works for sale")}</span>
+                    <span>{__("#STICKY_WORK_FOR_SALE#")}</span>
                 </div>
             </div>
         </React.Fragment>
