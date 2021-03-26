@@ -48,9 +48,9 @@ export default function Auction(props) {
         ];
     };
 
-    useEffect(() => {
-        if (!currentUser) history.push("/#login");
-    }, [currentUser]);
+    // useEffect(() => {
+    //     // if (!currentUser) history.push("/#login");
+    // }, [currentUser]);
 
     const hideOffer = false;
 
