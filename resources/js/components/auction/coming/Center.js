@@ -24,7 +24,7 @@ export default function Center(props) {
                                 {__("Participation rules")}
                             </Link>
                         </div>
-                        {!!currentUser && currentUser.vip ? (
+                        {!currentUser || currentUser.vip ? (
                             ``
                         ) : (
                             <strong
@@ -42,7 +42,7 @@ export default function Center(props) {
                                     style={{whiteSpace: "nowrap"}}
                                     className={`color-red font-weight-bolder`}
                                 >
-                                    {__("#VIP_FOR_PARTICIPATE_LINK#")}
+                                   2{__("#VIP_FOR_PARTICIPATE_LINK#")}
                                 </Link>
                             </strong>
                         )}
