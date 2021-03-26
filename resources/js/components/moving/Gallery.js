@@ -92,8 +92,16 @@ export default function Gallery() {
         );
     };
 
+    const faster = () => {
+        step = 2;
+    };
+
+    const slower = () => {
+        step = 1;
+    };
+
     useEffect(() => {
-        if (App.toGallery) {
+        if (window.App.toGallery) {
             let array = [];
             let grid = [];
             for (let i = 0; i < rows; i++) {
@@ -103,7 +111,7 @@ export default function Gallery() {
                 }
             }
             let i = 0;
-            loop1: for (let lot of App.toGallery.lots) {
+            loop1: for (let lot of window.App.toGallery.lots) {
                 ++i;
                 let h = 1,
                     w = 1;
@@ -120,7 +128,11 @@ export default function Gallery() {
                     l: 0,
                     t: 0,
                     bg: getRandomColor(),
-                    href: "/auctions/" + App.toGallery.id + "/lot/" + lot.id
+                    href:
+                        "/auctions/" +
+                        window.App.toGallery.id +
+                        "/lot/" +
+                        lot.id
                 };
                 let set = false;
                 loop2: for (let j in grid) {
@@ -155,8 +167,7 @@ export default function Gallery() {
                 if (!set) break loop1;
                 array.push(p);
             }
-            let auction = App.toGallery;
-            auction.lots = array;
+            let auction = { ...window.App.toGallery, lots: array };
             setState({ auction: auction });
             let w = document.body.clientWidth,
                 c = Math.ceil(w / (size * cols)) + 2;
@@ -175,14 +186,14 @@ export default function Gallery() {
                 requestRef.current = requestAnimationFrame(i);
             });
 
-            ref.current.addEventListener("mouseenter", () => {
-                step = 1;
-            });
-            ref.current.addEventListener("mouseleave", () => {
-                step = 2;
-            });
+            ref.current.addEventListener("mouseenter", slower);
+            ref.current.addEventListener("mouseleave", faster);
         }
-        return () => cancelAnimationFrame(requestRef.current);
+        return () => {
+            ref.current.removeEventListener("mouseenter", slower);
+            ref.current.removeEventListener("mouseleave", faster);
+            cancelAnimationFrame(requestRef.current);
+        };
     }, []);
 
     return (
