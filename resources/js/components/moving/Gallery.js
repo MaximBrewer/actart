@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import __ from "../../utils/trans";
+import { NavLink, Link, useHistory } from "react-router-dom";
 
 const getRandomColor = () => {
     var letters = "0123456789ABCDEF";
@@ -41,15 +42,15 @@ function Block(props) {
                     }}
                 >
                     <div className="picture-inner">
-                        <a
-                            href={item.href}
+                        <Link
+                            to={item.href}
                             target="_self"
                             className="lookFullSize"
                         >
                             <span className="ico-holder">
                                 <span className="ia icon-logo-eye"></span>
                             </span>
-                        </a>
+                        </Link>
                         <div className="pic-description">
                             <div className="tag">{item.tag}</div>
                             <div className="title">{item.title}</div>
