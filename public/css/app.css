@@ -19849,7 +19849,6 @@ iframe {
   background-size: contain;
   background-position: bottom center;
   background-repeat: no-repeat;
-  background-color: #d6d6d6;
 }
 
 #page .h2 {
@@ -22347,6 +22346,10 @@ section.announces.bggray .background-text {
   margin-bottom: 4rem;
 }
 
+.auction-page-wrapper .auction-info article {
+  background-color: #fff;
+}
+
 .auction-page-wrapper .auction-info:before {
   display: block;
   width: 24%;
@@ -22406,6 +22409,12 @@ section.announces.bggray .background-text {
 
   .auction-page-wrapper .auction-info .mw-sm-340 {
     max-width: 340px;
+  }
+}
+
+@media (min-width: 992px) {
+  .auction-page-wrapper .auction-info article {
+    padding: 0.7rem 1rem;
   }
 }
 

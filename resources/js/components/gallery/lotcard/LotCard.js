@@ -82,7 +82,7 @@ export default function LotCard(props) {
                         </div>
                     </div>
                     {item.text ? (
-                        <div className="row d-none d-xl-block my-4">
+                        <div className="row my-md-4">
                             <div className="col-xl-40 col-xxl-38">
                                 <article>{Parser(item.text ?? "")}</article>
                             </div>

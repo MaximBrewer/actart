@@ -138,7 +138,7 @@ export default function Carousel(props) {
                 </div>
             </div>
             {currentItem && currentItem.text ? (
-                <div className="row d-none d-xl-block my-4">
+                <div className="row my-md-4">
                     <div className="col-xl-40 col-xxl-38">
                         <article>{Parser(currentItem.text ?? "")}</article>
                     </div>

@@ -4,6 +4,9 @@
         position: relative;
         margin-top: 2rem;
         margin-bottom: 4rem;
+        article {
+            background-color: #fff;
+        }
         &:before {
             display: block;
             width: 24%;
@@ -60,6 +63,11 @@
             margin-top: 6rem;
             .mw-sm-340 {
                 max-width: 340px;
+            }
+        }
+        @media (min-width: map.get($grid-breakpoints, "lg")) {
+            article {
+                padding: 0.7rem 1rem;
             }
         }
     }
