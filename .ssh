@@ -6,7 +6,7 @@ IP сервера: 89.223.124.134
 ssh root@89.223.124.134
 eGk6j5zJ
 cd /var/www/act-art.ru/htdocs
-
+sudo -u www-data git pull
 
 
 
