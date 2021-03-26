@@ -827,8 +827,7 @@ export default function Auction(props) {
                                                                 }
                                                             </span>
                                                         </div>
-                                                        {currentUser !=
-                                                        undefined ? (
+                                                        {!!currentUser ? (
                                                             <div className="user-activity">
                                                                 <div className="user-id">
                                                                     {__(
@@ -892,7 +891,7 @@ export default function Auction(props) {
                                                                 ) : (
                                                                     ``
                                                                 )}
-                                                                {currentUser.vip ? (
+                                                                {!!currentUser && currentUser.vip ? (
                                                                     <>
                                                                         {state
                                                                             .auction
