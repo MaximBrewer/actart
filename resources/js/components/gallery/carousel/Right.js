@@ -203,6 +203,8 @@ export default function Right(props) {
                         {getStep() + state.item.price * 1 <
                             window.App.viplimit || currentUser.vip ? (
                             ``
+                        ) : !currentUser ? (
+                            ``
                         ) : (
                             <small
                                 style={{
