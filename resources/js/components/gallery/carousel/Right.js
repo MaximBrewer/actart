@@ -175,7 +175,7 @@ export default function Right(props) {
                 ) : (
                     ``
                 )}
-                {currentUser != undefined &&
+                {!!currentUser &&
                 (!state.item.bets.length || !state.item.bets[0].blitz) ? (
                     <React.Fragment>
                         <a
@@ -218,7 +218,7 @@ export default function Right(props) {
                                 {__("#VIP_FOR_PARTICIPATE_TEXT#")}{" "}
                                 <Link
                                     to={`/profile/vip`}
-                                    style={{whiteSpace: "nowrap"}}
+                                    style={{ whiteSpace: "nowrap" }}
                                     className={`color-red font-weight-bolder`}
                                 >
                                     {__("#VIP_FOR_PARTICIPATE_LINK#")}

@@ -29,7 +29,7 @@ export default function Top(props) {
                             className="btn btn-danger mb-2"
                         >
                             {__("#YOUR_STATUS_IS:#")}{" "}
-                            {currentUser.vip
+                            {!!currentUser && currentUser.vip
                                 ? __("#VIP_STATUS#")
                                 : __("#GUEST_STATUS#")}
                             {/* {__("ALREADY_REGISTERED")} */}
@@ -41,7 +41,7 @@ export default function Top(props) {
                             onClick={e => participate(e, auction)}
                         >
                             {__("#YOUR_STATUS_IS:#")}{" "}
-                            {currentUser.vip
+                            {!!currentUser && currentUser.vip
                                 ? __("#VIP_STATUS#")
                                 : __("#GUEST_STATUS#")}
                             {/* {__("PARTICIPATE")} */}
