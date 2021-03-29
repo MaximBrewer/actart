@@ -6,6 +6,7 @@ use App\Auction as AuctionModel;
 use App\Events\UpdateAuctionStatus as UpdateAuctionStatusEvent;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 use Throwable;
 
 class Auction
@@ -28,20 +29,36 @@ class Auction
 
     public function created(AuctionModel $model)
     {
-        // ... code here
-        // try {
-        //     event(new CreateAuctionEvent($model));
-        // } catch (Throwable $e) {
-        //     report($e);
-        // }
+        Cache::forget('app.en.announce');
+        Cache::forget('app.ru.announce');
+        Cache::forget('app.en.coming');
+        Cache::forget('app.ru.coming');
+        Cache::forget('app.en.toGallery');
+        Cache::forget('app.ru.toGallery');
     }
 
     public function updated(AuctionModel $model)
     {
+        Cache::forget('app.en.announce');
+        Cache::forget('app.ru.announce');
+        Cache::forget('app.en.coming');
+        Cache::forget('app.ru.coming');
+        Cache::forget('app.en.toGallery');
+        Cache::forget('app.ru.toGallery');
         try {
             event(new UpdateAuctionStatusEvent($model->id, $model->status));
         } catch (Throwable $e) {
             report($e);
         }
+    }
+
+    public function deleted(AuctionModel $model)
+    {
+        Cache::forget('app.en.announce');
+        Cache::forget('app.ru.announce');
+        Cache::forget('app.en.coming');
+        Cache::forget('app.ru.coming');
+        Cache::forget('app.en.toGallery');
+        Cache::forget('app.ru.toGallery');
     }
 }

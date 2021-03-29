@@ -69,35 +69,44 @@ class SpaController extends Controller
             // ['id' => 'frames', 'title' => __('Frame'), 'items' => \App\Frame::all()],
         ];
 
-        $announce = Auction::announce() ? new AuctionResource(Auction::announce()) : null;
-        $spaces = Space::all();
+        $announce = Cache::rememberForever('app.' . $locale . '.announce', function () {
+            return Auction::announce() ? new AuctionResource(Auction::announce()) : null;
+        });
 
-        $popular = CategoryResource::collection(Category::orderBy('sort', 'asc')->limit(6)->get());
-        $experts = ExpertResource::collection(Expert::all());
+        $popular = Cache::rememberForever('app.' . $locale . '.popular', function () {
+            return CategoryResource::collection(Category::orderBy('sort', 'asc')->limit(6)->get());
+        });
+
+        $spaces = Cache::rememberForever('app.' . $locale . '.spaces', function () {
+            return Space::all();
+        });
+        $experts = Cache::rememberForever('app.' . $locale . '.experts', function () {
+            return ExpertResource::collection(Expert::all());
+        });
+
         $name = config('app.name');
 
-
-        $auctions = Auction::where(function ($query) {
-            $query;
+        $coming = Cache::rememberForever('app.' . $locale . '.coming', function () {
+            return  AuctionResource::collection(Auction::coming()->get());
         });
-        $coming = AuctionResource::collection($auctions->coming()->get());
-        $toGallery = Auction::gallery() ? new AuctionResource(Auction::gallery()) : null;
 
-        $lots = Lot::where('status', 'gallery');
+        $toGallery = Cache::rememberForever('app.' . $locale . '.toGallery', function () {
+            return Auction::gallery() ? new AuctionResource(Auction::gallery()) : null;
+        });
 
-        $gallery = LotResource::collection(
-            $lots
-                ->with('bets')
-                ->with('techniques')
-                ->with('materials')
-                ->with('categories')
-                ->with('frames')
-                ->with('styles')
-                ->with('user')
-                ->get()
-        );
-
-        
+        $gallery = Cache::rememberForever('app.' . $locale . '.gallery', function () {
+            return LotResource::collection(
+                Lot::where('status', 'gallery')
+                    ->with('bets')
+                    ->with('techniques')
+                    ->with('materials')
+                    ->with('categories')
+                    ->with('frames')
+                    ->with('styles')
+                    ->with('user')
+                    ->get()
+            );
+        });
 
         $timer = setting('site.timer');
         $viplimit = setting('site.viplimit');

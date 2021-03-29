@@ -14,6 +14,7 @@ use App\Notifications\AuctionWinner as AuctionWinnerNotification;
 use App\Notifications\Manager\AuctionWinner as ManagerAuctionWinnerNotification;
 use Throwable;
 use App\User as UserModel;
+use Illuminate\Support\Facades\Cache;
 
 use App\Events\UpdateCountdown as UpdateCountdownEvent;
 
@@ -42,6 +43,14 @@ class Lot
 
     public function updated(LotModel $lot)
     {
+        Cache::forget('app.en.gallery');
+        Cache::forget('app.ru.gallery');
+        Cache::forget('app.en.announce');
+        Cache::forget('app.ru.announce');
+        Cache::forget('app.en.coming');
+        Cache::forget('app.ru.coming');
+        Cache::forget('app.en.toGallery');
+        Cache::forget('app.ru.toGallery');
         if ($lot->wasChanged('countdown')) {
             try {
                 event(new UpdateCountdownEvent($lot));
@@ -82,5 +91,28 @@ class Lot
                 report($e);
             }
         }
+    }
+
+    public function deleted(LotModel $lot)
+    {
+        Cache::forget('app.en.gallery');
+        Cache::forget('app.ru.gallery');
+        Cache::forget('app.en.announce');
+        Cache::forget('app.ru.announce');
+        Cache::forget('app.en.coming');
+        Cache::forget('app.ru.coming');
+        Cache::forget('app.en.toGallery');
+        Cache::forget('app.ru.toGallery');
+    }
+    public function created(LotModel $lot)
+    {
+        Cache::forget('app.en.gallery');
+        Cache::forget('app.ru.gallery');
+        Cache::forget('app.en.announce');
+        Cache::forget('app.ru.announce');
+        Cache::forget('app.en.coming');
+        Cache::forget('app.ru.coming');
+        Cache::forget('app.en.toGallery');
+        Cache::forget('app.ru.toGallery');
     }
 }
