@@ -26,6 +26,7 @@ class Auction extends JsonResource
             'status' => $this->status,
             'current' => new LotResource($this->current),
             'title' => $this->getTranslatedAttribute('title'),
+            'header_text' => $this->getTranslatedAttribute('header_text'),
             'announce_text' => $this->getTranslatedAttribute('announce_text'),
             'sublime' => $this->getTranslatedAttribute('sublime'),
             'text' => $this->getTranslatedAttribute('text'),

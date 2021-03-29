@@ -442,7 +442,7 @@ export default function AuctionAdmin(props) {
                             <div className="container">
                                 <CountdownTop date={state.auction.dateatom} />
                                 <div className="h1">
-                                    {state.auction.title}
+                                    {state.auction.header_text}
                                     {state.auction.online ? (
                                         <>
                                             <br />

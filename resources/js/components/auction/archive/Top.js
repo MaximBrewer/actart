@@ -16,7 +16,7 @@ export default function ArchiveTop(props) {
                 <div className="container">
                     <div className="h1">
                         <Link to={`/auctions/` + auction.id}>
-                            {auction.title}
+                            {auction.header_text}
                         </Link>
                     </div>
                     <div className="h3">

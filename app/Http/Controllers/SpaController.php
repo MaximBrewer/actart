@@ -20,6 +20,7 @@ use App\User;
 use App\Frame;
 use App\Http\Resources\Author as AuthorResource;
 use App\Http\Resources\Category as CategoryResource;
+use Illuminate\Support\Facades\Cache;
 
 
 class SpaController extends Controller
@@ -34,25 +35,35 @@ class SpaController extends Controller
 
         $locale = App::getLocale();
 
-        $authors = AuthorResource::collection(User::authors()->where('hidden', 0)->get());
+        $authors = Cache::rememberForever('app.' . $locale . '.authors', function () {
+            return AuthorResource::collection(User::authors()->where('hidden', 0)->get());
+        });
 
-        $menus = [
-            'topmost' => Menu::display("topmost", "spa"),
-            'top1' => Menu::display("top1", "spa"),
-            'top2' => Menu::display("top2", "spa"),
-            'top3' => Menu::display("top3", "spa"),
-            'top4' => Menu::display("top4", "spa"),
-            'mobile' => Menu::display("mobile", "spa"),
-            'mobile2' => Menu::display("mobile2", "spa"),
-            'mobile3' => Menu::display("mobile3", "spa"),
-            'copyright' => Menu::display("copyright", "spa"),
-            'footerRight' => Menu::display("footer-right", "spa"),
-            'footerLeft' => Menu::display("footer-left", "spa"),
-        ];
+        $menus = Cache::rememberForever('app.' . $locale . '.menus', function () {
+            return [
+                'topmost' => Menu::display("topmost", "spa"),
+                'top1' => Menu::display("top1", "spa"),
+                'top2' => Menu::display("top2", "spa"),
+                'top3' => Menu::display("top3", "spa"),
+                'top4' => Menu::display("top4", "spa"),
+                'mobile' => Menu::display("mobile", "spa"),
+                'mobile2' => Menu::display("mobile2", "spa"),
+                'mobile3' => Menu::display("mobile3", "spa"),
+                'copyright' => Menu::display("copyright", "spa"),
+                'footerRight' => Menu::display("footer-right", "spa"),
+                'footerLeft' => Menu::display("footer-left", "spa"),
+            ];
+        });
+
+
 
         $options =  [
-            ['id' => 'categories', 'title' => __('Category'), 'items' => Category::all()],
-            ['id' => 'styles', 'title' => __('Style'), 'items' => Style::all()],
+            ['id' => 'categories', 'title' => __('Category'), 'items' => Cache::rememberForever('app.' . $locale . '.categories', function () {
+                return Category::all();
+            })],
+            ['id' => 'styles', 'title' => __('Style'), 'items' => Cache::rememberForever('app.' . $locale . '.styles', function () {
+                return Style::all();
+            })],
             // ['id' => 'materials', 'title' => __('Material'), 'items' => \App\Material::all()],
             // ['id' => 'techniques', 'title' => __('Technique'), 'items' => \App\Technique::all()],
             // ['id' => 'frames', 'title' => __('Frame'), 'items' => \App\Frame::all()],
@@ -85,6 +96,8 @@ class SpaController extends Controller
                 ->with('user')
                 ->get()
         );
+
+        
 
         $timer = setting('site.timer');
         $viplimit = setting('site.viplimit');

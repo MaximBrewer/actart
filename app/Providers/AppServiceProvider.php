@@ -39,6 +39,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \TCG\Voyager\Models\Menu::observe(\App\Observers\Menu::class);
+        \TCG\Voyager\Models\MenuItem::observe(\App\Observers\MenuItem::class);
+        \App\Menu::observe(\App\Observers\Menu::class);
+
+        \App\Category::observe(\App\Observers\Category::class);
+        \App\Style::observe(\App\Observers\Style::class);
+
         Lot::observe(LotObserver::class);
         Auction::observe(AuctionObserver::class);
         Bet::observe(BetObserver::class);

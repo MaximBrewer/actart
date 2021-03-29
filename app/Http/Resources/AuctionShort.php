@@ -22,6 +22,7 @@ class AuctionShort extends JsonResource
                 'status' => $this->status,
                 'dateatom' => $this->date,
                 'title' => $this->getTranslatedAttribute('title'),
+                'header_text' => $this->getTranslatedAttribute('header_text'),
                 'announce_text' => $this->getTranslatedAttribute('announce_text'),
                 'sublime' => $this->getTranslatedAttribute('sublime'),
                 'thumbnail' => Voyager::image($this->thumbnail('xxxl', 'announce_image')),

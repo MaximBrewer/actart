@@ -18,7 +18,7 @@ export default function OnlineTop(props) {
                     <Countdown date={auction.dateatom} />
                     <div className="h1">
                         <Link to={`/auctions/` + auction.id}>
-                            {auction.title}
+                            {auction.header_text}
                         </Link>
                         <br />
                         {!props.finished ? (

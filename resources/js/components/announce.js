@@ -36,7 +36,7 @@ export default function Announce(props) {
             >
                 <div className="darkener">
                     <div className="container">
-                        <div className="h1">{Parser(state.announce_text ?? "")}</div>
+                        <div className="h1">{Parser(state.header_text ?? "")}</div>
                         <div className="h3">
                             {state.dateout} &nbsp;&nbsp;&nbsp;{" "}
                             <Link
