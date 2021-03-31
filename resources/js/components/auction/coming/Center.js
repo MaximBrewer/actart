@@ -42,7 +42,7 @@ export default function Center(props) {
                                     style={{whiteSpace: "nowrap"}}
                                     className={`color-red font-weight-bolder`}
                                 >
-                                   2{__("#VIP_FOR_PARTICIPATE_LINK#")}
+                                   {__("#VIP_FOR_PARTICIPATE_LINK#")}
                                 </Link>
                             </strong>
                         )}
