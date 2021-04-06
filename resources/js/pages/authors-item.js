@@ -154,6 +154,7 @@ export default function AuthorItem(props) {
                                     author: state.author.id,
                                     sortable: true,
                                     showStatus: true,
+                                    hideSortByName: true,
                                     limit: {
                                         xs: 4,
                                         sm: 4,

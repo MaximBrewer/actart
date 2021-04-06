@@ -184,7 +184,6 @@ export default function WaterfallAjax(props) {
         });
     };
 
-
     const removeBet = event => {
         setState(prevState => {
             let lots = [];
@@ -236,34 +235,38 @@ export default function WaterfallAjax(props) {
                 {data.sortable && (
                     <div className="sorting">
                         <span>{__("Sort by")}: </span>
-                        <a
-                            href="#"
-                            className={
-                                state.sortBy == "author"
-                                    ? state.order == "asc"
-                                        ? `active asc`
-                                        : `active desc`
-                                    : ``
-                            }
-                            onClick={e => {
-                                e.preventDefault();
-                                setSortBy(
-                                    "author",
-                                    state.sortBy == "author" &&
-                                        state.order == "asc"
-                                        ? "desc"
-                                        : "asc"
-                                );
-                            }}
-                        >
-                            <span>{__("#BYAUTHOR#")}</span>
-                            <svg
-                                viewBox="0 0 18 18"
-                                xmlns="http://www.w3.org/2000/svg"
+                        {data.hideSortByName ? (
+                            ``
+                        ) : (
+                            <a
+                                href="#"
+                                className={
+                                    state.sortBy == "author"
+                                        ? state.order == "asc"
+                                            ? `active asc`
+                                            : `active desc`
+                                        : ``
+                                }
+                                onClick={e => {
+                                    e.preventDefault();
+                                    setSortBy(
+                                        "author",
+                                        state.sortBy == "author" &&
+                                            state.order == "asc"
+                                            ? "desc"
+                                            : "asc"
+                                    );
+                                }}
                             >
-                                <path d="M9 18L0.339746 3L17.6603 3L9 18Z" />
-                            </svg>
-                        </a>
+                                <span>{__("#BYAUTHOR#")}</span>
+                                <svg
+                                    viewBox="0 0 18 18"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M9 18L0.339746 3L17.6603 3L9 18Z" />
+                                </svg>
+                            </a>
+                        )}
                         <a
                             href="#"
                             className={
@@ -380,8 +383,8 @@ export default function WaterfallAjax(props) {
                         </a>
                     </div>
                 ) : (
-                        ""
-                    )}
+                    ""
+                )}
             </div>
         </div>
     );

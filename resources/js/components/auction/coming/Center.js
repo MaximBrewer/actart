@@ -24,7 +24,7 @@ export default function Center(props) {
                                 {__("Participation rules")}
                             </Link>
                         </div>
-                        {!currentUser || currentUser.vip ? (
+                        {currentUser && currentUser.vip ? (
                             ``
                         ) : (
                             <strong
