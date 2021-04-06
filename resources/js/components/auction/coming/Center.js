@@ -37,13 +37,22 @@ export default function Center(props) {
                                     {__("#ATTENTION!#")}
                                 </span>{" "}
                                 {__("#VIP_FOR_PARTICIPATE_TEXT#")}{" "}
-                                <Link
-                                    to={`/profile/vip`}
-                                    style={{whiteSpace: "nowrap"}}
-                                    className={`color-red font-weight-bolder`}
-                                >
-                                   {__("#VIP_FOR_PARTICIPATE_LINK#")}
-                                </Link>
+                                {currentUser ? (
+                                    <Link
+                                        to={`/profile/vip`}
+                                        style={{ whiteSpace: "nowrap" }}
+                                        className={`color-red font-weight-bolder`}
+                                    >
+                                        {__("#VIP_FOR_PARTICIPATE_LINK#")}
+                                    </Link>
+                                ) : (
+                                    <span
+                                        style={{ whiteSpace: "nowrap" }}
+                                        className={`color-red font-weight-bolder`}
+                                    >
+                                        {__("#VIP_FOR_PARTICIPATE_LINK#")}
+                                    </span>
+                                )}
                             </strong>
                         )}
                     </div>
