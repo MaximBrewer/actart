@@ -27,7 +27,7 @@
     </script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script src="{{ asset('js/app.js?v=1.61') }}"></script>
+    <script src="{{ asset('js/app.js?v=1.62') }}"></script>
     {!! \App\Setting::where('key', 'site.footer.counters')->first()->value !!}
 </body>
 
