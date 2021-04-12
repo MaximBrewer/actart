@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\AuctionShort as AuctionResource;
 use App\Http\Resources\User as UserResource;
 use App\Notifications\Participate as ParticipateNotification;
+use App\Notifications\Manager\Participate as ManagerParticipateNotification;
 use Carbon\Carbon;
 use App\Events\UpdateAuctionSeeders as UpdateAuctionSeedersEvents;
 use Illuminate\Support\Facades\DB;
@@ -73,6 +74,7 @@ class AuctionController extends Controller
         if (!$user->auctions()->where('auctions.id', $id)->exists()) {
             $auction = Auction::findOrFail($id);
             $user->notify(new ParticipateNotification($auction));
+            foreach (User::where('role_id', 5)->get() as $manager) $manager->notify(new ManagerParticipateNotification($auction, $user));
             $user->auctions()->attach($id);
             event(new UpdateAuctionSeedersEvents($id, DB::table('user_auction')->where('auction_id', $auction->id)->count()));
         }
