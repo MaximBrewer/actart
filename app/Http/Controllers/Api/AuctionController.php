@@ -19,7 +19,7 @@ use App\Lot;
 
 class AuctionController extends Controller
 {
-    //
+    
     public function index(Request $request)
     {
         $auctions = Auction::where(function ($query) {
