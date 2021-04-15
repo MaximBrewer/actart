@@ -19,6 +19,18 @@ export default function Center(props) {
                         <div className="sub_2 sublime-wrapper">
                             {Parser(auction.text ?? "")}
                         </div>
+                        <div className="text-center my-3">
+                            <a
+                                href="#"
+                                className="btn btn-danger"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    props.openModal("login");
+                                }}
+                            >
+                                {__("PARTICIPATE")}
+                            </a>
+                        </div>
                         <div className="link-holder">
                             <Link to={`/rules`}>
                                 {__("Participation rules")}
@@ -27,33 +39,43 @@ export default function Center(props) {
                         {currentUser && currentUser.vip ? (
                             ``
                         ) : (
-                            <strong
-                                style={{
-                                    margin: "0.7rem 0",
-                                    display: "block"
-                                }}
-                            >
-                                <span className={`color-red`}>
-                                    {__("#ATTENTION!#")}
-                                </span>{" "}
-                                {__("#VIP_FOR_PARTICIPATE_TEXT#")}{" "}
-                                {currentUser ? (
-                                    <Link
-                                        to={`/profile/vip`}
-                                        style={{ whiteSpace: "nowrap" }}
-                                        className={`color-red font-weight-bolder`}
-                                    >
-                                        {__("#VIP_FOR_PARTICIPATE_LINK#")}
-                                    </Link>
-                                ) : (
-                                    <span
-                                        style={{ whiteSpace: "nowrap" }}
-                                        className={`color-red font-weight-bolder`}
-                                    >
-                                        {__("#VIP_FOR_PARTICIPATE_LINK#")}
-                                    </span>
-                                )}
-                            </strong>
+                            <>
+                                <strong
+                                    style={{
+                                        margin: "0.7rem 0",
+                                        display: "block"
+                                    }}
+                                >
+                                    <span className={`color-red`}>
+                                        {__("#ATTENTION!#")}
+                                    </span>{" "}
+                                    {__("#VIP_FOR_PARTICIPATE_TEXT#")}{" "}
+                                    {currentUser ? (
+                                        <Link
+                                            to={`/profile/vip`}
+                                            style={{ whiteSpace: "nowrap" }}
+                                            className={`color-red font-weight-bolder`}
+                                        >
+                                            {__("#VIP_FOR_PARTICIPATE_LINK#")}
+                                        </Link>
+                                    ) : (
+                                        <a
+                                            href="#"
+                                            onClick={e => {
+                                                e.preventDefault();
+                                                props.openModal("login");
+                                            }}
+                                            style={{
+                                                whiteSpace: "nowrap",
+                                                textDecoration: "underline"
+                                            }}
+                                            className={`color-red font-weight-bolder`}
+                                        >
+                                            {__("#VIP_FOR_PARTICIPATE_LINK#")}
+                                        </a>
+                                    )}
+                                </strong>
+                            </>
                         )}
                     </div>
                 </div>
