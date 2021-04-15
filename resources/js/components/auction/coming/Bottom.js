@@ -71,12 +71,7 @@ export default function Bottom(props) {
                                     className="btn btn-danger"
                                     onClick={e => participate(e, auction)}
                                 >
-                                    {currentUser.vip
-                                        ? __("#ALREADY_REGISTERED_VIP_STATUS#")
-                                        : __(
-                                              "#ALREADY_REGISTERED_GUEST_STATUS#"
-                                          )}
-                                    {/* {__("PARTICIPATE")} */}
+                                    {__("PARTICIPATE")}
                                 </Link>
                             )}
                         </div>
