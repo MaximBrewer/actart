@@ -8,7 +8,6 @@
 /.vscode
 /.vagrant
 /public/phpmyadmin
-/app/Notifications
 Homestead.json
 Homestead.yaml
 npm-debug.log
