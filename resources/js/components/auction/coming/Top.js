@@ -32,7 +32,6 @@ export default function Top(props) {
                             {!!currentUser && currentUser.vip
                                 ? __("#VIP_STATUS#")
                                 : __("#GUEST_STATUS#")}
-                            {/* {__("ALREADY_REGISTERED")} */}
                         </Link>
                     ) : (
                         <Link
@@ -40,11 +39,11 @@ export default function Top(props) {
                             className="btn btn-danger mb-2"
                             onClick={e => participate(e, auction)}
                         >
-                            {__("#YOUR_STATUS_IS:#")}{" "}
-                            {!!currentUser && currentUser.vip
+                            {!currentUser
+                                ? __("PARTICIPATE")
+                                : currentUser.vip
                                 ? __("#VIP_STATUS#")
                                 : __("#GUEST_STATUS#")}
-                            {/* {__("PARTICIPATE")} */}
                         </Link>
                     )}
                     <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;</div>
