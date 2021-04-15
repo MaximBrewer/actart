@@ -25,7 +25,7 @@ export default function Left(props) {
                         paddingTop: "82.3529%",
                         display: "block",
                         position: "relative",
-                        backgroundImage: `url(${encodeURI(state.photo.full)})`,
+                        backgroundImage: `url(${encodeURI(state.photo.thumbnail)})`,
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "contain",
                         backgroundPosition: "bottom center"

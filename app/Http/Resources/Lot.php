@@ -25,7 +25,7 @@ class Lot extends JsonResource
                 $photos = [
                     [
                         'full' => Voyager::image($this->photo),
-                        'thumbnail' => Voyager::image($this->thumbnail('preview', 'photo')),
+                        'thumbnail' => Voyager::image($this->thumbnail('gallery', 'photo')),
                         'pxwidth' => $sizeBase[0],
                         'pxheight' => $sizeBase[1],
                     ]
@@ -38,7 +38,7 @@ class Lot extends JsonResource
                     if ($size) {
                         $photos[] = [
                             'full' => Voyager::image($ph),
-                            'thumbnail' => Voyager::image($this->getThumbnail($ph, 'preview')),
+                            'thumbnail' => Voyager::image($this->getThumbnail($ph, 'gallery')),
                             'pxwidth' => $size[0],
                             'pxheight' => $size[1],
                         ];
@@ -49,7 +49,7 @@ class Lot extends JsonResource
                 'id' => $this->id,
                 'title' => $this->getTranslatedAttribute('title'),
                 'text' => $this->getTranslatedAttribute('text'),
-                'thumbnail' => Voyager::image($this->thumbnail('preview', 'photo')),
+                'thumbnail' => Voyager::image($this->thumbnail('gallery', 'photo')),
                 'photo' => Voyager::image($this->photo),
                 'photos' => $photos,
                 'size' => $sizeBase ? ($sizeBase[0] / $sizeBase[1] > 1 ? 2 : 1) : 1,
