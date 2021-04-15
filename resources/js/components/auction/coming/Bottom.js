@@ -18,7 +18,7 @@ export default function Bottom(props) {
                 {!!currentUser ? (
                     <div className="row justify-content-center mt-2 mb-4">
                         <div className="col-lg-40">
-                            {inAuctions ? (
+                            {inAuctions(auction.id) ? (
                                 <div className="d-flex flex-column justify-content-center">
                                     <p className="text-center pb-3">
                                         {__("#ALREADY_REGISTERED_HELP#")}
