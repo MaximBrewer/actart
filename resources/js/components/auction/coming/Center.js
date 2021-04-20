@@ -29,7 +29,7 @@ export default function Center(props) {
                                                     "#ALREADY_REGISTERED_HELP#"
                                                 )}
                                             </p>
-                                            <div className="text-center text-xl-left mb-3">
+                                            {/* <div className="text-center text-xl-left mb-3">
                                                 <Link
                                                     to={
                                                         "/auctions/" +
@@ -44,9 +44,9 @@ export default function Center(props) {
                                                         : __(
                                                               "#ALREADY_REGISTERED_GUEST_STATUS#"
                                                           )}
-                                                    {/* {__("ALREADY_REGISTERED")} */}
+                                                     {__("ALREADY_REGISTERED")} 
                                                 </Link>
-                                            </div>
+                                            </div> */}
                                             {currentUser.vip ? (
                                                 ``
                                             ) : (
