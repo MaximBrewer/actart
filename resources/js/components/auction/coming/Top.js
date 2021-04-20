@@ -23,28 +23,39 @@ export default function Top(props) {
                             {auction.header_text}
                         </Link>
                     </div>
-                    {inAuctions(auction.id) ? (
-                        <Link
-                            to={"/auctions/" + auction.id}
-                            className="btn btn-danger mb-2"
-                        >
-                            {__("#YOUR_STATUS_IS:#")}{" "}
-                            {!!currentUser && currentUser.vip
-                                ? __("#VIP_STATUS#")
-                                : __("#GUEST_STATUS#")}
-                        </Link>
+                    {!!currentUser ? (
+                        inAuctions(auction.id) ? (
+                            <Link
+                                to={"/auctions/" + auction.id}
+                                className="btn btn-danger mb-2"
+                            >
+                                {__("#YOUR_STATUS_IS:#")}{" "}
+                                {!!currentUser && currentUser.vip
+                                    ? __("#VIP_STATUS#")
+                                    : __("#GUEST_STATUS#")}
+                            </Link>
+                        ) : (
+                            <Link
+                                to={"/auctions/" + auction.id}
+                                className="btn btn-danger mb-2"
+                                onClick={e => participate(e, auction)}
+                            >
+                                {__("PARTICIPATE")}
+                            </Link>
+                        )
                     ) : (
-                        <Link
-                            to={"/auctions/" + auction.id}
-                            className="btn btn-danger mb-2"
-                            onClick={e => participate(e, auction)}
-                        >
-                            {!currentUser
-                                ? __("PARTICIPATE")
-                                : currentUser.vip
-                                ? __("#VIP_STATUS#")
-                                : __("#GUEST_STATUS#")}
-                        </Link>
+                        <div className="text-center text-xl-left my-3">
+                            <a
+                                href="#"
+                                className="btn btn-danger"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    props.openModal("login");
+                                }}
+                            >
+                                {__("PARTICIPATE")}
+                            </a>
+                        </div>
                     )}
                     <div className="h3">{auction.date} &nbsp;&nbsp;&nbsp;</div>
                 </div>
