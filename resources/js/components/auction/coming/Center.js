@@ -6,7 +6,7 @@ import { useAuth } from "../../../context/auth";
 
 export default function Center(props) {
     const { currentUser, inAuctions } = useAuth();
-    const { auction } = props;
+    const { auction, participate } = props;
     return (
         <div className="auction-info">
             <div className="container">
