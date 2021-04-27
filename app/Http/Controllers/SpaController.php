@@ -56,10 +56,15 @@ class SpaController extends Controller
         });
 
 
+        // var_dump($locale);
+        // var_dump(CategoryResource::collection(Category::all()));
+
+        // die;
+
 
         $options =  [
             ['id' => 'categories', 'title' => __('Category'), 'items' => Cache::rememberForever('app.' . $locale . '.categories', function () {
-                return Category::all();
+                return CategoryResource::collection(Category::all());
             })],
             ['id' => 'styles', 'title' => __('Style'), 'items' => Cache::rememberForever('app.' . $locale . '.styles', function () {
                 return Style::all();

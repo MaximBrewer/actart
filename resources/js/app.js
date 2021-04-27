@@ -268,6 +268,8 @@ channel.bind("update-lot-lastchance", function({ id, lastchance }) {
     );
 });
 
+console.log(window.App)
+
 const req = (url, method = "GET", body = null) => {
     return new Promise(function(resolve, reject) {
         client(url, {
