@@ -162,12 +162,12 @@ function Home(props) {
                                         </Link>
                                     </li>
                                     <li className="h5 h5_underline">
-                                        <Link to="/events#exhibitions">
+                                        <Link to="/events/exhibitions">
                                             {__("#HOME_LINK_EXHIBITIONS#")}
                                         </Link>
                                     </li>
                                     <li className="h5 h5_underline">
-                                        <Link to="/events#workshops">
+                                        <Link to="/events/workshops">
                                             {__("#HOME_ABOUT_WORKSHOPS#")}
                                         </Link>
                                     </li>
