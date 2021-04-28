@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use Throwable;
 use App\Notifications\VipRegister as VipRegisterNotification;
+use Illuminate\Support\Facades\Cache;
 
 use App\User as UserModel;
 
@@ -28,5 +29,17 @@ class User
                 report($e);
             }
         }
+        Cache::forget('app.en.authors');
+        Cache::forget('app.ru.authors');
+    }
+    public function created(UserModel $model)
+    {
+        Cache::forget('app.en.authors');
+        Cache::forget('app.ru.authors');
+    }
+    public function deleted(UserModel $model)
+    {
+        Cache::forget('app.en.authors');
+        Cache::forget('app.ru.authors');
     }
 }
