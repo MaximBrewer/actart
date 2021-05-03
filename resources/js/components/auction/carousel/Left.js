@@ -17,7 +17,8 @@ export default function Left(props) {
                     position: "relative"
                 }}
             >
-                {console.log(encodeURI(state.photo.thumbnail))}
+                
+                {console.log(state.photo.thumbnail, encodeURI(state.photo.thumbnail))}
                 <div
                     style={{
                         width: "100%",
