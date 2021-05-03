@@ -253,6 +253,7 @@ channel.bind("update-lot-status", function({ id, status, won_id }) {
     );
 });
 
+
 channel.bind("update-lot-lastchance", function({ id, lastchance }) {
     let g = [];
     for (let i in window.App.gallery) {
@@ -267,8 +268,6 @@ channel.bind("update-lot-lastchance", function({ id, lastchance }) {
         })
     );
 });
-
-console.log(window.App)
 
 const req = (url, method = "GET", body = null) => {
     return new Promise(function(resolve, reject) {

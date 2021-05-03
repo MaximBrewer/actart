@@ -38,7 +38,6 @@ export default function Carousel(props) {
         });
         refPicture.current.slickGoTo(index);
         refAnnounce.current.slickGoTo(index);
-        console.log(props.items, index);
         setCurrentItem(state.items[index]);
     }, [lotId]);
 
