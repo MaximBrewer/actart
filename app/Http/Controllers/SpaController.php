@@ -19,6 +19,7 @@ use App\Technique;
 use App\User;
 use App\Frame;
 use App\Http\Resources\Author as AuthorResource;
+use App\Http\Resources\Space as SpaceResource;
 use App\Http\Resources\Category as CategoryResource;
 use Illuminate\Support\Facades\Cache;
 
@@ -83,7 +84,7 @@ class SpaController extends Controller
         });
 
         $spaces = Cache::rememberForever('app.' . $locale . '.spaces', function () {
-            return Space::all();
+            return SpaceResource::collection(Space::all());
         });
         $experts = Cache::rememberForever('app.' . $locale . '.experts', function () {
             return ExpertResource::collection(Expert::all());

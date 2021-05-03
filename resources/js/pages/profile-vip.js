@@ -193,6 +193,7 @@ function Profile(props) {
                                         <a
                                             target="_blank"
                                             href={window.App.contract_link}
+                                            className={`color-red text-underline`}
                                         >
                                             <strong>
                                                 {__("#PROFILE_CONTRACT_LINK#")}

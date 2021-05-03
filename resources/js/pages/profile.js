@@ -80,7 +80,7 @@ function Profile(props) {
                         ) : (
                             <>
                                 <div>
-                                    <Link to="/profile/vip">
+                                    <Link to="/profile/vip" className={`btn btn-danger`}>
                                         {__("#WANTED_VIP#")}
                                     </Link>
                                 </div>
