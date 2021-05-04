@@ -25,7 +25,7 @@ class EventFull extends JsonResource
             'width' => 440,
             'height' => 360,
             'url' => "/events/" . $this->id,
-            'space' => $this->space,
+            'space' => new Space($this->space),
             'seo_title' => $this->getTranslatedAttribute('seo_title'),
             'meta_description' => $this->getTranslatedAttribute('meta_description'),
             'meta_keywords' => $this->getTranslatedAttribute('meta_keywords'),
